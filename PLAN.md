@@ -82,14 +82,14 @@ _Goal: Establish the rules of engagement. CI/CD must be green before feature cod
   - [x] Install **Vitest** (Unit) + **ng-mocks** (Simpler component testing).
   - [x] Configure coverage thresholds (85%).
   - [x] Install **Playwright** (E2E) and configure base url.
-- [ ] **1.4 CI/CD Pipeline (GitHub Actions)**:
+- [x] **1.4 CI/CD Pipeline (GitHub Actions)**:
   - [x] Create `.github/workflows/ci.yml`: Runs Lint, Test, and Build on every PR.
   - [x] Create `.github/workflows/codeql.yml`: Security scanning, exclude build output directories for github's codeQL default setup
   - [x] Create `.github/workflows/lighthouse.yml`: Runs Lighthouse CI on every PR.
   - [x] Create `.github/workflows/deploy.yml`: Deploy to GitHub Pages on `main` branch.
   - [x] Create `.github/workflows/dependency-review.yml`: Dependency review on every PR.
   - [x] Create `.github/workflows/e2e.yml`: Run Playwright E2E tests on every PR.
-  - [ ] **Milestone:** _Push a dummy PR and verify it fails if you break a rule._
+  - [x] **Milestone:** _Push a dummy PR and verify it fails if you break a rule._
 - [ ] **1.5 Documentation Engine**:
   - [ ] Install **Storybook** (for `src/app/shared`).
   - [ ] Install **Compodoc** (for `src/app/core`). Configure `tsconfig.doc.json`.
