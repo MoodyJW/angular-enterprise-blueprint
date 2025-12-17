@@ -9,7 +9,7 @@ export default tseslint.config(
   // Base TypeScript config for all .ts files
   {
     files: ['**/*.ts'],
-    extends: [...angular.configs.tsRecommended],
+    extends: [...tseslint.configs.strictTypeChecked, ...angular.configs.tsRecommended],
     processor: angular.processInlineTemplates,
     languageOptions: {
       parserOptions: {
@@ -18,6 +18,39 @@ export default tseslint.config(
         },
         tsconfigRootDir: import.meta.dirname,
       },
+    },
+    rules: {
+      // Strict type rules
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/explicit-function-return-type': [
+        'error',
+        {
+          allowExpressions: true,
+          allowTypedFunctionExpressions: true,
+          allowHigherOrderFunctions: true,
+        },
+      ],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/no-misused-promises': 'error',
+      '@typescript-eslint/await-thenable': 'error',
+      '@typescript-eslint/no-unnecessary-condition': 'error',
+      '@typescript-eslint/prefer-nullish-coalescing': 'error',
+      '@typescript-eslint/prefer-optional-chain': 'error',
+      '@typescript-eslint/strict-boolean-expressions': [
+        'error',
+        {
+          allowString: false,
+          allowNumber: false,
+          allowNullableObject: true,
+        },
+      ],
     },
   },
   // Boundaries rules only for src/ files
