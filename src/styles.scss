@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+// src/styles.scss
+
+// 1. Variables & Config
+@use 'styles/variables';
+@use 'styles/themes';
+
+// 2. Resets & Normalization
+@use 'styles/reset';
+
+// 3. Global Utilities
+@use 'styles/utilities';

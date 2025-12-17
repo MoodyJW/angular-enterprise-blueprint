@@ -1,0 +1,47 @@
+name: Dependency Review
+
+on:
+  pull_request:
+    # Run on all PRs during development
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  dependency-review:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          # Fail the action if vulnerabilities with severity >= high are detected
+          fail-on-severity: high
+
+          # License check configuration (deny-licenses is deprecated)
+          # Block copyleft licenses that could affect commercial use
+          license-check: true
+          fail-on-scopes: runtime
+          # Note: license-check now uses a configuration file or default rules
+          # To block specific licenses, add a .github/dependency-review-config.yml file
+
+          # Comment on PR with summary of vulnerabilities
+          comment-summary-in-pr: always
+
+          # Show dependency changes in PR (OpenSSF Scorecard disabled to reduce noise)
+          show-openssf-scorecard: false
+
+      - name: Upload dependency review results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-review-results
+          path: |
+            dependency-review-*.json
+            dependency-review-*.sarif
+          retention-days: 30
