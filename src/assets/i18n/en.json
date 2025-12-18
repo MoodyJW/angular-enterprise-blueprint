@@ -1,0 +1,41 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit"
+  },
+  "home": {
+    "welcome": "Welcome to Angular Enterprise Blueprint",
+    "description": "A production-grade Angular reference architecture"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign In",
+      "forgotPassword": "Forgot password?",
+      "noAccount": "Don't have an account?",
+      "register": "Register"
+    },
+    "logout": "Sign Out"
+  },
+  "nav": {
+    "home": "Home",
+    "modules": "Reference Modules",
+    "architecture": "Architecture Decisions",
+    "profile": "The Architect",
+    "contact": "Hire Me"
+  },
+  "footer": {
+    "copyright": "Angular Enterprise Blueprint"
+  }
+}
