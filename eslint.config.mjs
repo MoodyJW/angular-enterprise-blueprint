@@ -72,6 +72,7 @@ export default tseslint.config(
       },
       'boundaries/elements': [
         { type: 'entry', pattern: ['src/*'], mode: 'file' },
+        { type: 'environments', pattern: ['src/environments/*'], mode: 'file' },
         { type: 'core', pattern: ['src/app/core/*'], capture: ['layer'] },
         {
           type: 'features',
@@ -100,9 +101,14 @@ export default tseslint.config(
               allow: ['app', 'core', 'features', 'shared'],
             },
             {
-              // Core can import from shared only (and other core modules)
+              // Environments can only import from within environments (e.g., type imports)
+              from: 'environments',
+              allow: ['environments'],
+            },
+            {
+              // Core can import from shared, environments, and other core modules
               from: 'core',
-              allow: ['core', 'shared'],
+              allow: ['core', 'shared', 'environments'],
             },
             {
               // Features can import from core and shared, and SAME feature only
