@@ -166,12 +166,12 @@ We document our process for knowledge sharing and portfolio demonstration.
 
 ## 1.8 Execution Checklist
 
-1.  [ ] **Workspace:** Init Angular v21 with SCSS/Strict/Routing.
-2.  [ ] **Linting:** Setup ESLint Flat Config + Boundaries Plugin.
-3.  [ ] **Formatting:** Setup Prettier + Organize Imports.
-4.  [ ] **Hooks:** Init Husky + Commitlint + Lint-Staged.
-5.  [ ] **Unit Test:** Remove Karma, Install Vitest + Config.
-6.  [ ] **E2E Test:** Install Playwright.
-7.  [ ] **Docs:** Init Storybook + Compodoc.
-8.  [ ] **CI:** Create `.github/workflows/` (CI, CodeQL, Dependency Review).
-9.  [ ] **Verify:** Run `npm run test` and `npm run build` locally to ensure the rig holds together.
+1.  [x] **Workspace:** Init Angular v21 with SCSS/Strict/Routing.
+2.  [x] **Linting:** Setup ESLint Flat Config + Boundaries Plugin.
+3.  [x] **Formatting:** Setup Prettier + Organize Imports.
+4.  [x] **Hooks:** Init Husky + Commitlint + Lint-Staged.
+5.  [x] **Unit Test:** Remove Karma, Install Vitest + Config.
+6.  [x] **E2E Test:** Install Playwright.
+7.  [x] **Docs:** Init Storybook + Compodoc.
+8.  [x] **CI:** Create `.github/workflows/` (CI, CodeQL, Dependency Review).
+9.  [x] **Verify:** Run `npm run test` and `npm run build` locally to ensure the rig holds together.

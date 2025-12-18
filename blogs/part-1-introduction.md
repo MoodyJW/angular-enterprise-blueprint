@@ -1,5 +1,3 @@
-# Building a Portfolio That Actually Demonstrates Enterprise Skills
-
 ## Creating an Enterprise Blueprint as a Portfolio Using Angular
 
 As a lead front-end developer, I don't have much time for personal projects, and none of my professional work is public. I realized I needed something tangible to demonstrate my skills. Instead of building a collection of small projects, I'm creating a "mini enterprise" application as my portfolio. This means applying modern architecture, documentation standards, CI/CD pipelines, comprehensive testing, and other common enterprise practices. I'm treating it like a real production project, following enterprise best practices from the ground up. This approach lets me focus on a single project while demonstrating an entire professional skill set.

@@ -93,7 +93,7 @@ _Goal: Establish the rules of engagement. CI/CD must be green before feature cod
   - [x] Install **Storybook** (for `src/app/shared`).
   - [x] Install **Compodoc** (for `src/app/core`). Configure `tsconfig.doc.json`.
 - [x] **1.6 I18n Setup**: Install `@jsverse/transloco` and configure the HTTP loader.
-- [ ] **1.7 Blog Article**: Write a detailed article on setting up the Angular Enterprise Blueprint.
+- [x] **1.7 Blog Article**: Write a detailed article on setting up the Angular Enterprise Blueprint.
 
 ### 🧠 Phase 2: Core Architecture (The Nervous System)
 
