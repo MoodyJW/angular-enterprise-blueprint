@@ -90,10 +90,11 @@ _Goal: Establish the rules of engagement. CI/CD must be green before feature cod
   - [x] Create `.github/workflows/dependency-review.yml`: Dependency review on every PR.
   - [x] Create `.github/workflows/e2e.yml`: Run Playwright E2E tests on every PR.
   - [x] **Milestone:** _Push a dummy PR and verify it fails if you break a rule._
-- [ ] **1.5 Documentation Engine**:
-  - [ ] Install **Storybook** (for `src/app/shared`).
-  - [ ] Install **Compodoc** (for `src/app/core`). Configure `tsconfig.doc.json`.
+- [x] **1.5 Documentation Engine**:
+  - [x] Install **Storybook** (for `src/app/shared`).
+  - [x] Install **Compodoc** (for `src/app/core`). Configure `tsconfig.doc.json`.
 - [ ] **1.6 I18n Setup**: Install `@jsverse/transloco` and configure the HTTP loader.
+- [ ] **1.7 Blog Article**: Write a detailed article on setting up the Angular Enterprise Blueprint.
 
 ### 🧠 Phase 2: Core Architecture (The Nervous System)
 
@@ -114,6 +115,7 @@ _Goal: Build the invisible singletons that power the application._
     - [ ] Use `throwError` randomly (10%) to simulate 500s.
   - [ ] Create `AuthStore` (NgRx SignalStore) to manage `User` state.
   - [ ] Create `authGuard` (Functional) and `AuthInterceptor`.
+- [ ] **2.5 Blog Article**: Write about designing core architecture in Angular.
 
 ### 🎨 Phase 3: The Design System (Shared Library)
 
@@ -128,6 +130,7 @@ _Goal: Port the high-quality UI components. Ensure strict Storybook coverage._
   - [ ] **ThemePickerComponent**: Build this early to test the theming engine.
 - [ ] **3.7 Feedback Components**: Port `Toast` (and Service), `Modal`, `Skeleton`.
 - [ ] **3.8 Stories**: Ensure every component has a `.stories.ts` file.
+- [ ] **3.9 Blog Article**: Write about building a design system in Angular.
 
 ### 🐚 Phase 4: The Application Shell
 
@@ -139,6 +142,7 @@ _Goal: Build the frame that holds the pages._
   - [ ] Integrate `ThemePicker` into the Header.
   - [ ] Connect `AuthStore` to Header (Show "Login" vs "User Profile").
 - [ ] **4.3 Routing**: Define lazy-loaded routes in `app.routes.ts`.
+- [ ] **4.4 Blog Article**: Write about building the application shell in Angular.
 
 ### 📦 Phase 5: Feature Implementation (The Content)
 
@@ -166,6 +170,7 @@ _Goal: Features that map 1:1 to the UI naming._
 - [ ] **5.6 Contact** (`features/contact`):
   - [ ] **UI Label:** "Hire Me".
   - [ ] `ContactComponent`: Lead generation form with rate-limiting simulation.
+- [ ] **5.7 Blog Article**: Write about implementing feature modules in Angular.
 
 ### ⚙️ Phase 6: Ops & Optimization
 
@@ -183,6 +188,7 @@ _Goal: Ensure it builds and ships like enterprise software._
   - [ ] `README.md`: The "Sales Pitch" for the repo.
   - [ ] `CONTRIBUTING.md`: How to run the repo.
   - [ ] `ARCHITECTURE.md`: High-level diagram.
+- [ ] **6.5 Blog Article**: Write about deploying and optimizing Angular applications.
 
 ---
 
