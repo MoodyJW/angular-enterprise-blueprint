@@ -30,6 +30,9 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
+      - name: Check Prettier formatting
+        run: npx prettier --check .
+
   test:
     name: Test
     runs-on: ubuntu-latest
