@@ -70,7 +70,6 @@ We strip out Karma/Jasmine in favor of a modern, faster stack.
 - **Reporters:** `verbose` and `junit` (for CI).
 - **Coverage:** `v8`.
   - **Thresholds:** 85% Statements, 85% Branches, 85% Functions.
-- **Mocking:** `ng-mocks` for easy component/service mocking (e.g., `MockComponent(HeaderComponent)`).
 
 ### **2. E2E Testing: Playwright (`playwright.config.ts`)**
 
@@ -127,9 +126,45 @@ We treat documentation as code.
   - Exclude `*.spec.ts` and `*.stories.ts` to keep the graph clean.
   - Generate "Dependency Graph" for `ARCHITECTURE.md`.
 
+## 1.6 I18n Setup
+
+We use Transloco for internationalization, providing a clean signal-based API.
+
+### **1. Transloco (`@jsverse/transloco`)**
+
+- **Loader:** HTTP loader fetching from `assets/i18n/`.
+- **Default Language:** `en`.
+- **Available Languages:** `en`, `es`, `fr` (expandable).
+- **Features:**
+  - Lazy-loaded translations per route.
+  - Signal-based API (`transloco.translate()`).
+  - ICU message format support.
+
+### **2. Translation Files (`assets/i18n/`)**
+
+- **Structure:** One JSON file per language (e.g., `en.json`, `es.json`).
+- **Naming Convention:** Dot-notation keys matching component structure (e.g., `home.welcome`, `auth.login.title`).
+
 ---
 
-## 1.6 Execution Checklist
+## 1.7 Blog Article
+
+We document our process for knowledge sharing and portfolio demonstration.
+
+### **1. Article Scope**
+
+- **Target:** Medium / Dev.to publication.
+- **Topic:** Setting up the Angular Enterprise Blueprint.
+- **Sections:**
+  - Project initialization and strict mode configuration.
+  - ESLint flat config with boundaries plugin.
+  - Vitest and Playwright integration.
+  - CI/CD pipeline architecture.
+  - Documentation engine setup (Storybook + Compodoc).
+
+---
+
+## 1.8 Execution Checklist
 
 1.  [ ] **Workspace:** Init Angular v21 with SCSS/Strict/Routing.
 2.  [ ] **Linting:** Setup ESLint Flat Config + Boundaries Plugin.

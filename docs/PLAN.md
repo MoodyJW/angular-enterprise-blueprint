@@ -79,8 +79,7 @@ _Goal: Establish the rules of engagement. CI/CD must be green before feature cod
   - [x] Configure `eslint-plugin-boundaries` to ban Feature-to-Feature imports (Strict Layering).
 - [x] **1.3 Testing Harness**:
   - [x] Remove Karma/Jasmine.
-  - [x] Install **Vitest** (Unit) + **ng-mocks** (Simpler component testing).
-  - [x] Configure coverage thresholds (85%).
+  - [x] Install **Vitest** (Unit) and configure coverage thresholds (85%).
   - [x] Install **Playwright** (E2E) and configure base url.
 - [x] **1.4 CI/CD Pipeline (GitHub Actions)**:
   - [x] Create `.github/workflows/ci.yml`: Runs Lint, Test, and Build on every PR.
@@ -93,7 +92,7 @@ _Goal: Establish the rules of engagement. CI/CD must be green before feature cod
 - [x] **1.5 Documentation Engine**:
   - [x] Install **Storybook** (for `src/app/shared`).
   - [x] Install **Compodoc** (for `src/app/core`). Configure `tsconfig.doc.json`.
-- [ ] **1.6 I18n Setup**: Install `@jsverse/transloco` and configure the HTTP loader.
+- [x] **1.6 I18n Setup**: Install `@jsverse/transloco` and configure the HTTP loader.
 - [ ] **1.7 Blog Article**: Write a detailed article on setting up the Angular Enterprise Blueprint.
 
 ### 🧠 Phase 2: Core Architecture (The Nervous System)
