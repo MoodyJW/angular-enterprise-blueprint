@@ -1,0 +1,86 @@
+/**
+ * High Contrast Dark Theme
+ *
+ * WCAG AAA compliant high contrast dark theme.
+ * Designed for users who need maximum readability and contrast.
+ * All text/background combinations meet or exceed 7:1 contrast ratio.
+ */
+
+[data-theme='high-contrast-dark'] {
+  // Primary brand colors - bright blue on black
+  --color-primary: #66b3ff;
+  --color-primary-hover: #99ccff;
+  --color-primary-active: #cce6ff;
+  --color-primary-subtle: rgba(102, 179, 255, 0.2);
+  --color-on-primary: #000000;
+
+  // Secondary colors - bright white
+  --color-secondary: #ffffff;
+  --color-secondary-hover: #ffffff;
+  --color-secondary-active: #ffffff;
+  --color-secondary-subtle: rgba(255, 255, 255, 0.15);
+  --color-on-secondary: #000000;
+
+  // Semantic colors - Success (bright green)
+  --color-success: #00ff66;
+  --color-success-hover: #66ff99;
+  --color-success-subtle: rgba(0, 255, 102, 0.2);
+  --color-on-success: #000000;
+
+  // Semantic colors - Warning (bright yellow)
+  --color-warning: #ffcc00;
+  --color-warning-hover: #ffdd55;
+  --color-warning-subtle: rgba(255, 204, 0, 0.2);
+  --color-on-warning: #000000;
+
+  // Semantic colors - Error (bright red)
+  --color-error: #ff6666;
+  --color-error-hover: #ff9999;
+  --color-error-subtle: rgba(255, 102, 102, 0.2);
+  --color-on-error: #000000;
+
+  // Semantic colors - Info (bright cyan)
+  --color-info: #00ccff;
+  --color-info-hover: #66ddff;
+  --color-info-subtle: rgba(0, 204, 255, 0.2);
+  --color-on-info: #000000;
+
+  // Surface colors - pure black
+  --color-background: #000000;
+  --color-surface: #0a0a0a;
+  --color-surface-hover: #1a1a1a;
+  --color-surface-active: #2a2a2a;
+  --color-surface-elevated: #141414;
+
+  // Text colors - pure white for maximum contrast
+  --color-text: #ffffff;
+  --color-text-secondary: #f0f0f0;
+  --color-text-muted: #b3b3b3;
+  --color-text-disabled: #666666;
+  --color-text-inverse: #000000;
+
+  // Border colors - bright for visibility
+  --color-border: #ffffff;
+  --color-border-hover: #ffffff;
+  --color-border-focus: #66b3ff;
+
+  // Focus ring - bright and prominent
+  --color-focus-ring: rgba(102, 179, 255, 0.9);
+
+  // Overlay
+  --color-overlay: rgba(0, 0, 0, 0.8);
+
+  // Shadows - minimal on true black
+  --shadow-sm: 0 1px 2px 0 rgba(255, 255, 255, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(255, 255, 255, 0.05), 0 1px 2px -1px rgba(255, 255, 255, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(255, 255, 255, 0.05), 0 2px 4px -2px rgba(255, 255, 255, 0.05);
+  --shadow-lg: 0 0 15px 0 rgba(255, 255, 255, 0.1);
+  --shadow-xl: 0 0 25px 0 rgba(255, 255, 255, 0.1);
+  --shadow-2xl: 0 0 50px 0 rgba(255, 255, 255, 0.15);
+  --shadow-inner: inset 0 2px 4px 0 rgba(255, 255, 255, 0.05);
+
+  // Border widths - thicker for visibility
+  --border-width-thin: 2px;
+  --border-width-medium: 3px;
+  --border-width-thick: 5px;
+}

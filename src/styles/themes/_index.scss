@@ -1,0 +1,49 @@
+/**
+ * Theme System Entry Point
+ *
+ * This file imports all theme definitions and the base CSS custom properties.
+ * Import this file in your main styles.scss to enable the theme system.
+ *
+ * Usage:
+ * 1. Import this file: @use 'themes';
+ * 2. The ThemeService will set data-theme attribute on <html>
+ * 3. CSS custom properties will automatically update based on the theme
+ */
+
+// Base CSS custom properties (default values)
+@use 'variables';
+
+// Theme definitions
+@use 'light-default';
+@use 'light-warm';
+@use 'dark-default';
+@use 'dark-cool';
+@use 'high-contrast-light';
+@use 'high-contrast-dark';
+
+/**
+ * Global smooth theme transition
+ *
+ * Applies smooth transitions when switching themes.
+ * The transition affects background, text, borders, and shadows.
+ */
+* {
+  transition: var(--theme-transition);
+}
+
+/**
+ * Disable transitions for reduced motion preference
+ *
+ * Respects user's system preference for reduced motion.
+ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    --duration-instant: 0ms;
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+    --duration-slower: 0ms;
+    --theme-transition: none;
+    transition: none !important;
+  }
+}

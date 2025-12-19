@@ -1,7 +1,395 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="15" failures="15" errors="0" time="0.017125069">
-    <testsuite name="src/app/core/services/logger/logger.service.spec.ts" timestamp="2025-12-18T21:16:16.291Z" hostname="jay-MS-7971" tests="15" failures="15" errors="0" skipped="0" time="0.017125069">
-        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.log when log() is called" time="0.004827498">
+<testsuites name="vitest tests" tests="54" failures="54" errors="0" time="0.082882734">
+    <testsuite name="src/app/app.spec.ts" timestamp="2025-12-19T20:07:23.732Z" hostname="jay-MS-7971" tests="1" failures="1" errors="0" skipped="0" time="0.004523379">
+        <testcase classname="src/app/app.spec.ts" name="App &gt; should create the app" time="0.003505892">
+            <failure message="Need to call TestBed.initTestEnvironment() first" type="Error">
+Error: Need to call TestBed.initTestEnvironment() first
+ ❯ TestBedImpl.get compiler [as compiler] node_modules/@angular/core/fesm2022/testing.mjs:1486:13
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:10
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/app.spec.ts:7:19
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/core/config/environment.token.spec.ts" timestamp="2025-12-19T20:07:23.734Z" hostname="jay-MS-7971" tests="6" failures="6" errors="0" skipped="0" time="0.012020363">
+        <testcase classname="src/app/core/config/environment.token.spec.ts" name="ENVIRONMENT Token &gt; default factory &gt; should provide the environment via injection token" time="0.004485651">
+            <failure message="Need to call TestBed.initTestEnvironment() first" type="Error">
+Error: Need to call TestBed.initTestEnvironment() first
+ ❯ TestBedImpl.get compiler [as compiler] node_modules/@angular/core/fesm2022/testing.mjs:1486:13
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:10
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/core/config/environment.token.spec.ts:10:15
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/config/environment.token.spec.ts" name="ENVIRONMENT Token &gt; default factory &gt; should have all required properties" time="0.003242108">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/config/environment.token.spec.ts" name="ENVIRONMENT Token &gt; default factory &gt; should have feature flags defined" time="0.00051718">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/config/environment.token.spec.ts" name="ENVIRONMENT Token &gt; default factory &gt; should have analytics config defined" time="0.00069905">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/config/environment.token.spec.ts" name="ENVIRONMENT Token &gt; provideEnvironment() &gt; should provide the environment when using provideEnvironment()" time="0.000552896">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/config/environment.token.spec.ts" name="ENVIRONMENT Token &gt; mock environment in tests &gt; should allow overriding environment in tests" time="0.000698297">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/core/services/analytics/analytics-router.provider.spec.ts" timestamp="2025-12-19T20:07:23.740Z" hostname="jay-MS-7971" tests="1" failures="1" errors="0" skipped="0" time="0">
+        <testcase classname="src/app/core/services/analytics/analytics-router.provider.spec.ts" name="src/app/core/services/analytics/analytics-router.provider.spec.ts" time="0">
+            <system-err>
+JIT compilation failed for injectable [36m[class PlatformLocation][39m
+
+            </system-err>
+            <failure message="The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping." type="Error">
+Error: The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping.
+ ❯ getCompilerFacade node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:143:11
+ ❯ Module.ɵɵngDeclareFactory node_modules/@angular/core/fesm2022/core.mjs:2594:20
+ ❯ Function.&lt;static_initializer&gt; node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:23:20
+ ❯ node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:17:1
+ ❯ src/app/core/services/analytics/analytics-router.provider.spec.ts:1:1
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/core/services/analytics/analytics.provider.spec.ts" timestamp="2025-12-19T20:07:23.741Z" hostname="jay-MS-7971" tests="1" failures="1" errors="0" skipped="0" time="0">
+        <testcase classname="src/app/core/services/analytics/analytics.provider.spec.ts" name="src/app/core/services/analytics/analytics.provider.spec.ts" time="0">
+            <system-err>
+JIT compilation failed for injectable [36m[class PlatformLocation][39m
+
+            </system-err>
+            <failure message="The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping." type="Error">
+Error: The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping.
+ ❯ getCompilerFacade node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:143:11
+ ❯ Module.ɵɵngDeclareFactory node_modules/@angular/core/fesm2022/core.mjs:2594:20
+ ❯ Function.&lt;static_initializer&gt; node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:23:20
+ ❯ node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:17:1
+ ❯ src/app/core/services/analytics/analytics.provider.spec.ts:1:1
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/core/services/analytics/analytics.service.spec.ts" timestamp="2025-12-19T20:07:23.742Z" hostname="jay-MS-7971" tests="17" failures="17" errors="0" skipped="0" time="0.025492595">
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; when analytics is enabled &gt; isEnabled &gt; should return true" time="0.006985458">
+            <failure message="Need to call TestBed.initTestEnvironment() first" type="Error">
+Error: Need to call TestBed.initTestEnvironment() first
+ ❯ TestBedImpl.get compiler [as compiler] node_modules/@angular/core/fesm2022/testing.mjs:1486:13
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:10
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ createService src/app/core/services/analytics/analytics.service.spec.ts:57:13
+ ❯ src/app/core/services/analytics/analytics.service.spec.ts:68:17
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; when analytics is enabled &gt; providerName &gt; should return the provider name" time="0.004452801">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; when analytics is enabled &gt; trackEvent &gt; should delegate to the provider" time="0.000821964">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; when analytics is enabled &gt; trackEvent &gt; should pass properties to the provider" time="0.000740311">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; when analytics is enabled &gt; trackPageView &gt; should delegate to the provider" time="0.000803268">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; when analytics is enabled &gt; trackPageView &gt; should pass title to the provider" time="0.000712658">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; when analytics is enabled &gt; identify &gt; should delegate to the provider" time="0.000766482">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; when analytics is enabled &gt; identify &gt; should pass traits to the provider" time="0.00057327">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; when analytics is enabled &gt; reset &gt; should delegate to the provider" time="0.000770895">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; when analytics is disabled &gt; isEnabled &gt; should return false" time="0.000719968">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; when analytics is disabled &gt; providerName &gt; should return &quot;none&quot;" time="0.000706365">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; when analytics is disabled &gt; trackEvent &gt; should not throw when called" time="0.000787254">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; when analytics is disabled &gt; trackPageView &gt; should not throw when called" time="0.000597792">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; when analytics is disabled &gt; identify &gt; should not throw when called" time="0.000539514">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; when analytics is disabled &gt; reset &gt; should not throw when called" time="0.000609626">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; service instantiation &gt; should be injectable when enabled" time="0.000931048">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/analytics.service.spec.ts" name="AnalyticsService &gt; service instantiation &gt; should be injectable when disabled" time="0.000673354">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/core/services/logger/logger.service.spec.ts" timestamp="2025-12-19T20:07:23.754Z" hostname="jay-MS-7971" tests="15" failures="15" errors="0" skipped="0" time="0.026751493">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.log when log() is called" time="0.007785669">
             <failure message="Need to call TestBed.initTestEnvironment() first" type="Error">
 Error: Need to call TestBed.initTestEnvironment() first
  ❯ TestBedImpl.get compiler [as compiler] node_modules/@angular/core/fesm2022/testing.mjs:1486:13
@@ -11,7 +399,7 @@ Error: Need to call TestBed.initTestEnvironment() first
  ❯ src/app/core/services/logger/logger.service.spec.ts:43:17
             </failure>
         </testcase>
-        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.log with additional parameters" time="0.002986331">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.log with additional parameters" time="0.005607232">
             <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
 TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
@@ -25,7 +413,7 @@ TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
             </failure>
         </testcase>
-        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.info when info() is called" time="0.000694528">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.info when info() is called" time="0.001275178">
             <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
 TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
@@ -39,7 +427,7 @@ TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
             </failure>
         </testcase>
-        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.info with additional parameters" time="0.000545241">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.info with additional parameters" time="0.00101675">
             <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
 TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
@@ -53,7 +441,7 @@ TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
             </failure>
         </testcase>
-        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.warn when warn() is called" time="0.000584428">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.warn when warn() is called" time="0.001043073">
             <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
 TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
@@ -67,7 +455,7 @@ TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
             </failure>
         </testcase>
-        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.warn with additional parameters" time="0.000492849">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.warn with additional parameters" time="0.000904538">
             <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
 TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
@@ -81,7 +469,7 @@ TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
             </failure>
         </testcase>
-        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.error when error() is called" time="0.000590013">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.error when error() is called" time="0.00072226">
             <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
 TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
@@ -95,7 +483,7 @@ TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
             </failure>
         </testcase>
-        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.error with additional parameters" time="0.000424381">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.error with additional parameters" time="0.000559604">
             <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
 TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
@@ -109,7 +497,7 @@ TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
             </failure>
         </testcase>
-        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should NOT call console.log when log() is called" time="0.000950553">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should NOT call console.log when log() is called" time="0.000942795">
             <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
 TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
@@ -123,7 +511,7 @@ TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
             </failure>
         </testcase>
-        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should NOT call console.info when info() is called" time="0.000683684">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should NOT call console.info when info() is called" time="0.000803005">
             <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
 TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
@@ -137,7 +525,7 @@ TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
             </failure>
         </testcase>
-        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should still call console.warn when warn() is called" time="0.000507413">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should still call console.warn when warn() is called" time="0.000799626">
             <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
 TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
@@ -151,7 +539,7 @@ TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
             </failure>
         </testcase>
-        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should still call console.error when error() is called" time="0.000509192">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should still call console.error when error() is called" time="0.000784335">
             <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
 TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
@@ -165,7 +553,7 @@ TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
             </failure>
         </testcase>
-        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should still pass additional parameters to warn()" time="0.000531157">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should still pass additional parameters to warn()" time="0.000679015">
             <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
 TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
@@ -179,7 +567,7 @@ TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
             </failure>
         </testcase>
-        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should still pass additional parameters to error()" time="0.00039801">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should still pass additional parameters to error()" time="0.000659077">
             <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
 TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
@@ -193,7 +581,7 @@ TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
             </failure>
         </testcase>
-        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; service instantiation &gt; should be provided in root" time="0.000545864">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; service instantiation &gt; should be provided in root" time="0.000908431">
             <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
 TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
@@ -205,6 +593,233 @@ TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
  ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
  ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
  ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/core/services/theme/theme.service.spec.ts" timestamp="2025-12-19T20:07:23.765Z" hostname="jay-MS-7971" tests="1" failures="1" errors="0" skipped="0" time="0">
+        <testcase classname="src/app/core/services/theme/theme.service.spec.ts" name="src/app/core/services/theme/theme.service.spec.ts" time="0">
+            <system-err>
+JIT compilation failed for injectable [36m[class PlatformLocation][39m
+
+            </system-err>
+            <failure message="The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping." type="Error">
+Error: The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping.
+ ❯ getCompilerFacade node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:143:11
+ ❯ Module.ɵɵngDeclareFactory node_modules/@angular/core/fesm2022/core.mjs:2594:20
+ ❯ Function.&lt;static_initializer&gt; node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:23:20
+ ❯ node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:17:1
+ ❯ src/app/core/services/theme/theme.service.spec.ts:1:1
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/core/services/seo/seo.service.spec.ts" timestamp="2025-12-19T20:07:23.766Z" hostname="jay-MS-7971" tests="1" failures="1" errors="0" skipped="0" time="0">
+        <testcase classname="src/app/core/services/seo/seo.service.spec.ts" name="src/app/core/services/seo/seo.service.spec.ts" time="0">
+            <system-err>
+JIT compilation failed for injectable [36m[class PlatformLocation][39m
+
+            </system-err>
+            <failure message="The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping." type="Error">
+Error: The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping.
+ ❯ getCompilerFacade node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:143:11
+ ❯ Module.ɵɵngDeclareFactory node_modules/@angular/core/fesm2022/core.mjs:2594:20
+ ❯ Function.&lt;static_initializer&gt; node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:23:20
+ ❯ node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:17:1
+ ❯ src/app/core/services/seo/seo.service.spec.ts:1:1
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/core/services/analytics/providers/console-analytics.provider.spec.ts" timestamp="2025-12-19T20:07:23.767Z" hostname="jay-MS-7971" tests="10" failures="10" errors="0" skipped="0" time="0.014094904">
+        <testcase classname="src/app/core/services/analytics/providers/console-analytics.provider.spec.ts" name="ConsoleAnalyticsProvider &gt; name &gt; should return &quot;console&quot;" time="0.005541856">
+            <failure message="Need to call TestBed.initTestEnvironment() first" type="Error">
+Error: Need to call TestBed.initTestEnvironment() first
+ ❯ TestBedImpl.get compiler [as compiler] node_modules/@angular/core/fesm2022/testing.mjs:1486:13
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:10
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/core/services/analytics/providers/console-analytics.provider.spec.ts:31:13
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/providers/console-analytics.provider.spec.ts" name="ConsoleAnalyticsProvider &gt; initialize &gt; should log initialization message" time="0.003116754">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/providers/console-analytics.provider.spec.ts" name="ConsoleAnalyticsProvider &gt; initialize &gt; should resolve successfully" time="0.000613508">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/providers/console-analytics.provider.spec.ts" name="ConsoleAnalyticsProvider &gt; trackEvent &gt; should log event name" time="0.000434905">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/providers/console-analytics.provider.spec.ts" name="ConsoleAnalyticsProvider &gt; trackEvent &gt; should log event with properties" time="0.000582233">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/providers/console-analytics.provider.spec.ts" name="ConsoleAnalyticsProvider &gt; trackPageView &gt; should log page URL" time="0.000519937">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/providers/console-analytics.provider.spec.ts" name="ConsoleAnalyticsProvider &gt; trackPageView &gt; should log page URL with title" time="0.000479955">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/providers/console-analytics.provider.spec.ts" name="ConsoleAnalyticsProvider &gt; identify &gt; should log user ID" time="0.000355968">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/providers/console-analytics.provider.spec.ts" name="ConsoleAnalyticsProvider &gt; identify &gt; should log user ID with traits" time="0.000492831">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/analytics/providers/console-analytics.provider.spec.ts" name="ConsoleAnalyticsProvider &gt; reset &gt; should log reset message" time="0.000467119">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/core/services/analytics/providers/google-analytics.provider.spec.ts" timestamp="2025-12-19T20:07:23.777Z" hostname="jay-MS-7971" tests="1" failures="1" errors="0" skipped="0" time="0">
+        <testcase classname="src/app/core/services/analytics/providers/google-analytics.provider.spec.ts" name="src/app/core/services/analytics/providers/google-analytics.provider.spec.ts" time="0">
+            <system-err>
+JIT compilation failed for injectable [36m[class PlatformLocation][39m
+
+            </system-err>
+            <failure message="The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping." type="Error">
+Error: The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping.
+ ❯ getCompilerFacade node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:143:11
+ ❯ Module.ɵɵngDeclareFactory node_modules/@angular/core/fesm2022/core.mjs:2594:20
+ ❯ Function.&lt;static_initializer&gt; node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:23:20
+ ❯ node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:17:1
+ ❯ src/app/core/services/analytics/providers/google-analytics.provider.spec.ts:1:1
             </failure>
         </testcase>
     </testsuite>

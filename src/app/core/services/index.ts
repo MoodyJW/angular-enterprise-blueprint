@@ -32,3 +32,15 @@ export {
   type TwitterCardType,
   type WebSiteSchema,
 } from './seo';
+export {
+  DEFAULT_DARK_THEME,
+  DEFAULT_LIGHT_THEME,
+  THEMES,
+  THEME_DATA_ATTRIBUTE,
+  THEME_STORAGE_KEY,
+  ThemeService,
+  type Theme,
+  type ThemeCategory,
+  type ThemeIcon,
+  type ThemeId,
+} from './theme';

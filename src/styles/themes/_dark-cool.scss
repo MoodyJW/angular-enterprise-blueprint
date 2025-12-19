@@ -1,0 +1,80 @@
+/**
+ * Dark Cool Theme - "Twilight"
+ *
+ * Cool purple-tinted dark theme.
+ * Stylish and modern with violet accents.
+ */
+
+[data-theme='dark-cool'] {
+  // Primary brand colors - violet/purple
+  --color-primary: #a78bfa;
+  --color-primary-hover: #8b5cf6;
+  --color-primary-active: #7c3aed;
+  --color-primary-subtle: rgba(139, 92, 246, 0.15);
+  --color-on-primary: #0f0a1a;
+
+  // Secondary colors - cool slate
+  --color-secondary: #a1a1aa;
+  --color-secondary-hover: #d4d4d8;
+  --color-secondary-active: #e4e4e7;
+  --color-secondary-subtle: rgba(161, 161, 170, 0.15);
+  --color-on-secondary: #0f0a1a;
+
+  // Semantic colors - Success (emerald)
+  --color-success: #34d399;
+  --color-success-hover: #10b981;
+  --color-success-subtle: rgba(16, 185, 129, 0.15);
+  --color-on-success: #0f0a1a;
+
+  // Semantic colors - Warning (amber)
+  --color-warning: #fcd34d;
+  --color-warning-hover: #fbbf24;
+  --color-warning-subtle: rgba(251, 191, 36, 0.15);
+  --color-on-warning: #0f0a1a;
+
+  // Semantic colors - Error (rose)
+  --color-error: #fb7185;
+  --color-error-hover: #f43f5e;
+  --color-error-subtle: rgba(244, 63, 94, 0.15);
+  --color-on-error: #0f0a1a;
+
+  // Semantic colors - Info (sky)
+  --color-info: #7dd3fc;
+  --color-info-hover: #38bdf8;
+  --color-info-subtle: rgba(56, 189, 248, 0.15);
+  --color-on-info: #0f0a1a;
+
+  // Surface colors - cool purple-tinted
+  --color-background: #0f0a1a;
+  --color-surface: #1a1325;
+  --color-surface-hover: #2d2438;
+  --color-surface-active: #3d3350;
+  --color-surface-elevated: #1e1730;
+
+  // Text colors
+  --color-text: #faf5ff;
+  --color-text-secondary: #d8b4fe;
+  --color-text-muted: #7e6c99;
+  --color-text-disabled: #4c3d66;
+  --color-text-inverse: #0f0a1a;
+
+  // Border colors
+  --color-border: #3d3350;
+  --color-border-hover: #5b4d75;
+  --color-border-focus: #a78bfa;
+
+  // Focus ring
+  --color-focus-ring: rgba(167, 139, 250, 0.5);
+
+  // Overlay
+  --color-overlay: rgba(0, 0, 0, 0.7);
+
+  // Shadows - with subtle purple tint
+  --shadow-sm: 0 1px 2px 0 rgba(15, 10, 26, 0.4);
+  --shadow-base: 0 1px 3px 0 rgba(15, 10, 26, 0.5), 0 1px 2px -1px rgba(15, 10, 26, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(15, 10, 26, 0.5), 0 2px 4px -2px rgba(15, 10, 26, 0.5);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 10, 26, 0.5), 0 4px 6px -4px rgba(15, 10, 26, 0.5);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 10, 26, 0.6), 0 8px 10px -6px rgba(15, 10, 26, 0.6);
+  --shadow-2xl: 0 25px 50px -12px rgba(15, 10, 26, 0.7);
+  --shadow-inner: inset 0 2px 4px 0 rgba(15, 10, 26, 0.4);
+}

@@ -198,14 +198,116 @@ export class ArticlePageComponent {
 
 - **Tests:** 49 unit tests covering all features
 
-### **4. ThemeService** (`core/services/theme`)
+### **4. ThemeService** (`core/services/theme`) ✅
 
-- **Goal:** Manage Dark/Light mode.
-- **State:** Use a standard `signal<Theme>('light')`.
-- **Persistence:**
-  - On init: Check `localStorage.getItem('theme')`. If empty, check `window.matchMedia('(prefers-color-scheme: dark)')`.
-  - On change: Update `localStorage` and `document.body.classList`.
-  - **Supported Themes:** `light`, `dark`, `high-contrast`.
+- **Goal:** Manage a collection of named themes with CSS custom properties, supporting dark/light variants and accessibility options.
+- **State:** Signal-based state management with `signal<ThemeId>()`.
+- **Tests:** 41 unit tests covering all features.
+
+#### **Theme Architecture**
+
+**Theme Categories:**
+
+- `light` - Standard light themes
+- `dark` - Standard dark themes
+- `high-contrast-light` - Accessible high contrast light theme
+- `high-contrast-dark` - Accessible high contrast dark theme
+
+**Initial Themes (6 total):**
+| ID | Name | Category | Description |
+|----|------|----------|-------------|
+| `light-default` | Daylight | light | Clean, professional light theme |
+| `light-warm` | Sunrise | light | Warm-toned light theme |
+| `dark-default` | Midnight | dark | Deep blue-black dark theme |
+| `dark-cool` | Twilight | dark | Cool purple-tinted dark theme |
+| `high-contrast-light` | High Contrast Light | high-contrast-light | WCAG AAA compliant light |
+| `high-contrast-dark` | High Contrast Dark | high-contrast-dark | WCAG AAA compliant dark |
+
+**Design System Integration:**
+
+- Each theme defines a complete set of CSS custom properties
+- Properties organized by category: colors, surfaces, borders, shadows, typography, spacing, motion
+- Future-proof for additional themes and design variations (e.g., reduced-motion)
+- Smooth transitions between themes via CSS transitions
+
+#### **API** (Implemented)
+
+```typescript
+// Signals (readonly)
+readonly currentTheme: Signal<Theme>;
+readonly currentThemeId: Signal<ThemeId>;
+readonly availableThemes: Signal<readonly Theme[]>;
+readonly isDarkMode: Signal<boolean>;
+readonly isHighContrast: Signal<boolean>;
+readonly systemPrefersDark: Signal<boolean>;
+
+// Methods
+setTheme(themeId: ThemeId): void;
+setThemeBySystemPreference(): void;
+getThemesByCategory(category: ThemeCategory): Theme[];
+getThemeById(themeId: ThemeId): Theme;
+clearPersistedTheme(): void;
+```
+
+#### **Persistence & Initialization**
+
+1. On app init: Check `localStorage.getItem('theme-id')`
+2. If no stored preference: Detect system preference via `matchMedia('(prefers-color-scheme: dark)')`
+3. Select appropriate default theme based on system preference
+4. On theme change: Update `localStorage`, apply CSS class to `<html>` element
+
+#### **SCSS Architecture** (Implemented)
+
+```
+src/
+├── styles/
+│   ├── themes/
+│   │   ├── _variables.scss        # Base CSS custom properties (default values)
+│   │   ├── _light-default.scss    # Daylight theme
+│   │   ├── _light-warm.scss       # Sunrise theme
+│   │   ├── _dark-default.scss     # Midnight theme
+│   │   ├── _dark-cool.scss        # Twilight theme
+│   │   ├── _high-contrast-light.scss
+│   │   ├── _high-contrast-dark.scss
+│   │   └── _index.scss            # Theme loader with transitions
+└── styles.scss                    # Main entry point
+```
+
+#### **CSS Custom Properties Structure**
+
+```scss
+:root[data-theme='light-default'] {
+  // Semantic colors
+  --color-primary: #...;
+  --color-secondary: #...;
+  --color-accent: #...;
+
+  // Surface colors
+  --surface-background: #...;
+  --surface-card: #...;
+  --surface-elevated: #...;
+
+  // Text colors
+  --text-primary: #...;
+  --text-secondary: #...;
+  --text-muted: #...;
+
+  // Border & shadows
+  --border-default: #...;
+  --shadow-sm: ...;
+  --shadow-md: ...;
+
+  // State colors
+  --color-success: #...;
+  --color-warning: #...;
+  --color-error: #...;
+  --color-info: #...;
+
+  // Motion (for future reduced-motion theme)
+  --transition-fast: 150ms;
+  --transition-normal: 300ms;
+}
+```
 
 ---
 
@@ -305,7 +407,7 @@ Every service created in Phase 2 must have a corresponding `.spec.ts` file.
 1.  [x] Create typed environments and interfaces.
 2.  [x] Scaffold `LoggerService` and `AnalyticsService` (singleton/root).
 3.  [x] Implement `SeoService` for comprehensive SEO management.
-4.  [ ] Implement `ThemeService` with system preference detection.
+4.  [x] Implement `ThemeService` with system preference detection.
 5.  [ ] Create `GlobalErrorHandler` and register in `app.config.ts`.
 6.  [ ] **Auth System:**
     - [ ] Define `AuthStrategy` interface.

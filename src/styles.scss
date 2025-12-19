@@ -1,11 +1,26 @@
-// // src/styles.scss
+// src/styles.scss
 
-// // 1. Variables & Config
+// 1. Theme System (CSS Custom Properties)
+@use 'styles/themes';
+
+// 2. Variables & Config (to be implemented)
 // @use 'styles/variables';
-// @use 'styles/themes';
 
-// // 2. Resets & Normalization
+// 3. Resets & Normalization (to be implemented)
 // @use 'styles/reset';
 
-// // 3. Global Utilities
+// 4. Global Utilities (to be implemented)
 // @use 'styles/utilities';
+
+// Base styles
+html,
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}

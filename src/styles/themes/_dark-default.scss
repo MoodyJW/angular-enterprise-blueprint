@@ -1,0 +1,80 @@
+/**
+ * Dark Default Theme - "Midnight"
+ *
+ * Deep blue-black dark theme with blue primary colors.
+ * Professional and easy on the eyes for extended use.
+ */
+
+[data-theme='dark-default'] {
+  // Primary brand colors - blue on dark
+  --color-primary: #60a5fa;
+  --color-primary-hover: #3b82f6;
+  --color-primary-active: #2563eb;
+  --color-primary-subtle: rgba(59, 130, 246, 0.15);
+  --color-on-primary: #0f172a;
+
+  // Secondary colors
+  --color-secondary: #94a3b8;
+  --color-secondary-hover: #cbd5e1;
+  --color-secondary-active: #e2e8f0;
+  --color-secondary-subtle: rgba(148, 163, 184, 0.15);
+  --color-on-secondary: #0f172a;
+
+  // Semantic colors - Success
+  --color-success: #4ade80;
+  --color-success-hover: #22c55e;
+  --color-success-subtle: rgba(34, 197, 94, 0.15);
+  --color-on-success: #0f172a;
+
+  // Semantic colors - Warning
+  --color-warning: #fbbf24;
+  --color-warning-hover: #f59e0b;
+  --color-warning-subtle: rgba(245, 158, 11, 0.15);
+  --color-on-warning: #0f172a;
+
+  // Semantic colors - Error
+  --color-error: #f87171;
+  --color-error-hover: #ef4444;
+  --color-error-subtle: rgba(239, 68, 68, 0.15);
+  --color-on-error: #0f172a;
+
+  // Semantic colors - Info
+  --color-info: #38bdf8;
+  --color-info-hover: #0ea5e9;
+  --color-info-subtle: rgba(14, 165, 233, 0.15);
+  --color-on-info: #0f172a;
+
+  // Surface colors - deep blue-gray
+  --color-background: #0f172a;
+  --color-surface: #1e293b;
+  --color-surface-hover: #334155;
+  --color-surface-active: #475569;
+  --color-surface-elevated: #1e293b;
+
+  // Text colors
+  --color-text: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #64748b;
+  --color-text-disabled: #475569;
+  --color-text-inverse: #0f172a;
+
+  // Border colors
+  --color-border: #334155;
+  --color-border-hover: #475569;
+  --color-border-focus: #60a5fa;
+
+  // Focus ring
+  --color-focus-ring: rgba(96, 165, 250, 0.5);
+
+  // Overlay
+  --color-overlay: rgba(0, 0, 0, 0.7);
+
+  // Shadows - darker and more prominent for dark mode
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
