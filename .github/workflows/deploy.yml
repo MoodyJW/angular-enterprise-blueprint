@@ -47,8 +47,13 @@ jobs:
       # We move docs and storybook INTO the app's dist folder
       - name: Merge Documentation
         run: |
+          echo "Verifying build artifacts..."
+          ls -la dist/
+          test -d dist/storybook || { echo "ERROR: dist/storybook not found"; exit 1; }
+          test -d dist/documentation || { echo "ERROR: dist/documentation not found"; exit 1; }
           mv dist/storybook dist/angular-enterprise-blueprint/storybook
           mv dist/documentation dist/angular-enterprise-blueprint/docs
+          echo "Artifacts merged successfully"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
