@@ -1,0 +1,20 @@
+export { SeoService } from './seo.service';
+export type {
+  ArticleSchema,
+  BreadcrumbItemSchema,
+  BreadcrumbSchema,
+  ContactPointSchema,
+  DefaultSeoConfig,
+  JsonLdConfig,
+  MetaConfig,
+  OpenGraphConfig,
+  OpenGraphType,
+  OrganizationSchema,
+  PageSeoConfig,
+  PersonSchema,
+  RobotsDirective,
+  SearchActionSchema,
+  TwitterCardConfig,
+  TwitterCardType,
+  WebSiteSchema,
+} from './seo.types';
