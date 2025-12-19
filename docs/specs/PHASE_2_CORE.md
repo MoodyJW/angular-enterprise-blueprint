@@ -119,7 +119,86 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-### **3. ThemeService** (`core/services/theme`)
+### **3. SeoService** (`core/services/seo`) ✅
+
+- **Goal:** Comprehensive SEO management including titles, meta tags, social sharing, and structured data.
+- **Implementation:** Enterprise-grade service with full support for modern SEO requirements.
+
+#### **Features** (Implemented)
+
+- [x] **Title Management** - Dynamic page titles with configurable site name suffix
+- [x] **Meta Tags** - Description, keywords, robots, author
+- [x] **Canonical URLs** - Prevent duplicate content issues
+- [x] **Open Graph** - Social sharing for Facebook, LinkedIn, etc.
+- [x] **Twitter Cards** - Twitter-specific social sharing
+- [x] **JSON-LD Structured Data** - Rich snippets in search results
+- [x] **Reset/Cleanup** - Clear stale metadata on navigation
+
+#### **API**
+
+```typescript
+// Primary method for setting all page SEO
+updatePageSeo(config: PageSeoConfig): void
+
+// Individual setters
+setTitle(title: string, includeSiteName?: boolean): void
+setMetaTags(config: MetaConfig): void
+setCanonicalUrl(url: string): void
+setOpenGraph(config: OpenGraphConfig, fallbackTitle?: string): void
+setTwitterCard(config: TwitterCardConfig, fallbackTitle?: string): void
+setJsonLd(data: JsonLdConfig | JsonLdConfig[]): void
+
+// Cleanup
+resetSeo(): void
+removeCanonicalUrl(): void
+removeJsonLd(): void
+```
+
+#### **Type Definitions** (`seo.types.ts`)
+
+- `PageSeoConfig` - Complete page SEO configuration
+- `MetaConfig` - Standard meta tags (description, keywords, robots, author)
+- `OpenGraphConfig` - Open Graph properties (title, description, type, image, etc.)
+- `TwitterCardConfig` - Twitter Card properties (card, title, description, image, site, creator)
+- `JsonLdConfig` - Generic JSON-LD structured data
+- Predefined schemas: `WebSiteSchema`, `ArticleSchema`, `OrganizationSchema`, `PersonSchema`, `BreadcrumbSchema`
+
+#### **Usage Example**
+
+```typescript
+@Component({ ... })
+export class ArticlePageComponent {
+  private readonly seo = inject(SeoService);
+
+  ngOnInit() {
+    this.seo.updatePageSeo({
+      title: 'How to Build Enterprise Angular Apps',
+      meta: {
+        description: 'A comprehensive guide to building...',
+        keywords: ['angular', 'enterprise', 'architecture'],
+      },
+      canonicalUrl: '/blog/enterprise-angular',
+      openGraph: {
+        type: 'article',
+        image: '/assets/images/article-cover.jpg',
+      },
+      twitterCard: {
+        card: 'summary_large_image',
+        creator: '@architect',
+      },
+      jsonLd: {
+        '@type': 'Article',
+        headline: 'How to Build Enterprise Angular Apps',
+        datePublished: '2025-01-15',
+      },
+    });
+  }
+}
+```
+
+- **Tests:** 49 unit tests covering all features
+
+### **4. ThemeService** (`core/services/theme`)
 
 - **Goal:** Manage Dark/Light mode.
 - **State:** Use a standard `signal<Theme>('light')`.
@@ -225,8 +304,8 @@ Every service created in Phase 2 must have a corresponding `.spec.ts` file.
 
 1.  [x] Create typed environments and interfaces.
 2.  [x] Scaffold `LoggerService` and `AnalyticsService` (singleton/root).
-3.  [ ] Implement `ThemeService` with system preference detection.
-4.  [ ] Implement `SeoService` for dynamic title/meta management.
+3.  [x] Implement `SeoService` for comprehensive SEO management.
+4.  [ ] Implement `ThemeService` with system preference detection.
 5.  [ ] Create `GlobalErrorHandler` and register in `app.config.ts`.
 6.  [ ] **Auth System:**
     - [ ] Define `AuthStrategy` interface.

@@ -12,3 +12,23 @@ export {
   type GtagFunction,
 } from './analytics';
 export { LoggerService, type LogLevel } from './logger';
+export {
+  SeoService,
+  type ArticleSchema,
+  type BreadcrumbItemSchema,
+  type BreadcrumbSchema,
+  type ContactPointSchema,
+  type DefaultSeoConfig,
+  type JsonLdConfig,
+  type MetaConfig,
+  type OpenGraphConfig,
+  type OpenGraphType,
+  type OrganizationSchema,
+  type PageSeoConfig,
+  type PersonSchema,
+  type RobotsDirective,
+  type SearchActionSchema,
+  type TwitterCardConfig,
+  type TwitterCardType,
+  type WebSiteSchema,
+} from './seo';
