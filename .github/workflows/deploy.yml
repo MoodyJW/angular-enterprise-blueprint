@@ -43,16 +43,19 @@ jobs:
       - name: Build Compodoc
         run: npm run docs:build # Ensure this script exists in package.json
 
-      # 4. Merge Artifacts
-      # We move docs and storybook INTO the app's dist folder
+      # 4. Merge Artifacts into the browser output folder
       - name: Merge Documentation
         run: |
           echo "Verifying build artifacts..."
           ls -la dist/
+          ls -la dist/angular-enterprise-blueprint/
+          test -d dist/angular-enterprise-blueprint/browser || { echo "ERROR: dist/angular-enterprise-blueprint/browser not found"; exit 1; }
           test -d dist/storybook || { echo "ERROR: dist/storybook not found"; exit 1; }
           test -d dist/documentation || { echo "ERROR: dist/documentation not found"; exit 1; }
-          mv dist/storybook dist/angular-enterprise-blueprint/storybook
-          mv dist/documentation dist/angular-enterprise-blueprint/docs
+          mv dist/storybook dist/angular-enterprise-blueprint/browser/storybook
+          mv dist/documentation dist/angular-enterprise-blueprint/browser/docs
+          echo "Final structure:"
+          ls -la dist/angular-enterprise-blueprint/browser/
           echo "Artifacts merged successfully"
 
       - name: Setup Pages
@@ -61,7 +64,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'dist/angular-enterprise-blueprint'
+          path: 'dist/angular-enterprise-blueprint/browser'
 
       - name: Deploy to GitHub Pages
         id: deployment

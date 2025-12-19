@@ -136,7 +136,7 @@ _Goal: Build the invisible singletons that power the application._
 
 _Goal: Port the high-quality UI components. Ensure strict Storybook coverage._
 
-- [ ] **3.1 Global Styling**: Define CSS Variables for 4 themes (Light/Dark/High-Contrast).
+- [ ] **3.1 Global Styling**: Define CSS Variables for 6 themes (2 Light/2 Dark/ 2 High-Contrast).
 - [ ] **3.2 Atomic Components**: Port `Button`, `Icon`, `Badge`, `Spinner`, `Card`.
 - [ ] **3.3 Molecules**: `AlertComponent`, `BreadcrumbComponent`.
 - [ ] **3.4 Layout Components**: Port `Container`, `Grid`, `Stack`, `Divider`.
