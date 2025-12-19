@@ -20,6 +20,7 @@
     "storybook": "npm run docs:json && ng run angular-enterprise-blueprint:storybook",
     "build-storybook": "npm run docs:json && ng run angular-enterprise-blueprint:build-storybook",
     "docs": "compodoc -p tsconfig.doc.json -d docs/api --theme material",
+    "docs:build": "compodoc -p tsconfig.doc.json -d dist/documentation --theme material",
     "docs:serve": "compodoc -p tsconfig.doc.json -d docs/api --theme material -s",
     "docs:json": "compodoc -p .storybook/tsconfig.doc.json -e json -d ."
   },
