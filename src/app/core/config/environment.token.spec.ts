@@ -24,6 +24,7 @@ describe('ENVIRONMENT Token', () => {
       expect(env).toHaveProperty('production');
       expect(env).toHaveProperty('apiUrl');
       expect(env).toHaveProperty('features');
+      expect(env).toHaveProperty('analytics');
       expect(env).toHaveProperty('version');
     });
 
@@ -33,9 +34,18 @@ describe('ENVIRONMENT Token', () => {
       const env = TestBed.inject(ENVIRONMENT);
 
       expect(env.features).toHaveProperty('mockAuth');
-      expect(env.features).toHaveProperty('analytics');
       expect(typeof env.features.mockAuth).toBe('boolean');
-      expect(typeof env.features.analytics).toBe('boolean');
+    });
+
+    it('should have analytics config defined', () => {
+      TestBed.configureTestingModule({});
+
+      const env = TestBed.inject(ENVIRONMENT);
+
+      expect(env.analytics).toHaveProperty('enabled');
+      expect(env.analytics).toHaveProperty('provider');
+      expect(typeof env.analytics.enabled).toBe('boolean');
+      expect(['console', 'google']).toContain(env.analytics.provider);
     });
   });
 
@@ -60,7 +70,11 @@ describe('ENVIRONMENT Token', () => {
         apiUrl: 'https://test.api.com',
         features: {
           mockAuth: false,
-          analytics: true,
+        },
+        analytics: {
+          enabled: true,
+          provider: 'google',
+          google: { measurementId: 'G-TEST123' },
         },
         version: '1.0.0-test',
       };
@@ -75,7 +89,9 @@ describe('ENVIRONMENT Token', () => {
       expect(env.production).toBe(true);
       expect(env.apiUrl).toBe('https://test.api.com');
       expect(env.features.mockAuth).toBe(false);
-      expect(env.features.analytics).toBe(true);
+      expect(env.analytics.enabled).toBe(true);
+      expect(env.analytics.provider).toBe('google');
+      expect(env.analytics.google).toEqual({ measurementId: 'G-TEST123' });
       expect(env.version).toBe('1.0.0-test');
     });
   });

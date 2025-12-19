@@ -5,7 +5,7 @@
 
 ---
 
-## 2.1 Strictly Typed Environments
+## 2.1 Strictly Typed Environments ✅
 
 We need to prevent `process.env` usage and magic strings.
 
@@ -14,20 +14,46 @@ We need to prevent `process.env` usage and magic strings.
 - `src/environments/environment.type.ts` (Interface)
 - `src/environments/environment.ts` (Dev/Default)
 - `src/environments/environment.prod.ts` (Production)
+- `src/app/core/config/environment.token.ts` (DI Token & Provider)
 
-### **Interface `AppEnvironment`**
+### **Interface `AppEnvironment`** (Implemented)
 
 ```typescript
-export interface AppEnvironment {
-  appName: string;
-  production: boolean;
-  apiUrl: string; // "api" for mockend, real URL for prod
-  features: {
-    mockAuth: boolean; // Toggle to switch strategies easily
-    analytics: boolean;
-  };
-  version: string;
+export type AnalyticsProviderType = 'console' | 'google';
+
+export interface GoogleAnalyticsConfig {
+  readonly measurementId: string;
 }
+
+export interface AnalyticsConfig {
+  readonly enabled: boolean;
+  readonly provider: AnalyticsProviderType;
+  readonly google?: GoogleAnalyticsConfig;
+}
+
+export interface AppEnvironment {
+  readonly appName: string;
+  readonly production: boolean;
+  readonly apiUrl: string;
+  readonly features: FeatureFlags;
+  readonly analytics: AnalyticsConfig;
+  readonly version: string;
+}
+```
+
+### **Dependency Injection** (Implemented)
+
+```typescript
+// Usage in app.config.ts
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideEnvironment(), // Provides ENVIRONMENT token
+    // ...
+  ],
+};
+
+// Usage in services
+private readonly env = inject(ENVIRONMENT);
 ```
 
 ---
@@ -36,21 +62,62 @@ export interface AppEnvironment {
 
 These services handle the "plumbing" of the application.
 
-### **1. LoggerService** (`core/services/logger`)
+### **1. LoggerService** (`core/services/logger`) ✅
 
 - **Goal:** A centralized wrapper around `console`. Allows us to pipe logs to a remote server (like Datadog/Sentry) later without rewriting component code.
 - **API:** `.log()`, `.warn()`, `.error()`, `.info()`.
 - **Logic:**
   - If `environment.production` is true, suppress `.log()` and `.info()`.
-  - Always print `.error()`.
+  - Always print `.error()` and `.warn()`.
+- **Tests:** 15 unit tests covering dev/prod modes.
 
-### **2. AnalyticsService** (`core/services/analytics`)
+### **2. AnalyticsService** (`core/services/analytics`) ✅
 
-- **Goal:** Abstract GA4/GTM so we can swap vendors later.
-- **API:** `.trackEvent(name: string, properties: Record<string, any>)`, `.trackPageView(url: string)`.
-- **Implementation:**
-  - Use `environment.features.analytics` to toggle execution.
-  - If false, just log "[Analytics Mock] Tracked Event: X" to the console.
+- **Goal:** Abstract GA4/GTM so we can swap vendors later using Strategy Pattern.
+- **API:** `.trackEvent(name, properties?)`, `.trackPageView(url, title?)`, `.identify(userId, traits?)`, `.reset()`.
+- **Implementation:** Strategy Pattern with swappable providers.
+
+#### **Analytics Architecture** (Implemented)
+
+- [x] **`AnalyticsProvider` interface** (`analytics-provider.interface.ts`)
+  - Contract: `name`, `initialize()`, `trackEvent()`, `trackPageView()`, `identify()`, `reset()`
+  - `ANALYTICS_PROVIDER` injection token
+
+- [x] **`ConsoleAnalyticsProvider`** (`providers/console-analytics.provider.ts`)
+  - Logs all analytics calls via `LoggerService`
+  - Used for development and debugging
+  - 10 unit tests
+
+- [x] **`GoogleAnalyticsProvider`** (`providers/google-analytics.provider.ts`)
+  - Full GA4/gtag.js integration
+  - Dynamically loads gtag script
+  - Configurable via `environment.analytics.google.measurementId`
+  - 16 unit tests
+
+- [x] **`AnalyticsService`** (`analytics.service.ts`)
+  - Facade that delegates to the active provider
+  - Gracefully handles disabled analytics (no-op)
+  - `isEnabled` and `providerName` computed properties
+  - 17 unit tests
+
+- [x] **`provideAnalytics()`** (`analytics.provider.ts`)
+  - Factory function for `app.config.ts`
+  - Selects provider based on `environment.analytics.provider`
+  - Initializes provider on app bootstrap via `provideAppInitializer`
+  - 5 unit tests
+
+- [x] **`withAnalyticsRouterTracking()`** (`analytics-router.provider.ts`)
+  - Auto-tracks `NavigationEnd` events as page views
+  - Captures `document.title` for page titles
+  - 7 unit tests
+
+#### **Usage in app.config.ts**
+
+```typescript
+export const appConfig: ApplicationConfig = {
+  providers: [provideAnalytics(), withAnalyticsRouterTracking()],
+};
+```
 
 ### **3. ThemeService** (`core/services/theme`)
 
@@ -156,11 +223,12 @@ Every service created in Phase 2 must have a corresponding `.spec.ts` file.
 
 ## 2.6 Execution Checklist
 
-1.  [ ] Create typed environments and interfaces.
-2.  [ ] Scaffold `LoggerService` and `AnalyticsService` (singleton/root).
+1.  [x] Create typed environments and interfaces.
+2.  [x] Scaffold `LoggerService` and `AnalyticsService` (singleton/root).
 3.  [ ] Implement `ThemeService` with system preference detection.
-4.  [ ] Create `GlobalErrorHandler` and register in `app.config.ts`.
-5.  [ ] **Auth System:**
+4.  [ ] Implement `SeoService` for dynamic title/meta management.
+5.  [ ] Create `GlobalErrorHandler` and register in `app.config.ts`.
+6.  [ ] **Auth System:**
     - [ ] Define `AuthStrategy` interface.
     - [ ] Build `MockAuthStrategy`.
     - [ ] Build `AuthStore` using Signals.

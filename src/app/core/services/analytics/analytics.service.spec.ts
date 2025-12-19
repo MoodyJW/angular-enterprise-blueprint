@@ -3,34 +3,58 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { AppEnvironment } from '../../../../environments/environment.type';
 import { ENVIRONMENT } from '../../config';
-import { LoggerService } from '../logger';
+import {
+  ANALYTICS_PROVIDER,
+  type AnalyticsProvider,
+  type EventProperties,
+} from './analytics-provider.interface';
 import { AnalyticsService } from './analytics.service';
 
 describe('AnalyticsService', () => {
   let service: AnalyticsService;
-  let loggerSpy: { log: ReturnType<typeof vi.fn>; info: ReturnType<typeof vi.fn> };
+  let mockProvider: AnalyticsProvider;
+  let trackEventSpy: ReturnType<typeof vi.fn>;
+  let trackPageViewSpy: ReturnType<typeof vi.fn>;
+  let identifySpy: ReturnType<typeof vi.fn>;
+  let resetSpy: ReturnType<typeof vi.fn>;
 
-  const createService = (analyticsEnabled: boolean): AnalyticsService => {
-    const mockEnv: AppEnvironment = {
-      appName: 'Test App',
-      production: false,
-      apiUrl: '/api',
-      features: { mockAuth: true, analytics: analyticsEnabled },
-      version: '1.0.0',
+  const createMockEnv = (enabled: boolean): AppEnvironment => ({
+    appName: 'Test App',
+    production: false,
+    apiUrl: '/api',
+    features: { mockAuth: true },
+    analytics: {
+      enabled,
+      provider: 'console',
+    },
+    version: '1.0.0',
+  });
+
+  const createMockProvider = (): AnalyticsProvider => {
+    trackEventSpy = vi.fn();
+    trackPageViewSpy = vi.fn();
+    identifySpy = vi.fn();
+    resetSpy = vi.fn();
+
+    mockProvider = {
+      name: 'mock',
+      initialize: (): Promise<void> => Promise.resolve(),
+      trackEvent: trackEventSpy as unknown as (name: string, properties?: EventProperties) => void,
+      trackPageView: trackPageViewSpy as unknown as (url: string, title?: string) => void,
+      identify: identifySpy as unknown as (userId: string, traits?: EventProperties) => void,
+      reset: resetSpy as unknown as () => void,
     };
+    return mockProvider;
+  };
 
-    loggerSpy = {
-      log: vi.fn(),
-      info: vi.fn(),
-    };
+  const createService = (enabled: boolean): AnalyticsService => {
+    const providers: unknown[] = [{ provide: ENVIRONMENT, useValue: createMockEnv(enabled) }];
 
-    TestBed.configureTestingModule({
-      providers: [
-        { provide: ENVIRONMENT, useValue: mockEnv },
-        { provide: LoggerService, useValue: loggerSpy },
-      ],
-    });
+    if (enabled) {
+      providers.push({ provide: ANALYTICS_PROVIDER, useFactory: createMockProvider });
+    }
 
+    TestBed.configureTestingModule({ providers });
     return TestBed.inject(AnalyticsService);
   };
 
@@ -44,38 +68,67 @@ describe('AnalyticsService', () => {
       service = createService(true);
     });
 
+    describe('isEnabled', () => {
+      it('should return true', () => {
+        expect(service.isEnabled).toBe(true);
+      });
+    });
+
+    describe('providerName', () => {
+      it('should return the provider name', () => {
+        expect(service.providerName).toBe('mock');
+      });
+    });
+
     describe('trackEvent', () => {
-      it('should send event via logger.info with [Analytics] prefix', () => {
+      it('should delegate to the provider', () => {
         service.trackEvent('button_click');
 
-        expect(loggerSpy.info).toHaveBeenCalledWith('[Analytics] Event: button_click', undefined);
+        expect(trackEventSpy).toHaveBeenCalledWith('button_click', undefined);
       });
 
-      it('should send event with properties', () => {
-        const properties = { button_name: 'signup', page: 'home' };
+      it('should pass properties to the provider', () => {
+        const properties: EventProperties = { button_name: 'signup', page: 'home' };
         service.trackEvent('button_click', properties);
 
-        expect(loggerSpy.info).toHaveBeenCalledWith('[Analytics] Event: button_click', properties);
-      });
-
-      it('should NOT call logger.log for mock events', () => {
-        service.trackEvent('test_event');
-
-        expect(loggerSpy.log).not.toHaveBeenCalled();
+        expect(trackEventSpy).toHaveBeenCalledWith('button_click', properties);
       });
     });
 
     describe('trackPageView', () => {
-      it('should send page view via logger.info with [Analytics] prefix', () => {
+      it('should delegate to the provider', () => {
         service.trackPageView('/dashboard');
 
-        expect(loggerSpy.info).toHaveBeenCalledWith('[Analytics] Page View: /dashboard');
+        expect(trackPageViewSpy).toHaveBeenCalledWith('/dashboard', undefined);
       });
 
-      it('should NOT call logger.log for mock page views', () => {
-        service.trackPageView('/home');
+      it('should pass title to the provider', () => {
+        service.trackPageView('/dashboard', 'Dashboard');
 
-        expect(loggerSpy.log).not.toHaveBeenCalled();
+        expect(trackPageViewSpy).toHaveBeenCalledWith('/dashboard', 'Dashboard');
+      });
+    });
+
+    describe('identify', () => {
+      it('should delegate to the provider', () => {
+        service.identify('user-123');
+
+        expect(identifySpy).toHaveBeenCalledWith('user-123', undefined);
+      });
+
+      it('should pass traits to the provider', () => {
+        const traits: EventProperties = { email: 'test@example.com', plan: 'premium' };
+        service.identify('user-123', traits);
+
+        expect(identifySpy).toHaveBeenCalledWith('user-123', traits);
+      });
+    });
+
+    describe('reset', () => {
+      it('should delegate to the provider', () => {
+        service.reset();
+
+        expect(resetSpy).toHaveBeenCalled();
       });
     });
   });
@@ -85,99 +138,59 @@ describe('AnalyticsService', () => {
       service = createService(false);
     });
 
+    describe('isEnabled', () => {
+      it('should return false', () => {
+        expect(service.isEnabled).toBe(false);
+      });
+    });
+
+    describe('providerName', () => {
+      it('should return "none"', () => {
+        expect(service.providerName).toBe('none');
+      });
+    });
+
     describe('trackEvent', () => {
-      it('should log mock event via logger.log with [Analytics Mock] prefix', () => {
-        service.trackEvent('button_click');
-
-        expect(loggerSpy.log).toHaveBeenCalledWith(
-          '[Analytics Mock] Event: button_click',
-          undefined,
-        );
-      });
-
-      it('should log mock event with properties', () => {
-        const properties = { action: 'submit', form: 'contact' };
-        service.trackEvent('form_submit', properties);
-
-        expect(loggerSpy.log).toHaveBeenCalledWith(
-          '[Analytics Mock] Event: form_submit',
-          properties,
-        );
-      });
-
-      it('should NOT call logger.info when disabled', () => {
-        service.trackEvent('test_event');
-
-        expect(loggerSpy.info).not.toHaveBeenCalled();
+      it('should not throw when called', () => {
+        expect(() => {
+          service.trackEvent('button_click');
+        }).not.toThrow();
       });
     });
 
     describe('trackPageView', () => {
-      it('should log mock page view via logger.log with [Analytics Mock] prefix', () => {
-        service.trackPageView('/about');
-
-        expect(loggerSpy.log).toHaveBeenCalledWith('[Analytics Mock] Page View: /about');
-      });
-
-      it('should NOT call logger.info when disabled', () => {
-        service.trackPageView('/contact');
-
-        expect(loggerSpy.info).not.toHaveBeenCalled();
-      });
-    });
-  });
-
-  describe('event properties', () => {
-    beforeEach(() => {
-      service = createService(false);
-    });
-
-    it('should handle string properties', () => {
-      service.trackEvent('test', { category: 'navigation' });
-
-      expect(loggerSpy.log).toHaveBeenCalledWith('[Analytics Mock] Event: test', {
-        category: 'navigation',
+      it('should not throw when called', () => {
+        expect(() => {
+          service.trackPageView('/dashboard');
+        }).not.toThrow();
       });
     });
 
-    it('should handle number properties', () => {
-      service.trackEvent('purchase', { price: 29.99, quantity: 2 });
-
-      expect(loggerSpy.log).toHaveBeenCalledWith('[Analytics Mock] Event: purchase', {
-        price: 29.99,
-        quantity: 2,
+    describe('identify', () => {
+      it('should not throw when called', () => {
+        expect(() => {
+          service.identify('user-123');
+        }).not.toThrow();
       });
     });
 
-    it('should handle boolean properties', () => {
-      service.trackEvent('toggle', { enabled: true, premium: false });
-
-      expect(loggerSpy.log).toHaveBeenCalledWith('[Analytics Mock] Event: toggle', {
-        enabled: true,
-        premium: false,
+    describe('reset', () => {
+      it('should not throw when called', () => {
+        expect(() => {
+          service.reset();
+        }).not.toThrow();
       });
-    });
-
-    it('should handle null and undefined properties', () => {
-      service.trackEvent('test', { value: null, optional: undefined });
-
-      expect(loggerSpy.log).toHaveBeenCalledWith('[Analytics Mock] Event: test', {
-        value: null,
-        optional: undefined,
-      });
-    });
-
-    it('should handle undefined properties parameter', () => {
-      service.trackEvent('simple_event');
-
-      expect(loggerSpy.log).toHaveBeenCalledWith('[Analytics Mock] Event: simple_event', undefined);
     });
   });
 
   describe('service instantiation', () => {
-    it('should be provided in root', () => {
-      service = createService(false);
+    it('should be injectable when enabled', () => {
+      service = createService(true);
+      expect(service).toBeTruthy();
+    });
 
+    it('should be injectable when disabled', () => {
+      service = createService(false);
       expect(service).toBeTruthy();
     });
   });

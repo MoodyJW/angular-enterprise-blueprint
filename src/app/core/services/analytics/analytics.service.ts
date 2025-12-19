@@ -1,155 +1,163 @@
 import { inject, Injectable } from '@angular/core';
 
+import type { AppEnvironment } from '../../config';
 import { ENVIRONMENT } from '../../config';
-import { LoggerService } from '../logger';
+import {
+  ANALYTICS_PROVIDER,
+  type AnalyticsProvider,
+  type EventProperties,
+} from './analytics-provider.interface';
+
+// Re-export for convenience
+export type { EventProperties } from './analytics-provider.interface';
 
 /**
- * Properties that can be sent with analytics events.
- * Use specific types when possible for better type safety.
- */
-export type EventProperties = Record<string, string | number | boolean | null | undefined>;
-
-/**
- * Centralized analytics service that abstracts the analytics provider.
+ * Centralized analytics service that delegates to the configured provider.
  *
- * This service provides a consistent analytics interface across the application,
- * allowing for easy swapping of analytics vendors (GA4, GTM, Mixpanel, etc.)
- * without requiring changes to application code.
+ * This service acts as a facade over the analytics provider, offering:
+ * - Unified API regardless of the underlying provider
+ * - Automatic enable/disable based on environment
+ * - Null-safety when analytics is disabled
  *
- * **Behavior based on `environment.features.analytics`:**
- * - When `true`: Events are sent to the configured analytics provider
- * - When `false`: Events are logged to console with "[Analytics Mock]" prefix
+ * ## Strategy Pattern
+ *
+ * The actual analytics implementation is determined by `environment.analytics.provider`:
+ * - `'console'` → ConsoleAnalyticsProvider (logs to console)
+ * - `'google'` → GoogleAnalyticsProvider (sends to GA4)
+ *
+ * ## Usage
  *
  * @example
  * ```typescript
- * export class MyComponent {
+ * export class CheckoutComponent {
  *   private readonly analytics = inject(AnalyticsService);
  *
- *   onButtonClick() {
- *     this.analytics.trackEvent('button_click', {
- *       button_name: 'signup',
- *       page: 'home'
+ *   onPurchase(orderId: string, total: number) {
+ *     this.analytics.trackEvent('purchase', {
+ *       order_id: orderId,
+ *       value: total,
+ *       currency: 'USD'
  *     });
  *   }
- *
- *   ngOnInit() {
- *     this.analytics.trackPageView('/dashboard');
- *   }
  * }
  * ```
  *
- * @usageNotes
- * ### GA4 Integration
- *
- * To integrate with Google Analytics 4, modify the private methods to call gtag:
- *
+ * @example
  * ```typescript
- * private sendEvent(name: string, properties?: EventProperties): void {
- *   gtag('event', name, properties);
+ * // User identification (for authenticated users)
+ * onLogin(user: User) {
+ *   this.analytics.identify(user.id, {
+ *     email: user.email,
+ *     plan: user.subscriptionPlan
+ *   });
  * }
  *
- * private sendPageView(url: string): void {
- *   gtag('event', 'page_view', { page_path: url });
- * }
- * ```
- *
- * ### GTM Integration
- *
- * For Google Tag Manager, push events to the dataLayer:
- *
- * ```typescript
- * private sendEvent(name: string, properties?: EventProperties): void {
- *   window.dataLayer?.push({ event: name, ...properties });
+ * onLogout() {
+ *   this.analytics.reset();
  * }
  * ```
  */
 @Injectable({ providedIn: 'root' })
 export class AnalyticsService {
-  private readonly env = inject(ENVIRONMENT);
-  private readonly logger = inject(LoggerService);
+  private readonly env: AppEnvironment = inject(ENVIRONMENT);
+  private readonly provider: AnalyticsProvider | null = this.env.analytics.enabled
+    ? inject(ANALYTICS_PROVIDER)
+    : null;
 
   /**
-   * Tracks a custom event with optional properties.
+   * Whether analytics is currently enabled.
+   */
+  get isEnabled(): boolean {
+    return this.provider !== null;
+  }
+
+  /**
+   * The name of the current analytics provider.
+   * Returns 'none' if analytics is disabled.
+   */
+  get providerName(): string {
+    return this.provider?.name ?? 'none';
+  }
+
+  /**
+   * Track a custom event.
    *
-   * @param name - The event name (e.g., 'button_click', 'form_submit')
-   * @param properties - Optional key-value pairs for event metadata
+   * @param name - Event name (e.g., 'button_click', 'form_submit', 'purchase')
+   * @param properties - Optional event properties/metadata
    *
    * @example
    * ```typescript
-   * // Track a simple event
+   * // Simple event
    * analytics.trackEvent('signup_started');
    *
-   * // Track an event with properties
-   * analytics.trackEvent('purchase_completed', {
-   *   product_id: 'sku-123',
+   * // Event with properties
+   * analytics.trackEvent('item_added_to_cart', {
+   *   product_id: 'SKU-123',
+   *   product_name: 'Widget Pro',
    *   price: 29.99,
-   *   currency: 'USD'
+   *   quantity: 2
    * });
    * ```
    */
   trackEvent(name: string, properties?: EventProperties): void {
-    if (this.env.features.analytics) {
-      this.sendEvent(name, properties);
-    } else {
-      this.logMockEvent(name, properties);
-    }
+    this.provider?.trackEvent(name, properties);
   }
 
   /**
-   * Tracks a page view event.
+   * Track a page view.
    *
-   * @param url - The URL or path of the page being viewed
+   * Note: If using `withAnalyticsRouterTracking()`, page views are
+   * tracked automatically on route changes.
+   *
+   * @param url - The page URL/path
+   * @param title - Optional page title
    *
    * @example
    * ```typescript
-   * // Track page view on route change
-   * router.events.pipe(
-   *   filter(event => event instanceof NavigationEnd)
-   * ).subscribe((event: NavigationEnd) => {
-   *   analytics.trackPageView(event.urlAfterRedirects);
+   * analytics.trackPageView('/products/123', 'Widget Pro - Product Details');
+   * ```
+   */
+  trackPageView(url: string, title?: string): void {
+    this.provider?.trackPageView(url, title);
+  }
+
+  /**
+   * Identify the current user.
+   *
+   * Call this after a user logs in to associate their actions
+   * with their user ID across sessions.
+   *
+   * @param userId - Unique user identifier
+   * @param traits - Optional user traits (email, plan, etc.)
+   *
+   * @example
+   * ```typescript
+   * analytics.identify('user-123', {
+   *   email: 'user@example.com',
+   *   plan: 'premium',
+   *   created_at: '2024-01-15'
    * });
    * ```
    */
-  trackPageView(url: string): void {
-    if (this.env.features.analytics) {
-      this.sendPageView(url);
-    } else {
-      this.logMockPageView(url);
-    }
+  identify(userId: string, traits?: EventProperties): void {
+    this.provider?.identify?.(userId, traits);
   }
 
   /**
-   * Sends the event to the analytics provider.
-   * Override this method to integrate with your preferred analytics service.
+   * Reset/clear the user identity.
+   *
+   * Call this when a user logs out to stop associating
+   * subsequent events with their user ID.
+   *
+   * @example
+   * ```typescript
+   * onLogout() {
+   *   this.authService.logout();
+   *   this.analytics.reset();
+   * }
+   * ```
    */
-  private sendEvent(name: string, properties?: EventProperties): void {
-    // TODO: Implement actual analytics provider integration
-    // Example GA4: gtag('event', name, properties);
-    // Example GTM: window.dataLayer?.push({ event: name, ...properties });
-    this.logger.info(`[Analytics] Event: ${name}`, properties);
-  }
-
-  /**
-   * Sends the page view to the analytics provider.
-   * Override this method to integrate with your preferred analytics service.
-   */
-  private sendPageView(url: string): void {
-    // TODO: Implement actual analytics provider integration
-    // Example GA4: gtag('event', 'page_view', { page_path: url });
-    this.logger.info(`[Analytics] Page View: ${url}`);
-  }
-
-  /**
-   * Logs a mock event when analytics is disabled.
-   */
-  private logMockEvent(name: string, properties?: EventProperties): void {
-    this.logger.log(`[Analytics Mock] Event: ${name}`, properties);
-  }
-
-  /**
-   * Logs a mock page view when analytics is disabled.
-   */
-  private logMockPageView(url: string): void {
-    this.logger.log(`[Analytics Mock] Page View: ${url}`);
+  reset(): void {
+    this.provider?.reset?.();
   }
 }

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="15" failures="15" errors="0" time="0.017125069">
+    <testsuite name="src/app/core/services/logger/logger.service.spec.ts" timestamp="2025-12-18T21:16:16.291Z" hostname="jay-MS-7971" tests="15" failures="15" errors="0" skipped="0" time="0.017125069">
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.log when log() is called" time="0.004827498">
+            <failure message="Need to call TestBed.initTestEnvironment() first" type="Error">
+Error: Need to call TestBed.initTestEnvironment() first
+ ❯ TestBedImpl.get compiler [as compiler] node_modules/@angular/core/fesm2022/testing.mjs:1486:13
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:10
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ createService src/app/core/services/logger/logger.service.spec.ts:22:13
+ ❯ src/app/core/services/logger/logger.service.spec.ts:43:17
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.log with additional parameters" time="0.002986331">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.info when info() is called" time="0.000694528">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.info with additional parameters" time="0.000545241">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.warn when warn() is called" time="0.000584428">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.warn with additional parameters" time="0.000492849">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.error when error() is called" time="0.000590013">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in development mode &gt; should call console.error with additional parameters" time="0.000424381">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should NOT call console.log when log() is called" time="0.000950553">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should NOT call console.info when info() is called" time="0.000683684">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should still call console.warn when warn() is called" time="0.000507413">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should still call console.error when error() is called" time="0.000509192">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should still pass additional parameters to warn()" time="0.000531157">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; in production mode &gt; should still pass additional parameters to error()" time="0.00039801">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/core/services/logger/logger.service.spec.ts" name="LoggerService &gt; service instantiation &gt; should be provided in root" time="0.000545864">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+    </testsuite>
+</testsuites>

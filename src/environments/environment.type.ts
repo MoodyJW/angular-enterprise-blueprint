@@ -41,6 +41,12 @@ export interface AppEnvironment {
   readonly features: FeatureFlags;
 
   /**
+   * Analytics configuration.
+   * Disabled by default for repo cloners; enable via CI/CD secrets.
+   */
+  readonly analytics: AnalyticsConfig;
+
+  /**
    * Current application version.
    * Should match package.json version.
    */
@@ -62,10 +68,68 @@ export interface FeatureFlags {
    * When true, uses MockAuthStrategy instead of real auth provider.
    */
   readonly mockAuth: boolean;
+}
+
+/**
+ * Supported analytics provider types.
+ */
+export type AnalyticsProviderType = 'console' | 'google';
+
+/**
+ * Analytics configuration using the Strategy Pattern.
+ *
+ * Supports multiple analytics providers that can be swapped via configuration.
+ * This enables:
+ * - Easy vendor switching (GA4 → Mixpanel → Amplitude)
+ * - Development mode without real tracking
+ * - Testing with mock providers
+ *
+ * @example
+ * ```typescript
+ * // Development: Console logging only
+ * analytics: {
+ *   enabled: true,
+ *   provider: 'console',
+ * }
+ *
+ * // Production: Google Analytics 4
+ * analytics: {
+ *   enabled: true,
+ *   provider: 'google',
+ *   google: {
+ *     measurementId: 'G-XXXXXXXXXX',
+ *   },
+ * }
+ * ```
+ */
+export interface AnalyticsConfig {
+  /**
+   * Enable/disable analytics tracking entirely.
+   * When false, no analytics code runs.
+   */
+  readonly enabled: boolean;
 
   /**
-   * Enable analytics tracking (GA4, etc.).
-   * When false, analytics events are logged to console instead.
+   * Which analytics provider to use.
+   * - 'console': Logs events to console (dev/testing)
+   * - 'google': Sends events to Google Analytics 4
    */
-  readonly analytics: boolean;
+  readonly provider: AnalyticsProviderType;
+
+  /**
+   * Google Analytics 4 configuration.
+   * Required when provider is 'google'.
+   */
+  readonly google?: GoogleAnalyticsConfig;
+}
+
+/**
+ * Google Analytics 4 specific configuration.
+ */
+export interface GoogleAnalyticsConfig {
+  /**
+   * GA4 Measurement ID.
+   * Format: 'G-XXXXXXXXXX'
+   */
+  readonly measurementId: string;
 }

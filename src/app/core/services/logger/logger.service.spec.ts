@@ -13,7 +13,8 @@ describe('LoggerService', () => {
       appName: 'Test App',
       production: false,
       apiUrl: '/api',
-      features: { mockAuth: true, analytics: false },
+      features: { mockAuth: true },
+      analytics: { enabled: false, provider: 'console' },
       version: '1.0.0',
       ...env,
     };

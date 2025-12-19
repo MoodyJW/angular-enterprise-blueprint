@@ -99,10 +99,19 @@ _Goal: Establish the rules of engagement. CI/CD must be green before feature cod
 
 _Goal: Build the invisible singletons that power the application._
 
-- [ ] **2.1 Environment Config**: Set up strict typed environments (`environment.ts`).
-- [ ] **2.2 Infrastructure Services**:
-  - [ ] `LoggerService`: Abstract `console.log` for future Sentry integration.
-  - [ ] `AnalyticsService`: Wrapper for GA4 (or mock).
+- [x] **2.1 Environment Config**: Set up strict typed environments (`environment.ts`).
+  - [x] Created `AppEnvironment` interface with strict typing.
+  - [x] Created `ENVIRONMENT` injection token with `provideEnvironment()`.
+  - [x] Configured `angular.json` file replacements for prod builds.
+- [x] **2.2 Infrastructure Services**:
+  - [x] `LoggerService`: Abstract `console.log` for future Sentry integration.
+  - [x] `AnalyticsService`: Strategy Pattern implementation with swappable providers.
+    - [x] `AnalyticsProvider` interface (contract for all providers).
+    - [x] `ConsoleAnalyticsProvider` (development/debugging).
+    - [x] `GoogleAnalyticsProvider` (GA4 production integration).
+    - [x] `provideAnalytics()` factory with environment-based provider selection.
+    - [x] `withAnalyticsRouterTracking()` for automatic page view tracking.
+    - [x] Full test coverage (77 tests).
   - [ ] `SeoService`: Manage `Title` and `Meta` tags dynamically.
   - [ ] `ThemeService`: Manages Dark/Light mode state (Signal).
 - [ ] **2.3 Global Error Handling**: Implement `ErrorHandler` and HTTP Interceptor.
