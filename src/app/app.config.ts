@@ -1,7 +1,8 @@
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import {
   ApplicationConfig,
   EnvironmentProviders,
+  ErrorHandler,
   Provider,
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
@@ -9,7 +10,9 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideEnvironment } from './core/config';
+import { GlobalErrorHandler } from './core/error-handling';
 import { provideTranslocoConfig } from './core/i18n';
+import { httpErrorInterceptor } from './core/interceptors';
 import { provideAnalytics, withAnalyticsRouterTracking } from './core/services';
 
 // Cast the imported analytics helpers to known callable signatures so
@@ -24,9 +27,10 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideEnvironment(),
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([httpErrorInterceptor])),
     provideTranslocoConfig(),
     provideAnalyticsFn(),
     withAnalyticsRouterTrackingFn(),
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
   ],
 };

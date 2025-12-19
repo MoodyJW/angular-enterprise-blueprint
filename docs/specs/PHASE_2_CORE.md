@@ -313,23 +313,330 @@ src/
 
 ## 2.3 Global Error Handling
 
-We want to catch errors before they crash the UI and present them gracefully.
+We want to catch errors before they crash the UI and present them gracefully. Error handling follows a layered approach: application-level errors are caught by a global handler, while HTTP errors are intercepted and transformed into user-friendly messages.
 
-### **1. GlobalErrorHandler** (`core/error-handling/global-error-handler.ts`)
+### **Error Handling Architecture**
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        Application                               │
+├─────────────────────────────────────────────────────────────────┤
+│  Component/Service throws error                                  │
+│         │                                                        │
+│         ▼                                                        │
+│  ┌─────────────────────┐    ┌────────────────────────────────┐  │
+│  │ GlobalErrorHandler  │    │   HttpErrorInterceptor         │  │
+│  │ (Uncaught errors)   │    │   (HTTP response errors)       │  │
+│  └─────────┬───────────┘    └──────────────┬─────────────────┘  │
+│            │                               │                     │
+│            ▼                               ▼                     │
+│  ┌─────────────────────────────────────────────────────────────┐│
+│  │                    LoggerService                             ││
+│  │         (Centralized logging, future Sentry/Datadog)         ││
+│  └─────────────────────────────────────────────────────────────┘│
+│            │                               │                     │
+│            ▼                               ▼                     │
+│  ┌─────────────────────────────────────────────────────────────┐│
+│  │                  ErrorNotificationService                    ││
+│  │    (Abstraction for user notifications - console for now)    ││
+│  └─────────────────────────────────────────────────────────────┘│
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### **File Structure**
+
+```
+src/app/core/
+├── error-handling/
+│   ├── global-error-handler.ts      # Angular ErrorHandler implementation
+│   ├── error-notification.service.ts # Abstraction for user notifications
+│   ├── error.types.ts               # Error type definitions
+│   └── index.ts                     # Barrel export
+├── interceptors/
+│   ├── http-error.interceptor.ts    # HTTP error interceptor
+│   └── index.ts                     # Barrel export
+```
+
+### **1. Error Types** (`core/error-handling/error.types.ts`)
+
+Define structured error types for consistent handling across the application.
+
+```typescript
+/**
+ * Application error severity levels.
+ */
+export type ErrorSeverity = 'info' | 'warning' | 'error' | 'critical';
+
+/**
+ * Structured application error with metadata.
+ */
+export interface AppError {
+  readonly message: string;
+  readonly code?: string;
+  readonly severity: ErrorSeverity;
+  readonly timestamp: Date;
+  readonly context?: Record<string, unknown>;
+  readonly originalError?: Error;
+}
+
+/**
+ * HTTP error details extracted from HttpErrorResponse.
+ */
+export interface HttpErrorDetails {
+  readonly status: number;
+  readonly statusText: string;
+  readonly url: string | null;
+  readonly message: string;
+  readonly serverMessage?: string;
+}
+```
+
+### **2. ErrorNotificationService** (`core/error-handling/error-notification.service.ts`)
+
+An abstraction layer for user notifications. Initially uses `LoggerService` for console output, but designed to be easily swapped with a toast/snackbar service in Phase 3.
+
+```typescript
+@Injectable({ providedIn: 'root' })
+export class ErrorNotificationService {
+  private readonly logger = inject(LoggerService);
+
+  /**
+   * Notify user of an error.
+   * TODO: Replace with ToastService in Phase 3.
+   */
+  notifyError(message: string, details?: string): void {
+    this.logger.error(`[User Error] ${message}`, details);
+    // Future: this.toastService.error(message, details);
+  }
+
+  /**
+   * Notify user of a warning.
+   */
+  notifyWarning(message: string, details?: string): void {
+    this.logger.warn(`[User Warning] ${message}`, details);
+    // Future: this.toastService.warning(message, details);
+  }
+
+  /**
+   * Notify user of a success (for recovery scenarios).
+   */
+  notifySuccess(message: string): void {
+    this.logger.info(`[User Success] ${message}`);
+    // Future: this.toastService.success(message);
+  }
+}
+```
+
+### **3. GlobalErrorHandler** (`core/error-handling/global-error-handler.ts`)
 
 - **Implements:** Angular's `ErrorHandler` class.
-- **Action:**
-  - Log error via `LoggerService`.
-  - Show a generic "Something went wrong" toast via `ToastService` (from Phase 3, mock it for now or rely on console).
+- **Goal:** Catch all uncaught errors, log them, and prevent app crashes where possible.
 
-### **2. HttpErrorInterceptor** (`core/interceptors/http-error.interceptor.ts`)
+```typescript
+@Injectable()
+export class GlobalErrorHandler implements ErrorHandler {
+  private readonly logger = inject(LoggerService);
+  private readonly errorNotification = inject(ErrorNotificationService);
+  private readonly ngZone = inject(NgZone);
+
+  handleError(error: unknown): void {
+    // Run outside Angular zone to avoid triggering change detection
+    this.ngZone.runOutsideAngular(() => {
+      const appError = this.normalizeError(error);
+
+      // Log the full error for debugging
+      this.logger.error(
+        `[GlobalErrorHandler] ${appError.message}`,
+        appError.context,
+        appError.originalError,
+      );
+
+      // Notify user (runs back in zone for UI updates)
+      this.ngZone.run(() => {
+        this.errorNotification.notifyError(
+          'An unexpected error occurred. Please try again.',
+          appError.code,
+        );
+      });
+    });
+  }
+
+  private normalizeError(error: unknown): AppError {
+    if (error instanceof Error) {
+      return {
+        message: error.message,
+        code: error.name,
+        severity: 'error',
+        timestamp: new Date(),
+        context: { stack: error.stack },
+        originalError: error,
+      };
+    }
+    return {
+      message: String(error),
+      severity: 'error',
+      timestamp: new Date(),
+    };
+  }
+}
+```
+
+**Registration in `app.config.ts`:**
+
+```typescript
+export const appConfig: ApplicationConfig = {
+  providers: [
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
+    // ...
+  ],
+};
+```
+
+### **4. HttpErrorInterceptor** (`core/interceptors/http-error.interceptor.ts`)
 
 - **Type:** Functional Interceptor (`HttpInterceptorFn`).
-- **Action:**
-  - Catch `HttpErrorResponse`.
-  - If 401: Trigger `AuthStore.logout()`.
-  - If 403: Redirect to `/forbidden`.
-  - If 5xx: Show "Server Error" toast.
+- **Goal:** Transform HTTP errors into user-friendly messages with appropriate actions.
+
+#### **Error Handling Strategy by Status Code:**
+
+| Status  | Category          | Action                                                |
+| ------- | ----------------- | ----------------------------------------------------- |
+| 400     | Bad Request       | Show validation error message from server             |
+| 401     | Unauthorized      | Clear auth state, redirect to login (TODO: AuthStore) |
+| 403     | Forbidden         | Redirect to `/forbidden` page                         |
+| 404     | Not Found         | Show "Resource not found" message                     |
+| 408     | Request Timeout   | Show "Request timed out" with retry suggestion        |
+| 429     | Too Many Requests | Show "Too many requests" with retry-after info        |
+| 500-599 | Server Error      | Show generic "Server error" message                   |
+| 0       | Network Error     | Show "No internet connection" message                 |
+
+#### **Implementation:**
+
+```typescript
+export const httpErrorInterceptor: HttpInterceptorFn = (req, next) => {
+  const logger = inject(LoggerService);
+  const errorNotification = inject(ErrorNotificationService);
+  const router = inject(Router);
+  // TODO: Uncomment when AuthStore is implemented
+  // const authStore = inject(AuthStore);
+
+  return next(req).pipe(
+    catchError((error: HttpErrorResponse) => {
+      const errorDetails = extractErrorDetails(error);
+
+      // Log the error
+      logger.error(`[HTTP Error] ${error.status} ${error.statusText}`, {
+        url: error.url,
+        message: errorDetails.message,
+      });
+
+      // Handle by status code
+      switch (error.status) {
+        case 0:
+          errorNotification.notifyError(
+            'Unable to connect to server. Please check your internet connection.',
+          );
+          break;
+
+        case 400:
+          errorNotification.notifyError(
+            errorDetails.serverMessage ?? 'Invalid request. Please check your input.',
+          );
+          break;
+
+        case 401:
+          // TODO: Trigger logout when AuthStore is implemented
+          // authStore.logout();
+          errorNotification.notifyWarning('Your session has expired. Please log in again.');
+          router.navigate(['/auth/login']);
+          break;
+
+        case 403:
+          errorNotification.notifyError('You do not have permission to access this resource.');
+          router.navigate(['/forbidden']);
+          break;
+
+        case 404:
+          errorNotification.notifyError('The requested resource was not found.');
+          break;
+
+        case 429:
+          const retryAfter = error.headers.get('Retry-After');
+          errorNotification.notifyWarning(
+            `Too many requests. ${retryAfter ? `Please wait ${retryAfter} seconds.` : 'Please try again later.'}`,
+          );
+          break;
+
+        default:
+          if (error.status >= 500) {
+            errorNotification.notifyError('A server error occurred. Our team has been notified.');
+          } else {
+            errorNotification.notifyError(errorDetails.message);
+          }
+      }
+
+      return throwError(() => error);
+    }),
+  );
+};
+
+function extractErrorDetails(error: HttpErrorResponse): HttpErrorDetails {
+  let serverMessage: string | undefined;
+
+  // Try to extract message from common API response formats
+  if (error.error) {
+    if (typeof error.error === 'string') {
+      serverMessage = error.error;
+    } else if (error.error.message) {
+      serverMessage = error.error.message;
+    } else if (error.error.error) {
+      serverMessage = error.error.error;
+    }
+  }
+
+  return {
+    status: error.status,
+    statusText: error.statusText,
+    url: error.url,
+    message: error.message,
+    serverMessage,
+  };
+}
+```
+
+**Registration in `app.config.ts`:**
+
+```typescript
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideHttpClient(withInterceptors([httpErrorInterceptor])),
+    // ...
+  ],
+};
+```
+
+### **5. Implementation Notes**
+
+#### **Dependencies & TODOs:**
+
+1. **ToastService (Phase 3):** The `ErrorNotificationService` currently logs to console. When `ToastService` is implemented in Phase 3, swap the logging calls for toast notifications.
+
+2. **AuthStore (Section 2.4):** The HTTP interceptor has a placeholder for `authStore.logout()` on 401 errors. This will be connected when AuthStore is implemented.
+
+3. **Error Boundary Routes:** Consider adding `/forbidden` and `/error` routes in Phase 4 for dedicated error pages.
+
+#### **Testing Strategy:**
+
+- **GlobalErrorHandler:** Test error normalization, logging calls, and notification triggers.
+- **HttpErrorInterceptor:** Test each status code path with mock HTTP responses.
+- **ErrorNotificationService:** Test that methods delegate to LoggerService correctly.
+
+#### **Future Enhancements:**
+
+- **Error Tracking Integration:** Add Sentry/Datadog error reporting in `GlobalErrorHandler`.
+- **Retry Logic:** Add automatic retry for transient failures (408, 429, 503).
+- **Error Boundaries:** Implement component-level error boundaries for graceful degradation.
+- **Offline Detection:** Enhanced offline handling with service worker integration.
 
 ---
 

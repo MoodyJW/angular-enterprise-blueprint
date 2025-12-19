@@ -120,8 +120,31 @@ _Goal: Build the invisible singletons that power the application._
     - [x] Twitter Cards for Twitter sharing.
     - [x] JSON-LD structured data for rich snippets.
     - [x] Full test coverage (49 tests).
-  - [ ] `ThemeService`: Manages Dark/Light mode state (Signal).
-- [ ] **2.3 Global Error Handling**: Implement `ErrorHandler` and HTTP Interceptor.
+  - [x] `ThemeService`: Multi-theme system with CSS custom properties.
+    - [x] 6 named themes (Daylight, Sunrise, Midnight, Twilight, High Contrast Light/Dark).
+    - [x] Signal-based state management with computed properties.
+    - [x] System preference detection via `matchMedia`.
+    - [x] localStorage persistence with clear/reset support.
+    - [x] SCSS architecture with complete CSS custom properties per theme.
+    - [x] Smooth transitions with reduced-motion support.
+    - [x] Full test coverage (41 tests).
+- [x] **2.3 Global Error Handling**: Implement `ErrorHandler` and HTTP Interceptor.
+  - [x] `ErrorNotificationService`: Abstraction layer for user notifications (uses LoggerService, ready for ToastService in Phase 3).
+  - [x] `GlobalErrorHandler`: Angular ErrorHandler implementation with zone-aware error handling.
+    - [x] Error normalization (handles Error, string, and error-like objects).
+    - [x] Structured logging via LoggerService.
+    - [x] User-friendly error messages.
+  - [x] `httpErrorInterceptor`: HTTP error interceptor with comprehensive status code handling.
+    - [x] Network errors (status 0).
+    - [x] Client errors (400, 401, 403, 404, 408, 429).
+    - [x] Server errors (5xx).
+    - [x] Server message extraction from multiple response formats.
+    - [x] Navigation to login/forbidden pages on auth errors.
+  - [x] Registered in `app.config.ts`.
+  - [x] Full test coverage (77 tests across 3 spec files):
+    - [x] GlobalErrorHandler: 27 tests (error normalization, Error.cause, edge cases, zone handling).
+    - [x] httpErrorInterceptor: 44 tests (all status codes, message extraction, HTTP methods, success passthrough).
+    - [x] ErrorNotificationService: 6 tests.
 - [ ] **2.4 Authentication Strategy (Mockend)**:
   - [ ] Define `AuthStrategy` interface (Login/Logout/Session).
   - [ ] Implement `MockAuthStrategy`:
