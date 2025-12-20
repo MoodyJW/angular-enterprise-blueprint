@@ -308,6 +308,15 @@ describe('ButtonComponent', () => {
       expect(buttonElement?.getAttribute('aria-disabled')).toBe('true');
     });
 
+    it('should not set aria-pressed when false (explicit)', () => {
+      fixture.componentRef.setInput('ariaLabel', 'Toggle button');
+      fixture.componentRef.setInput('ariaPressed', false);
+      fixture.detectChanges();
+
+      const buttonElement = nativeElement.querySelector('button');
+      expect(buttonElement?.getAttribute('aria-pressed')).toBe('false');
+    });
+
     it('should not set aria-disabled when not disabled', () => {
       fixture.componentRef.setInput('ariaLabel', 'Test button');
       fixture.componentRef.setInput('disabled', false);
@@ -435,6 +444,17 @@ describe('ButtonComponent', () => {
 
       const buttonElement = nativeElement.querySelector('button');
       expect(buttonElement?.classList.contains('btn--disabled')).toBe(true);
+      expect(buttonElement?.classList.contains('btn--loading')).toBe(true);
+    });
+
+    it('should apply icon-only and loading classes together when iconOnly and loading are true', () => {
+      fixture.componentRef.setInput('ariaLabel', 'Icon only');
+      fixture.componentRef.setInput('iconOnly', true);
+      fixture.componentRef.setInput('loading', true);
+      fixture.detectChanges();
+
+      const buttonElement = nativeElement.querySelector('button');
+      expect(buttonElement?.classList.contains('btn--icon-only')).toBe(true);
       expect(buttonElement?.classList.contains('btn--loading')).toBe(true);
     });
   });
