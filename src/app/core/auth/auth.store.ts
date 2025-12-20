@@ -66,7 +66,7 @@ export const AuthStore = signalStore(
     /**
      * Get user avatar URL with fallback.
      */
-    avatarUrl: computed(() => store.user()?.avatarUrl ?? '/assets/images/default-avatar.svg'),
+    avatarUrl: computed(() => store.user()?.avatarUrl ?? 'assets/images/default-avatar.svg'),
   })),
 
   // Methods

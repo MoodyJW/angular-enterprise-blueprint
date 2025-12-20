@@ -150,7 +150,7 @@ describe('AuthStore', () => {
 
     describe('avatarUrl', () => {
       it('should return default avatar when no user is logged in', () => {
-        expect(authStore.avatarUrl()).toBe('/assets/images/default-avatar.svg');
+        expect(authStore.avatarUrl()).toBe('assets/images/default-avatar.svg');
       });
 
       it('should return user avatar when user has one', () => {
@@ -161,7 +161,7 @@ describe('AuthStore', () => {
       it('should return default avatar when user has no avatarUrl', () => {
         const userWithoutAvatar: User = { ...mockUser, avatarUrl: undefined };
         authStore.setUser(userWithoutAvatar);
-        expect(authStore.avatarUrl()).toBe('/assets/images/default-avatar.svg');
+        expect(authStore.avatarUrl()).toBe('assets/images/default-avatar.svg');
       });
     });
   });
