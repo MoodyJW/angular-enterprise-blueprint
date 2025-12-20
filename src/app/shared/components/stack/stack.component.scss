@@ -1,0 +1,176 @@
+.stack {
+  display: flex;
+  box-sizing: border-box;
+
+  // Direction variants
+  &--vertical {
+    flex-direction: column;
+  }
+
+  &--horizontal {
+    flex-direction: row;
+  }
+
+  // Spacing variants (using gap for clean, modern approach)
+  &--spacing-none {
+    gap: 0;
+  }
+
+  &--spacing-xs {
+    gap: var(--spacing-xs); // 4px
+  }
+
+  &--spacing-sm {
+    gap: var(--spacing-sm); // 8px
+  }
+
+  &--spacing-md {
+    gap: var(--spacing-lg); // 16px
+  }
+
+  &--spacing-lg {
+    gap: var(--spacing-xl); // 24px
+  }
+
+  &--spacing-xl {
+    gap: var(--spacing-2xl); // 32px
+  }
+
+  &--spacing-2xl {
+    gap: var(--spacing-3xl); // 48px
+  }
+
+  &--spacing-3xl {
+    gap: var(--spacing-4xl); // 64px
+  }
+
+  &--spacing-4xl {
+    gap: 6rem; // 96px
+  }
+
+  // Alignment variants (align-items)
+  &--align-start {
+    align-items: flex-start;
+  }
+
+  &--align-center {
+    align-items: center;
+  }
+
+  &--align-end {
+    align-items: flex-end;
+  }
+
+  &--align-stretch {
+    align-items: stretch;
+  }
+
+  // Justify variants (justify-content)
+  &--justify-start {
+    justify-content: flex-start;
+  }
+
+  &--justify-center {
+    justify-content: center;
+  }
+
+  &--justify-end {
+    justify-content: flex-end;
+  }
+
+  &--justify-space-between {
+    justify-content: space-between;
+  }
+
+  &--justify-space-around {
+    justify-content: space-around;
+  }
+
+  &--justify-space-evenly {
+    justify-content: space-evenly;
+  }
+
+  // Full width/height modifier
+  &--full-width {
+    width: 100%;
+  }
+
+  // Wrap modifier
+  &--wrap {
+    flex-wrap: wrap;
+  }
+
+  // Inline modifier (for vertical stacks)
+  &--inline {
+    display: inline-flex;
+  }
+
+  // Divider modifier (consolidated using gap inheritance)
+  &--divider > :not(:last-child)::after {
+    content: '';
+    background-color: var(--color-border);
+  }
+
+  &--divider.stack--vertical > :not(:last-child)::after {
+    display: block;
+    height: 1px;
+    margin: calc(var(--spacing-lg) / 2) 0;
+  }
+
+  &--divider.stack--horizontal > :not(:last-child)::after {
+    display: inline-block;
+    width: 1px;
+    height: 100%;
+    margin: 0 calc(var(--spacing-lg) / 2);
+  }
+
+  // Divider spacing adjustments (consolidated, one-line format)
+  &--divider.stack--spacing-none.stack--vertical > :not(:last-child)::after {
+    margin: 0;
+  }
+  &--divider.stack--spacing-none.stack--horizontal > :not(:last-child)::after {
+    margin: 0;
+  }
+  &--divider.stack--spacing-xs.stack--vertical > :not(:last-child)::after {
+    margin: calc(var(--spacing-xs) / 2) 0;
+  }
+  &--divider.stack--spacing-xs.stack--horizontal > :not(:last-child)::after {
+    margin: 0 calc(var(--spacing-xs) / 2);
+  }
+  &--divider.stack--spacing-sm.stack--vertical > :not(:last-child)::after {
+    margin: calc(var(--spacing-sm) / 2) 0;
+  }
+  &--divider.stack--spacing-sm.stack--horizontal > :not(:last-child)::after {
+    margin: 0 calc(var(--spacing-sm) / 2);
+  }
+  &--divider.stack--spacing-lg.stack--vertical > :not(:last-child)::after {
+    margin: calc(var(--spacing-xl) / 2) 0;
+  }
+  &--divider.stack--spacing-lg.stack--horizontal > :not(:last-child)::after {
+    margin: 0 calc(var(--spacing-xl) / 2);
+  }
+  &--divider.stack--spacing-xl.stack--vertical > :not(:last-child)::after {
+    margin: calc(var(--spacing-2xl) / 2) 0;
+  }
+  &--divider.stack--spacing-xl.stack--horizontal > :not(:last-child)::after {
+    margin: 0 calc(var(--spacing-2xl) / 2);
+  }
+  &--divider.stack--spacing-2xl.stack--vertical > :not(:last-child)::after {
+    margin: calc(var(--spacing-3xl) / 2) 0;
+  }
+  &--divider.stack--spacing-2xl.stack--horizontal > :not(:last-child)::after {
+    margin: 0 calc(var(--spacing-3xl) / 2);
+  }
+  &--divider.stack--spacing-3xl.stack--vertical > :not(:last-child)::after {
+    margin: calc(var(--spacing-4xl) / 2) 0;
+  }
+  &--divider.stack--spacing-3xl.stack--horizontal > :not(:last-child)::after {
+    margin: 0 calc(var(--spacing-4xl) / 2);
+  }
+  &--divider.stack--spacing-4xl.stack--vertical > :not(:last-child)::after {
+    margin: 3rem 0;
+  }
+  &--divider.stack--spacing-4xl.stack--horizontal > :not(:last-child)::after {
+    margin: 0 3rem;
+  }
+}

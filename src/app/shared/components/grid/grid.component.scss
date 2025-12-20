@@ -1,0 +1,143 @@
+.grid {
+  display: grid;
+  grid-template-columns: var(--grid-cols);
+  box-sizing: border-box;
+
+  // Full width modifier
+  &--full-width {
+    width: 100%;
+  }
+
+  // Gap spacing variants - Generated with SCSS maps
+  $gap-sizes: (
+    'none': 0,
+    'xs': var(--spacing-xs),
+    'sm': var(--spacing-sm),
+    'md': var(--spacing-lg),
+    'lg': var(--spacing-xl),
+    'xl': var(--spacing-2xl),
+    '2xl': var(--spacing-3xl),
+  );
+
+  @each $size, $value in $gap-sizes {
+    &--gap-#{$size} {
+      gap: $value;
+    }
+
+    &--gap-x-#{$size} {
+      column-gap: $value;
+    }
+
+    &--gap-y-#{$size} {
+      row-gap: $value;
+    }
+  }
+
+  // Alignment variants
+  &--align-start {
+    align-items: start;
+  }
+
+  &--align-center {
+    align-items: center;
+  }
+
+  &--align-end {
+    align-items: end;
+  }
+
+  &--align-stretch {
+    align-items: stretch;
+  }
+
+  // Justify variants
+  &--justify-start {
+    justify-items: start;
+  }
+
+  &--justify-center {
+    justify-items: center;
+  }
+
+  &--justify-end {
+    justify-items: end;
+  }
+
+  &--justify-space-between {
+    justify-content: space-between;
+  }
+
+  &--justify-space-around {
+    justify-content: space-around;
+  }
+
+  &--justify-space-evenly {
+    justify-content: space-evenly;
+  }
+
+  // Responsive breakpoints
+  @media (min-width: 768px) {
+    grid-template-columns: var(--grid-cols-md, var(--grid-cols));
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: var(--grid-cols-lg, var(--grid-cols-md, var(--grid-cols)));
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: var(
+      --grid-cols-xl,
+      var(--grid-cols-lg, var(--grid-cols-md, var(--grid-cols)))
+    );
+  }
+}
+
+// Utility classes for grid items - Only classes actually used in the app
+.col-span-3,
+.col-span-4,
+.col-span-6,
+.col-span-8,
+.col-span-12 {
+  grid-column: span var(--col-span);
+}
+
+.col-span-3 {
+  --col-span: 3;
+}
+.col-span-4 {
+  --col-span: 4;
+}
+.col-span-6 {
+  --col-span: 6;
+}
+.col-span-8 {
+  --col-span: 8;
+}
+.col-span-12 {
+  --col-span: 12;
+}
+
+// Responsive column span utilities
+@media (min-width: 768px) {
+  .col-span-md-6 {
+    grid-column: span 6;
+  }
+}
+
+@media (min-width: 1024px) {
+  .col-span-lg-3,
+  .col-span-lg-4,
+  .col-span-lg-8 {
+    grid-column: span var(--col-span-lg);
+  }
+
+  .col-span-lg-3 {
+    --col-span-lg: 3;
+  }
+  .col-span-lg-4 {
+    --col-span-lg: 4;
+  }
+  .col-span-lg-8 {
+    --col-span-lg: 8;
+  }
+}

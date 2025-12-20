@@ -1,0 +1,70 @@
+.container {
+  width: 100%;
+  box-sizing: border-box;
+
+  // Centering modifier
+  &--centered {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  // Max-width variants
+  &--sm {
+    max-width: 600px;
+  }
+
+  &--md {
+    max-width: 900px;
+  }
+
+  &--lg {
+    max-width: var(--container-max-width); // 1200px from design tokens
+  }
+
+  &--xl {
+    max-width: 1400px;
+  }
+
+  &--full {
+    max-width: 100%;
+  }
+
+  // Padding variants
+  &--padding-none {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &--padding-sm {
+    padding-left: var(--spacing-md); // 12px
+    padding-right: var(--spacing-md);
+  }
+
+  &--padding-md {
+    padding-left: var(--spacing-lg); // 16px
+    padding-right: var(--spacing-lg);
+  }
+
+  &--padding-lg {
+    padding-left: var(--spacing-xl); // 24px
+    padding-right: var(--spacing-xl);
+  }
+
+  // Responsive padding adjustments
+  @media (max-width: 768px) {
+    &--padding-sm {
+      padding-left: var(--spacing-sm); // 8px on mobile
+      padding-right: var(--spacing-sm);
+    }
+
+    &--padding-md {
+      padding-left: var(--spacing-md); // 12px on mobile
+      padding-right: var(--spacing-md);
+    }
+
+    &--padding-lg {
+      padding-left: var(--spacing-lg); // 16px on mobile
+      padding-right: var(--spacing-lg);
+    }
+  }
+}
