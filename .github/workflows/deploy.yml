@@ -54,6 +54,10 @@ jobs:
           test -d dist/documentation || { echo "ERROR: dist/documentation not found"; exit 1; }
           mv dist/storybook dist/angular-enterprise-blueprint/browser/storybook
           mv dist/documentation dist/angular-enterprise-blueprint/browser/docs
+          # Create 404.html for SPA routing (copy of index.html)
+          cp dist/angular-enterprise-blueprint/browser/index.html dist/angular-enterprise-blueprint/browser/404.html
+          # Ensure .nojekyll exists (should be copied from public/ but add as backup)
+          touch dist/angular-enterprise-blueprint/browser/.nojekyll
           echo "Final structure:"
           ls -la dist/angular-enterprise-blueprint/browser/
           echo "Artifacts merged successfully"
