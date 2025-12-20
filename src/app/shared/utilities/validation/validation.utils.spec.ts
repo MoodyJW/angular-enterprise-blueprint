@@ -5,6 +5,35 @@ import { describe, expect, it } from 'vitest';
 import * as ValidationUtils from './validation.utils';
 
 describe('Validation Utils', () => {
+  describe('helper type guards', () => {
+    it('isEmptyValue should detect null/undefined/empty', () => {
+      expect(ValidationUtils.isEmptyValue(null)).toBe(true);
+      expect(ValidationUtils.isEmptyValue(undefined)).toBe(true);
+      expect(ValidationUtils.isEmptyValue('')).toBe(true);
+      expect(ValidationUtils.isEmptyValue(0)).toBe(false);
+      expect(ValidationUtils.isEmptyValue(false)).toBe(false);
+    });
+
+    it('isString should narrow strings', () => {
+      expect(ValidationUtils.isString('hello')).toBe(true);
+      expect(ValidationUtils.isString(123)).toBe(false);
+      expect(ValidationUtils.isString(null)).toBe(false);
+    });
+
+    it('isNumber should detect numbers (not NaN)', () => {
+      expect(ValidationUtils.isNumber(0)).toBe(true);
+      expect(ValidationUtils.isNumber(3.14)).toBe(true);
+      expect(ValidationUtils.isNumber(NaN)).toBe(false);
+      expect(ValidationUtils.isNumber('123' as unknown as number)).toBe(false);
+    });
+
+    it('toStringIfStringOrNumber should convert values', () => {
+      expect(ValidationUtils.toStringIfStringOrNumber('abc')).toBe('abc');
+      expect(ValidationUtils.toStringIfStringOrNumber(123)).toBe('123');
+      expect(ValidationUtils.toStringIfStringOrNumber(null)).toBeNull();
+      expect(ValidationUtils.toStringIfStringOrNumber(undefined)).toBeNull();
+    });
+  });
   describe('isValidEmail', () => {
     it('should validate correct email addresses', () => {
       expect(ValidationUtils.isValidEmail('user@example.com')).toBe(true);

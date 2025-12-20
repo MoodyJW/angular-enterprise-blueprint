@@ -7,19 +7,19 @@
 import type { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 // Helper type guards for validators
-function isEmptyValue(value: unknown): boolean {
+export function isEmptyValue(value: unknown): boolean {
   return value === null || value === undefined || value === '';
 }
 
-function isString(value: unknown): value is string {
+export function isString(value: unknown): value is string {
   return typeof value === 'string';
 }
 
-function isNumber(value: unknown): value is number {
+export function isNumber(value: unknown): value is number {
   return typeof value === 'number' && !Number.isNaN(value);
 }
 
-function toStringIfStringOrNumber(value: unknown): string | null {
+export function toStringIfStringOrNumber(value: unknown): string | null {
   if (isString(value)) return value;
   if (isNumber(value)) return String(value);
   return null;
