@@ -1,0 +1,205 @@
+.checkbox-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  position: relative;
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.checkbox-input-wrapper {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.checkbox {
+  appearance: none;
+  position: relative;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-background);
+  cursor: pointer;
+  transition: all var(--transition-duration) var(--transition-timing);
+  flex-shrink: 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  &:not(:disabled):not(.checkbox--disabled):hover {
+    border-color: var(--color-primary);
+  }
+
+  &:disabled,
+  &--disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  // Size variants
+  &--sm {
+    width: 16px;
+    height: 16px;
+  }
+
+  &--md {
+    width: 20px;
+    height: 20px;
+  }
+
+  &--lg {
+    width: 24px;
+    height: 24px;
+  }
+
+  // Validation states
+  &--success {
+    border-color: var(--color-success);
+
+    &:focus-visible {
+      outline-color: var(--color-success);
+    }
+  }
+
+  &--warning {
+    border-color: var(--color-warning);
+
+    &:focus-visible {
+      outline-color: var(--color-warning);
+    }
+  }
+
+  &--error {
+    border-color: var(--color-error);
+
+    &:focus-visible {
+      outline-color: var(--color-error);
+    }
+  }
+
+  // Checked state
+  &--checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+
+    &.checkbox--success {
+      background-color: var(--color-success);
+      border-color: var(--color-success);
+    }
+
+    &.checkbox--warning {
+      background-color: var(--color-warning);
+      border-color: var(--color-warning);
+    }
+
+    &.checkbox--error {
+      background-color: var(--color-error);
+      border-color: var(--color-error);
+    }
+  }
+
+  // Indeterminate state
+  &--indeterminate {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+
+    &.checkbox--success {
+      background-color: var(--color-success);
+      border-color: var(--color-success);
+    }
+
+    &.checkbox--warning {
+      background-color: var(--color-warning);
+      border-color: var(--color-warning);
+    }
+
+    &.checkbox--error {
+      background-color: var(--color-error);
+      border-color: var(--color-error);
+    }
+  }
+
+  // Touch target for mobile
+  @media (pointer: coarse) {
+    min-width: 44px;
+    min-height: 44px;
+
+    &--sm {
+      min-width: 40px;
+      min-height: 40px;
+    }
+
+    &--lg {
+      min-width: 48px;
+      min-height: 48px;
+    }
+  }
+}
+
+// Label customization for checkbox context
+.checkbox-label {
+  padding-left: calc(20px + var(--spacing-sm));
+
+  .checkbox-wrapper--sm & {
+    padding-left: calc(16px + var(--spacing-sm));
+  }
+
+  .checkbox-wrapper--lg & {
+    padding-left: calc(24px + var(--spacing-sm));
+  }
+
+  @media (pointer: coarse) {
+    padding-left: calc(44px + var(--spacing-sm));
+
+    .checkbox-wrapper--sm & {
+      padding-left: calc(40px + var(--spacing-sm));
+    }
+
+    .checkbox-wrapper--lg & {
+      padding-left: calc(48px + var(--spacing-sm));
+    }
+  }
+}
+
+// Helper text customization for checkbox context
+.checkbox-helper-text,
+.input-helper-text {
+  padding-left: calc(20px + var(--spacing-sm));
+
+  .checkbox-wrapper--sm & {
+    padding-left: calc(16px + var(--spacing-sm));
+  }
+
+  .checkbox-wrapper--lg & {
+    padding-left: calc(24px + var(--spacing-sm));
+  }
+
+  @media (pointer: coarse) {
+    padding-left: calc(44px + var(--spacing-sm));
+
+    .checkbox-wrapper--sm & {
+      padding-left: calc(40px + var(--spacing-sm));
+    }
+
+    .checkbox-wrapper--lg & {
+      padding-left: calc(48px + var(--spacing-sm));
+    }
+  }
+}

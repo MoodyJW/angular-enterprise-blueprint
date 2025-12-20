@@ -1,0 +1,22 @@
+<div [class]="wrapperClasses()">
+  @if (label()) {
+    <eb-input-label
+      [forId]="fieldId()"
+      [label]="label()"
+      [required]="required()"
+      [labelClass]="'form-field-label'"
+    />
+  }
+
+  <div class="form-field__content">
+    <ng-content />
+  </div>
+
+  @if (showFooter()) {
+    <eb-input-footer
+      [helperText]="footerText()"
+      [helperTextId]="helperId()"
+      [helperTextClasses]="footerClasses()"
+    />
+  }
+</div>

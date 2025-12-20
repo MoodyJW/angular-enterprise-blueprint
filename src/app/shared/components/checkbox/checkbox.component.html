@@ -1,0 +1,37 @@
+<div [class]="wrapperClasses()">
+  <div class="checkbox-input-wrapper">
+    <input
+      #checkboxElement
+      type="checkbox"
+      [id]="checkboxId()"
+      [class]="checkboxClasses()"
+      [checked]="checked()"
+      [indeterminate]="indeterminate()"
+      [disabled]="disabled()"
+      [required]="required()"
+      [value]="value()"
+      [name]="name()"
+      [attr.aria-label]="ariaLabel()"
+      [attr.aria-describedby]="computedAriaDescribedBy()"
+      [attr.aria-invalid]="computedAriaInvalid()"
+      [attr.aria-labelledby]="labelId()"
+      (change)="handleChange($event)"
+      (focus)="handleFocus($event)"
+      (blur)="handleBlur($event)"
+    />
+    <eb-checkbox-checkmark [checked]="checked()" [indeterminate]="indeterminate()" />
+  </div>
+
+  <eb-input-label
+    [forId]="checkboxId()"
+    [label]="label()"
+    [required]="required()"
+    [labelClass]="labelClasses()"
+  />
+
+  <eb-input-footer
+    [helperText]="helperText()"
+    [helperTextId]="helperTextId()"
+    [helperTextClasses]="helperTextClasses()"
+  />
+</div>

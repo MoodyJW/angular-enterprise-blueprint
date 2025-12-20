@@ -1,0 +1,66 @@
+<div [class]="wrapperClasses()">
+  @if (label()) {
+    <label
+      [id]="labelId()"
+      [for]="'input-' + labelId()"
+      class="input-label"
+      [class.input-label--required]="required()"
+      [class.input-label--disabled]="disabled()"
+    >
+      {{ label() }}
+      @if (required()) {
+        <span class="input-label__required" aria-label="required" role="alert">*</span>
+      }
+    </label>
+  }
+
+  <div class="input-container">
+    @if (prefix()) {
+      <span class="input-prefix" aria-hidden="true">
+        {{ prefix() }}
+      </span>
+    }
+
+    <input
+      #inputElement
+      [id]="label() ? 'input-' + labelId() : undefined"
+      [type]="type()"
+      [class]="inputClasses()"
+      [value]="internalValue()"
+      [placeholder]="placeholder()"
+      [disabled]="disabled()"
+      [readonly]="readonly()"
+      [required]="required()"
+      [attr.maxlength]="maxLength()"
+      [attr.minlength]="minLength()"
+      [attr.pattern]="pattern()"
+      [attr.autocomplete]="autocomplete()"
+      [attr.aria-label]="ariaLabel()"
+      [attr.aria-labelledby]="labelId()"
+      [attr.aria-describedby]="computedAriaDescribedBy()"
+      [attr.aria-invalid]="computedAriaInvalid()"
+      [attr.aria-required]="required() ? 'true' : undefined"
+      (input)="handleInput($event)"
+      (focus)="handleFocus($event)"
+      (blur)="handleBlur($event)"
+      (keydown)="handleKeydown($event)"
+    />
+
+    @if (suffix()) {
+      <span class="input-suffix" aria-hidden="true">
+        {{ suffix() }}
+      </span>
+    }
+  </div>
+
+  @if (showFooter()) {
+    <eb-input-footer
+      [helperText]="helperText()"
+      [helperTextId]="helperTextId()"
+      [helperTextClasses]="helperTextClasses()"
+      [showCharCount]="showCharCount()"
+      [maxLength]="maxLength()"
+      [charCountText]="charCountText()"
+    />
+  }
+</div>

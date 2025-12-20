@@ -1,0 +1,13 @@
+<div class="input-footer">
+  @if (helperText()) {
+    <span [id]="helperTextId()" [class]="helperTextClasses()">
+      {{ helperText() }}
+    </span>
+  }
+
+  @if (shouldShowCharCount()) {
+    <span class="input-char-count" aria-live="polite" aria-atomic="true">
+      {{ charCountText() }}
+    </span>
+  }
+</div>

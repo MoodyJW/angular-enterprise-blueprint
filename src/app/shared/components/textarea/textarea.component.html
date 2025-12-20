@@ -1,0 +1,52 @@
+<div [class]="wrapperClasses()">
+  <!-- Label -->
+  @if (label()) {
+    <label
+      [id]="labelId()"
+      [class.textarea-label--disabled]="disabled()"
+      class="textarea-label"
+      [for]="'textarea-' + labelId()"
+    >
+      {{ label() }}
+      @if (required()) {
+        <span class="textarea-label__required" aria-label="required">*</span>
+      }
+    </label>
+  }
+
+  <!-- Textarea Container -->
+  <div class="textarea-container">
+    <textarea
+      #textareaElement
+      [class]="textareaClasses()"
+      [value]="internalValue()"
+      [placeholder]="placeholder()"
+      [disabled]="disabled()"
+      [readonly]="readonly()"
+      [required]="required()"
+      [rows]="rows()"
+      [attr.maxlength]="maxLength()"
+      [attr.minlength]="minLength()"
+      [attr.aria-label]="ariaLabel()"
+      [attr.aria-labelledby]="labelId()"
+      [attr.aria-describedby]="computedAriaDescribedBy()"
+      [attr.aria-invalid]="computedAriaInvalid()"
+      [attr.aria-required]="required() ? 'true' : undefined"
+      (input)="handleInput($event)"
+      (focus)="handleFocus($event)"
+      (blur)="handleBlur($event)"
+    ></textarea>
+  </div>
+
+  <!-- Footer (Helper Text and Character Count) -->
+  @if (showFooter()) {
+    <eb-input-footer
+      [helperText]="helperText()"
+      [helperTextId]="helperTextId()"
+      [helperTextClasses]="helperTextClasses()"
+      [showCharCount]="shouldShowCharCount()"
+      [maxLength]="maxLength()"
+      [charCountText]="charCountText()"
+    />
+  }
+</div>

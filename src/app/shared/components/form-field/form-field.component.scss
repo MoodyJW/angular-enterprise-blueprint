@@ -1,0 +1,104 @@
+@use 'sass:map';
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs, 0.5rem);
+  width: 100%;
+
+  &__content {
+    display: block;
+    width: 100%;
+  }
+
+  // Validation state modifiers
+  &--success {
+    .form-field-label {
+      color: var(--color-success, #10b981);
+    }
+  }
+
+  &--warning {
+    .form-field-label {
+      color: var(--color-warning, #f59e0b);
+    }
+  }
+
+  &--error {
+    .form-field-label {
+      color: var(--color-error, #dc2626);
+    }
+  }
+}
+
+// Label styling (applied via InputLabelComponent)
+.form-field-label {
+  display: block;
+  margin-bottom: var(--spacing-xs, 0.5rem);
+  font-size: var(--font-size-sm, 0.875rem);
+  font-weight: var(--font-weight-medium, 500);
+  color: var(--text-primary, #1a1a1a);
+  line-height: 1.5;
+
+  &__required {
+    color: var(--color-error, #dc2626);
+    margin-left: var(--spacing-2xs, 0.25rem);
+    font-weight: var(--font-weight-semibold, 600);
+  }
+}
+
+// Helper text styling (shared with InputFooterComponent)
+.form-field-helper-text {
+  font-size: var(--font-size-sm, 0.875rem);
+  line-height: 1.4;
+  color: var(--text-secondary, #6b7280);
+  margin-top: var(--spacing-xs, 0.5rem);
+  transition: color 0.2s ease;
+
+  // Respect reduced motion preference
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  &--success {
+    color: var(--color-success, #10b981);
+  }
+
+  &--warning {
+    color: var(--color-warning, #f59e0b);
+  }
+
+  &--error {
+    color: var(--color-error, #dc2626);
+  }
+}
+
+// Dark theme support
+@media (prefers-color-scheme: dark) {
+  .form-field-label {
+    color: var(--text-primary-dark, #f5f5f5);
+  }
+
+  .form-field-helper-text {
+    color: var(--text-secondary-dark, #9ca3af);
+  }
+}
+
+// Ensure nested form controls take full width
+.form-field__content {
+  // Target common form elements
+  input,
+  textarea,
+  select {
+    width: 100%;
+  }
+
+  // Target Angular form components
+  eb-input,
+  eb-textarea,
+  eb-select,
+  eb-checkbox,
+  eb-radio {
+    width: 100%;
+  }
+}

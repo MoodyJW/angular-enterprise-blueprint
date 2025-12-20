@@ -1,0 +1,230 @@
+.radio-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  position: relative;
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.radio-input-wrapper {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.radio {
+  appearance: none;
+  position: absolute;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  background-color: var(--color-background);
+  cursor: pointer;
+  transition: all var(--transition-duration) var(--transition-timing);
+  flex-shrink: 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  &:not(:disabled):not(.radio--disabled):hover {
+    border-color: var(--color-primary);
+  }
+
+  &:disabled,
+  &--disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  &--sm {
+    width: 16px;
+    height: 16px;
+  }
+
+  &--lg {
+    width: 24px;
+    height: 24px;
+  }
+
+  // Validation states
+  &--success {
+    border-color: var(--color-success);
+
+    &:focus-visible {
+      outline-color: var(--color-success);
+    }
+  }
+
+  &--warning {
+    border-color: var(--color-warning);
+
+    &:focus-visible {
+      outline-color: var(--color-warning);
+    }
+  }
+
+  &--error {
+    border-color: var(--color-error);
+
+    &:focus-visible {
+      outline-color: var(--color-error);
+    }
+  }
+
+  // Checked state
+  &--checked {
+    border-color: var(--color-primary);
+
+    &.radio--success {
+      border-color: var(--color-success);
+    }
+
+    &.radio--warning {
+      border-color: var(--color-warning);
+    }
+
+    &.radio--error {
+      border-color: var(--color-error);
+    }
+  }
+
+  // Touch target for mobile
+  @media (pointer: coarse) {
+    min-width: 44px;
+    min-height: 44px;
+
+    &--sm {
+      min-width: 40px;
+      min-height: 40px;
+    }
+
+    &--lg {
+      min-width: 48px;
+      min-height: 48px;
+    }
+  }
+}
+
+.radio-indicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  flex-shrink: 0;
+
+  .radio--sm ~ & {
+    width: 16px;
+    height: 16px;
+  }
+
+  .radio--lg ~ & {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media (pointer: coarse) {
+    width: 44px;
+    height: 44px;
+
+    .radio--sm ~ & {
+      width: 40px;
+      height: 40px;
+    }
+
+    .radio--lg ~ & {
+      width: 48px;
+      height: 48px;
+    }
+  }
+}
+
+.radio-indicator__dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  transform: scale(0);
+  transition: transform var(--transition-duration) var(--transition-timing);
+
+  .radio--checked ~ .radio-indicator & {
+    transform: scale(1);
+  }
+
+  .radio--sm ~ .radio-indicator & {
+    width: 8px;
+    height: 8px;
+  }
+
+  .radio--lg ~ .radio-indicator & {
+    width: 12px;
+    height: 12px;
+  }
+
+  .radio--success ~ .radio-indicator & {
+    background-color: var(--color-success);
+  }
+
+  .radio--warning ~ .radio-indicator & {
+    background-color: var(--color-warning);
+  }
+
+  .radio--error ~ .radio-indicator & {
+    background-color: var(--color-error);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    transform: scale(1);
+
+    .radio:not(.radio--checked) ~ .radio-indicator & {
+      display: none;
+    }
+  }
+}
+
+.radio-label,
+.input-helper-text {
+  padding-left: calc(20px + var(--spacing-sm));
+
+  .radio-wrapper--sm & {
+    padding-left: calc(16px + var(--spacing-sm));
+  }
+
+  .radio-wrapper--lg & {
+    padding-left: calc(24px + var(--spacing-sm));
+  }
+
+  @media (pointer: coarse) {
+    padding-left: calc(44px + var(--spacing-sm));
+
+    .radio-wrapper--sm & {
+      padding-left: calc(40px + var(--spacing-sm));
+    }
+
+    .radio-wrapper--lg & {
+      padding-left: calc(48px + var(--spacing-sm));
+    }
+  }
+}

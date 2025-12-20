@@ -1,0 +1,40 @@
+<div [class]="wrapperClasses()">
+  <div class="radio-input-wrapper">
+    <input
+      #radioElement
+      type="radio"
+      [id]="radioId()"
+      [class]="radioClasses()"
+      [checked]="checked()"
+      [disabled]="disabled()"
+      [required]="required()"
+      [value]="value()"
+      [name]="name()"
+      [attr.aria-label]="ariaLabel()"
+      [attr.aria-describedby]="computedAriaDescribedBy()"
+      [attr.aria-invalid]="computedAriaInvalid()"
+      [attr.aria-labelledby]="labelId()"
+      (change)="handleChange($event)"
+      (focus)="handleFocus($event)"
+      (blur)="handleBlur($event)"
+    />
+    <span class="radio-indicator" aria-hidden="true">
+      @if (checked()) {
+        <span class="radio-indicator__dot"></span>
+      }
+    </span>
+  </div>
+
+  <eb-input-label
+    [forId]="radioId()"
+    [label]="label()"
+    [required]="required()"
+    [labelClass]="labelClasses()"
+  />
+
+  <eb-input-footer
+    [helperText]="helperText()"
+    [helperTextId]="helperTextId()"
+    [helperTextClasses]="helperTextClasses()"
+  />
+</div>

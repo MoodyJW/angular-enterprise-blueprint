@@ -1,0 +1,273 @@
+// Input component styles using BEM methodology
+// Integrates with existing theme system via CSS variables
+
+.input-wrapper {
+  // Base wrapper styles
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  width: auto;
+
+  // Full width modifier
+  &--full-width {
+    width: 100%;
+
+    .input-container {
+      width: 100%;
+    }
+
+    .input {
+      width: 100%;
+    }
+  }
+
+  // Size modifiers
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-base);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+}
+
+.input-label {
+  // Label styles
+  display: block;
+  font-family: var(--font-family-base);
+  font-size: inherit;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+
+  // Required indicator
+  &__required {
+    color: var(--color-error);
+    margin-left: var(--spacing-xs);
+    font-weight: var(--font-weight-bold);
+  }
+
+  // Disabled state
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.input-container {
+  // Container for input and prefix/suffix
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input {
+  // Base input styles
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-base);
+  font-size: inherit;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  transition-property: border-color, box-shadow, background-color;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing);
+
+  // Remove default browser styles
+  appearance: none;
+  outline: none;
+
+  // Placeholder styling
+  &::placeholder {
+    color: var(--color-text-tertiary);
+    opacity: 1;
+  }
+
+  // Size modifiers
+  &--sm {
+    min-height: 32px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+
+    // WCAG 2.1 AAA touch target
+    @media (pointer: coarse) {
+      min-height: 36px;
+    }
+  }
+
+  &--md {
+    min-height: 40px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-base);
+
+    // WCAG 2.1 AAA touch target
+    @media (pointer: coarse) {
+      min-height: 44px;
+    }
+  }
+
+  &--lg {
+    min-height: 48px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-lg);
+
+    // WCAG 2.1 AAA touch target
+    @media (pointer: coarse) {
+      min-height: 52px;
+    }
+  }
+
+  // Variant modifiers
+  &--default {
+    border-color: var(--color-border);
+    background-color: var(--color-bg-primary);
+  }
+
+  &--filled {
+    border-color: transparent;
+    background-color: var(--color-bg-secondary);
+  }
+
+  &--outlined {
+    border-width: 2px;
+    border-color: var(--color-border-strong);
+    background-color: transparent;
+  }
+
+  // Focus state
+  &:focus,
+  &--focused {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+  }
+
+  // Keyboard focus (not mouse clicks)
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  // Hover state
+  &:hover:not(:disabled):not(.input--disabled):not(.input--readonly) {
+    border-color: var(--color-primary-light);
+  }
+
+  // Validation states
+  &--success {
+    border-color: var(--color-success);
+
+    &:focus,
+    &.input--focused {
+      border-color: var(--color-success);
+      box-shadow: 0 0 0 3px rgba(var(--color-success-rgb), 0.1);
+    }
+  }
+
+  &--warning {
+    border-color: var(--color-warning);
+
+    &:focus,
+    &.input--focused {
+      border-color: var(--color-warning);
+      box-shadow: 0 0 0 3px rgba(var(--color-warning-rgb), 0.1);
+    }
+  }
+
+  &--error {
+    border-color: var(--color-error);
+
+    &:focus,
+    &.input--focused {
+      border-color: var(--color-error);
+      box-shadow: 0 0 0 3px rgba(var(--color-error-rgb), 0.1);
+    }
+  }
+
+  // Disabled state
+  &:disabled,
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--color-bg-disabled);
+    color: var(--color-text-disabled);
+  }
+
+  // Readonly state
+  &--readonly {
+    background-color: var(--color-bg-secondary);
+    cursor: default;
+  }
+
+  // Prefix/suffix spacing
+  &--has-prefix {
+    padding-left: calc(var(--spacing-xl) * 2);
+  }
+
+  &--has-suffix {
+    padding-right: calc(var(--spacing-xl) * 2);
+  }
+
+  // Respect reduced motion preference
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.input-prefix,
+.input-suffix {
+  // Prefix and suffix styles
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: var(--color-text-tertiary);
+  font-size: inherit;
+  pointer-events: none;
+  user-select: none;
+}
+
+.input-prefix {
+  left: var(--spacing-md);
+}
+
+.input-suffix {
+  right: var(--spacing-md);
+}
+
+// Number input specific styles
+input[type='number'].input {
+  // Remove spinner buttons in WebKit browsers
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  // Remove spinner buttons in Firefox
+  appearance: textfield;
+}
+
+// Search input specific styles
+input[type='search'].input {
+  // Remove default search cancel button in WebKit
+  &::-webkit-search-cancel-button {
+    appearance: none;
+  }
+}
+
+// Password input specific styles
+input[type='password'].input {
+  font-family: var(--font-family-mono), monospace;
+  letter-spacing: 0.1em;
+}

@@ -1,0 +1,241 @@
+// Textarea component styles using BEM methodology
+// Integrates with existing theme system via CSS variables
+
+.textarea-wrapper {
+  // Base wrapper styles
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  width: auto;
+
+  // Full width modifier
+  &--full-width {
+    width: 100%;
+
+    .textarea-container {
+      width: 100%;
+    }
+
+    .textarea {
+      width: 100%;
+    }
+  }
+
+  // Size modifiers
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-base);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+}
+
+.textarea-label {
+  // Label styles
+  display: block;
+  font-family: var(--font-family-base);
+  font-size: inherit;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+
+  // Required indicator
+  &__required {
+    color: var(--color-error);
+    margin-left: var(--spacing-xs);
+    font-weight: var(--font-weight-bold);
+  }
+
+  // Disabled state
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.textarea-container {
+  // Container for textarea
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.textarea {
+  // Base textarea styles
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-base);
+  font-size: inherit;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  transition-property: border-color, box-shadow, background-color;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing);
+
+  // Remove default browser styles
+  appearance: none;
+  outline: none;
+
+  // Placeholder styling
+  &::placeholder {
+    color: var(--color-text-tertiary);
+    opacity: 1;
+  }
+
+  // Size modifiers
+  &--sm {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-base);
+  }
+
+  &--lg {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-lg);
+  }
+
+  // Variant modifiers
+  &--default {
+    border-color: var(--color-border);
+    background-color: var(--color-bg-primary);
+  }
+
+  &--filled {
+    border-color: transparent;
+    background-color: var(--color-bg-secondary);
+  }
+
+  &--outlined {
+    border-width: 2px;
+    border-color: var(--color-border-strong);
+    background-color: transparent;
+  }
+
+  // Resize modifiers
+  &--resize-none {
+    resize: none;
+  }
+
+  &--resize-vertical {
+    resize: vertical;
+  }
+
+  &--resize-horizontal {
+    resize: horizontal;
+  }
+
+  &--resize-both {
+    resize: both;
+  }
+
+  // Auto-resize modifier (disable manual resize)
+  &--auto-resize {
+    resize: none;
+    overflow: hidden;
+    min-height: auto;
+  }
+
+  // Focus state
+  &:focus,
+  &--focused {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+  }
+
+  // Keyboard focus (not mouse clicks)
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  // Hover state
+  &:hover:not(:disabled):not(.textarea--disabled):not(.textarea--readonly) {
+    border-color: var(--color-primary-light);
+  }
+
+  // Validation states
+  &--success {
+    border-color: var(--color-success);
+
+    &:focus,
+    &.textarea--focused {
+      border-color: var(--color-success);
+      box-shadow: 0 0 0 3px rgba(var(--color-success-rgb), 0.1);
+    }
+  }
+
+  &--warning {
+    border-color: var(--color-warning);
+
+    &:focus,
+    &.textarea--focused {
+      border-color: var(--color-warning);
+      box-shadow: 0 0 0 3px rgba(var(--color-warning-rgb), 0.1);
+    }
+  }
+
+  &--error {
+    border-color: var(--color-error);
+
+    &:focus,
+    &.textarea--focused {
+      border-color: var(--color-error);
+      box-shadow: 0 0 0 3px rgba(var(--color-error-rgb), 0.1);
+    }
+  }
+
+  // Disabled state
+  &:disabled,
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--color-bg-disabled);
+    color: var(--color-text-disabled);
+  }
+
+  // Readonly state
+  &--readonly {
+    background-color: var(--color-bg-secondary);
+    cursor: default;
+  }
+
+  // Respect reduced motion preference
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+// Helper text styles (reusing input pattern)
+.textarea-helper-text {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-xs);
+
+  &--success {
+    color: var(--color-success);
+  }
+
+  &--warning {
+    color: var(--color-warning);
+  }
+
+  &--error {
+    color: var(--color-error);
+  }
+}

@@ -1,0 +1,11 @@
+.input-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.input-char-count {
+  font-size: 0.875rem;
+  color: var(--color-text-tertiary);
+}
