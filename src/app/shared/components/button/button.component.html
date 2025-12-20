@@ -1,0 +1,20 @@
+<button
+  [type]="type()"
+  [class]="buttonClasses()"
+  [disabled]="disabled() || loading()"
+  [attr.aria-label]="ariaLabel()"
+  [attr.aria-describedby]="ariaDescribedBy()"
+  [attr.aria-pressed]="ariaPressed()"
+  [attr.aria-busy]="ariaBusyValue()"
+  [attr.aria-disabled]="disabled() ? 'true' : undefined"
+  (click)="handleClick($event)"
+>
+  <eb-button-content
+    [loading]="loading()"
+    [iconLeft]="iconLeft()"
+    [iconRight]="iconRight()"
+    [iconOnly]="iconOnly()"
+  >
+    <ng-content />
+  </eb-button-content>
+</button>

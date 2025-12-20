@@ -1,0 +1,75 @@
+.btn--icon-only .btn__content {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.btn__content,
+.btn__icon,
+.btn__spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn__icon,
+.btn__spinner {
+  width: 20px;
+  height: 20px;
+}
+
+.btn--sm {
+  .btn__icon,
+  .btn__spinner {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.btn--lg {
+  .btn__icon,
+  .btn__spinner {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.btn__icon {
+  flex-shrink: 0;
+  line-height: 1;
+
+  &--left {
+    margin-right: -4px;
+  }
+
+  &--right {
+    margin-left: -4px;
+  }
+}
+
+.btn__spinner-icon {
+  width: 16px;
+  height: 16px;
+  border: 2px solid;
+  border-color: currentColor currentColor currentColor transparent;
+  border-radius: 50%;
+  animation: btn-spin 0.6s linear infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+
+    &::after {
+      content: '…';
+      position: absolute;
+    }
+  }
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

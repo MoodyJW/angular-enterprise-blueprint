@@ -1,0 +1,23 @@
+@if (loading()) {
+  <span class="btn__spinner" aria-hidden="true">
+    <span class="btn__spinner-icon"></span>
+  </span>
+}
+
+@if (iconLeft() && !loading()) {
+  <span class="btn__icon btn__icon--left" aria-hidden="true">
+    {{ iconLeft() }}
+  </span>
+}
+
+@if (!iconOnly()) {
+  <span class="btn__content">
+    <ng-content />
+  </span>
+}
+
+@if (iconRight() && !loading() && !iconOnly()) {
+  <span class="btn__icon btn__icon--right" aria-hidden="true">
+    {{ iconRight() }}
+  </span>
+}
