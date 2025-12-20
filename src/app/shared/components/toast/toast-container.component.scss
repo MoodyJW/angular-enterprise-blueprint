@@ -1,0 +1,86 @@
+// Toast container styles
+// Manages positioning of toast notifications
+
+.toast-container {
+  position: fixed;
+  z-index: var(--z-index-tooltip); // Above modals and other UI elements
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  pointer-events: none; // Allow clicks to pass through container
+
+  // Make toasts interactive
+  > * {
+    pointer-events: auto;
+  }
+
+  // TOP POSITIONS
+
+  // Top-left
+  &--top-left {
+    top: 0;
+    left: 0;
+    align-items: flex-start;
+  }
+
+  // Top-center
+  &--top-center {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+  }
+
+  // Top-right
+  &--top-right {
+    top: 0;
+    right: 0;
+    align-items: flex-end;
+  }
+
+  // BOTTOM POSITIONS
+
+  // Bottom-left
+  &--bottom-left {
+    bottom: 0;
+    left: 0;
+    align-items: flex-start;
+    flex-direction: column-reverse; // Stack from bottom up
+  }
+
+  // Bottom-center
+  &--bottom-center {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    flex-direction: column-reverse; // Stack from bottom up
+  }
+
+  // Bottom-right
+  &--bottom-right {
+    bottom: 0;
+    right: 0;
+    align-items: flex-end;
+    flex-direction: column-reverse; // Stack from bottom up
+  }
+
+  // RESPONSIVE ADJUSTMENTS
+
+  // Mobile adjustments
+  @media (max-width: 640px) {
+    // Reduce padding on mobile
+    padding: var(--spacing-md);
+
+    // Center positions take full width on mobile
+    &--top-center,
+    &--bottom-center {
+      left: 0;
+      right: 0;
+      transform: none;
+      padding-left: var(--spacing-md);
+      padding-right: var(--spacing-md);
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import type { Meta, StoryObj } from '@storybook/angular';
 import { argsToTemplate, componentWrapperDecorator, moduleMetadata } from '@storybook/angular';
-import { UniqueIdService } from '../../services/unique-id/unique-id.service';
+import { UniqueIdService } from '../../services/unique-id/unique-id/unique-id.service';
 
 import { InputFooterComponent } from '../input-footer';
 import { InputLabelComponent } from '../input-label';

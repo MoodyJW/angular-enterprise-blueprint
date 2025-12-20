@@ -1,0 +1,63 @@
+@if (open()) {
+  <!-- Backdrop -->
+  <div
+    [class]="backdropClasses()"
+    tabindex="0"
+    role="presentation"
+    (click)="handleBackdropClick($event)"
+    (keydown)="handleKeydown($event)"
+    (keyup)="handleKeydown($event)"
+  >
+    <!-- Modal Container -->
+    <div
+      #modalContainer
+      tabindex="-1"
+      [class]="modalClasses()"
+      [attr.aria-label]="ariaAttrs()['aria-label']"
+      [attr.aria-labelledby]="ariaAttrs()['aria-labelledby']"
+      [attr.aria-describedby]="ariaAttrs()['aria-describedby']"
+      [attr.aria-modal]="ariaAttrs()['aria-modal']"
+      [attr.role]="ariaAttrs().role"
+      cdkTrapFocus
+      [cdkTrapFocusAutoCapture]="open()"
+      (click)="$event.stopPropagation()"
+      (keydown)="$event.stopPropagation()"
+    >
+      <!-- Close Button -->
+      @if (showCloseButton()) {
+        <button type="button" class="modal__close" aria-label="Close dialog" (click)="close()">
+          <svg
+            class="modal__close-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      }
+
+      <!-- Header Slot -->
+      <div class="modal__header">
+        <ng-content select="[modal-header]" />
+      </div>
+
+      <!-- Body Slot -->
+      <div class="modal__body">
+        <ng-content select="[modal-body]" />
+      </div>
+
+      <!-- Footer Slot -->
+      <div class="modal__footer">
+        <ng-content select="[modal-footer]" />
+      </div>
+    </div>
+  </div>
+}

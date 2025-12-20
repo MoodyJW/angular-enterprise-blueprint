@@ -1,0 +1,226 @@
+// Breadcrumb component styles using BEM methodology
+// Integrates with existing theme system via CSS variables
+
+.breadcrumb {
+  // Base container
+  display: block;
+  width: 100%;
+
+  // ELEMENTS
+
+  // Ordered list container
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-xs);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  // Individual breadcrumb item
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+  }
+
+  // Clickable breadcrumb link
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-duration) var(--transition-timing);
+    cursor: pointer;
+
+    // Focus visible state for keyboard navigation
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+      border-radius: var(--border-radius-sm);
+    }
+
+    // Hover state
+    &:hover {
+      color: var(--color-primary-hover);
+      text-decoration: underline;
+    }
+
+    // Active state
+    &:active {
+      color: var(--color-primary-active);
+    }
+
+    // Visited state (same as normal to avoid confusion)
+    &:visited {
+      color: var(--color-primary);
+    }
+  }
+
+  // Current page (non-clickable)
+  &__current {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--color-text);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  // Breadcrumb label text
+  &__label {
+    line-height: 1.5;
+  }
+
+  // Icon within breadcrumb
+  &__icon {
+    flex-shrink: 0;
+  }
+
+  // Separator between items
+  &__separator {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-text-secondary);
+    user-select: none;
+    flex-shrink: 0;
+  }
+
+  // Ellipsis for collapsed items
+  &__ellipsis {
+    color: var(--color-text-secondary);
+    user-select: none;
+    padding: 0 var(--spacing-xs);
+  }
+
+  // SIZE MODIFIERS
+
+  &--sm {
+    .breadcrumb__label {
+      font-size: var(--font-size-sm);
+    }
+
+    .breadcrumb__separator {
+      font-size: var(--font-size-xs);
+    }
+
+    .breadcrumb__ellipsis {
+      font-size: var(--font-size-sm);
+    }
+  }
+
+  &--md {
+    .breadcrumb__label {
+      font-size: var(--font-size-base);
+    }
+
+    .breadcrumb__separator {
+      font-size: var(--font-size-sm);
+    }
+
+    .breadcrumb__ellipsis {
+      font-size: var(--font-size-base);
+    }
+  }
+
+  &--lg {
+    .breadcrumb__label {
+      font-size: var(--font-size-lg);
+    }
+
+    .breadcrumb__separator {
+      font-size: var(--font-size-base);
+    }
+
+    .breadcrumb__ellipsis {
+      font-size: var(--font-size-lg);
+    }
+  }
+
+  // VARIANT MODIFIERS
+
+  // Default variant (› separator)
+  &--default {
+    .breadcrumb__separator {
+      font-weight: var(--font-weight-light);
+    }
+  }
+
+  // Slash variant (/ separator)
+  &--slash {
+    .breadcrumb__separator {
+      font-weight: var(--font-weight-normal);
+    }
+  }
+
+  // Chevron variant (icon separator)
+  &--chevron {
+    .breadcrumb__separator {
+      opacity: 0.7;
+    }
+  }
+
+  // Arrow variant (icon separator)
+  &--arrow {
+    .breadcrumb__separator {
+      opacity: 0.7;
+    }
+  }
+
+  // RESPONSIVE BEHAVIOR
+
+  // On very small screens, reduce gaps
+  @media (max-width: 480px) {
+    &__list {
+      gap: var(--spacing-xs);
+    }
+
+    &__item {
+      gap: var(--spacing-xs);
+    }
+
+    &__link,
+    &__current {
+      gap: var(--spacing-xs);
+    }
+
+    // Slightly smaller text on mobile for sm size
+    &--sm {
+      .breadcrumb__label {
+        font-size: var(--font-size-xs);
+      }
+    }
+  }
+
+  // ACCESSIBILITY ENHANCEMENTS
+
+  // Ensure separators are not announced by screen readers
+  &__separator,
+  &__ellipsis {
+    pointer-events: none;
+  }
+
+  // High contrast mode support
+  @media (prefers-contrast: high) {
+    .breadcrumb__link {
+      text-decoration: underline;
+
+      &:focus-visible {
+        outline-width: 3px;
+      }
+    }
+
+    .breadcrumb__separator {
+      opacity: 1;
+    }
+  }
+
+  // Reduced motion support
+  @media (prefers-reduced-motion: reduce) {
+    .breadcrumb__link {
+      transition: none;
+    }
+  }
+}

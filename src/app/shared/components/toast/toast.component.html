@@ -1,0 +1,37 @@
+<div
+  [class]="toastClasses()"
+  [attr.role]="ariaRole()"
+  [attr.aria-live]="ariaLive()"
+  [attr.aria-atomic]="true"
+>
+  <!-- Icon -->
+  <div class="toast__icon" [attr.aria-label]="variantIconLabel()">
+    <eb-icon
+      [name]="variantIconName()"
+      size="md"
+      color="current"
+      [decorative]="false"
+      [ariaLabel]="variantIconLabel()"
+    />
+  </div>
+
+  <!-- Content -->
+  <div class="toast__content">
+    @if (title()) {
+      <div class="toast__title">{{ title() }}</div>
+    }
+    <div class="toast__message">{{ message() }}</div>
+  </div>
+
+  @if (dismissible()) {
+    <eb-button
+      variant="ghost"
+      size="sm"
+      [iconOnly]="true"
+      ariaLabel="Dismiss notification"
+      (clicked)="handleDismiss()"
+    >
+      ×
+    </eb-button>
+  }
+</div>

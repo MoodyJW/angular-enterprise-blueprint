@@ -1,0 +1,303 @@
+// Card component styles using BEM methodology
+// Integrates with existing theme system via CSS variables
+
+.card {
+  // Base card styles
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  transition-property: box-shadow, transform, background-color, border-color;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing);
+
+  // Remove default button styles when clickable
+  &--clickable {
+    cursor: pointer;
+    user-select: none;
+
+    // Remove button appearance
+    border: none;
+    font: inherit;
+    text-align: inherit;
+    padding: 0;
+    background: none;
+
+    &:focus {
+      outline: none;
+    }
+
+    // Keyboard focus (not mouse clicks)
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+  }
+
+  // Respect reduced motion preference
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+
+  // VARIANTS
+
+  // Default variant (subtle elevation)
+  &--default {
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    border: none;
+
+    &.card--hoverable:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    &.card--clickable:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+  }
+
+  // Elevated variant (prominent with stronger shadow)
+  &--elevated {
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-md);
+    border: none;
+
+    &.card--hoverable:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    &.card--clickable:active {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+
+  // Outlined variant (flat with border)
+  &--outlined {
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    box-shadow: none;
+
+    &.card--hoverable:hover {
+      background-color: var(--color-surface);
+      border-color: var(--color-border-hover);
+    }
+
+    &.card--clickable:active {
+      background-color: var(--color-surface-hover);
+    }
+  }
+
+  // Filled variant (colored background)
+  &--filled {
+    background-color: var(--color-surface-active);
+    border: none;
+    box-shadow: none;
+
+    &.card--hoverable:hover {
+      background-color: var(--color-surface-hover);
+    }
+
+    &.card--clickable:active {
+      filter: brightness(0.95);
+    }
+  }
+
+  // PADDING MODIFIERS
+
+  // No padding
+  &--padding-none {
+    .card__header,
+    .card__body,
+    .card__footer {
+      padding: 0;
+    }
+  }
+
+  // Small padding
+  &--padding-sm {
+    .card__header,
+    .card__body,
+    .card__footer {
+      padding: var(--spacing-md);
+    }
+  }
+
+  // Medium padding (default)
+  &--padding-md {
+    .card__header,
+    .card__footer {
+      padding: var(--spacing-lg);
+    }
+
+    .card__body {
+      padding: var(--spacing-xl);
+    }
+  }
+
+  // Large padding
+  &--padding-lg {
+    .card__header,
+    .card__footer {
+      padding: var(--spacing-xl);
+    }
+
+    .card__body {
+      padding: var(--spacing-2xl);
+    }
+  }
+
+  // STATE MODIFIERS
+
+  // Full width
+  &--full-width {
+    width: 100%;
+  }
+
+  // ELEMENTS
+
+  // Header section
+  &__header {
+    // Only show header if it has content
+    &:empty {
+      display: none;
+    }
+
+    // Add bottom border if followed by media or body
+    &:not(:empty) + .card__media:not(:empty),
+    &:not(:empty) + .card__body:not(:empty) {
+      border-top: 1px solid var(--color-border);
+    }
+  }
+
+  // Media section
+  &__media {
+    // Only show media if it has content
+    &:empty {
+      display: none;
+    }
+
+    // Remove padding from media section
+    padding: 0 !important;
+    overflow: hidden;
+
+    // Ensure media content fills width
+    > * {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  // Body section
+  &__body {
+    flex: 1;
+    min-height: 0; // Allow flex item to shrink below content size
+
+    // Only show body if it has content
+    &:empty {
+      display: none;
+    }
+  }
+
+  // Footer section
+  &__footer {
+    // Only show footer if it has content
+    &:empty {
+      display: none;
+    }
+
+    // Add top border if preceded by body
+    .card__body:not(:empty) + & {
+      border-top: 1px solid var(--color-border);
+    }
+  }
+}
+
+// HELPER CLASSES (for user content)
+
+// Media image helper
+.card__media-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+// Media aspect ratio helpers
+.card__media--aspect-16-9 {
+  aspect-ratio: 16 / 9;
+
+  .card__media-img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.card__media--aspect-4-3 {
+  aspect-ratio: 4 / 3;
+
+  .card__media-img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.card__media--aspect-1-1 {
+  aspect-ratio: 1 / 1;
+
+  .card__media-img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Footer actions helper
+.card__footer-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+  align-items: center;
+}
+
+// Header title helpers
+.card__header-title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.card__header-subtitle {
+  margin: var(--spacing-xs) 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+// Tags/badges in footer
+.card__tags {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+.card__tag {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--color-surface-hover);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--border-radius-sm);
+  line-height: 1;
+}

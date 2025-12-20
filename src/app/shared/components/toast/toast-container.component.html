@@ -1,0 +1,23 @@
+<!-- Toast container for each position -->
+@for (position of positions; track position) {
+  @if (getToastsForPosition(position).length > 0) {
+    <div
+      class="toast-container toast-container--{{ position }}"
+      [attr.aria-label]="'Notifications at ' + position"
+      role="region"
+    >
+      @for (toast of getToastsForPosition(position); track toast.id) {
+        <eb-toast
+          [variant]="toast.variant"
+          [message]="toast.message"
+          [title]="toast.title"
+          [duration]="toast.duration"
+          [dismissible]="toast.dismissible"
+          [position]="toast.position"
+          [isExiting]="toast.isExiting"
+          (dismissed)="handleDismiss(toast.id)"
+        />
+      }
+    </div>
+  }
+}

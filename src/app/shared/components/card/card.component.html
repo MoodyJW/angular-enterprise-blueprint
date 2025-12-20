@@ -1,0 +1,30 @@
+<article
+  [class]="cardClasses()"
+  [attr.role]="cardRole()"
+  [attr.aria-label]="ariaLabel()"
+  [attr.aria-labelledby]="ariaLabelledBy()"
+  [attr.aria-describedby]="ariaDescribedBy()"
+  [attr.tabindex]="tabIndexValue()"
+  (click)="handleClick($event)"
+  (keydown)="handleKeydown($event)"
+>
+  <!-- Header Slot -->
+  <header class="card__header">
+    <ng-content select="[card-header]" />
+  </header>
+
+  <!-- Media Slot -->
+  <div class="card__media">
+    <ng-content select="[card-media]" />
+  </div>
+
+  <!-- Body Slot -->
+  <section class="card__body">
+    <ng-content select="[card-body]" />
+  </section>
+
+  <!-- Footer Slot -->
+  <footer class="card__footer">
+    <ng-content select="[card-footer]" />
+  </footer>
+</article>

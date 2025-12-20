@@ -1,0 +1,214 @@
+// Toast component styles using BEM methodology
+// Integrates with existing theme system via CSS variables
+
+.toast {
+  // Base toast styles
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  min-width: 300px;
+  max-width: 500px;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+
+  // Animation
+  animation: toast-slide-in 0.3s var(--transition-timing);
+  transition:
+    opacity var(--transition-duration) var(--transition-timing),
+    transform var(--transition-duration) var(--transition-timing);
+
+  // Respect reduced motion preference
+  @media (prefers-reduced-motion: reduce) {
+    animation: toast-fade-in 0.2s ease-in;
+  }
+
+  // Exiting state
+  &--exiting {
+    opacity: 0;
+    transform: translateX(100%);
+
+    @media (prefers-reduced-motion: reduce) {
+      transform: none;
+    }
+  }
+
+  // Responsive sizing
+  @media (max-width: 640px) {
+    min-width: 280px;
+    max-width: calc(100vw - var(--spacing-2xl));
+  }
+
+  // VARIANTS
+
+  // Success variant
+  &--success {
+    border-color: var(--color-success);
+    background-color: var(--color-surface);
+
+    .toast__icon {
+      color: var(--color-success);
+      background-color: var(--color-success);
+      opacity: 0.15;
+    }
+  }
+
+  // Error variant
+  &--error {
+    border-color: var(--color-error);
+    background-color: var(--color-surface);
+
+    .toast__icon {
+      color: var(--color-error);
+      background-color: var(--color-error);
+      opacity: 0.15;
+    }
+  }
+
+  // Warning variant
+  &--warning {
+    border-color: var(--color-warning);
+    background-color: var(--color-surface);
+
+    .toast__icon {
+      color: var(--color-warning);
+      background-color: var(--color-warning);
+      opacity: 0.15;
+    }
+  }
+
+  // Info variant
+  &--info {
+    border-color: var(--color-info);
+    background-color: var(--color-surface);
+
+    .toast__icon {
+      color: var(--color-info);
+      background-color: var(--color-info);
+      opacity: 0.15;
+    }
+  }
+
+  // ELEMENTS
+
+  // Icon container
+  &__icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: var(--border-radius-full);
+    flex-shrink: 0;
+  }
+
+  // Icon symbol
+  // Removed textual icon symbol styles; using shared `eb-icon` now
+
+  // Content container
+  &__content {
+    flex: 1;
+    min-width: 0; // Allows text truncation
+    padding-top: var(--spacing-xs);
+  }
+
+  // Title
+  &__title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.5;
+  }
+
+  // Message
+  &__message {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+}
+
+// ANIMATIONS
+
+// Slide in animation (for regular motion)
+@keyframes toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Fade in animation (for reduced motion)
+@keyframes toast-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Position-specific slide animations for left positions
+.toast--top-left,
+.toast--bottom-left {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: toast-slide-in-left 0.3s var(--transition-timing);
+  }
+
+  &.toast--exiting {
+    transform: translateX(-100%);
+
+    @media (prefers-reduced-motion: reduce) {
+      transform: none;
+    }
+  }
+}
+
+@keyframes toast-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Position-specific slide animations for center positions
+.toast--top-center,
+.toast--bottom-center {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: toast-slide-in-center 0.3s var(--transition-timing);
+  }
+
+  &.toast--exiting {
+    transform: translateY(-100%);
+
+    @media (prefers-reduced-motion: reduce) {
+      transform: none;
+    }
+  }
+}
+
+@keyframes toast-slide-in-center {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

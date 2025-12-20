@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import type { AbstractControl } from '@angular/forms';
 
-import { UniqueIdService } from '../../services/unique-id/unique-id.service';
+import { UniqueIdService } from '../../services/unique-id/unique-id/unique-id.service';
 
 import { InputFooterComponent } from '../input-footer';
 import { InputLabelComponent } from '../input-label';

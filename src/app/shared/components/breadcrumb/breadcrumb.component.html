@@ -1,0 +1,61 @@
+<nav [class]="breadcrumbClasses()" aria-label="{{ ariaLabel() }}">
+  <ol class="breadcrumb__list">
+    @for (item of displayItems(); track trackByIndex($index); let i = $index; let isLast = $last) {
+      <li class="breadcrumb__item">
+        <ng-template #breadcrumbIcon let-it>
+          <eb-icon
+            [name]="it?.icon ?? 'heroHome'"
+            size="sm"
+            class="breadcrumb__icon"
+            [decorative]="true"
+            [hidden]="!(showIcons() && it?.icon)"
+          />
+        </ng-template>
+        <ng-template #separatorContent>
+          @if (separatorIcon()) {
+            <eb-icon [name]="separatorIcon()!" size="xs" [decorative]="true" />
+          } @else {
+            <span>{{ separatorText() }}</span>
+          }
+        </ng-template>
+        @if (isEllipsis(item)) {
+          <!-- Ellipsis for collapsed items -->
+          <span class="breadcrumb__ellipsis" aria-hidden="true"> ... </span>
+        } @else {
+          @if (item.route && !item.current) {
+            <!-- Clickable breadcrumb link -->
+            <a
+              [routerLink]="item.route"
+              [queryParams]="item.queryParams"
+              [fragment]="item.fragment"
+              class="breadcrumb__link"
+              (click)="onItemClick(item)"
+            >
+              <ng-container *ngTemplateOutlet="breadcrumbIcon; context: { $implicit: item }" />
+              <span class="breadcrumb__label">{{ item.label }}</span>
+            </a>
+          } @else {
+            <!-- Current page (non-clickable) -->
+            <span class="breadcrumb__current" aria-current="page">
+              <ng-container *ngTemplateOutlet="breadcrumbIcon; context: { $implicit: item }" />
+              <span class="breadcrumb__label">{{ item.label }}</span>
+            </span>
+          }
+
+          <!-- Separator (not shown after last item) -->
+          @if (!isLast) {
+            <span class="breadcrumb__separator" aria-hidden="true">
+              <eb-icon
+                [name]="separatorIcon() ?? 'heroChevronRight'"
+                size="xs"
+                [decorative]="true"
+                [hidden]="!separatorIcon()"
+              />
+              <span [hidden]="separatorIcon()">{{ separatorText() }}</span>
+            </span>
+          }
+        }
+      </li>
+    }
+  </ol>
+</nav>
