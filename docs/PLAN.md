@@ -145,15 +145,15 @@ _Goal: Build the invisible singletons that power the application._
     - [x] GlobalErrorHandler: 27 tests (error normalization, Error.cause, edge cases, zone handling).
     - [x] httpErrorInterceptor: 44 tests (all status codes, message extraction, HTTP methods, success passthrough).
     - [x] ErrorNotificationService: 6 tests.
-- [ ] **2.4 Authentication Strategy (Mockend)**:
-  - [ ] Define `AuthStrategy` interface (Login/Logout/Session).
-  - [ ] Implement `MockAuthStrategy`:
-    - [ ] Use `localStorage` for persistence.
-    - [ ] Use `delay(800)` to simulate latency.
-    - [ ] Use `throwError` randomly (10%) to simulate 500s.
-  - [ ] Create `AuthStore` (NgRx SignalStore) to manage `User` state.
-  - [ ] Create `authGuard` (Functional) and `AuthInterceptor`.
-- [ ] **2.5 Blog Article**: Write about designing core architecture in Angular.
+- [x] **2.4 Authentication Strategy (Mockend)**:
+  - [x] Define `AuthStrategy` interface (Login/Logout/Session).
+  - [x] Implement `MockAuthStrategy`:
+    - [x] Use `localStorage` for persistence.
+    - [x] Use `delay(800)` to simulate latency.
+    - [x] Use `throwError` randomly (10%) to simulate 500s.
+  - [x] Create `AuthStore` (NgRx SignalStore) to manage `User` state.
+  - [x] Create `authGuard` (Functional) and `AuthInterceptor`.
+- [x] **2.5 Blog Article**: Write about designing core architecture in Angular.
 
 ### 🎨 Phase 3: The Design System (Shared Library)
 
