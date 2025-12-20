@@ -20,7 +20,7 @@ import { AuthStore } from '../auth.store';
  * }
  * ```
  */
-export const guestGuard: CanActivateFn = () => {
+export const guestGuard: CanActivateFn = (_route, _state) => {
   const authStore = inject(AuthStore);
   const router = inject(Router);
 

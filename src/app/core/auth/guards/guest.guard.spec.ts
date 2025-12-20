@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { provideRouter, UrlTree } from '@angular/router';
+import {
+  type ActivatedRouteSnapshot,
+  provideRouter,
+  type RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { of } from 'rxjs';
@@ -11,6 +16,9 @@ import { AUTH_STRATEGY, type AuthStrategy } from '../auth-strategy.interface';
 import { AuthStore } from '../auth.store';
 import type { User } from '../auth.types';
 import { guestGuard } from './guest.guard';
+
+const mockRoute = {} as ActivatedRouteSnapshot;
+const mockState = {} as RouterStateSnapshot;
 
 @Component({ template: '' })
 class DummyComponent {}
@@ -58,7 +66,7 @@ describe('guestGuard', () => {
   });
 
   it('should return true when user is not authenticated', () => {
-    const result = TestBed.runInInjectionContext(() => guestGuard({} as never, {} as never));
+    const result = TestBed.runInInjectionContext(() => guestGuard(mockRoute, mockState));
 
     expect(result).toBe(true);
   });
@@ -66,14 +74,14 @@ describe('guestGuard', () => {
   it('should redirect to home when user is authenticated', () => {
     authStore.setUser(mockUser);
 
-    const result = TestBed.runInInjectionContext(() => guestGuard({} as never, {} as never));
+    const result = TestBed.runInInjectionContext(() => guestGuard(mockRoute, mockState));
 
     expect(result).toBeInstanceOf(UrlTree);
     expect((result as UrlTree).toString()).toBe('/');
   });
 
   it('should allow access to login page for guests', () => {
-    const result = TestBed.runInInjectionContext(() => guestGuard({} as never, {} as never));
+    const result = TestBed.runInInjectionContext(() => guestGuard(mockRoute, mockState));
 
     expect(result).toBe(true);
   });

@@ -19,7 +19,7 @@ import { AuthStore } from '../auth.store';
  * }
  * ```
  */
-export const authGuard: CanActivateFn = () => {
+export const authGuard: CanActivateFn = (_route, _state) => {
   const authStore = inject(AuthStore);
   const router = inject(Router);
 
@@ -47,7 +47,7 @@ export const authGuard: CanActivateFn = () => {
  * }
  * ```
  */
-export const adminGuard: CanActivateFn = () => {
+export const adminGuard: CanActivateFn = (_route, _state) => {
   const authStore = inject(AuthStore);
   const router = inject(Router);
 

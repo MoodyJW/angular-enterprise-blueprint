@@ -35,9 +35,9 @@ jobs:
       - name: Build Application
         run: npm run build -- --base-href /angular-enterprise-blueprint/
 
-      # 2. Build Storybook
+      # 2. Build Storybook (output dir configured in angular.json)
       - name: Build Storybook
-        run: npm run build-storybook -- -o dist/storybook
+        run: npm run build-storybook
 
       # 3. Build Compodoc
       - name: Build Compodoc

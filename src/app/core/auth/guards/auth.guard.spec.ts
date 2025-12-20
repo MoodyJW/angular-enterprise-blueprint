@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { provideRouter, UrlTree } from '@angular/router';
+import {
+  type ActivatedRouteSnapshot,
+  provideRouter,
+  type RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { of } from 'rxjs';
@@ -11,6 +16,9 @@ import { AUTH_STRATEGY, type AuthStrategy } from '../auth-strategy.interface';
 import { AuthStore } from '../auth.store';
 import type { User } from '../auth.types';
 import { adminGuard, authGuard } from './auth.guard';
+
+const mockRoute = {} as ActivatedRouteSnapshot;
+const mockState = {} as RouterStateSnapshot;
 
 @Component({ template: '' })
 class DummyComponent {}
@@ -69,13 +77,13 @@ describe('Auth Guards', () => {
     it('should return true when user is authenticated', () => {
       authStore.setUser(mockUser);
 
-      const result = TestBed.runInInjectionContext(() => authGuard({} as never, {} as never));
+      const result = TestBed.runInInjectionContext(() => authGuard(mockRoute, mockState));
 
       expect(result).toBe(true);
     });
 
     it('should redirect to login when user is not authenticated', () => {
-      const result = TestBed.runInInjectionContext(() => authGuard({} as never, {} as never));
+      const result = TestBed.runInInjectionContext(() => authGuard(mockRoute, mockState));
 
       expect(result).toBeInstanceOf(UrlTree);
       expect((result as UrlTree).toString()).toBe('/auth/login');
@@ -84,7 +92,7 @@ describe('Auth Guards', () => {
     it('should allow access for admin users', () => {
       authStore.setUser(mockAdminUser);
 
-      const result = TestBed.runInInjectionContext(() => authGuard({} as never, {} as never));
+      const result = TestBed.runInInjectionContext(() => authGuard(mockRoute, mockState));
 
       expect(result).toBe(true);
     });
@@ -94,7 +102,7 @@ describe('Auth Guards', () => {
     it('should return true when user has admin role', () => {
       authStore.setUser(mockAdminUser);
 
-      const result = TestBed.runInInjectionContext(() => adminGuard({} as never, {} as never));
+      const result = TestBed.runInInjectionContext(() => adminGuard(mockRoute, mockState));
 
       expect(result).toBe(true);
     });
@@ -102,14 +110,14 @@ describe('Auth Guards', () => {
     it('should redirect to forbidden when user is not admin', () => {
       authStore.setUser(mockUser);
 
-      const result = TestBed.runInInjectionContext(() => adminGuard({} as never, {} as never));
+      const result = TestBed.runInInjectionContext(() => adminGuard(mockRoute, mockState));
 
       expect(result).toBeInstanceOf(UrlTree);
       expect((result as UrlTree).toString()).toBe('/forbidden');
     });
 
     it('should redirect to forbidden when user is not authenticated', () => {
-      const result = TestBed.runInInjectionContext(() => adminGuard({} as never, {} as never));
+      const result = TestBed.runInInjectionContext(() => adminGuard(mockRoute, mockState));
 
       expect(result).toBeInstanceOf(UrlTree);
       expect((result as UrlTree).toString()).toBe('/forbidden');
