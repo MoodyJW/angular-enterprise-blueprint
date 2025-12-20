@@ -1,0 +1,15 @@
+@if (isVisible()) {
+  <span
+    [class]="badgeClasses()"
+    [attr.aria-label]="ariaLabel()"
+    [attr.aria-describedby]="ariaDescribedBy()"
+    [attr.aria-live]="ariaLive()"
+    role="status"
+  >
+    @if (!dot()) {
+      <span class="badge__content">
+        {{ displayContent() }}
+      </span>
+    }
+  </span>
+}

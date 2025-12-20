@@ -1,0 +1,17 @@
+@if (hasLabel() && orientation() === 'horizontal') {
+  <div
+    [class]="containerClasses()"
+    [attr.role]="ariaRole()"
+    [attr.aria-label]="computedAriaLabel()"
+  >
+    <span class="divider__line"></span>
+    <span class="divider__label">{{ label() }}</span>
+    <span class="divider__line"></span>
+  </div>
+} @else {
+  <hr
+    [class]="containerClasses()"
+    [attr.role]="ariaRole()"
+    [attr.aria-label]="computedAriaLabel()"
+  />
+}

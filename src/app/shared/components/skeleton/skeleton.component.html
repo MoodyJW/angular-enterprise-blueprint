@@ -1,0 +1,16 @@
+<div
+  [class]="containerClasses()"
+  [ngStyle]="containerStyles()"
+  role="status"
+  [attr.aria-label]="ariaLabel()"
+  aria-live="polite"
+  aria-busy="true"
+>
+  @for (item of items(); track $index) {
+    <div [class]="skeletonClasses()" [ngStyle]="getSkeletonStylesForItem($index)">
+      @if (animation() === 'wave') {
+        <span class="skeleton__wave" aria-hidden="true"></span>
+      }
+    </div>
+  }
+</div>

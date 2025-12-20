@@ -1,0 +1,170 @@
+// Badge component styles using BEM methodology
+// Integrates with existing theme system via CSS variables
+
+.badge {
+  // Base badge styles
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 var(--spacing-xs);
+  border-radius: var(--border-radius-full);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none; // Badge should not interfere with parent interactions
+  z-index: 1; // Ensure badge appears above parent content
+  transition-property: background-color, color, transform;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing);
+
+  // Respect reduced motion preference
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  // VARIANTS
+
+  // Primary variant
+  &--primary {
+    background-color: var(--color-primary);
+    color: var(--color-background); // High contrast
+  }
+
+  // Secondary variant
+  &--secondary {
+    background-color: var(--color-text-secondary);
+    color: var(--color-background);
+  }
+
+  // Success variant
+  &--success {
+    background-color: var(--color-success);
+    color: var(--color-background);
+  }
+
+  // Warning variant
+  &--warning {
+    background-color: var(--color-warning);
+    color: var(--color-background);
+  }
+
+  // Error variant
+  &--error {
+    background-color: var(--color-error);
+    color: var(--color-background);
+  }
+
+  // Info variant
+  &--info {
+    background-color: var(--color-info);
+    color: var(--color-background);
+  }
+
+  // SIZES
+
+  // Small size
+  &--sm {
+    min-width: 16px;
+    height: 16px;
+    font-size: var(--font-size-xs);
+    padding: 0 calc(var(--spacing-xs) * 0.75);
+  }
+
+  // Medium size (default)
+  &--md {
+    min-width: 20px;
+    height: 20px;
+    font-size: var(--font-size-sm);
+    padding: 0 var(--spacing-xs);
+  }
+
+  // Large size
+  &--lg {
+    min-width: 24px;
+    height: 24px;
+    font-size: var(--font-size-base);
+    padding: 0 var(--spacing-sm);
+  }
+
+  // POSITIONS
+
+  // Top right (default)
+  &--top-right {
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+
+  // Top left
+  &--top-left {
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  // Bottom right
+  &--bottom-right {
+    bottom: 0;
+    right: 0;
+    transform: translate(50%, 50%);
+  }
+
+  // Bottom left
+  &--bottom-left {
+    bottom: 0;
+    left: 0;
+    transform: translate(-50%, 50%);
+  }
+
+  // MODIFIERS
+
+  // Dot modifier (no content)
+  &--dot {
+    padding: 0;
+    border-radius: var(--border-radius-full);
+
+    // Dot sizes
+    &.badge--sm {
+      min-width: 8px;
+      width: 8px;
+      height: 8px;
+    }
+
+    &.badge--md {
+      min-width: 10px;
+      width: 10px;
+      height: 10px;
+    }
+
+    &.badge--lg {
+      min-width: 12px;
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  // ELEMENTS
+
+  // Badge content wrapper
+  &__content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Helper class for parent elements
+// Use this to ensure proper positioning context
+.badge-container {
+  position: relative;
+  display: inline-block;
+}

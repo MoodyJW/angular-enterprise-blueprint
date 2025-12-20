@@ -15,10 +15,10 @@ import { withAnalyticsRouterTracking } from './analytics-router.provider';
 import { AnalyticsService } from './analytics.service';
 
 // Dummy components for routing
-@Component({ selector: 'app-test-home', template: '' })
+@Component({ selector: 'eb-test-home', template: '' })
 class HomeComponent {}
 
-@Component({ selector: 'app-test-dashboard', template: '' })
+@Component({ selector: 'eb-test-dashboard', template: '' })
 class DashboardComponent {}
 
 describe('withAnalyticsRouterTracking', () => {

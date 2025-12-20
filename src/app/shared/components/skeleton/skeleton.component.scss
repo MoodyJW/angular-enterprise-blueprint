@@ -1,0 +1,182 @@
+// Skeleton component styles using BEM methodology
+// Integrates with existing theme system via CSS variables
+
+.skeleton-container {
+  // Base container styles
+  display: block;
+  width: 100%;
+
+  // Multiple items container
+  &--multiple {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.skeleton {
+  // Base skeleton styles
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background-color: var(--color-surface-variant, rgba(0, 0, 0, 0.11));
+  width: 100%;
+
+  // Ensure proper aspect ratio rendering
+  &::before {
+    content: '\00a0'; // Non-breaking space
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+
+  // VARIANT STYLES
+
+  // Text variant (line of text)
+  &--text {
+    height: 1em;
+    border-radius: 4px;
+    transform-origin: 0 60%; // Natural text baseline
+
+    &::before {
+      height: 100%;
+      content: '';
+    }
+  }
+
+  // Circular variant (avatars, icons)
+  &--circular {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+
+    &::before {
+      padding-top: 100%; // Maintain 1:1 aspect ratio
+    }
+  }
+
+  // Rectangular variant (images, cards)
+  &--rectangular {
+    border-radius: 0;
+
+    &::before {
+      padding-top: 100%; // Default to square, can be overridden with height
+    }
+
+    // When height is explicitly set, don't use padding-top
+    &[style*='height'] {
+      &::before {
+        padding-top: 0;
+      }
+    }
+  }
+
+  // Rounded corners modifier
+  &--rounded {
+    border-radius: var(--border-radius);
+  }
+
+  // ANIMATION STYLES
+
+  // Pulse animation
+  &--animation-pulse {
+    animation: skeleton-pulse 1.5s ease-in-out 0.5s infinite;
+  }
+
+  // Wave animation (shimmer effect)
+  &--animation-wave {
+    // Wave element
+    .skeleton__wave {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      animation: skeleton-wave 1.6s linear 0.5s infinite;
+    }
+  }
+
+  // No animation
+  &--animation-none {
+    // Static state, no animation
+  }
+
+  // Respect reduced motion preference
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+
+    .skeleton__wave {
+      animation: none !important;
+      display: none;
+    }
+
+    // Fallback: slight opacity for loading indication
+    opacity: 0.7;
+  }
+}
+
+// ANIMATIONS
+
+// Pulse animation (subtle opacity change)
+@keyframes skeleton-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// Wave animation (shimmer effect)
+@keyframes skeleton-wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+// Dark theme adjustments
+@media (prefers-color-scheme: dark) {
+  .skeleton {
+    background-color: var(--color-surface-variant, rgba(255, 255, 255, 0.11));
+
+    &--animation-wave {
+      .skeleton__wave {
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      }
+    }
+  }
+}
+
+// Theme-aware skeleton background
+[data-theme='nocturne'] .skeleton,
+[data-theme='cosmos'] .skeleton {
+  background-color: rgba(255, 255, 255, 0.11);
+
+  &--animation-wave {
+    .skeleton__wave {
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    }
+  }
+}
+
+[data-theme='lumen'] .skeleton,
+[data-theme='aurora'] .skeleton {
+  background-color: rgba(0, 0, 0, 0.11);
+
+  &--animation-wave {
+    .skeleton__wave {
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    }
+  }
+}

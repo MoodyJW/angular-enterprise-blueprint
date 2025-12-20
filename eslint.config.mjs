@@ -56,6 +56,23 @@ export default tseslint.config(
           allowNullableObject: true,
         },
       ],
+      // Enforce Angular component/directive selector conventions
+      '@angular-eslint/component-selector': [
+        'error',
+        {
+          type: 'element',
+          prefix: ['eb'],
+          style: 'kebab-case',
+        },
+      ],
+      '@angular-eslint/directive-selector': [
+        'error',
+        {
+          type: 'attribute',
+          prefix: ['eb'],
+          style: 'camelCase',
+        },
+      ],
     },
   },
   // Boundaries rules only for src/ files

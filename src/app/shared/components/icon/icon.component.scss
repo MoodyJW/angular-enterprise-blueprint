@@ -1,0 +1,141 @@
+// Icon component styles using BEM methodology
+// Integrates with existing theme system via CSS variables
+
+.icon {
+  // Base icon styles
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  vertical-align: middle;
+  line-height: 1;
+
+  // Ensure icons don't cause layout shifts
+  width: fit-content;
+  height: fit-content;
+
+  // ng-icon uses currentColor by default, which is what we want
+  // for the 'current' color variant
+
+  // SIZES
+  // Note: Actual size is controlled by the iconSize computed property
+  // These classes are for reference and potential custom styling
+
+  // &--xs {
+  //   // 12px - set via iconSize
+  // }
+
+  // &--sm {
+  //   // 16px - set via iconSize
+  // }
+
+  // &--md {
+  //   // 20px - set via iconSize (default)
+  // }
+
+  // &--lg {
+  //   // 24px - set via iconSize
+  // }
+
+  // &--xl {
+  //   // 32px - set via iconSize
+  // }
+
+  // &--2xl {
+  //   // 40px - set via iconSize
+  // }
+
+  // COLOR VARIANTS
+
+  &--primary {
+    color: var(--color-primary);
+  }
+
+  &--secondary {
+    color: var(--color-text-secondary);
+  }
+
+  &--success {
+    color: var(--color-success);
+  }
+
+  &--warning {
+    color: var(--color-warning);
+  }
+
+  &--error {
+    color: var(--color-error);
+  }
+
+  &--info {
+    color: var(--color-info);
+  }
+
+  // MODIFIERS
+
+  // Spinning animation for loading indicators
+  &--spin {
+    animation: icon-spin 1s linear infinite;
+
+    // Respect reduced motion preference
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+
+      // Show a pulsing opacity instead
+      animation: icon-pulse 2s ease-in-out infinite;
+    }
+  }
+
+  // Ensure proper alignment in flex containers
+  &:has(> ng-icon) {
+    display: inline-flex;
+  }
+}
+
+// Keyframe animations
+@keyframes icon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes icon-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Helper classes for common use cases
+
+// Icon button (when icon is inside a button)
+button .icon,
+a .icon {
+  pointer-events: none; // Prevent icon from intercepting clicks
+}
+
+// Icon with text (horizontal alignment)
+.icon-with-text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+
+  .icon {
+    flex-shrink: 0;
+  }
+}
+
+// Icon grid (for displaying multiple icons)
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr));
+  gap: var(--spacing-md);
+  align-items: center;
+  justify-items: center;
+}

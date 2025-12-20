@@ -1,0 +1,192 @@
+.divider {
+  border: none;
+  background-color: var(--color-border);
+  box-sizing: border-box;
+
+  // Horizontal orientation
+  &--horizontal {
+    width: 100%;
+    height: 1px;
+    display: block;
+  }
+
+  // Vertical orientation
+  &--vertical {
+    width: 1px;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  // Thickness variants (consolidated)
+  &--medium {
+    &.divider--horizontal {
+      height: 2px;
+    }
+
+    &.divider--vertical {
+      width: 2px;
+    }
+  }
+
+  &--thick {
+    &.divider--horizontal {
+      height: 4px;
+    }
+
+    &.divider--vertical {
+      width: 4px;
+    }
+  }
+
+  // Visual variants
+  &--dashed,
+  &--dotted {
+    background: none;
+  }
+
+  &--dashed.divider--horizontal {
+    border-top: 1px dashed var(--color-border);
+  }
+
+  &--dashed.divider--vertical {
+    border-left: 1px dashed var(--color-border);
+  }
+
+  &--dotted.divider--horizontal {
+    border-top: 1px dotted var(--color-border);
+  }
+
+  &--dotted.divider--vertical {
+    border-left: 1px dotted var(--color-border);
+  }
+
+  // Thickness for bordered variants (consolidated)
+  &--dashed,
+  &--dotted {
+    &.divider--medium.divider--horizontal {
+      border-top-width: 2px;
+    }
+
+    &.divider--medium.divider--vertical {
+      border-left-width: 2px;
+    }
+
+    &.divider--thick.divider--horizontal {
+      border-top-width: 4px;
+    }
+
+    &.divider--thick.divider--vertical {
+      border-left-width: 4px;
+    }
+  }
+
+  // Spacing variants (consolidated)
+  &--spacing-none {
+    margin: 0;
+  }
+  &--spacing-xs.divider--horizontal {
+    margin: var(--spacing-xs) 0;
+  }
+  &--spacing-xs.divider--vertical {
+    margin: 0 var(--spacing-xs);
+  }
+  &--spacing-sm.divider--horizontal {
+    margin: var(--spacing-sm) 0;
+  }
+  &--spacing-sm.divider--vertical {
+    margin: 0 var(--spacing-sm);
+  }
+  &--spacing-md.divider--horizontal {
+    margin: var(--spacing-lg) 0;
+  }
+  &--spacing-md.divider--vertical {
+    margin: 0 var(--spacing-lg);
+  }
+  &--spacing-lg.divider--horizontal {
+    margin: var(--spacing-xl) 0;
+  }
+  &--spacing-lg.divider--vertical {
+    margin: 0 var(--spacing-xl);
+  }
+  &--spacing-xl.divider--horizontal {
+    margin: var(--spacing-2xl) 0;
+  }
+  &--spacing-xl.divider--vertical {
+    margin: 0 var(--spacing-2xl);
+  }
+  &--spacing-2xl.divider--horizontal {
+    margin: var(--spacing-3xl) 0;
+  }
+  &--spacing-2xl.divider--vertical {
+    margin: 0 var(--spacing-3xl);
+  }
+
+  // Inset modifier (consolidated)
+  &--inset.divider--horizontal {
+    margin-left: var(--spacing-lg);
+    margin-right: var(--spacing-lg);
+  }
+
+  &--inset.divider--vertical {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  // With label (horizontal only)
+  &--with-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    height: auto;
+    background: none;
+    text-align: center;
+
+    .divider__line {
+      flex: 1;
+      height: 1px;
+      background-color: var(--color-border);
+    }
+
+    .divider__label {
+      flex-shrink: 0;
+      color: var(--color-text-secondary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      white-space: nowrap;
+    }
+
+    // Thickness variants for label lines
+    &.divider--medium .divider__line {
+      height: 2px;
+    }
+
+    &.divider--thick .divider__line {
+      height: 4px;
+    }
+
+    // Bordered variants for label lines (consolidated)
+    &.divider--dashed .divider__line,
+    &.divider--dotted .divider__line {
+      background: none;
+    }
+
+    &.divider--dashed .divider__line {
+      border-top: 1px dashed var(--color-border);
+    }
+
+    &.divider--dotted .divider__line {
+      border-top: 1px dotted var(--color-border);
+    }
+
+    &.divider--dashed.divider--medium .divider__line,
+    &.divider--dotted.divider--medium .divider__line {
+      border-top-width: 2px;
+    }
+
+    &.divider--dashed.divider--thick .divider__line,
+    &.divider--dotted.divider--thick .divider__line {
+      border-top-width: 4px;
+    }
+  }
+}
