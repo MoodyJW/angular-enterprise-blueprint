@@ -311,9 +311,11 @@ src/
 
 ---
 
-## 2.3 Global Error Handling
+## 2.3 Global Error Handling ✅
 
 We want to catch errors before they crash the UI and present them gracefully. Error handling follows a layered approach: application-level errors are caught by a global handler, while HTTP errors are intercepted and transformed into user-friendly messages.
+
+- **Tests:** 77 unit tests covering all error handling scenarios.
 
 ### **Error Handling Architecture**
 
@@ -640,45 +642,102 @@ export const appConfig: ApplicationConfig = {
 
 ---
 
-## 2.4 Authentication (The Mockend Strategy)
+## 2.4 Authentication (The Mockend Strategy) ✅
 
 This is the most critical part of Phase 2. We use a **Strategy Pattern** to allow switching between "Fake Auth" (for the blueprint demo) and "Real Auth" (future).
 
-### **1. The Contract** (`core/auth/auth.interface.ts`)
+- **Tests:** 74 unit tests covering MockAuthStrategy (25), AuthStore (40), and Guards (9).
+
+### **File Structure** (Implemented)
+
+```
+src/app/core/auth/
+├── auth-strategy.interface.ts   # AuthStrategy interface + AUTH_STRATEGY token
+├── auth.store.ts               # SignalStore with rxMethod for login/logout/checkSession
+├── auth.types.ts               # User, LoginCredentials, AuthState, AuthError types
+├── auth.provider.ts            # provideAuth() environment provider
+├── index.ts                    # Barrel exports
+├── guards/
+│   ├── auth.guard.ts           # authGuard & adminGuard
+│   ├── guest.guard.ts          # guestGuard
+│   └── index.ts
+└── strategies/
+    ├── mock-auth.strategy.ts   # MockAuthStrategy implementation
+    └── index.ts
+```
+
+### **1. The Contract** (`core/auth/auth-strategy.interface.ts`)
 
 Define what an Auth Provider _must_ do.
 
 ```typescript
+import { InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
-
-export interface User {
-  id: string;
-  username: string;
-  email: string;
-  avatarUrl?: string;
-  roles: ('admin' | 'user')[];
-}
+import type { LoginCredentials, User } from './auth.types';
 
 export interface AuthStrategy {
-  login(credentials: { username: string; password: string }): Observable<User>;
+  readonly name: string;
+  login(credentials: LoginCredentials): Observable<User>;
   logout(): Observable<void>;
   checkSession(): Observable<User | null>;
 }
+
+export const AUTH_STRATEGY = new InjectionToken<AuthStrategy>('AUTH_STRATEGY');
 ```
 
-### **2. The Implementation** (`core/auth/strategies/mock-auth.strategy.ts`)
+### **2. Types** (`core/auth/auth.types.ts`)
+
+```typescript
+export type UserRole = 'admin' | 'user';
+
+export interface User {
+  readonly id: string;
+  readonly username: string;
+  readonly email: string;
+  readonly avatarUrl?: string;
+  readonly roles: readonly UserRole[];
+}
+
+export interface LoginCredentials {
+  readonly username: string;
+  readonly password: string;
+}
+
+export interface AuthState {
+  readonly user: User | null;
+  readonly isAuthenticated: boolean;
+  readonly isLoading: boolean;
+  readonly error: string | null;
+}
+
+export const AUTH_ERROR_CODES = {
+  INVALID_CREDENTIALS: 'INVALID_CREDENTIALS',
+  SESSION_EXPIRED: 'SESSION_EXPIRED',
+  NETWORK_ERROR: 'NETWORK_ERROR',
+  UNKNOWN_ERROR: 'UNKNOWN_ERROR',
+} as const;
+```
+
+### **3. The Implementation** (`core/auth/strategies/mock-auth.strategy.ts`)
 
 - **Implements:** `AuthStrategy`.
+- **Features:**
+  - Simulates 800ms network delay
+  - 10% random error rate in non-production for testing error handling
+  - Case-insensitive username matching
+  - JWT-like token generation
+  - localStorage persistence
 - **Logic:**
   - `login()`:
     - Use `delay(800)` to simulate network.
-    - Hardcoded check: if `username === 'demo'`, return success. Else throw 401.
-    - Store dummy token in `localStorage`.
-  - `checkSession()`: Checks if token exists in `localStorage`.
+    - Accepts 'demo' (user role) or 'admin' (admin+user roles)
+    - Store mock JWT token in `localStorage`.
+  - `logout()`: Clears session from localStorage.
+  - `checkSession()`: Restores session from localStorage if valid.
 
-### **3. The State** (`core/auth/auth.store.ts`)
+### **4. The State** (`core/auth/auth.store.ts`)
 
-- **Library:** `@ngrx/signals`.
+- **Library:** `@ngrx/signals` with `rxMethod` for RxJS integration.
 - **State Interface:**
   ```typescript
   type AuthState = {
@@ -688,14 +747,48 @@ export interface AuthStrategy {
     error: string | null;
   };
   ```
+- **Computed Signals:**
+  - `displayName` - Username or 'Guest'
+  - `isAdmin` - Check if user has admin role
+  - `hasRole(role)` - Check for specific role
+  - `avatarUrl` - User avatar with fallback
 - **Methods (RxMethod):**
   - `login(credentials)`: Calls `strategy.login()`, updates state.
-  - `logout()`: Calls `strategy.logout()`, clears state, clears LocalStorage, navigates to `/login`.
+  - `logout()`: Calls `strategy.logout()`, clears state, navigates to `/auth/login`.
+  - `checkSession()`: Restores session on app init.
+  - `handleSessionExpired()`: Called by HTTP interceptor on 401.
+  - `clearError()`, `setError()`, `setUser()`: Helper methods.
 
-### **4. The Guards** (`core/auth/guards`)
+### **5. The Guards** (`core/auth/guards`)
 
 - **`authGuard`**: Functional guard. If `!store.isAuthenticated()`, return `createUrlTree(['/auth/login'])`.
-- **`guestGuard`**: If `store.isAuthenticated()`, redirect to `/dashboard`. (Prevents logged-in users from seeing the login page).
+- **`adminGuard`**: If `!store.isAdmin()`, redirect to `/forbidden`.
+- **`guestGuard`**: If `store.isAuthenticated()`, redirect to `/`. (Prevents logged-in users from seeing the login page).
+
+### **6. Provider** (`core/auth/auth.provider.ts`)
+
+```typescript
+export function provideAuth(): EnvironmentProviders {
+  return makeEnvironmentProviders([
+    { provide: AUTH_STRATEGY, useClass: MockAuthStrategy },
+    provideAppInitializer(() => {
+      const authStore = inject(AuthStore);
+      authStore.checkSession(undefined);
+    }),
+  ]);
+}
+```
+
+### **7. Registration in `app.config.ts`**
+
+```typescript
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideAuth(), // Registers MockAuthStrategy and initializes session check
+    // ...
+  ],
+};
+```
 
 ---
 
@@ -715,10 +808,35 @@ Every service created in Phase 2 must have a corresponding `.spec.ts` file.
 2.  [x] Scaffold `LoggerService` and `AnalyticsService` (singleton/root).
 3.  [x] Implement `SeoService` for comprehensive SEO management.
 4.  [x] Implement `ThemeService` with system preference detection.
-5.  [ ] Create `GlobalErrorHandler` and register in `app.config.ts`.
-6.  [ ] **Auth System:**
-    - [ ] Define `AuthStrategy` interface.
-    - [ ] Build `MockAuthStrategy`.
-    - [ ] Build `AuthStore` using Signals.
-    - [ ] Implement `authGuard` and `guestGuard`.
-    - [ ] Register provider in `app.config.ts` using the Strategy pattern (`{ provide: AuthStrategy, useClass: MockAuthStrategy }`).
+5.  [x] Create `GlobalErrorHandler` and register in `app.config.ts`. (77 tests)
+6.  [x] **Auth System:** (74 tests)
+    - [x] Define `AuthStrategy` interface with `AUTH_STRATEGY` injection token.
+    - [x] Build `MockAuthStrategy` with localStorage persistence.
+    - [x] Build `AuthStore` using NgRx SignalStore with rxMethod.
+    - [x] Implement `authGuard`, `adminGuard`, and `guestGuard`.
+    - [x] Create `provideAuth()` and register in `app.config.ts`.
+
+---
+
+## Phase 2 Summary
+
+**Status:** ✅ Complete
+
+**Total Unit Tests:** 318 tests across all Phase 2 services
+
+| Section   | Component                | Tests   |
+| --------- | ------------------------ | ------- |
+| 2.1       | Environment Config       | 4       |
+| 2.2       | LoggerService            | 15      |
+| 2.2       | AnalyticsService         | 17      |
+| 2.2       | Analytics Providers      | 38      |
+| 2.2       | SeoService               | 49      |
+| 2.2       | ThemeService             | 41      |
+| 2.3       | GlobalErrorHandler       | 27      |
+| 2.3       | HttpErrorInterceptor     | 44      |
+| 2.3       | ErrorNotificationService | 6       |
+| 2.4       | MockAuthStrategy         | 25      |
+| 2.4       | AuthStore                | 40      |
+| 2.4       | Auth Guards              | 9       |
+|           | App Component            | 3       |
+| **Total** |                          | **318** |

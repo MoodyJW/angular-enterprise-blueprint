@@ -9,6 +9,7 @@ import {
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
+import { provideAuth } from './core/auth';
 import { provideEnvironment } from './core/config';
 import { GlobalErrorHandler } from './core/error-handling';
 import { provideTranslocoConfig } from './core/i18n';
@@ -31,6 +32,7 @@ export const appConfig: ApplicationConfig = {
     provideTranslocoConfig(),
     provideAnalyticsFn(),
     withAnalyticsRouterTrackingFn(),
+    provideAuth(),
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
   ],
 };
