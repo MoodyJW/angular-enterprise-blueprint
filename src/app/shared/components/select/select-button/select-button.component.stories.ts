@@ -137,7 +137,7 @@ const meta: Meta<SelectButtonComponent> = {
         category: 'Events',
       },
     },
-    keydown: {
+    keydownEvent: {
       action: 'keydown',
       description: 'Event emitted on keydown',
       table: {

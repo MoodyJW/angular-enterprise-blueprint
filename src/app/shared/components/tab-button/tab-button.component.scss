@@ -1,0 +1,105 @@
+.tabs__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--tabs-tab-padding-vertical, var(--spacing-md))
+    var(--tabs-tab-padding-horizontal, var(--spacing-lg));
+  font-size: var(--tabs-tab-font-size, var(--font-size-base));
+  min-height: var(--tabs-tab-min-height, 44px);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+
+  &:hover:not(.tabs__tab--disabled):not(.tabs__tab--active) {
+    color: var(--color-text);
+    background-color: var(--color-surface-hover);
+  }
+
+  &--active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+  }
+
+  &--disabled {
+    color: var(--color-text-tertiary);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.tabs__tab--pills {
+  border-radius: var(--border-radius-full);
+}
+
+.tabs__tab--pills.tabs__tab--active {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  border-color: transparent;
+}
+
+.tabs__tab--underline {
+  position: relative;
+  border-bottom: none;
+}
+
+.tabs__tab--underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transform: scaleX(0);
+  transition: transform var(--transition-duration) var(--transition-timing);
+}
+
+.tabs__tab--underline.tabs__tab--active::after {
+  transform: scaleX(1);
+}
+
+.tabs__tab--underline:hover:not(.tabs__tab--disabled)::after {
+  transform: scaleX(0.5);
+}
+
+.tabs__list--vertical .tabs__tab--underline::after {
+  bottom: 0;
+  left: auto;
+  right: -2px;
+  width: 2px;
+  height: 100%;
+  transform: scaleY(0);
+}
+
+.tabs__list--vertical .tabs__tab--underline.tabs__tab--active::after {
+  transform: scaleY(1);
+}
+
+.tabs__list--vertical .tabs__tab--underline:hover:not(.tabs__tab--disabled)::after {
+  transform: scaleY(0.5);
+}
+
+.tabs__tab--boxed {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-bottom: none;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  margin-bottom: -1px;
+}
+
+.tabs__tab--boxed.tabs__tab--active {
+  background-color: var(--color-background);
+  border-bottom-color: var(--color-background);
+  z-index: 1;
+}
+
+.tabs__list--vertical .tabs__tab--boxed {
+  border-bottom: 1px solid var(--color-border);
+  border-right: none;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  margin-bottom: 0;
+  margin-right: -1px;
+}
+
+.tabs__list--vertical .tabs__tab--boxed.tabs__tab--active {
+  border-right-color: var(--color-background);
+}

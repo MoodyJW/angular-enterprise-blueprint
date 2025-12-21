@@ -1,0 +1,21 @@
+<eb-button
+  class="tabs__tab"
+  [class.tabs__tab--active]="isActive()"
+  [class.tabs__tab--disabled]="disabled()"
+  role="tab"
+  [attr.id]="tabId()"
+  [attr.aria-selected]="ariaSelected()"
+  [attr.aria-controls]="ariaControls()"
+  [attr.tabindex]="tabindex()"
+  [disabled]="disabled()"
+  [ariaLabel]="label()"
+  (clicked)="onClick()"
+  variant="ghost"
+  size="md"
+>
+  @if (icon()) {
+    <eb-icon [name]="icon()!" size="sm" [decorative]="true" class="tabs__tab-icon" />
+  }
+
+  <span class="tabs__tab-label">{{ label() }}</span>
+</eb-button>

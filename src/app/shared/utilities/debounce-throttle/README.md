@@ -87,7 +87,7 @@ if (debouncedSave.pending()) {
 
 ```typescript
 @Component({
-  selector: 'app-search',
+  selector: 'eb-search',
   template: ` <input (input)="onSearch($event.target.value)" /> `,
 })
 export class SearchComponent {
@@ -154,7 +154,7 @@ const throttledInput = throttle(handleInput, 300, {
 
 ```typescript
 @Component({
-  selector: 'app-infinite-scroll',
+  selector: 'eb-infinite-scroll',
   template: `<div (scroll)="onScroll()">...</div>`,
 })
 export class InfiniteScrollComponent {

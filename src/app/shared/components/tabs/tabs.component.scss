@@ -1,0 +1,120 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__list {
+    display: flex;
+    gap: var(--spacing-xs);
+    border-bottom: 2px solid var(--color-border);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+
+    &--horizontal {
+      flex-direction: row;
+    }
+
+    &--vertical {
+      flex-direction: column;
+      border-bottom: none;
+      border-right: 2px solid var(--color-border);
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    &--sm {
+      gap: var(--spacing-xs);
+    }
+
+    &--md {
+      gap: var(--spacing-sm);
+    }
+
+    &--lg {
+      gap: var(--spacing-md);
+    }
+
+    &--pills,
+    &--boxed {
+      border-bottom: none;
+
+      &.tabs__list--vertical {
+        border-right: none;
+      }
+    }
+
+    &--pills {
+      gap: var(--spacing-sm);
+    }
+
+    &--boxed {
+      gap: var(--spacing-xs);
+    }
+
+    &--underline {
+      border-bottom: 1px solid var(--color-border);
+
+      &.tabs__list--vertical {
+        border-bottom: none;
+        border-right: 1px solid var(--color-border);
+      }
+    }
+
+    &--default.tabs__list--vertical {
+      border-bottom: none;
+      border-right: 2px solid var(--color-border);
+    }
+
+    &--full-width {
+      .tabs__tab {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+  }
+  &__panels {
+    flex: 1;
+    min-height: 0;
+  }
+}
+
+.tabs__list--sm {
+  --tabs-tab-padding-vertical: calc(var(--spacing-sm) * 0.75);
+  --tabs-tab-padding-horizontal: var(--spacing-md);
+  --tabs-tab-font-size: var(--font-size-sm);
+  --tabs-tab-min-height: 36px;
+}
+
+.tabs__list--md {
+  --tabs-tab-padding-vertical: var(--spacing-md);
+  --tabs-tab-padding-horizontal: var(--spacing-lg);
+  --tabs-tab-font-size: var(--font-size-base);
+  --tabs-tab-min-height: 44px;
+}
+
+.tabs__list--lg {
+  --tabs-tab-padding-vertical: var(--spacing-lg);
+  --tabs-tab-padding-horizontal: var(--spacing-xl);
+  --tabs-tab-font-size: var(--font-size-lg);
+  --tabs-tab-min-height: 52px;
+}
+
+.tabs__list--vertical {
+  ~ .tabs__panels {
+    margin-left: var(--spacing-lg);
+  }
+}
+
+.tabs--horizontal-panels {
+  flex-direction: row;
+
+  .tabs__list {
+    flex-shrink: 0;
+  }
+
+  .tabs__panels {
+    flex: 1;
+  }
+}

@@ -1,0 +1,29 @@
+<div class="tabs">
+  <!-- Tab List -->
+  <div
+    [class]="tabListClasses()"
+    role="tablist"
+    [attr.aria-label]="ariaLabel()"
+    [attr.aria-orientation]="orientation()"
+  >
+    @for (tab of tabs(); track trackByTabId($index, tab); let i = $index) {
+      <eb-tab-button
+        [label]="tab.label()"
+        [icon]="tab.icon()"
+        [tabId]="tab.tabId()"
+        [isActive]="activeTabIndex() === i"
+        [disabled]="tab.disabled()"
+        [ariaControls]="tab.panelId()"
+        [ariaSelected]="activeTabIndex() === i"
+        [tabindex]="activeTabIndex() === i ? 0 : -1"
+        (clicked)="selectTab(i)"
+        (keydown)="handleKeydown($event, i)"
+      />
+    }
+  </div>
+
+  <!-- Tab Panels -->
+  <div class="tabs__panels">
+    <ng-content />
+  </div>
+</div>
