@@ -1,0 +1,60 @@
+<div [class]="wrapperClasses()">
+  <eb-input-label
+    [forId]="labelId()"
+    [label]="label()"
+    [required]="required()"
+    [labelClass]="'select-label' + (disabled() ? ' select-label--disabled' : '')"
+  />
+
+  <div class="select-container">
+    <eb-select-button
+      #selectButton
+      [buttonId]="label() ? 'select-' + labelId() : undefined"
+      [buttonClass]="buttonClasses()"
+      [disabled]="disabled()"
+      [ariaLabel]="ariaLabel()"
+      [ariaLabelledby]="labelId()"
+      [ariaDescribedby]="computedAriaDescribedBy()"
+      [ariaInvalid]="computedAriaInvalid()"
+      [ariaRequired]="required() ? 'true' : undefined"
+      [isOpen]="isOpen()"
+      [ariaControls]="listboxId()"
+      [displayText]="displayText()"
+      [hasValue]="hasValue()"
+      [showClear]="clearable() && hasValue() && !disabled()"
+      (clicked)="toggleDropdown()"
+      (clearClicked)="clearValue($event)"
+      (focused)="handleFocus($event)"
+      (blurred)="handleBlur($event)"
+      (keydown)="handleKeydown($event)"
+    />
+
+    @if (isOpen()) {
+      <eb-select-dropdown
+        #searchInput
+        [dropdownClass]="dropdownClasses()"
+        [searchable]="searchable()"
+        [searchQuery]="searchQuery()"
+        [listboxId]="listboxId()"
+        [ariaLabel]="ariaLabel()"
+        [isMultiple]="multiple()"
+        [maxHeight]="maxVisibleOptions() * 40"
+        [options]="filteredOptions()"
+        [highlightedIndex]="highlightedIndex()"
+        [isOptionSelected]="isOptionSelected.bind(this)"
+        (searchInput)="handleSearchInput($event)"
+        (searchKeydown)="handleKeydown($event)"
+        (optionClicked)="selectOption($event)"
+        (optionEnterPressed)="selectOption($event)"
+        (optionSpacePressed)="selectOption($event)"
+        (optionMouseEntered)="highlightedIndex.set($event)"
+      />
+    }
+  </div>
+
+  <eb-input-footer
+    [helperText]="helperText()"
+    [helperTextId]="helperTextId()"
+    [helperTextClasses]="helperTextClasses()"
+  />
+</div>

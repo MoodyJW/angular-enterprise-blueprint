@@ -1,0 +1,111 @@
+// Select option styles
+.select-option {
+  // Base option styles
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+  color: var(--color-text-primary);
+  font-size: inherit;
+  transition: background-color var(--transition-duration) var(--transition-timing);
+
+  // Hover state
+  &:hover:not(.select-option--disabled) {
+    background-color: var(--color-bg-secondary);
+  }
+
+  // Highlighted state (keyboard navigation)
+  &--highlighted:not(.select-option--disabled) {
+    background-color: var(--color-bg-secondary);
+  }
+
+  // Selected state
+  &--selected {
+    background-color: rgba(var(--color-primary-rgb), 0.1);
+    color: var(--color-primary);
+
+    &:hover {
+      background-color: rgba(var(--color-primary-rgb), 0.15);
+    }
+  }
+
+  // Disabled state
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: transparent !important;
+  }
+
+  // Empty state
+  &--empty {
+    color: var(--color-text-tertiary);
+    cursor: default;
+    text-align: center;
+  }
+
+  // Checkbox (for multiple select)
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--color-border);
+    border-radius: 4px;
+    background-color: var(--color-bg-primary);
+    flex-shrink: 0;
+    transition:
+      border-color var(--transition-duration) var(--transition-timing),
+      background-color var(--transition-duration) var(--transition-timing);
+
+    .select-option--selected & {
+      border-color: var(--color-primary);
+      background-color: var(--color-primary);
+      color: var(--color-text-on-primary);
+    }
+  }
+
+  // Option content
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    flex: 1;
+    min-width: 0;
+  }
+
+  // Option label
+  &__label {
+    font-weight: var(--font-weight-medium);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // Option description
+  &__description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // Check mark (for single select)
+  &__check {
+    display: flex;
+    align-items: center;
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  // Respect reduced motion preference
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    .select-option__checkbox {
+      transition: none;
+    }
+  }
+}
