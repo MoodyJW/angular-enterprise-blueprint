@@ -3,7 +3,7 @@ import { ResourceLoader } from '@angular/compiler';
 import type { ComponentFixture } from '@angular/core/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { UniqueIdService } from '../../services/unique-id/unique-id/unique-id.service';
+import { UniqueIdService } from '../../services/unique-id/unique-id.service';
 
 import type { CheckboxSize, CheckboxValidationState } from './checkbox.component';
 import { CheckboxComponent } from './checkbox.component';

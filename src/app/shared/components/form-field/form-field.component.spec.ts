@@ -5,7 +5,7 @@ import { FormControl, Validators } from '@angular/forms';
 
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { UniqueIdService } from '../../services/unique-id/unique-id/unique-id.service';
+import { UniqueIdService } from '../../services/unique-id/unique-id.service';
 
 import { InputFooterComponent } from '../input-footer';
 import { InputLabelComponent } from '../input-label';

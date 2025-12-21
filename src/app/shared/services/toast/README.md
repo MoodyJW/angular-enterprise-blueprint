@@ -25,7 +25,7 @@ import { Component, inject } from '@angular/core';
 import { ToastService } from '@shared/services/toast/toast.service';
 
 @Component({
-  selector: 'app-my-component',
+  selector: 'eb-my-component',
   // ...
 })
 export class MyComponent {

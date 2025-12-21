@@ -1,0 +1,58 @@
+// Select component wrapper styles
+// Child component styles are now in their respective files:
+// - SelectButtonComponent: ./select-button/select-button.component.scss
+// - SelectDropdownComponent: ./select-dropdown/select-dropdown.component.scss
+// - SelectOptionComponent: ./select-option/select-option.component.scss
+
+.select-wrapper {
+  // Base wrapper styles
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  width: auto;
+  position: relative;
+
+  // Full width modifier
+  &--full-width {
+    width: 100%;
+
+    .select-container {
+      width: 100%;
+    }
+  }
+
+  // Size modifiers
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-base);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+}
+
+.select-label {
+  // Label styles (for compatibility, though InputLabelComponent is used)
+  display: block;
+  font-family: var(--font-family-base);
+  font-size: inherit;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+
+  // Disabled state
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.select-container {
+  // Container for select button and dropdown
+  position: relative;
+  width: 100%;
+}

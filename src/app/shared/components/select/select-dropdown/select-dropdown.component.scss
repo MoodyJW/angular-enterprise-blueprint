@@ -1,0 +1,98 @@
+// Select dropdown styles
+.select-dropdown {
+  // Base dropdown styles
+  position: absolute;
+  top: calc(100% + var(--spacing-xs));
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+
+  // Size modifiers
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-base);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+}
+
+.select-search {
+  // Search input container
+  position: relative;
+  padding: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+
+  &__input {
+    width: 100%;
+    padding: var(--spacing-xs) var(--spacing-md);
+    padding-left: calc(var(--spacing-xl) + var(--spacing-sm));
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-base);
+    font-size: inherit;
+    outline: none;
+    transition: border-color var(--transition-duration) var(--transition-timing);
+
+    &:focus {
+      border-color: var(--color-primary);
+    }
+
+    &::placeholder {
+      color: var(--color-text-tertiary);
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    left: calc(var(--spacing-sm) + var(--spacing-xs));
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    color: var(--color-text-tertiary);
+    pointer-events: none;
+  }
+}
+
+.select-options {
+  // Options list
+  list-style: none;
+  margin: 0;
+  padding: var(--spacing-xs) 0;
+  overflow-y: auto;
+  max-height: 400px;
+
+  // Custom scrollbar
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-bg-secondary);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: var(--border-radius);
+
+    &:hover {
+      background: var(--color-border-strong);
+    }
+  }
+}
