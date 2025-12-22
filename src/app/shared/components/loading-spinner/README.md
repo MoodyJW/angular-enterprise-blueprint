@@ -260,7 +260,7 @@ Uses CSS animations and theme variables:
 .spinner {
   border: 3px solid var(--spinner-background);
   border-top-color: var(--spinner-foreground);
-  border-radius: 50%;
+  border-radius: var(--border-radius-half);
   animation: spinner-spin 0.8s linear infinite;
 
   &--sm {

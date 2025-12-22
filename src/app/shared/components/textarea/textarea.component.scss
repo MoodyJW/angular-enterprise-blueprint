@@ -5,7 +5,7 @@
   // Base wrapper styles
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--space-1);
   width: auto;
 
   // Full width modifier
@@ -38,16 +38,16 @@
 .textarea-label {
   // Label styles
   display: block;
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-sans);
   font-size: inherit;
   font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
-  margin-bottom: var(--spacing-xs);
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
 
   // Required indicator
   &__required {
     color: var(--color-error);
-    margin-left: var(--spacing-xs);
+    margin-left: var(--space-1);
     font-weight: var(--font-weight-bold);
   }
 
@@ -70,18 +70,18 @@
   position: relative;
   display: block;
   width: 100%;
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: var(--space-2) var(--space-3);
   border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  font-family: var(--font-family-base);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-sans);
   font-size: inherit;
-  font-weight: var(--font-weight-regular);
+  font-weight: var(--font-weight-normal);
   line-height: 1.5;
   transition-property: border-color, box-shadow, background-color;
-  transition-duration: var(--transition-duration);
-  transition-timing-function: var(--transition-timing);
+  transition-duration: var(--duration-normal);
+  transition-timing-function: var(--ease-in-out);
 
   // Remove default browser styles
   appearance: none;
@@ -89,35 +89,35 @@
 
   // Placeholder styling
   &::placeholder {
-    color: var(--color-text-tertiary);
+    color: var(--color-text-muted);
     opacity: 1;
   }
 
   // Size modifiers
   &--sm {
-    padding: var(--spacing-xs) var(--spacing-sm);
+    padding: var(--space-1) var(--space-2);
     font-size: var(--font-size-sm);
   }
 
   &--md {
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--space-2) var(--space-3);
     font-size: var(--font-size-base);
   }
 
   &--lg {
-    padding: var(--spacing-md) var(--spacing-lg);
+    padding: var(--space-3) var(--space-4);
     font-size: var(--font-size-lg);
   }
 
   // Variant modifiers
   &--default {
     border-color: var(--color-border);
-    background-color: var(--color-bg-primary);
+    background-color: var(--color-background);
   }
 
   &--filled {
     border-color: transparent;
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-surface-elevated);
   }
 
   &--outlined {
@@ -204,13 +204,13 @@
   &--disabled {
     opacity: 0.6;
     cursor: not-allowed;
-    background-color: var(--color-bg-disabled);
+    background-color: var(--color-surface-disabled);
     color: var(--color-text-disabled);
   }
 
   // Readonly state
   &--readonly {
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-surface-elevated);
     cursor: default;
   }
 
@@ -225,7 +225,7 @@
   display: block;
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-  margin-top: var(--spacing-xs);
+  margin-top: var(--space-1);
 
   &--success {
     color: var(--color-success);

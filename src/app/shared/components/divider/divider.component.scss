@@ -46,98 +46,98 @@
   }
 
   &--dashed.divider--horizontal {
-    border-top: 1px dashed var(--color-border);
+    border-top: var(--border-width-thin) dashed var(--color-border);
   }
 
   &--dashed.divider--vertical {
-    border-left: 1px dashed var(--color-border);
+    border-left: var(--border-width-thin) dashed var(--color-border);
   }
 
   &--dotted.divider--horizontal {
-    border-top: 1px dotted var(--color-border);
+    border-top: var(--border-width-thin) dotted var(--color-border);
   }
 
   &--dotted.divider--vertical {
-    border-left: 1px dotted var(--color-border);
+    border-left: var(--border-width-thin) dotted var(--color-border);
   }
 
   // Thickness for bordered variants (consolidated)
   &--dashed,
   &--dotted {
     &.divider--medium.divider--horizontal {
-      border-top-width: 2px;
+      border-top-width: var(--border-width-medium);
     }
 
     &.divider--medium.divider--vertical {
-      border-left-width: 2px;
+      border-left-width: var(--border-width-medium);
     }
 
     &.divider--thick.divider--horizontal {
-      border-top-width: 4px;
+      border-top-width: var(--border-width-thick);
     }
 
     &.divider--thick.divider--vertical {
-      border-left-width: 4px;
+      border-left-width: var(--border-width-thick);
     }
   }
 
   // Spacing variants (consolidated)
   &--spacing-none {
-    margin: 0;
+    margin: var(--space-0);
   }
-  &--spacing-xs.divider--horizontal {
-    margin: var(--spacing-xs) 0;
+  &--space-1.divider--horizontal {
+    margin: var(--space-1) var(--space-0);
   }
-  &--spacing-xs.divider--vertical {
-    margin: 0 var(--spacing-xs);
+  &--space-1.divider--vertical {
+    margin: var(--space-0) var(--space-1);
   }
-  &--spacing-sm.divider--horizontal {
-    margin: var(--spacing-sm) 0;
+  &--space-2.divider--horizontal {
+    margin: var(--space-2) var(--space-0);
   }
-  &--spacing-sm.divider--vertical {
-    margin: 0 var(--spacing-sm);
+  &--space-2.divider--vertical {
+    margin: var(--space-0) var(--space-2);
   }
-  &--spacing-md.divider--horizontal {
-    margin: var(--spacing-lg) 0;
+  &--space-3.divider--horizontal {
+    margin: var(--space-4) var(--space-0);
   }
-  &--spacing-md.divider--vertical {
-    margin: 0 var(--spacing-lg);
+  &--space-3.divider--vertical {
+    margin: var(--space-0) var(--space-4);
   }
-  &--spacing-lg.divider--horizontal {
-    margin: var(--spacing-xl) 0;
+  &--space-4.divider--horizontal {
+    margin: var(--space-5) var(--space-0);
   }
-  &--spacing-lg.divider--vertical {
-    margin: 0 var(--spacing-xl);
+  &--space-4.divider--vertical {
+    margin: var(--space-0) var(--space-5);
   }
-  &--spacing-xl.divider--horizontal {
-    margin: var(--spacing-2xl) 0;
+  &--space-5.divider--horizontal {
+    margin: var(--space-6) var(--space-0);
   }
-  &--spacing-xl.divider--vertical {
-    margin: 0 var(--spacing-2xl);
+  &--space-5.divider--vertical {
+    margin: var(--space-0) var(--space-6);
   }
-  &--spacing-2xl.divider--horizontal {
-    margin: var(--spacing-3xl) 0;
+  &--space-6.divider--horizontal {
+    margin: var(--space-12) var(--space-0);
   }
-  &--spacing-2xl.divider--vertical {
-    margin: 0 var(--spacing-3xl);
+  &--space-6.divider--vertical {
+    margin: var(--space-0) var(--space-12);
   }
 
   // Inset modifier (consolidated)
   &--inset.divider--horizontal {
-    margin-left: var(--spacing-lg);
-    margin-right: var(--spacing-lg);
+    margin-left: var(--space-4);
+    margin-right: var(--space-4);
   }
 
   &--inset.divider--vertical {
-    margin-top: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
   }
 
   // With label (horizontal only)
   &--with-label {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: var(--space-3);
     height: auto;
     background: none;
     text-align: center;
@@ -172,21 +172,21 @@
     }
 
     &.divider--dashed .divider__line {
-      border-top: 1px dashed var(--color-border);
+      border-top: var(--border-width-thin) dashed var(--color-border);
     }
 
     &.divider--dotted .divider__line {
-      border-top: 1px dotted var(--color-border);
+      border-top: var(--border-width-thin) dotted var(--color-border);
     }
 
     &.divider--dashed.divider--medium .divider__line,
     &.divider--dotted.divider--medium .divider__line {
-      border-top-width: 2px;
+      border-top-width: var(--border-width-medium);
     }
 
     &.divider--dashed.divider--thick .divider__line,
     &.divider--dotted.divider--thick .divider__line {
-      border-top-width: 4px;
+      border-top-width: var(--border-width-thick);
     }
   }
 }

@@ -635,7 +635,7 @@ export const Dialog: Story = {
         (closed)="closeModal()">
 
         <div modal-body style="text-align: center; padding: 2rem;">
-          <div style="width: 64px; height: 64px; margin: 0 auto 1rem; background: var(--color-success); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+          <div style="width: 64px; height: 64px; margin: 0 auto 1rem; background: var(--color-success); border-radius: var(--border-radius-half); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
             ✓
           </div>
           <h2 style="margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 600;">Success!</h2>

@@ -8,7 +8,7 @@
   justify-content: center;
   flex-shrink: 0;
   vertical-align: middle;
-  line-height: 1;
+  line-height: var(--line-height-extra-tight);
 
   // Ensure icons don't cause layout shifts
   width: fit-content;
@@ -124,7 +124,7 @@ a .icon {
 .icon-with-text {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--space-2);
 
   .icon {
     flex-shrink: 0;
@@ -135,7 +135,7 @@ a .icon {
 .icon-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr));
-  gap: var(--spacing-md);
+  gap: var(--space-3);
   align-items: center;
   justify-items: center;
 }

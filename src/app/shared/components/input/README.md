@@ -324,7 +324,7 @@ The component uses BEM methodology and integrates with the theme system:
 ```scss
 .input {
   width: 100%;
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-sans);
   border-radius: var(--border-radius-md);
   border: 1px solid var(--color-border);
   background-color: var(--color-surface);

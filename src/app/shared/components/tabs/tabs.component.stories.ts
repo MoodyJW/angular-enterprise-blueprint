@@ -376,14 +376,14 @@ export const ComplexContent: Story = {
           <h3>Team Members</h3>
           <div style="display: grid; gap: 1rem; margin-top: 1rem;">
             <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; border: 1px solid #eee; border-radius: 4px;">
-              <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-primary); display: flex; align-items: center; justify-content: center; color: white;">JD</div>
+              <div style="width: 40px; height: 40px; border-radius: var(--border-radius-half); background: var(--color-primary); display: flex; align-items: center; justify-content: center; color: white;">JD</div>
               <div>
                 <strong>John Doe</strong>
                 <p style="margin: 0; font-size: 0.875rem; color: #666;">Lead Developer</p>
               </div>
             </div>
             <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; border: 1px solid #eee; border-radius: 4px;">
-              <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-success); display: flex; align-items: center; justify-content: center; color: white;">JS</div>
+              <div style="width: 40px; height: 40px; border-radius: var(--border-radius-half); background: var(--color-success); display: flex; align-items: center; justify-content: center; color: white;">JS</div>
               <div>
                 <strong>Jane Smith</strong>
                 <p style="margin: 0; font-size: 0.875rem; color: #666;">UI/UX Designer</p>

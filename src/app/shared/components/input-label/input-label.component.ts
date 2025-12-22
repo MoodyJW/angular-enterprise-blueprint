@@ -37,7 +37,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
       .input-label {
         display: block;
-        margin-bottom: var(--spacing-xs, 0.5rem);
+        margin-bottom: var(--space-1, 0.5rem);
         font-size: var(--font-size-sm, 0.875rem);
         font-weight: var(--font-weight-medium, 500);
         color: var(--text-primary, #1a1a1a);
@@ -45,7 +45,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
         &__required {
           color: var(--color-error, #dc2626);
-          margin-left: var(--spacing-2xs, 0.25rem);
+          margin-left: var(--space-1, 0.25rem);
           font-weight: var(--font-weight-semibold, 600);
         }
       }

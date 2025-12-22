@@ -1,7 +1,7 @@
 .checkbox-wrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--space-1);
   position: relative;
 
   &--disabled {
@@ -23,11 +23,11 @@
   margin: 0;
   width: 20px;
   height: 20px;
-  border: 2px solid var(--color-border);
+  border: var(--border-width-medium) solid var(--color-border);
   border-radius: var(--border-radius-sm);
   background-color: var(--color-background);
   cursor: pointer;
-  transition: all var(--transition-duration) var(--transition-timing);
+  transition: all var(--duration-normal) var(--ease-in-out);
   flex-shrink: 0;
 
   &:focus {
@@ -35,8 +35,8 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: var(--border-width-medium) solid var(--color-primary);
+    outline-offset: var(--border-width-medium);
   }
 
   &:not(:disabled):not(.checkbox--disabled):hover {
@@ -155,25 +155,25 @@
 
 // Label customization for checkbox context
 .checkbox-label {
-  padding-left: calc(20px + var(--spacing-sm));
+  padding-left: calc(20px + var(--space-2));
 
   .checkbox-wrapper--sm & {
-    padding-left: calc(16px + var(--spacing-sm));
+    padding-left: calc(16px + var(--space-2));
   }
 
   .checkbox-wrapper--lg & {
-    padding-left: calc(24px + var(--spacing-sm));
+    padding-left: calc(24px + var(--space-2));
   }
 
   @media (pointer: coarse) {
-    padding-left: calc(44px + var(--spacing-sm));
+    padding-left: calc(44px + var(--space-2));
 
     .checkbox-wrapper--sm & {
-      padding-left: calc(40px + var(--spacing-sm));
+      padding-left: calc(40px + var(--space-2));
     }
 
     .checkbox-wrapper--lg & {
-      padding-left: calc(48px + var(--spacing-sm));
+      padding-left: calc(48px + var(--space-2));
     }
   }
 }
@@ -181,25 +181,25 @@
 // Helper text customization for checkbox context
 .checkbox-helper-text,
 .input-helper-text {
-  padding-left: calc(20px + var(--spacing-sm));
+  padding-left: calc(20px + var(--space-2));
 
   .checkbox-wrapper--sm & {
-    padding-left: calc(16px + var(--spacing-sm));
+    padding-left: calc(16px + var(--space-2));
   }
 
   .checkbox-wrapper--lg & {
-    padding-left: calc(24px + var(--spacing-sm));
+    padding-left: calc(24px + var(--space-2));
   }
 
   @media (pointer: coarse) {
-    padding-left: calc(44px + var(--spacing-sm));
+    padding-left: calc(44px + var(--space-2));
 
     .checkbox-wrapper--sm & {
-      padding-left: calc(40px + var(--spacing-sm));
+      padding-left: calc(40px + var(--space-2));
     }
 
     .checkbox-wrapper--lg & {
-      padding-left: calc(48px + var(--spacing-sm));
+      padding-left: calc(48px + var(--space-2));
     }
   }
 }

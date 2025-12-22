@@ -6,8 +6,8 @@
   z-index: var(--z-index-tooltip); // Above modals and other UI elements
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
-  padding: var(--spacing-lg);
+  gap: var(--space-3);
+  padding: var(--space-4);
   pointer-events: none; // Allow clicks to pass through container
 
   // Make toasts interactive
@@ -71,7 +71,7 @@
   // Mobile adjustments
   @media (max-width: 640px) {
     // Reduce padding on mobile
-    padding: var(--spacing-md);
+    padding: var(--space-3);
 
     // Center positions take full width on mobile
     &--top-center,
@@ -79,8 +79,8 @@
       left: 0;
       right: 0;
       transform: none;
-      padding-left: var(--spacing-md);
-      padding-right: var(--spacing-md);
+      padding-left: var(--space-3);
+      padding-right: var(--space-3);
     }
   }
 }

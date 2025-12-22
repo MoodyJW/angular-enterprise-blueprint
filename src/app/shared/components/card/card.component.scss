@@ -10,8 +10,8 @@
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   transition-property: box-shadow, transform, background-color, border-color;
-  transition-duration: var(--transition-duration);
-  transition-timing-function: var(--transition-timing);
+  transition-duration: var(--duration-normal);
+  transition-timing-function: var(--ease-in-out);
 
   // Remove default button styles when clickable
   &--clickable {
@@ -128,7 +128,7 @@
     .card__header,
     .card__body,
     .card__footer {
-      padding: var(--spacing-md);
+      padding: var(--space-3);
     }
   }
 
@@ -136,11 +136,11 @@
   &--padding-md {
     .card__header,
     .card__footer {
-      padding: var(--spacing-lg);
+      padding: var(--space-4);
     }
 
     .card__body {
-      padding: var(--spacing-xl);
+      padding: var(--space-5);
     }
   }
 
@@ -148,11 +148,11 @@
   &--padding-lg {
     .card__header,
     .card__footer {
-      padding: var(--spacing-xl);
+      padding: var(--space-5);
     }
 
     .card__body {
-      padding: var(--spacing-2xl);
+      padding: var(--space-6);
     }
   }
 
@@ -175,7 +175,7 @@
     // Add bottom border if followed by media or body
     &:not(:empty) + .card__media:not(:empty),
     &:not(:empty) + .card__body:not(:empty) {
-      border-top: 1px solid var(--color-border);
+      border-top: var(--border-width-thin) solid var(--color-border);
     }
   }
 
@@ -187,7 +187,7 @@
     }
 
     // Remove padding from media section
-    padding: 0 !important;
+    padding: var(--space-0) !important;
     overflow: hidden;
 
     // Ensure media content fills width
@@ -217,7 +217,7 @@
 
     // Add top border if preceded by body
     .card__body:not(:empty) + & {
-      border-top: 1px solid var(--color-border);
+      border-top: var(--border-width-thin) solid var(--color-border);
     }
   }
 }
@@ -263,41 +263,41 @@
 // Footer actions helper
 .card__footer-actions {
   display: flex;
-  gap: var(--spacing-sm);
+  gap: var(--space-2);
   justify-content: flex-end;
   align-items: center;
 }
 
 // Header title helpers
 .card__header-title {
-  margin: 0;
+  margin: var(--space-0);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text);
-  line-height: 1.4;
+  line-height: var(--line-height-normal);
 }
 
 .card__header-subtitle {
-  margin: var(--spacing-xs) 0 0;
+  margin: var(--space-1) var(--space-0) var(--space-0);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-  line-height: 1.5;
+  line-height: var(--line-height-tight);
 }
 
 // Tags/badges in footer
 .card__tags {
   display: flex;
-  gap: var(--spacing-xs);
+  gap: var(--space-1);
   flex-wrap: wrap;
 }
 
 .card__tag {
   display: inline-block;
-  padding: var(--spacing-xs) var(--spacing-sm);
+  padding: var(--space-1) var(--space-2);
   background-color: var(--color-surface-hover);
   color: var(--color-text-secondary);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
   border-radius: var(--border-radius-sm);
-  line-height: 1;
+  line-height: var(--line-height-extra-tight);
 }

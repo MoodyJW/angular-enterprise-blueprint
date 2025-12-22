@@ -10,61 +10,61 @@
 
   // Max-width variants
   &--sm {
-    max-width: 600px;
+    max-width: var(--max-width-sm);
   }
 
   &--md {
-    max-width: 900px;
+    max-width: var(--max-width-md);
   }
 
   &--lg {
-    max-width: var(--container-max-width); // 1200px from design tokens
+    max-width: var(--max-width-lg);
   }
 
   &--xl {
-    max-width: 1400px;
+    max-width: var(--max-width-xl);
   }
 
   &--full {
-    max-width: 100%;
+    max-width: var(--max-width-full);
   }
 
   // Padding variants
   &--padding-none {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: var(--space-0);
+    padding-right: var(--space-0);
   }
 
   &--padding-sm {
-    padding-left: var(--spacing-md); // 12px
-    padding-right: var(--spacing-md);
+    padding-left: var(--space-3); // 12px
+    padding-right: var(--space-3);
   }
 
   &--padding-md {
-    padding-left: var(--spacing-lg); // 16px
-    padding-right: var(--spacing-lg);
+    padding-left: var(--space-4); // 16px
+    padding-right: var(--space-4);
   }
 
   &--padding-lg {
-    padding-left: var(--spacing-xl); // 24px
-    padding-right: var(--spacing-xl);
+    padding-left: var(--space-6); // 24px
+    padding-right: var(--space-6);
   }
 
   // Responsive padding adjustments
   @media (max-width: 768px) {
     &--padding-sm {
-      padding-left: var(--spacing-sm); // 8px on mobile
-      padding-right: var(--spacing-sm);
+      padding-left: var(--space-2); // 8px on mobile
+      padding-right: var(--space-2);
     }
 
     &--padding-md {
-      padding-left: var(--spacing-md); // 12px on mobile
-      padding-right: var(--spacing-md);
+      padding-left: var(--space-3); // 12px on mobile
+      padding-right: var(--space-3);
     }
 
     &--padding-lg {
-      padding-left: var(--spacing-lg); // 16px on mobile
-      padding-right: var(--spacing-lg);
+      padding-left: var(--space-4); // 16px on mobile
+      padding-right: var(--space-4);
     }
   }
 }

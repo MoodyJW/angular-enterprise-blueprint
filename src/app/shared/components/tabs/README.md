@@ -305,7 +305,7 @@ Uses BEM methodology with theme integration:
 
     &--pills {
       border-bottom: none;
-      gap: var(--spacing-xs);
+      gap: var(--space-1);
     }
   }
 

@@ -277,7 +277,7 @@ export const RadioGroup: Story = {
           helperText="Direct transfer from your bank account"
         />
 
-        <div style="margin-top: 1rem; padding: 1rem; background: var(--color-surface); border-radius: var(--border-radius); font-family: monospace;">
+        <div style="margin-top: 1rem; padding: 1rem; background: var(--color-surface); border-radius: var(--border-radius-md); font-family: monospace;">
           Selected: {{ selectedValue() }}
         </div>
       </div>
@@ -435,7 +435,7 @@ export const FormIntegration: Story = {
           </div>
         </div>
 
-        <div style="padding: 1rem; background: var(--color-surface); border-radius: var(--border-radius); font-family: monospace;">
+        <div style="padding: 1rem; background: var(--color-surface); border-radius: var(--border-radius-md); font-family: monospace;">
           <div><strong>Current Preferences:</strong></div>
           <div>Notifications: {{ preferences().notifications }}</div>
           <div>Theme: {{ preferences().theme }}</div>
@@ -451,7 +451,7 @@ export const AccessibilityDemo: Story = {
     template: `
       <div style="max-width: 600px;">
         <h3 style="margin: 0 0 1rem 0; font-size: 1.125rem; font-weight: 600;">Accessibility Features</h3>
-        <div style="background: var(--color-surface); padding: 1.5rem; border-radius: var(--border-radius); margin-bottom: 1.5rem;">
+        <div style="background: var(--color-surface); padding: 1.5rem; border-radius: var(--border-radius-md); margin-bottom: 1.5rem;">
           <h4 style="margin: 0 0 0.5rem 0; font-size: 1rem;">Keyboard Navigation:</h4>
           <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
             <li><kbd>Tab</kbd> - Navigate to radio group</li>

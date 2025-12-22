@@ -11,12 +11,12 @@
   // Gap spacing variants - Generated with SCSS maps
   $gap-sizes: (
     'none': 0,
-    'xs': var(--spacing-xs),
-    'sm': var(--spacing-sm),
-    'md': var(--spacing-lg),
-    'lg': var(--spacing-xl),
-    'xl': var(--spacing-2xl),
-    '2xl': var(--spacing-3xl),
+    'xs': var(--space-1),
+    'sm': var(--space-2),
+    'md': var(--space-4),
+    'lg': var(--space-5),
+    'xl': var(--space-6),
+    '2xl': var(--space-12),
   );
 
   @each $size, $value in $gap-sizes {

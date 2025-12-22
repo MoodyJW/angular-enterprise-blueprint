@@ -164,7 +164,7 @@ const createGridItem = (index: number, height = '80px'): string => `
     padding: 1rem;
     background: var(--color-surface);
     border: 2px solid var(--color-border);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -423,40 +423,40 @@ export const TwelveColumnSystem: Story = {
         </p>
       </div>
       <eb-grid [cols]="12" gap="md">
-        <div class="col-span-12" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-12" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius-md); text-align: center;">
           12 columns (full width)
         </div>
-        <div class="col-span-6" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-6" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius-md); text-align: center;">
           6 columns (half)
         </div>
-        <div class="col-span-6" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-6" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius-md); text-align: center;">
           6 columns (half)
         </div>
-        <div class="col-span-4" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-4" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius-md); text-align: center;">
           4 columns
         </div>
-        <div class="col-span-4" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-4" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius-md); text-align: center;">
           4 columns
         </div>
-        <div class="col-span-4" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-4" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius-md); text-align: center;">
           4 columns
         </div>
-        <div class="col-span-3" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-3" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius-md); text-align: center;">
           3 cols
         </div>
-        <div class="col-span-3" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-3" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius-md); text-align: center;">
           3 cols
         </div>
-        <div class="col-span-3" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-3" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius-md); text-align: center;">
           3 cols
         </div>
-        <div class="col-span-3" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-3" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius-md); text-align: center;">
           3 cols
         </div>
-        <div class="col-span-8" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-8" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius-md); text-align: center;">
           8 columns (main content)
         </div>
-        <div class="col-span-4" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-4" style="padding: 1rem; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--border-radius-md); text-align: center;">
           4 columns (sidebar)
         </div>
       </eb-grid>
@@ -477,7 +477,7 @@ export const CardGridExample: Story = {
   render: () => ({
     template: `
       <eb-grid [cols]="1" [colsMd]="2" [colsLg]="3" gap="lg">
-        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); box-shadow: var(--shadow-sm);">
+        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); box-shadow: var(--shadow-sm);">
           <h3 style="margin: 0 0 0.5rem 0;">Project Alpha</h3>
           <p style="margin: 0 0 1rem 0; color: var(--color-text-secondary); font-size: 14px;">
             A modern web application built with Angular and TypeScript.
@@ -488,7 +488,7 @@ export const CardGridExample: Story = {
           </div>
         </div>
 
-        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); box-shadow: var(--shadow-sm);">
+        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); box-shadow: var(--shadow-sm);">
           <h3 style="margin: 0 0 0.5rem 0;">Project Beta</h3>
           <p style="margin: 0 0 1rem 0; color: var(--color-text-secondary); font-size: 14px;">
             Data visualization dashboard with real-time analytics.
@@ -499,7 +499,7 @@ export const CardGridExample: Story = {
           </div>
         </div>
 
-        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); box-shadow: var(--shadow-sm);">
+        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); box-shadow: var(--shadow-sm);">
           <h3 style="margin: 0 0 0.5rem 0;">Project Gamma</h3>
           <p style="margin: 0 0 1rem 0; color: var(--color-text-secondary); font-size: 14px;">
             E-commerce platform with integrated payment processing.
@@ -510,7 +510,7 @@ export const CardGridExample: Story = {
           </div>
         </div>
 
-        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); box-shadow: var(--shadow-sm);">
+        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); box-shadow: var(--shadow-sm);">
           <h3 style="margin: 0 0 0.5rem 0;">Project Delta</h3>
           <p style="margin: 0 0 1rem 0; color: var(--color-text-secondary); font-size: 14px;">
             Mobile-first progressive web application for productivity.
@@ -521,7 +521,7 @@ export const CardGridExample: Story = {
           </div>
         </div>
 
-        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); box-shadow: var(--shadow-sm);">
+        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); box-shadow: var(--shadow-sm);">
           <h3 style="margin: 0 0 0.5rem 0;">Project Epsilon</h3>
           <p style="margin: 0 0 1rem 0; color: var(--color-text-secondary); font-size: 14px;">
             AI-powered chatbot with natural language processing.
@@ -532,7 +532,7 @@ export const CardGridExample: Story = {
           </div>
         </div>
 
-        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); box-shadow: var(--shadow-sm);">
+        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); box-shadow: var(--shadow-sm);">
           <h3 style="margin: 0 0 0.5rem 0;">Project Zeta</h3>
           <p style="margin: 0 0 1rem 0; color: var(--color-text-secondary); font-size: 14px;">
             Real-time collaboration tool for distributed teams.
@@ -560,36 +560,36 @@ export const DashboardLayoutExample: Story = {
     template: `
       <eb-grid [cols]="12" gap="lg">
         <!-- Header spanning full width -->
-        <div class="col-span-12" style="padding: 1.5rem; background: var(--color-primary); color: white; border-radius: var(--border-radius);">
+        <div class="col-span-12" style="padding: 1.5rem; background: var(--color-primary); color: white; border-radius: var(--border-radius-md);">
           <h2 style="margin: 0;">Dashboard Header</h2>
         </div>
 
         <!-- Stat cards -->
-        <div class="col-span-12 col-span-md-6 col-span-lg-3" style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-12 col-span-md-6 col-span-lg-3" style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
           <h3 style="margin: 0; font-size: 2rem; color: var(--color-primary);">1,234</h3>
           <p style="margin: 0.5rem 0 0; color: var(--color-text-secondary); font-size: 14px;">Total Users</p>
         </div>
-        <div class="col-span-12 col-span-md-6 col-span-lg-3" style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-12 col-span-md-6 col-span-lg-3" style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
           <h3 style="margin: 0; font-size: 2rem; color: var(--color-primary);">567</h3>
           <p style="margin: 0.5rem 0 0; color: var(--color-text-secondary); font-size: 14px;">Active Projects</p>
         </div>
-        <div class="col-span-12 col-span-md-6 col-span-lg-3" style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-12 col-span-md-6 col-span-lg-3" style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
           <h3 style="margin: 0; font-size: 2rem; color: var(--color-primary);">89%</h3>
           <p style="margin: 0.5rem 0 0; color: var(--color-text-secondary); font-size: 14px;">Success Rate</p>
         </div>
-        <div class="col-span-12 col-span-md-6 col-span-lg-3" style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); text-align: center;">
+        <div class="col-span-12 col-span-md-6 col-span-lg-3" style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
           <h3 style="margin: 0; font-size: 2rem; color: var(--color-primary);">$45K</h3>
           <p style="margin: 0.5rem 0 0; color: var(--color-text-secondary); font-size: 14px;">Revenue</p>
         </div>
 
         <!-- Main content area -->
-        <div class="col-span-12 col-span-lg-8" style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius);">
+        <div class="col-span-12 col-span-lg-8" style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
           <h3 style="margin: 0 0 1rem 0;">Recent Activity</h3>
           <p style="color: var(--color-text-secondary);">Main dashboard content goes here...</p>
         </div>
 
         <!-- Sidebar -->
-        <div class="col-span-12 col-span-lg-4" style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius);">
+        <div class="col-span-12 col-span-lg-4" style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
           <h3 style="margin: 0 0 1rem 0;">Quick Actions</h3>
           <p style="color: var(--color-text-secondary);">Sidebar content...</p>
         </div>
@@ -643,7 +643,7 @@ export const Interactive: Story = {
 export const AccessibilityNotes: Story = {
   render: () => ({
     template: `
-      <div style="max-width: 700px; padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius);">
+      <div style="max-width: 700px; padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
         <h3 style="margin-top: 0;">WCAG 2.1 AAA Compliance</h3>
 
         <h4>Semantic HTML</h4>

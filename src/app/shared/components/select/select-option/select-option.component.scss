@@ -3,21 +3,21 @@
   // Base option styles
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-sm) var(--spacing-md);
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
   cursor: pointer;
-  color: var(--color-text-primary);
+  color: var(--color-text);
   font-size: inherit;
-  transition: background-color var(--transition-duration) var(--transition-timing);
+  transition: background-color var(--duration-normal) var(--ease-in-out);
 
   // Hover state
   &:hover:not(.select-option--disabled) {
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-surface-elevated);
   }
 
   // Highlighted state (keyboard navigation)
   &--highlighted:not(.select-option--disabled) {
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-surface-elevated);
   }
 
   // Selected state
@@ -39,7 +39,7 @@
 
   // Empty state
   &--empty {
-    color: var(--color-text-tertiary);
+    color: var(--color-text-muted);
     cursor: default;
     text-align: center;
   }
@@ -51,13 +51,13 @@
     justify-content: center;
     width: 18px;
     height: 18px;
-    border: 2px solid var(--color-border);
+    border: var(--border-width-medium) solid var(--color-border);
     border-radius: 4px;
-    background-color: var(--color-bg-primary);
+    background-color: var(--color-background);
     flex-shrink: 0;
     transition:
-      border-color var(--transition-duration) var(--transition-timing),
-      background-color var(--transition-duration) var(--transition-timing);
+      border-color var(--duration-normal) var(--ease-in-out),
+      background-color var(--duration-normal) var(--ease-in-out);
 
     .select-option--selected & {
       border-color: var(--color-primary);
@@ -70,7 +70,7 @@
   &__content {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xs);
+    gap: var(--space-1);
     flex: 1;
     min-width: 0;
   }

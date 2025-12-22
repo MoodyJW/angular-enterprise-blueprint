@@ -349,7 +349,7 @@ Uses CSS animations and theme variables:
   }
 
   &--circular {
-    border-radius: 50%;
+    border-radius: var(--border-radius-half);
   }
 
   &--rounded {

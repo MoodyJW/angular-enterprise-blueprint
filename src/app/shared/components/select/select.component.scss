@@ -8,16 +8,16 @@
   // Base wrapper styles
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--space-1);
   width: auto;
   position: relative;
 
   // Full width modifier
   &--full-width {
-    width: 100%;
+    width: var(--max-width-full);
 
     .select-container {
-      width: 100%;
+      width: var(--max-width-full);
     }
   }
 
@@ -38,11 +38,11 @@
 .select-label {
   // Label styles (for compatibility, though InputLabelComponent is used)
   display: block;
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-sans);
   font-size: inherit;
   font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
-  margin-bottom: var(--spacing-xs);
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
 
   // Disabled state
   &--disabled {
@@ -54,5 +54,5 @@
 .select-container {
   // Container for select button and dropdown
   position: relative;
-  width: 100%;
+  width: var(--max-width-full);
 }

@@ -344,7 +344,7 @@ export const OnDifferentElements: Story = {
         </div>
 
         <div style="position: relative; display: inline-block;">
-          <div style="width: 40px; height: 40px; border-radius: 50%; background: #ddd; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 40px; height: 40px; border-radius: var(--border-radius-half); background: #ddd; display: flex; align-items: center; justify-content: center;">
             👤
           </div>
           <eb-badge variant="success" [content]="12" ariaLabel="12 profile updates" />

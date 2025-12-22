@@ -10,7 +10,8 @@
 // @use 'styles/reset';
 
 // 4. Global Utilities (to be implemented)
-// @use 'styles/utilities';
+// Global helper partials
+@use 'styles/card-helpers';
 
 // Base styles
 html,

@@ -3,12 +3,12 @@
 .form-field {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs, 0.5rem);
-  width: 100%;
+  gap: var(--space-2);
+  width: var(--max-width-full);
 
   &__content {
     display: block;
-    width: 100%;
+    width: var(--max-width-full);
   }
 
   // Validation state modifiers
@@ -34,25 +34,25 @@
 // Label styling (applied via InputLabelComponent)
 .form-field-label {
   display: block;
-  margin-bottom: var(--spacing-xs, 0.5rem);
-  font-size: var(--font-size-sm, 0.875rem);
-  font-weight: var(--font-weight-medium, 500);
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
   color: var(--text-primary, #1a1a1a);
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
 
   &__required {
     color: var(--color-error, #dc2626);
-    margin-left: var(--spacing-2xs, 0.25rem);
-    font-weight: var(--font-weight-semibold, 600);
+    margin-left: var(--space-1);
+    font-weight: var(--font-weight-semibold);
   }
 }
 
 // Helper text styling (shared with InputFooterComponent)
 .form-field-helper-text {
-  font-size: var(--font-size-sm, 0.875rem);
-  line-height: 1.4;
-  color: var(--text-secondary, #6b7280);
-  margin-top: var(--spacing-xs, 0.5rem);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-tight);
+  color: var(--text-secondary);
+  margin-top: var(--space-2);
   transition: color 0.2s ease;
 
   // Respect reduced motion preference
@@ -61,26 +61,26 @@
   }
 
   &--success {
-    color: var(--color-success, #10b981);
+    color: var(--color-success);
   }
 
   &--warning {
-    color: var(--color-warning, #f59e0b);
+    color: var(--color-warning);
   }
 
   &--error {
-    color: var(--color-error, #dc2626);
+    color: var(--color-error);
   }
 }
 
 // Dark theme support
 @media (prefers-color-scheme: dark) {
   .form-field-label {
-    color: var(--text-primary-dark, #f5f5f5);
+    color: var(--text-primary-dark);
   }
 
   .form-field-helper-text {
-    color: var(--text-secondary-dark, #9ca3af);
+    color: var(--text-secondary-dark);
   }
 }
 
@@ -90,7 +90,7 @@
   input,
   textarea,
   select {
-    width: 100%;
+    width: var(--max-width-full);
   }
 
   // Target Angular form components
@@ -99,6 +99,6 @@
   eb-select,
   eb-checkbox,
   eb-radio {
-    width: 100%;
+    width: var(--max-width-full);
   }
 }

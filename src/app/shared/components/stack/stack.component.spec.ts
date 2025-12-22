@@ -355,7 +355,7 @@ describe('StackComponent', () => {
       const classes = component.stackClasses();
       expect(classes).toContain('stack');
       expect(classes).toContain('stack--vertical');
-      expect(classes).toContain('stack--spacing-md');
+      expect(classes).toContain('stack--space-3');
       expect(classes).toContain('stack--align-stretch');
       expect(classes).not.toContain('stack--full-width');
     });
@@ -373,7 +373,7 @@ describe('StackComponent', () => {
       const classes = component.stackClasses();
       expect(classes).toContain('stack');
       expect(classes).toContain('stack--horizontal');
-      expect(classes).toContain('stack--spacing-lg');
+      expect(classes).toContain('stack--space-4');
       expect(classes).toContain('stack--align-center');
       expect(classes).toContain('stack--justify-space-between');
       expect(classes).toContain('stack--full-width');
@@ -384,12 +384,12 @@ describe('StackComponent', () => {
     it('should recompute stackClasses when inputs change', () => {
       fixture.componentRef.setInput('spacing', 'sm');
       fixture.detectChanges();
-      expect(component.stackClasses()).toContain('stack--spacing-sm');
+      expect(component.stackClasses()).toContain('stack--space-2');
 
       fixture.componentRef.setInput('spacing', 'xl');
       fixture.detectChanges();
-      expect(component.stackClasses()).toContain('stack--spacing-xl');
-      expect(component.stackClasses()).not.toContain('stack--spacing-sm');
+      expect(component.stackClasses()).toContain('stack--space-5');
+      expect(component.stackClasses()).not.toContain('stack--space-2');
     });
   });
 
@@ -429,7 +429,7 @@ describe('StackComponent', () => {
       fixture.detectChanges();
 
       expect(component.spacing()).toBe('xl');
-      expect(component.stackClasses()).toContain('stack--spacing-xl');
+      expect(component.stackClasses()).toContain('stack--space-5');
     });
 
     it('should handle all inputs being set at once', () => {
@@ -463,7 +463,7 @@ describe('StackComponent', () => {
       const classes = component.stackClasses().split(' ');
       expect(classes[0]).toBe('stack');
       expect(classes).toContain('stack--vertical');
-      expect(classes).toContain('stack--spacing-md');
+      expect(classes).toContain('stack--space-3');
       expect(classes).toContain('stack--align-start');
       expect(classes).toContain('stack--full-width');
     });
@@ -510,7 +510,7 @@ describe('StackComponent', () => {
       // Check classes
       expect(stackElement?.classList.contains('stack')).toBe(true);
       expect(stackElement?.classList.contains('stack--horizontal')).toBe(true);
-      expect(stackElement?.classList.contains('stack--spacing-lg')).toBe(true);
+      expect(stackElement?.classList.contains('stack--space-4')).toBe(true);
       expect(stackElement?.classList.contains('stack--align-center')).toBe(true);
       expect(stackElement?.classList.contains('stack--justify-space-between')).toBe(true);
       expect(stackElement?.classList.contains('stack--full-width')).toBe(true);

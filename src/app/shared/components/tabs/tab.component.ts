@@ -34,7 +34,7 @@ import type { IconName } from '../../constants';
   styles: [
     `
       .tab-panel {
-        padding: var(--spacing-lg);
+        padding: var(--space-4);
         outline: none;
 
         &:focus-visible {

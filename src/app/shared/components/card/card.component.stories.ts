@@ -578,7 +578,7 @@ export const KeyboardNavigation: Story = {
 export const AccessibilityNotes: Story = {
   render: () => ({
     template: `
-      <div style="max-width: 700px; padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius);">
+      <div style="max-width: 700px; padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
         <h3 style="margin-top: 0;">WCAG 2.1 AAA Compliance</h3>
 
         <h4>Semantic HTML</h4>

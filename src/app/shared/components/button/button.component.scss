@@ -3,17 +3,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-sm);
-  padding: 0 var(--spacing-lg);
+  gap: var(--space-2);
+  padding: 0 var(--space-4);
   min-height: 40px;
   min-width: 80px;
   border: none;
-  border-radius: var(--border-radius);
-  font: var(--font-weight-medium) var(--font-size-base)/1.5 var(--font-family-base);
+  border-radius: var(--border-radius-base);
+  font: var(--font-weight-medium) var(--font-size-base)/1.5 var(--font-family-sans);
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
-  transition: all var(--transition-duration) var(--transition-timing);
+  transition: all var(--duration-normal) var(--ease-in-out);
 
   @media (pointer: coarse) {
     min-height: 44px;
@@ -24,8 +24,8 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: var(--border-width-medium) solid var(--color-primary);
+    outline-offset: var(--border-width-medium);
   }
 
   &:not(:disabled):not(.btn--disabled):not(.btn--loading) {
@@ -60,7 +60,7 @@
   &--primary,
   &--tertiary,
   &--danger {
-    border: 2px solid transparent;
+    border: var(--border-width-medium) solid transparent;
   }
 
   &--tertiary,
@@ -157,7 +157,7 @@
   &--sm {
     min-height: 32px;
     min-width: 64px;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--space-3);
     font-size: var(--font-size-sm);
 
     &.btn--icon-only {
@@ -172,7 +172,7 @@
   &--lg {
     min-height: 48px;
     min-width: 96px;
-    padding: 0 var(--spacing-xl);
+    padding: 0 var(--space-5);
     font-size: var(--font-size-lg);
 
     &.btn--icon-only {
@@ -193,6 +193,6 @@
 
   &--icon-only {
     aspect-ratio: 1;
-    padding: 0;
+    padding: var(--space-0);
   }
 }

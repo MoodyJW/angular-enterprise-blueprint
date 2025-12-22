@@ -54,7 +54,7 @@ import { IconComponent } from '../icon';
 
       .checkbox-icon {
         color: var(--color-background);
-        transition: opacity var(--transition-duration) var(--transition-timing);
+        transition: opacity var(--duration-normal) var(--ease-in-out);
 
         @media (prefers-reduced-motion: reduce) {
           transition: none;

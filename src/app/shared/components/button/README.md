@@ -254,7 +254,7 @@ The component uses BEM methodology and integrates with the existing theme system
 ```scss
 // Button uses theme CSS variables
 .btn {
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-sans);
   border-radius: var(--border-radius-md);
   transition: all var(--transition-fast);
 

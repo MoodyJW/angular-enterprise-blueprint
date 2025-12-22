@@ -135,7 +135,7 @@ const createStackItem = (text: string, color = 'var(--color-surface)'): string =
     padding: 1rem 1.5rem;
     background: ${color};
     border: 2px solid var(--color-border);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-md);
     font-weight: 500;
   ">
     ${text}
@@ -292,7 +292,7 @@ export const HorizontalAlignment: Story = {
       <div style="display: flex; flex-direction: column; gap: 2rem;">
         <div>
           <h4 style="margin: 0 0 0.5rem 0;">Align Start (Top)</h4>
-          <div style="height: 150px; border: 2px dashed var(--color-border); border-radius: var(--border-radius); padding: 1rem;">
+          <div style="height: 150px; border: 2px dashed var(--color-border); border-radius: var(--border-radius-md); padding: 1rem;">
             <eb-stack direction="horizontal" spacing="md" align="start">
               ${createStackItem('Short', 'var(--color-primary)')}
               ${createStackItem('Medium<br>height', 'var(--color-primary)')}
@@ -303,7 +303,7 @@ export const HorizontalAlignment: Story = {
 
         <div>
           <h4 style="margin: 0 0 0.5rem 0;">Align Center</h4>
-          <div style="height: 150px; border: 2px dashed var(--color-border); border-radius: var(--border-radius); padding: 1rem;">
+          <div style="height: 150px; border: 2px dashed var(--color-border); border-radius: var(--border-radius-md); padding: 1rem;">
             <eb-stack direction="horizontal" spacing="md" align="center">
               ${createStackItem('Short', 'var(--color-primary)')}
               ${createStackItem('Medium<br>height', 'var(--color-primary)')}
@@ -314,7 +314,7 @@ export const HorizontalAlignment: Story = {
 
         <div>
           <h4 style="margin: 0 0 0.5rem 0;">Align End (Bottom)</h4>
-          <div style="height: 150px; border: 2px dashed var(--color-border); border-radius: var(--border-radius); padding: 1rem;">
+          <div style="height: 150px; border: 2px dashed var(--color-border); border-radius: var(--border-radius-md); padding: 1rem;">
             <eb-stack direction="horizontal" spacing="md" align="end">
               ${createStackItem('Short', 'var(--color-primary)')}
               ${createStackItem('Medium<br>height', 'var(--color-primary)')}
@@ -341,7 +341,7 @@ export const JustifyOptions: Story = {
       <div style="display: flex; flex-direction: column; gap: 2rem;">
         <div>
           <h4 style="margin: 0 0 0.5rem 0;">Justify Start</h4>
-          <div style="height: 100px; border: 2px dashed var(--color-border); border-radius: var(--border-radius); padding: 1rem;">
+          <div style="height: 100px; border: 2px dashed var(--color-border); border-radius: var(--border-radius-md); padding: 1rem;">
             <eb-stack direction="horizontal" spacing="md" justify="start">
               ${Array.from({ length: 3 }, (_, i) => createStackItem(`Item ${String(i + 1)}`)).join('')}
             </eb-stack>
@@ -350,7 +350,7 @@ export const JustifyOptions: Story = {
 
         <div>
           <h4 style="margin: 0 0 0.5rem 0;">Justify Center</h4>
-          <div style="height: 100px; border: 2px dashed var(--color-border); border-radius: var(--border-radius); padding: 1rem;">
+          <div style="height: 100px; border: 2px dashed var(--color-border); border-radius: var(--border-radius-md); padding: 1rem;">
             <eb-stack direction="horizontal" spacing="md" justify="center">
               ${Array.from({ length: 3 }, (_, i) => createStackItem(`Item ${String(i + 1)}`)).join('')}
             </eb-stack>
@@ -359,7 +359,7 @@ export const JustifyOptions: Story = {
 
         <div>
           <h4 style="margin: 0 0 0.5rem 0;">Justify End</h4>
-          <div style="height: 100px; border: 2px dashed var(--color-border); border-radius: var(--border-radius); padding: 1rem;">
+          <div style="height: 100px; border: 2px dashed var(--color-border); border-radius: var(--border-radius-md); padding: 1rem;">
             <eb-stack direction="horizontal" spacing="md" justify="end">
               ${Array.from({ length: 3 }, (_, i) => createStackItem(`Item ${String(i + 1)}`)).join('')}
             </eb-stack>
@@ -368,7 +368,7 @@ export const JustifyOptions: Story = {
 
         <div>
           <h4 style="margin: 0 0 0.5rem 0;">Justify Space Between</h4>
-          <div style="height: 100px; border: 2px dashed var(--color-border); border-radius: var(--border-radius); padding: 1rem;">
+          <div style="height: 100px; border: 2px dashed var(--color-border); border-radius: var(--border-radius-md); padding: 1rem;">
             <eb-stack direction="horizontal" spacing="none" justify="space-between">
               ${Array.from({ length: 3 }, (_, i) => createStackItem(`Item ${String(i + 1)}`)).join('')}
             </eb-stack>
@@ -377,7 +377,7 @@ export const JustifyOptions: Story = {
 
         <div>
           <h4 style="margin: 0 0 0.5rem 0;">Justify Space Around</h4>
-          <div style="height: 100px; border: 2px dashed var(--color-border); border-radius: var(--border-radius); padding: 1rem;">
+          <div style="height: 100px; border: 2px dashed var(--color-border); border-radius: var(--border-radius-md); padding: 1rem;">
             <eb-stack direction="horizontal" spacing="none" justify="space-around">
               ${Array.from({ length: 3 }, (_, i) => createStackItem(`Item ${String(i + 1)}`)).join('')}
             </eb-stack>
@@ -386,7 +386,7 @@ export const JustifyOptions: Story = {
 
         <div>
           <h4 style="margin: 0 0 0.5rem 0;">Justify Space Evenly</h4>
-          <div style="height: 100px; border: 2px dashed var(--color-border); border-radius: var(--border-radius); padding: 1rem;">
+          <div style="height: 100px; border: 2px dashed var(--color-border); border-radius: var(--border-radius-md); padding: 1rem;">
             <eb-stack direction="horizontal" spacing="none" justify="space-evenly">
               ${Array.from({ length: 3 }, (_, i) => createStackItem(`Item ${String(i + 1)}`)).join('')}
             </eb-stack>
@@ -438,7 +438,7 @@ export const WithDividers: Story = {
 export const WrappingStack: Story = {
   render: () => ({
     template: `
-      <div style="max-width: 600px; border: 2px dashed var(--color-border); border-radius: var(--border-radius); padding: 1rem;">
+      <div style="max-width: 600px; border: 2px dashed var(--color-border); border-radius: var(--border-radius-md); padding: 1rem;">
         <h4 style="margin: 0 0 1rem 0;">Horizontal Stack with Wrap</h4>
         <eb-stack direction="horizontal" spacing="md" [wrap]="true">
           ${Array.from({ length: 12 }, (_, i) => createStackItem(`Item ${String(i + 1)}`)).join('')}
@@ -459,24 +459,24 @@ export const WrappingStack: Story = {
 export const FormActionsExample: Story = {
   render: () => ({
     template: `
-      <div style="max-width: 500px; padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius);">
+      <div style="max-width: 500px; padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
         <h3 style="margin: 0 0 1.5rem 0;">Contact Form</h3>
         <eb-stack spacing="lg">
           <div>
             <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Name</label>
-            <input type="text" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--border-radius);">
+            <input type="text" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
           </div>
           <div>
             <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email</label>
-            <input type="email" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--border-radius);">
+            <input type="email" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
           </div>
           <div>
             <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Message</label>
-            <textarea rows="4" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--border-radius);"></textarea>
+            <textarea rows="4" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--border-radius-md);"></textarea>
           </div>
             <eb-stack direction="horizontal" spacing="md" justify="end">
-            <button style="padding: 0.75rem 1.5rem; background: transparent; color: var(--color-text); border: 1px solid var(--color-border); border-radius: var(--border-radius); cursor: pointer;">Cancel</button>
-            <button style="padding: 0.75rem 1.5rem; background: var(--color-primary); color: white; border: none; border-radius: var(--border-radius); cursor: pointer;">Submit</button>
+            <button style="padding: 0.75rem 1.5rem; background: transparent; color: var(--color-text); border: 1px solid var(--color-border); border-radius: var(--border-radius-md); cursor: pointer;">Cancel</button>
+            <button style="padding: 0.75rem 1.5rem; background: var(--color-primary); color: white; border: none; border-radius: var(--border-radius-md); cursor: pointer;">Submit</button>
           </eb-stack>
         </eb-stack>
       </div>
@@ -497,15 +497,15 @@ export const CardListExample: Story = {
   render: () => ({
     template: `
       <eb-stack spacing="lg">
-      <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); box-shadow: var(--shadow-sm);">
+      <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); box-shadow: var(--shadow-sm);">
           <h3 style="margin: 0 0 0.5rem 0;">Notification Title 1</h3>
           <p style="margin: 0; color: var(--color-text-secondary); font-size: 14px;">This is a notification message with some details about an event.</p>
         </div>
-        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); box-shadow: var(--shadow-sm);">
+        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); box-shadow: var(--shadow-sm);">
           <h3 style="margin: 0 0 0.5rem 0;">Notification Title 2</h3>
           <p style="margin: 0; color: var(--color-text-secondary); font-size: 14px;">Another notification with different content to show consistent spacing.</p>
         </div>
-        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); box-shadow: var(--shadow-sm);">
+        <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); box-shadow: var(--shadow-sm);">
           <h3 style="margin: 0 0 0.5rem 0;">Notification Title 3</h3>
           <p style="margin: 0; color: var(--color-text-secondary); font-size: 14px;">A third notification demonstrating the stack component with cards.</p>
         </div>
@@ -525,7 +525,7 @@ export const CardListExample: Story = {
 export const NavigationExample: Story = {
   render: () => ({
     template: `
-      <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius);">
+      <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
           <eb-stack direction="horizontal" spacing="xl" align="center">
           <div style="font-weight: bold; font-size: 1.25rem;">Logo</div>
           <eb-stack direction="horizontal" spacing="lg">
@@ -534,7 +534,7 @@ export const NavigationExample: Story = {
             <a href="#" style="color: var(--color-text); text-decoration: none;">Services</a>
             <a href="#" style="color: var(--color-text); text-decoration: none;">Contact</a>
           </eb-stack>
-          <button style="margin-left: auto; padding: 0.5rem 1rem; background: var(--color-primary); color: white; border: none; border-radius: var(--border-radius); cursor: pointer;">Sign In</button>
+          <button style="margin-left: auto; padding: 0.5rem 1rem; background: var(--color-primary); color: white; border: none; border-radius: var(--border-radius-md); cursor: pointer;">Sign In</button>
         </eb-stack>
       </div>
     `,
@@ -582,7 +582,7 @@ export const Interactive: Story = {
 export const AccessibilityNotes: Story = {
   render: () => ({
     template: `
-      <div style="max-width: 700px; padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius);">
+      <div style="max-width: 700px; padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
         <h3 style="margin-top: 0;">WCAG 2.1 AAA Compliance</h3>
 
         <h4>Semantic HTML</h4>

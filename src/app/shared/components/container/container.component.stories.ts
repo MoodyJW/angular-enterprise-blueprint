@@ -84,7 +84,7 @@ export const Default: Story = {
   render: () => ({
     template: `
       <eb-container maxWidth="lg" padding="md">
-        <div style="padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius);">
+        <div style="padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
           <h2 style="margin-top: 0;">Default Container</h2>
           <p>This is the default container with lg max-width (1200px) and md padding (16px). Perfect for standard page content.</p>
         </div>
@@ -99,35 +99,35 @@ export const AllMaxWidthVariants: Story = {
     template: `
       <div style="display: flex; flex-direction: column; gap: 2rem;">
         <eb-container maxWidth="sm" padding="md">
-          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); text-align: center;">
+          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
             <h3 style="margin-top: 0;">Small (600px)</h3>
             <p style="font-size: 14px; color: var(--color-text-secondary);">Best for narrow content like forms and login pages</p>
           </div>
         </eb-container>
 
         <eb-container maxWidth="md" padding="md">
-          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); text-align: center;">
+          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
             <h3 style="margin-top: 0;">Medium (900px)</h3>
             <p style="font-size: 14px; color: var(--color-text-secondary);">Ideal for articles, blog posts, and documentation</p>
           </div>
         </eb-container>
 
         <eb-container maxWidth="lg" padding="md">
-          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); text-align: center;">
+          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
             <h3 style="margin-top: 0;">Large (1200px) - Default</h3>
             <p style="font-size: 14px; color: var(--color-text-secondary);">Standard page content width matching design system</p>
           </div>
         </eb-container>
 
         <eb-container maxWidth="xl" padding="md">
-          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); text-align: center;">
+          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
             <h3 style="margin-top: 0;">Extra Large (1400px)</h3>
             <p style="font-size: 14px; color: var(--color-text-secondary);">Wide layouts for dashboards and data tables</p>
           </div>
         </eb-container>
 
         <eb-container maxWidth="full" padding="md">
-          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); text-align: center;">
+          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
             <h3 style="margin-top: 0;">Full Width (100%)</h3>
             <p style="font-size: 14px; color: var(--color-text-secondary);">No width constraint - spans full viewport</p>
           </div>
@@ -193,7 +193,7 @@ export const CenteringOptions: Story = {
         <div>
           <h3 style="margin-bottom: 0.5rem;">Centered (Default)</h3>
           <eb-container maxWidth="md" padding="md" [centerContent]="true">
-            <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius); text-align: center;">
+            <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
               <p style="margin: 0;">Container is horizontally centered with margin: 0 auto</p>
             </div>
           </eb-container>
@@ -202,7 +202,7 @@ export const CenteringOptions: Story = {
         <div>
           <h3 style="margin-bottom: 0.5rem;">Not Centered</h3>
           <eb-container maxWidth="md" padding="md" [centerContent]="false">
-            <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius);">
+            <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
               <p style="margin: 0;">Container aligns to the left without auto margins</p>
             </div>
           </eb-container>
@@ -238,7 +238,7 @@ export const PageLayoutExample: Story = {
             <h2>Main Content Area</h2>
             <p>This is the main content area using the standard lg container (1200px). Most page content will use this width for consistency.</p>
 
-            <div style="margin-top: 2rem; padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius);">
+            <div style="margin-top: 2rem; padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
               <h3 style="margin-top: 0;">Content Card</h3>
               <p style="margin-bottom: 0;">Standard content width ensures readability and visual hierarchy.</p>
             </div>
@@ -270,21 +270,21 @@ export const NarrowContentExample: Story = {
   render: () => ({
     template: `
       <eb-container maxWidth="sm" padding="lg">
-        <div style="padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius);">
+        <div style="padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
           <h2 style="margin-top: 0; text-align: center;">Login Form</h2>
 
           <form style="display: flex; flex-direction: column; gap: 1rem;">
             <div>
               <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email</label>
-              <input type="email" placeholder="you@example.com" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--border-radius); font-size: 1rem;" />
+              <input type="email" placeholder="you@example.com" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--border-radius-md); font-size: 1rem;" />
             </div>
 
             <div>
               <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Password</label>
-              <input type="password" placeholder="••••••••" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--border-radius); font-size: 1rem;" />
+              <input type="password" placeholder="••••••••" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--border-radius-md); font-size: 1rem;" />
             </div>
 
-            <button type="submit" style="margin-top: 0.5rem; padding: 0.75rem; background: var(--color-primary); color: white; border: none; border-radius: var(--border-radius); font-size: 1rem; font-weight: 500; cursor: pointer;">
+            <button type="submit" style="margin-top: 0.5rem; padding: 0.75rem; background: var(--color-primary); color: white; border: none; border-radius: var(--border-radius-md); font-size: 1rem; font-weight: 500; cursor: pointer;">
               Sign In
             </button>
           </form>
@@ -334,7 +334,7 @@ export const ArticleContentExample: Story = {
             <li>Better TypeScript integration</li>
           </ul>
 
-          <div style="margin-top: 2rem; padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius);">
+          <div style="margin-top: 2rem; padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
             <strong>Pro Tip:</strong> Start using signals in new components to gradually modernize your codebase.
           </div>
         </article>
@@ -362,25 +362,25 @@ export const DashboardLayoutExample: Story = {
         </header>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
-          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius);">
+          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
             <h3 style="margin: 0; font-size: 2rem; color: var(--color-primary);">1,234</h3>
             <p style="margin: 0.5rem 0 0; color: var(--color-text-secondary);">Total Views</p>
           </div>
-          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius);">
+          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
             <h3 style="margin: 0; font-size: 2rem; color: var(--color-primary);">42</h3>
             <p style="margin: 0.5rem 0 0; color: var(--color-text-secondary);">Projects</p>
           </div>
-          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius);">
+          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
             <h3 style="margin: 0; font-size: 2rem; color: var(--color-primary);">98%</h3>
             <p style="margin: 0.5rem 0 0; color: var(--color-text-secondary);">Coverage</p>
           </div>
-          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius);">
+          <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
             <h3 style="margin: 0; font-size: 2rem; color: var(--color-primary);">5.2s</h3>
             <p style="margin: 0.5rem 0 0; color: var(--color-text-secondary);">Avg Load Time</p>
           </div>
         </div>
 
-        <div style="padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius);">
+        <div style="padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
           <h2 style="margin-top: 0;">Recent Activity</h2>
           <p style="color: var(--color-text-secondary);">Wide layout allows for more complex data visualizations and tables.</p>
         </div>
@@ -402,12 +402,12 @@ export const NestedContainers: Story = {
   render: () => ({
     template: `
       <eb-container maxWidth="xl" padding="lg">
-        <div style="padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius); margin-bottom: 2rem;">
+        <div style="padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius-md); margin-bottom: 2rem;">
           <h2 style="margin-top: 0;">Outer Container (XL - 1400px)</h2>
           <p>This is the outer container with a wide layout.</p>
 
           <eb-container maxWidth="md" padding="md">
-            <div style="padding: 1.5rem; background: var(--color-background); border: 2px dashed var(--color-border); border-radius: var(--border-radius);">
+            <div style="padding: 1.5rem; background: var(--color-background); border: 2px dashed var(--color-border); border-radius: var(--border-radius-md);">
               <h3 style="margin-top: 0;">Nested Container (MD - 900px)</h3>
               <p style="margin-bottom: 0;">You can nest containers to create focused content areas within wider layouts. The nested container will be centered within the outer container.</p>
             </div>
@@ -438,10 +438,10 @@ export const Interactive: Story = {
     props: args,
     template: `
       <eb-container ${argsToTemplate(args)}>
-        <div style="padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius); text-align: center;">
+        <div style="padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
           <h2 style="margin-top: 0;">Interactive Container</h2>
           <p>Use the controls below to customize this container's width, padding, and centering behavior.</p>
-          <div style="margin-top: 1.5rem; padding: 1rem; background: var(--color-background); border: 2px dashed var(--color-border); border-radius: var(--border-radius);">
+          <div style="margin-top: 1.5rem; padding: 1rem; background: var(--color-background); border: 2px dashed var(--color-border); border-radius: var(--border-radius-md);">
             <p style="margin: 0; font-size: 14px; color: var(--color-text-secondary);">
               Current: <strong>{{ maxWidth }}</strong> max-width,
               <strong>{{ padding }}</strong> padding,
@@ -466,7 +466,7 @@ export const AccessibilityNotes: Story = {
   render: () => ({
     template: `
       <eb-container maxWidth="md" padding="lg">
-        <div style="padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius);">
+        <div style="padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
           <h3 style="margin-top: 0;">WCAG 2.1 AAA Compliance</h3>
 
           <h4>Semantic HTML</h4>

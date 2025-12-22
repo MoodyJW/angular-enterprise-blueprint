@@ -273,7 +273,7 @@ The component reuses existing form styling components:
 
 ```scss
 .form-field {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--space-3);
 
   &--error {
     // Error state styling

@@ -4,7 +4,7 @@
 .skeleton-container {
   // Base container styles
   display: block;
-  width: 100%;
+  width: var(--max-width-full);
 
   // Multiple items container
   &--multiple {
@@ -18,8 +18,8 @@
   position: relative;
   display: block;
   overflow: hidden;
-  background-color: var(--color-surface-variant, rgba(0, 0, 0, 0.11));
-  width: 100%;
+  background-color: var(--color-surface-elevated, rgba(0, 0, 0, 0.11));
+  width: var(--max-width-full);
 
   // Ensure proper aspect ratio rendering
   &::before {
@@ -46,7 +46,7 @@
 
   // Circular variant (avatars, icons)
   &--circular {
-    border-radius: 50%;
+    border-radius: var(--border-radius-half);
     width: 40px;
     height: 40px;
 
@@ -73,7 +73,7 @@
 
   // Rounded corners modifier
   &--rounded {
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-md);
   }
 
   // ANIMATION STYLES

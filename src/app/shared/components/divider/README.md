@@ -271,8 +271,8 @@ Uses BEM methodology with theme integration:
 
   &--inset {
     &.divider--horizontal {
-      margin-left: var(--spacing-lg);
-      margin-right: var(--spacing-lg);
+      margin-left: var(--space-4);
+      margin-right: var(--space-4);
     }
   }
 
@@ -289,7 +289,7 @@ Uses BEM methodology with theme integration:
     }
 
     span {
-      padding: 0 var(--spacing-md);
+      padding: 0 var(--space-3);
       color: var(--color-text-secondary);
     }
   }

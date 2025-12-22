@@ -274,7 +274,7 @@ The component uses BEM methodology and integrates with the theme system:
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: var(--border-radius-half);
   font-weight: var(--font-weight-bold);
   line-height: 1;
 

@@ -55,7 +55,7 @@
   height: 16px;
   border: 2px solid;
   border-color: currentColor currentColor currentColor transparent;
-  border-radius: 50%;
+  border-radius: var(--border-radius-half);
   animation: btn-spin 0.6s linear infinite;
 
   @media (prefers-reduced-motion: reduce) {

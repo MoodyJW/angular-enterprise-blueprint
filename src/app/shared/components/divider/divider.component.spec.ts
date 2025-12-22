@@ -128,13 +128,13 @@ describe('DividerComponent', () => {
     });
 
     it('should include spacing class', () => {
-      expect(component.containerClasses()).toContain('divider--spacing-md');
+      expect(component.containerClasses()).toContain('divider--space-3');
     });
 
     it('should update spacing class when changed', () => {
       fixture.componentRef.setInput('spacing', 'xl');
       fixture.detectChanges();
-      expect(component.containerClasses()).toContain('divider--spacing-xl');
+      expect(component.containerClasses()).toContain('divider--space-5');
     });
 
     it('should include thickness class', () => {
@@ -333,35 +333,35 @@ describe('DividerComponent', () => {
     it('should apply spacing-xs class', () => {
       fixture.componentRef.setInput('spacing', 'xs');
       fixture.detectChanges();
-      expect(component.containerClasses()).toContain('divider--spacing-xs');
+      expect(component.containerClasses()).toContain('divider--space-1');
     });
 
     it('should apply spacing-sm class', () => {
       fixture.componentRef.setInput('spacing', 'sm');
       fixture.detectChanges();
-      expect(component.containerClasses()).toContain('divider--spacing-sm');
+      expect(component.containerClasses()).toContain('divider--space-2');
     });
 
     it('should apply spacing-md class', () => {
-      expect(component.containerClasses()).toContain('divider--spacing-md');
+      expect(component.containerClasses()).toContain('divider--space-3');
     });
 
     it('should apply spacing-lg class', () => {
       fixture.componentRef.setInput('spacing', 'lg');
       fixture.detectChanges();
-      expect(component.containerClasses()).toContain('divider--spacing-lg');
+      expect(component.containerClasses()).toContain('divider--space-4');
     });
 
     it('should apply spacing-xl class', () => {
       fixture.componentRef.setInput('spacing', 'xl');
       fixture.detectChanges();
-      expect(component.containerClasses()).toContain('divider--spacing-xl');
+      expect(component.containerClasses()).toContain('divider--space-5');
     });
 
     it('should apply spacing-2xl class', () => {
       fixture.componentRef.setInput('spacing', '2xl');
       fixture.detectChanges();
-      expect(component.containerClasses()).toContain('divider--spacing-2xl');
+      expect(component.containerClasses()).toContain('divider--space-6');
     });
   });
 
@@ -457,7 +457,7 @@ describe('DividerComponent', () => {
       const classes = component.containerClasses();
       expect(classes).toContain('divider--vertical');
       expect(classes).toContain('divider--dashed');
-      expect(classes).toContain('divider--spacing-xl');
+      expect(classes).toContain('divider--space-5');
       expect(classes).toContain('divider--thick');
       expect(classes).toContain('divider--inset');
     });

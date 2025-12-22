@@ -13,7 +13,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--spacing-xs);
+    gap: var(--space-1);
     list-style: none;
     margin: 0;
     padding: 0;
@@ -23,17 +23,17 @@
   &__item {
     display: flex;
     align-items: center;
-    gap: var(--spacing-xs);
+    gap: var(--space-1);
   }
 
   // Clickable breadcrumb link
   &__link {
     display: inline-flex;
     align-items: center;
-    gap: var(--spacing-xs);
+    gap: var(--space-1);
     color: var(--color-primary);
     text-decoration: none;
-    transition: color var(--transition-duration) var(--transition-timing);
+    transition: color var(--duration-normal) var(--ease-in-out);
     cursor: pointer;
 
     // Focus visible state for keyboard navigation
@@ -64,7 +64,7 @@
   &__current {
     display: inline-flex;
     align-items: center;
-    gap: var(--spacing-xs);
+    gap: var(--space-1);
     color: var(--color-text);
     font-weight: var(--font-weight-semibold);
   }
@@ -92,7 +92,7 @@
   &__ellipsis {
     color: var(--color-text-secondary);
     user-select: none;
-    padding: 0 var(--spacing-xs);
+    padding: 0 var(--space-1);
   }
 
   // SIZE MODIFIERS
@@ -174,16 +174,16 @@
   // On very small screens, reduce gaps
   @media (max-width: 480px) {
     &__list {
-      gap: var(--spacing-xs);
+      gap: var(--space-1);
     }
 
     &__item {
-      gap: var(--spacing-xs);
+      gap: var(--space-1);
     }
 
     &__link,
     &__current {
-      gap: var(--spacing-xs);
+      gap: var(--space-1);
     }
 
     // Slightly smaller text on mobile for sm size

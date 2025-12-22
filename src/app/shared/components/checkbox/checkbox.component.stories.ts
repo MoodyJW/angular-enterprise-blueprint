@@ -460,7 +460,7 @@ export const KeyboardNavigation: Story = {
 export const FormIntegration: Story = {
   render: () => ({
     template: `
-      <form style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 500px; padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--border-radius);">
+      <form style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 500px; padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
         <h3 style="margin: 0; font-size: 18px; font-weight: 600;">Account Settings</h3>
 
         <eb-checkbox
@@ -500,7 +500,7 @@ export const FormIntegration: Story = {
           ariaLabel="I agree to the terms and conditions"
         />
 
-        <button type="submit" style="padding: 0.75rem 1.5rem; background: var(--color-primary); color: white; border: none; border-radius: var(--border-radius); cursor: pointer;">
+        <button type="submit" style="padding: 0.75rem 1.5rem; background: var(--color-primary); color: white; border: none; border-radius: var(--border-radius-md); cursor: pointer;">
           Save Settings
         </button>
       </form>

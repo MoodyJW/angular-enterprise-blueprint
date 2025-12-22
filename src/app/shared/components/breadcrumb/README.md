@@ -258,7 +258,7 @@ Uses BEM methodology with theme integration:
 .breadcrumb {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap: var(--space-1);
   list-style: none;
   padding: 0;
   margin: 0;
@@ -266,7 +266,7 @@ Uses BEM methodology with theme integration:
   &__item {
     display: flex;
     align-items: center;
-    gap: var(--spacing-xs);
+    gap: var(--space-1);
 
     a {
       color: var(--color-text-secondary);
@@ -284,13 +284,13 @@ Uses BEM methodology with theme integration:
     }
 
     &--current {
-      color: var(--color-text-primary);
+      color: var(--color-text);
       font-weight: var(--font-weight-medium);
     }
   }
 
   &__separator {
-    color: var(--color-text-tertiary);
+    color: var(--color-text-muted);
     user-select: none;
   }
 }

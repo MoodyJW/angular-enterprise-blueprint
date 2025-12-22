@@ -1,7 +1,7 @@
 .radio-wrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--space-1);
   position: relative;
 
   &--disabled {
@@ -20,14 +20,14 @@
 .radio {
   appearance: none;
   position: absolute;
-  margin: 0;
+  margin: var(--space-0);
   width: 20px;
   height: 20px;
-  border: 2px solid var(--color-border);
-  border-radius: 50%;
+  border: var(--border-width-medium) solid var(--color-border);
+  border-radius: var(--border-radius-half);
   background-color: var(--color-background);
   cursor: pointer;
-  transition: all var(--transition-duration) var(--transition-timing);
+  transition: all var(--duration-normal) var(--ease-in-out);
   flex-shrink: 0;
 
   &:focus {
@@ -35,8 +35,8 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: var(--border-width-medium) solid var(--color-primary);
+    outline-offset: var(--border-width-medium);
   }
 
   &:not(:disabled):not(.radio--disabled):hover {
@@ -129,7 +129,7 @@
   justify-content: center;
   width: 20px;
   height: 20px;
-  border-radius: 50%;
+  border-radius: var(--border-radius-half);
   pointer-events: none;
   flex-shrink: 0;
 
@@ -163,10 +163,10 @@
   display: block;
   width: 10px;
   height: 10px;
-  border-radius: 50%;
+  border-radius: var(--border-radius-half);
   background-color: var(--color-primary);
   transform: scale(0);
-  transition: transform var(--transition-duration) var(--transition-timing);
+  transition: transform var(--duration-normal) var(--ease-in-out);
 
   .radio--checked ~ .radio-indicator & {
     transform: scale(1);
@@ -206,25 +206,25 @@
 
 .radio-label,
 .input-helper-text {
-  padding-left: calc(20px + var(--spacing-sm));
+  padding-left: calc(20px + var(--space-2));
 
   .radio-wrapper--sm & {
-    padding-left: calc(16px + var(--spacing-sm));
+    padding-left: calc(16px + var(--space-2));
   }
 
   .radio-wrapper--lg & {
-    padding-left: calc(24px + var(--spacing-sm));
+    padding-left: calc(24px + var(--space-2));
   }
 
   @media (pointer: coarse) {
-    padding-left: calc(44px + var(--spacing-sm));
+    padding-left: calc(44px + var(--space-2));
 
     .radio-wrapper--sm & {
-      padding-left: calc(40px + var(--spacing-sm));
+      padding-left: calc(40px + var(--space-2));
     }
 
     .radio-wrapper--lg & {
-      padding-left: calc(48px + var(--spacing-sm));
+      padding-left: calc(48px + var(--space-2));
     }
   }
 }

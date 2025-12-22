@@ -190,12 +190,12 @@ The component uses CSS variables for theming:
 --color-border
 --color-background
 --color-text
---spacing-xs
---spacing-sm
+--space-1
+--space-2
 --border-radius
 --border-radius-sm
---transition-duration
---transition-timing
+--duration-normal
+--ease-in-out
 ```
 
 ## Testing

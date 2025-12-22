@@ -457,7 +457,7 @@ export const FormExample: Story = {
     props: args,
     template: `
       <form style="max-width: 500px; display: flex; flex-direction: column; gap: 1.5rem;">
-        <h3 style="margin: 0 0 1rem 0; color: var(--color-text-primary);">Sign Up Form</h3>
+        <h3 style="margin: 0 0 1rem 0; color: var(--color-text);">Sign Up Form</h3>
 
         <eb-input
           [label]="'Full Name'"
@@ -520,7 +520,7 @@ export const AccessibilityDemo: Story = {
     props: args,
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <p style="color: var(--color-text-primary); margin-bottom: 1rem;">
+        <p style="color: var(--color-text); margin-bottom: 1rem;">
           All inputs have proper ARIA attributes, keyboard navigation, and screen reader support.
         </p>
 

@@ -191,7 +191,7 @@ export class BlogCardExample {
         <img
           src="avatar.jpg"
           alt="User avatar"
-          style="width: 80px; height: 80px; border-radius: 50%;"
+          style="width: 80px; height: 80px; border-radius: var(--border-radius-half);"
         />
         <h3>John Doe</h3>
         <p>Software Engineer</p>
