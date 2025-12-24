@@ -27,7 +27,6 @@ import { IconComponent } from '@shared/components';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [IconComponent],
   template: `
     <!-- Simple icon -->
@@ -57,7 +56,6 @@ import { IconComponent, ICON_NAMES } from '@shared/components';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [IconComponent],
   template: `
     <eb-icon [name]="homeIcon" ariaLabel="Home" />

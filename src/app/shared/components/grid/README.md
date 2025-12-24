@@ -28,7 +28,6 @@ import { GridComponent } from '@shared/components';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [GridComponent],
   template: `
     <!-- Responsive grid: 1 column mobile, 2 tablet, 3 desktop -->

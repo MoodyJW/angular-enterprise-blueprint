@@ -29,7 +29,6 @@ import { StackComponent } from '@shared/components';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [StackComponent],
   template: `
     <!-- Vertical stack with medium spacing (default) -->

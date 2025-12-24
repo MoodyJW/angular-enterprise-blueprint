@@ -29,7 +29,6 @@ import { ButtonComponent } from '@shared/components';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [ButtonComponent],
   template: `
     <!-- Primary button -->
@@ -85,7 +84,6 @@ import { ButtonComponent } from '@shared/components';
 
 @Component({
   selector: 'eb-form',
-  standalone: true,
   imports: [ButtonComponent],
   template: `
     <eb-button variant="primary" ariaLabel="Submit form" (clicked)="handleSubmit($event)">
@@ -109,7 +107,6 @@ import { ButtonComponent } from '@shared/components';
 
 @Component({
   selector: 'eb-toggle',
-  standalone: true,
   imports: [ButtonComponent],
   template: `
     <eb-button

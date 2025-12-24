@@ -39,7 +39,6 @@ export type GridJustify =
  */
 @Component({
   selector: 'eb-grid',
-  standalone: true,
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

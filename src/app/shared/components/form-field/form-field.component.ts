@@ -53,7 +53,6 @@ export type FormFieldValidationState = 'default' | 'success' | 'warning' | 'erro
  */
 @Component({
   selector: 'eb-form-field',
-  standalone: true,
   imports: [CommonModule, InputLabelComponent, InputFooterComponent],
   templateUrl: './form-field.component.html',
   styleUrls: ['./form-field.component.scss'],

@@ -67,7 +67,6 @@ export type RadioValidationState = 'default' | 'success' | 'warning' | 'error';
  */
 @Component({
   selector: 'eb-radio',
-  standalone: true,
   imports: [CommonModule, FormsModule, InputFooterComponent, InputLabelComponent],
   templateUrl: './radio.component.html',
   styleUrl: './radio.component.scss',

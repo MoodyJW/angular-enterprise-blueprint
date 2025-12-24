@@ -86,7 +86,6 @@ describe('ButtonContentComponent', () => {
           <span class="projected">Projected text</span>
         </eb-button-content>
       `,
-      standalone: true,
       imports: [ButtonContentComponent],
     })
     class HostComponent {

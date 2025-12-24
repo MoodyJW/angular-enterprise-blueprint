@@ -28,7 +28,6 @@ export type ContainerPadding = 'none' | 'sm' | 'md' | 'lg';
  */
 @Component({
   selector: 'eb-container',
-  standalone: true,
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

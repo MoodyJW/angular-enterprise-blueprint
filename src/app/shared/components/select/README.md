@@ -30,7 +30,6 @@ import { SelectComponent, type SelectOption } from '@shared/components';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [SelectComponent],
   template: `
     <!-- Basic select -->

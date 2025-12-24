@@ -83,7 +83,6 @@ export interface SelectOption<T = unknown> {
  */
 @Component({
   selector: 'eb-select',
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

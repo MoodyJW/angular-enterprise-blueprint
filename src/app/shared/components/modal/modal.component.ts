@@ -56,7 +56,6 @@ export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
  */
 @Component({
   selector: 'eb-modal',
-  standalone: true,
   imports: [CommonModule, A11yModule],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss',

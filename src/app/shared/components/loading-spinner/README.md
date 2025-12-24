@@ -28,7 +28,6 @@ import { LoadingSpinnerComponent } from '@shared/components';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [LoadingSpinnerComponent],
   template: `
     <!-- Default spinner -->

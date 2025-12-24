@@ -53,7 +53,6 @@ export type TextareaResize = 'none' | 'vertical' | 'horizontal' | 'both';
  */
 @Component({
   selector: 'eb-textarea',
-  standalone: true,
   imports: [CommonModule, FormsModule, InputFooterComponent],
   templateUrl: './textarea.component.html',
   styleUrl: './textarea.component.scss',

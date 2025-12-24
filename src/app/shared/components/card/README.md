@@ -29,7 +29,6 @@ import { CardComponent, ButtonComponent } from '@shared/components';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [CardComponent, ButtonComponent],
   template: `
     <!-- Simple card -->

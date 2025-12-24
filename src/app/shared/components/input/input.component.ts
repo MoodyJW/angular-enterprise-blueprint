@@ -54,7 +54,6 @@ export type InputValidationState = 'default' | 'success' | 'warning' | 'error';
  */
 @Component({
   selector: 'eb-input',
-  standalone: true,
   imports: [CommonModule, FormsModule, InputFooterComponent],
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',

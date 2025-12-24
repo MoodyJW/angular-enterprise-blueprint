@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'eb-button-content',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './button-content.component.html',
   styleUrls: ['./button-content.component.scss'],

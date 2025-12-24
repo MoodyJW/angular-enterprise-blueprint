@@ -23,7 +23,6 @@ import { RadioComponent } from '@shared/components/radio';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [RadioComponent],
   template: `
     <div role="radiogroup" aria-label="Payment method">

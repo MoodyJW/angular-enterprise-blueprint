@@ -39,7 +39,6 @@ export type StackDirection = 'vertical' | 'horizontal';
  */
 @Component({
   selector: 'eb-stack',
-  standalone: true,
   templateUrl: './stack.component.html',
   styleUrl: './stack.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

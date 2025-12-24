@@ -31,7 +31,6 @@ import { InputComponent } from '@shared/components';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [InputComponent],
   template: `
     <!-- Basic input -->

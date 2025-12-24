@@ -25,7 +25,6 @@ export type CardPadding = 'none' | 'sm' | 'md' | 'lg';
  */
 @Component({
   selector: 'eb-card',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',

@@ -23,7 +23,6 @@ import { IconComponent } from '../icon';
  */
 @Component({
   selector: 'eb-checkbox-checkmark',
-  standalone: true,
   imports: [CommonModule, IconComponent],
   template: `
     <span class="checkbox-checkmark" aria-hidden="true">

@@ -29,7 +29,6 @@ import { FormFieldComponent } from '@shared/components';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [FormFieldComponent, ReactiveFormsModule],
   template: `
     <!-- With Angular FormControl -->

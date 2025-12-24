@@ -16,7 +16,6 @@ import type { IconName } from '../../constants';
  */
 @Component({
   selector: 'eb-tab',
-  standalone: true,
   imports: [CommonModule],
   template: `
     @if (isActive()) {

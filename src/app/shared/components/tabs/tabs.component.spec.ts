@@ -11,7 +11,6 @@ import { TabsComponent } from './tabs.component';
 
 // Test host component
 @Component({
-  standalone: true,
   imports: [TabsComponent, TabComponent],
   template: `
     <eb-tabs [ariaLabel]="ariaLabel" [(activeTabId)]="activeTabId">
@@ -443,7 +442,6 @@ describe('TabsComponent with Host', () => {
 
 // Test host component with icons
 @Component({
-  standalone: true,
   imports: [TabsComponent, TabComponent],
   template: `
     <eb-tabs [ariaLabel]="'Tabs with icons'" [(activeTabId)]="activeTabId">

@@ -25,7 +25,6 @@ import { ContainerComponent } from '@shared/components';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [ContainerComponent],
   template: `
     <!-- Standard page container -->

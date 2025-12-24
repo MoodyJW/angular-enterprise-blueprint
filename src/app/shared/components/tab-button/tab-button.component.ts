@@ -12,7 +12,6 @@ import { IconComponent } from '../icon/icon.component';
  */
 @Component({
   selector: 'eb-tab-button',
-  standalone: true,
   imports: [CommonModule, ButtonComponent, IconComponent],
   templateUrl: './tab-button.component.html',
   styleUrls: ['./tab-button.component.scss'],

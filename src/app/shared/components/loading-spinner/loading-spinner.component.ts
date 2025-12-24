@@ -25,7 +25,6 @@ export type SpinnerVariant = 'primary' | 'secondary' | 'light' | 'dark';
  */
 @Component({
   selector: 'eb-loading-spinner',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './loading-spinner.component.html',
   styleUrl: './loading-spinner.component.scss',

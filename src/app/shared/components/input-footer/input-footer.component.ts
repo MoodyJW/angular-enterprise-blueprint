@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
 
 @Component({
   selector: 'eb-input-footer',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './input-footer.component.html',
   styleUrl: './input-footer.component.scss',

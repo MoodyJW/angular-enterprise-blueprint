@@ -54,7 +54,6 @@ export type CheckboxValidationState = 'default' | 'success' | 'warning' | 'error
  */
 @Component({
   selector: 'eb-checkbox',
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

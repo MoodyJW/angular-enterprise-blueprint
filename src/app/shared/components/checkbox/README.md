@@ -23,7 +23,6 @@ import { CheckboxComponent } from '@shared/components/checkbox';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [CheckboxComponent],
   template: `
     <eb-checkbox

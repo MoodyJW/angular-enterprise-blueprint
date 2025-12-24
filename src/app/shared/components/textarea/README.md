@@ -29,7 +29,6 @@ import { TextareaComponent } from '@shared/components';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [TextareaComponent],
   template: `
     <!-- Basic textarea -->

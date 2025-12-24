@@ -29,7 +29,6 @@ import { SkeletonComponent } from '@shared/components';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [SkeletonComponent],
   template: `
     <!-- Text skeleton (single line) -->

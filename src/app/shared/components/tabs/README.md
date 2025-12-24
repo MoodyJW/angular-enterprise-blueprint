@@ -30,7 +30,6 @@ import { TabsComponent, TabComponent } from '@shared/components';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [TabsComponent, TabComponent],
   template: `
     <!-- Basic tabs -->

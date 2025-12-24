@@ -40,7 +40,6 @@ export type TabsSize = 'sm' | 'md' | 'lg';
  */
 @Component({
   selector: 'eb-tabs',
-  standalone: true,
   imports: [CommonModule, TabButtonComponent],
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.scss',

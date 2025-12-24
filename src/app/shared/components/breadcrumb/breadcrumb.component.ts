@@ -69,7 +69,6 @@ export interface BreadcrumbItem {
  */
 @Component({
   selector: 'eb-breadcrumb',
-  standalone: true,
   imports: [CommonModule, RouterModule, IconComponent],
   templateUrl: './breadcrumb.component.html',
   styleUrl: './breadcrumb.component.scss',

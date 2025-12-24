@@ -3,30 +3,5 @@
     <h1>{{ t('home.welcome') }}</h1>
     <p>{{ t('home.description') }}</p>
   </ng-container>
-
-  <eb-card variant="default" padding="md">
-    <div card-header>
-      <h3 class="card__header-title">Card Title</h3>
-      <p class="card__header-subtitle">Card subtitle</p>
-    </div>
-    <div card-body>
-      <p>
-        This is the main content of the card. It can contain any HTML content including text,
-        images, and other components.
-      </p>
-    </div>
-    <div card-footer>
-      <div class="card__footer-actions">
-        <eb-button variant="secondary" ariaLabel="Cancel action">Cancel</eb-button>
-        <eb-button variant="primary" ariaLabel="Confirm action">Confirm</eb-button>
-      </div>
-    </div>
-  </eb-card>
-
-  <div style="display: flex; flex-direction: column; gap: 1rem">
-    <eb-checkbox size="sm" label="Small checkbox" ariaLabel="Small checkbox" />
-    <eb-checkbox size="md" label="Medium checkbox (default)" ariaLabel="Medium checkbox" />
-    <eb-checkbox size="lg" label="Large checkbox" ariaLabel="Large checkbox" />
-  </div>
 </main>
 <router-outlet />

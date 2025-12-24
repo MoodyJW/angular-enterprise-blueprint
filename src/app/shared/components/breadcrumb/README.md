@@ -30,7 +30,6 @@ import { ICON_NAMES } from '@shared/constants';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [BreadcrumbComponent],
   template: `
     <!-- Basic breadcrumb -->

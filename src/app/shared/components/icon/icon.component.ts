@@ -38,7 +38,6 @@ export type IconColor =
  */
 @Component({
   selector: 'eb-icon',
-  standalone: true,
   imports: [NgIconComponent],
   templateUrl: './icon.component.html',
   styleUrl: './icon.component.scss',

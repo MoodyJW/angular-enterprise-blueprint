@@ -28,7 +28,6 @@ import { BadgeComponent } from '@shared/components';
 
 @Component({
   selector: 'eb-example',
-  standalone: true,
   imports: [BadgeComponent],
   template: `
     <!-- Badge with count on a button -->

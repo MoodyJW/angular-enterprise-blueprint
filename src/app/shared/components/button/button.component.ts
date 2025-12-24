@@ -25,7 +25,6 @@ export type ButtonType = 'button' | 'submit' | 'reset';
  */
 @Component({
   selector: 'eb-button',
-  standalone: true,
   imports: [CommonModule, ButtonContentComponent],
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],

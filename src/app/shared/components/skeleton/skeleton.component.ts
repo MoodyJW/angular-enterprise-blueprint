@@ -32,7 +32,6 @@ export type SkeletonAnimation = 'pulse' | 'wave' | 'none';
  */
 @Component({
   selector: 'eb-skeleton',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './skeleton.component.html',
   styleUrl: './skeleton.component.scss',

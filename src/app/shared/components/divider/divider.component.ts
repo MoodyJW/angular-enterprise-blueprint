@@ -87,7 +87,6 @@ export type DividerThickness = 'thin' | 'medium' | 'thick';
  */
 @Component({
   selector: 'eb-divider',
-  standalone: true,
   templateUrl: './divider.component.html',
   styleUrl: './divider.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
