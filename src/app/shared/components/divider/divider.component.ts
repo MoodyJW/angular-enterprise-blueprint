@@ -143,21 +143,35 @@ export class DividerComponent {
   readonly ariaLabel = input<string | undefined>(undefined);
 
   /**
+   * Map semantic spacing values to numeric CSS class names
+   */
+  private readonly _spacingClassMap: Record<DividerSpacing, string> = {
+    none: 'spacing-none',
+    xs: 'space-1',
+    sm: 'space-2',
+    md: 'space-3',
+    lg: 'space-4',
+    xl: 'space-5',
+    '2xl': 'space-6',
+  };
+
+  /**
    * Computed CSS classes for the divider container.
    */
-  readonly containerClasses = computed(() =>
-    [
+  readonly containerClasses = computed(() => {
+    const spacingClass = this._spacingClassMap[this.spacing()];
+    return [
       'divider',
       `divider--${this.orientation()}`,
       `divider--${this.variant()}`,
-      `divider--spacing-${this.spacing()}`,
+      `divider--${spacingClass}`,
       `divider--${this.thickness()}`,
       this.inset() ? 'divider--inset' : '',
       this.hasLabel() ? 'divider--with-label' : '',
     ]
       .filter(Boolean)
-      .join(' '),
-  );
+      .join(' ');
+  });
 
   /**
    * Computed ARIA label for the divider.

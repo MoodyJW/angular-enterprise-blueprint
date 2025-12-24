@@ -225,6 +225,17 @@ describe('StackComponent', () => {
     });
 
     it('should apply spacing classes', () => {
+      const spacingClassMap: Record<StackSpacing, string> = {
+        none: 'spacing-none',
+        xs: 'space-1',
+        sm: 'space-2',
+        md: 'space-3',
+        lg: 'space-4',
+        xl: 'space-5',
+        '2xl': 'space-6',
+        '3xl': 'space-12',
+        '4xl': 'space-16',
+      };
       const spacings: StackSpacing[] = ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'];
 
       spacings.forEach((spacing) => {
@@ -232,7 +243,7 @@ describe('StackComponent', () => {
         fixture.detectChanges();
 
         const stackElement = nativeElement.querySelector('.stack');
-        expect(stackElement?.classList.contains(`stack--spacing-${spacing}`)).toBe(true);
+        expect(stackElement?.classList.contains(`stack--${spacingClassMap[spacing]}`)).toBe(true);
       });
     });
 
@@ -471,6 +482,17 @@ describe('StackComponent', () => {
 
   describe('Integration', () => {
     it('should work with all spacing variants', () => {
+      const spacingClassMap: Record<StackSpacing, string> = {
+        none: 'spacing-none',
+        xs: 'space-1',
+        sm: 'space-2',
+        md: 'space-3',
+        lg: 'space-4',
+        xl: 'space-5',
+        '2xl': 'space-6',
+        '3xl': 'space-12',
+        '4xl': 'space-16',
+      };
       const variants: StackSpacing[] = ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'];
 
       variants.forEach((variant) => {
@@ -478,7 +500,7 @@ describe('StackComponent', () => {
         fixture.detectChanges();
 
         const stackElement = nativeElement.querySelector('.stack');
-        expect(stackElement?.classList.contains(`stack--spacing-${variant}`)).toBe(true);
+        expect(stackElement?.classList.contains(`stack--${spacingClassMap[variant]}`)).toBe(true);
       });
     });
 

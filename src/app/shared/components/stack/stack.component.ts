@@ -135,15 +135,31 @@ export class StackComponent {
   readonly stackClasses = computed(() => this._getStackClasses());
 
   /**
+   * Map semantic spacing values to numeric CSS class names
+   */
+  private readonly _spacingClassMap: Record<StackSpacing, string> = {
+    none: 'spacing-none',
+    xs: 'space-1',
+    sm: 'space-2',
+    md: 'space-3',
+    lg: 'space-4',
+    xl: 'space-5',
+    '2xl': 'space-6',
+    '3xl': 'space-12',
+    '4xl': 'space-16',
+  };
+
+  /**
    * Generate BEM CSS classes based on component state
    */
   private _getStackClasses(): string {
     const justify = this.justify();
+    const spacingClass = this._spacingClassMap[this.spacing()];
 
     return [
       'stack',
       `stack--${this.direction()}`,
-      `stack--spacing-${this.spacing()}`,
+      `stack--${spacingClass}`,
       `stack--align-${this.align()}`,
       justify != null ? `stack--justify-${justify}` : '',
       this.fullWidth() ? 'stack--full-width' : '',

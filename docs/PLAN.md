@@ -159,15 +159,15 @@ _Goal: Build the invisible singletons that power the application._
 
 _Goal: Port the high-quality UI components. Ensure strict Storybook coverage._
 
-- [ ] **3.1 Global Styling**: Define CSS Variables for 6 themes (2 Light/2 Dark/ 2 High-Contrast).
-- [ ] **3.2 Atomic Components**: Port `Button`, `Icon`, `Badge`, `Spinner`, `Card`.
-- [ ] **3.3 Molecules**: `AlertComponent`, `BreadcrumbComponent`.
-- [ ] **3.4 Layout Components**: Port `Container`, `Grid`, `Stack`, `Divider`.
-- [ ] **3.5 Form Components**: Port `Input`, `Select`, `Checkbox`, `Textarea` (Ensure `ControlValueAccessor` compliance).
-- [ ] **3.6 Special Components**:
-  - [ ] **ThemePickerComponent**: Build this early to test the theming engine.
-- [ ] **3.7 Feedback Components**: Port `Toast` (and Service), `Modal`, `Skeleton`.
-- [ ] **3.8 Stories**: Ensure every component has a `.stories.ts` file.
+- [x] **3.1 Global Styling**: Define CSS Variables for 6 themes (2 Light/2 Dark/ 2 High-Contrast).
+- [x] **3.2 Atomic Components**: Port `Button`, `Icon`, `Badge`, `LoadingSpinner`, `Card`.
+- [x] **3.3 Molecules**: `BreadcrumbComponent`, `Tabs`.
+- [x] **3.4 Layout Components**: Port `Container`, `Grid`, `Stack`, `Divider`.
+- [x] **3.5 Form Components**: Port `Input`, `Select`, `Checkbox`, `Radio`, `Textarea`, `FormField` (Ensure `ControlValueAccessor` compliance).
+- [x] **3.6 Feedback Components**: Port `Toast` (and Service), `Modal`, `Skeleton`.
+- [x] **3.7 Stories**: Ensure every component has a `.stories.ts` file.
+- [ ] **3.8 Special Components**:
+  - [ ] **ThemePickerComponent**: Build to test the theming engine and provide user theme selection.
 - [ ] **3.9 Blog Article**: Write about building a design system in Angular.
 
 ### 🐚 Phase 4: The Application Shell
