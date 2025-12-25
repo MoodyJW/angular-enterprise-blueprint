@@ -138,9 +138,9 @@ export default tseslint.config(
               ],
             },
             {
-              // Shared can only import from shared
+              // Shared can import from shared and core services (for components like ThemePicker)
               from: 'shared',
-              allow: ['shared'],
+              allow: ['shared', 'core'],
             },
           ],
         },

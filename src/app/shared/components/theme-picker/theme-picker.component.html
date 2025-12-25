@@ -1,0 +1,119 @@
+<div
+  class="theme-picker"
+  [class]="pickerClasses()"
+  [attr.aria-label]="ariaLabel()"
+  role="listbox"
+  [attr.aria-activedescendant]="currentTheme().id"
+>
+  @switch (variant()) {
+    @case ('dropdown') {
+      <button
+        type="button"
+        class="theme-picker__trigger"
+        [attr.aria-expanded]="isOpen()"
+        [attr.aria-haspopup]="'listbox'"
+        (click)="toggleDropdown()"
+        (keydown)="handleKeydown($event)"
+      >
+        <span
+          class="theme-picker__swatch"
+          [style.background]="getThemePreview(currentTheme())"
+        ></span>
+        @if (showLabels()) {
+          <span class="theme-picker__label">{{ currentTheme().name }}</span>
+        }
+        <eb-icon name="heroChevronDown" size="sm" [decorative]="true" />
+      </button>
+
+      @if (isOpen()) {
+        <div class="theme-picker__dropdown" role="listbox">
+          @if (groupByCategory()) {
+            @for (category of categoryKeys; track category) {
+              <div class="theme-picker__group">
+                <span class="theme-picker__group-label">{{ categoryLabels[category] }}</span>
+                @for (theme of groupedThemes()[category]; track theme.id) {
+                  <button
+                    type="button"
+                    class="theme-picker__option"
+                    [class.theme-picker__option--active]="theme.id === currentTheme().id"
+                    role="option"
+                    [attr.aria-selected]="theme.id === currentTheme().id"
+                    (click)="selectTheme(theme.id)"
+                  >
+                    <span
+                      class="theme-picker__swatch"
+                      [style.background]="getThemePreview(theme)"
+                    ></span>
+                    <span class="theme-picker__option-label">{{ theme.name }}</span>
+                    @if (theme.id === currentTheme().id) {
+                      <eb-icon name="heroCheck" size="sm" [decorative]="true" />
+                    }
+                  </button>
+                }
+              </div>
+            }
+          } @else {
+            @for (theme of themes(); track theme.id) {
+              <button
+                type="button"
+                class="theme-picker__option"
+                [class.theme-picker__option--active]="theme.id === currentTheme().id"
+                role="option"
+                [attr.aria-selected]="theme.id === currentTheme().id"
+                (click)="selectTheme(theme.id)"
+              >
+                <span
+                  class="theme-picker__swatch"
+                  [style.background]="getThemePreview(theme)"
+                ></span>
+                @if (showLabels()) {
+                  <span class="theme-picker__option-label">{{ theme.name }}</span>
+                }
+              </button>
+            }
+          }
+        </div>
+      }
+    }
+    @case ('grid') {
+      <div class="theme-picker__grid">
+        @for (theme of themes(); track theme.id) {
+          <button
+            type="button"
+            class="theme-picker__grid-item"
+            [class.theme-picker__grid-item--active]="theme.id === currentTheme().id"
+            role="option"
+            [attr.aria-selected]="theme.id === currentTheme().id"
+            [attr.aria-label]="theme.name"
+            (click)="selectTheme(theme.id)"
+          >
+            <span
+              class="theme-picker__swatch theme-picker__swatch--large"
+              [style.background]="getThemePreview(theme)"
+            ></span>
+            @if (showLabels()) {
+              <span class="theme-picker__grid-label">{{ theme.name }}</span>
+            }
+          </button>
+        }
+      </div>
+    }
+    @case ('inline') {
+      <div class="theme-picker__inline" role="radiogroup">
+        @for (theme of themes(); track theme.id) {
+          <button
+            type="button"
+            class="theme-picker__inline-option"
+            [class.theme-picker__inline-option--active]="theme.id === currentTheme().id"
+            role="radio"
+            [attr.aria-checked]="theme.id === currentTheme().id"
+            [attr.aria-label]="theme.name"
+            (click)="selectTheme(theme.id)"
+          >
+            <span class="theme-picker__swatch" [style.background]="getThemePreview(theme)"></span>
+          </button>
+        }
+      </div>
+    }
+  }
+</div>
