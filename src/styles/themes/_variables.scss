@@ -169,6 +169,14 @@
   // LAYOUT
   // ============================================
 
+  // Dimensions
+  --header-height: 3.6rem; // 2.5rem logo + 2 * 0.5rem padding + 1px border
+  --footer-height: 0; // Footer is usually not fixed, so safe area is 0 by default
+
+  @media (min-width: 768px) {
+    --header-height: 4.6rem; // 2.5rem logo + 2 * 1rem padding + 1px border
+  }
+
   // Max widths
   --max-width-xs: 320px;
   --max-width-sm: 600px;

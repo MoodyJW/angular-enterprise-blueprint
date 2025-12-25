@@ -186,9 +186,9 @@ _Goal: Build the frame that holds the pages._
 
 _Goal: Features that map 1:1 to the UI naming._
 
-- [ ] **5.1 Auth Feature** (`features/auth`):
-  - [ ] `LoginComponent`: Reactive Form connecting to `AuthStore`.
-  - [ ] Add `README.md` in `src/app/features/auth/` explaining the flow.
+- [x] **5.1 Auth Feature** (`features/auth`):
+  - [x] `LoginComponent`: Reactive Form connecting to `AuthStore`.
+  - [x] Add `README.md` in `src/app/features/auth/` explaining the flow.
 - [ ] **5.2 Dashboard** (`features/home`):
   - [ ] `HomeComponent`: "System Status" widgets (Build Status, Test Coverage).
   - [ ] Connect to `AnalyticsService` for "Live Visitor" simulation.

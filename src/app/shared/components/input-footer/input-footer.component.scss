@@ -9,3 +9,20 @@
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
 }
+
+.input-helper-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+
+  &--error {
+    color: var(--color-error);
+  }
+
+  &--warning {
+    color: var(--color-warning);
+  }
+
+  &--success {
+    color: var(--color-success);
+  }
+}
