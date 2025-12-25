@@ -1,0 +1,41 @@
+@use '../../shared/styles/feature-page' as page;
+
+.architecture {
+  @include page.feature-page;
+
+  &__container {
+    @include page.feature-container;
+  }
+
+  &__header {
+    @include page.feature-header;
+  }
+
+  &__title {
+    @include page.feature-title;
+  }
+
+  &__subtitle {
+    @include page.feature-subtitle;
+  }
+
+  &__content {
+    @include page.feature-content;
+  }
+
+  &__placeholder {
+    @include page.feature-placeholder;
+  }
+
+  &__placeholder-icon {
+    @include page.feature-placeholder-icon;
+  }
+
+  &__placeholder-title {
+    @include page.feature-placeholder-title;
+  }
+
+  &__placeholder-text {
+    @include page.feature-placeholder-text;
+  }
+}

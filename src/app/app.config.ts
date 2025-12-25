@@ -6,7 +6,13 @@ import {
   Provider,
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import {
+  PreloadAllModules,
+  provideRouter,
+  withInMemoryScrolling,
+  withPreloading,
+  withViewTransitions,
+} from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideAuth } from './core/auth';
@@ -27,7 +33,18 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideEnvironment(),
-    provideRouter(routes),
+    provideRouter(
+      routes,
+      // Preload all modules after initial load for fast navigation
+      withPreloading(PreloadAllModules),
+      // Restore scroll position on navigation
+      withInMemoryScrolling({
+        scrollPositionRestoration: 'enabled',
+        anchorScrolling: 'enabled',
+      }),
+      // Enable Angular 17+ view transitions for smooth page changes
+      withViewTransitions(),
+    ),
     provideHttpClient(withInterceptors([httpErrorInterceptor])),
     provideTranslocoConfig(),
     provideAnalyticsFn(),

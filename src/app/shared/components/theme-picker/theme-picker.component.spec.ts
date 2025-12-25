@@ -396,14 +396,20 @@ describe('ThemePickerComponent', () => {
   });
 
   describe('Accessibility', () => {
-    it('should have aria-label', () => {
-      const picker = nativeElement.querySelector('.theme-picker');
-      expect(picker?.getAttribute('aria-label')).toBe('Select theme');
+    it('should have aria-label on dropdown', () => {
+      component.toggleDropdown();
+      fixture.detectChanges();
+
+      const dropdown = nativeElement.querySelector('.theme-picker__dropdown');
+      expect(dropdown?.getAttribute('aria-label')).toBe('Select theme');
     });
 
-    it('should have role listbox', () => {
-      const picker = nativeElement.querySelector('.theme-picker');
-      expect(picker?.getAttribute('role')).toBe('listbox');
+    it('should have role listbox on dropdown', () => {
+      component.toggleDropdown();
+      fixture.detectChanges();
+
+      const dropdown = nativeElement.querySelector('.theme-picker__dropdown');
+      expect(dropdown?.getAttribute('role')).toBe('listbox');
     });
 
     it('should have aria-expanded on dropdown trigger', () => {

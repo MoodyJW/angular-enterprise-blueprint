@@ -168,19 +168,19 @@ _Goal: Port the high-quality UI components. Ensure strict Storybook coverage._
 - [x] **3.7 Stories**: Ensure every component has a `.stories.ts` file.
 - [x] **3.8 Special Components**:
   - [x] **ThemePickerComponent**: Build to test the theming engine and provide user theme selection.
-- [ ] **3.9 Blog Article**: Write about building a design system in Angular.
+- [x] **3.9 Blog Article**: Write about building a design system in Angular.
 
 ### 🐚 Phase 4: The Application Shell
 
 _Goal: Build the frame that holds the pages._
 
-- [ ] **4.1 Layout Architecture**: Create `MainLayoutComponent` (Header + Footer + RouterOutlet).
-- [ ] **4.2 Navigation**:
-  - [ ] Build `HeaderComponent` (Responsive).
-  - [ ] Integrate `ThemePicker` into the Header.
-  - [ ] Connect `AuthStore` to Header (Show "Login" vs "User Profile").
-- [ ] **4.3 Routing**: Define lazy-loaded routes in `app.routes.ts`.
-- [ ] **4.4 Blog Article**: Write about building the application shell in Angular.
+- [x] **4.1 Layout Architecture**: Create `MainLayoutComponent` (Header + Footer + RouterOutlet).
+- [x] **4.2 Navigation**:
+  - [x] Build `HeaderComponent` (Responsive).
+  - [x] Integrate `ThemePicker` into the Header.
+  - [x] Connect `AuthStore` to Header (Show "Login" vs "User Profile").
+- [x] **4.3 Routing**: Define lazy-loaded routes in `app.routes.ts`.
+- [x] **4.4 Blog Article**: Write about building the application shell in Angular.
 
 ### 📦 Phase 5: Feature Implementation (The Content)
 

@@ -1,17 +1,12 @@
-<div
-  class="theme-picker"
-  [class]="pickerClasses()"
-  [attr.aria-label]="ariaLabel()"
-  role="listbox"
-  [attr.aria-activedescendant]="currentTheme().id"
->
+<div class="theme-picker" [class]="pickerClasses()">
   @switch (variant()) {
     @case ('dropdown') {
       <button
         type="button"
         class="theme-picker__trigger"
         [attr.aria-expanded]="isOpen()"
-        [attr.aria-haspopup]="'listbox'"
+        aria-haspopup="listbox"
+        [attr.aria-label]="'Select theme, current theme: ' + currentTheme().name"
         (click)="toggleDropdown()"
         (keydown)="handleKeydown($event)"
       >
@@ -26,17 +21,29 @@
       </button>
 
       @if (isOpen()) {
-        <div class="theme-picker__dropdown" role="listbox">
+        <div
+          class="theme-picker__dropdown"
+          role="listbox"
+          [attr.aria-label]="ariaLabel()"
+          [attr.aria-activedescendant]="currentTheme().id"
+        >
           @if (groupByCategory()) {
             @for (category of categoryKeys; track category) {
-              <div class="theme-picker__group">
-                <span class="theme-picker__group-label">{{ categoryLabels[category] }}</span>
+              <div
+                class="theme-picker__group"
+                role="group"
+                [attr.aria-label]="categoryLabels[category]"
+              >
+                <span class="theme-picker__group-label" aria-hidden="true">{{
+                  categoryLabels[category]
+                }}</span>
                 @for (theme of groupedThemes()[category]; track theme.id) {
                   <button
                     type="button"
                     class="theme-picker__option"
                     [class.theme-picker__option--active]="theme.id === currentTheme().id"
                     role="option"
+                    [id]="theme.id"
                     [attr.aria-selected]="theme.id === currentTheme().id"
                     (click)="selectTheme(theme.id)"
                   >
@@ -59,6 +66,7 @@
                 class="theme-picker__option"
                 [class.theme-picker__option--active]="theme.id === currentTheme().id"
                 role="option"
+                [id]="theme.id"
                 [attr.aria-selected]="theme.id === currentTheme().id"
                 (click)="selectTheme(theme.id)"
               >
@@ -76,13 +84,14 @@
       }
     }
     @case ('grid') {
-      <div class="theme-picker__grid">
+      <div class="theme-picker__grid" role="listbox" [attr.aria-label]="ariaLabel()">
         @for (theme of themes(); track theme.id) {
           <button
             type="button"
             class="theme-picker__grid-item"
             [class.theme-picker__grid-item--active]="theme.id === currentTheme().id"
             role="option"
+            [id]="theme.id"
             [attr.aria-selected]="theme.id === currentTheme().id"
             [attr.aria-label]="theme.name"
             (click)="selectTheme(theme.id)"
@@ -99,13 +108,14 @@
       </div>
     }
     @case ('inline') {
-      <div class="theme-picker__inline" role="radiogroup">
+      <div class="theme-picker__inline" role="radiogroup" [attr.aria-label]="ariaLabel()">
         @for (theme of themes(); track theme.id) {
           <button
             type="button"
             class="theme-picker__inline-option"
             [class.theme-picker__inline-option--active]="theme.id === currentTheme().id"
             role="radio"
+            [id]="theme.id"
             [attr.aria-checked]="theme.id === currentTheme().id"
             [attr.aria-label]="theme.name"
             (click)="selectTheme(theme.id)"
