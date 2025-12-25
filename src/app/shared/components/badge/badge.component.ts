@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
 
 export type BadgeVariant = 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info';
 export type BadgeSize = 'sm' | 'md' | 'lg';
-export type BadgePosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+export type BadgePosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'inline';
 
 /**
  * Accessible badge component for displaying item counts and status indicators.

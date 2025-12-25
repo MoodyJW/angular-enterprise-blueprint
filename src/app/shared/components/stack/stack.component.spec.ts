@@ -158,11 +158,11 @@ describe('StackComponent', () => {
   });
 
   describe('Accessibility - ARIA Attributes', () => {
-    it('should have list role by default', () => {
+    it('should have no role by default (layout utility)', () => {
       fixture.detectChanges();
 
       const stackElement = nativeElement.querySelector('.stack');
-      expect(stackElement?.getAttribute('role')).toBe('list');
+      expect(stackElement?.getAttribute('role')).toBeNull();
     });
 
     it('should allow custom role override', () => {
@@ -426,7 +426,8 @@ describe('StackComponent', () => {
       const stackElement = nativeElement.querySelector('.stack');
 
       expect(stackElement?.tagName).toBe('DIV');
-      expect(stackElement?.getAttribute('role')).toBe('list');
+      // No role by default since stack is a layout utility
+      expect(stackElement?.getAttribute('role')).toBeNull();
     });
   });
 

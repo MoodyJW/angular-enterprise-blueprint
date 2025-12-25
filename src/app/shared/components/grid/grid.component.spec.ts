@@ -171,11 +171,11 @@ describe('GridComponent', () => {
   });
 
   describe('Accessibility - ARIA Attributes', () => {
-    it('should have list role by default', () => {
+    it('should have no role by default (layout utility)', () => {
       fixture.detectChanges();
 
       const gridElement = nativeElement.querySelector('.grid');
-      expect(gridElement?.getAttribute('role')).toBe('list');
+      expect(gridElement?.getAttribute('role')).toBeNull();
     });
 
     it('should allow custom role override', () => {
@@ -446,7 +446,8 @@ describe('GridComponent', () => {
       const gridElement = nativeElement.querySelector('.grid');
 
       expect(gridElement?.tagName).toBe('DIV');
-      expect(gridElement?.getAttribute('role')).toBe('list');
+      // No role by default since grid is a layout utility
+      expect(gridElement?.getAttribute('role')).toBeNull();
     });
   });
 

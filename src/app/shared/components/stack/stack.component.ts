@@ -113,9 +113,10 @@ export class StackComponent {
 
   /**
    * ARIA role for the stack
-   * Defaults to 'list' for semantic grouping
+   * Defaults to undefined (no role) since stack is a layout utility.
+   * Set to 'list' only when children have role="listitem".
    */
-  readonly role = input<string>('list');
+  readonly role = input<string | undefined>(undefined);
 
   /**
    * ARIA label for the stack

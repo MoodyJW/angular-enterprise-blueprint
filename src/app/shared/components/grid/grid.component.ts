@@ -127,9 +127,10 @@ export class GridComponent {
 
   /**
    * ARIA role for the grid
-   * Defaults to generic 'list' for semantic grouping
+   * Defaults to undefined (no role) since grid is a layout utility.
+   * Set to 'list' only when children have role="listitem".
    */
-  readonly role = input<string>('list');
+  readonly role = input<string | undefined>(undefined);
 
   /**
    * ARIA label for the grid

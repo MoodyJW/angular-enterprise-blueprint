@@ -14,7 +14,37 @@
   },
   "home": {
     "welcome": "Welcome to Angular Enterprise Blueprint",
-    "description": "A production-grade Angular reference architecture"
+    "description": "A production-grade Angular reference architecture",
+    "systemStatus": {
+      "title": "System Status",
+      "subtitle": "Enterprise Dashboard & Application Health",
+      "operationalStatus": "Operational Status",
+      "buildStatus": "Build Status",
+      "deployStatus": "Deploy Status",
+      "loading": "Loading system metrics..."
+    },
+    "projectHealth": {
+      "title": "Project Health",
+      "testCoverage": "Test Coverage",
+      "perf": "Perf",
+      "a11y": "A11y",
+      "best": "Best",
+      "seo": "SEO"
+    },
+    "visitors": {
+      "title": "Real-time Visitors",
+      "live": "Live",
+      "subtitle": "Active users on site right now (simulated)"
+    },
+    "theme": {
+      "title": "Active Theme",
+      "systemPreference": "System Preference"
+    },
+    "cta": {
+      "title": "Explore the Blueprint",
+      "description": "Dive into the reference modules to see how this architecture scales.",
+      "button": "View Modules"
+    }
   },
   "auth": {
     "login": {

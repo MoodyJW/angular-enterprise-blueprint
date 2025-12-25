@@ -122,8 +122,8 @@ const meta: Meta<GridComponent> = {
       control: 'text',
       description: 'ARIA role for the grid',
       table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'list' },
+        type: { summary: 'string | undefined' },
+        defaultValue: { summary: 'undefined' },
       },
     },
     ariaLabel: {
@@ -649,14 +649,15 @@ export const AccessibilityNotes: Story = {
         <h4>Semantic HTML</h4>
         <ul style="font-size: 14px;">
           <li>Uses CSS Grid for layout (display: grid)</li>
-          <li>Default <code>role="list"</code> for semantic grouping</li>
+          <li>No role by default (layout utility)</li>
           <li>Can be customized to <code>role="grid"</code> for data tables</li>
           <li>Supports custom ARIA roles for different contexts</li>
         </ul>
 
         <h4>ARIA Support</h4>
         <ul style="font-size: 14px;">
-          <li><code>role="list"</code> by default for semantic grouping</li>
+          <li>No role by default (pure layout component)</li>
+          <li>Set <code>role="list"</code> when children have <code>role="listitem"</code></li>
           <li><code>aria-label</code> for identifying grid regions</li>
           <li><code>aria-labelledby</code> to link to section headings</li>
           <li>Custom role support (grid, list, region, etc.)</li>

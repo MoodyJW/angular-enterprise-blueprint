@@ -34,37 +34,37 @@
   // Primary variant
   &--primary {
     background-color: var(--color-primary);
-    color: var(--color-background); // High contrast
+    color: var(--color-on-primary); // High contrast
   }
 
   // Secondary variant
   &--secondary {
     background-color: var(--color-text-secondary);
-    color: var(--color-background);
+    color: var(--color-background); // Ensure white text on dark slate
   }
 
   // Success variant
   &--success {
     background-color: var(--color-success);
-    color: var(--color-background);
+    color: var(--color-on-success);
   }
 
   // Warning variant
   &--warning {
     background-color: var(--color-warning);
-    color: var(--color-background);
+    color: var(--color-on-warning);
   }
 
   // Error variant
   &--error {
     background-color: var(--color-error);
-    color: var(--color-background);
+    color: var(--color-on-error);
   }
 
   // Info variant
   &--info {
     background-color: var(--color-info);
-    color: var(--color-background);
+    color: var(--color-on-info);
   }
 
   // SIZES
@@ -121,6 +121,13 @@
     bottom: 0;
     left: 0;
     transform: translate(-50%, 50%);
+  }
+
+  // Inline (static)
+  &--inline {
+    position: static;
+    transform: none;
+    vertical-align: middle; // Align nicely with text
   }
 
   // MODIFIERS

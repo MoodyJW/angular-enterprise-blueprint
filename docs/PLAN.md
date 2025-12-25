@@ -230,6 +230,12 @@ _Goal: Ensure it builds and ships like enterprise software._
 
 ---
 
+## 📝 Coding Standards
+
+See [docs/CODING_STANDARDS.md](file:///home/jay/Repos/angular-enterprise-blueprint/docs/CODING_STANDARDS.md) for mandatory rules, including:
+
+1.  **Internationalization**: All text must use Transloco.
+
 ## 📝 Documentation Standards
 
 _Every Feature Module (`src/app/features/_`) must contain a `README.md` with:\*

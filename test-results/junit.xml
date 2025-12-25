@@ -1,32 +1,2104 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="1" failures="1" errors="0" time="0">
-    <testsuite name="src/app/shared/components/theme-picker/theme-picker.component.spec.ts" timestamp="2025-12-24T18:18:34.889Z" hostname="jay-MS-7971" tests="1" failures="1" errors="0" skipped="0" time="0">
-        <testcase classname="src/app/shared/components/theme-picker/theme-picker.component.spec.ts" name="src/app/shared/components/theme-picker/theme-picker.component.spec.ts" time="0">
-            <system-err>
-JIT compilation failed for injectable [36m[class PlatformLocation][39m
-
-            </system-err>
-            <failure message="The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
-
-The injectable is part of a library that has been partially compiled.
-However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
-
-Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
-Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
-or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping." type="Error">
-Error: The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
-
-The injectable is part of a library that has been partially compiled.
-However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
-
-Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
-Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
-or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping.
- ❯ getCompilerFacade node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:143:11
- ❯ Module.ɵɵngDeclareFactory node_modules/@angular/core/fesm2022/core.mjs:2594:20
- ❯ Function.&lt;static_initializer&gt; node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:23:20
- ❯ node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:17:1
- ❯ src/app/shared/components/theme-picker/theme-picker.component.spec.ts:2:1
+<testsuites name="vitest tests" tests="106" failures="106" errors="0" time="0.061434005">
+    <testsuite name="src/app/shared/components/grid/grid.component.spec.ts" timestamp="2025-12-25T21:38:29.084Z" hostname="jay-MS-7971" tests="54" failures="54" errors="0" skipped="0" time="0.025464618">
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Component Creation &gt; should create" time="0.005504803">
+            <failure message="Need to call TestBed.initTestEnvironment() first" type="Error">
+Error: Need to call TestBed.initTestEnvironment() first
+ ❯ TestBedImpl.get compiler [as compiler] node_modules/@angular/core/fesm2022/testing.mjs:1486:13
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:10
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Component Creation &gt; should be standalone" time="0.00314847">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Component Creation &gt; should use OnPush change detection" time="0.000552289">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Columns &gt; should have default cols as 1" time="0.000412975">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Columns &gt; should apply custom cols" time="0.000370959">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Columns &gt; should handle responsive column inputs" time="0.000378539">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Columns &gt; should handle undefined responsive columns" time="0.000297741">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Gap &gt; should have default gap as md" time="0.000299647">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Gap &gt; should apply custom gap" time="0.000432435">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Gap &gt; should handle gapX and gapY overrides" time="0.000481005">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Gap &gt; should allow undefined gapX and gapY" time="0.000336734">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Alignment &gt; should have default alignItems as stretch" time="0.000384315">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Alignment &gt; should apply custom alignItems" time="0.000266938">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Alignment &gt; should allow undefined justifyItems" time="0.000285818">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Alignment &gt; should apply custom justifyItems" time="0.000286508">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Other Properties &gt; should have default minColWidth as 200px" time="0.000287212">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Other Properties &gt; should apply custom minColWidth" time="0.000237987">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Other Properties &gt; should have default fullWidth as true" time="0.000221791">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Input Handling - Other Properties &gt; should apply custom fullWidth value" time="0.000294741">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Accessibility - ARIA Attributes &gt; should have no role by default (layout utility)" time="0.000227696">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Accessibility - ARIA Attributes &gt; should allow custom role override" time="0.000225929">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Accessibility - ARIA Attributes &gt; should set aria-label when provided" time="0.000221382">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Accessibility - ARIA Attributes &gt; should not set aria-label when undefined" time="0.000236665">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Accessibility - ARIA Attributes &gt; should set aria-labelledby when provided" time="0.000213419">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Accessibility - ARIA Attributes &gt; should not set aria-labelledby when undefined" time="0.000208957">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; CSS Classes &gt; should apply base grid class" time="0.000209867">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; CSS Classes &gt; should apply gap classes" time="0.000260593">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; CSS Classes &gt; should apply gapX and gapY classes when specified" time="0.00022667">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; CSS Classes &gt; should apply alignment classes" time="0.000210576">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; CSS Classes &gt; should apply justify classes when specified" time="0.00020704">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; CSS Classes &gt; should apply full-width class when fullWidth is true" time="0.000208563">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; CSS Classes &gt; should NOT apply full-width class when fullWidth is false" time="0.000219481">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Inline Styles &gt; should set grid-template-columns for fixed column count" time="0.000216966">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Inline Styles &gt; should set auto-fit for cols=&quot;auto&quot;" time="0.000203992">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Inline Styles &gt; should set responsive column styles when provided" time="0.000202247">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Inline Styles &gt; should not set responsive styles when undefined" time="0.000217119">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Inline Styles &gt; should handle auto-fit for responsive breakpoints" time="0.000206336">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Content Projection &gt; should render projected content" time="0.000210778">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Content Projection &gt; should have ng-content for content projection" time="0.0002077">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Computed Values &gt; should compute gridClasses correctly with defaults" time="0.000208104">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Computed Values &gt; should compute gridClasses correctly with custom values" time="0.000268532">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Computed Values &gt; should compute gridStyles correctly with different column configurations" time="0.000213889">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Computed Values &gt; should recompute gridClasses when inputs change" time="0.000211046">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Computed Values &gt; should recompute gridStyles when cols change" time="0.000205014">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; DOM Structure &gt; should render a single div element" time="0.000234934">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; DOM Structure &gt; should apply classes to the div element" time="0.000212922">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; DOM Structure &gt; should have proper element structure" time="0.00024916">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Edge Cases &gt; should handle rapid input changes" time="0.00035168">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Edge Cases &gt; should handle all inputs being set at once" time="0.000404075">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Edge Cases &gt; should maintain consistent class order" time="0.000481813">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Edge Cases &gt; should handle switching between uniform gap and directional gaps" time="0.000440152">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Integration &gt; should work with all column variants" time="0.000321173">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Integration &gt; should work with all gap variants" time="0.000274548">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/grid/grid.component.spec.ts" name="GridComponent &gt; Integration &gt; should properly combine all configuration options" time="0.000214645">
+            <failure message="Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;GridComponent&apos; is not resolved:
+ - templateUrl: ./grid.component.html
+ - styleUrl: ./grid.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/grid/grid.component.spec.ts:14:19
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/shared/components/stack/stack.component.spec.ts" timestamp="2025-12-25T21:38:29.130Z" hostname="jay-MS-7971" tests="52" failures="52" errors="0" skipped="0" time="0.035969387">
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Component Creation &gt; should create" time="0.008341042">
+            <failure message="Need to call TestBed.initTestEnvironment() first" type="Error">
+Error: Need to call TestBed.initTestEnvironment() first
+ ❯ TestBedImpl.get compiler [as compiler] node_modules/@angular/core/fesm2022/testing.mjs:1486:13
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:10
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Component Creation &gt; should be standalone" time="0.003414948">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Component Creation &gt; should use OnPush change detection" time="0.000670822">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Spacing &gt; should have default spacing as md" time="0.00063087">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Spacing &gt; should apply custom spacing" time="0.000574636">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Direction &gt; should have default direction as vertical" time="0.000599858">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Direction &gt; should apply custom direction" time="0.000491377">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Alignment &gt; should have default align as stretch" time="0.000462931">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Alignment &gt; should apply custom align" time="0.000693819">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Justify &gt; should have default justify as undefined" time="0.000722608">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Justify &gt; should apply custom justify" time="0.000523769">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Other Properties &gt; should have default fullWidth as false" time="0.000621804">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Other Properties &gt; should apply custom fullWidth value" time="0.000418321">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Other Properties &gt; should have default wrap as false" time="0.000479855">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Other Properties &gt; should apply custom wrap value" time="0.000390457">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Other Properties &gt; should have default inline as false" time="0.000449587">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Other Properties &gt; should apply custom inline value" time="0.000380503">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Other Properties &gt; should have default divider as false" time="0.000338302">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Input Handling - Other Properties &gt; should apply custom divider value" time="0.000305599">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Accessibility - ARIA Attributes &gt; should have no role by default (layout utility)" time="0.000437093">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Accessibility - ARIA Attributes &gt; should allow custom role override" time="0.000568612">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Accessibility - ARIA Attributes &gt; should set aria-label when provided" time="0.000415006">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Accessibility - ARIA Attributes &gt; should not set aria-label when undefined" time="0.000374588">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Accessibility - ARIA Attributes &gt; should set aria-labelledby when provided" time="0.000350987">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Accessibility - ARIA Attributes &gt; should not set aria-labelledby when undefined" time="0.000352288">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; CSS Classes &gt; should apply base stack class" time="0.000364546">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; CSS Classes &gt; should apply direction classes" time="0.000437578">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; CSS Classes &gt; should apply spacing classes" time="0.000385975">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; CSS Classes &gt; should apply alignment classes" time="0.000354137">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; CSS Classes &gt; should apply justify classes when specified" time="0.000351814">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; CSS Classes &gt; should apply full-width class when fullWidth is true" time="0.000361937">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; CSS Classes &gt; should NOT apply full-width class when fullWidth is false" time="0.000350521">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; CSS Classes &gt; should apply wrap class when wrap is true" time="0.000363999">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; CSS Classes &gt; should NOT apply wrap class when wrap is false" time="0.000342091">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; CSS Classes &gt; should apply inline class when inline is true" time="0.000344742">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; CSS Classes &gt; should NOT apply inline class when inline is false" time="0.000352304">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; CSS Classes &gt; should apply divider class when divider is true" time="0.00034763">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; CSS Classes &gt; should NOT apply divider class when divider is false" time="0.000345858">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Content Projection &gt; should render projected content" time="0.000353815">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Content Projection &gt; should have ng-content for content projection" time="0.000346441">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Computed Values &gt; should compute stackClasses correctly with defaults" time="0.000348245">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Computed Values &gt; should compute stackClasses correctly with custom values" time="0.000365232">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Computed Values &gt; should recompute stackClasses when inputs change" time="0.000353738">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; DOM Structure &gt; should render a single div element" time="0.000369438">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; DOM Structure &gt; should apply classes to the div element" time="0.000345911">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; DOM Structure &gt; should have proper element structure" time="0.000355896">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Edge Cases &gt; should handle rapid input changes" time="0.000378681">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Edge Cases &gt; should handle all inputs being set at once" time="0.000344578">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Edge Cases &gt; should maintain consistent class order" time="0.000369186">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Integration &gt; should work with all spacing variants" time="0.00036611">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Integration &gt; should work with all direction variants" time="0.000353091">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/stack/stack.component.spec.ts" name="StackComponent &gt; Integration &gt; should properly combine all configuration options" time="0.0003549">
+            <failure message="Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;StackComponent&apos; is not resolved:
+ - templateUrl: ./stack.component.html
+ - styleUrl: ./stack.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/stack/stack.component.spec.ts:14:19
             </failure>
         </testcase>
     </testsuite>

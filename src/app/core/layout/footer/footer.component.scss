@@ -1,7 +1,7 @@
 .footer {
-  background-color: var(--color-surface-hover);
+  background-color: var(--color-surface);
   border-top: 1px solid var(--color-border);
-  padding: var(--space-6) 0;
+  padding: var(--space-3) 0;
   margin-top: auto;
 
   &__container {
@@ -15,7 +15,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-4);
+    gap: var(--space-2);
 
     @media (max-width: 768px) {
       flex-direction: column;

@@ -1,37 +1,148 @@
-<div class="home">
-  <div class="home__container">
-    <header class="home__header">
-      <h1 class="home__title">Dashboard</h1>
-      <p class="home__subtitle">System Status & Overview</p>
+<eb-container>
+  <eb-stack spacing="md">
+    <header class="home-header">
+      <h1>{{ title() }}</h1>
+      <p class="text-secondary">{{ subtitle() }}</p>
     </header>
 
-    <div class="home__content">
-      <div class="home__card">
-        <h2 class="home__card-title">🚀 Welcome to Enterprise Blueprint</h2>
-        <p class="home__card-text">
-          A production-grade Angular reference architecture that serves as both a personal portfolio
-          and a "clone-and-go" starter kit for enterprise teams.
-        </p>
-      </div>
+    <ng-container *transloco="let t">
+      @if (store.error()) {
+        <div class="error-alert">
+          {{ store.error() }}
+        </div>
+      }
 
-      <div class="home__grid">
-        <div class="home__stat-card">
-          <span class="home__stat-value">✓</span>
-          <span class="home__stat-label">Build Status</span>
+      @if (store.isLoading()) {
+        <div class="loading-state">
+          {{ t('home.systemStatus.loading') }}
         </div>
-        <div class="home__stat-card">
-          <span class="home__stat-value">85%+</span>
-          <span class="home__stat-label">Test Coverage</span>
-        </div>
-        <div class="home__stat-card">
-          <span class="home__stat-value">A+</span>
-          <span class="home__stat-label">Lighthouse Score</span>
-        </div>
-        <div class="home__stat-card">
-          <span class="home__stat-value">v21</span>
-          <span class="home__stat-label">Angular Version</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+      } @else {
+        @if (store.metrics(); as metrics) {
+          <eb-stack spacing="md">
+            <!-- Row 1: Operational Status (Full Width) -->
+            <eb-card [hoverable]="false">
+              <eb-stack card-body spacing="md">
+                <div class="card-header-flex">
+                  <h3>{{ t('home.systemStatus.operationalStatus') }}</h3>
+                  <eb-badge
+                    [variant]="metrics.systemStatus === 'operational' ? 'success' : 'error'"
+                    [ariaLabel]="
+                      t('home.systemStatus.operationalStatus') + ' ' + metrics.systemStatus
+                    "
+                    position="inline"
+                    [content]="metrics.systemStatus | titlecase"
+                  >
+                  </eb-badge>
+                </div>
+                <div class="status-detail">
+                  <span>{{ t('home.systemStatus.buildStatus') }}</span>
+                  <eb-badge
+                    variant="secondary"
+                    [ariaLabel]="t('home.systemStatus.buildStatus')"
+                    position="inline"
+                    [content]="metrics.buildStatus | titlecase"
+                  ></eb-badge>
+                </div>
+                <div class="status-detail">
+                  <span>{{ t('home.systemStatus.deployStatus') }}</span>
+                  <eb-badge
+                    [variant]="metrics.deployStatus === 'success' ? 'success' : 'error'"
+                    [ariaLabel]="t('home.systemStatus.deployStatus')"
+                    position="inline"
+                    [content]="metrics.deployStatus | titlecase"
+                  >
+                  </eb-badge>
+                </div>
+              </eb-stack>
+            </eb-card>
+
+            <!-- Row 2: The Grid (Projects, Visitors, Theme, CTA) -->
+            <eb-grid [cols]="1" [colsMd]="2" gap="md" class="dashboard-grid">
+              <!-- Project Health -->
+              <eb-card [hoverable]="false">
+                <eb-stack card-body spacing="md">
+                  <h3>{{ t('home.projectHealth.title') }}</h3>
+
+                  <div class="metric-row">
+                    <span class="metric-label">{{ t('home.projectHealth.testCoverage') }}</span>
+                    <div class="metric-value">
+                      <strong>{{ metrics.testCoverage.value }}%</strong>
+                      <span class="trend" [class]="getTrendColor(metrics.testCoverage.trend)">
+                        {{ getTrendIcon(metrics.testCoverage.trend) }}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="lighthouse-grid">
+                    <div class="lighthouse-score">
+                      <span class="score-value">{{ metrics.lighthouse.performance }}</span>
+                      <span class="score-label">{{ t('home.projectHealth.perf') }}</span>
+                    </div>
+                    <div class="lighthouse-score">
+                      <span class="score-value">{{ metrics.lighthouse.accessibility }}</span>
+                      <span class="score-label">{{ t('home.projectHealth.a11y') }}</span>
+                    </div>
+                    <div class="lighthouse-score">
+                      <span class="score-value">{{ metrics.lighthouse.bestPractices }}</span>
+                      <span class="score-label">{{ t('home.projectHealth.best') }}</span>
+                    </div>
+                    <div class="lighthouse-score">
+                      <span class="score-value">{{ metrics.lighthouse.seo }}</span>
+                      <span class="score-label">{{ t('home.projectHealth.seo') }}</span>
+                    </div>
+                  </div>
+                </eb-stack>
+              </eb-card>
+
+              <!-- Real-time Visitors -->
+              <eb-card [hoverable]="false">
+                <eb-stack card-body spacing="md">
+                  <div class="card-header-flex">
+                    <h3>{{ t('home.visitors.title') }}</h3>
+                    <div class="live-indicator">
+                      <span class="pulsing-dot"></span> {{ t('home.visitors.live') }}
+                    </div>
+                  </div>
+                  <div class="visitor-count">
+                    {{ store.activeVisitors() }}
+                  </div>
+                  <p class="text-secondary text-sm">{{ t('home.visitors.subtitle') }}</p>
+                </eb-stack>
+              </eb-card>
+
+              <!-- Active Theme -->
+              <eb-card [hoverable]="false">
+                <eb-stack card-body spacing="md">
+                  <h3>{{ t('home.theme.title') }}</h3>
+                  <div class="theme-inspector">
+                    <div class="current-theme">
+                      {{ themeService.currentTheme().name }}
+                    </div>
+                    <div class="theme-system">
+                      {{ t('home.theme.systemPreference') }}:
+                      {{ themeService.systemPrefersDark() ? 'Dark Mode' : 'Light Mode' }}
+                    </div>
+                  </div>
+                </eb-stack>
+              </eb-card>
+
+              <!-- CTA -->
+              <eb-card [hoverable]="false" class="cta-card">
+                <eb-stack card-body spacing="md" align="center">
+                  <h3>{{ t('home.cta.title') }}</h3>
+                  <p class="text-center">{{ t('home.cta.description') }}</p>
+                  <eb-button
+                    routerLink="/modules"
+                    variant="primary"
+                    [ariaLabel]="t('home.cta.button')"
+                    >{{ t('home.cta.button') }}</eb-button
+                  >
+                </eb-stack>
+              </eb-card>
+            </eb-grid>
+          </eb-stack>
+        }
+      }
+    </ng-container>
+  </eb-stack>
+</eb-container>

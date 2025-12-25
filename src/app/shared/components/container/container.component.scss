@@ -31,40 +31,33 @@
 
   // Padding variants
   &--padding-none {
-    padding-left: var(--space-0);
-    padding-right: var(--space-0);
+    padding: var(--space-0);
   }
 
   &--padding-sm {
-    padding-left: var(--space-3); // 12px
-    padding-right: var(--space-3);
+    padding: var(--space-3);
   }
 
   &--padding-md {
-    padding-left: var(--space-4); // 16px
-    padding-right: var(--space-4);
+    padding: var(--space-4);
   }
 
   &--padding-lg {
-    padding-left: var(--space-6); // 24px
-    padding-right: var(--space-6);
+    padding: var(--space-6);
   }
 
   // Responsive padding adjustments
   @media (max-width: 768px) {
     &--padding-sm {
-      padding-left: var(--space-2); // 8px on mobile
-      padding-right: var(--space-2);
+      padding: var(--space-2);
     }
 
     &--padding-md {
-      padding-left: var(--space-3); // 12px on mobile
-      padding-right: var(--space-3);
+      padding: var(--space-3);
     }
 
     &--padding-lg {
-      padding-left: var(--space-4); // 16px on mobile
-      padding-right: var(--space-4);
+      padding: var(--space-4);
     }
   }
 }
