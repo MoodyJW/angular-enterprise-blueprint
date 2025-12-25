@@ -18,13 +18,22 @@
   },
   "auth": {
     "login": {
-      "title": "Sign In",
-      "email": "Email",
+      "title": "Welcome Back",
+      "subtitle": "Sign in to access your dashboard",
+      "username": "Username",
+      "usernamePlaceholder": "Enter your username",
+      "usernameRequired": "Username is required",
+      "usernameMinLength": "Username must be at least 2 characters",
       "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "passwordRequired": "Password is required",
       "submit": "Sign In",
-      "forgotPassword": "Forgot password?",
-      "noAccount": "Don't have an account?",
-      "register": "Register"
+      "submitting": "Signing in...",
+      "demoHint": "Demo credentials:",
+      "demoHintDetail": "Try <code>{{ demo }}</code> or <code>{{ admin }}</code> with any password",
+      "successTitle": "Login Successful",
+      "successMessage": "Welcome back!",
+      "errorTitle": "Login Failed"
     },
     "logout": "Sign Out"
   },

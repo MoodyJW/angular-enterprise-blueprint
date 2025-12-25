@@ -1,20 +1,75 @@
-<div class="login">
-  <div class="login__container">
-    <div class="login__card">
-      <header class="login__header">
-        <h1 class="login__title">Welcome Back</h1>
-        <p class="login__subtitle">Sign in to your account</p>
-      </header>
+<div class="login" *transloco="let t">
+  <eb-card variant="elevated" padding="lg" class="login__card">
+    <!-- Header -->
+    <div card-header class="login__header">
+      <h1 class="login__title">{{ t('auth.login.title') }}</h1>
+      <p class="login__subtitle">{{ t('auth.login.subtitle') }}</p>
+    </div>
 
-      <div class="login__content">
-        <div class="login__placeholder">
-          <span class="login__placeholder-icon">🔐</span>
-          <h2 class="login__placeholder-title">Login Form Coming Soon</h2>
-          <p class="login__placeholder-text">
-            The login form will connect to the AuthStore for secure authentication.
-          </p>
+    <!-- Form -->
+    <div card-body>
+      @if (error() && !isLoading()) {
+        <div class="login__error" role="alert">
+          {{ error() }}
         </div>
+      }
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" (keydown)="onKeydown($event)">
+        <eb-stack direction="vertical" spacing="md">
+          @let usernameControl = loginForm.controls.username;
+          @let passwordControl = loginForm.controls.password;
+          <!-- Username Field -->
+          <eb-input
+            [label]="t('auth.login.username')"
+            [value]="usernameControl.value"
+            (valueChange)="usernameControl.setValue($event)"
+            (blurred)="usernameControl.markAsTouched()"
+            [validationState]="usernameValidationState()"
+            [helperText]="usernameError()"
+            [placeholder]="t('auth.login.usernamePlaceholder')"
+            [ariaLabel]="t('auth.login.usernamePlaceholder')"
+            autocomplete="username"
+          />
+
+          <!-- Password Field -->
+          <eb-input
+            [label]="t('auth.login.password')"
+            type="password"
+            [value]="passwordControl.value"
+            (valueChange)="passwordControl.setValue($event)"
+            (blurred)="passwordControl.markAsTouched()"
+            [validationState]="passwordValidationState()"
+            [helperText]="passwordError()"
+            [placeholder]="t('auth.login.passwordPlaceholder')"
+            [ariaLabel]="t('auth.login.passwordPlaceholder')"
+            autocomplete="current-password"
+          />
+
+          <!-- Submit Button -->
+          <eb-button
+            type="submit"
+            variant="primary"
+            [fullWidth]="true"
+            [loading]="isLoading()"
+            [disabled]="!canSubmit()"
+            [ariaLabel]="t('auth.login.submit')"
+          >
+            {{ isLoading() ? t('auth.login.submitting') : t('auth.login.submit') }}
+          </eb-button>
+        </eb-stack>
+      </form>
+    </div>
+
+    <!-- Footer with Demo Hint -->
+    <div card-footer class="login__footer">
+      <div class="login__hint">
+        <span class="login__hint-icon">💡</span>
+        <p class="login__hint-text">
+          <strong>{{ t('auth.login.demoHint') }}</strong>
+          <span
+            [innerHTML]="t('auth.login.demoHintDetail', { demo: 'demo', admin: 'admin' })"
+          ></span>
+        </p>
       </div>
     </div>
-  </div>
+  </eb-card>
 </div>

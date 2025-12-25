@@ -29,10 +29,12 @@ import { NAV_ITEMS } from '../navigation.data';
  * <eb-main-layout />
  * ```
  */
+import { ToastContainerComponent } from '@shared/components/toast';
+
 @Component({
   selector: 'eb-main-layout',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, HeaderComponent, FooterComponent],
+  imports: [RouterLink, RouterOutlet, HeaderComponent, FooterComponent, ToastContainerComponent],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

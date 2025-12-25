@@ -3,7 +3,7 @@
 
 .toast-container {
   position: fixed;
-  z-index: var(--z-index-tooltip); // Above modals and other UI elements
+  z-index: var(--z-toast); // Ensure it's above everything including sticky headers
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
@@ -19,14 +19,14 @@
 
   // Top-left
   &--top-left {
-    top: 0;
+    top: var(--header-height, 0);
     left: 0;
     align-items: flex-start;
   }
 
   // Top-center
   &--top-center {
-    top: 0;
+    top: var(--header-height, 0);
     left: 50%;
     transform: translateX(-50%);
     align-items: center;
@@ -34,7 +34,7 @@
 
   // Top-right
   &--top-right {
-    top: 0;
+    top: var(--header-height, 0);
     right: 0;
     align-items: flex-end;
   }
@@ -43,7 +43,7 @@
 
   // Bottom-left
   &--bottom-left {
-    bottom: 0;
+    bottom: var(--footer-height, 0);
     left: 0;
     align-items: flex-start;
     flex-direction: column-reverse; // Stack from bottom up
@@ -51,7 +51,7 @@
 
   // Bottom-center
   &--bottom-center {
-    bottom: 0;
+    bottom: var(--footer-height, 0);
     left: 50%;
     transform: translateX(-50%);
     align-items: center;
@@ -60,7 +60,7 @@
 
   // Bottom-right
   &--bottom-right {
-    bottom: 0;
+    bottom: var(--footer-height, 0);
     right: 0;
     align-items: flex-end;
     flex-direction: column-reverse; // Stack from bottom up

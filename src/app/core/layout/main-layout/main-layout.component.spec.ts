@@ -131,6 +131,12 @@ describe('MainLayoutComponent', () => {
       expect(outlet).toBeTruthy();
     });
 
+    it('should render toast container', () => {
+      const compiled = fixture.nativeElement as HTMLElement;
+      const toastContainer = compiled.querySelector('eb-toast-container');
+      expect(toastContainer).toBeTruthy();
+    });
+
     it('should add mobile-menu-open class when menu is open', () => {
       component.isMenuOpen.set(true);
       fixture.detectChanges();
