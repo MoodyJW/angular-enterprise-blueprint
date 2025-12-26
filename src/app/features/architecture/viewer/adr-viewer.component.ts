@@ -13,7 +13,7 @@ import { BadgeComponent } from '@shared/components/badge';
 import { ButtonComponent } from '@shared/components/button';
 import { ContainerComponent } from '@shared/components/container';
 import { IconComponent } from '@shared/components/icon';
-import { ICON_NAMES } from '@shared/constants';
+import { ICON_NAMES } from '@shared/constants/icon-names.constants';
 
 import { Adr } from '../services/architecture.service';
 import { ArchitectureStore } from '../state/architecture.store';
@@ -38,7 +38,7 @@ import { ArchitectureStore } from '../state/architecture.store';
   providers: [ArchitectureStore],
   viewProviders: [provideIcons({ heroArrowLeft, heroExclamationTriangle, heroMagnifyingGlass })],
   templateUrl: './adr-viewer.component.html',
-  styleUrl: './adr-viewer.component.scss',
+  styleUrls: ['./adr-viewer.component.scss', '../../../../styles/_markdown.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdrViewerComponent implements OnInit {

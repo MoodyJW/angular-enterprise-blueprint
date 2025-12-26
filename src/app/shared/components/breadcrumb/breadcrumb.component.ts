@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { provideIcons } from '@ng-icons/core';
+import { heroArrowRight, heroChevronRight, heroHome } from '@ng-icons/heroicons/outline';
 
-import type { IconName } from '../../constants';
-
+import { ICON_NAMES, type IconName } from '../../constants/icon-names.constants';
 import { IconComponent } from '../icon/icon.component';
 
 export type BreadcrumbVariant = 'default' | 'slash' | 'chevron' | 'arrow';
@@ -73,8 +74,11 @@ export interface BreadcrumbItem {
   templateUrl: './breadcrumb.component.html',
   styleUrl: './breadcrumb.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [provideIcons({ heroHome, heroChevronRight, heroArrowRight })],
 })
 export class BreadcrumbComponent {
+  readonly iconNames = ICON_NAMES;
+
   /**
    * Array of breadcrumb items to display
    */
@@ -136,9 +140,9 @@ export class BreadcrumbComponent {
     const variant = this.variant();
     switch (variant) {
       case 'chevron':
-        return 'heroChevronRight';
+        return ICON_NAMES.CHEVRON_RIGHT;
       case 'arrow':
-        return 'heroArrowRight';
+        return ICON_NAMES.ARROW_RIGHT;
       default:
         return null;
     }

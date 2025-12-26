@@ -7,7 +7,10 @@ import {
   output,
   viewChild,
 } from '@angular/core';
+import { provideIcons } from '@ng-icons/core';
+import { heroChevronDown, heroXMark } from '@ng-icons/heroicons/outline';
 
+import { ICON_NAMES } from '../../../constants/icon-names.constants';
 import { IconComponent } from '../../icon/icon.component';
 
 /**
@@ -51,18 +54,21 @@ import { IconComponent } from '../../icon/icon.component';
             aria-label="Clear selection"
             (click)="clearClicked.emit($event)"
           >
-            <eb-icon [name]="'heroXMark'" [size]="'sm'" [ariaHidden]="true" />
+            <eb-icon [name]="iconNames.CLOSE" [size]="'sm'" [ariaHidden]="true" />
           </button>
         }
         <span class="select-button__arrow" [class.select-button__arrow--open]="isOpen()">
-          <eb-icon [name]="'heroChevronDown'" [size]="'sm'" [ariaHidden]="true" />
+          <eb-icon [name]="iconNames.CHEVRON_DOWN" [size]="'sm'" [ariaHidden]="true" />
         </span>
       </span>
     </button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [provideIcons({ heroChevronDown, heroXMark })],
 })
 export class SelectButtonComponent {
+  readonly iconNames = ICON_NAMES;
+
   /**
    * Reference to the native button element
    */

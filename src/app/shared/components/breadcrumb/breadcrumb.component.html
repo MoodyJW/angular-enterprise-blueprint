@@ -4,7 +4,7 @@
       <li class="breadcrumb__item">
         <ng-template #breadcrumbIcon let-it>
           <eb-icon
-            [name]="it?.icon ?? 'heroHome'"
+            [name]="it?.icon ?? iconNames.HOME"
             size="sm"
             class="breadcrumb__icon"
             [decorative]="true"
@@ -46,7 +46,7 @@
           @if (!isLast) {
             <span class="breadcrumb__separator" aria-hidden="true">
               <eb-icon
-                [name]="separatorIcon() ?? 'heroChevronRight'"
+                [name]="separatorIcon() ?? iconNames.CHEVRON_RIGHT"
                 size="xs"
                 [decorative]="true"
                 [hidden]="!separatorIcon()"

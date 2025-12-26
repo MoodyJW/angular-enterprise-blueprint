@@ -1,6 +1,13 @@
 import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
+import { provideIcons } from '@ng-icons/core';
+import {
+  heroCheckCircle,
+  heroExclamationTriangle,
+  heroInformationCircle,
+  heroXCircle,
+} from '@ng-icons/heroicons/outline';
 
-import { ICON_NAMES } from '../../constants/icons.constants';
+import { ICON_NAMES } from '../../constants/icon-names.constants';
 
 import { ButtonComponent } from '../button/button.component';
 import { IconComponent } from '../icon/icon.component';
@@ -45,6 +52,14 @@ export type ToastPosition =
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [
+    provideIcons({
+      heroCheckCircle,
+      heroXCircle,
+      heroExclamationTriangle,
+      heroInformationCircle,
+    }),
+  ],
 })
 export class ToastComponent {
   /**

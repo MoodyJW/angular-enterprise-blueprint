@@ -3,6 +3,13 @@ import { ChangeDetectionStrategy, Component, computed, inject, input, OnInit } f
 import { RouterLink } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { provideIcons } from '@ng-icons/core';
+import {
+  heroArrowLeft,
+  heroCheck,
+  heroCodeBracket,
+  heroMagnifyingGlass,
+  heroRocketLaunch,
+} from '@ng-icons/heroicons/outline';
 
 import { BadgeComponent } from '@shared/components/badge';
 import { ButtonComponent } from '@shared/components/button';
@@ -10,7 +17,7 @@ import { CardComponent } from '@shared/components/card';
 import { ContainerComponent } from '@shared/components/container';
 import { IconComponent } from '@shared/components/icon';
 import { StackComponent } from '@shared/components/stack';
-import { ICON_NAMES, ICON_REGISTRY } from '@shared/constants';
+import { ICON_NAMES } from '@shared/constants/icon-names.constants';
 
 import { Module } from '../services/modules.service';
 import { ModulesStore } from '../state/modules.store';
@@ -36,7 +43,15 @@ import { ModulesStore } from '../state/modules.store';
     IconComponent,
   ],
   providers: [ModulesStore],
-  viewProviders: [provideIcons(ICON_REGISTRY)],
+  viewProviders: [
+    provideIcons({
+      heroArrowLeft,
+      heroRocketLaunch,
+      heroCodeBracket,
+      heroCheck,
+      heroMagnifyingGlass,
+    }),
+  ],
   templateUrl: './module-detail.component.html',
   styleUrl: './module-detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

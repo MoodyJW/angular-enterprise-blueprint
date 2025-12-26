@@ -7,14 +7,13 @@ import {
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
 import {
-  PreloadAllModules,
+  NoPreloading,
   provideRouter,
   withComponentInputBinding,
   withInMemoryScrolling,
   withPreloading,
   withViewTransitions,
 } from '@angular/router';
-import { provideMarkdown } from 'ngx-markdown';
 
 import { routes } from './app.routes';
 import { provideAuth } from './core/auth';
@@ -37,8 +36,8 @@ export const appConfig: ApplicationConfig = {
     provideEnvironment(),
     provideRouter(
       routes,
-      // Preload all modules after initial load for fast navigation
-      withPreloading(PreloadAllModules),
+      // Disable preloading to reduce initial bundle size
+      withPreloading(NoPreloading),
       // Restore scroll position on navigation
       withInMemoryScrolling({
         scrollPositionRestoration: 'enabled',
@@ -51,7 +50,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideHttpClient(withInterceptors([httpErrorInterceptor])),
     provideTranslocoConfig(),
-    provideMarkdown(),
+    // Markdown provided in feature routes only
     provideAnalyticsFn(),
     withAnalyticsRouterTrackingFn(),
     provideAuth(),

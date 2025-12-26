@@ -194,4 +194,136 @@ describe('AnalyticsService', () => {
       expect(service).toBeTruthy();
     });
   });
+
+  describe('performInitialization', () => {
+    it('should call provider.initialize() when invoked', () => {
+      const initSpy = vi.fn().mockResolvedValue(undefined);
+      TestBed.configureTestingModule({
+        providers: [
+          { provide: ENVIRONMENT, useValue: createMockEnv(true) },
+          {
+            provide: ANALYTICS_PROVIDER,
+            useValue: {
+              name: 'test-mock',
+              initialize: initSpy,
+              trackEvent: vi.fn(),
+              trackPageView: vi.fn(),
+              identify: vi.fn(),
+              reset: vi.fn(),
+            },
+          },
+        ],
+      });
+
+      service = TestBed.inject(AnalyticsService);
+
+      // State should be pending before initialization
+      expect(service._initializationState).toBe('pending');
+
+      service.performInitialization();
+
+      expect(initSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should transition to done state after successful initialization', async () => {
+      const initSpy = vi.fn().mockResolvedValue(undefined);
+      TestBed.configureTestingModule({
+        providers: [
+          { provide: ENVIRONMENT, useValue: createMockEnv(true) },
+          {
+            provide: ANALYTICS_PROVIDER,
+            useValue: {
+              name: 'test-mock',
+              initialize: initSpy,
+              trackEvent: vi.fn(),
+              trackPageView: vi.fn(),
+              identify: vi.fn(),
+              reset: vi.fn(),
+            },
+          },
+        ],
+      });
+
+      service = TestBed.inject(AnalyticsService);
+      service.performInitialization();
+
+      // Wait for promise to resolve
+      await new Promise((resolve) => setTimeout(resolve, 10));
+
+      expect(service._initializationState).toBe('done');
+    });
+
+    it('should transition to error state and log when initialization fails', async () => {
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+      const testError = new Error('Init failed');
+      const initSpy = vi.fn().mockRejectedValue(testError);
+
+      TestBed.configureTestingModule({
+        providers: [
+          { provide: ENVIRONMENT, useValue: createMockEnv(true) },
+          {
+            provide: ANALYTICS_PROVIDER,
+            useValue: {
+              name: 'failing-mock',
+              initialize: initSpy,
+              trackEvent: vi.fn(),
+              trackPageView: vi.fn(),
+              identify: vi.fn(),
+              reset: vi.fn(),
+            },
+          },
+        ],
+      });
+
+      service = TestBed.inject(AnalyticsService);
+      service.performInitialization();
+
+      // Wait for promise to reject
+      await new Promise((resolve) => setTimeout(resolve, 10));
+
+      expect(service._initializationState).toBe('error');
+      expect(consoleSpy).toHaveBeenCalledWith(
+        expect.stringContaining('Failed to initialize failing-mock provider'),
+        testError,
+      );
+    });
+
+    it('should not call initialize when analytics is disabled', () => {
+      service = createService(false);
+
+      // Should not throw even when provider is null
+      expect(() => {
+        service.performInitialization();
+      }).not.toThrow();
+    });
+
+    it('should only initialize once (idempotent)', () => {
+      const initSpy = vi.fn().mockResolvedValue(undefined);
+      TestBed.configureTestingModule({
+        providers: [
+          { provide: ENVIRONMENT, useValue: createMockEnv(true) },
+          {
+            provide: ANALYTICS_PROVIDER,
+            useValue: {
+              name: 'test-mock',
+              initialize: initSpy,
+              trackEvent: vi.fn(),
+              trackPageView: vi.fn(),
+              identify: vi.fn(),
+              reset: vi.fn(),
+            },
+          },
+        ],
+      });
+
+      service = TestBed.inject(AnalyticsService);
+
+      service.performInitialization();
+      service.performInitialization();
+      service.performInitialization();
+
+      // Should only be called once despite multiple invocations
+      expect(initSpy).toHaveBeenCalledTimes(1);
+    });
+  });
 });

@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { provideIcons } from '@ng-icons/core';
+import { heroCheck, heroMinus } from '@ng-icons/heroicons/outline';
 
+import { ICON_NAMES } from '../../constants/icon-names.constants';
 import { IconComponent } from '../icon';
 
 /**
@@ -62,6 +65,7 @@ import { IconComponent } from '../icon';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [provideIcons({ heroCheck, heroMinus })],
 })
 export class CheckboxCheckmarkComponent {
   /**
@@ -86,8 +90,8 @@ export class CheckboxCheckmarkComponent {
    */
   readonly iconName = computed(() => {
     if (this.indeterminate()) {
-      return 'heroMinus' as const;
+      return ICON_NAMES.REMOVE;
     }
-    return 'heroCheck' as const;
+    return ICON_NAMES.CHECK;
   });
 }

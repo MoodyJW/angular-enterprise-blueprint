@@ -21,7 +21,7 @@ import { GridComponent } from '@shared/components/grid';
 import { IconComponent } from '@shared/components/icon';
 import { InputComponent } from '@shared/components/input';
 import { StackComponent } from '@shared/components/stack';
-import { ICON_NAMES } from '@shared/constants';
+import { ICON_NAMES } from '@shared/constants/icon-names.constants';
 
 import { ArchitectureStore } from './state/architecture.store';
 

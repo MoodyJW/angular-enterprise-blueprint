@@ -11,6 +11,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { provideIcons } from '@ng-icons/core';
+import { heroChevronRight, heroMagnifyingGlass } from '@ng-icons/heroicons/outline';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 
 import { BadgeComponent } from '@shared/components/badge';
@@ -21,7 +22,7 @@ import { GridComponent } from '@shared/components/grid';
 import { IconComponent } from '@shared/components/icon';
 import { InputComponent } from '@shared/components/input';
 import { StackComponent } from '@shared/components/stack';
-import { ICON_NAMES, ICON_REGISTRY } from '@shared/constants';
+import { ICON_NAMES } from '@shared/constants/icon-names.constants';
 
 import { ModulesStore } from './state/modules.store';
 
@@ -48,7 +49,7 @@ import { ModulesStore } from './state/modules.store';
     IconComponent,
   ],
   providers: [ModulesStore],
-  viewProviders: [provideIcons(ICON_REGISTRY)],
+  viewProviders: [provideIcons({ heroChevronRight, heroMagnifyingGlass })],
   templateUrl: './modules.component.html',
   styleUrl: './modules.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -30,19 +30,8 @@ export const routes: Routes = [
   },
   {
     path: 'architecture',
-    children: [
-      {
-        path: '',
-        loadComponent: () => import('./features/architecture').then((m) => m.ArchitectureComponent),
-        title: 'Architecture Decisions | Enterprise Blueprint',
-      },
-      {
-        path: ':id',
-        loadComponent: () =>
-          import('./features/architecture/viewer').then((m) => m.AdrViewerComponent),
-        title: 'ADR Details | Enterprise Blueprint',
-      },
-    ],
+    loadChildren: () =>
+      import('./features/architecture/architecture.routes').then((m) => m.ARCHITECTURE_ROUTES),
   },
   {
     path: 'profile',

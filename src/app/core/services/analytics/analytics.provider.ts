@@ -1,9 +1,4 @@
-import {
-  inject,
-  makeEnvironmentProviders,
-  provideAppInitializer,
-  type EnvironmentProviders,
-} from '@angular/core';
+import { inject, makeEnvironmentProviders, type EnvironmentProviders } from '@angular/core';
 
 import { ENVIRONMENT } from '../../config';
 import { ANALYTICS_PROVIDER, type AnalyticsProvider } from './analytics-provider.interface';
@@ -22,27 +17,6 @@ function analyticsProviderFactory(): AnalyticsProvider {
     case 'console':
     default:
       return inject(ConsoleAnalyticsProvider);
-  }
-}
-
-/**
- * Initializes the analytics provider during app bootstrap.
- */
-async function analyticsInitializer(): Promise<void> {
-  const env = inject(ENVIRONMENT);
-
-  // Skip initialization if analytics is disabled
-  if (!env.analytics.enabled) {
-    return;
-  }
-
-  const provider = inject(ANALYTICS_PROVIDER);
-
-  try {
-    await provider.initialize();
-  } catch (error) {
-    // Log but don't block app startup
-    console.error(`[Analytics] Failed to initialize ${provider.name} provider:`, error);
   }
 }
 
@@ -94,8 +68,5 @@ export function provideAnalytics(): EnvironmentProviders {
       provide: ANALYTICS_PROVIDER,
       useFactory: analyticsProviderFactory,
     },
-
-    // Initialize on app startup
-    provideAppInitializer(analyticsInitializer),
   ]);
 }

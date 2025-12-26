@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { afterNextRender, inject, Injectable } from '@angular/core';
 
 import type { AppEnvironment } from '../../config';
 import { ENVIRONMENT } from '../../config';
@@ -63,6 +63,46 @@ export class AnalyticsService {
   private readonly provider: AnalyticsProvider | null = this.env.analytics.enabled
     ? inject(ANALYTICS_PROVIDER)
     : null;
+
+  /** Whether the provider has been initialized. Exposed for testing. */
+  private initializationState: 'pending' | 'initializing' | 'done' | 'error' = 'pending';
+
+  constructor() {
+    // Initialize lazily after the first render to avoid blocking TTI
+    afterNextRender(() => {
+      this.performInitialization();
+    });
+  }
+
+  /**
+   * Performs the provider initialization.
+   * Extracted for testability - the constructor schedules this via afterNextRender.
+   * @internal
+   */
+  performInitialization(): void {
+    if (!this.provider || this.initializationState !== 'pending') {
+      return;
+    }
+
+    this.initializationState = 'initializing';
+    this.provider
+      .initialize()
+      .then(() => {
+        this.initializationState = 'done';
+      })
+      .catch((error: unknown) => {
+        this.initializationState = 'error';
+        console.error(`[Analytics] Failed to initialize ${this.providerName} provider:`, error);
+      });
+  }
+
+  /**
+   * Get the current initialization state. Exposed for testing.
+   * @internal
+   */
+  get _initializationState(): string {
+    return this.initializationState;
+  }
 
   /**
    * Whether analytics is currently enabled.

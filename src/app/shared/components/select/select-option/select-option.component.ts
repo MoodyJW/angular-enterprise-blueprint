@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { provideIcons } from '@ng-icons/core';
+import { heroCheck } from '@ng-icons/heroicons/outline';
 
+import { ICON_NAMES } from '../../../constants/icon-names.constants';
 import { IconComponent } from '../../icon/icon.component';
 
 /**
@@ -31,13 +34,13 @@ import { IconComponent } from '../../icon/icon.component';
       @if (isMultiple()) {
         <span class="select-option__checkbox" [attr.aria-hidden]="true">
           @if (isSelected()) {
-            <eb-icon [name]="'heroCheck'" [size]="'sm'" [ariaHidden]="true" />
+            <eb-icon [name]="iconNames.CHECK" [size]="'sm'" [ariaHidden]="true" />
           }
         </span>
       }
       @if (!isMultiple() && isSelected()) {
         <span class="select-option__check" [attr.aria-hidden]="true">
-          <eb-icon [name]="'heroCheck'" [size]="'sm'" [ariaHidden]="true" />
+          <eb-icon [name]="iconNames.CHECK" [size]="'sm'" [ariaHidden]="true" />
         </span>
       }
 
@@ -50,8 +53,11 @@ import { IconComponent } from '../../icon/icon.component';
     </li>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [provideIcons({ heroCheck })],
 })
 export class SelectOptionComponent {
+  readonly iconNames = ICON_NAMES;
+
   // Inputs
   readonly optionClass = input<string>('select-option');
   readonly isSelected = input.required<boolean>();
