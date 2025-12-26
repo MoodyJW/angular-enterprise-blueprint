@@ -1,4 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
+import { provideIcons } from '@ng-icons/core';
+import { heroCheck, heroChevronDown } from '@ng-icons/heroicons/outline';
+
 import type { Theme, ThemeCategory, ThemeId } from '@core/services';
 import { ThemeService } from '@core/services';
 import { IconComponent } from '../icon';
@@ -20,6 +23,7 @@ type GroupedThemeKey = 'light' | 'dark' | 'highContrast';
 @Component({
   selector: 'eb-theme-picker',
   imports: [IconComponent],
+  viewProviders: [provideIcons({ heroChevronDown, heroCheck })],
   templateUrl: './theme-picker.component.html',
   styleUrl: './theme-picker.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

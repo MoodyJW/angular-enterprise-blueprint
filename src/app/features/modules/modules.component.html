@@ -1,13 +1,13 @@
 <eb-container>
   <ng-container *transloco="let t">
     <eb-stack spacing="lg">
-      <header class="modules-header">
-        <h1>{{ t('modules.title') }}</h1>
-        <p class="text-secondary">{{ t('modules.subtitle') }}</p>
+      <header class="modules__header">
+        <h1 class="modules__title">{{ t('modules.title') }}</h1>
+        <p class="modules__subtitle">{{ t('modules.subtitle') }}</p>
       </header>
 
       <!-- Search Section -->
-      <div class="modules-search">
+      <div class="modules__search">
         <eb-input
           [value]="searchValue()"
           (valueChange)="onSearchChange($event)"
@@ -18,7 +18,7 @@
         >
         </eb-input>
         @if (store.filter()) {
-          <span class="modules-search__count">
+          <span class="modules__search-count">
             {{ t('modules.resultsCount', { count: store.filteredModules().length }) }}
           </span>
         }
@@ -26,14 +26,14 @@
 
       <!-- Loading State -->
       @if (store.isLoading()) {
-        <div class="modules-loading">
+        <div class="modules__loading">
           {{ t('common.loading') }}
         </div>
       }
 
       <!-- Error State -->
       @if (store.error()) {
-        <div class="modules-error">
+        <div class="modules__error">
           {{ store.error() }}
         </div>
       }
@@ -102,15 +102,15 @@
             }
           </eb-grid>
         } @else {
-          <div class="modules-empty">
+          <div class="modules__empty">
             <eb-icon
               [name]="ICONS.SEARCH"
               size="xl"
-              class="modules-empty__icon"
+              class="modules__empty-icon"
               [decorative]="true"
             ></eb-icon>
-            <h2 class="modules-empty__title">{{ t('modules.noResults') }}</h2>
-            <p class="modules-empty__text">{{ t('modules.noResultsHint') }}</p>
+            <h2 class="modules__empty-title">{{ t('modules.noResults') }}</h2>
+            <p class="modules__empty-text">{{ t('modules.noResultsHint') }}</p>
             @if (store.filter()) {
               <eb-button
                 variant="secondary"

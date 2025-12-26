@@ -1,0 +1,42 @@
+[
+  {
+    "id": "adr-001-signal-store",
+    "number": "ADR-001",
+    "title": "SignalStore for State Management",
+    "status": "accepted",
+    "date": "2025-12-15",
+    "summary": "Adopted NgRx SignalStore for signal-first reactive state management with minimal boilerplate, entity management features, and seamless RxJS integration via rxMethod()."
+  },
+  {
+    "id": "adr-002-mock-auth-strategy",
+    "number": "ADR-002",
+    "title": "Mock Auth with Strategy Pattern",
+    "status": "accepted",
+    "date": "2025-12-16",
+    "summary": "Implemented Strategy pattern for authentication with MockAuthStrategy as default provider, demonstrating SOLID principles and enabling easy swap to real auth providers (OAuth2, SAML)."
+  },
+  {
+    "id": "adr-003-component-library",
+    "number": "ADR-003",
+    "title": "Component Library Architecture",
+    "status": "accepted",
+    "date": "2025-12-16",
+    "summary": "Built custom component library with 30+ standalone components using signal inputs, BEM CSS methodology, OnPush change detection, and WCAG 2.1 AA accessibility standards."
+  },
+  {
+    "id": "adr-004-theming-system",
+    "number": "ADR-004",
+    "title": "Theming System Design",
+    "status": "accepted",
+    "date": "2025-12-17",
+    "summary": "Implemented CSS custom properties theming with six named themes (light, dark, and high-contrast variants), system preference detection, and runtime theme switching without JavaScript overhead."
+  },
+  {
+    "id": "adr-005-error-handling",
+    "number": "ADR-005",
+    "title": "Error Handling Strategy",
+    "status": "accepted",
+    "date": "2025-12-17",
+    "summary": "Created defense-in-depth error handling with global ErrorHandler for uncaught exceptions, HTTP interceptor for API errors, normalized AppError interface, and ErrorNotificationService for user feedback."
+  }
+]

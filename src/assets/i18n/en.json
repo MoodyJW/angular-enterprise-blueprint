@@ -102,5 +102,21 @@
       "categoryLabel": "Category: {{ category }}",
       "technologyLabel": "Technology: {{ technology }}"
     }
+  },
+  "architecture": {
+    "title": "Architecture Decisions",
+    "subtitle": "Explore the architectural decisions that shape this enterprise blueprint",
+    "searchPlaceholder": "Search ADRs...",
+    "searchLabel": "Search architecture decisions",
+    "resultsCount": "{{ count }} ADR(s) found",
+    "noResults": "No ADRs Found",
+    "noResultsHint": "Try adjusting your search terms.",
+    "clearSearch": "Clear Search",
+    "selectAdr": "Select an ADR",
+    "selectAdrHint": "Choose an Architecture Decision Record from the list to view its details.",
+    "statusLabel": "Status: {{ status }}",
+    "backToList": "Back to ADRs",
+    "notFound": "ADR Not Found",
+    "notFoundMessage": "The requested Architecture Decision Record could not be found."
   }
 }

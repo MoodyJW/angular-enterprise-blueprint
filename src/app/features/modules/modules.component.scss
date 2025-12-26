@@ -1,68 +1,72 @@
-.modules-header {
-  text-align: center;
-  margin-bottom: var(--space-4);
+.modules {
+  &__header {
+    text-align: center;
+    margin-bottom: var(--space-4);
+  }
 
-  h1 {
+  &__title {
     margin: 0 0 var(--space-2);
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-bold);
     color: var(--color-text);
   }
 
-  .text-secondary {
+  &__subtitle {
     color: var(--color-text-secondary);
     font-size: var(--font-size-lg);
     margin: 0;
   }
-}
 
-.modules-search {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  max-width: 600px;
-  margin: 0 auto;
+  &__search {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    max-width: 600px;
+    margin: 0 auto;
+  }
 
-  &__count {
+  &__search-count {
     text-align: center;
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
   }
-}
 
-.modules-loading,
-.modules-error {
-  text-align: center;
-  padding: var(--space-8);
-  font-size: var(--font-size-lg);
-}
+  &__loading {
+    text-align: center;
+    padding: var(--space-8);
+    font-size: var(--font-size-lg);
+  }
 
-.modules-error {
-  color: var(--color-error);
-  background: var(--color-error-bg);
-  border-radius: var(--border-radius-md);
-}
+  &__error {
+    text-align: center;
+    padding: var(--space-8);
+    font-size: var(--font-size-lg);
+    color: var(--color-error);
+    background: var(--color-error-bg);
+    border-radius: var(--border-radius-md);
+  }
 
-.modules-empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-12);
-  text-align: center;
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-12);
+    text-align: center;
+  }
 
-  &__icon {
+  &__empty-icon {
     opacity: 0.5;
     color: var(--color-text-secondary);
   }
 
-  &__title {
+  &__empty-title {
     margin: 0;
     font-size: var(--font-size-xl);
     color: var(--color-text);
   }
 
-  &__text {
+  &__empty-text {
     margin: 0;
     color: var(--color-text-secondary);
     max-width: 400px;

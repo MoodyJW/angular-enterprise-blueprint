@@ -1,64 +1,74 @@
-.home-header {
-  margin-bottom: var(--space-4);
+.home {
+  &__header {
+    margin-bottom: var(--space-4);
+  }
 
-  h1 {
+  &__title {
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-bold);
     color: var(--color-text);
   }
 
-  p {
+  &__subtitle {
     font-size: var(--font-size-lg);
     color: var(--color-text-secondary);
   }
 }
 
-.dashboard-grid {
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr !important;
+.dashboard {
+  &__grid {
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr !important;
+    }
   }
 }
 
-.card-header-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.card-header {
+  &--flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-  h3 {
+  &__title {
     margin: 0;
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
   }
 }
 
-.status-detail {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--space-2) 0;
-  border-bottom: 1px solid var(--color-border);
+.status {
+  &__detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-border);
 
-  &:last-child {
-    border-bottom: none;
+    &:last-child {
+      border-bottom: none;
+    }
   }
 
-  span {
+  &__label {
     color: var(--color-text-secondary);
   }
 }
 
-.metric-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: var(--space-4);
+.metric {
+  &__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: var(--space-4);
+  }
 
-  .metric-label {
+  &__label {
     font-size: var(--font-size-base);
     color: var(--color-text-secondary);
   }
 
-  .metric-value {
+  &__value {
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-bold);
     color: var(--color-text);
@@ -67,36 +77,38 @@
     gap: var(--space-2);
   }
 
-  .trend {
+  &__trend {
     font-size: var(--font-size-lg);
 
-    &.success {
+    &--success {
       color: var(--color-success);
     }
 
-    &.error {
+    &--error {
       color: var(--color-error);
     }
 
-    &.neutral {
+    &--neutral {
       color: var(--color-text-tertiary);
     }
   }
 }
 
-.lighthouse-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-2);
-}
+.lighthouse {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-2);
+  }
 
-.lighthouse-score {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-1);
+  &__score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+  }
 
-  .score-value {
+  &__score-value {
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -109,7 +121,7 @@
     border: 2px solid var(--color-success);
   }
 
-  .score-label {
+  &__score-label {
     font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
   }
@@ -123,7 +135,7 @@
   font-weight: var(--font-weight-medium);
   color: var(--color-error); // Red for "Live" usually
 
-  .pulsing-dot {
+  &__dot {
     width: 8px;
     height: 8px;
     background-color: var(--color-error);
@@ -132,33 +144,37 @@
   }
 }
 
-.visitor-count {
-  font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text);
-  text-align: center;
-  padding: var(--space-4) 0;
+.visitors {
+  &__count {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    text-align: center;
+    padding: var(--space-4) 0;
+  }
 }
 
-.theme-inspector {
-  background-color: var(--color-surface-variant);
-  padding: var(--space-3);
-  border-radius: var(--border-radius-md);
+.theme {
+  &__inspector {
+    background-color: var(--color-surface-variant);
+    padding: var(--space-3);
+    border-radius: var(--border-radius-md);
+  }
 
-  .current-theme {
+  &__current {
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
   }
 
-  .theme-system {
+  &__system {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     margin-top: var(--space-1);
   }
 }
 
-.cta-card {
-  h3 {
+.cta {
+  &__title {
     margin: 0;
   }
 }

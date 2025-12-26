@@ -1,6 +1,7 @@
 .stack {
   display: flex;
   box-sizing: border-box;
+  height: 100%;
 
   // Direction variants
   &--vertical {
@@ -128,48 +129,63 @@
   &--divider.stack--spacing-none.stack--vertical > :not(:last-child)::after {
     margin: 0;
   }
+
   &--divider.stack--spacing-none.stack--horizontal > :not(:last-child)::after {
     margin: 0;
   }
+
   &--divider.stack--space-1.stack--vertical > :not(:last-child)::after {
     margin: calc(var(--space-1) / 2) 0;
   }
+
   &--divider.stack--space-1.stack--horizontal > :not(:last-child)::after {
     margin: 0 calc(var(--space-1) / 2);
   }
+
   &--divider.stack--space-2.stack--vertical > :not(:last-child)::after {
     margin: calc(var(--space-2) / 2) 0;
   }
+
   &--divider.stack--space-2.stack--horizontal > :not(:last-child)::after {
     margin: 0 calc(var(--space-2) / 2);
   }
+
   &--divider.stack--space-4.stack--vertical > :not(:last-child)::after {
     margin: calc(var(--space-5) / 2) 0;
   }
+
   &--divider.stack--space-4.stack--horizontal > :not(:last-child)::after {
     margin: 0 calc(var(--space-5) / 2);
   }
+
   &--divider.stack--space-5.stack--vertical > :not(:last-child)::after {
     margin: calc(var(--space-6) / 2) 0;
   }
+
   &--divider.stack--space-5.stack--horizontal > :not(:last-child)::after {
     margin: 0 calc(var(--space-6) / 2);
   }
+
   &--divider.stack--space-6.stack--vertical > :not(:last-child)::after {
     margin: calc(var(--space-12) / 2) 0;
   }
+
   &--divider.stack--space-6.stack--horizontal > :not(:last-child)::after {
     margin: 0 calc(var(--space-12) / 2);
   }
+
   &--divider.stack--space-12.stack--vertical > :not(:last-child)::after {
     margin: calc(var(--space-16) / 2) 0;
   }
+
   &--divider.stack--space-12.stack--horizontal > :not(:last-child)::after {
     margin: 0 calc(var(--space-16) / 2);
   }
+
   &--divider.stack--space-16.stack--vertical > :not(:last-child)::after {
     margin: 3rem 0;
   }
+
   &--divider.stack--space-16.stack--horizontal > :not(:last-child)::after {
     margin: 0 3rem;
   }
