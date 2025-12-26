@@ -135,5 +135,51 @@ describe('HeaderComponent', () => {
       const toggleButton = compiled.querySelector('.header__menu-toggle');
       expect(toggleButton).toBeTruthy();
     });
+
+    it('should show user name when authenticated', () => {
+      mockAuthStore.isAuthenticated.set(true);
+      mockAuthStore.displayName.set('John Doe');
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      const userName = compiled.querySelector('.header__user-name');
+      expect(userName).toBeTruthy();
+      expect(userName?.textContent).toContain('John Doe');
+    });
+
+    it('should show logout button when authenticated', () => {
+      mockAuthStore.isAuthenticated.set(true);
+      mockAuthStore.displayName.set('John Doe');
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Logout');
+    });
+
+    it('should not show login button when authenticated', () => {
+      mockAuthStore.isAuthenticated.set(true);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      // When authenticated, we should NOT have the Login button visible
+      // (the button is replaced by user info + logout)
+      const loginButton = compiled.querySelector('eb-button[routerLink="/auth/login"]');
+      expect(loginButton).toBeFalsy();
+    });
+
+    it('should have loading state in isLoading signal when loading', () => {
+      mockAuthStore.isAuthenticated.set(true);
+      mockAuthStore.isLoading.set(true);
+      fixture.detectChanges();
+
+      // Verify that the isLoading state is reflected in the component
+      expect(component.isLoading()).toBe(true);
+    });
+
+    it('should render all navigation items', () => {
+      const compiled = fixture.nativeElement as HTMLElement;
+      const navItems = compiled.querySelectorAll('.header__nav-item');
+      expect(navItems.length).toBe(component.navItems.length);
+    });
   });
 });

@@ -134,4 +134,163 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
     expect(compiled.textContent).toContain('Midnight');
   });
+
+  describe('getTrendIcon', () => {
+    it('should return up arrow for up trend', () => {
+      expect(component.getTrendIcon('up')).toBe('↑');
+    });
+
+    it('should return down arrow for down trend', () => {
+      expect(component.getTrendIcon('down')).toBe('↓');
+    });
+
+    it('should return stable icon for stable trend', () => {
+      expect(component.getTrendIcon('stable')).toBe('−');
+    });
+  });
+
+  describe('getTrendColor', () => {
+    it('should return success for up trend', () => {
+      expect(component.getTrendColor('up')).toBe('success');
+    });
+
+    it('should return error for down trend', () => {
+      expect(component.getTrendColor('down')).toBe('error');
+    });
+
+    it('should return neutral for stable trend', () => {
+      expect(component.getTrendColor('stable')).toBe('neutral');
+    });
+  });
+
+  describe('Template States', () => {
+    it('should display loading state when isLoading is true', () => {
+      mockStore.isLoading.set(true);
+      mockStore.metrics.set(null);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      // Check for the loading state translation key since not all translations are registered in test module
+      expect(compiled.textContent).toContain('loading');
+    });
+
+    it('should display error message when error is set', () => {
+      mockStore.error.set('Failed to load data');
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Failed to load data');
+    });
+
+    it('should not show metrics when metrics is null', () => {
+      mockStore.metrics.set(null);
+      mockStore.isLoading.set(false);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).not.toContain('96%');
+    });
+
+    it('should display system preference as Dark Mode when systemPrefersDark is true', () => {
+      mockThemeService.systemPrefersDark.set(true);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Dark Mode');
+    });
+
+    it('should display system preference as Light Mode when systemPrefersDark is false', () => {
+      mockThemeService.systemPrefersDark.set(false);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Light Mode');
+    });
+
+    it('should render trend icon in template', () => {
+      // Metrics with 'up' trend is already set
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('↑');
+    });
+
+    it('should show deploy status badge', () => {
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Success');
+    });
+
+    it('should show build status badge', () => {
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Passing');
+    });
+
+    it('should render lighthouse scores', () => {
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('98'); // performance
+      expect(compiled.textContent).toContain('100'); // accessibility, bestPractices, seo
+    });
+
+    it('should show down trend icon when trend is down', () => {
+      const currentMetrics = mockStore.metrics();
+      if (currentMetrics) {
+        mockStore.metrics.set({
+          ...currentMetrics,
+          testCoverage: { value: 80, trend: 'down', lastUpdated: '2024-01-01' },
+        });
+      }
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('↓');
+    });
+
+    it('should show stable trend icon when trend is stable', () => {
+      const currentMetrics = mockStore.metrics();
+      if (currentMetrics) {
+        mockStore.metrics.set({
+          ...currentMetrics,
+          testCoverage: { value: 90, trend: 'stable', lastUpdated: '2024-01-01' },
+        });
+      }
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('−');
+    });
+
+    it('should show error badge when system status is not operational', () => {
+      const currentMetrics = mockStore.metrics();
+      if (currentMetrics) {
+        mockStore.metrics.set({
+          ...currentMetrics,
+          systemStatus: 'degraded',
+        });
+      }
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Degraded');
+    });
+
+    it('should show error badge when deploy status is failed', () => {
+      const currentMetrics = mockStore.metrics();
+      if (currentMetrics) {
+        mockStore.metrics.set({
+          ...currentMetrics,
+          deployStatus: 'failed',
+        });
+      }
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Failed');
+    });
+  });
 });

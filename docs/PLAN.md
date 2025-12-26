@@ -198,10 +198,10 @@ _Goal: Features that map 1:1 to the UI naming._
   - [x] `ModuleListComponent`: Grid with Search/Filter (Debounced).
   - [x] `ModuleDetailComponent`: Detail view with Features/Tech Stack.
   - [x] Data Source: `src/assets/data/modules.json`.
-- [ ] **5.4 Architecture Docs** (`features/architecture`):
-  - [ ] **UI Label:** "Architecture Decisions" (formerly Case Studies).
-  - [ ] Create `ArchitectureStore`.
-  - [ ] `AdrViewerComponent`: Render Markdown content from `assets`.
+- [x] **5.4 Architecture Docs** (`features/architecture`):
+  - [x] **UI Label:** "Architecture Decisions" (formerly Case Studies).
+  - [x] Create `ArchitectureStore`.
+  - [x] `AdrViewerComponent`: Render Markdown content from `assets`.
 - [ ] **5.5 The Architect** (`features/profile`):
   - [ ] **UI Label:** "The Architect" (formerly About).
   - [ ] `ProfileComponent`: Static bio & resume download.

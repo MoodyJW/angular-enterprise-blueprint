@@ -185,4 +185,141 @@ describe('ArchitectureComponent', () => {
       expect(input).toBeTruthy();
     });
   });
+
+  describe('Template State Rendering', () => {
+    it('should display loading state when isLoading is true', () => {
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(true);
+      vi.spyOn(component['store'], 'error').mockReturnValue(null);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Loading...');
+    });
+
+    it('should display error message when error is set', () => {
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(false);
+      vi.spyOn(component['store'], 'error').mockReturnValue('Failed to load ADRs');
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Failed to load ADRs');
+    });
+
+    it('should display empty state when no ADRs match filter', () => {
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(false);
+      vi.spyOn(component['store'], 'error').mockReturnValue(null);
+      vi.spyOn(component['store'], 'filteredAdrs').mockReturnValue([]);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('No Results');
+      expect(compiled.textContent).toContain('Try different search');
+    });
+
+    it('should show clear button in empty state when filter is set', () => {
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(false);
+      vi.spyOn(component['store'], 'error').mockReturnValue(null);
+      vi.spyOn(component['store'], 'filteredAdrs').mockReturnValue([]);
+      vi.spyOn(component['store'], 'filter').mockReturnValue('some query');
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Clear');
+    });
+
+    it('should render ADR cards when ADRs are available', () => {
+      const mockAdrs = [
+        {
+          id: 'adr-001-test',
+          number: 'ADR-001',
+          title: 'Test Architecture Decision',
+          status: 'accepted' as const,
+          date: '2024-01-15',
+          summary: 'This is a test ADR summary.',
+        },
+      ];
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(false);
+      vi.spyOn(component['store'], 'error').mockReturnValue(null);
+      vi.spyOn(component['store'], 'filteredAdrs').mockReturnValue(mockAdrs);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('ADR-001');
+      expect(compiled.textContent).toContain('Test Architecture Decision');
+      expect(compiled.textContent).toContain('This is a test ADR summary');
+    });
+
+    it('should render ADR date and status badge', () => {
+      const mockAdrs = [
+        {
+          id: 'adr-002-deprecated',
+          number: 'ADR-002',
+          title: 'Deprecated Decision',
+          status: 'deprecated' as const,
+          date: '2024-02-20',
+          summary: 'A deprecated decision.',
+        },
+      ];
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(false);
+      vi.spyOn(component['store'], 'error').mockReturnValue(null);
+      vi.spyOn(component['store'], 'filteredAdrs').mockReturnValue(mockAdrs);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('2024-02-20');
+      expect(compiled.textContent).toContain('deprecated');
+    });
+
+    it('should display results count when filter is set', () => {
+      const mockAdrs = [
+        {
+          id: 'adr-001-test',
+          number: 'ADR-001',
+          title: 'Test Decision',
+          status: 'accepted' as const,
+          date: '2024-01-15',
+          summary: 'Summary',
+        },
+      ];
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(false);
+      vi.spyOn(component['store'], 'error').mockReturnValue(null);
+      vi.spyOn(component['store'], 'filter').mockReturnValue('test');
+      vi.spyOn(component['store'], 'filteredAdrs').mockReturnValue(mockAdrs);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('1 found');
+    });
+
+    it('should render multiple ADR cards', () => {
+      const mockAdrs = [
+        {
+          id: 'adr-001',
+          number: 'ADR-001',
+          title: 'First Decision',
+          status: 'accepted' as const,
+          date: '2024-01-01',
+          summary: 'First summary',
+        },
+        {
+          id: 'adr-002',
+          number: 'ADR-002',
+          title: 'Second Decision',
+          status: 'superseded' as const,
+          date: '2024-01-02',
+          summary: 'Second summary',
+        },
+      ];
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(false);
+      vi.spyOn(component['store'], 'error').mockReturnValue(null);
+      vi.spyOn(component['store'], 'filteredAdrs').mockReturnValue(mockAdrs);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('First Decision');
+      expect(compiled.textContent).toContain('Second Decision');
+      expect(compiled.textContent).toContain('ADR-001');
+      expect(compiled.textContent).toContain('ADR-002');
+    });
+  });
 });

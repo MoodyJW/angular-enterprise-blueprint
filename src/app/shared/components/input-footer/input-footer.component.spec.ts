@@ -26,4 +26,22 @@ describe('InputFooterComponent', () => {
     expect(compiled.textContent).toContain('Helper text example');
     expect(compiled.textContent).toContain('3/10');
   });
+
+  it('should not show character count when showCharCount is false', () => {
+    fixture.componentRef.setInput('showCharCount', false);
+    fixture.componentRef.setInput('maxLength', 10);
+    fixture.componentRef.setInput('charCountText', '0/10');
+    fixture.detectChanges();
+
+    expect(compiled.textContent).not.toContain('0/10');
+  });
+
+  it('should not show character count when maxLength is not provided', () => {
+    fixture.componentRef.setInput('showCharCount', true);
+    fixture.componentRef.setInput('maxLength', undefined);
+    fixture.componentRef.setInput('charCountText', '0/10');
+    fixture.detectChanges();
+
+    expect(compiled.textContent).not.toContain('0/10');
+  });
 });

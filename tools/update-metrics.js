@@ -20,7 +20,7 @@ function updateMetrics() {
 
   let coveragePct = null;
 
-  // 1. Update Test Coverage from Istanbul Report
+  // 1. Update Test Coverage from Istanbul Report (coverage-final.json)
   if (fs.existsSync(COVERAGE_PATH)) {
     try {
       const report = JSON.parse(fs.readFileSync(COVERAGE_PATH, 'utf8'));
@@ -28,7 +28,8 @@ function updateMetrics() {
       let coveredStatements = 0;
 
       Object.values(report).forEach((file) => {
-        const statements = file.s;
+        // Istanbul format: file.s is a map of statementId -> count
+        const statements = file.s || {};
         Object.values(statements).forEach((count) => {
           totalStatements++;
           if (count > 0) coveredStatements++;
@@ -40,7 +41,7 @@ function updateMetrics() {
         console.log(`Calculated Coverage: ${coveragePct}%`);
 
         metrics.testCoverage.value = coveragePct;
-        metrics.testCoverage.trend = coveragePct >= 80 ? 'up' : 'down'; // Simple logic
+        metrics.testCoverage.trend = coveragePct >= 80 ? 'up' : 'down';
         metrics.testCoverage.lastUpdated = new Date().toISOString();
       }
     } catch (e) {
@@ -51,7 +52,6 @@ function updateMetrics() {
   }
 
   // 2. Mock Update for Lighthouse (Simulate variation for demo)
-  // In a real pipeline, you would read a lighthouse-report.json
   if (process.argv.includes('--simulate')) {
     console.log('Simulating Lighthouse updates...');
     metrics.lighthouse.performance = 90 + Math.floor(Math.random() * 10);
@@ -60,7 +60,7 @@ function updateMetrics() {
   }
 
   // Write back
-  fs.writeFileSync(METRICS_PATH, JSON.stringify(metrics, null, 4));
+  fs.writeFileSync(METRICS_PATH, JSON.stringify(metrics, null, 2));
   console.log('Metrics updated successfully.');
 }
 

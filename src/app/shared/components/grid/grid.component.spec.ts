@@ -245,8 +245,40 @@ describe('GridComponent', () => {
       const gridElement = nativeElement.querySelector('.grid');
       expect(gridElement?.classList.contains('grid--gap-x-lg')).toBe(true);
       expect(gridElement?.classList.contains('grid--gap-y-sm')).toBe(true);
+      expect(gridElement?.classList.contains('grid--gap-y-sm')).toBe(true);
       // Should not have uniform gap class
       expect(gridElement?.classList.contains('grid--gap-md')).toBe(false);
+    });
+
+    it('should apply gapX only (suppressing general gap)', () => {
+      fixture.componentRef.setInput('gapX', 'lg');
+      fixture.componentRef.setInput('gapY', undefined);
+      fixture.detectChanges();
+
+      const gridElement = nativeElement.querySelector('.grid');
+      expect(gridElement?.classList.contains('grid--gap-x-lg')).toBe(true);
+      // Logic: gapX suppresses general gap. gapY is undefined, so no gap-y class.
+      expect(gridElement?.classList.contains('grid--gap-md')).toBe(false);
+      // Ensure no gap-y mismatch
+      const classes = gridElement?.className ?? '';
+      expect(classes).not.toMatch(/grid--gap-y-/);
+    });
+
+    it('should apply gapY only (suppressing general gap)', () => {
+      fixture.componentRef.setInput('gapX', undefined);
+      fixture.componentRef.setInput('gapY', 'sm');
+      fixture.detectChanges();
+
+      const gridElement = nativeElement.querySelector('.grid');
+      expect(gridElement?.classList.contains('grid--gap-y-sm')).toBe(true);
+
+      const classes = gridElement?.className ?? '';
+      // Logic: gapY is present. Ternary 1 (gapX) false. Ternary 2 (gapY) false path -> Ternary 3 (gapY) true?
+      // Wait. Logic: Boolean(gapX) ? ... : Boolean(gapY) ? '' : gap-md.
+      // So if gapY is present, it returns ''. (No general gap).
+      // Then next element: Boolean(gapY) ? gap-y : ''.
+      expect(gridElement?.classList.contains('grid--gap-md')).toBe(false);
+      expect(classes).not.toMatch(/grid--gap-x-/);
     });
 
     it('should apply alignment classes', () => {

@@ -881,4 +881,36 @@ describe('CheckboxComponent', () => {
       expect(indeterminateIcon).toBeNull();
     });
   });
+  describe('Branch Coverage Improvements', () => {
+    it('should combine ariaDescribedBy input and helperTextId', () => {
+      fixture.componentRef.setInput('ariaDescribedBy', 'external-id');
+      fixture.componentRef.setInput('helperText', 'helper');
+      fixture.detectChanges();
+      const desc = component.computedAriaDescribedBy();
+      expect(desc).toContain('checkbox-helper');
+      expect(desc).toContain('external-id');
+    });
+
+    it('should explicitly use ariaDescribedBy input when no helper text', () => {
+      fixture.componentRef.setInput('ariaDescribedBy', 'external-id');
+      fixture.componentRef.setInput('helperText', '');
+      fixture.detectChanges();
+      const desc = component.computedAriaDescribedBy();
+      expect(desc).toBe('external-id');
+    });
+
+    it('should be valid (undefined) when no error and no ariaInvalid', () => {
+      fixture.componentRef.setInput('validationState', 'default');
+      fixture.componentRef.setInput('ariaInvalid', false);
+      const invalid = component.computedAriaInvalid();
+      expect(invalid).toBeUndefined();
+    });
+
+    it('should be invalid if ariaInvalid is true even if state is default', () => {
+      fixture.componentRef.setInput('validationState', 'default');
+      fixture.componentRef.setInput('ariaInvalid', true);
+      const invalid = component.computedAriaInvalid();
+      expect(invalid).toBe('true');
+    });
+  });
 });

@@ -146,6 +146,83 @@ describe('DebounceThrottleUtils', () => {
       const result = debounced();
       expect(result).toBe('result');
     });
+
+    it('should reschedule timer when called during wait period', () => {
+      const func = vi.fn();
+      const debounced = debounce(func, 100);
+
+      debounced('first');
+      vi.advanceTimersByTime(50); // Half the wait time
+
+      debounced('second');
+      vi.advanceTimersByTime(50); // Another half - original timer would have fired
+
+      expect(func).not.toHaveBeenCalled(); // Should not have fired yet
+
+      vi.advanceTimersByTime(50); // Complete the new timer
+      expect(func).toHaveBeenCalledTimes(1);
+      expect(func).toHaveBeenCalledWith('second');
+    });
+
+    it('should invoke immediately with maxWait when timer exists', () => {
+      const func = vi.fn();
+      const debounced = debounce(func, 100, { maxWait: 150 });
+
+      debounced('first');
+      vi.advanceTimersByTime(50);
+      debounced('second');
+      vi.advanceTimersByTime(50);
+      debounced('third');
+      vi.advanceTimersByTime(50); // 150ms total - maxWait reached
+
+      expect(func).toHaveBeenCalledTimes(1);
+      expect(func).toHaveBeenCalledWith('third');
+    });
+
+    it('should not invoke trailing when trailing is false and no leading', () => {
+      const func = vi.fn();
+      const debounced = debounce(func, 100, { leading: false, trailing: false });
+
+      debounced();
+      vi.advanceTimersByTime(100);
+
+      expect(func).not.toHaveBeenCalled();
+    });
+
+    it('should handle flush when no timer is pending', () => {
+      const func = vi.fn(() => 'result');
+      const debounced = debounce(func, 100);
+
+      // Flush without ever calling debounced
+      const result = debounced.flush();
+      expect(result).toBeUndefined();
+      expect(func).not.toHaveBeenCalled();
+    });
+
+    it('should handle negative time since last call', () => {
+      const func = vi.fn();
+      const debounced = debounce(func, 100);
+
+      debounced();
+      // Simulate time going backwards (edge case)
+      vi.setSystemTime(Date.now() - 1000);
+      debounced();
+
+      vi.advanceTimersByTime(100);
+      expect(func).toHaveBeenCalled();
+    });
+
+    it('should handle cancel when maxWait timer is pending', () => {
+      const func = vi.fn();
+      const debounced = debounce(func, 100, { maxWait: 200 });
+
+      debounced();
+      vi.advanceTimersByTime(50);
+      debounced.cancel();
+
+      vi.advanceTimersByTime(200);
+      expect(func).not.toHaveBeenCalled();
+    });
   });
 
   describe('throttle', () => {

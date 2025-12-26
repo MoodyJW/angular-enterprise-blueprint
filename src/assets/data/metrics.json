@@ -1,8 +1,8 @@
 {
   "testCoverage": {
-    "value": 90,
+    "value": 92,
     "trend": "up",
-    "lastUpdated": "2025-12-25T19:46:56.361Z"
+    "lastUpdated": "2025-12-26T17:57:45.964Z"
   },
   "lighthouse": {
     "performance": 98,

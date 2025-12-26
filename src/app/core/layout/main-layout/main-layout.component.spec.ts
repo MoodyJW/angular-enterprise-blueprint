@@ -163,5 +163,49 @@ describe('MainLayoutComponent', () => {
       const overlay = compiled.querySelector('.mobile-nav-overlay');
       expect(overlay).toBeFalsy();
     });
+
+    it('should render mobile nav links when menu is open', () => {
+      component.isMenuOpen.set(true);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      const mobileNavLinks = compiled.querySelectorAll('.mobile-nav__link');
+      // Should have navItems + Contact link
+      expect(mobileNavLinks.length).toBe(component.navItems.length + 1);
+    });
+
+    it('should close menu when overlay is clicked', () => {
+      component.isMenuOpen.set(true);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      const overlay = compiled.querySelector('.mobile-nav-overlay') as HTMLElement;
+      expect(overlay).toBeTruthy();
+
+      overlay.click();
+      fixture.detectChanges();
+
+      expect(component.isMenuOpen()).toBe(false);
+    });
+
+    it('should close menu when mobile nav link is clicked', () => {
+      component.isMenuOpen.set(true);
+      fixture.detectChanges();
+
+      const closeMenuSpy = vi.spyOn(component, 'closeMenu');
+      component.onMobileNavClick();
+
+      expect(closeMenuSpy).toHaveBeenCalled();
+    });
+
+    it('should display correct labels for each nav item', () => {
+      component.isMenuOpen.set(true);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      component.navItems.forEach((item) => {
+        expect(compiled.textContent).toContain(item.label);
+      });
+    });
   });
 });

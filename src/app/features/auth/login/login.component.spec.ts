@@ -283,5 +283,53 @@ describe('LoginComponent', () => {
       expect(hint?.textContent).toContain('demo');
       expect(hint?.textContent).toContain('admin');
     });
+
+    it('should render title and subtitle', () => {
+      const nativeEl = fixture.nativeElement as HTMLElement;
+      expect(nativeEl.textContent).toContain('Welcome Back');
+      expect(nativeEl.textContent).toContain('Sign in to access your dashboard');
+    });
+
+    it('should show submitting text when loading', () => {
+      mockAuthStore.isLoading.set(true);
+      fixture.detectChanges();
+
+      const nativeEl = fixture.nativeElement as HTMLElement;
+      expect(nativeEl.textContent).toContain('Signing in...');
+    });
+
+    it('should show submit text when not loading', () => {
+      mockAuthStore.isLoading.set(false);
+      fixture.detectChanges();
+
+      const nativeEl = fixture.nativeElement as HTMLElement;
+      expect(nativeEl.textContent).toContain('Sign In');
+    });
+
+    it('should not show error when no error and loading is true', () => {
+      mockAuthStore.error.set('Test Error');
+      mockAuthStore.isLoading.set(true);
+      fixture.detectChanges();
+
+      const nativeEl = fixture.nativeElement as HTMLElement;
+      const errorAlert = nativeEl.querySelector('.login__error');
+      expect(errorAlert).toBeFalsy();
+    });
+
+    it('should render username input field', () => {
+      const nativeEl = fixture.nativeElement as HTMLElement;
+      const inputs = nativeEl.querySelectorAll('eb-input');
+      expect(inputs.length).toBeGreaterThanOrEqual(2);
+    });
+
+    it('should render username label', () => {
+      const nativeEl = fixture.nativeElement as HTMLElement;
+      expect(nativeEl.textContent).toContain('Username');
+    });
+
+    it('should render password label', () => {
+      const nativeEl = fixture.nativeElement as HTMLElement;
+      expect(nativeEl.textContent).toContain('Password');
+    });
   });
 });

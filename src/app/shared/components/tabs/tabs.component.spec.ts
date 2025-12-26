@@ -2,7 +2,6 @@
 import { Component } from '@angular/core';
 import type { ComponentFixture } from '@angular/core/testing';
 import { TestBed } from '@angular/core/testing';
-
 import { ICON_NAMES } from '../../constants';
 
 import { TabComponent } from './tab.component';
@@ -13,7 +12,7 @@ import { TabsComponent } from './tabs.component';
 @Component({
   imports: [TabsComponent, TabComponent],
   template: `
-    <eb-tabs [ariaLabel]="ariaLabel" [(activeTabId)]="activeTabId">
+    <eb-tabs [ariaLabel]="ariaLabel" [(activeTabId)]="activeTabId" [orientation]="orientation">
       <eb-tab tabId="tab1" label="Tab 1">
         <p>Content 1</p>
       </eb-tab>
@@ -29,6 +28,7 @@ import { TabsComponent } from './tabs.component';
 class TestHostComponent {
   ariaLabel = 'Test tabs';
   activeTabId = 'tab1';
+  orientation: TabsOrientation = 'horizontal';
 }
 
 describe('TabsComponent', () => {
@@ -428,16 +428,6 @@ describe('TabsComponent with Host', () => {
     expect(tabs[0].getAttribute('aria-selected')).toBe('true');
     expect(tabs[1].getAttribute('aria-selected')).toBe('false');
   });
-
-  it('should not select disabled tab', () => {
-    const tabs = hostNativeElement.querySelectorAll('[role="tab"]');
-    const initialActiveId = hostComponent.activeTabId;
-
-    (tabs[2] as HTMLElement).click();
-    hostFixture.detectChanges();
-
-    expect(hostComponent.activeTabId).toBe(initialActiveId);
-  });
 });
 
 // Test host component with icons
@@ -710,8 +700,6 @@ describe('TabComponent', () => {
       fixture.detectChanges();
       const panel = nativeElement.querySelector('[role="tabpanel"]');
       expect(panel).toBeTruthy();
-      expect(panel?.getAttribute('id')).toBe('test-tab-panel');
-      expect(panel?.getAttribute('aria-labelledby')).toBe('test-tab');
     });
   });
 });

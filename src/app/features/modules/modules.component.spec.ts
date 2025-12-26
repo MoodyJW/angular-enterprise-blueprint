@@ -215,4 +215,147 @@ describe('ModulesComponent', () => {
       expect(input).toBeTruthy();
     });
   });
+
+  describe('Template State Rendering', () => {
+    it('should display loading state when isLoading is true', () => {
+      // Directly set the store state via its internal methods
+      // The store uses patchState internally, so we spy on the signal
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(true);
+      vi.spyOn(component['store'], 'error').mockReturnValue(null);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Loading...');
+    });
+
+    it('should display error message when error is set', () => {
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(false);
+      vi.spyOn(component['store'], 'error').mockReturnValue('Failed to load modules');
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Failed to load modules');
+    });
+
+    it('should display empty state when no modules match filter', () => {
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(false);
+      vi.spyOn(component['store'], 'error').mockReturnValue(null);
+      vi.spyOn(component['store'], 'filteredModules').mockReturnValue([]);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('No Results');
+      expect(compiled.textContent).toContain('Try different search');
+    });
+
+    it('should show clear button in empty state when filter is set', () => {
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(false);
+      vi.spyOn(component['store'], 'error').mockReturnValue(null);
+      vi.spyOn(component['store'], 'filteredModules').mockReturnValue([]);
+      vi.spyOn(component['store'], 'filter').mockReturnValue('some filter');
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Clear');
+    });
+
+    it('should render module cards when modules are available', () => {
+      const mockModules = [
+        {
+          id: 'test-module',
+          title: 'Test Module',
+          description: 'A test module description',
+          category: 'ui' as const,
+          status: 'production' as const,
+          tags: ['tag1', 'tag2'],
+          repoUrl: null,
+          demoUrl: null,
+          features: [],
+          techStack: [],
+        },
+      ];
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(false);
+      vi.spyOn(component['store'], 'error').mockReturnValue(null);
+      vi.spyOn(component['store'], 'filteredModules').mockReturnValue(mockModules);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Test Module');
+      expect(compiled.textContent).toContain('A test module description');
+    });
+
+    it('should render tags on module cards', () => {
+      const mockModules = [
+        {
+          id: 'test-module',
+          title: 'Test Module',
+          description: 'Description',
+          category: 'ui' as const,
+          status: 'production' as const,
+          tags: ['angular', 'signals', 'ngrx'],
+          repoUrl: null,
+          demoUrl: null,
+          features: [],
+          techStack: [],
+        },
+      ];
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(false);
+      vi.spyOn(component['store'], 'error').mockReturnValue(null);
+      vi.spyOn(component['store'], 'filteredModules').mockReturnValue(mockModules);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('angular');
+      expect(compiled.textContent).toContain('signals');
+    });
+
+    it('should show +N indicator when more than 3 tags exist', () => {
+      const mockModules = [
+        {
+          id: 'test-module',
+          title: 'Test Module',
+          description: 'Description',
+          category: 'ui' as const,
+          status: 'production' as const,
+          tags: ['tag1', 'tag2', 'tag3', 'tag4', 'tag5'],
+          repoUrl: null,
+          demoUrl: null,
+          features: [],
+          techStack: [],
+        },
+      ];
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(false);
+      vi.spyOn(component['store'], 'error').mockReturnValue(null);
+      vi.spyOn(component['store'], 'filteredModules').mockReturnValue(mockModules);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('+2');
+    });
+
+    it('should display results count when filter is set', () => {
+      const mockModules = [
+        {
+          id: 'test-module',
+          title: 'Test Module',
+          description: 'Description',
+          category: 'ui' as const,
+          status: 'production' as const,
+          tags: [],
+          repoUrl: null,
+          demoUrl: null,
+          features: [],
+          techStack: [],
+        },
+      ];
+      vi.spyOn(component['store'], 'isLoading').mockReturnValue(false);
+      vi.spyOn(component['store'], 'error').mockReturnValue(null);
+      vi.spyOn(component['store'], 'filter').mockReturnValue('test');
+      vi.spyOn(component['store'], 'filteredModules').mockReturnValue(mockModules);
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('1 found');
+    });
+  });
 });

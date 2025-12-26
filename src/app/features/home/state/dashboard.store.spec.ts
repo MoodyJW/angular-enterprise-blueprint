@@ -61,6 +61,15 @@ describe('DashboardStore', () => {
       expect(store.isLoading()).toBe(false);
       expect(store.error()).toBe(errorMsg);
     });
+
+    it('should use default error message when error has no message', () => {
+      mockService.getMetrics.mockReturnValue(throwError(() => new Error('')));
+
+      store.loadMetrics();
+
+      expect(store.isLoading()).toBe(false);
+      expect(store.error()).toBe('Failed to load dashboard metrics');
+    });
   });
 
   describe('loadVisitors', () => {
