@@ -189,15 +189,15 @@ _Goal: Features that map 1:1 to the UI naming._
 - [x] **5.1 Auth Feature** (`features/auth`):
   - [x] `LoginComponent`: Reactive Form connecting to `AuthStore`.
   - [x] Add `README.md` in `src/app/features/auth/` explaining the flow.
-- [ ] **5.2 Dashboard** (`features/home`):
-  - [ ] `HomeComponent`: "System Status" widgets (Build Status, Test Coverage).
-  - [ ] Connect to `AnalyticsService` for "Live Visitor" simulation.
-- [ ] **5.3 Module Catalog** (`features/modules`):
-  - [ ] **UI Label:** "Reference Modules" (formerly Projects).
-  - [ ] Create `ModulesStore` (SignalStore).
-  - [ ] `ModuleListComponent`: Grid with Search/Filter (Debounced).
-  - [ ] `ModuleDetailComponent`: Deep dive view with Tabs.
-  - [ ] Data Source: `src/assets/data/modules.json`.
+- [x] **5.2 Dashboard** (`features/home`):
+  - [x] `HomeComponent`: "System Status" widgets (Build Status, Test Coverage).
+  - [x] Connect to `AnalyticsService` for "Live Visitor" simulation.
+- [x] **5.3 Module Catalog** (`features/modules`):
+  - [x] **UI Label:** "Reference Modules" (formerly Projects).
+  - [x] Create `ModulesStore` (SignalStore).
+  - [x] `ModuleListComponent`: Grid with Search/Filter (Debounced).
+  - [x] `ModuleDetailComponent`: Detail view with Features/Tech Stack.
+  - [x] Data Source: `src/assets/data/modules.json`.
 - [ ] **5.4 Architecture Docs** (`features/architecture`):
   - [ ] **UI Label:** "Architecture Decisions" (formerly Case Studies).
   - [ ] Create `ArchitectureStore`.

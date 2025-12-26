@@ -46,35 +46,38 @@
 
 ---
 
-## 5.3 Module Catalog (`features/modules`)
+## 5.3 Module Catalog (`features/modules`) ✅
 
 **Goal:** Display the "Products" (Portfolio Projects). Renamed to "Modules" to sound more enterprise.
 
 ### **1. Data Layer**
 
 - **Source:** `src/assets/data/modules.json`.
-- **Interface:** `Module` (id, title, description, tags, repoUrl, demoUrl).
+- **Interface:** `Module` (id, title, description, category, status, tags, repoUrl, demoUrl, features, techStack).
 - **Store:** `ModulesStore` (`@ngrx/signals`).
-  - State: `{ entities: Module[], filter: string, loading: boolean }`.
+  - State: `{ entities: Module[], filter: string, isLoading: boolean, error: string | null }`.
   - Computed: `filteredModules()` based on search string.
+  - Computed: `getModuleById()` for detail view lookup.
 
-### **2. ModuleListComponent** (`features/modules/list`)
+### **2. ModulesComponent** (`features/modules`)
 
-- **Search:** `<eb-input>` linked to a `FormControl`. Use `debounceTime(300)` to update the Store filter signal.
+- **Search:** `<eb-input>` with debounced search using RxJS Subject (300ms debounce).
 - **List:**
-  - Use `<eb-grid>`.
+  - Use `<eb-grid>` with responsive columns.
   - Iterate over `store.filteredModules()`.
-  - Render `<eb-card>` for each module.
-  - **Card Footer:** "View Details" button.
+  - Render clickable `<eb-card>` for each module.
+  - **Card Footer:** "View Details" button with chevron icon.
+- **States:** Loading, error, and empty states handled.
 
 ### **3. ModuleDetailComponent** (`features/modules/detail`)
 
-- **Route:** `/modules/:id`.
-- **Logic:** Read `route.params.id`. Find module in Store.
+- **Route:** `/modules/:id` with `withComponentInputBinding()`.
+- **Logic:** Read `id` input. Find module via `store.getModuleById()`.
 - **UI:**
-  - Header: Title + Status Badge.
-  - Tabs: "Overview", "Technical Specs", "Code Snippet".
-  - Actions: "Launch Demo" (External Link), "View Source" (GitHub).
+  - Header: Title + Status/Category Badges.
+  - Single card with: Key Features (checkmarks), Technology Stack (badges), Tags.
+  - Actions: "Launch Demo" (Rocket icon), "View Source" (Code icon).
+- **States:** Loading and "Not Found" states.
 
 ---
 
@@ -136,12 +139,12 @@
 
 ## 5.7 Execution Checklist
 
-1.  [ ] **Mock Data:** Create JSON files in `src/assets/data/` for Modules and Architecture.
-2.  [ ] **Auth:** Build Login Page & connect to Store.
-3.  [ ] **Dashboard:** Build Home Page with mock analytics.
-4.  [ ] **Modules:**
-    - [ ] Build `ModulesStore`.
-    - [ ] Build List & Detail views.
+1.  [x] **Mock Data:** Create JSON files in `src/assets/data/` for Modules and Architecture.
+2.  [x] **Auth:** Build Login Page & connect to Store.
+3.  [x] **Dashboard:** Build Home Page with mock analytics.
+4.  [x] **Modules:**
+    - [x] Build `ModulesStore`.
+    - [x] Build List & Detail views.
 5.  [ ] **Architecture:**
     - [ ] Build `ArchitectureStore`.
     - [ ] Build Markdown fetcher logic.

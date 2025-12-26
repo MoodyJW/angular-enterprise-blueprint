@@ -1,19 +1,128 @@
-<div class="modules">
-  <div class="modules__container">
-    <header class="modules__header">
-      <h1 class="modules__title">Reference Modules</h1>
-      <p class="modules__subtitle">Explore enterprise-grade Angular patterns and implementations</p>
-    </header>
+<eb-container>
+  <ng-container *transloco="let t">
+    <eb-stack spacing="lg">
+      <header class="modules-header">
+        <h1>{{ t('modules.title') }}</h1>
+        <p class="text-secondary">{{ t('modules.subtitle') }}</p>
+      </header>
 
-    <div class="modules__content">
-      <div class="modules__placeholder">
-        <span class="modules__placeholder-icon">📦</span>
-        <h2 class="modules__placeholder-title">Coming Soon</h2>
-        <p class="modules__placeholder-text">
-          The modules catalog will showcase reusable Angular patterns, complete with code examples
-          and documentation.
-        </p>
+      <!-- Search Section -->
+      <div class="modules-search">
+        <eb-input
+          [value]="searchValue()"
+          (valueChange)="onSearchChange($event)"
+          [placeholder]="t('modules.searchPlaceholder')"
+          [ariaLabel]="t('modules.searchLabel')"
+          type="search"
+          inputId="module-search"
+        >
+        </eb-input>
+        @if (store.filter()) {
+          <span class="modules-search__count">
+            {{ t('modules.resultsCount', { count: store.filteredModules().length }) }}
+          </span>
+        }
       </div>
-    </div>
-  </div>
-</div>
+
+      <!-- Loading State -->
+      @if (store.isLoading()) {
+        <div class="modules-loading">
+          {{ t('common.loading') }}
+        </div>
+      }
+
+      <!-- Error State -->
+      @if (store.error()) {
+        <div class="modules-error">
+          {{ store.error() }}
+        </div>
+      }
+
+      <!-- Modules Grid -->
+      @if (!store.isLoading() && !store.error()) {
+        @if (store.filteredModules().length > 0) {
+          <eb-grid [cols]="1" [colsMd]="2" [colsLg]="3" gap="lg">
+            @for (module of store.filteredModules(); track module.id) {
+              <a [routerLink]="['/modules', module.id]" class="module-card-link">
+                <eb-card class="module-card" [hoverable]="true">
+                  <eb-stack card-body spacing="md">
+                    <div class="module-card__header">
+                      <h3 class="module-card__title">{{ module.title }}</h3>
+                      <eb-badge
+                        [variant]="getStatusVariant(module.status)"
+                        [content]="module.status | titlecase"
+                        [ariaLabel]="t('modules.detail.statusLabel', { status: module.status })"
+                        position="inline"
+                      >
+                      </eb-badge>
+                    </div>
+
+                    <p class="module-card__description">{{ module.description }}</p>
+
+                    <div class="module-card__meta">
+                      <eb-badge
+                        [variant]="getCategoryVariant(module.category)"
+                        [content]="module.category"
+                        [ariaLabel]="
+                          t('modules.detail.categoryLabel', { category: module.category })
+                        "
+                        position="inline"
+                      >
+                      </eb-badge>
+                    </div>
+
+                    <div class="module-card__tags">
+                      @for (tag of module.tags.slice(0, 3); track tag) {
+                        <span class="module-card__tag">{{ tag }}</span>
+                      }
+                      @if (module.tags.length > 3) {
+                        <span class="module-card__tag module-card__tag--more">
+                          +{{ module.tags.length - 3 }}
+                        </span>
+                      }
+                    </div>
+
+                    <div class="module-card__actions">
+                      <eb-button
+                        variant="secondary"
+                        size="sm"
+                        [ariaLabel]="t('modules.viewDetails') + ' ' + module.title"
+                      >
+                        {{ t('modules.viewDetails') }}
+                        <eb-icon
+                          [name]="ICONS.CHEVRON_RIGHT"
+                          size="sm"
+                          [decorative]="true"
+                        ></eb-icon>
+                      </eb-button>
+                    </div>
+                  </eb-stack>
+                </eb-card>
+              </a>
+            }
+          </eb-grid>
+        } @else {
+          <div class="modules-empty">
+            <eb-icon
+              [name]="ICONS.SEARCH"
+              size="xl"
+              class="modules-empty__icon"
+              [decorative]="true"
+            ></eb-icon>
+            <h2 class="modules-empty__title">{{ t('modules.noResults') }}</h2>
+            <p class="modules-empty__text">{{ t('modules.noResultsHint') }}</p>
+            @if (store.filter()) {
+              <eb-button
+                variant="secondary"
+                [ariaLabel]="t('modules.clearSearch')"
+                (click)="clearSearch()"
+              >
+                {{ t('modules.clearSearch') }}
+              </eb-button>
+            }
+          </div>
+        }
+      }
+    </eb-stack>
+  </ng-container>
+</eb-container>

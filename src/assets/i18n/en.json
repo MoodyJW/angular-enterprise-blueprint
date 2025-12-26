@@ -76,5 +76,31 @@
   },
   "footer": {
     "copyright": "Angular Enterprise Blueprint"
+  },
+  "modules": {
+    "title": "Reference Modules",
+    "subtitle": "Explore enterprise-grade Angular patterns and implementations",
+    "searchPlaceholder": "Search modules...",
+    "searchLabel": "Search modules",
+    "resultsCount": "{{ count }} module(s) found",
+    "viewDetails": "View Details",
+    "noResults": "No Modules Found",
+    "noResultsHint": "Try adjusting your search terms or filter criteria.",
+    "clearSearch": "Clear Search",
+    "detail": {
+      "backToList": "Back to Modules",
+      "notFound": "Module Not Found",
+      "notFoundMessage": "The requested module could not be found.",
+      "features": "Key Features",
+      "techStack": "Technology Stack",
+      "tags": "Tags",
+      "launchDemo": "Launch Demo",
+      "viewSource": "View Source",
+      "noDemo": "Demo not available",
+      "noSource": "Source not available",
+      "statusLabel": "Status: {{ status }}",
+      "categoryLabel": "Category: {{ category }}",
+      "technologyLabel": "Technology: {{ technology }}"
+    }
   }
 }
