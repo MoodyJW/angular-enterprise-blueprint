@@ -232,9 +232,60 @@ _Goal: Ensure it builds and ships like enterprise software._
 
 ## 📝 Coding Standards
 
-See [docs/CODING_STANDARDS.md](file:///home/jay/Repos/angular-enterprise-blueprint/docs/CODING_STANDARDS.md) for mandatory rules, including:
+See [docs/CODING_STANDARDS.md](docs/CODING_STANDARDS.md) for comprehensive enterprise-grade coding standards covering:
 
-1.  **Internationalization**: All text must use Transloco.
+### Core Standards
+
+| Category             | Key Requirements                                                                                        |
+| -------------------- | ------------------------------------------------------------------------------------------------------- |
+| **TypeScript**       | Strict mode, no `any`, readonly by default, prefer type unions over enums                               |
+| **Angular**          | Standalone components, signals (`signal()`, `computed()`), `inject()` function, OnPush change detection |
+| **Components**       | Smart vs Presentational separation, `input()`/`output()` functions, single responsibility               |
+| **State Management** | NgRx SignalStore with `withState`, `withComputed`, `withMethods`, `rxMethod()`                          |
+| **Styling**          | BEM methodology (`.block__element--modifier`), CSS custom properties, no inline styles                  |
+| **i18n**             | All user-facing text via Transloco, no hardcoded strings, full language coverage                        |
+| **Testing**          | 85%+ coverage, AAA pattern, integration tests for workflows, E2E for critical paths                     |
+| **Accessibility**    | WCAG 2.1 AA compliance, semantic HTML, ARIA labels, keyboard navigation, color contrast                 |
+| **Error Handling**   | Global ErrorHandler, HTTP interceptor, normalized `AppError` interface                                  |
+| **Performance**      | OnPush, `trackBy`, lazy loading, tree-shakable providers, bundle budgets                                |
+| **Security**         | XSS prevention, CSRF tokens, auth guards, input sanitization, Content Security Policy                   |
+| **Architecture**     | Strict layer dependencies (features → shared → core), no circular imports                               |
+
+### Mandatory Patterns
+
+```typescript
+// ✅ Signals for component inputs/outputs
+readonly label = input.required<string>();
+readonly clicked = output<void>();
+
+// ✅ inject() function over constructor injection
+private readonly http = inject(HttpClient);
+
+// ✅ Native control flow in templates
+@if (user) { <div>{{ user.name }}</div> }
+@for (item of items; track item.id) { <div>{{ item }}</div> }
+
+// ✅ BEM CSS structure
+.user-card {
+  &__header { }
+  &__title { }
+  &--featured { }
+}
+```
+
+### Code Review Checklist
+
+- [ ] No hardcoded English text (use Transloco)
+- [ ] All components use `ChangeDetectionStrategy.OnPush`
+- [ ] BEM naming in all stylesheets
+- [ ] No `any` types, strict TypeScript
+- [ ] `readonly` on all properties that don't change
+- [ ] Tests follow AAA pattern (Arrange, Act, Assert)
+- [ ] WCAG AA compliance verified
+- [ ] No prop drilling (use SignalStore for shared state)
+- [ ] Conventional Commit messages
+
+See the full document for detailed rules, anti-patterns, enforcement mechanisms, and resources.
 
 ## 📝 Documentation Standards
 

@@ -14,6 +14,7 @@ import {
   withPreloading,
   withViewTransitions,
 } from '@angular/router';
+import { provideMarkdown } from 'ngx-markdown';
 
 import { routes } from './app.routes';
 import { provideAuth } from './core/auth';
@@ -50,6 +51,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideHttpClient(withInterceptors([httpErrorInterceptor])),
     provideTranslocoConfig(),
+    provideMarkdown(),
     provideAnalyticsFn(),
     withAnalyticsRouterTrackingFn(),
     provideAuth(),

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { NgIconComponent } from '@ng-icons/core';
 
-import { ICON_REGISTRY, type IconName } from '../../constants';
+import { type IconName } from '../../constants';
 
 export type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 export type IconColor =
@@ -18,22 +18,22 @@ export type IconColor =
  * Provides size variants, color options, and accessibility features.
  * Follows WCAG 2.1 AAA guidelines and integrates with the theme system.
  *
+ * IMPORTANT: Parent components must provide the icons they use via viewProviders.
+ *
  * @example
+ * ```typescript
+ * import { provideIcons } from '@ng-icons/core';
+ * import { heroHome, heroCheck } from '@ng-icons/heroicons/outline';
+ *
+ * @Component({
+ *   viewProviders: [provideIcons({ heroHome, heroCheck })]
+ * })
+ * export class MyComponent {}
+ * ```
+ *
  * ```html
- * <!-- Simple icon -->
  * <eb-icon name="heroHome" />
- *
- * <!-- With size and color -->
  * <eb-icon name="heroCheck" size="lg" color="success" />
- *
- * <!-- Decorative icon (hidden from screen readers) -->
- * <eb-icon name="heroStar" [decorative]="true" />
- *
- * <!-- Icon with label (visible to screen readers) -->
- * <eb-icon name="heroUser" ariaLabel="User profile" />
- *
- * <!-- Spinning icon -->
- * <eb-icon name="heroArrowPath" [spin]="true" ariaLabel="Loading" />
  * ```
  */
 @Component({
@@ -42,7 +42,6 @@ export type IconColor =
   templateUrl: './icon.component.html',
   styleUrl: './icon.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  viewProviders: [provideIcons(ICON_REGISTRY)],
 })
 export class IconComponent {
   /**

@@ -1,21 +1,93 @@
-<div class="architecture">
-  <div class="architecture__container">
-    <header class="architecture__header">
-      <h1 class="architecture__title">Architecture Decisions</h1>
-      <p class="architecture__subtitle">
-        Explore the architectural decisions that shape this enterprise blueprint
-      </p>
-    </header>
+<eb-container>
+  <ng-container *transloco="let t">
+    <eb-stack spacing="lg">
+      <header class="architecture__header">
+        <h1 class="architecture__title">{{ t('architecture.title') }}</h1>
+        <p class="architecture__subtitle">{{ t('architecture.subtitle') }}</p>
+      </header>
 
-    <div class="architecture__content">
-      <div class="architecture__placeholder">
-        <span class="architecture__placeholder-icon">📐</span>
-        <h2 class="architecture__placeholder-title">Coming Soon</h2>
-        <p class="architecture__placeholder-text">
-          The ADR viewer will display architecture decision records with full markdown rendering and
-          navigation.
-        </p>
+      <!-- Search Section -->
+      <div class="architecture__search">
+        <eb-input
+          [value]="searchValue()"
+          (valueChange)="onSearchChange($event)"
+          [placeholder]="t('architecture.searchPlaceholder')"
+          [ariaLabel]="t('architecture.searchLabel')"
+          type="search"
+          inputId="adr-search"
+        >
+        </eb-input>
+        @if (store.filter()) {
+          <span class="architecture__search-count">
+            {{ t('architecture.resultsCount', { count: store.filteredAdrs().length }) }}
+          </span>
+        }
       </div>
-    </div>
-  </div>
-</div>
+
+      <!-- Loading State -->
+      @if (store.isLoading()) {
+        <div class="architecture__loading">
+          {{ t('common.loading') }}
+        </div>
+      }
+
+      <!-- Error State -->
+      @if (store.error()) {
+        <div class="architecture__error">
+          {{ store.error() }}
+        </div>
+      }
+
+      <!-- ADR Grid -->
+      @if (!store.isLoading() && !store.error()) {
+        @if (store.filteredAdrs().length > 0) {
+          <eb-grid [cols]="1" [colsMd]="2" [colsLg]="3" gap="lg">
+            @for (adr of store.filteredAdrs(); track adr.id) {
+              <a [routerLink]="['/architecture', adr.id]" class="adr-card-link">
+                <eb-card class="adr-card" [hoverable]="true">
+                  <eb-stack card-body spacing="sm">
+                    <div class="adr-card__header">
+                      <span class="adr-card__number">{{ adr.number }}</span>
+                      <eb-badge
+                        [variant]="getStatusVariant(adr.status)"
+                        [content]="adr.status"
+                        [ariaLabel]="t('architecture.statusLabel', { status: adr.status })"
+                        position="inline"
+                      ></eb-badge>
+                    </div>
+                    <h3 class="adr-card__title">{{ adr.title }}</h3>
+                    <p class="adr-card__summary">{{ adr.summary }}</p>
+                    <div class="adr-card__footer">
+                      <span class="adr-card__date">{{ adr.date }}</span>
+                      <eb-icon [name]="ICONS.CHEVRON_RIGHT" size="sm" [decorative]="true"></eb-icon>
+                    </div>
+                  </eb-stack>
+                </eb-card>
+              </a>
+            }
+          </eb-grid>
+        } @else {
+          <div class="architecture__empty">
+            <eb-icon
+              [name]="ICONS.SEARCH"
+              size="xl"
+              class="architecture__empty-icon"
+              [decorative]="true"
+            ></eb-icon>
+            <h2 class="architecture__empty-title">{{ t('architecture.noResults') }}</h2>
+            <p class="architecture__empty-text">{{ t('architecture.noResultsHint') }}</p>
+            @if (store.filter()) {
+              <eb-button
+                variant="secondary"
+                [ariaLabel]="t('architecture.clearSearch')"
+                (click)="clearSearch()"
+              >
+                {{ t('architecture.clearSearch') }}
+              </eb-button>
+            }
+          </div>
+        }
+      }
+    </eb-stack>
+  </ng-container>
+</eb-container>

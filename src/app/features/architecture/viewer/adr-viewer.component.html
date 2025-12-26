@@ -1,0 +1,69 @@
+<eb-container>
+  <ng-container *transloco="let t">
+    <div class="adr-viewer">
+      @if (store.isLoading() || store.isLoadingContent()) {
+        <div class="adr-viewer__loading">
+          {{ t('common.loading') }}
+        </div>
+      } @else if (store.error()) {
+        <div class="adr-viewer__error">
+          <eb-icon [name]="ICONS.WARNING" size="lg" [decorative]="true"></eb-icon>
+          <p>{{ store.error() }}</p>
+          <eb-button
+            routerLink="/architecture"
+            variant="secondary"
+            [ariaLabel]="t('architecture.backToList')"
+          >
+            {{ t('architecture.backToList') }}
+          </eb-button>
+        </div>
+      } @else if (adr(); as currentAdr) {
+        <!-- Back Navigation -->
+        <nav class="adr-viewer__nav">
+          <eb-button
+            routerLink="/architecture"
+            variant="secondary"
+            size="sm"
+            [ariaLabel]="t('architecture.backToList')"
+          >
+            <eb-icon [name]="ICONS.ARROW_LEFT" size="sm" [decorative]="true"></eb-icon>
+            {{ t('architecture.backToList') }}
+          </eb-button>
+        </nav>
+
+        <!-- ADR Header -->
+        <header class="adr-viewer__header">
+          <div class="adr-viewer__meta">
+            <span class="adr-viewer__number">{{ currentAdr.number }}</span>
+            <eb-badge
+              [variant]="getStatusVariant(currentAdr.status)"
+              [content]="currentAdr.status"
+              [ariaLabel]="t('architecture.statusLabel', { status: currentAdr.status })"
+              position="inline"
+            ></eb-badge>
+            <span class="adr-viewer__date">{{ currentAdr.date }}</span>
+          </div>
+          <h1 class="adr-viewer__title">{{ currentAdr.title }}</h1>
+        </header>
+
+        <!-- Markdown Content -->
+        <article class="adr-viewer__content">
+          <markdown [data]="store.content()"></markdown>
+        </article>
+      } @else {
+        <div class="adr-viewer__not-found">
+          <eb-icon [name]="ICONS.SEARCH" size="xl" [decorative]="true"></eb-icon>
+          <h2>{{ t('architecture.notFound') }}</h2>
+          <p>{{ t('architecture.notFoundMessage') }}</p>
+          <eb-button
+            routerLink="/architecture"
+            variant="primary"
+            [ariaLabel]="t('architecture.backToList')"
+          >
+            {{ t('architecture.backToList') }}
+          </eb-button>
+        </div>
+      }
+    </div>
+  </ng-container>
+</eb-container>
