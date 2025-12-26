@@ -1,0 +1,150 @@
+<eb-container>
+  <ng-container *transloco="let t">
+    <eb-stack spacing="lg">
+      <!-- Back Button -->
+      <div class="detail-nav">
+        <eb-button
+          routerLink="/modules"
+          variant="ghost"
+          size="sm"
+          [ariaLabel]="t('modules.detail.backToList')"
+        >
+          <eb-icon [name]="ICONS.ARROW_LEFT" size="sm"></eb-icon>
+          {{ t('modules.detail.backToList') }}
+        </eb-button>
+      </div>
+
+      @if (store.isLoading()) {
+        <div class="detail-loading">
+          {{ t('common.loading') }}
+        </div>
+      } @else if (module(); as mod) {
+        <!-- Module Header -->
+        <header class="detail-header">
+          <div class="detail-header__content">
+            <h1 class="detail-header__title">{{ mod.title }}</h1>
+            <div class="detail-header__badges">
+              <eb-badge
+                [variant]="getStatusVariant(mod.status)"
+                [content]="mod.status | titlecase"
+                [ariaLabel]="t('modules.detail.statusLabel', { status: mod.status })"
+                position="inline"
+              >
+              </eb-badge>
+              <eb-badge
+                [variant]="getCategoryVariant(mod.category)"
+                [content]="mod.category"
+                [ariaLabel]="t('modules.detail.categoryLabel', { category: mod.category })"
+                position="inline"
+              >
+              </eb-badge>
+            </div>
+          </div>
+          <p class="detail-header__description">{{ mod.description }}</p>
+        </header>
+
+        <!-- Action Buttons -->
+        <div class="detail-actions">
+          @if (mod.demoUrl) {
+            <a
+              [href]="mod.demoUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="detail-actions__link"
+            >
+              <eb-button variant="primary" [ariaLabel]="t('modules.detail.launchDemo')">
+                <eb-icon [name]="ICONS.ROCKET" size="sm"></eb-icon>
+                {{ t('modules.detail.launchDemo') }}
+              </eb-button>
+            </a>
+          } @else {
+            <eb-button variant="primary" [disabled]="true" [ariaLabel]="t('modules.detail.noDemo')">
+              <eb-icon [name]="ICONS.ROCKET" size="sm"></eb-icon>
+              {{ t('modules.detail.noDemo') }}
+            </eb-button>
+          }
+          @if (mod.repoUrl) {
+            <a
+              [href]="mod.repoUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="detail-actions__link"
+            >
+              <eb-button variant="secondary" [ariaLabel]="t('modules.detail.viewSource')">
+                <eb-icon [name]="ICONS.CODE" size="sm"></eb-icon>
+                {{ t('modules.detail.viewSource') }}
+              </eb-button>
+            </a>
+          } @else {
+            <eb-button
+              variant="secondary"
+              [disabled]="true"
+              [ariaLabel]="t('modules.detail.noSource')"
+            >
+              <eb-icon [name]="ICONS.CODE" size="sm"></eb-icon>
+              {{ t('modules.detail.noSource') }}
+            </eb-button>
+          }
+        </div>
+
+        <!-- Module Details Card -->
+        <eb-card [hoverable]="false">
+          <eb-stack card-body spacing="lg">
+            <!-- Features -->
+            <div class="detail-section">
+              <h3 class="detail-section__title">{{ t('modules.detail.features') }}</h3>
+              <ul class="detail-features">
+                @for (feature of mod.features; track feature) {
+                  <li class="detail-features__item">
+                    <eb-icon [name]="ICONS.CHECK" size="sm" class="detail-features__icon"></eb-icon>
+                    {{ feature }}
+                  </li>
+                }
+              </ul>
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="detail-section">
+              <h3 class="detail-section__title">{{ t('modules.detail.techStack') }}</h3>
+              <div class="detail-tech-stack">
+                @for (tech of mod.techStack; track tech) {
+                  <eb-badge
+                    variant="secondary"
+                    [content]="tech"
+                    [ariaLabel]="t('modules.detail.technologyLabel', { technology: tech })"
+                    position="inline"
+                  >
+                  </eb-badge>
+                }
+              </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="detail-section">
+              <h3 class="detail-section__title">{{ t('modules.detail.tags') }}</h3>
+              <div class="detail-tags">
+                @for (tag of mod.tags; track tag) {
+                  <span class="detail-tags__tag">{{ tag }}</span>
+                }
+              </div>
+            </div>
+          </eb-stack>
+        </eb-card>
+      } @else {
+        <!-- Not Found -->
+        <div class="detail-not-found">
+          <eb-icon [name]="ICONS.SEARCH" size="xl" class="detail-not-found__icon"></eb-icon>
+          <h2 class="detail-not-found__title">{{ t('modules.detail.notFound') }}</h2>
+          <p class="detail-not-found__text">{{ t('modules.detail.notFoundMessage') }}</p>
+          <eb-button
+            routerLink="/modules"
+            variant="primary"
+            [ariaLabel]="t('modules.detail.backToList')"
+          >
+            {{ t('modules.detail.backToList') }}
+          </eb-button>
+        </div>
+      }
+    </eb-stack>
+  </ng-container>
+</eb-container>

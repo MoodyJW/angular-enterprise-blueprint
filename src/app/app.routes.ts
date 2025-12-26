@@ -14,8 +14,19 @@ export const routes: Routes = [
   },
   {
     path: 'modules',
-    loadComponent: () => import('./features/modules').then((m) => m.ModulesComponent),
-    title: 'Reference Modules | Enterprise Blueprint',
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./features/modules').then((m) => m.ModulesComponent),
+        title: 'Reference Modules | Enterprise Blueprint',
+      },
+      {
+        path: ':id',
+        loadComponent: () =>
+          import('./features/modules/detail').then((m) => m.ModuleDetailComponent),
+        title: 'Module Details | Enterprise Blueprint',
+      },
+    ],
   },
   {
     path: 'architecture',

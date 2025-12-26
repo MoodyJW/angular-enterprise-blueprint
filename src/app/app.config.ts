@@ -9,6 +9,7 @@ import {
 import {
   PreloadAllModules,
   provideRouter,
+  withComponentInputBinding,
   withInMemoryScrolling,
   withPreloading,
   withViewTransitions,
@@ -44,6 +45,8 @@ export const appConfig: ApplicationConfig = {
       }),
       // Enable Angular 17+ view transitions for smooth page changes
       withViewTransitions(),
+      // Bind route params to component inputs
+      withComponentInputBinding(),
     ),
     provideHttpClient(withInterceptors([httpErrorInterceptor])),
     provideTranslocoConfig(),

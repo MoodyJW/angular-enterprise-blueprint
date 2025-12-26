@@ -1,0 +1,89 @@
+[
+  {
+    "id": "design-system",
+    "title": "Enterprise Design System",
+    "description": "Comprehensive UI component library with theming, accessibility, and Storybook documentation.",
+    "category": "ui",
+    "status": "production",
+    "tags": ["components", "theming", "a11y", "storybook"],
+    "repoUrl": "https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/shared/components",
+    "demoUrl": "https://moodyjw.github.io/angular-enterprise-blueprint/",
+    "features": [
+      "6 named themes",
+      "WCAG 2.1 AA compliant",
+      "40+ components",
+      "Full Storybook coverage"
+    ],
+    "techStack": ["Angular", "SCSS", "Storybook", "TypeScript"]
+  },
+  {
+    "id": "gh-user-search",
+    "title": "GitHub User Search",
+    "description": "Search for GitHub users using the GitHub API with a no-framework UI and light/dark themes. Written with Angular, RxJS, and SCSS.",
+    "category": "ui",
+    "status": "production",
+    "tags": ["angular", "rxjs", "scss", "reactive"],
+    "repoUrl": "https://github.com/moodyjw/fe-mentor-github-user-search",
+    "demoUrl": "https://moodyjw.github.io/fe-mentor-github-user-search/",
+    "features": ["No-framework UI", "Light/dark themes", "RxJS integration", "TypeScript"],
+    "techStack": ["Angular", "RxJS", "TypeScript"]
+  },
+  {
+    "id": "in-browser-markdown-editor",
+    "title": "In-browser Markdown Editor",
+    "description": "In-browser Markdown editor with live preview and dark/light themes. Saves documents to a firebase database (disabled). Written with Angular, RxJS, and SCSS.",
+    "category": "ui",
+    "status": "production",
+    "tags": ["angular", "rxjs", "scss", "reactive"],
+    "repoUrl": "https://github.com/MoodyJW/fe-mentor-in-browser-markdown-editor",
+    "demoUrl": "https://moodyjw.github.io/fe-mentor-in-browser-markdown-editor/",
+    "features": ["Live preview", "Dark/light themes", "Firebase integration (disabled)"],
+    "techStack": ["Angular", "RxJS", "TypeScript"]
+  },
+  {
+    "id": "error-handling",
+    "title": "Global Error Handling",
+    "description": "Centralized error handling with HTTP interceptors, global error handler, and user notification system.",
+    "category": "infrastructure",
+    "status": "production",
+    "tags": ["errors", "interceptors", "logging", "notifications"],
+    "repoUrl": "https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/error-handling",
+    "demoUrl": "https://moodyjw.github.io/angular-enterprise-blueprint/auth/login",
+    "features": [
+      "Global ErrorHandler",
+      "HTTP error interceptor",
+      "Error normalization",
+      "User notifications"
+    ],
+    "techStack": ["Angular", "RxJS", "TypeScript"]
+  },
+  {
+    "id": "analytics-provider",
+    "title": "Analytics Provider Pattern",
+    "description": "Pluggable analytics using the Provider pattern. Swap between console, Google Analytics, or custom providers.",
+    "category": "infrastructure",
+    "status": "production",
+    "tags": ["analytics", "providers", "tracking", "events"],
+    "repoUrl": "https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/services/analytics",
+    "demoUrl": "https://moodyjw.github.io/angular-enterprise-blueprint/",
+    "features": ["Provider pattern", "Console & GA4 providers", "Router tracking", "Custom events"],
+    "techStack": ["Angular", "GA4", "RxJS", "TypeScript"]
+  },
+  {
+    "id": "i18n-transloco",
+    "title": "Internationalization with Transloco",
+    "description": "Multi-language support using Transloco with lazy-loaded translations and dynamic language switching.",
+    "category": "infrastructure",
+    "status": "beta",
+    "tags": ["i18n", "transloco", "translations", "localization"],
+    "repoUrl": "https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/app/core/i18n/transloco.config.ts",
+    "demoUrl": "https://moodyjw.github.io/angular-enterprise-blueprint/",
+    "features": [
+      "Lazy-loaded translations",
+      "Dynamic language switching",
+      "Interpolation & pipes",
+      "Type-safe keys"
+    ],
+    "techStack": ["Angular", "Transloco", "TypeScript"]
+  }
+]
