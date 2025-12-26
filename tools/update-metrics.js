@@ -51,8 +51,43 @@ function updateMetrics() {
     console.warn('Coverage report not found at:', COVERAGE_PATH);
   }
 
-  // 2. Mock Update for Lighthouse (Simulate variation for demo)
-  if (process.argv.includes('--simulate')) {
+  // 2. Update Lighthouse Metrics from .lighthouseci (latest run)
+  const LH_DIR = path.join(__dirname, '../.lighthouseci');
+  if (fs.existsSync(LH_DIR)) {
+    try {
+      const files = fs
+        .readdirSync(LH_DIR)
+        .filter((f) => f.startsWith('lhr-') && f.endsWith('.json'));
+      if (files.length > 0) {
+        // Sort to get the latest file (filenames contain timestamps)
+        const latestFile = files.sort().pop();
+        const lhPath = path.join(LH_DIR, latestFile);
+        const lhr = JSON.parse(fs.readFileSync(lhPath, 'utf8'));
+        const { categories } = lhr;
+
+        if (categories) {
+          metrics.lighthouse.performance = Math.round(categories.performance.score * 100);
+          metrics.lighthouse.accessibility = Math.round(categories.accessibility.score * 100);
+          // Key is 'best-practices' in JSON
+          metrics.lighthouse.bestPractices = Math.round(categories['best-practices'].score * 100);
+          metrics.lighthouse.seo = Math.round(categories.seo.score * 100);
+
+          console.log(`Lighthouse Metrics Updated from ${latestFile}:`);
+          console.log(`  Perf: ${metrics.lighthouse.performance}`);
+          console.log(`  A11y: ${metrics.lighthouse.accessibility}`);
+          console.log(`  Best: ${metrics.lighthouse.bestPractices}`);
+          console.log(`  SEO:  ${metrics.lighthouse.seo}`);
+
+          metrics.lastUpdated = new Date().toISOString();
+        }
+      } else {
+        console.warn('No Lighthouse JSON reports found in .lighthouseci/');
+      }
+    } catch (e) {
+      console.error('Failed to parse Lighthouse report:', e.message);
+    }
+  } else if (process.argv.includes('--simulate')) {
+    // Fallback Mock Update for demo if no real data
     console.log('Simulating Lighthouse updates...');
     metrics.lighthouse.performance = 90 + Math.floor(Math.random() * 10);
     metrics.lighthouse.accessibility = 95 + Math.floor(Math.random() * 5);
