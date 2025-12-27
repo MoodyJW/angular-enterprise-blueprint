@@ -145,10 +145,13 @@ export class SkeletonComponent {
     const baseStyles = this.skeletonStyles();
 
     if (this.variant() === 'text') {
-      return {
-        ...baseStyles,
-        width: this.getTextWidth(index),
-      };
+      // Only use random text width if no width is explicitly provided
+      if (this.width() === undefined || this.width() === '') {
+        return {
+          ...baseStyles,
+          width: this.getTextWidth(index),
+        };
+      }
     }
 
     return baseStyles;

@@ -41,6 +41,7 @@ export const ICON_NAMES = {
   AT: 'heroAtSymbol',
 
   // Work & Business
+  BUILDING: 'heroBuildingOffice2',
   BRIEFCASE: 'heroBriefcase',
   DOCUMENT: 'heroDocumentText',
   CODE: 'heroCodeBracket',

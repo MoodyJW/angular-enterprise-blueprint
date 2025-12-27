@@ -1,18 +1,109 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { TranslocoModule } from '@jsverse/transloco';
+import { provideIcons } from '@ng-icons/core';
+import {
+  heroArrowDownTray,
+  heroBuildingOffice2,
+  heroDocument,
+  heroEnvelope,
+  heroMapPin,
+  heroUser,
+} from '@ng-icons/heroicons/outline';
+import { ionLogoGithub } from '@ng-icons/ionicons';
+import { BadgeComponent } from '../../shared/components/badge/badge.component';
+import { ButtonComponent } from '../../shared/components/button/button.component';
+import { CardComponent } from '../../shared/components/card/card.component';
+import { GridComponent } from '../../shared/components/grid/grid.component';
+import { IconComponent } from '../../shared/components/icon/icon.component';
+import { ModalComponent } from '../../shared/components/modal/modal.component';
+import { ProfileStore } from './state/profile.store';
+
+import { ProfileStatsCardComponent } from './components/profile-stats-card/profile-stats-card.component';
 
 /**
  * Profile page component.
  *
- * Displays "The Architect" bio and resume.
- * This is a placeholder that will be fully implemented in Phase 5.
+ * Displays "The Architect" bio, GitHub stats, tech stack,
+ * and resume download/preview options.
  */
 @Component({
   selector: 'eb-profile',
   standalone: true,
-  imports: [TranslocoModule],
+  imports: [
+    TranslocoModule,
+    CardComponent,
+    ButtonComponent,
+    BadgeComponent,
+    GridComponent,
+    IconComponent,
+    ModalComponent,
+    ProfileStatsCardComponent,
+  ],
+  providers: [ProfileStore],
+  viewProviders: [
+    provideIcons({
+      heroArrowDownTray,
+      heroBuildingOffice2,
+      heroDocument,
+      heroEnvelope,
+      heroMapPin,
+      heroUser,
+      ionLogoGithub,
+    }),
+  ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProfileComponent {}
+export class ProfileComponent implements OnInit {
+  private readonly _sanitizer = inject(DomSanitizer);
+  readonly store = inject(ProfileStore);
+
+  /** Controls resume preview modal visibility */
+  readonly showResumeModal = signal(false);
+
+  /** Primary tech stack */
+  readonly primaryTech = ['Angular', 'TypeScript', 'RxJS', 'NgRx', 'Node.js'];
+
+  /** Secondary tech stack */
+  readonly secondaryTech = ['Vitest', 'Playwright', 'Storybook', 'SCSS', 'GitHub Actions'];
+
+  /** Resume file path */
+  readonly resumePath = 'assets/resume/resume.pdf';
+
+  /** Sanitized resume URL for embedding in object/iframe */
+  /** Sanitized resume URL for embedding in object/iframe */
+  readonly safeResumeUrl = computed(() =>
+    this._sanitizer.bypassSecurityTrustResourceUrl(this.resumePath),
+  );
+
+  /** Date range for stats (last 365 days) */
+  readonly statsDateRange = computed(() => {
+    const end = new Date();
+    const start = new Date();
+    start.setDate(start.getDate() - 365);
+    return { start, end };
+  });
+
+  ngOnInit(): void {
+    this.store.loadGitHubStats();
+  }
+
+  /** Opens the resume preview modal */
+  openResumeModal(): void {
+    this.showResumeModal.set(true);
+  }
+
+  /** Closes the resume preview modal */
+  closeResumeModal(): void {
+    this.showResumeModal.set(false);
+  }
+}
