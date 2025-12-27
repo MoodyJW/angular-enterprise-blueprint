@@ -22,7 +22,8 @@
     "docs": "compodoc -p tsconfig.doc.json -d docs/api --theme material",
     "docs:build": "compodoc -p tsconfig.doc.json -d dist/documentation --theme material",
     "docs:serve": "compodoc -p tsconfig.doc.json -d docs/api --theme material -s",
-    "docs:json": "compodoc -p .storybook/tsconfig.doc.json -e json -d ."
+    "docs:json": "compodoc -p .storybook/tsconfig.doc.json -e json -d .",
+    "postinstall": "node scripts/ensure-env.js"
   },
   "prettier": {
     "printWidth": 100,
