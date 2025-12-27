@@ -241,6 +241,54 @@
       "adr-005-error-handling": {
         "title": "Estrategia de Manejo de Errores",
         "summary": "Creamos manejo de errores en profundidad con ErrorHandler global para excepciones no capturadas, interceptor HTTP para errores de API, interfaz AppError normalizada y ErrorNotificationService para feedback al usuario."
+      },
+      "adr-006-analytics-strategy": {
+        "title": "Patrón de Estrategia de Analítica",
+        "summary": "Se implementó el patrón Strategy para analítica con la interfaz AnalyticsProvider, permitiendo implementaciones intercambiables (Consola vs Google Analytics) y cambio limpio basado en el entorno."
+      },
+      "adr-007-seo-management": {
+        "title": "Enfoque de Gestión de SEO",
+        "summary": "Gestión centralizada de SEO a través de SeoService para manejar Título, Meta Etiquetas, Open Graph, Tarjetas de Twitter y URLs Canónicas de manera consistente en todas las rutas."
+      },
+      "adr-008-i18n-transloco": {
+        "title": "Estrategia I18n con Transloco",
+        "summary": "Se adoptó Transloco para la internacionalización para permitir el cambio de idioma en tiempo de ejecución, la carga diferida de archivos de traducción y la optimización de directivas estructurales para el rendimiento."
+      },
+      "adr-009-testing-strategy": {
+        "title": "Estrategia de Pruebas",
+        "summary": "Estandarizado en Vitest para pruebas unitarias/de integración de alta velocidad y Playwright para pruebas E2E robustas, con un requisito de umbral de cobertura de código del 85%."
+      },
+      "adr-010-cicd-pipeline": {
+        "title": "Arquitectura de Pipeline CI/CD",
+        "summary": "Se estableció un pipeline integral de GitHub Actions con linting, pruebas, construcción, escaneo de seguridad CodeQL, auditorías Lighthouse y despliegue automatizado en paralelo."
+      },
+      "adr-011-lazy-loading": {
+        "title": "Carga Diferida y División de Código",
+        "summary": "Se implementó la división de código a nivel de ruta utilizando la carga diferida de componentes independientes modernos de Angular para minimizar el tamaño inicial del paquete y mejorar el rendimiento de carga."
+      },
+      "adr-012-form-management": {
+        "title": "Patrón de Gestión de Formularios",
+        "summary": "Se exigieron Formularios Reactivos combinados con componentes personalizados ControlValueAccessor para una lógica de validación consistente, inmutabilidad y capacidad de prueba completa de formularios complejos."
+      },
+      "adr-013-logging-monitoring": {
+        "title": "Estrategia de Registro y Monitoreo",
+        "summary": "Se abstrajo el registro a través de LoggerService para proporcionar filtrado de gravedad consciente del entorno, enriquecimiento de contexto e intercambio de destino a prueba de futuro (por ejemplo, Sentry)."
+      },
+      "adr-014-strict-layering": {
+        "title": "Capas Estrictas con ESLint",
+        "summary": "Se aplicaron límites arquitectónicos estrictos utilizando eslint-plugin-boundaries para evitar dependencias circulares y garantizar un flujo de datos unidireccional (Core -> Shared -> Features)."
+      },
+      "adr-015-documentation-tooling": {
+        "title": "Estrategia de Herramientas de Documentación",
+        "summary": "Se adoptó una estrategia de documentación híbrida: Storybook para componentes de UI, Compodoc para estructura de código y ADRs en Markdown para decisiones arquitectónicas."
+      },
+      "adr-016-git-workflow": {
+        "title": "Flujo de Trabajo y Estándares Git",
+        "summary": "Se aplicó el estándar Conventional Commits a través de hooks Husky y Commitlint para automatizar la generación de registros de cambios y mantener un historial de proyecto limpio y legible."
+      },
+      "adr-017-package-management": {
+        "title": "Gestión de Paquetes",
+        "summary": "Estandarizado en npm con uso estricto de archivo de bloqueo (package-lock.json) y auditoría de vulnerabilidades automatizada para garantizar construcciones reproducibles y seguras."
       }
     },
     "statuses": {
