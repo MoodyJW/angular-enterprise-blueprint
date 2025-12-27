@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
+import { TranslocoModule } from '@jsverse/transloco';
 import { filter } from 'rxjs/operators';
 
 import { FooterComponent } from '../footer';
@@ -34,7 +35,14 @@ import { ToastContainerComponent } from '@shared/components/toast';
 @Component({
   selector: 'eb-main-layout',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, HeaderComponent, FooterComponent, ToastContainerComponent],
+  imports: [
+    RouterLink,
+    RouterOutlet,
+    TranslocoModule,
+    HeaderComponent,
+    FooterComponent,
+    ToastContainerComponent,
+  ],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

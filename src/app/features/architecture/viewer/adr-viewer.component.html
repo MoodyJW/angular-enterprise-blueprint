@@ -37,13 +37,19 @@
             <span class="adr-viewer__number">{{ currentAdr.number }}</span>
             <eb-badge
               [variant]="getStatusVariant(currentAdr.status)"
-              [content]="currentAdr.status"
-              [ariaLabel]="t('architecture.statusLabel', { status: currentAdr.status })"
+              [content]="t('architecture.statuses.' + currentAdr.status)"
+              [ariaLabel]="
+                t('architecture.statusLabel', {
+                  status: t('architecture.statuses.' + currentAdr.status),
+                })
+              "
               position="inline"
             ></eb-badge>
             <span class="adr-viewer__date">{{ currentAdr.date }}</span>
           </div>
-          <h1 class="adr-viewer__title">{{ currentAdr.title }}</h1>
+          <h1 class="adr-viewer__title">
+            {{ t('architecture.data.' + currentAdr.id + '.title') }}
+          </h1>
         </header>
 
         <!-- Markdown Content -->

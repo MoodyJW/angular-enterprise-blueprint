@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 
 /**
  * Application footer component.
@@ -16,7 +17,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 @Component({
   selector: 'eb-footer',
   standalone: true,
-  imports: [],
+  imports: [TranslocoModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

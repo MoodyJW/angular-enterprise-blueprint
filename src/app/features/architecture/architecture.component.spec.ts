@@ -26,6 +26,29 @@ describe('ArchitectureComponent', () => {
       noResultsHint: 'Try different search',
       clearSearch: 'Clear',
       statusLabel: 'Status: {{ status }}',
+      data: {
+        'adr-001-test': {
+          title: 'Test Architecture Decision',
+          summary: 'This is a test ADR summary.',
+        },
+        'adr-001': {
+          title: 'First Decision',
+          summary: 'First summary',
+        },
+        'adr-002': {
+          title: 'Second Decision',
+          summary: 'Second summary',
+        },
+        'adr-002-deprecated': {
+          title: 'Deprecated Decision',
+          summary: 'A deprecated decision.',
+        },
+      },
+      statuses: {
+        accepted: 'accepted',
+        deprecated: 'deprecated',
+        superseded: 'superseded',
+      },
     },
   };
 

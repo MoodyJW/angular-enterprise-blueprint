@@ -22,25 +22,33 @@
         <!-- Module Header -->
         <header class="detail-header">
           <div class="detail-header__content">
-            <h1 class="detail-header__title">{{ mod.title }}</h1>
+            <h1 class="detail-header__title">{{ t('modules.data.' + mod.id + '.title') }}</h1>
             <div class="detail-header__badges">
               <eb-badge
                 [variant]="getStatusVariant(mod.status)"
-                [content]="mod.status | titlecase"
-                [ariaLabel]="t('modules.detail.statusLabel', { status: mod.status })"
+                [content]="t('modules.statuses.' + mod.status)"
+                [ariaLabel]="
+                  t('modules.detail.statusLabel', { status: t('modules.statuses.' + mod.status) })
+                "
                 position="inline"
               >
               </eb-badge>
               <eb-badge
                 [variant]="getCategoryVariant(mod.category)"
-                [content]="mod.category"
-                [ariaLabel]="t('modules.detail.categoryLabel', { category: mod.category })"
+                [content]="t('modules.categories.' + mod.category)"
+                [ariaLabel]="
+                  t('modules.detail.categoryLabel', {
+                    category: t('modules.categories.' + mod.category),
+                  })
+                "
                 position="inline"
               >
               </eb-badge>
             </div>
           </div>
-          <p class="detail-header__description">{{ mod.description }}</p>
+          <p class="detail-header__description">
+            {{ t('modules.data.' + mod.id + '.description') }}
+          </p>
         </header>
 
         <!-- Action Buttons -->
@@ -94,7 +102,7 @@
             <div class="detail-section">
               <h3 class="detail-section__title">{{ t('modules.detail.features') }}</h3>
               <ul class="detail-features">
-                @for (feature of mod.features; track feature) {
+                @for (feature of t('modules.data.' + mod.id + '.features'); track $index) {
                   <li class="detail-features__item">
                     <eb-icon [name]="ICONS.CHECK" size="sm" class="detail-features__icon"></eb-icon>
                     {{ feature }}

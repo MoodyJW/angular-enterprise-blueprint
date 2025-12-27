@@ -1,6 +1,7 @@
 import { signal, WritableSignal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { TranslocoTestingModule } from '@jsverse/transloco';
 import { afterEach, beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
 
 import { AuthStore } from '@core/auth';
@@ -45,7 +46,35 @@ describe('HeaderComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      imports: [HeaderComponent],
+      imports: [
+        HeaderComponent,
+        TranslocoTestingModule.forRoot({
+          langs: {
+            en: {
+              nav: {
+                home: 'Home',
+                modules: 'Modules',
+                architecture: 'Architecture',
+                profile: 'Profile',
+              },
+              header: {
+                brand: 'Enterprise Blueprint',
+                login: 'Login',
+                logout: 'Logout',
+                ariaLabels: {
+                  home: 'Home',
+                  mainNav: 'Main navigation',
+                  toggleMenu: 'Toggle menu',
+                  login: 'Login',
+                  logout: 'Logout',
+                },
+              },
+              languageSwitcher: { currentLanguage: 'English' },
+            },
+          },
+          translocoConfig: { availableLangs: ['en'], defaultLang: 'en' },
+        }),
+      ],
       providers: [provideRouter([]), { provide: AuthStore, useValue: mockAuthStore }],
     }).compileComponents();
 
@@ -72,7 +101,7 @@ describe('HeaderComponent', () => {
     it('should include Dashboard link', () => {
       const dashboardItem = component.navItems.find((item) => item.route === '/');
       expect(dashboardItem).toBeDefined();
-      expect(dashboardItem?.label).toBe('Dashboard');
+      expect(dashboardItem?.labelKey).toBe('nav.home');
     });
   });
 

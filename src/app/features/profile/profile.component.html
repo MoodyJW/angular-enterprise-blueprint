@@ -1,19 +1,20 @@
-<div class="profile">
-  <div class="profile__container">
-    <header class="profile__header">
-      <h1 class="profile__title">The Architect</h1>
-      <p class="profile__subtitle">Building enterprise-grade Angular applications</p>
-    </header>
+<ng-container *transloco="let t">
+  <div class="profile">
+    <div class="profile__container">
+      <header class="profile__header">
+        <h1 class="profile__title">{{ t('profile.title') }}</h1>
+        <p class="profile__subtitle">{{ t('profile.subtitle') }}</p>
+      </header>
 
-    <div class="profile__content">
-      <div class="profile__placeholder">
-        <span class="profile__placeholder-icon">👨‍💻</span>
-        <h2 class="profile__placeholder-title">Coming Soon</h2>
-        <p class="profile__placeholder-text">
-          This page will showcase the architect's bio, skills, experience, and provide resume
-          download options.
-        </p>
+      <div class="profile__content">
+        <div class="profile__placeholder">
+          <span class="profile__placeholder-icon">👨‍💻</span>
+          <h2 class="profile__placeholder-title">{{ t('profile.comingSoon') }}</h2>
+          <p class="profile__placeholder-text">
+            {{ t('profile.description') }}
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</ng-container>

@@ -47,24 +47,34 @@
                 <eb-card class="module-card" [hoverable]="true">
                   <eb-stack card-body spacing="md">
                     <div class="module-card__header">
-                      <h3 class="module-card__title">{{ module.title }}</h3>
+                      <h3 class="module-card__title">
+                        {{ t('modules.data.' + module.id + '.title') }}
+                      </h3>
                       <eb-badge
                         [variant]="getStatusVariant(module.status)"
-                        [content]="module.status | titlecase"
-                        [ariaLabel]="t('modules.detail.statusLabel', { status: module.status })"
+                        [content]="t('modules.statuses.' + module.status)"
+                        [ariaLabel]="
+                          t('modules.detail.statusLabel', {
+                            status: t('modules.statuses.' + module.status),
+                          })
+                        "
                         position="inline"
                       >
                       </eb-badge>
                     </div>
 
-                    <p class="module-card__description">{{ module.description }}</p>
+                    <p class="module-card__description">
+                      {{ t('modules.data.' + module.id + '.description') }}
+                    </p>
 
                     <div class="module-card__meta">
                       <eb-badge
                         [variant]="getCategoryVariant(module.category)"
-                        [content]="module.category"
+                        [content]="t('modules.categories.' + module.category)"
                         [ariaLabel]="
-                          t('modules.detail.categoryLabel', { category: module.category })
+                          t('modules.detail.categoryLabel', {
+                            category: t('modules.categories.' + module.category),
+                          })
                         "
                         position="inline"
                       >

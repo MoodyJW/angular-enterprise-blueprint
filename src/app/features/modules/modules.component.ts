@@ -1,4 +1,3 @@
-import { TitleCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -38,7 +37,6 @@ import { ModulesStore } from './state/modules.store';
   imports: [
     RouterLink,
     TranslocoDirective,
-    TitleCasePipe,
     ContainerComponent,
     GridComponent,
     StackComponent,

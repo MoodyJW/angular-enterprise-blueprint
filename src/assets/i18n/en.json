@@ -10,7 +10,44 @@
     "confirm": "Confirm",
     "back": "Back",
     "next": "Next",
-    "submit": "Submit"
+    "submit": "Submit",
+    "required": "required",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode"
+  },
+  "header": {
+    "brand": "Enterprise Blueprint",
+    "logout": "Logout",
+    "login": "Login",
+    "ariaLabels": {
+      "home": "Go to home page",
+      "logout": "Logout from your account",
+      "login": "Login to your account",
+      "toggleMenu": "Toggle mobile menu",
+      "mainNav": "Main navigation"
+    }
+  },
+  "footer": {
+    "copyright": "© {{ year }} Enterprise Blueprint. All rights reserved.",
+    "viewSource": "View Source",
+    "builtWith": "Built with Angular v{{ version }}",
+    "ariaLabels": {
+      "viewSource": "View source code on GitHub"
+    }
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "ariaLabel": "Select language",
+    "currentLanguage": "Current language: {{ language }}",
+    "languages": {
+      "en": "English",
+      "es": "Español"
+    }
+  },
+  "layout": {
+    "ariaLabels": {
+      "mobileNav": "Mobile navigation"
+    }
   },
   "home": {
     "welcome": "Welcome to Angular Enterprise Blueprint",
@@ -74,9 +111,6 @@
     "profile": "The Architect",
     "contact": "Hire Me"
   },
-  "footer": {
-    "copyright": "Angular Enterprise Blueprint"
-  },
   "modules": {
     "title": "Reference Modules",
     "subtitle": "Explore enterprise-grade Angular patterns and implementations",
@@ -101,6 +135,69 @@
       "statusLabel": "Status: {{ status }}",
       "categoryLabel": "Category: {{ category }}",
       "technologyLabel": "Technology: {{ technology }}"
+    },
+    "data": {
+      "design-system": {
+        "title": "Enterprise Design System",
+        "description": "Comprehensive UI component library with theming, accessibility, and Storybook documentation.",
+        "features": [
+          "6 named themes",
+          "WCAG 2.1 AA compliant",
+          "40+ components",
+          "Full Storybook coverage"
+        ]
+      },
+      "gh-user-search": {
+        "title": "GitHub User Search",
+        "description": "Search for GitHub users using the GitHub API with a no-framework UI and light/dark themes.",
+        "features": ["No-framework UI", "Light/dark themes", "RxJS integration", "TypeScript"]
+      },
+      "in-browser-markdown-editor": {
+        "title": "In-browser Markdown Editor",
+        "description": "In-browser Markdown editor with live preview and dark/light themes. Saves documents to a Firebase database.",
+        "features": ["Live preview", "Dark/light themes", "Firebase integration"]
+      },
+      "error-handling": {
+        "title": "Global Error Handling",
+        "description": "Centralized error handling with HTTP interceptors, global error handler, and user notification system.",
+        "features": [
+          "Global ErrorHandler",
+          "HTTP error interceptor",
+          "Error normalization",
+          "User notifications"
+        ]
+      },
+      "analytics-provider": {
+        "title": "Analytics Provider Pattern",
+        "description": "Pluggable analytics using the Provider pattern. Swap between console, Google Analytics, or custom providers.",
+        "features": [
+          "Provider pattern",
+          "Console & GA4 providers",
+          "Router tracking",
+          "Custom events"
+        ]
+      },
+      "i18n-transloco": {
+        "title": "Internationalization with Transloco",
+        "description": "Multi-language support using Transloco with lazy-loaded translations and dynamic language switching.",
+        "features": [
+          "Lazy-loaded translations",
+          "Dynamic language switching",
+          "Interpolation & pipes",
+          "Type-safe keys"
+        ]
+      }
+    },
+    "categories": {
+      "ui": "UI Components",
+      "infrastructure": "Infrastructure",
+      "state-management": "State Management",
+      "security": "Security"
+    },
+    "statuses": {
+      "production": "Production",
+      "beta": "Beta",
+      "experimental": "Experimental"
     }
   },
   "architecture": {
@@ -117,6 +214,54 @@
     "statusLabel": "Status: {{ status }}",
     "backToList": "Back to ADRs",
     "notFound": "ADR Not Found",
-    "notFoundMessage": "The requested Architecture Decision Record could not be found."
+    "notFoundMessage": "The requested Architecture Decision Record could not be found.",
+    "data": {
+      "adr-001-signal-store": {
+        "title": "SignalStore for State Management",
+        "summary": "Adopted NgRx SignalStore for signal-first reactive state management with minimal boilerplate, entity management features, and seamless RxJS integration via rxMethod()."
+      },
+      "adr-002-mock-auth-strategy": {
+        "title": "Mock Auth with Strategy Pattern",
+        "summary": "Implemented Strategy pattern for authentication with MockAuthStrategy as default provider, demonstrating SOLID principles and enabling easy swap to real auth providers (OAuth2, SAML)."
+      },
+      "adr-003-component-library": {
+        "title": "Component Library Architecture",
+        "summary": "Built custom component library with 30+ standalone components using signal inputs, BEM CSS methodology, OnPush change detection, and WCAG 2.1 AA accessibility standards."
+      },
+      "adr-004-theming-system": {
+        "title": "Theming System Design",
+        "summary": "Implemented CSS custom properties theming with six named themes (light, dark, and high-contrast variants), system preference detection, and runtime theme switching without JavaScript overhead."
+      },
+      "adr-005-error-handling": {
+        "title": "Error Handling Strategy",
+        "summary": "Created defense-in-depth error handling with global ErrorHandler for uncaught exceptions, HTTP interceptor for API errors, normalized AppError interface, and ErrorNotificationService for user feedback."
+      }
+    },
+    "statuses": {
+      "accepted": "Accepted",
+      "deprecated": "Deprecated",
+      "superseded": "Superseded"
+    }
+  },
+  "contact": {
+    "title": "Hire Me",
+    "subtitle": "Let's build something amazing together",
+    "comingSoon": "Coming Soon",
+    "description": "The contact form will allow potential clients to reach out with project inquiries and collaboration opportunities."
+  },
+  "profile": {
+    "title": "The Architect",
+    "subtitle": "Building enterprise-grade Angular applications",
+    "comingSoon": "Coming Soon",
+    "description": "This page will showcase the architect's bio, skills, experience, and provide resume download options."
+  },
+  "pageNotFound": {
+    "code": "404",
+    "title": "Page Not Found",
+    "message": "Sorry, the page you're looking for doesn't exist or has been moved.",
+    "goToDashboard": "Go to Dashboard",
+    "ariaLabels": {
+      "goToDashboard": "Navigate to dashboard"
+    }
   }
 }

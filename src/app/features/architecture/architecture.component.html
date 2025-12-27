@@ -50,13 +50,21 @@
                       <span class="adr-card__number">{{ adr.number }}</span>
                       <eb-badge
                         [variant]="getStatusVariant(adr.status)"
-                        [content]="adr.status"
-                        [ariaLabel]="t('architecture.statusLabel', { status: adr.status })"
+                        [content]="t('architecture.statuses.' + adr.status)"
+                        [ariaLabel]="
+                          t('architecture.statusLabel', {
+                            status: t('architecture.statuses.' + adr.status),
+                          })
+                        "
                         position="inline"
                       ></eb-badge>
                     </div>
-                    <h3 class="adr-card__title">{{ adr.title }}</h3>
-                    <p class="adr-card__summary">{{ adr.summary }}</p>
+                    <h3 class="adr-card__title">
+                      {{ t('architecture.data.' + adr.id + '.title') }}
+                    </h3>
+                    <p class="adr-card__summary">
+                      {{ t('architecture.data.' + adr.id + '.summary') }}
+                    </p>
                     <div class="adr-card__footer">
                       <span class="adr-card__date">{{ adr.date }}</span>
                       <eb-icon [name]="ICONS.CHEVRON_RIGHT" size="sm" [decorative]="true"></eb-icon>

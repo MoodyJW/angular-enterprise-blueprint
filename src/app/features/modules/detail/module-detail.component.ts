@@ -1,4 +1,3 @@
-import { TitleCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
@@ -34,7 +33,6 @@ import { ModulesStore } from '../state/modules.store';
   imports: [
     RouterLink,
     TranslocoDirective,
-    TitleCasePipe,
     ContainerComponent,
     StackComponent,
     CardComponent,

@@ -30,6 +30,21 @@ describe('ModulesComponent', () => {
         statusLabel: 'Status: {{ status }}',
         categoryLabel: 'Category: {{ category }}',
       },
+      data: {
+        'test-module': {
+          title: 'Test Module',
+          description: 'A test module description',
+          features: ['Feature 1', 'Feature 2'],
+        },
+      },
+      categories: {
+        ui: 'UI Components',
+        infrastructure: 'Infrastructure',
+      },
+      statuses: {
+        production: 'Production',
+        beta: 'Beta',
+      },
     },
   };
 

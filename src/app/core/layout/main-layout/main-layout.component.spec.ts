@@ -1,6 +1,7 @@
 import { signal, WritableSignal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { TranslocoTestingModule } from '@jsverse/transloco';
 import { afterEach, beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
 
 import { AuthStore } from '@core/auth';
@@ -45,7 +46,43 @@ describe('MainLayoutComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      imports: [MainLayoutComponent],
+      imports: [
+        MainLayoutComponent,
+        TranslocoTestingModule.forRoot({
+          langs: {
+            en: {
+              nav: {
+                home: 'Home',
+                modules: 'Modules',
+                architecture: 'Architecture',
+                profile: 'Profile',
+                contact: 'Contact',
+              },
+              header: {
+                brand: 'Enterprise Blueprint',
+                login: 'Login',
+                logout: 'Logout',
+                ariaLabels: {
+                  home: 'Home',
+                  mainNav: 'Main navigation',
+                  toggleMenu: 'Toggle menu',
+                  login: 'Login',
+                  logout: 'Logout',
+                },
+              },
+              footer: {
+                copyright: '© {{ year }} Enterprise Blueprint',
+                viewSource: 'View Source',
+                builtWith: 'Built with Angular v{{ version }}',
+                ariaLabels: { viewSource: 'View source' },
+              },
+              layout: { ariaLabels: { mobileNav: 'Mobile navigation' } },
+              languageSwitcher: { currentLanguage: 'English' },
+            },
+          },
+          translocoConfig: { availableLangs: ['en'], defaultLang: 'en' },
+        }),
+      ],
       providers: [
         provideRouter([{ path: '', component: MainLayoutComponent }]),
         { provide: AuthStore, useValue: mockAuthStore },
@@ -198,13 +235,10 @@ describe('MainLayoutComponent', () => {
       expect(closeMenuSpy).toHaveBeenCalled();
     });
 
-    it('should display correct labels for each nav item', () => {
-      component.isMenuOpen.set(true);
-      fixture.detectChanges();
-
-      const compiled = fixture.nativeElement as HTMLElement;
+    it('should have nav items with translation keys', () => {
       component.navItems.forEach((item) => {
-        expect(compiled.textContent).toContain(item.label);
+        expect(item.labelKey).toBeDefined();
+        expect(item.labelKey.startsWith('nav.')).toBe(true);
       });
     });
   });

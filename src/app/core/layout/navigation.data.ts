@@ -2,8 +2,8 @@
  * Navigation item interface for data-driven navigation.
  */
 export interface NavItem {
-  /** Display label for the navigation link */
-  label: string;
+  /** Translation key for the navigation link label */
+  labelKey: string;
   /** Router path */
   route: string;
   /** Optional icon name (for icon components) */
@@ -19,15 +19,15 @@ export interface NavItem {
  * drive the routing behavior across the app.
  */
 export const NAV_ITEMS: readonly NavItem[] = [
-  { label: 'Dashboard', route: '/' },
-  { label: 'Modules', route: '/modules' },
-  { label: 'Architecture', route: '/architecture' },
-  { label: 'The Architect', route: '/profile' },
+  { labelKey: 'nav.home', route: '/' },
+  { labelKey: 'nav.modules', route: '/modules' },
+  { labelKey: 'nav.architecture', route: '/architecture' },
+  { labelKey: 'nav.profile', route: '/profile' },
 ] as const;
 
 /**
  * Footer navigation items (if needed for secondary navigation).
  */
 export const FOOTER_NAV_ITEMS: readonly NavItem[] = [
-  { label: 'Contact', route: '/contact' },
+  { labelKey: 'nav.contact', route: '/contact' },
 ] as const;

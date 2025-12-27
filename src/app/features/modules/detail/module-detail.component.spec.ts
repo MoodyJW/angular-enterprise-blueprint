@@ -64,6 +64,27 @@ describe('ModuleDetailComponent', () => {
         categoryLabel: 'Category: {{ category }}',
         technologyLabel: 'Technology: {{ technology }}',
       },
+      data: {
+        'test-module': {
+          title: 'Test Module',
+          description: 'A test module description',
+          features: ['Feature 1', 'Feature 2'],
+        },
+        'another-module': {
+          title: 'Another Module',
+          description: 'Another description',
+          features: ['Feature A'],
+        },
+      },
+      categories: {
+        ui: 'UI Components',
+        'state-management': 'State Management',
+        infrastructure: 'Infrastructure',
+      },
+      statuses: {
+        production: 'Production',
+        beta: 'Beta',
+      },
     },
   };
 

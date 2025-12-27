@@ -14,5 +14,8 @@ export const ARCHITECTURE_ROUTES: Routes = [
     path: ':id',
     loadComponent: () => import('./viewer/adr-viewer.component').then((m) => m.AdrViewerComponent),
     title: 'ADR Details | Enterprise Blueprint',
+    providers: [
+      provideMarkdown(), // Required for markdown rendering in ADR viewer
+    ],
   },
 ];

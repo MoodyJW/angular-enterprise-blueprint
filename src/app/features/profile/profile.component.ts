@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 
 /**
  * Profile page component.
@@ -9,7 +10,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'eb-profile',
   standalone: true,
-  imports: [],
+  imports: [TranslocoModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

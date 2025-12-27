@@ -1,78 +1,83 @@
-<header class="header">
-  <div class="header__container">
-    <!-- Logo / Brand -->
-    <a routerLink="/" class="header__brand" aria-label="Go to home page">
-      <span class="header__logo">EB</span>
-      <span class="header__title">Enterprise Blueprint</span>
-    </a>
+<ng-container *transloco="let t">
+  <header class="header">
+    <div class="header__container">
+      <!-- Logo / Brand -->
+      <a routerLink="/" class="header__brand" [attr.aria-label]="t('header.ariaLabels.home')">
+        <span class="header__logo">EB</span>
+        <span class="header__title">{{ t('header.brand') }}</span>
+      </a>
 
-    <!-- Desktop Navigation -->
-    <nav class="header__nav" aria-label="Main navigation">
-      <ul class="header__nav-list">
-        @for (item of navItems; track item.route) {
-          <li class="header__nav-item">
-            <a
-              [routerLink]="item.route"
-              routerLinkActive="header__nav-link--active"
-              [routerLinkActiveOptions]="{ exact: item.route === '/' }"
-              class="header__nav-link"
+      <!-- Desktop Navigation -->
+      <nav class="header__nav" [attr.aria-label]="t('header.ariaLabels.mainNav')">
+        <ul class="header__nav-list">
+          @for (item of navItems; track item.route) {
+            <li class="header__nav-item">
+              <a
+                [routerLink]="item.route"
+                routerLinkActive="header__nav-link--active"
+                [routerLinkActiveOptions]="{ exact: item.route === '/' }"
+                class="header__nav-link"
+              >
+                {{ t(item.labelKey) }}
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+
+      <!-- Actions -->
+      <div class="header__actions">
+        <!-- Language Switcher -->
+        <eb-language-switcher variant="dropdown" size="sm" />
+
+        <!-- Theme Picker -->
+        <eb-theme-picker variant="dropdown" size="sm" />
+
+        <!-- Auth Actions -->
+        @if (isAuthenticated()) {
+          <div class="header__user">
+            <span class="header__user-name">{{ displayName() }}</span>
+            <eb-button
+              variant="ghost"
+              size="sm"
+              [ariaLabel]="t('header.ariaLabels.logout')"
+              (click)="onLogout()"
+              [disabled]="isLoading()"
             >
-              {{ item.label }}
-            </a>
-          </li>
-        }
-      </ul>
-    </nav>
-
-    <!-- Actions -->
-    <div class="header__actions">
-      <!-- Theme Picker -->
-      <eb-theme-picker variant="dropdown" size="sm" />
-
-      <!-- Auth Actions -->
-      @if (isAuthenticated()) {
-        <div class="header__user">
-          <span class="header__user-name">{{ displayName() }}</span>
+              {{ t('header.logout') }}
+            </eb-button>
+          </div>
+        } @else {
           <eb-button
-            variant="ghost"
+            variant="primary"
             size="sm"
-            ariaLabel="Logout from your account"
-            (click)="onLogout()"
-            [disabled]="isLoading()"
+            [ariaLabel]="t('header.ariaLabels.login')"
+            routerLink="/auth/login"
           >
-            Logout
+            {{ t('header.login') }}
           </eb-button>
-        </div>
-      } @else {
-        <eb-button
-          variant="primary"
-          size="sm"
-          ariaLabel="Login to your account"
-          routerLink="/auth/login"
-        >
-          Login
-        </eb-button>
-      }
+        }
 
-      <!-- Mobile Menu Toggle -->
-      <button
-        type="button"
-        class="header__menu-toggle"
-        (click)="onToggleMenu()"
-        aria-label="Toggle mobile menu"
-        aria-expanded="false"
-      >
-        <svg
-          class="header__menu-icon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          aria-hidden="true"
+        <!-- Mobile Menu Toggle -->
+        <button
+          type="button"
+          class="header__menu-toggle"
+          (click)="onToggleMenu()"
+          [attr.aria-label]="t('header.ariaLabels.toggleMenu')"
+          aria-expanded="false"
         >
-          <path d="M3 12h18M3 6h18M3 18h18" />
-        </svg>
-      </button>
+          <svg
+            class="header__menu-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M3 12h18M3 6h18M3 18h18" />
+          </svg>
+        </button>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
+</ng-container>

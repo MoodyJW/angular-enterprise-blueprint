@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { ButtonComponent } from '../button';
 
@@ -11,7 +12,7 @@ import { ButtonComponent } from '../button';
 @Component({
   selector: 'eb-page-not-found',
   standalone: true,
-  imports: [RouterLink, ButtonComponent],
+  imports: [RouterLink, TranslocoModule, ButtonComponent],
   templateUrl: './page-not-found.component.html',
   styleUrl: './page-not-found.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

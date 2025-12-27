@@ -1,35 +1,37 @@
-<div class="app-shell" [class.mobile-menu-open]="isMenuOpen()">
-  <!-- Header -->
-  <eb-header (toggleMenu)="toggleMenu()" />
+<ng-container *transloco="let t">
+  <div class="app-shell" [class.mobile-menu-open]="isMenuOpen()">
+    <!-- Header -->
+    <eb-header (toggleMenu)="toggleMenu()" />
 
-  <!-- Mobile Navigation Drawer -->
-  @if (isMenuOpen()) {
-    <div class="mobile-nav-overlay" (click)="closeMenu()" aria-hidden="true"></div>
-    <nav class="mobile-nav" aria-label="Mobile navigation">
-      <ul class="mobile-nav__list">
-        @for (item of navItems; track item.route) {
+    <!-- Mobile Navigation Drawer -->
+    @if (isMenuOpen()) {
+      <div class="mobile-nav-overlay" (click)="closeMenu()" aria-hidden="true"></div>
+      <nav class="mobile-nav" [attr.aria-label]="t('layout.ariaLabels.mobileNav')">
+        <ul class="mobile-nav__list">
+          @for (item of navItems; track item.route) {
+            <li class="mobile-nav__item">
+              <a [routerLink]="item.route" class="mobile-nav__link" (click)="onMobileNavClick()">
+                {{ t(item.labelKey) }}
+              </a>
+            </li>
+          }
           <li class="mobile-nav__item">
-            <a [routerLink]="item.route" class="mobile-nav__link" (click)="onMobileNavClick()">
-              {{ item.label }}
+            <a routerLink="/contact" class="mobile-nav__link" (click)="onMobileNavClick()">
+              {{ t('nav.contact') }}
             </a>
           </li>
-        }
-        <li class="mobile-nav__item">
-          <a routerLink="/contact" class="mobile-nav__link" (click)="onMobileNavClick()">
-            Contact
-          </a>
-        </li>
-      </ul>
-    </nav>
-  }
+        </ul>
+      </nav>
+    }
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <router-outlet />
-  </main>
+    <!-- Main Content -->
+    <main class="main-content">
+      <router-outlet />
+    </main>
 
-  <!-- Footer -->
-  <eb-footer />
-  <!-- Toast Container -->
-  <eb-toast-container />
-</div>
+    <!-- Footer -->
+    <eb-footer />
+    <!-- Toast Container -->
+    <eb-toast-container />
+  </div>
+</ng-container>

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslocoTestingModule } from '@jsverse/transloco';
 
 import { FooterComponent } from './footer.component';
 
@@ -8,7 +9,22 @@ describe('FooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FooterComponent],
+      imports: [
+        FooterComponent,
+        TranslocoTestingModule.forRoot({
+          langs: {
+            en: {
+              footer: {
+                copyright: '© {{ year }} Enterprise Blueprint. All rights reserved.',
+                viewSource: 'View Source',
+                builtWith: 'Built with Angular v{{ version }}',
+                ariaLabels: { viewSource: 'View source code on GitHub' },
+              },
+            },
+          },
+          translocoConfig: { availableLangs: ['en'], defaultLang: 'en' },
+        }),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FooterComponent);

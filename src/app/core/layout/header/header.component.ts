@@ -1,8 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { AuthStore } from '@core/auth';
 import { ButtonComponent } from '@shared/components/button';
+import { LanguageSwitcherComponent } from '@shared/components/language-switcher';
 import { ThemePickerComponent } from '@shared/components/theme-picker';
 import { NAV_ITEMS } from '../navigation.data';
 
@@ -24,7 +26,14 @@ import { NAV_ITEMS } from '../navigation.data';
 @Component({
   selector: 'eb-header',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, ThemePickerComponent, ButtonComponent],
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    TranslocoModule,
+    LanguageSwitcherComponent,
+    ThemePickerComponent,
+    ButtonComponent,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
