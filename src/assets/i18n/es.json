@@ -145,53 +145,59 @@
     "data": {
       "design-system": {
         "title": "Sistema de Diseño Empresarial",
-        "description": "Biblioteca completa de componentes UI con temas, accesibilidad y documentación Storybook.",
-        "features": [
-          "6 temas nombrados",
-          "Compatible con WCAG 2.1 AA",
-          "40+ componentes",
-          "Cobertura completa de Storybook"
-        ]
+        "description": "Biblioteca completa de componentes UI con temas, accesibilidad y documentación Storybook."
       },
-      "gh-user-search": {
-        "title": "Búsqueda de Usuarios de GitHub",
-        "description": "Busca usuarios de GitHub usando la API de GitHub con una UI sin framework y temas claro/oscuro.",
-        "features": ["UI sin framework", "Temas claro/oscuro", "Integración RxJS", "TypeScript"]
+      "signalstore-state": {
+        "title": "Gestión de Estado con SignalStore",
+        "description": "Gestión de estado reactiva basada en señales usando NgRx SignalStore con mínimo código repetitivo y gestión de entidades."
       },
-      "in-browser-markdown-editor": {
-        "title": "Editor Markdown en el Navegador",
-        "description": "Editor Markdown en el navegador con vista previa en vivo y temas claro/oscuro. Guarda documentos en Firebase.",
-        "features": ["Vista previa en vivo", "Temas claro/oscuro", "Integración Firebase"]
+      "mock-auth-strategy": {
+        "title": "Autenticación Mock con Patrón Strategy",
+        "description": "Sistema de autenticación usando el patrón Strategy con MockAuthStrategy, demostrando principios SOLID y fácil intercambio de proveedores."
+      },
+      "theming-system": {
+        "title": "Diseño del Sistema de Temas",
+        "description": "Temas con propiedades CSS personalizadas con 6 temas nombrados, detección de preferencias del sistema y cambio de tema en tiempo de ejecución."
       },
       "error-handling": {
         "title": "Manejo Global de Errores",
-        "description": "Manejo centralizado de errores con interceptores HTTP, manejador global de errores y sistema de notificaciones.",
-        "features": [
-          "ErrorHandler global",
-          "Interceptor de errores HTTP",
-          "Normalización de errores",
-          "Notificaciones al usuario"
-        ]
+        "description": "Manejo centralizado de errores con interceptores HTTP, manejador global de errores y sistema de notificaciones."
       },
       "analytics-provider": {
         "title": "Patrón de Proveedor de Analíticas",
-        "description": "Analíticas modulares usando el patrón Provider. Alterna entre consola, Google Analytics o proveedores personalizados.",
-        "features": [
-          "Patrón Provider",
-          "Proveedores Console y GA4",
-          "Seguimiento de rutas",
-          "Eventos personalizados"
-        ]
+        "description": "Analíticas modulares usando el patrón Provider. Alterna entre consola, Google Analytics o proveedores personalizados."
+      },
+      "seo-management": {
+        "title": "Servicio de Gestión de SEO",
+        "description": "Gestión centralizada de SEO para título dinámico, meta etiquetas, Open Graph, Twitter Cards y URLs canónicas."
       },
       "i18n-transloco": {
         "title": "Internacionalización con Transloco",
-        "description": "Soporte multilingüe usando Transloco con traducciones de carga diferida y cambio dinámico de idioma.",
-        "features": [
-          "Traducciones de carga diferida",
-          "Cambio dinámico de idioma",
-          "Interpolación y pipes",
-          "Claves tipadas"
-        ]
+        "description": "Soporte multilingüe usando Transloco con traducciones de carga diferida y cambio dinámico de idioma."
+      },
+      "testing-strategy": {
+        "title": "Pruebas con Vitest y Playwright",
+        "description": "Stack de pruebas moderno con Vitest para pruebas unitarias de alta velocidad y Playwright para pruebas E2E robustas."
+      },
+      "lazy-loading": {
+        "title": "Carga Diferida y División de Código",
+        "description": "División de código a nivel de ruta usando carga diferida de componentes standalone para minimizar el tamaño del paquete y mejorar el rendimiento."
+      },
+      "form-management": {
+        "title": "Formularios Reactivos con CVA",
+        "description": "Formularios Reactivos combinados con componentes personalizados ControlValueAccessor para validación consistente y capacidad de prueba."
+      },
+      "logging-monitoring": {
+        "title": "Estrategia de Registro y Monitoreo",
+        "description": "Registro abstraído mediante LoggerService con filtrado consciente del entorno y intercambio de destino a prueba de futuro."
+      },
+      "strict-layering": {
+        "title": "Capas Estrictas con ESLint",
+        "description": "Límites arquitectónicos aplicados usando eslint-plugin-boundaries para prevenir dependencias circulares."
+      },
+      "cicd-pipeline": {
+        "title": "Arquitectura de Pipeline CI/CD",
+        "description": "Pipeline integral de GitHub Actions con pruebas paralelas, escaneo de seguridad y despliegue automatizado."
       }
     },
     "categories": {

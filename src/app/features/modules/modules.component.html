@@ -45,11 +45,8 @@
             @for (module of store.filteredModules(); track module.id) {
               <a [routerLink]="['/modules', module.id]" class="module-card-link">
                 <eb-card class="module-card" [hoverable]="true">
-                  <eb-stack card-body spacing="md">
+                  <eb-stack card-body spacing="sm">
                     <div class="module-card__header">
-                      <h3 class="module-card__title">
-                        {{ t('modules.data.' + module.id + '.title') }}
-                      </h3>
                       <eb-badge
                         [variant]="getStatusVariant(module.status)"
                         [content]="t('modules.statuses.' + module.status)"
@@ -59,52 +56,27 @@
                           })
                         "
                         position="inline"
-                      >
-                      </eb-badge>
+                      ></eb-badge>
                     </div>
-
+                    <h3 class="module-card__title">
+                      {{ t('modules.data.' + module.id + '.title') }}
+                    </h3>
                     <p class="module-card__description">
                       {{ t('modules.data.' + module.id + '.description') }}
                     </p>
-
-                    <div class="module-card__meta">
-                      <eb-badge
-                        [variant]="getCategoryVariant(module.category)"
-                        [content]="t('modules.categories.' + module.category)"
-                        [ariaLabel]="
-                          t('modules.detail.categoryLabel', {
-                            category: t('modules.categories.' + module.category),
-                          })
-                        "
-                        position="inline"
-                      >
-                      </eb-badge>
-                    </div>
-
-                    <div class="module-card__tags">
-                      @for (tag of module.tags.slice(0, 3); track tag) {
-                        <span class="module-card__tag">{{ tag }}</span>
-                      }
-                      @if (module.tags.length > 3) {
-                        <span class="module-card__tag module-card__tag--more">
-                          +{{ module.tags.length - 3 }}
-                        </span>
-                      }
-                    </div>
-
-                    <div class="module-card__actions">
-                      <eb-button
-                        variant="secondary"
-                        size="sm"
-                        [ariaLabel]="t('modules.viewDetails') + ' ' + module.title"
-                      >
-                        {{ t('modules.viewDetails') }}
-                        <eb-icon
-                          [name]="ICONS.CHEVRON_RIGHT"
-                          size="sm"
-                          [decorative]="true"
-                        ></eb-icon>
-                      </eb-button>
+                    <div class="module-card__footer">
+                      <div class="module-card__tags">
+                        @for (tag of module.tags; track tag) {
+                          <eb-badge
+                            [content]="tag"
+                            size="sm"
+                            variant="secondary"
+                            [ariaLabel]="tag"
+                            position="inline"
+                          ></eb-badge>
+                        }
+                      </div>
+                      <eb-icon [name]="ICONS.CHEVRON_RIGHT" size="sm" [decorative]="true"></eb-icon>
                     </div>
                   </eb-stack>
                 </eb-card>

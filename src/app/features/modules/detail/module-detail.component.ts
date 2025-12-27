@@ -94,14 +94,13 @@ export class ModuleDetailComponent implements OnInit {
     category: string,
   ): 'primary' | 'secondary' | 'success' | 'warning' | 'error' {
     switch (category) {
-      case 'state-management':
-        return 'primary';
       case 'ui':
-        return 'success';
+        return 'primary';
       case 'security':
         return 'warning';
+      case 'state-management':
+        return 'success';
       case 'infrastructure':
-        return 'secondary';
       default:
         return 'secondary';
     }

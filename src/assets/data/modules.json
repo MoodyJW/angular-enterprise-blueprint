@@ -17,28 +17,55 @@
     "techStack": ["Angular", "SCSS", "Storybook", "TypeScript"]
   },
   {
-    "id": "gh-user-search",
-    "title": "GitHub User Search",
-    "description": "Search for GitHub users using the GitHub API with a no-framework UI and light/dark themes. Written with Angular, RxJS, and SCSS.",
-    "category": "ui",
+    "id": "signalstore-state",
+    "title": "State Management with SignalStore",
+    "description": "Signal-first reactive state management using NgRx SignalStore with minimal boilerplate and entity management.",
+    "category": "state-management",
     "status": "production",
-    "tags": ["angular", "rxjs", "scss", "reactive"],
-    "repoUrl": "https://github.com/moodyjw/fe-mentor-github-user-search",
-    "demoUrl": "https://moodyjw.github.io/fe-mentor-github-user-search/",
-    "features": ["No-framework UI", "Light/dark themes", "RxJS integration", "TypeScript"],
+    "tags": ["signals", "state", "ngrx", "reactive"],
+    "repoUrl": "https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/features/home/state",
+    "demoUrl": "https://moodyjw.github.io/angular-enterprise-blueprint/",
+    "features": [
+      "Signal-first architecture",
+      "Entity management",
+      "RxJS integration via rxMethod()",
+      "Minimal boilerplate"
+    ],
+    "techStack": ["Angular", "NgRx SignalStore", "RxJS", "TypeScript"]
+  },
+  {
+    "id": "mock-auth-strategy",
+    "title": "Mock Auth with Strategy Pattern",
+    "description": "Authentication system using Strategy pattern with MockAuthStrategy, demonstrating SOLID principles and easy provider swapping.",
+    "category": "security",
+    "status": "production",
+    "tags": ["auth", "security", "strategy-pattern", "guards"],
+    "repoUrl": "https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/auth",
+    "demoUrl": "https://moodyjw.github.io/angular-enterprise-blueprint/auth/login",
+    "features": [
+      "Strategy pattern implementation",
+      "Route guards",
+      "State management integration",
+      "Easy swap to OAuth2/SAML"
+    ],
     "techStack": ["Angular", "RxJS", "TypeScript"]
   },
   {
-    "id": "in-browser-markdown-editor",
-    "title": "In-browser Markdown Editor",
-    "description": "In-browser Markdown editor with live preview and dark/light themes. Saves documents to a firebase database (disabled). Written with Angular, RxJS, and SCSS.",
+    "id": "theming-system",
+    "title": "Theming System Design",
+    "description": "CSS custom properties theming with 6 named themes, system preference detection, and runtime theme switching.",
     "category": "ui",
     "status": "production",
-    "tags": ["angular", "rxjs", "scss", "reactive"],
-    "repoUrl": "https://github.com/MoodyJW/fe-mentor-in-browser-markdown-editor",
-    "demoUrl": "https://moodyjw.github.io/fe-mentor-in-browser-markdown-editor/",
-    "features": ["Live preview", "Dark/light themes", "Firebase integration (disabled)"],
-    "techStack": ["Angular", "RxJS", "TypeScript"]
+    "tags": ["themes", "css-variables", "dark-mode", "accessibility"],
+    "repoUrl": "https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/services/theme",
+    "demoUrl": "https://moodyjw.github.io/angular-enterprise-blueprint/",
+    "features": [
+      "6 named themes (light, dark, high-contrast)",
+      "System preference detection",
+      "Runtime theme switching",
+      "No JavaScript overhead"
+    ],
+    "techStack": ["CSS Custom Properties", "Angular", "TypeScript"]
   },
   {
     "id": "error-handling",
@@ -70,6 +97,23 @@
     "techStack": ["Angular", "GA4", "RxJS", "TypeScript"]
   },
   {
+    "id": "seo-management",
+    "title": "SEO Management Service",
+    "description": "Centralized SEO management for dynamic title, meta tags, Open Graph, Twitter Cards, and canonical URLs.",
+    "category": "infrastructure",
+    "status": "production",
+    "tags": ["seo", "meta-tags", "social-media", "routing"],
+    "repoUrl": "https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/services/seo",
+    "demoUrl": "https://moodyjw.github.io/angular-enterprise-blueprint/",
+    "features": [
+      "Dynamic meta tag management",
+      "Open Graph support",
+      "Twitter Card support",
+      "Canonical URL management"
+    ],
+    "techStack": ["Angular", "Meta API", "TypeScript"]
+  },
+  {
     "id": "i18n-transloco",
     "title": "Internationalization with Transloco",
     "description": "Multi-language support using Transloco with lazy-loaded translations and dynamic language switching.",
@@ -85,5 +129,107 @@
       "Type-safe keys"
     ],
     "techStack": ["Angular", "Transloco", "TypeScript"]
+  },
+  {
+    "id": "testing-strategy",
+    "title": "Testing with Vitest & Playwright",
+    "description": "Modern testing stack with Vitest for high-speed unit tests and Playwright for robust E2E testing.",
+    "category": "infrastructure",
+    "status": "production",
+    "tags": ["testing", "vitest", "playwright", "e2e"],
+    "repoUrl": "https://github.com/MoodyJW/angular-enterprise-blueprint",
+    "demoUrl": "https://moodyjw.github.io/angular-enterprise-blueprint/",
+    "features": [
+      "Vitest unit/integration tests",
+      "Playwright E2E tests",
+      "85% coverage threshold",
+      "Fast test execution"
+    ],
+    "techStack": ["Vitest", "Playwright", "TypeScript", "Angular"]
+  },
+  {
+    "id": "lazy-loading",
+    "title": "Lazy Loading & Code Splitting",
+    "description": "Route-level code splitting using standalone component lazy loading to minimize bundle size and improve performance.",
+    "category": "infrastructure",
+    "status": "production",
+    "tags": ["performance", "lazy-loading", "code-splitting", "routing"],
+    "repoUrl": "https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/app/app.routes.ts",
+    "demoUrl": "https://moodyjw.github.io/angular-enterprise-blueprint/",
+    "features": [
+      "Route-level code splitting",
+      "Standalone component lazy loading",
+      "Minimal initial bundle",
+      "On-demand feature loading"
+    ],
+    "techStack": ["Angular", "TypeScript"]
+  },
+  {
+    "id": "form-management",
+    "title": "Reactive Forms with CVA",
+    "description": "Reactive Forms combined with custom ControlValueAccessor components for consistent validation and testability.",
+    "category": "ui",
+    "status": "production",
+    "tags": ["forms", "validation", "reactive", "cva"],
+    "repoUrl": "https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/shared/components",
+    "demoUrl": "https://moodyjw.github.io/angular-enterprise-blueprint/auth/login",
+    "features": [
+      "Reactive Forms",
+      "Custom ControlValueAccessor",
+      "Consistent validation logic",
+      "Full testability"
+    ],
+    "techStack": ["Angular", "TypeScript", "RxJS"]
+  },
+  {
+    "id": "logging-monitoring",
+    "title": "Logging & Monitoring Strategy",
+    "description": "Abstracted logging via LoggerService with environment-aware filtering and future-proof destination swapping.",
+    "category": "infrastructure",
+    "status": "production",
+    "tags": ["logging", "monitoring", "debugging", "observability"],
+    "repoUrl": "https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/services/logger",
+    "demoUrl": "https://moodyjw.github.io/angular-enterprise-blueprint/",
+    "features": [
+      "Environment-aware severity filtering",
+      "Context enrichment",
+      "Destination abstraction",
+      "Production-ready logging"
+    ],
+    "techStack": ["Angular", "TypeScript"]
+  },
+  {
+    "id": "strict-layering",
+    "title": "Strict Layering with ESLint",
+    "description": "Enforced architectural boundaries using eslint-plugin-boundaries to prevent circular dependencies.",
+    "category": "infrastructure",
+    "status": "production",
+    "tags": ["architecture", "eslint", "boundaries", "layering"],
+    "repoUrl": "https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/.eslintrc.json",
+    "demoUrl": "https://moodyjw.github.io/angular-enterprise-blueprint/architecture",
+    "features": [
+      "Enforced layer boundaries",
+      "Prevents circular dependencies",
+      "Unidirectional data flow",
+      "CI/CD integration"
+    ],
+    "techStack": ["ESLint", "TypeScript"]
+  },
+  {
+    "id": "cicd-pipeline",
+    "title": "CI/CD Pipeline Architecture",
+    "description": "Comprehensive GitHub Actions pipeline with parallelized testing, security scanning, and automated deployment.",
+    "category": "infrastructure",
+    "status": "production",
+    "tags": ["cicd", "github-actions", "automation", "deployment"],
+    "repoUrl": "https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/.github/workflows",
+    "demoUrl": "https://moodyjw.github.io/angular-enterprise-blueprint/",
+    "features": [
+      "Parallelized jobs",
+      "CodeQL security scanning",
+      "Lighthouse audits",
+      "Automated deployment"
+    ],
+    "techStack": ["GitHub Actions", "Lighthouse", "CodeQL"]
   }
 ]

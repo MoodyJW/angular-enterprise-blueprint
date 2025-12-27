@@ -102,7 +102,7 @@
             <div class="detail-section">
               <h3 class="detail-section__title">{{ t('modules.detail.features') }}</h3>
               <ul class="detail-features">
-                @for (feature of t('modules.data.' + mod.id + '.features'); track $index) {
+                @for (feature of mod.features; track $index) {
                   <li class="detail-features__item">
                     <eb-icon [name]="ICONS.CHECK" size="sm" class="detail-features__icon"></eb-icon>
                     {{ feature }}

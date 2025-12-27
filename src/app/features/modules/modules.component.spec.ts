@@ -181,16 +181,16 @@ describe('ModulesComponent', () => {
   });
 
   describe('Category Variant Helper', () => {
-    it('should return primary for state-management category', () => {
-      expect(component['getCategoryVariant']('state-management')).toBe('primary');
-    });
-
-    it('should return success for ui category', () => {
-      expect(component['getCategoryVariant']('ui')).toBe('success');
+    it('should return primary for ui category', () => {
+      expect(component['getCategoryVariant']('ui')).toBe('primary');
     });
 
     it('should return warning for security category', () => {
       expect(component['getCategoryVariant']('security')).toBe('warning');
+    });
+
+    it('should return success for state-management category', () => {
+      expect(component['getCategoryVariant']('state-management')).toBe('success');
     });
 
     it('should return secondary for infrastructure category', () => {
@@ -324,7 +324,7 @@ describe('ModulesComponent', () => {
       expect(compiled.textContent).toContain('signals');
     });
 
-    it('should show +N indicator when more than 3 tags exist', () => {
+    it('should render all tags with wrapping', () => {
       const mockModules = [
         {
           id: 'test-module',
@@ -345,7 +345,8 @@ describe('ModulesComponent', () => {
       fixture.detectChanges();
 
       const compiled = fixture.nativeElement as HTMLElement;
-      expect(compiled.textContent).toContain('+2');
+      expect(compiled.textContent).toContain('tag1');
+      expect(compiled.textContent).toContain('tag5');
     });
 
     it('should display results count when filter is set', () => {
