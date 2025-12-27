@@ -194,16 +194,16 @@ describe('ModuleDetailComponent', () => {
       fixture.componentRef.setInput('id', 'test-module');
     });
 
-    it('should return primary for state-management category', () => {
-      expect(component['getCategoryVariant']('state-management')).toBe('primary');
-    });
-
-    it('should return success for ui category', () => {
-      expect(component['getCategoryVariant']('ui')).toBe('success');
+    it('should return primary for ui category', () => {
+      expect(component['getCategoryVariant']('ui')).toBe('primary');
     });
 
     it('should return warning for security category', () => {
       expect(component['getCategoryVariant']('security')).toBe('warning');
+    });
+
+    it('should return success for state-management category', () => {
+      expect(component['getCategoryVariant']('state-management')).toBe('success');
     });
 
     it('should return secondary for infrastructure category', () => {

@@ -139,53 +139,59 @@
     "data": {
       "design-system": {
         "title": "Enterprise Design System",
-        "description": "Comprehensive UI component library with theming, accessibility, and Storybook documentation.",
-        "features": [
-          "6 named themes",
-          "WCAG 2.1 AA compliant",
-          "40+ components",
-          "Full Storybook coverage"
-        ]
+        "description": "Comprehensive UI component library with theming, accessibility, and Storybook documentation."
       },
-      "gh-user-search": {
-        "title": "GitHub User Search",
-        "description": "Search for GitHub users using the GitHub API with a no-framework UI and light/dark themes.",
-        "features": ["No-framework UI", "Light/dark themes", "RxJS integration", "TypeScript"]
+      "signalstore-state": {
+        "title": "State Management with SignalStore",
+        "description": "Signal-first reactive state management using NgRx SignalStore with minimal boilerplate and entity management."
       },
-      "in-browser-markdown-editor": {
-        "title": "In-browser Markdown Editor",
-        "description": "In-browser Markdown editor with live preview and dark/light themes. Saves documents to a Firebase database.",
-        "features": ["Live preview", "Dark/light themes", "Firebase integration"]
+      "mock-auth-strategy": {
+        "title": "Mock Auth with Strategy Pattern",
+        "description": "Authentication system using Strategy pattern with MockAuthStrategy, demonstrating SOLID principles and easy provider swapping."
+      },
+      "theming-system": {
+        "title": "Theming System Design",
+        "description": "CSS custom properties theming with 6 named themes, system preference detection, and runtime theme switching."
       },
       "error-handling": {
         "title": "Global Error Handling",
-        "description": "Centralized error handling with HTTP interceptors, global error handler, and user notification system.",
-        "features": [
-          "Global ErrorHandler",
-          "HTTP error interceptor",
-          "Error normalization",
-          "User notifications"
-        ]
+        "description": "Centralized error handling with HTTP interceptors, global error handler, and user notification system."
       },
       "analytics-provider": {
         "title": "Analytics Provider Pattern",
-        "description": "Pluggable analytics using the Provider pattern. Swap between console, Google Analytics, or custom providers.",
-        "features": [
-          "Provider pattern",
-          "Console & GA4 providers",
-          "Router tracking",
-          "Custom events"
-        ]
+        "description": "Pluggable analytics using the Provider pattern. Swap between console, Google Analytics, or custom providers."
+      },
+      "seo-management": {
+        "title": "SEO Management Service",
+        "description": "Centralized SEO management for dynamic title, meta tags, Open Graph, Twitter Cards, and canonical URLs."
       },
       "i18n-transloco": {
         "title": "Internationalization with Transloco",
-        "description": "Multi-language support using Transloco with lazy-loaded translations and dynamic language switching.",
-        "features": [
-          "Lazy-loaded translations",
-          "Dynamic language switching",
-          "Interpolation & pipes",
-          "Type-safe keys"
-        ]
+        "description": "Multi-language support using Transloco with lazy-loaded translations and dynamic language switching."
+      },
+      "testing-strategy": {
+        "title": "Testing with Vitest & Playwright",
+        "description": "Modern testing stack with Vitest for high-speed unit tests and Playwright for robust E2E testing."
+      },
+      "lazy-loading": {
+        "title": "Lazy Loading & Code Splitting",
+        "description": "Route-level code splitting using standalone component lazy loading to minimize bundle size and improve performance."
+      },
+      "form-management": {
+        "title": "Reactive Forms with CVA",
+        "description": "Reactive Forms combined with custom ControlValueAccessor components for consistent validation and testability."
+      },
+      "logging-monitoring": {
+        "title": "Logging & Monitoring Strategy",
+        "description": "Abstracted logging via LoggerService with environment-aware filtering and future-proof destination swapping."
+      },
+      "strict-layering": {
+        "title": "Strict Layering with ESLint",
+        "description": "Enforced architectural boundaries using eslint-plugin-boundaries to prevent circular dependencies."
+      },
+      "cicd-pipeline": {
+        "title": "CI/CD Pipeline Architecture",
+        "description": "Comprehensive GitHub Actions pipeline with parallelized testing, security scanning, and automated deployment."
       }
     },
     "categories": {
