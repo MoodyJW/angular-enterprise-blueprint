@@ -28,12 +28,17 @@ jobs:
           node-version: 22
           cache: 'npm'
 
+      - name: Create Environment Files
+        run: |
+          cp src/environments/environment.example.ts src/environments/environment.ts
+          cp src/environments/environment.example.ts src/environments/environment.prod.ts
+
       - name: Install Dependencies
         run: npm ci
 
       - name: Inject Environment Secrets
         run: |
-          sed -i "s/GH_PAT_PLACEHOLDER/${{ secrets.GH_PAT }}/g" src/environments/environment.prod.ts
+          sed -i "s/YOUR_GITHUB_PAT/${{ secrets.GH_PAT }}/g" src/environments/environment.prod.ts
 
       # 1. Build Angular App (Mockend Mode)
       - name: Build Application
