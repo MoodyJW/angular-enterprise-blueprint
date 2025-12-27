@@ -1,13 +1,93 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="4" failures="0" errors="0" time="0.034532824">
-    <testsuite name="src/app/core/services/analytics/analytics.service.init.spec.ts" timestamp="2025-12-26T20:48:01.219Z" hostname="jay-MS-7971" tests="4" failures="0" errors="0" skipped="0" time="0.034532824">
-        <testcase classname="src/app/core/services/analytics/analytics.service.init.spec.ts" name="AnalyticsService Initialization &gt; afterNextRender callback &gt; should register a callback with afterNextRender" time="0.014171977">
+<testsuites name="vitest tests" tests="3" failures="3" errors="0" time="0">
+    <testsuite name="src/app/features/architecture/architecture.component.spec.ts" timestamp="2025-12-27T00:55:19.687Z" hostname="jay-MS-7971" tests="1" failures="1" errors="0" skipped="0" time="0">
+        <testcase classname="src/app/features/architecture/architecture.component.spec.ts" name="src/app/features/architecture/architecture.component.spec.ts" time="0">
+            <system-err>
+JIT compilation failed for injectable [36m[class PlatformLocation][39m
+
+            </system-err>
+            <failure message="The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping." type="Error">
+Error: The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping.
+ ❯ getCompilerFacade node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:143:11
+ ❯ Module.ɵɵngDeclareFactory node_modules/@angular/core/fesm2022/core.mjs:2594:20
+ ❯ Function.&lt;static_initializer&gt; node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:23:20
+ ❯ node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:17:1
+ ❯ src/app/features/architecture/architecture.component.spec.ts:2:1
+            </failure>
         </testcase>
-        <testcase classname="src/app/core/services/analytics/analytics.service.init.spec.ts" name="AnalyticsService Initialization &gt; afterNextRender callback &gt; should call provider.initialize() when the callback executes" time="0.002537657">
+    </testsuite>
+    <testsuite name="src/app/features/architecture/services/architecture.service.spec.ts" timestamp="2025-12-27T00:55:19.690Z" hostname="jay-MS-7971" tests="1" failures="1" errors="0" skipped="0" time="0">
+        <testcase classname="src/app/features/architecture/services/architecture.service.spec.ts" name="src/app/features/architecture/services/architecture.service.spec.ts" time="0">
+            <system-err>
+JIT compilation failed for injectable [36m[class PlatformLocation][39m
+
+            </system-err>
+            <failure message="The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping." type="Error">
+Error: The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping.
+ ❯ getCompilerFacade node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:143:11
+ ❯ Module.ɵɵngDeclareFactory node_modules/@angular/core/fesm2022/core.mjs:2594:20
+ ❯ Function.&lt;static_initializer&gt; node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:23:20
+ ❯ node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:17:1
+ ❯ src/app/features/architecture/services/architecture.service.spec.ts:2:1
+            </failure>
         </testcase>
-        <testcase classname="src/app/core/services/analytics/analytics.service.init.spec.ts" name="AnalyticsService Initialization &gt; afterNextRender callback &gt; should handle initialization errors gracefully" time="0.014863516">
-        </testcase>
-        <testcase classname="src/app/core/services/analytics/analytics.service.init.spec.ts" name="AnalyticsService Initialization &gt; afterNextRender callback &gt; should not call initialize when analytics is disabled" time="0.001808693">
+    </testsuite>
+    <testsuite name="src/app/features/architecture/state/architecture.store.spec.ts" timestamp="2025-12-27T00:55:19.692Z" hostname="jay-MS-7971" tests="1" failures="1" errors="0" skipped="0" time="0">
+        <testcase classname="src/app/features/architecture/state/architecture.store.spec.ts" name="src/app/features/architecture/state/architecture.store.spec.ts" time="0">
+            <system-err>
+JIT compilation failed for injectable [36m[class PlatformLocation][39m
+
+            </system-err>
+            <failure message="The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping." type="Error">
+Error: The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
+
+The injectable is part of a library that has been partially compiled.
+However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
+
+Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
+Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
+or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping.
+ ❯ getCompilerFacade node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:143:11
+ ❯ Module.ɵɵngDeclareFactory node_modules/@angular/core/fesm2022/core.mjs:2594:20
+ ❯ Function.&lt;static_initializer&gt; node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:23:20
+ ❯ node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:17:1
+ ❯ src/app/features/architecture/state/architecture.store.spec.ts:2:1
+            </failure>
         </testcase>
     </testsuite>
 </testsuites>

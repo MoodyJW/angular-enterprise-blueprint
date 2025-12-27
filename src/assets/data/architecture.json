@@ -38,5 +38,101 @@
     "status": "accepted",
     "date": "2025-12-17",
     "summary": "Created defense-in-depth error handling with global ErrorHandler for uncaught exceptions, HTTP interceptor for API errors, normalized AppError interface, and ErrorNotificationService for user feedback."
+  },
+  {
+    "id": "adr-006-analytics-strategy",
+    "number": "ADR-006",
+    "title": "Analytics Strategy Pattern",
+    "status": "accepted",
+    "date": "2025-12-20",
+    "summary": "Implemented Strategy pattern for analytics with AnalyticsProvider interface, enabling swappable implementations (Console vs Google Analytics) and clean environment-based switching."
+  },
+  {
+    "id": "adr-007-seo-management",
+    "number": "ADR-007",
+    "title": "SEO Management Approach",
+    "status": "accepted",
+    "date": "2025-12-20",
+    "summary": "Centralized SEO management via SeoService to handle Title, Meta Tags, Open Graph, Twitter Cards, and Canonical URLs consistently across all routes."
+  },
+  {
+    "id": "adr-008-i18n-transloco",
+    "number": "ADR-008",
+    "title": "I18n Strategy with Transloco",
+    "status": "accepted",
+    "date": "2025-12-21",
+    "summary": "Adopted Transloco for internationalization to enable runtime language switching, lazy-loading of translation files, and structural directive optimization for performance."
+  },
+  {
+    "id": "adr-009-testing-strategy",
+    "number": "ADR-009",
+    "title": "Testing Strategy",
+    "status": "accepted",
+    "date": "2025-12-21",
+    "summary": "Standardized on Vitest for high-speed unit/integration testing and Playwright for robust E2E testing, with an 85% code coverage threshold requirement."
+  },
+  {
+    "id": "adr-010-cicd-pipeline",
+    "number": "ADR-010",
+    "title": "CI/CD Pipeline Architecture",
+    "status": "accepted",
+    "date": "2025-12-22",
+    "summary": "Established comprehensive GitHub Actions pipeline with parallelized linting, testing, building, CodeQL security scanning, Lighthouse audits, and automated deployment."
+  },
+  {
+    "id": "adr-011-lazy-loading",
+    "number": "ADR-011",
+    "title": "Lazy Loading & Code Splitting",
+    "status": "accepted",
+    "date": "2025-12-22",
+    "summary": "Implemented route-level code splitting using modern Angular standalone component lazy loading to minimize initial bundle size and improve load performance."
+  },
+  {
+    "id": "adr-012-form-management",
+    "number": "ADR-012",
+    "title": "Form Management Pattern",
+    "status": "accepted",
+    "date": "2025-12-24",
+    "summary": "Mandated Reactive Forms combined with custom ControlValueAccessor components for consistent validation logic, immutability, and full testability of complex forms."
+  },
+  {
+    "id": "adr-013-logging-monitoring",
+    "number": "ADR-013",
+    "title": "Logging & Monitoring Strategy",
+    "status": "accepted",
+    "date": "2025-12-24",
+    "summary": "Abstracted logging via LoggerService to provide environment-aware severity filtering, context enrichment, and future-proof destination swapping (e.g., Sentry)."
+  },
+  {
+    "id": "adr-014-strict-layering",
+    "number": "ADR-014",
+    "title": "Strict Layering with ESLint",
+    "status": "accepted",
+    "date": "2025-12-24",
+    "summary": "Enforced strict architectural boundaries using eslint-plugin-boundaries to prevent circular dependencies and ensure unidirectional data flow (Core -> Shared -> Features)."
+  },
+  {
+    "id": "adr-015-documentation-tooling",
+    "number": "ADR-015",
+    "title": "Documentation Tooling Strategy",
+    "status": "accepted",
+    "date": "2025-12-25",
+    "summary": "Adopted hybrid documentation strategy: Storybook for UI components, Compodoc for code structure, and Markdown ADRs for architectural decisions."
+  },
+  {
+    "id": "adr-016-git-workflow",
+    "number": "ADR-016",
+    "title": "Git Workflow & Standards",
+    "status": "accepted",
+    "date": "2025-12-26",
+    "summary": "Enforced Conventional Commits standard via Husky hooks and Commitlint to automate changelog generation and maintain a clean, readable project history."
+  },
+  {
+    "id": "adr-017-package-management",
+    "number": "ADR-017",
+    "title": "Package Management",
+    "status": "accepted",
+    "date": "2025-12-26",
+    "summary": "Standardized on npm with strict lockfile (package-lock.json) usage and automated vulnerability auditing to ensure reproducible and secure builds."
   }
 ]

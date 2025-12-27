@@ -235,6 +235,54 @@
       "adr-005-error-handling": {
         "title": "Error Handling Strategy",
         "summary": "Created defense-in-depth error handling with global ErrorHandler for uncaught exceptions, HTTP interceptor for API errors, normalized AppError interface, and ErrorNotificationService for user feedback."
+      },
+      "adr-006-analytics-strategy": {
+        "title": "Analytics Strategy Pattern",
+        "summary": "Implemented Strategy pattern for analytics with AnalyticsProvider interface, enabling swappable implementations (Console vs Google Analytics) and clean environment-based switching."
+      },
+      "adr-007-seo-management": {
+        "title": "SEO Management Approach",
+        "summary": "Centralized SEO management via SeoService to handle Title, Meta Tags, Open Graph, Twitter Cards, and Canonical URLs consistently across all routes."
+      },
+      "adr-008-i18n-transloco": {
+        "title": "I18n Strategy with Transloco",
+        "summary": "Adopted Transloco for internationalization to enable runtime language switching, lazy-loading of translation files, and structural directive optimization for performance."
+      },
+      "adr-009-testing-strategy": {
+        "title": "Testing Strategy",
+        "summary": "Standardized on Vitest for high-speed unit/integration testing and Playwright for robust E2E testing, with an 85% code coverage threshold requirement."
+      },
+      "adr-010-cicd-pipeline": {
+        "title": "CI/CD Pipeline Architecture",
+        "summary": "Established comprehensive GitHub Actions pipeline with parallelized linting, testing, building, CodeQL security scanning, Lighthouse audits, and automated deployment."
+      },
+      "adr-011-lazy-loading": {
+        "title": "Lazy Loading & Code Splitting",
+        "summary": "Implemented route-level code splitting using modern Angular standalone component lazy loading to minimize initial bundle size and improve load performance."
+      },
+      "adr-012-form-management": {
+        "title": "Form Management Pattern",
+        "summary": "Mandated Reactive Forms combined with custom ControlValueAccessor components for consistent validation logic, immutability, and full testability of complex forms."
+      },
+      "adr-013-logging-monitoring": {
+        "title": "Logging & Monitoring Strategy",
+        "summary": "Abstracted logging via LoggerService to provide environment-aware severity filtering, context enrichment, and future-proof destination swapping (e.g., Sentry)."
+      },
+      "adr-014-strict-layering": {
+        "title": "Strict Layering with ESLint",
+        "summary": "Enforced strict architectural boundaries using eslint-plugin-boundaries to prevent circular dependencies and ensure unidirectional data flow (Core -> Shared -> Features)."
+      },
+      "adr-015-documentation-tooling": {
+        "title": "Documentation Tooling Strategy",
+        "summary": "Adopted hybrid documentation strategy: Storybook for UI components, Compodoc for code structure, and Markdown ADRs for architectural decisions."
+      },
+      "adr-016-git-workflow": {
+        "title": "Git Workflow & Standards",
+        "summary": "Enforced Conventional Commits standard via Husky hooks and Commitlint to automate changelog generation and maintain a clean, readable project history."
+      },
+      "adr-017-package-management": {
+        "title": "Package Management",
+        "summary": "Standardized on npm with strict lockfile (package-lock.json) usage and automated vulnerability auditing to ensure reproducible and secure builds."
       }
     },
     "statuses": {
