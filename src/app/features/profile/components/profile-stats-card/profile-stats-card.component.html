@@ -1,0 +1,181 @@
+<ng-container *transloco="let t">
+  <eb-card class="stats-card">
+    <div card-body>
+      @if (isLoading()) {
+        <!-- Loading State -->
+        <div class="stats-card__header">
+          <eb-skeleton variant="circular" width="100px" height="100px" ariaLabel="Loading avatar" />
+          <div class="stats-card__info">
+            <div class="stats-card__info-left">
+              <eb-skeleton variant="text" width="150px" height="28px" ariaLabel="Loading name" />
+              <eb-skeleton
+                variant="text"
+                width="100px"
+                height="20px"
+                ariaLabel="Loading username"
+              />
+              <eb-skeleton
+                variant="text"
+                width="120px"
+                height="16px"
+                ariaLabel="Loading join date"
+              />
+            </div>
+            <div class="stats-card__info-right">
+              <eb-skeleton variant="text" width="120px" height="16px" ariaLabel="Loading company" />
+              <eb-skeleton
+                variant="text"
+                width="100px"
+                height="16px"
+                ariaLabel="Loading location"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="stats-card__range">
+          <eb-skeleton variant="text" width="200px" height="14px" ariaLabel="Loading date range" />
+        </div>
+        <div class="stats-card__grid">
+          @for (_ of [1, 2, 3, 4, 5]; track $index) {
+            <div class="stats-card__stat">
+              <eb-skeleton
+                variant="text"
+                width="50px"
+                height="28px"
+                ariaLabel="Loading stat value"
+              />
+              <eb-skeleton
+                variant="text"
+                width="70px"
+                height="14px"
+                ariaLabel="Loading stat label"
+              />
+            </div>
+          }
+        </div>
+      } @else if (error(); as errorMessage) {
+        <!-- Error State -->
+        <div class="stats-card__error">
+          <p>{{ t('profile.stats.error') }}</p>
+          <p class="stats-card__error-detail">{{ errorMessage }}</p>
+          <eb-button
+            variant="secondary"
+            size="sm"
+            ariaLabel="Retry loading GitHub stats"
+            (clicked)="onRetry()"
+          >
+            {{ t('profile.stats.retry') }}
+          </eb-button>
+        </div>
+      } @else if (stats(); as userStats) {
+        <!-- Profile Header: Avatar + Name/Username -->
+        <div class="stats-card__header">
+          <img
+            class="stats-card__avatar"
+            [src]="userStats.avatarUrl"
+            [alt]="userStats.name || userStats.login"
+            width="100"
+            height="100"
+          />
+          <div class="stats-card__info">
+            <div class="stats-card__info-left">
+              <h2 class="stats-card__name">{{ userStats.name || userStats.login }}</h2>
+              <a
+                [href]="userStats.htmlUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="stats-card__username-link"
+              >
+                <eb-icon
+                  name="ionLogoGithub"
+                  size="md"
+                  class="stats-card__icon"
+                  ariaLabel="GitHub Profile"
+                />
+                &#64;{{ userStats.login }}
+              </a>
+              @if (userStats.email) {
+                <p class="stats-card__email">
+                  <eb-icon name="heroEnvelope" size="sm" class="profile__icon" ariaLabel="Email" />
+                  <a [href]="'mailto:' + userStats.email" class="stats-card__email-link">
+                    {{ userStats.email }}
+                  </a>
+                </p>
+              }
+              <p class="stats-card__joined">
+                {{ t('profile.stats.joined') }} {{ userStats.createdAt | date: 'MMMM yyyy' }}
+              </p>
+            </div>
+            <div class="stats-card__info-right">
+              @if (userStats.company) {
+                <p class="stats-card__company">
+                  <eb-icon
+                    name="heroBuildingOffice2"
+                    size="sm"
+                    class="stats-card__icon"
+                    ariaLabel="Company"
+                  />
+                  <a
+                    href="https://www.nov.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="stats-card__company-link"
+                  >
+                    {{ userStats.company }}
+                  </a>
+                </p>
+              }
+              @if (userStats.location) {
+                <p class="stats-card__location">
+                  <eb-icon
+                    name="heroMapPin"
+                    size="sm"
+                    class="stats-card__icon"
+                    ariaLabel="Location"
+                  />
+                  {{ userStats.location }}
+                </p>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Range Header -->
+        <div class="stats-card__range">
+          {{ t('profile.stats.activityFrom') }}
+          {{ statsDateRange().start | date: 'mediumDate' }} -
+          {{ statsDateRange().end | date: 'mediumDate' }}
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-card__grid">
+          <div class="stats-card__stat">
+            <span class="stats-card__stat-value">{{ userStats.totalRepos }}</span>
+            <span class="stats-card__stat-label">{{ t('profile.stats.repos') }}</span>
+          </div>
+          <div class="stats-card__stat">
+            <span class="stats-card__stat-value">{{ userStats.totalCommits | number }}</span>
+            <span class="stats-card__stat-label">{{ t('profile.stats.commits') }}</span>
+          </div>
+          <div class="stats-card__stat">
+            <span class="stats-card__stat-value">{{ userStats.pullRequests }}</span>
+            <span class="stats-card__stat-label">{{ t('profile.stats.pullRequests') }}</span>
+          </div>
+          <!-- New Stats: Lines Added/Removed -->
+          <div class="stats-card__stat">
+            <span class="stats-card__stat-value" style="color: var(--color-success)">
+              +{{ userStats.totalLinesAdded | number }}
+            </span>
+            <span class="stats-card__stat-label">{{ t('profile.stats.linesAdded') }}</span>
+          </div>
+          <div class="stats-card__stat">
+            <span class="stats-card__stat-value" style="color: var(--color-error)">
+              -{{ userStats.totalLinesRemoved | number }}
+            </span>
+            <span class="stats-card__stat-label">{{ t('profile.stats.linesRemoved') }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </eb-card>
+</ng-container>

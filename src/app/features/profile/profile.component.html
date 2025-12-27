@@ -6,15 +6,112 @@
         <p class="profile__subtitle">{{ t('profile.subtitle') }}</p>
       </header>
 
-      <div class="profile__content">
-        <div class="profile__placeholder">
-          <span class="profile__placeholder-icon">👨‍💻</span>
-          <h2 class="profile__placeholder-title">{{ t('profile.comingSoon') }}</h2>
-          <p class="profile__placeholder-text">
-            {{ t('profile.description') }}
-          </p>
+      <eb-grid [cols]="1" [colsMd]="2" [gap]="'xl'" class="profile__grid">
+        <!-- Left Column: Stats Card with Avatar -->
+        <div class="profile__left">
+          <eb-profile-stats-card
+            [stats]="store.stats()"
+            [isLoading]="store.isLoading()"
+            [error]="store.error()"
+            (retry)="store.loadGitHubStats()"
+          >
+          </eb-profile-stats-card>
         </div>
-      </div>
+
+        <!-- Right Column: Bio & Tech Stack -->
+        <div class="profile__right">
+          <!-- Bio Card -->
+          <eb-card class="profile__bio-card">
+            <div card-body>
+              <h2 class="profile__bio-title">{{ t('profile.bio.title') }}</h2>
+              <p class="profile__bio-content">{{ t('profile.bio.content') }}</p>
+              <p class="profile__bio-focus">{{ t('profile.bio.focus') }}</p>
+            </div>
+          </eb-card>
+
+          <!-- Tech Stack Card -->
+          <eb-card class="profile__tech-card">
+            <div card-body>
+              <h2 class="profile__tech-title">{{ t('profile.techStack.title') }}</h2>
+
+              <div class="profile__tech-section">
+                <h3 class="profile__tech-subtitle">{{ t('profile.techStack.primary') }}</h3>
+                <div class="profile__tech-badges">
+                  @for (tech of primaryTech; track tech) {
+                    <eb-badge
+                      [content]="tech"
+                      variant="primary"
+                      size="md"
+                      position="inline"
+                      [ariaLabel]="tech"
+                    />
+                  }
+                </div>
+              </div>
+
+              <div class="profile__tech-section">
+                <h3 class="profile__tech-subtitle">{{ t('profile.techStack.secondary') }}</h3>
+                <div class="profile__tech-badges">
+                  @for (tech of secondaryTech; track tech) {
+                    <eb-badge
+                      [content]="tech"
+                      variant="secondary"
+                      size="md"
+                      position="inline"
+                      [ariaLabel]="tech"
+                    />
+                  }
+                </div>
+              </div>
+            </div>
+          </eb-card>
+
+          <!-- Resume Actions -->
+          <div class="profile__actions">
+            <a [href]="resumePath" download="resume.pdf" class="profile__download-link">
+              <eb-button variant="primary" size="lg" ariaLabel="Download resume as PDF">
+                <eb-icon name="heroArrowDownTray" size="sm" ariaLabel="" />
+                {{ t('profile.resume.download') }}
+              </eb-button>
+            </a>
+
+            <eb-button
+              variant="secondary"
+              size="lg"
+              ariaLabel="Open resume preview"
+              (clicked)="openResumeModal()"
+            >
+              <eb-icon name="heroDocument" size="sm" ariaLabel="" />
+              {{ t('profile.resume.view') }}
+            </eb-button>
+          </div>
+        </div>
+      </eb-grid>
     </div>
   </div>
+
+  <!-- Resume Preview Modal -->
+  <eb-modal
+    [open]="showResumeModal()"
+    [size]="'xl'"
+    [ariaLabel]="t('profile.resume.modalTitle')"
+    (closed)="closeResumeModal()"
+  >
+    <div modal-header>
+      <h2>{{ t('profile.resume.modalTitle') }}</h2>
+    </div>
+    <div modal-body class="profile__resume-modal-body">
+      <object
+        [data]="safeResumeUrl()"
+        type="application/pdf"
+        class="profile__resume-embed"
+        aria-label="Resume PDF preview"
+      >
+        <p>
+          Your browser does not support PDF preview.
+          <a [href]="resumePath" download="resume.pdf">Download the resume</a> instead.
+        </p>
+      </object>
+    </div>
+  </eb-modal>
 </ng-container>

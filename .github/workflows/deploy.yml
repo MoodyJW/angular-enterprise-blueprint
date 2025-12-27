@@ -31,6 +31,10 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Inject Environment Secrets
+        run: |
+          sed -i "s/GH_PAT_PLACEHOLDER/${{ secrets.GH_PAT }}/g" src/environments/environment.prod.ts
+
       # 1. Build Angular App (Mockend Mode)
       - name: Build Application
         run: npm run build -- --base-href /angular-enterprise-blueprint/

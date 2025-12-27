@@ -298,10 +298,39 @@
     "description": "The contact form will allow potential clients to reach out with project inquiries and collaboration opportunities."
   },
   "profile": {
-    "title": "The Architect",
+    "title": "Jason Walker Moody: The Architect",
     "subtitle": "Building enterprise-grade Angular applications",
-    "comingSoon": "Coming Soon",
-    "description": "This page will showcase the architect's bio, skills, experience, and provide resume download options."
+    "bio": {
+      "title": "About Me",
+      "content": "Full-stack software engineer with a passion for building scalable, maintainable applications. I specialize in Angular and modern TypeScript development, with a focus on clean architecture and developer experience.",
+      "focus": "Currently focused on enterprise Angular patterns, state management, and component library development."
+    },
+    "stats": {
+      "title": "GitHub Activity",
+      "activityFrom": "GitHub Activity from",
+      "joined": "Joined",
+      "repos": "Repositories",
+      "commits": "Commits",
+      "pullRequests": "Pull Requests",
+      "linesAdded": "Lines Added",
+      "linesRemoved": "Lines Removed",
+      "loading": "Loading GitHub stats...",
+      "error": "Failed to load stats",
+      "retry": "Retry",
+      "viewProfile": "View GitHub Profile"
+    },
+    "techStack": {
+      "title": "Tech Stack",
+      "primary": "Primary",
+      "secondary": "Also Experienced With"
+    },
+    "resume": {
+      "download": "Download Resume",
+      "view": "View Resume",
+      "modalTitle": "Resume Preview",
+      "downloadHint": "Download PDF resume",
+      "close": "Close preview"
+    }
   },
   "pageNotFound": {
     "code": "404",

@@ -51,6 +51,12 @@ export interface AppEnvironment {
    * Should match package.json version.
    */
   readonly version: string;
+
+  /**
+   * GitHub API configuration for Profile feature.
+   * Used to display real GitHub statistics on the About page.
+   */
+  readonly github?: GitHubConfig;
 }
 
 /**
@@ -132,4 +138,25 @@ export interface GoogleAnalyticsConfig {
    * Format: 'G-XXXXXXXXXX'
    */
   readonly measurementId: string;
+}
+
+/**
+ * GitHub API configuration for Profile feature.
+ *
+ * Used to fetch real GitHub statistics for the "About Me" page.
+ * The PAT is optional - without it, requests use unauthenticated
+ * rate limits (60 req/hour vs 5000 req/hour with PAT).
+ */
+export interface GitHubConfig {
+  /**
+   * GitHub username to fetch statistics for.
+   */
+  readonly username: string;
+
+  /**
+   * Personal Access Token for higher rate limits.
+   * Optional - set via CI/CD environment variables in production.
+   * Required scopes if used: read:user
+   */
+  readonly pat?: string;
 }

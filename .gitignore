@@ -48,3 +48,8 @@ storybook-static
 # Compodoc
 documentation.json
 /docs/api
+
+# Environments
+src/environments/environment.ts
+src/environments/environment.development.ts
+

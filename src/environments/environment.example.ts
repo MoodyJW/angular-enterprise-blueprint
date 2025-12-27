@@ -1,13 +1,9 @@
 import type { AppEnvironment } from './environment.type';
 
 /**
- * Development environment configuration.
+ * Development environment template.
  *
- * This configuration is used during local development (`ng serve`).
- * It enables mock services and verbose logging for easier debugging.
- *
- * Analytics uses the 'console' provider in development, which logs
- * all analytics events to the console for debugging purposes.
+ * Copy this file to \`environment.ts\` and fill in your secrets.
  */
 export const environment: AppEnvironment = {
   appName: 'Angular Enterprise Blueprint',
@@ -21,4 +17,8 @@ export const environment: AppEnvironment = {
     provider: 'console',
   },
   version: '0.0.1',
+  github: {
+    username: 'YOUR_GITHUB_USERNAME',
+    pat: 'YOUR_GITHUB_PAT',
+  },
 };
