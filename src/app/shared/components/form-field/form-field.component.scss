@@ -11,6 +11,10 @@
     width: var(--max-width-full);
   }
 
+  &__footer-wrapper {
+    min-height: 1.25rem; // Reserve space for error message (font-size-xs + spacing)
+  }
+
   // Validation state modifiers
   &--success {
     .form-field-label {
@@ -47,32 +51,6 @@
   }
 }
 
-// Helper text styling (shared with InputFooterComponent)
-.form-field-helper-text {
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-tight);
-  color: var(--text-secondary);
-  margin-top: var(--space-2);
-  transition: color 0.2s ease;
-
-  // Respect reduced motion preference
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
-  }
-
-  &--success {
-    color: var(--color-success);
-  }
-
-  &--warning {
-    color: var(--color-warning);
-  }
-
-  &--error {
-    color: var(--color-error);
-  }
-}
-
 // Dark theme support
 @media (prefers-color-scheme: dark) {
   .form-field-label {
@@ -100,5 +78,23 @@
   eb-checkbox,
   eb-radio {
     width: var(--max-width-full);
+  }
+}
+
+// Helper/Error text styling
+.form-field-helper-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+
+  &--error {
+    color: var(--color-error, #ef4444);
+  }
+
+  &--warning {
+    color: var(--color-warning, #f59e0b);
+  }
+
+  &--success {
+    color: var(--color-success, #10b981);
   }
 }

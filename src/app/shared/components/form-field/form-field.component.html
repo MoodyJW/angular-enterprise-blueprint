@@ -12,11 +12,13 @@
     <ng-content />
   </div>
 
-  @if (showFooter()) {
-    <eb-input-footer
-      [helperText]="footerText()"
-      [helperTextId]="helperId()"
-      [helperTextClasses]="footerClasses()"
-    />
-  }
+  <div class="form-field__footer-wrapper">
+    @if (showFooter()) {
+      <eb-input-footer
+        [helperText]="footerText()"
+        [helperTextId]="helperId()"
+        [helperTextClasses]="footerClasses()"
+      />
+    }
+  </div>
 </div>

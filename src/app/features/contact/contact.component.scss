@@ -1,41 +1,100 @@
-@use '../../shared/styles/feature-page' as page;
+.contact-page {
+  width: 100%;
+  max-width: var(--max-width-lg);
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-4) var(--space-12);
 
-.contact {
-  @include page.feature-page;
-
-  &__container {
-    @include page.feature-container;
+  @media (min-width: 768px) {
+    padding-top: var(--space-8);
   }
+}
 
-  &__header {
-    @include page.feature-header;
-  }
+.contact-header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+  max-width: var(--max-width-md);
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  &__title {
-    @include page.feature-title;
-  }
+.contact-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+  line-height: var(--line-height-tight);
 
-  &__subtitle {
-    @include page.feature-subtitle;
+  @media (min-width: 768px) {
+    font-size: var(--font-size-4xl);
   }
+}
 
-  &__content {
-    @include page.feature-content;
-  }
+.contact-description {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
 
-  &__placeholder {
-    @include page.feature-placeholder;
-  }
+// Connect Card Styles
+.connect-link,
+.connect-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--border-radius-base);
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+  font-size: var(--font-size-base);
 
-  &__placeholder-icon {
-    @include page.feature-placeholder-icon;
+  eb-icon {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    transition: color 0.2s ease;
   }
+}
 
-  &__placeholder-title {
-    @include page.feature-placeholder-title;
-  }
+.connect-link:hover {
+  background-color: var(--color-surface-hover);
+  color: var(--color-primary);
 
-  &__placeholder-text {
-    @include page.feature-placeholder-text;
+  eb-icon {
+    color: var(--color-primary);
   }
+}
+
+// Status Card Styles
+.status-content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+
+  p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-base);
+  }
+}
+
+.job-title-link {
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-primary-dark, var(--color-primary));
+    text-decoration: underline;
+  }
+}
+
+// Right column (info cards) - fill height and distribute space
+.info-column {
+  height: 100%;
+  justify-content: space-between;
 }

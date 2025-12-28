@@ -298,10 +298,47 @@
     }
   },
   "contact": {
-    "title": "Hire Me",
-    "subtitle": "Let's build something amazing together",
-    "comingSoon": "Coming Soon",
-    "description": "The contact form will allow potential clients to reach out with project inquiries and collaboration opportunities."
+    "title": "Contact",
+    "description": "Have a question or want to work together? Leave a message below.",
+    "connect": {
+      "title": "Connect",
+      "location": "Eugene, OR",
+      "email": "jwmoody@protonmail.com"
+    },
+    "status": {
+      "title": "Currently Employed Full-time",
+      "description": "I am currently employed full-time, but I am open to discussing new opportunities. I am primarily interested in fully remote positions or hybrid roles on the West Coast, US."
+    },
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your.email@example.com",
+      "company": "Company",
+      "companyPlaceholder": "Your company",
+      "message": "Message",
+      "messagePlaceholder": "Tell me about your project...",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "cooldown": "Wait {{ seconds }}s",
+      "successTitle": "Message Sent!",
+      "successMessage": "Thanks for reaching out. I'll get back to you soon.",
+      "errorTitle": "Error",
+      "rateLimit": "Too many requests. Please wait a moment.",
+      "validation": {
+        "nameRequired": "Name is required",
+        "nameMinLength": "Name must be at least 2 characters",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email address",
+        "messageRequired": "Message is required",
+        "messageMinLength": "Message must be at least 25 characters"
+      }
+    },
+    "messages": {
+      "success": "Message sent! Thanks for reaching out.",
+      "error": "Failed to send message. Please try again.",
+      "cooldown": "Please wait {{ seconds }}s"
+    }
   },
   "profile": {
     "title": "Jason Walker Moody: The Architect",

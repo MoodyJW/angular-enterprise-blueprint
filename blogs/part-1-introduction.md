@@ -1,6 +1,6 @@
 ## Creating an Enterprise Blueprint as a Portfolio Using Angular
 
-As a [lead front-end developer](https://www.linkedin.com/in/jasonwmoody/), I don't have much time for personal projects, and none of my professional work is public. I realized I needed something tangible to demonstrate my skills. Instead of building a collection of small projects, I'm creating a ["mini enterprise" application](https://github.com/MoodyJW/angular-enterprise-blueprint) as my portfolio. This means applying modern architecture, documentation standards, CI/CD pipelines, comprehensive testing, and other common enterprise practices. I'm treating it like a real production project, following enterprise best practices from the ground up. This approach lets me focus on a single project while demonstrating an entire professional skill set.
+As a [Lead Front-end Developer](https://www.linkedin.com/in/jasonwmoody/), I don't have much time for personal projects, and none of my professional work is public. I realized I needed something tangible to demonstrate my skills. Instead of building a collection of small projects, I'm creating a ["mini enterprise" application](https://moodyjw.github.io/angular-enterprise-blueprint/) as my portfolio. This means applying modern architecture, documentation standards, CI/CD pipelines, comprehensive testing, and other common enterprise practices. I'm treating it like a real production project, following enterprise best practices from the ground up. This approach lets me focus on a single project while demonstrating an entire professional skill set.
 
 In this introductory article, I'll explain the motivation behind this approach, outline the technology decisions, and provide a roadmap of what's to come. Future articles will dive deep into each phase of implementation.
 
@@ -22,11 +22,18 @@ The goal is to create something that functions as both a personal portfolio and 
 
 ### Here's what that looks like in practice:
 
+![Screenshot of multiple passing github workflows on a pull request](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/t0jyn08dlg029f3zabwi.png)_Figure 1: Automated quality gates enforcing standards on every Pull Request._
+
 **Infrastructure First:** Before writing any feature code, I built out the complete development foundation. That includes [ESLint](https://eslint.org/docs/latest/) with strict type checking and accessibility rules, automated testing with [Vitest](https://vitest.dev/guide/) and [Playwright](https://playwright.dev/docs/intro), documentation through [Storybook](https://storybook.js.org/docs) and [Compodoc](https://compodoc.app/guides/getting-started.html), and Git hooks to enforce code quality before commits even reach the repository. I also leveraged AI tools like [GitHub Copilot](https://github.com/features/copilot) and [Claude](https://claude.ai/new) to help scaffold boilerplate, generate initial test stubs, and accelerate repetitive setup tasks, freeing me to focus on architecture and quality decisions.
 
 In enterprise development, you don't start building features until the base infrastructure is solid. This "shift left" philosophy catches errors, style violations, and problematic commits on the developer's machine before they ever reach the CI server.
 
-**Architecture Over Aesthetics:** While the portfolio will look professional, the emphasis is on maintainable architecture. It's built with [Angular 21](https://v21.angular.dev/overview) using standalone components, signals for reactive state management, [NgRx SignalStore](https://ngrx.io/guide/signals/signal-store) for centralized state, and lazy-loaded routes for performance. The codebase follows a strict layered architecture: [Core services](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/services) (singletons loaded once), [Shared components](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/shared) (reusable UI elements), and [feature modules](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/features) (routed pages). [ESLint rules](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/eslint.config.mjs) enforce these boundaries, features cannot import from other features, and shared components cannot depend on core services.
+**Architecture Over Aesthetics:**
+
+![Figure 2: The Unidirectional Data Flow. The architecture enforces strict boundaries: Features (Green) are lazy-loaded by the Shell (Grey) and consume Core logic (Blue) and Shared UI (Purple), but never depend on each other.](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ztr46o72pbua0yn2a3jc.png)
+_Figure 2: The strict unidirectional data flow: Features consume Core and Shared, but never each other._
+
+While the portfolio will look professional, the emphasis is on maintainable architecture. It's built with [Angular 21](https://v21.angular.dev/overview) using standalone components, signals for reactive state management, [NgRx SignalStore](https://ngrx.io/guide/signals/signal-store) for centralized state, and lazy-loaded routes for performance. The codebase follows a strict layered architecture: [Core services](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/services) (singletons loaded once), [Shared components](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/shared) (reusable UI elements), and [feature modules](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/features) (routed pages). [ESLint rules](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/eslint.config.mjs) enforce these boundaries, features cannot import from other features, and shared components cannot depend on core services.
 
 Each architectural decision is documented with clear rationale. When someone reviews the codebase, they should understand not just what was built, but why it was built that way.
 
@@ -76,7 +83,7 @@ This is what separates experienced engineers from those still building foundatio
 
 I chose Angular 21 because it offers enterprise-grade features out of the box: standalone components that simplify module management, fine-grained reactivity via signals, built-in dependency injection, and a mature ecosystem with excellent tooling. It's designed for building large-scale, maintainable applications—exactly what this project aims to demonstrate.
 
-**Core Framework:** Angular 21 with standalone components, TypeScript 5.7 in strict mode, [RxJS](https://rxjs.dev/guide/overview) for async operations, Signals for reactive state, and NgRx SignalStore for centralized state management.
+**Core Framework:** Angular 21 with standalone components, TypeScript 5.9 in strict mode, [RxJS](https://rxjs.dev/guide/overview) for async operations, Signals for reactive state, and NgRx SignalStore for centralized state management.
 
 **Testing:** Vitest for unit testing (fast, modern, excellent developer experience), Playwright for E2E testing across Chromium, Firefox, and WebKit, with support for visual regression testing.
 
@@ -90,7 +97,7 @@ I chose Angular 21 because it offers enterprise-grade features out of the box: s
 
 **CI/CD and Deployment:** GitHub Actions for automated pipelines, CodeQL for security scanning, Lighthouse CI for performance auditing, and GitHub Pages for hosting.
 
-Each tool was chosen for a specific reason: it solves a real problem or aligns with patterns I've seen succeed in enterprise environments. The stack is opinionated but practical, these are tools that work well together and scale to larger teams and codebases.
+Each tool was chosen for a specific reason: it solves a real problem or aligns with patterns I've seen succeed in enterprise environments. The stack is opinionated but practical; these are tools that work well together and scale to larger teams and codebases.
 
 ## What's Next
 

@@ -661,6 +661,35 @@ describe('InputComponent', () => {
     });
   });
 
+  describe('ControlValueAccessor', () => {
+    it('should write value', () => {
+      fixture.detectChanges(); // Ensure initial effects run
+      component.writeValue('test value');
+      expect(component.internalValue()).toBe('test value');
+    });
+
+    it('should register onChange callback', () => {
+      const fn = vi.fn();
+      component.registerOnChange(fn);
+      component.handleInput({ target: { value: 'new value' } } as unknown as Event);
+      expect(fn).toHaveBeenCalledWith('new value');
+    });
+
+    it('should register onTouched callback', () => {
+      const fn = vi.fn();
+      component.registerOnTouched(fn);
+      component.handleBlur({} as FocusEvent);
+      expect(fn).toHaveBeenCalled();
+    });
+
+    it('should set disabled state', () => {
+      // Since specific implementation is optional and not strictly enforcing disabled input signal override in CVA yet
+      // This mainly verifies the method exists and doesn't crash
+      component.setDisabledState(true);
+      expect(component).toBeTruthy();
+    });
+  });
+
   describe('Rendering', () => {
     it('should render input element', () => {
       fixture.detectChanges();

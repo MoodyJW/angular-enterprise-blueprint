@@ -750,6 +750,52 @@ describe('TextareaComponent', () => {
     });
   });
 
+  describe('ControlValueAccessor', () => {
+    it('should write value', () => {
+      fixture.detectChanges(); // Ensure initial effects run
+      component.writeValue('test value');
+      expect(component.internalValue()).toBe('test value');
+    });
+
+    it('should register onChange callback', () => {
+      const fn = vi.fn();
+      component.registerOnChange(fn);
+      component.handleInput({ target: { value: 'new value' } } as unknown as Event);
+      expect(fn).toHaveBeenCalledWith('new value');
+    });
+
+    it('should register onTouched callback', () => {
+      const fn = vi.fn();
+      component.registerOnTouched(fn);
+      component.handleBlur({} as FocusEvent);
+      expect(fn).toHaveBeenCalled();
+    });
+
+    it('should trigger height adjustment on writeValue if autoResize is true', () => {
+      vi.useFakeTimers();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const adjustHeightSpy = vi.spyOn(component as any, '_adjustHeight');
+
+      component.writeValue('test value');
+      expect(adjustHeightSpy).not.toHaveBeenCalled();
+
+      fixture.componentRef.setInput('autoResize', true);
+      fixture.detectChanges();
+
+      component.writeValue('new updated value');
+      vi.advanceTimersByTime(10);
+      expect(adjustHeightSpy).toHaveBeenCalled();
+
+      vi.useRealTimers();
+    });
+
+    it('should set disabled state', () => {
+      // Optional method existence check
+      component.setDisabledState(true);
+      expect(component).toBeTruthy();
+    });
+  });
+
   describe('CSS Classes', () => {
     it('should generate correct wrapper classes', () => {
       fixture.componentRef.setInput('size', 'lg');

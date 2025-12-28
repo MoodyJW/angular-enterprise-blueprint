@@ -2,7 +2,7 @@
 
 This document outlines the mandatory coding standards for the Angular Enterprise Blueprint. These standards ensure consistency, maintainability, and enterprise-grade quality across the codebase.
 
-**Last Updated:** 2025-12-26
+**Last Updated:** 2025-12-28
 
 ---
 
@@ -351,11 +351,15 @@ export class ButtonComponent {
 
 ### 2.8 Template Expressions
 
-**Rule:** No arrow functions or complex logic in templates.
+**Rule:** No arrow functions or complex logic in templates. Do not assume globals are available.
 
 ```typescript
 // ❌ Incorrect - Arrow function in template
 <button (click)="items.filter(i => i.active)">Filter</button>
+
+// ❌ Incorrect - Global objects
+<div>{{ new Date() }}</div> // Not supported
+<div>{{ Math.round(value) }}</div> // Not supported
 
 // ✅ Correct - Method in component
 @Component({ /* ... */ })
@@ -365,10 +369,13 @@ export class ListComponent {
   readonly activeItems = computed(() =>
     this.items().filter(i => i.active)
   );
+
+  readonly currentDate = computed(() => new Date());
 }
 
 // Template
 <button (click)="handleFilter()">Filter</button>
+<div>{{ currentDate() }}</div>
 ```
 
 ---
@@ -479,6 +486,37 @@ export class UserFormComponent {}
 @Component({
   templateUrl: '../user/user-card.component.html', // ❌
 })
+```
+
+### 3.5 Forms
+
+**Rule:** Prefer Reactive forms over Template-driven forms.
+
+```typescript
+// ✅ Correct - Reactive forms
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-user-form',
+  imports: [ReactiveFormsModule],
+})
+export class UserFormComponent {
+  private readonly fb = inject(FormBuilder);
+
+  readonly userForm = this.fb.group({
+    name: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+  });
+}
+
+// ❌ Avoid - Template-driven forms
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  imports: [FormsModule],
+  template: `<input [(ngModel)]="name" />`,
+})
+export class UserFormComponent {}
 ```
 
 ---
@@ -1377,7 +1415,48 @@ src/app/
 └── app.config.ts   # Application configuration
 ```
 
-### 12.2 Layer Dependencies
+### 12.2 Import Organization
+
+**Rule:** Use path aliases for imports. Always use barrel exports when they exist.
+
+```typescript
+// ✅ Correct - Path aliases with barrel exports
+import { ButtonComponent } from '@shared/components/button';
+import { CardComponent } from '@shared/components/card';
+import { LoggerService } from '@core/services/logger';
+import { ENVIRONMENT } from '@core/config';
+import { environment } from '@environments/environment';
+
+// ❌ Incorrect - Relative imports
+import { ButtonComponent } from '../../shared/components/button/button.component';
+import { LoggerService } from '../../../core/services/logger/logger.service';
+
+// ❌ Incorrect - Bypassing barrel exports
+import { ButtonComponent } from '@shared/components/button/button.component';
+```
+
+**Available Path Aliases:**
+
+- `@app/*` - General app directory
+- `@core/*` - Core functionality
+- `@core/services/*` - Core services
+- `@core/config/*` - Configuration
+- `@core/auth/*` - Authentication
+- `@shared/*` - Shared resources
+- `@shared/components/*` - Shared components
+- `@shared/services/*` - Shared services
+- `@shared/utilities/*` - Utility functions
+- `@shared/constants/*` - Constants
+- `@features/*` - Feature modules
+- `@environments/*` - Environment files
+
+**When to Use Relative Imports:**
+
+- Same-directory component children: `./button-icon/button-icon.component`
+- Feature-local state: `./state/feature.store`
+- Closely coupled files in the same module
+
+### 12.3 Layer Dependencies
 
 **Rule:** Strict layering enforced by `eslint-plugin-boundaries`.
 
@@ -1390,21 +1469,22 @@ src/app/
 - Shared → Core ❌ (Prohibited!)
 - Shared → Features ❌ (Prohibited!)
 
-### 12.3 Barrel Exports
+### 12.4 Barrel Exports
 
-**Rule:** Use index.ts barrel exports for cleaner imports.
+**Rule:** Use index.ts barrel exports for cleaner imports. Always import from barrel exports when they exist.
 
 ```typescript
-// shared/components/index.ts
-export * from './button/button.component';
-export * from './card/card.component';
-export * from './input/input.component';
+// shared/components/button/index.ts
+export * from './button.component';
 
-// Usage
-import { ButtonComponent, CardComponent } from '@shared/components';
+// ✅ Correct - Import from barrel export
+import { ButtonComponent } from '@shared/components/button';
+
+// ❌ Incorrect - Bypass barrel export
+import { ButtonComponent } from '@shared/components/button/button.component';
 ```
 
-### 12.4 File Naming
+### 12.5 File Naming
 
 **Rule:** Use kebab-case for file names.
 
@@ -1714,4 +1794,4 @@ For questions about these standards:
 3. Ask in team discussion
 4. Propose standard update via PR
 
-**Last Updated:** 2025-12-26
+**Last Updated:** 2025-12-28

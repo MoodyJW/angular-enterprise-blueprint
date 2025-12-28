@@ -1,5 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  HostListener,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
 import type { AbstractControl } from '@angular/forms';
 
 import { UniqueIdService } from '../../services/unique-id/unique-id.service';
@@ -146,10 +155,45 @@ export class FormFieldComponent {
       : undefined;
   });
 
+  private readonly _trigger = signal(0);
+
+  /**
+   * Monitor control status changes and touch events to trigger updates
+   */
+  constructor() {
+    effect((onCleanup) => {
+      const control = this.control();
+      if (control) {
+        // Subscribe to status changes
+        const sub = control.statusChanges.subscribe(() => {
+          this._trigger.update((v) => v + 1);
+        });
+
+        // Also trigger immediately to catch initial state
+        this._trigger.update((v) => v + 1);
+
+        onCleanup(() => {
+          sub.unsubscribe();
+        });
+      }
+    });
+  }
+
+  /**
+   * Listen for blur events to detect touched state changes
+   * Since Angular Forms doesn't emit on touched, we rely on the DOM event
+   */
+  @HostListener('focusout')
+  onBlur(): void {
+    this._trigger.update((v) => v + 1);
+  }
+
   /**
    * Computed errors from either manual input or FormControl
    */
   readonly computedErrors = computed((): string[] => {
+    // Depend on trigger to force re-evaluation when control state updates
+    this._trigger();
     const manualErrors = this.errors();
     const control = this.control();
     const showOnTouched = this.showErrorsOnTouched();
@@ -186,6 +230,9 @@ export class FormFieldComponent {
    * Computed validation state from errors, control, or manual override
    */
   readonly computedValidationState = computed((): FormFieldValidationState => {
+    // Depend on trigger to force re-evaluation when control state updates
+    this._trigger();
+
     const manualState = this.validationState();
 
     // Manual state takes precedence
@@ -225,12 +272,12 @@ export class FormFieldComponent {
    * Computed CSS classes for the footer text
    */
   readonly footerClasses = computed((): string => {
-    const classes = ['form-field-helper-text'];
+    const classes = ['input-helper-text'];
     const state = this.computedValidationState();
 
-    if (state === 'success') classes.push('form-field-helper-text--success');
-    if (state === 'warning') classes.push('form-field-helper-text--warning');
-    if (state === 'error') classes.push('form-field-helper-text--error');
+    if (state === 'success') classes.push('input-helper-text--success');
+    if (state === 'warning') classes.push('input-helper-text--warning');
+    if (state === 'error') classes.push('input-helper-text--error');
 
     return classes.join(' ');
   });

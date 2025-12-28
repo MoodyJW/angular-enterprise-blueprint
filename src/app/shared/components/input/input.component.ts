@@ -5,12 +5,13 @@ import {
   computed,
   effect,
   type ElementRef,
+  forwardRef,
   input,
   output,
   signal,
   viewChild,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { InputFooterComponent } from '../input-footer';
 
@@ -58,6 +59,13 @@ export type InputValidationState = 'default' | 'success' | 'warning' | 'error';
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputComponent),
+      multi: true,
+    },
+  ],
 })
 /**
  * Accessible Input component with full feature set for forms.
@@ -66,7 +74,7 @@ export type InputValidationState = 'default' | 'success' | 'warning' | 'error';
  * prefix/suffix slots. All public inputs use `input()` signals and events
  * are exposed via `output()` for integration with parent forms and stores.
  */
-export class InputComponent {
+export class InputComponent implements ControlValueAccessor {
   /**
    * Visual variant of the input
    * - default: Standard input with border
@@ -103,6 +111,12 @@ export class InputComponent {
    * Placeholder text shown when input is empty
    */
   readonly placeholder = input<string>('');
+
+  /**
+   * Name attribute for native form submissions.
+   * Required when using traditional HTML form submission (e.g., with Formspree)
+   */
+  readonly name = input<string>('');
 
   /**
    * Helper text displayed below the input
@@ -228,6 +242,20 @@ export class InputComponent {
   readonly internalValue = signal<string>('');
 
   /**
+   * Internal disabled state from ControlValueAccessor
+   */
+  private readonly _cvaDisabled = signal<boolean>(false);
+
+  /**
+   * Combined disabled state (input or CVA)
+   */
+  readonly isDisabled = computed(() => this.disabled() || this._cvaDisabled());
+
+  // CVA callbacks
+  private _onChange: (value: string) => void = () => {};
+  private _onTouched: () => void = () => {};
+
+  /**
    * Computed character count text
    */
   readonly charCountText = computed(() => {
@@ -330,6 +358,7 @@ export class InputComponent {
     const newValue = target.value;
     this.internalValue.set(newValue);
     this.valueChange.emit(newValue);
+    this._onChange(newValue);
   }
 
   /**
@@ -346,6 +375,7 @@ export class InputComponent {
   handleBlur(event: FocusEvent): void {
     this.isFocused.set(false);
     this.blurred.emit(event);
+    this._onTouched();
   }
 
   /**
@@ -376,6 +406,23 @@ export class InputComponent {
    */
   select(): void {
     this.inputElement()?.nativeElement.select();
+  }
+
+  // ControlValueAccessor implementation
+  writeValue(value: unknown): void {
+    this.internalValue.set(typeof value === 'string' ? value : '');
+  }
+
+  registerOnChange(fn: (value: string) => void): void {
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: () => void): void {
+    this._onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this._cvaDisabled.set(isDisabled);
   }
 
   /**
@@ -414,7 +461,7 @@ export class InputComponent {
     }
 
     // State classes
-    if (this.disabled()) {
+    if (this.isDisabled()) {
       classes.push('input--disabled');
     }
     if (this.readonly()) {

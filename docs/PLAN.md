@@ -202,13 +202,21 @@ _Goal: Features that map 1:1 to the UI naming._
   - [x] **UI Label:** "Architecture Decisions" (formerly Case Studies).
   - [x] Create `ArchitectureStore`.
   - [x] `AdrViewerComponent`: Render Markdown content from `assets`.
-- [ ] **5.5 The Architect** (`features/profile`):
-  - [ ] **UI Label:** "The Architect" (formerly About).
-  - [ ] `ProfileComponent`: Static bio & resume download.
-- [ ] **5.6 Contact** (`features/contact`):
-  - [ ] **UI Label:** "Hire Me".
-  - [ ] `ContactComponent`: Lead generation form with rate-limiting simulation.
-- [ ] **5.7 Blog Article**: Write about implementing feature modules in Angular.
+- [x] **5.5 The Architect** (`features/profile`):
+  - [x] **UI Label:** "The Architect" (formerly About).
+  - [x] `ProfileComponent`: Static bio & resume download.
+- [x] **5.6 Contact** (`features/contact`):
+  - [x] **UI Label:** "Hire Me".
+  - [x] `ContactComponent`: Lead generation form with rate-limiting simulation.
+- [ ] **5.7 Tooltip Component** (`shared/components/tooltip`):
+  - [ ] **Status:** Missing shared component identified during Phase 5 implementation.
+  - [ ] `TooltipDirective`: Directive-based tooltip with signal inputs for hover/focus triggers.
+  - [ ] `TooltipComponent`: Dynamic overlay component with auto-positioning.
+  - [ ] Support top, right, bottom, left, and auto positioning.
+  - [ ] Full WCAG 2.1 AA accessibility compliance.
+  - [ ] Comprehensive unit tests and Storybook stories.
+  - [ ] See `/TOOLTIP_IMPLEMENTATION_PLAN.md` for detailed implementation guide.
+- [ ] **5.8 Blog Article**: Write about implementing feature modules in Angular.
 
 ### ⚙️ Phase 6: Ops & Optimization
 
@@ -227,6 +235,59 @@ _Goal: Ensure it builds and ships like enterprise software._
   - [ ] `CONTRIBUTING.md`: How to run the repo.
   - [ ] `ARCHITECTURE.md`: High-level diagram.
 - [ ] **6.5 Blog Article**: Write about deploying and optimizing Angular applications.
+
+### 🧹 Phase 7: Polish & Cleanup
+
+_Goal: Clean up technical debt, refine implementation quality, and ensure production-ready presentation._
+
+- [ ] **7.1 Form Components Improvements**: Implement all improvements from code review.
+  - [ ] See `/FORM_COMPONENTS_IMPROVEMENTS.md` for detailed checklist.
+  - [ ] High-priority accessibility fixes.
+  - [ ] Medium-priority code quality improvements.
+  - [ ] Low-priority cleanup items.
+- [ ] **7.2 Path Alias Migration**: Migrate all relative imports to path aliases.
+  - [ ] See `/PATH_ALIAS_MIGRATION_PLAN.md` for detailed migration strategy.
+  - [ ] Add new path aliases to `tsconfig.json`.
+  - [ ] Migrate ~180-200 files from relative imports to aliases.
+  - [ ] Ensure all barrel exports are used consistently.
+- [ ] **7.3 Shared Components Style Audit**:
+  - [ ] Review all shared components for consistent BEM naming.
+  - [ ] Ensure all components use CSS custom properties from theme system.
+  - [ ] Verify WCAG 2.1 AA color contrast compliance across all themes.
+  - [ ] Standardize spacing, sizing, and typography scales.
+  - [ ] Add missing `:hover`, `:focus`, `:active`, `:disabled` states.
+  - [ ] Ensure `prefers-reduced-motion` support in all animations.
+- [ ] **7.4 Theme System Compliance**:
+  - [ ] Audit all 6 themes for WCAG AA color contrast (min 4.5:1 for normal text, 3:1 for large text).
+  - [ ] Test all themes with automated accessibility tools (axe, Lighthouse).
+  - [ ] Document color palette rationale in `/docs/THEME_SYSTEM.md`.
+  - [ ] Create theme preview page showing all components in all themes.
+- [ ] **7.5 Component Documentation Cleanup**:
+  - [ ] Ensure all Storybook stories are up-to-date and comprehensive.
+  - [ ] Add accessibility documentation to all component stories.
+  - [ ] Verify all JSDoc comments are accurate and complete.
+  - [ ] Add usage examples to complex components.
+- [ ] **7.6 UX/UI Polish & Improvements**:
+  - [ ] **7.6.1 Header Authentication UI**: Replace username text + logout button with user profile icon and dropdown menu.
+  - [ ] **7.6.2 Header Theme Picker UI**: Replace full theme picker with icon-only button that opens theme selection menu.
+  - [ ] **7.6.3 Home Page Portfolio Branding**: Add personal branding (name, title, tagline) to make it clear this is a portfolio.
+  - [ ] **7.6.4 Modules & ADR List Filtering**: Add filter chips for topic-based filtering (technologies, categories, status).
+  - [ ] **7.6.5 Profile Page Resume Button Layout**: Move resume buttons below profile card for better visual hierarchy.
+  - [ ] **7.6.6 Toast Component Visual Improvements**: Replace empty dismiss button with X icon, reduce badge size.
+  - [ ] Create `UserMenuComponent` with proper accessibility.
+  - [ ] Create `ThemePickerMenuComponent` for header.
+  - [ ] Create `FilterChipsComponent` (reusable).
+  - [ ] Update home page layout with hero/branding section.
+  - [ ] Add filters to Modules and ADR lists.
+  - [ ] Reposition resume buttons on Profile page.
+  - [ ] Fix toast dismiss button and badge sizing.
+  - [ ] See `/docs/specs/PHASE_7_POLISH.md` section 7.6 for detailed specifications.
+- [ ] **7.7 Code Quality Sweep**:
+  - [ ] Run full linting and fix all warnings.
+  - [ ] Review and clean up any remaining `TODO` or `FIXME` comments.
+  - [ ] Ensure consistent code formatting across entire codebase.
+  - [ ] Verify all public APIs have proper TypeScript documentation.
+- [ ] **7.8 Blog Article**: Write about technical debt management and refactoring strategies.
 
 ---
 

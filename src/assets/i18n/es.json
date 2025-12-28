@@ -304,10 +304,47 @@
     }
   },
   "contact": {
-    "title": "Contrátame",
-    "subtitle": "Construyamos algo increíble juntos",
-    "comingSoon": "Próximamente",
-    "description": "El formulario de contacto permitirá a clientes potenciales comunicarse para consultas de proyectos y oportunidades de colaboración."
+    "title": "Contacto",
+    "description": "¿Tienes alguna pregunta o quieres trabajar juntos? Deja un mensaje abajo.",
+    "connect": {
+      "title": "Conectar",
+      "location": "Eugene, OR",
+      "email": "jwmoody@protonmail.com"
+    },
+    "status": {
+      "title": "Actualmente Empleado a Tiempo Completo",
+      "description": "Actualmente estoy empleado a tiempo completo, pero estoy abierto a discutir nuevas oportunidades. Me interesan principalmente puestos totalmente remotos o híbridos en la costa oeste de EE. UU."
+    },
+    "form": {
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Correo electrónico",
+      "emailPlaceholder": "tu.correo@ejemplo.com",
+      "company": "Empresa",
+      "companyPlaceholder": "Tu empresa",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntame sobre tu proyecto...",
+      "submit": "Enviar Mensaje",
+      "submitting": "Enviando...",
+      "cooldown": "Espera {{ seconds }}s",
+      "successTitle": "¡Mensaje Enviado!",
+      "successMessage": "Gracias por contactarme. Te responderé pronto.",
+      "errorTitle": "Error",
+      "rateLimit": "Demasiadas solicitudes. Por favor espera un momento.",
+      "validation": {
+        "nameRequired": "El nombre es requerido",
+        "nameMinLength": "El nombre debe tener al menos 2 caracteres",
+        "emailRequired": "El correo es requerido",
+        "emailInvalid": "Por favor ingresa un correo válido",
+        "messageRequired": "El mensaje es requerido",
+        "messageMinLength": "El mensaje debe tener al menos 25 caracteres"
+      }
+    },
+    "messages": {
+      "success": "¡Mensaje enviado! Gracias por contactarme.",
+      "error": "Error al enviar mensaje. Por favor, inténtalo de nuevo.",
+      "cooldown": "Por favor espera {{ seconds }}s"
+    }
   },
   "profile": {
     "title": "Jason Walker Moody: El Arquitecto",

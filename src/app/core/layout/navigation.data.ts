@@ -23,6 +23,7 @@ export const NAV_ITEMS: readonly NavItem[] = [
   { labelKey: 'nav.modules', route: '/modules' },
   { labelKey: 'nav.architecture', route: '/architecture' },
   { labelKey: 'nav.profile', route: '/profile' },
+  { labelKey: 'nav.contact', route: '/contact' },
 ] as const;
 
 /**

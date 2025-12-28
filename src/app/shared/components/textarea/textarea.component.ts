@@ -5,12 +5,13 @@ import {
   computed,
   effect,
   type ElementRef,
+  forwardRef,
   input,
   output,
   signal,
   viewChild,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { InputFooterComponent } from '../input-footer';
 
@@ -57,6 +58,13 @@ export type TextareaResize = 'none' | 'vertical' | 'horizontal' | 'both';
   templateUrl: './textarea.component.html',
   styleUrl: './textarea.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => TextareaComponent),
+      multi: true,
+    },
+  ],
 })
 /**
  * Accessible Textarea component with full feature set for forms.
@@ -65,7 +73,7 @@ export type TextareaResize = 'none' | 'vertical' | 'horizontal' | 'both';
  * auto-resize functionality. All public inputs use `input()` signals and events
  * are exposed via `output()` for integration with parent forms and stores.
  */
-export class TextareaComponent {
+export class TextareaComponent implements ControlValueAccessor {
   /**
    * Visual variant of the textarea
    * - default: Standard textarea with border
@@ -97,6 +105,12 @@ export class TextareaComponent {
    * Placeholder text shown when textarea is empty
    */
   readonly placeholder = input<string>('');
+
+  /**
+   * Name attribute for native form submissions.
+   * Required when using traditional HTML form submission (e.g., with Formspree)
+   */
+  readonly name = input<string>('');
 
   /**
    * Helper text displayed below the textarea
@@ -231,6 +245,24 @@ export class TextareaComponent {
   readonly internalValue = signal<string>('');
 
   /**
+   * Internal disabled state from ControlValueAccessor
+   */
+  private readonly _cvaDisabled = signal<boolean>(false);
+
+  /**
+   * Combined disabled state (input or CVA)
+   */
+  readonly isDisabled = computed(() => this.disabled() || this._cvaDisabled());
+
+  // CVA callbacks
+  private _onChange: (value: string) => void = () => {
+    // Empty implementation
+  };
+  private _onTouched: () => void = () => {
+    // Empty implementation
+  };
+
+  /**
    * Computed character count text
    */
   readonly charCountText = computed(() => {
@@ -345,6 +377,7 @@ export class TextareaComponent {
     const newValue = target.value;
     this.internalValue.set(newValue);
     this.valueChange.emit(newValue);
+    this._onChange(newValue);
 
     if (this.autoResize()) {
       this._adjustHeight();
@@ -365,6 +398,7 @@ export class TextareaComponent {
   handleBlur(event: FocusEvent): void {
     this.isFocused.set(false);
     this.blurred.emit(event);
+    this._onTouched();
   }
 
   /**
@@ -386,6 +420,29 @@ export class TextareaComponent {
    */
   select(): void {
     this.textareaElement()?.nativeElement.select();
+  }
+
+  // ControlValueAccessor implementation
+  writeValue(value: unknown): void {
+    this.internalValue.set(typeof value === 'string' ? value : '');
+    // Adjust height after value update if autoResize is enabled
+    if (this.autoResize()) {
+      setTimeout(() => {
+        this._adjustHeight();
+      }, 0);
+    }
+  }
+
+  registerOnChange(fn: (value: string) => void): void {
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: () => void): void {
+    this._onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this._cvaDisabled.set(isDisabled);
   }
 
   /**
@@ -432,7 +489,7 @@ export class TextareaComponent {
     }
 
     // State classes
-    if (this.disabled()) {
+    if (this.isDisabled()) {
       classes.push('textarea--disabled');
     }
     if (this.readonly()) {

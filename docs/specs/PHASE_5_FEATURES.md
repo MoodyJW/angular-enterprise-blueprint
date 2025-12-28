@@ -193,6 +193,8 @@
 
 ## 5.6 Contact Feature (`features/contact`)
 
+Status: Completed
+
 **Goal:** Lead generation form with real email submission.
 
 ### **1. Email Service - Formspree**
@@ -304,7 +306,39 @@
 
 ---
 
-## 5.7 Execution Checklist
+## 5.7 Missing Shared Component - Tooltip
+
+**Note:** During Phase 5 implementation, it was identified that a Tooltip component was needed but not included in the original shared components. This component should be implemented before finalizing Phase 5.
+
+### **Requirements:**
+
+- **Directive-based:** Apply via `ebTooltip` directive to any element
+- **Trigger:** Show on hover and keyboard focus
+- **Positioning:** Support top, right, bottom, left, and auto positioning
+- **Accessibility:** Full WCAG 2.1 AA compliance with proper ARIA attributes
+- **Theme integration:** Use existing CSS custom properties
+- **Signal-based:** Use signals for reactive state management
+- **OnPush:** Use OnPush change detection strategy
+
+### **Implementation Tasks:**
+
+1. [ ] Create `tooltip` component directory in `shared/components/`
+2. [ ] Implement `TooltipDirective` with signal inputs
+3. [ ] Implement `TooltipComponent` with dynamic positioning
+4. [ ] Create BEM-based SCSS using CSS custom properties
+5. [ ] Write comprehensive unit tests (component + directive)
+6. [ ] Create Storybook stories with all variants and positions
+7. [ ] Verify WCAG 2.1 AA compliance with axe-core
+8. [ ] Add barrel export to `shared/components/index.ts`
+9. [ ] Document usage examples
+
+### **Reference:**
+
+See detailed implementation plan in `/TOOLTIP_IMPLEMENTATION_PLAN.md`
+
+---
+
+## 5.8 Execution Checklist
 
 1.  [x] **Mock Data:** Create JSON files in `src/assets/data/` for Modules and Architecture.
 2.  [x] **Auth:** Build Login Page & connect to Store.
@@ -315,5 +349,6 @@
 5.  [x] **Architecture:**
     - [x] Build `ArchitectureStore`.
     - [x] Build Markdown fetcher logic.
-6.  [ ] **Profile:** Build static "About" page.
-7.  [ ] **Contact:** Build Form with validation and simulated submission.
+6.  [x] **Profile:** Build static "About" page.
+7.  [x] **Contact:** Build Form with validation and real email submission.
+8.  [ ] **Tooltip Component:** Implement missing shared tooltip component (see section 5.7).
