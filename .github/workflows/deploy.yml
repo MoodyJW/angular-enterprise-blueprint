@@ -38,7 +38,9 @@ jobs:
 
       - name: Inject Environment Secrets
         run: |
+          sed -i "s/YOUR_GITHUB_USERNAME/MoodyJW/g" src/environments/environment.prod.ts
           sed -i "s/YOUR_GITHUB_PAT/${{ secrets.GH_PAT }}/g" src/environments/environment.prod.ts
+          sed -i "s|https://formspree.io/f/YOUR_FORM_ID|https://formspree.io/f/mbdjaddy|g" src/environments/environment.prod.ts
 
       # 1. Build Angular App (Mockend Mode)
       - name: Build Application
