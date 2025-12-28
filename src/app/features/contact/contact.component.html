@@ -1,20 +1,169 @@
 <ng-container *transloco="let t">
-  <div class="contact">
-    <div class="contact__container">
-      <header class="contact__header">
-        <h1 class="contact__title">{{ t('contact.title') }}</h1>
-        <p class="contact__subtitle">{{ t('contact.subtitle') }}</p>
-      </header>
-
-      <div class="contact__content">
-        <div class="contact__placeholder">
-          <span class="contact__placeholder-icon">📧</span>
-          <h2 class="contact__placeholder-title">{{ t('contact.comingSoon') }}</h2>
-          <p class="contact__placeholder-text">
-            {{ t('contact.description') }}
-          </p>
-        </div>
-      </div>
+  <div class="contact-page">
+    <div class="contact-header">
+      <h1 class="contact-title">{{ t('contact.title') }}</h1>
+      <p class="contact-description">{{ t('contact.description') }}</p>
     </div>
+
+    <eb-grid [cols]="1" [colsLg]="2" gap="xl" alignItems="stretch">
+      <!-- Left Column: Contact Form -->
+      <eb-card class="contact-card" [hoverable]="false">
+        <div card-body>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <eb-stack spacing="sm">
+              <eb-form-field
+                #nameField
+                [control]="form.controls.name"
+                [label]="t('contact.form.name')"
+                [required]="true"
+                [errorMessages]="{
+                  required: t('contact.form.validation.nameRequired'),
+                  minlength: t('contact.form.validation.nameMinLength'),
+                }"
+              >
+                <eb-input
+                  formControlName="name"
+                  [placeholder]="t('contact.form.namePlaceholder')"
+                  [validationState]="nameField.computedValidationState()"
+                  [ariaLabel]="t('contact.form.name')"
+                />
+              </eb-form-field>
+
+              <eb-form-field
+                #emailField
+                [control]="form.controls.email"
+                [label]="t('contact.form.email')"
+                [required]="true"
+                [errorMessages]="{
+                  required: t('contact.form.validation.emailRequired'),
+                  email: t('contact.form.validation.emailInvalid'),
+                }"
+              >
+                <eb-input
+                  formControlName="email"
+                  type="email"
+                  [placeholder]="t('contact.form.emailPlaceholder')"
+                  [validationState]="emailField.computedValidationState()"
+                  [ariaLabel]="t('contact.form.email')"
+                />
+              </eb-form-field>
+
+              <eb-form-field
+                #companyField
+                [control]="form.controls.company"
+                [label]="t('contact.form.company')"
+              >
+                <eb-input
+                  formControlName="company"
+                  [placeholder]="t('contact.form.companyPlaceholder')"
+                  [validationState]="companyField.computedValidationState()"
+                  [ariaLabel]="t('contact.form.company')"
+                />
+              </eb-form-field>
+
+              <eb-form-field
+                #messageField
+                [control]="form.controls.message"
+                [label]="t('contact.form.message')"
+                [required]="true"
+                [errorMessages]="{
+                  required: t('contact.form.validation.messageRequired'),
+                  minlength: t('contact.form.validation.messageMinLength'),
+                }"
+              >
+                <eb-textarea
+                  formControlName="message"
+                  [placeholder]="t('contact.form.messagePlaceholder')"
+                  [rows]="5"
+                  [validationState]="messageField.computedValidationState()"
+                  [ariaLabel]="t('contact.form.message')"
+                />
+              </eb-form-field>
+
+              <eb-button
+                type="submit"
+                [disabled]="form.invalid || isLoading() || cooldownSeconds() > 0"
+                [loading]="isLoading()"
+                [fullWidth]="true"
+                [ariaLabel]="t('contact.form.submit')"
+              >
+                @if (cooldownSeconds() > 0) {
+                  {{ getRemainingCooldown() }}
+                } @else {
+                  {{ isLoading() ? t('contact.form.submitting') : t('contact.form.submit') }}
+                }
+              </eb-button>
+            </eb-stack>
+          </form>
+        </div>
+      </eb-card>
+
+      <!-- Right Column: Info Cards -->
+      <eb-stack spacing="lg" class="info-column">
+        <!-- Connect Card -->
+        <eb-card [hoverable]="false">
+          <div card-header>
+            <h3 class="card-title">{{ t('contact.connect.title') }}</h3>
+          </div>
+          <div card-body>
+            <eb-stack spacing="md">
+              <!-- Email -->
+              <a class="connect-link" href="mailto:jwmoody@protonmail.com">
+                <eb-icon [name]="ICONS.EMAIL" size="md" />
+                <span>{{ t('contact.connect.email') }}</span>
+              </a>
+
+              <!-- Location -->
+              <div class="connect-item">
+                <eb-icon [name]="ICONS.MAP_PIN" size="md" />
+                <span>{{ t('contact.connect.location') }}</span>
+              </div>
+
+              <!-- Links -->
+              <a
+                class="connect-link"
+                href="https://github.com/MoodyJW"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <eb-icon [name]="ICONS.GITHUB" size="md" />
+                <span>GitHub</span>
+              </a>
+              <a
+                class="connect-link"
+                href="https://www.linkedin.com/in/jasonwmoody/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <eb-icon [name]="ICONS.LINKEDIN" size="md" />
+                <span>LinkedIn</span>
+              </a>
+            </eb-stack>
+          </div>
+        </eb-card>
+
+        <!-- Status Card -->
+        <eb-card [hoverable]="false">
+          <div card-header>
+            <h3 class="card-title">{{ t('contact.status.title') }}</h3>
+          </div>
+          <div card-body>
+            <eb-stack spacing="md">
+              <div class="status-content">
+                <eb-icon [name]="ICONS.BRIEFCASE" size="lg" color="primary" />
+                <a
+                  href="https://nov.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="job-title-link"
+                  >Lead Frontend Engineer at NOV</a
+                >
+              </div>
+              <p>{{ t('contact.status.description') }}</p>
+            </eb-stack>
+          </div>
+        </eb-card>
+      </eb-stack>
+    </eb-grid>
   </div>
 </ng-container>

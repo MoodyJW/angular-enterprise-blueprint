@@ -21,7 +21,7 @@
         <!-- Right Column: Bio & Tech Stack -->
         <div class="profile__right">
           <!-- Bio Card -->
-          <eb-card class="profile__bio-card">
+          <eb-card class="profile__bio-card" [hoverable]="false">
             <div card-body>
               <h2 class="profile__bio-title">{{ t('profile.bio.title') }}</h2>
               <p class="profile__bio-content">{{ t('profile.bio.content') }}</p>
@@ -30,7 +30,7 @@
           </eb-card>
 
           <!-- Tech Stack Card -->
-          <eb-card class="profile__tech-card">
+          <eb-card class="profile__tech-card" [hoverable]="false">
             <div card-body>
               <h2 class="profile__tech-title">{{ t('profile.techStack.title') }}</h2>
 

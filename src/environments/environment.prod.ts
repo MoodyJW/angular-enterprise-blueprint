@@ -41,7 +41,7 @@ export const environment: AppEnvironment = {
   version: '0.0.1',
   github: {
     username: 'MoodyJW',
-    // PAT injected via CI/CD for higher rate limits
     pat: 'GH_PAT_PLACEHOLDER',
   },
+  formspreeEndpoint: 'https://formspree.io/f/mbdjaddy',
 };

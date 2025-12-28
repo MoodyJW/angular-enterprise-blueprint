@@ -57,6 +57,12 @@ export interface AppEnvironment {
    * Used to display real GitHub statistics on the About page.
    */
   readonly github?: GitHubConfig;
+
+  /**
+   * Formspree endpoint for contact form submissions.
+   * Format: 'https://formspree.io/f/{YOUR_FORM_ID}'
+   */
+  readonly formspreeEndpoint?: string;
 }
 
 /**

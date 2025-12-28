@@ -21,4 +21,5 @@ export const environment: AppEnvironment = {
     username: 'YOUR_GITHUB_USERNAME',
     pat: 'YOUR_GITHUB_PAT',
   },
+  formspreeEndpoint: 'https://formspree.io/f/YOUR_FORM_ID',
 };
