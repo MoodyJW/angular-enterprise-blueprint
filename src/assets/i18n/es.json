@@ -331,6 +331,7 @@
       "successMessage": "Gracias por contactarme. Te responderé pronto.",
       "errorTitle": "Error",
       "rateLimit": "Demasiadas solicitudes. Por favor espera un momento.",
+      "tooltipInvalid": "El formulario no es válido",
       "validation": {
         "nameRequired": "El nombre es requerido",
         "nameMinLength": "El nombre debe tener al menos 2 caracteres",

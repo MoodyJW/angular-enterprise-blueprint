@@ -1,34 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="5" failures="5" errors="0" time="0.020535372">
-    <testsuite name="src/app/features/contact/contact.component.spec.ts" timestamp="2025-12-28T17:25:10.857Z" hostname="jay-MS-7971" tests="5" failures="5" errors="0" skipped="0" time="0.020535372">
-        <testcase classname="src/app/features/contact/contact.component.spec.ts" name="ContactComponent &gt; should create" time="0.010581078">
-            <failure message="Component &apos;ContactComponent&apos; is not resolved:
- - templateUrl: ./contact.component.html
- - styleUrl: ./contact.component.scss
-Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
-Error: Component &apos;ContactComponent&apos; is not resolved:
- - templateUrl: ./contact.component.html
- - styleUrl: ./contact.component.scss
-Did you run and wait for &apos;resolveComponentResources()&apos;?
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
- ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
- ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
- ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
- ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
- ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
- ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+<testsuites name="vitest tests" tests="30" failures="30" errors="0" time="0.054364353">
+    <testsuite name="src/app/shared/components/tooltip/tooltip.component.spec.ts" timestamp="2025-12-29T00:37:42.676Z" hostname="jay-MS-7971" tests="13" failures="13" errors="0" skipped="0" time="0.013456667">
+        <testcase classname="src/app/shared/components/tooltip/tooltip.component.spec.ts" name="TooltipComponent &gt; Rendering &gt; should create" time="0.00473106">
+            <failure message="Need to call TestBed.initTestEnvironment() first" type="Error">
+Error: Need to call TestBed.initTestEnvironment() first
+ ❯ TestBedImpl.get compiler [as compiler] node_modules/@angular/core/fesm2022/testing.mjs:1486:13
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:10
  ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
- ❯ src/app/features/contact/contact.component.spec.ts:164:23
+ ❯ src/app/shared/components/tooltip/tooltip.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/features/contact/contact.component.spec.ts" name="ContactComponent &gt; should initialize with invalid form" time="0.00114256">
-            <failure message="Component &apos;ContactComponent&apos; is not resolved:
- - templateUrl: ./contact.component.html
- - styleUrl: ./contact.component.scss
+        <testcase classname="src/app/shared/components/tooltip/tooltip.component.spec.ts" name="TooltipComponent &gt; Rendering &gt; should render tooltip with content" time="0.00253075">
+            <failure message="Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
 Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
-Error: Component &apos;ContactComponent&apos; is not resolved:
- - templateUrl: ./contact.component.html
- - styleUrl: ./contact.component.scss
+Error: Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
 Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
  ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
@@ -38,17 +27,17 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
  ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
  ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
- ❯ src/app/features/contact/contact.component.spec.ts:164:23
+ ❯ src/app/shared/components/tooltip/tooltip.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/features/contact/contact.component.spec.ts" name="ContactComponent &gt; should submit valid form" time="0.001021372">
-            <failure message="Component &apos;ContactComponent&apos; is not resolved:
- - templateUrl: ./contact.component.html
- - styleUrl: ./contact.component.scss
+        <testcase classname="src/app/shared/components/tooltip/tooltip.component.spec.ts" name="TooltipComponent &gt; Rendering &gt; should have correct ARIA role" time="0.000470215">
+            <failure message="Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
 Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
-Error: Component &apos;ContactComponent&apos; is not resolved:
- - templateUrl: ./contact.component.html
- - styleUrl: ./contact.component.scss
+Error: Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
 Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
  ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
@@ -58,17 +47,17 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
  ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
  ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
- ❯ src/app/features/contact/contact.component.spec.ts:164:23
+ ❯ src/app/shared/components/tooltip/tooltip.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/features/contact/contact.component.spec.ts" name="ContactComponent &gt; should handle submission error" time="0.000762001">
-            <failure message="Component &apos;ContactComponent&apos; is not resolved:
- - templateUrl: ./contact.component.html
- - styleUrl: ./contact.component.scss
+        <testcase classname="src/app/shared/components/tooltip/tooltip.component.spec.ts" name="TooltipComponent &gt; Rendering &gt; should have aria-hidden set to false" time="0.000395771">
+            <failure message="Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
 Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
-Error: Component &apos;ContactComponent&apos; is not resolved:
- - templateUrl: ./contact.component.html
- - styleUrl: ./contact.component.scss
+Error: Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
 Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
  ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
@@ -78,17 +67,17 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
  ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
  ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
- ❯ src/app/features/contact/contact.component.spec.ts:164:23
+ ❯ src/app/shared/components/tooltip/tooltip.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/features/contact/contact.component.spec.ts" name="ContactComponent &gt; should not submit if disabled by cooldown" time="0.000588114">
-            <failure message="Component &apos;ContactComponent&apos; is not resolved:
- - templateUrl: ./contact.component.html
- - styleUrl: ./contact.component.scss
+        <testcase classname="src/app/shared/components/tooltip/tooltip.component.spec.ts" name="TooltipComponent &gt; Positioning &gt; should apply top position class by default" time="0.000420037">
+            <failure message="Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
 Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
-Error: Component &apos;ContactComponent&apos; is not resolved:
- - templateUrl: ./contact.component.html
- - styleUrl: ./contact.component.scss
+Error: Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
 Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
  ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
@@ -98,7 +87,402 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
  ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
  ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
- ❯ src/app/features/contact/contact.component.spec.ts:164:23
+ ❯ src/app/shared/components/tooltip/tooltip.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.component.spec.ts" name="TooltipComponent &gt; Positioning &gt; should apply bottom position class" time="0.000374439">
+            <failure message="Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/tooltip/tooltip.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.component.spec.ts" name="TooltipComponent &gt; Positioning &gt; should apply left position class" time="0.000315183">
+            <failure message="Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/tooltip/tooltip.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.component.spec.ts" name="TooltipComponent &gt; Positioning &gt; should apply right position class" time="0.00028666">
+            <failure message="Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/tooltip/tooltip.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.component.spec.ts" name="TooltipComponent &gt; Positioning &gt; should handle auto position" time="0.000458154">
+            <failure message="Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/tooltip/tooltip.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.component.spec.ts" name="TooltipComponent &gt; Positioning &gt; should set position styles" time="0.000429419">
+            <failure message="Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/tooltip/tooltip.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.component.spec.ts" name="TooltipComponent &gt; Arrow &gt; should render arrow element" time="0.000348641">
+            <failure message="Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/tooltip/tooltip.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.component.spec.ts" name="TooltipComponent &gt; Accessibility &gt; should be accessible to screen readers" time="0.00049695">
+            <failure message="Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/tooltip/tooltip.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.component.spec.ts" name="TooltipComponent &gt; Accessibility &gt; should have pointer-events: none to not interfere with interactions" time="0.000269065">
+            <failure message="Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;TooltipComponent&apos; is not resolved:
+ - templateUrl: ./tooltip.component.html
+ - styleUrl: ./tooltip.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/tooltip/tooltip.component.spec.ts:14:19
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/shared/components/tooltip/tooltip.directive.spec.ts" timestamp="2025-12-29T00:37:42.691Z" hostname="jay-MS-7971" tests="17" failures="17" errors="0" skipped="0" time="0.040907686">
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Initialization &gt; should create directive" time="0.011182976">
+            <failure message="Need to call TestBed.initTestEnvironment() first" type="Error">
+Error: Need to call TestBed.initTestEnvironment() first
+ ❯ TestBedImpl.get compiler [as compiler] node_modules/@angular/core/fesm2022/testing.mjs:1486:13
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:10
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/tooltip/tooltip.directive.spec.ts:37:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Initialization &gt; should add aria-label to host element" time="0.020313101">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Mouse Events &gt; should show tooltip on mouseenter after delay" time="0.000664359">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Mouse Events &gt; should hide tooltip on mouseleave" time="0.000507443">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Mouse Events &gt; should cancel show on quick hover" time="0.000484492">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Focus Events &gt; should show tooltip on focus after delay" time="0.000486152">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Focus Events &gt; should hide tooltip on blur" time="0.000595231">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Configuration &gt; should not show tooltip when disabled" time="0.000588806">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Configuration &gt; should respect custom show delay" time="0.000743564">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Configuration &gt; should respect custom hide delay" time="0.000627012">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Configuration &gt; should apply correct position" time="0.000475069">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Cleanup &gt; should remove tooltip on destroy" time="0.000595096">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Cleanup &gt; should clear timers on destroy" time="0.000409142">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Accessibility &gt; should update aria-label when tooltip text changes" time="0.000396965">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Accessibility &gt; should work with keyboard navigation" time="0.000377911">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Edge Cases &gt; should handle rapid hover events" time="0.000329512">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/tooltip/tooltip.directive.spec.ts" name="TooltipDirective &gt; Edge Cases &gt; should not create multiple tooltips" time="0.000382756">
+            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
+ ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
+ ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
+ ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
+ ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
+ ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
+ ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
+ ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
             </failure>
         </testcase>
     </testsuite>

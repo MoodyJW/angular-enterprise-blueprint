@@ -79,20 +79,26 @@
                   [ariaLabel]="t('contact.form.message')"
                 />
               </eb-form-field>
-
-              <eb-button
-                type="submit"
-                [disabled]="form.invalid || isLoading() || cooldownSeconds() > 0"
-                [loading]="isLoading()"
-                [fullWidth]="true"
-                [ariaLabel]="t('contact.form.submit')"
+              <span
+                [ebTooltip]="t('contact.form.tooltipInvalid')"
+                tooltipPosition="top"
+                [tooltipDisabled]="form.valid && cooldownSeconds() === 0"
+                style="display: block"
               >
-                @if (cooldownSeconds() > 0) {
-                  {{ getRemainingCooldown() }}
-                } @else {
-                  {{ isLoading() ? t('contact.form.submitting') : t('contact.form.submit') }}
-                }
-              </eb-button>
+                <eb-button
+                  type="submit"
+                  [disabled]="form.invalid || isLoading() || cooldownSeconds() > 0"
+                  [loading]="isLoading()"
+                  [fullWidth]="true"
+                  [ariaLabel]="t('contact.form.submit')"
+                >
+                  @if (cooldownSeconds() > 0) {
+                    {{ getRemainingCooldown() }}
+                  } @else {
+                    {{ isLoading() ? t('contact.form.submitting') : t('contact.form.submit') }}
+                  }
+                </eb-button>
+              </span>
             </eb-stack>
           </form>
         </div>

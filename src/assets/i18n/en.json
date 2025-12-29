@@ -325,6 +325,7 @@
       "successMessage": "Thanks for reaching out. I'll get back to you soon.",
       "errorTitle": "Error",
       "rateLimit": "Too many requests. Please wait a moment.",
+      "tooltipInvalid": "The form is invalid",
       "validation": {
         "nameRequired": "Name is required",
         "nameMinLength": "Name must be at least 2 characters",
