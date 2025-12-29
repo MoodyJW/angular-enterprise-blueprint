@@ -340,7 +340,8 @@
     "messages": {
       "success": "Message sent! Thanks for reaching out.",
       "error": "Failed to send message. Please try again.",
-      "cooldown": "Please wait {{ seconds }}s"
+      "cooldown": "Please wait {{ seconds }}s",
+      "validationErrors": "Server validation errors"
     }
   },
   "profile": {

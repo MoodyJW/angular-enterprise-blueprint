@@ -295,12 +295,18 @@ _Goal: Clean up technical debt, refine implementation quality, and ensure produc
   - [ ] Update all provider implementations (Console, Google Analytics).
   - [ ] Update AnalyticsService to use Observable patterns.
   - [ ] Update all test files and verify 100% pass rate.
-- [ ] **7.8 Code Quality Sweep**:
+- [ ] **7.8 Profile Stats Caching**: See `PROFILE_STATS_CACHING_PLAN.md`.
+  - [ ] Create `provideProfileStore()` function for app-level provider.
+  - [ ] Move ProfileStore from component-level to app-level (app.config.ts).
+  - [ ] Remove component-level provider from ProfileComponent.
+  - [ ] Update unit tests to mock app-level store.
+  - [ ] Verify cache persists across navigation, clears on page refresh.
+- [ ] **7.9 Code Quality Sweep**:
   - [ ] Run full linting and fix all warnings.
   - [ ] Review and clean up any remaining `TODO` or `FIXME` comments.
   - [ ] Ensure consistent code formatting across entire codebase.
   - [ ] Verify all public APIs have proper TypeScript documentation.
-- [ ] **7.9 Blog Article**: Write about technical debt management and refactoring strategies.
+- [ ] **7.10 Blog Article**: Write about technical debt management and refactoring strategies.
 
 ---
 

@@ -68,7 +68,7 @@
 
           <!-- Resume Actions -->
           <div class="profile__actions">
-            <a [href]="resumePath" download="resume.pdf" class="profile__download-link">
+            <a [href]="resumePath()" download="resume.pdf" class="profile__download-link">
               <eb-button variant="primary" size="lg" ariaLabel="Download resume as PDF">
                 <eb-icon name="heroArrowDownTray" size="sm" ariaLabel="" />
                 {{ t('profile.resume.download') }}
@@ -109,7 +109,7 @@
       >
         <p>
           Your browser does not support PDF preview.
-          <a [href]="resumePath" download="resume.pdf">Download the resume</a> instead.
+          <a [href]="resumePath()" download="resume.pdf">Download the resume</a> instead.
         </p>
       </object>
     </div>

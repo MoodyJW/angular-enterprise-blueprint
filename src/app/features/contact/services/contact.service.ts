@@ -1,14 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, map, tap, throwError } from 'rxjs';
-import { ENVIRONMENT } from '../../../core/config/environment.token';
 
-export interface ContactFormData {
-  name: string;
-  email: string;
-  company?: string;
-  message: string;
-}
+import { ENVIRONMENT } from '../../../core/config/environment.token';
+import { LoggerService } from '../../../core/services/logger';
+import type { ContactFormData } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +12,7 @@ export interface ContactFormData {
 export class ContactService {
   private readonly http = inject(HttpClient);
   private readonly env = inject(ENVIRONMENT);
+  private readonly logger = inject(LoggerService);
   private readonly STORAGE_KEY = 'eb_contact_last_submission';
   private readonly COOLDOWN_MS = 30000;
 
@@ -24,6 +21,7 @@ export class ContactService {
    *
    * @param formData The form data to send
    * @returns Observable that completes on success
+   * @throws HttpErrorResponse with Formspree validation errors on 422
    * @throws Error if rate limited or endpoint missing
    */
   sendContactMessage(formData: ContactFormData): Observable<void> {
@@ -35,15 +33,17 @@ export class ContactService {
       return this.simulateSubmission();
     }
 
+    // Let HTTP errors propagate naturally for the store to handle
     return this.http
       .post<unknown>(this.env.formspreeEndpoint, formData, {
         headers: { Accept: 'application/json' },
       })
       .pipe(
-        map(() => void 0),
         tap(() => {
           this.recordSubmission();
         }),
+        // Discard response body, return void observable
+        map((): void => undefined),
       );
   }
 
@@ -72,7 +72,7 @@ export class ContactService {
   }
 
   private simulateSubmission(): Observable<void> {
-    console.warn('Formspree endpoint not configured. Simulating success.');
+    this.logger.warn('Formspree endpoint not configured. Simulating success.');
     return new Observable((observer) => {
       setTimeout(() => {
         this.recordSubmission();

@@ -163,6 +163,16 @@ describe('GoogleAnalyticsProvider', () => {
       expect(mockWindow.dataLayer).toBeDefined();
       expect(mockWindow.gtag).toBeDefined();
     });
+
+    it('should throw error if window is not available', () => {
+      mockDocument.defaultView = null;
+      loaderSpy.loadScript.mockReturnValue(of(undefined));
+      provider = createProvider(createMockEnv('G-TEST123'));
+
+      expect(() => {
+        provider.initialize();
+      }).toThrowError('Window not available');
+    });
   });
 
   describe('trackEvent', () => {

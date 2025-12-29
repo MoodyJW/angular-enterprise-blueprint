@@ -36,7 +36,7 @@
                 [required]="true"
                 [errorMessages]="{
                   required: t('contact.form.validation.emailRequired'),
-                  email: t('contact.form.validation.emailInvalid'),
+                  pattern: t('contact.form.validation.emailInvalid'),
                 }"
               >
                 <eb-input
@@ -79,23 +79,43 @@
                   [ariaLabel]="t('contact.form.message')"
                 />
               </eb-form-field>
+
+              @if (hasServerErrors()) {
+                <div class="server-errors">
+                  <p class="server-error-title">{{ t('contact.messages.validationErrors') }}:</p>
+                  <ul class="server-error-list">
+                    @for (error of serverErrors(); track error.field) {
+                      <li class="server-error-item">
+                        <strong>{{ error.field }}:</strong> {{ error.message }}
+                      </li>
+                    }
+                  </ul>
+                </div>
+              }
+
+              @if (generalError() && !hasServerErrors()) {
+                <div class="general-error">
+                  {{ generalError() }}
+                </div>
+              }
+
               <span
                 [ebTooltip]="t('contact.form.tooltipInvalid')"
                 tooltipPosition="top"
-                [tooltipDisabled]="form.valid && cooldownSeconds() === 0"
+                [tooltipDisabled]="form.valid || cooldownSeconds() !== 0"
                 style="display: block"
               >
                 <eb-button
                   type="submit"
-                  [disabled]="form.invalid || isLoading() || cooldownSeconds() > 0"
-                  [loading]="isLoading()"
+                  [disabled]="form.invalid || isDisabled()"
+                  [loading]="isSubmitting()"
                   [fullWidth]="true"
                   [ariaLabel]="t('contact.form.submit')"
                 >
                   @if (cooldownSeconds() > 0) {
                     {{ getRemainingCooldown() }}
                   } @else {
-                    {{ isLoading() ? t('contact.form.submitting') : t('contact.form.submit') }}
+                    {{ isSubmitting() ? t('contact.form.submitting') : t('contact.form.submit') }}
                   }
                 </eb-button>
               </span>

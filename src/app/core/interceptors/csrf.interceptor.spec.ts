@@ -58,6 +58,34 @@ describe('csrfInterceptor', () => {
       const interceptedReq = next.mock.calls[0][0] as HttpRequest<unknown>;
       expect(interceptedReq.headers.has('X-XSRF-TOKEN')).toBe(false);
     });
+
+    it('should treat URLs that fail parsing as same-origin (defensive)', () => {
+      // Create a URL that might fail parsing if passed to new URL()
+      // Note: In JSDOM/Node, it's hard to make new URL() throw with a string unless it's truly invalid
+      // and even then, relative URLs are valid.
+      // We'll mock the URL constructor globally for this test
+      const originalURL = window.URL;
+      const mockURL = vi.fn().mockImplementation(() => {
+        throw new Error('Invalid URL');
+      });
+      window.URL = mockURL as unknown as typeof URL;
+
+      const req = new HttpRequest('POST', 'http://invalid-url', null);
+      const next = vi.fn().mockReturnValue(of(new HttpResponse()));
+      const token = 'test-token';
+      csrfServiceSpy.getToken.mockReturnValue(token);
+
+      try {
+        interceptorRunner(req, next);
+
+        expect(csrfServiceSpy.getToken).toHaveBeenCalled();
+        const interceptedReq = next.mock.calls[0][0] as HttpRequest<unknown>;
+        expect(interceptedReq.headers.get('X-XSRF-TOKEN')).toBe(token);
+      } finally {
+        // Restore URL
+        window.URL = originalURL;
+      }
+    });
   });
 
   describe('cross-origin requests', () => {

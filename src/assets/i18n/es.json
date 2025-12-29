@@ -346,7 +346,8 @@
     "messages": {
       "success": "¡Mensaje enviado! Gracias por contactarme.",
       "error": "Error al enviar mensaje. Por favor, inténtalo de nuevo.",
-      "cooldown": "Por favor espera {{ seconds }}s"
+      "cooldown": "Por favor espera {{ seconds }}s",
+      "validationErrors": "Errores de validación del servidor"
     }
   },
   "profile": {

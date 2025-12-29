@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 import { vi } from 'vitest';
 
+import { LoggerService } from '../../core/services/logger';
 import { ProfileStatsCardComponent } from './components/profile-stats-card/profile-stats-card.component';
 import { GitHubStats } from './models/github-stats.interface';
 import { ProfileComponent } from './profile.component';
@@ -276,7 +277,23 @@ describe('ProfileComponent', () => {
 
   describe('Component Properties', () => {
     it('should have correct resumePath value', () => {
-      expect(component.resumePath).toBe('assets/resume/resume.pdf');
+      expect(component.resumePath()).toBe('assets/resume/resume.pdf');
+    });
+
+    it('should block invalid resume URLs', () => {
+      // Set invalid path using signal
+      component.resumePath.set('https://evil.com/malware.pdf');
+
+      // Spy on logger to verify security alert
+      const loggerSpy = vi.spyOn(TestBed.inject(LoggerService), 'error');
+
+      const safeUrl = component.safeResumeUrl();
+
+      expect(safeUrl).toBeNull();
+      expect(loggerSpy).toHaveBeenCalledWith(
+        expect.stringContaining('Invalid resume URL blocked'),
+        expect.anything(),
+      );
     });
 
     it('should compute safe resume URL', () => {
