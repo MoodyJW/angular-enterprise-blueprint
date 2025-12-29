@@ -50,6 +50,8 @@ export class CryptoService {
       const xor = atob(encrypted);
       return this._xor(xor, this._key);
     } catch {
+      // Avoid circular dependency if Logger uses storage (unlikely for Crypto which is low level)
+      // crypto -> logger
       console.warn('CryptoService: Failed to decrypt value. Returning empty string.');
       return '';
     }

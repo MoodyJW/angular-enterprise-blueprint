@@ -21,6 +21,7 @@ import { provideEnvironment } from './core/config';
 import { GlobalErrorHandler } from './core/error-handling';
 import { provideTranslocoConfig } from './core/i18n';
 import { httpErrorInterceptor } from './core/interceptors';
+import { csrfInterceptor } from './core/interceptors/csrf.interceptor';
 import { provideAnalytics, withAnalyticsRouterTracking } from './core/services';
 
 // Cast the imported analytics helpers to known callable signatures so
@@ -48,7 +49,7 @@ export const appConfig: ApplicationConfig = {
       // Bind route params to component inputs
       withComponentInputBinding(),
     ),
-    provideHttpClient(withInterceptors([httpErrorInterceptor])),
+    provideHttpClient(withInterceptors([csrfInterceptor, httpErrorInterceptor])),
     provideTranslocoConfig(),
     // Markdown provided in feature routes only
     provideAnalyticsFn(),

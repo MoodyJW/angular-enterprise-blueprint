@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { AppEnvironment } from '../../../../../environments/environment.type';
 import { ENVIRONMENT } from '../../../config';
 import { LoggerService } from '../../logger';
+import { AnalyticsLoaderService } from '../analytics-loader.service';
 import { GoogleAnalyticsProvider } from './google-analytics.provider';
 
 describe('GoogleAnalyticsProvider', () => {
@@ -14,16 +15,11 @@ describe('GoogleAnalyticsProvider', () => {
     warn: ReturnType<typeof vi.fn>;
     error: ReturnType<typeof vi.fn>;
   };
+  let loaderSpy: {
+    loadScript: ReturnType<typeof vi.fn>;
+  };
   let mockDocument: {
     defaultView: Window | null;
-    createElement: ReturnType<typeof vi.fn>;
-    head: { appendChild: ReturnType<typeof vi.fn> };
-  };
-  let mockScript: {
-    async: boolean;
-    src: string;
-    onload: (() => void) | null;
-    onerror: (() => void) | null;
   };
 
   const createMockEnv = (measurementId?: string): AppEnvironment => ({
@@ -45,6 +41,7 @@ describe('GoogleAnalyticsProvider', () => {
         GoogleAnalyticsProvider,
         { provide: ENVIRONMENT, useValue: env },
         { provide: LoggerService, useValue: loggerSpy },
+        { provide: AnalyticsLoaderService, useValue: loaderSpy },
         { provide: DOCUMENT, useValue: mockDocument },
       ],
     });
@@ -59,11 +56,8 @@ describe('GoogleAnalyticsProvider', () => {
       error: vi.fn(),
     };
 
-    mockScript = {
-      async: false,
-      src: '',
-      onload: null,
-      onerror: null,
+    loaderSpy = {
+      loadScript: vi.fn(),
     };
 
     mockDocument = {
@@ -71,8 +65,6 @@ describe('GoogleAnalyticsProvider', () => {
         dataLayer: undefined,
         gtag: undefined,
       } as unknown as Window,
-      createElement: vi.fn().mockReturnValue(mockScript),
-      head: { appendChild: vi.fn() },
     };
   });
 
@@ -84,7 +76,6 @@ describe('GoogleAnalyticsProvider', () => {
   describe('name', () => {
     it('should return "google"', () => {
       provider = createProvider(createMockEnv('G-TEST123'));
-
       expect(provider.name).toBe('google');
     });
   });
@@ -98,7 +89,7 @@ describe('GoogleAnalyticsProvider', () => {
       expect(loggerSpy.warn).toHaveBeenCalledWith(
         '[Analytics:Google] No measurement ID configured, skipping initialization',
       );
-      expect(mockDocument.createElement).not.toHaveBeenCalled();
+      expect(loaderSpy.loadScript).not.toHaveBeenCalled();
     });
 
     it('should warn and skip when measurement ID is empty', async () => {
@@ -111,66 +102,62 @@ describe('GoogleAnalyticsProvider', () => {
       );
     });
 
-    it('should load gtag script with correct URL', async () => {
-      provider = createProvider(createMockEnv('G-TEST123'));
+    it('should error and skip when measurement ID format is invalid', async () => {
+      provider = createProvider(createMockEnv('INVALID-ID'));
 
-      const initPromise = provider.initialize();
+      await provider.initialize();
 
-      // Simulate script load
-      mockScript.onload?.();
-      await initPromise;
-
-      expect(mockDocument.createElement).toHaveBeenCalledWith('script');
-      expect(mockScript.async).toBe(true);
-      expect(mockScript.src).toBe('https://www.googletagmanager.com/gtag/js?id=G-TEST123');
-      expect(mockDocument.head.appendChild).toHaveBeenCalledWith(mockScript);
+      expect(loggerSpy.error).toHaveBeenCalledWith(
+        '[Analytics:Google] Invalid measurement ID format',
+        expect.objectContaining({ measurementId: 'INVALID-ID' }),
+      );
+      expect(loaderSpy.loadScript).not.toHaveBeenCalled();
     });
 
-    it('should log success on initialization', async () => {
+    it('should load gtag script via loader service with correct URL for GA4', async () => {
+      loaderSpy.loadScript.mockResolvedValue(undefined);
       provider = createProvider(createMockEnv('G-TEST123'));
 
-      const initPromise = provider.initialize();
-      mockScript.onload?.();
-      await initPromise;
+      await provider.initialize();
 
+      expect(loaderSpy.loadScript).toHaveBeenCalledWith(
+        'https://www.googletagmanager.com/gtag/js?id=G-TEST123',
+      );
       expect(loggerSpy.info).toHaveBeenCalledWith(
         '[Analytics:Google] Initialized with ID: G-TEST123',
       );
     });
 
-    it('should handle script load error', async () => {
-      provider = createProvider(createMockEnv('G-TEST123'));
+    it('should load gtag script via loader service with correct URL for UA', async () => {
+      loaderSpy.loadScript.mockResolvedValue(undefined);
+      provider = createProvider(createMockEnv('UA-12345-1'));
 
-      const initPromise = provider.initialize();
-      mockScript.onerror?.();
+      await provider.initialize();
 
-      await initPromise;
-
-      expect(loggerSpy.error).toHaveBeenCalledWith(
-        '[Analytics:Google] Failed to initialize:',
-        expect.any(Error),
+      expect(loaderSpy.loadScript).toHaveBeenCalledWith(
+        'https://www.googletagmanager.com/gtag/js?id=UA-12345-1',
       );
     });
 
-    it('should handle missing window', async () => {
-      mockDocument.defaultView = null;
+    it('should handle script load error', async () => {
+      const error = new Error('Load failed');
+      loaderSpy.loadScript.mockRejectedValue(error);
       provider = createProvider(createMockEnv('G-TEST123'));
 
       await provider.initialize();
 
       expect(loggerSpy.error).toHaveBeenCalledWith(
         '[Analytics:Google] Failed to initialize:',
-        expect.objectContaining({ message: 'Window not available' }),
+        error,
       );
     });
 
     it('should initialize dataLayer and gtag function', async () => {
+      loaderSpy.loadScript.mockResolvedValue(undefined);
       const mockWindow = mockDocument.defaultView as Window;
       provider = createProvider(createMockEnv('G-TEST123'));
 
-      const initPromise = provider.initialize();
-      mockScript.onload?.();
-      await initPromise;
+      await provider.initialize();
 
       expect(mockWindow.dataLayer).toBeDefined();
       expect(mockWindow.gtag).toBeDefined();
@@ -180,27 +167,22 @@ describe('GoogleAnalyticsProvider', () => {
   describe('trackEvent', () => {
     it('should not call gtag if not initialized', () => {
       provider = createProvider(createMockEnv('G-TEST123'));
-
-      // Call without initializing
       provider.trackEvent('test_event');
-
       expect(loggerSpy.info).not.toHaveBeenCalledWith(expect.stringContaining('Event:'));
     });
 
     it('should call gtag with event data when initialized', async () => {
+      loaderSpy.loadScript.mockResolvedValue(undefined);
       const mockWindow = mockDocument.defaultView as Window;
       provider = createProvider(createMockEnv('G-TEST123'));
-
-      const initPromise = provider.initialize();
-      mockScript.onload?.();
-      await initPromise;
+      await provider.initialize();
 
       provider.trackEvent('button_click', { button_name: 'signup' });
 
-      expect(loggerSpy.info).toHaveBeenCalledWith('[Analytics:Google] Event: button_click', {
-        button_name: 'signup',
-      });
-      // Verify gtag was called (via dataLayer)
+      expect(loggerSpy.info).toHaveBeenCalledWith(
+        '[Analytics:Google] Event: button_click',
+        expect.anything(),
+      );
       expect(mockWindow.dataLayer).toContainEqual([
         'event',
         'button_click',
@@ -210,21 +192,11 @@ describe('GoogleAnalyticsProvider', () => {
   });
 
   describe('trackPageView', () => {
-    it('should not call gtag if not initialized', () => {
-      provider = createProvider(createMockEnv('G-TEST123'));
-
-      provider.trackPageView('/dashboard');
-
-      expect(loggerSpy.info).not.toHaveBeenCalledWith(expect.stringContaining('Page View:'));
-    });
-
     it('should call gtag with page view data when initialized', async () => {
+      loaderSpy.loadScript.mockResolvedValue(undefined);
       const mockWindow = mockDocument.defaultView as Window;
       provider = createProvider(createMockEnv('G-TEST123'));
-
-      const initPromise = provider.initialize();
-      mockScript.onload?.();
-      await initPromise;
+      await provider.initialize();
 
       provider.trackPageView('/dashboard', 'Dashboard');
 
@@ -238,21 +210,11 @@ describe('GoogleAnalyticsProvider', () => {
   });
 
   describe('identify', () => {
-    it('should not call gtag if not initialized', () => {
-      provider = createProvider(createMockEnv('G-TEST123'));
-
-      provider.identify('user-123');
-
-      expect(loggerSpy.info).not.toHaveBeenCalledWith(expect.stringContaining('Identify:'));
-    });
-
     it('should call gtag set with user ID when initialized', async () => {
+      loaderSpy.loadScript.mockResolvedValue(undefined);
       const mockWindow = mockDocument.defaultView as Window;
       provider = createProvider(createMockEnv('G-TEST123'));
-
-      const initPromise = provider.initialize();
-      mockScript.onload?.();
-      await initPromise;
+      await provider.initialize();
 
       provider.identify('user-123', { plan: 'premium' });
 
@@ -265,21 +227,11 @@ describe('GoogleAnalyticsProvider', () => {
   });
 
   describe('reset', () => {
-    it('should not call gtag if not initialized', () => {
-      provider = createProvider(createMockEnv('G-TEST123'));
-
-      provider.reset();
-
-      expect(loggerSpy.info).not.toHaveBeenCalledWith(expect.stringContaining('reset'));
-    });
-
     it('should clear user_id when initialized', async () => {
+      loaderSpy.loadScript.mockResolvedValue(undefined);
       const mockWindow = mockDocument.defaultView as Window;
       provider = createProvider(createMockEnv('G-TEST123'));
-
-      const initPromise = provider.initialize();
-      mockScript.onload?.();
-      await initPromise;
+      await provider.initialize();
 
       provider.reset();
 

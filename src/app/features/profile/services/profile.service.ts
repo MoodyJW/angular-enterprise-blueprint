@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
 import { ENVIRONMENT } from '../../../core/config/environment.token';
+import { LoggerService } from '../../../core/services/logger';
 import { GitHubStats } from '../models/github-stats.interface';
 
 /**
@@ -94,6 +95,7 @@ interface GraphQLResponse {
 })
 export class ProfileService {
   private readonly _http = inject(HttpClient);
+  private readonly _logger = inject(LoggerService);
   private readonly _env = inject(ENVIRONMENT);
   private readonly _graphqlUrl = 'https://api.github.com/graphql';
 
@@ -107,12 +109,16 @@ export class ProfileService {
     const pat = this._env.github?.pat;
 
     if (username === undefined || username === '') {
-      console.warn('GitHub username not configured in environment');
+      this._logger.warn('GitHub username not configured in environment', {
+        context: 'ProfileService',
+      });
       return of(null);
     }
 
     if (pat === undefined || pat === '') {
-      console.warn('GitHub PAT not configured - detailed stats unavailable');
+      this._logger.warn('GitHub PAT not configured - detailed stats unavailable', {
+        context: 'ProfileService',
+      });
       return of(null);
     }
 
@@ -134,7 +140,10 @@ export class ProfileService {
         return this._mapToGitHubStats(response.data.user);
       }),
       catchError((error: unknown) => {
-        console.error('Failed to fetch GitHub stats:', error);
+        this._logger.error('Failed to fetch GitHub stats', {
+          context: 'ProfileService',
+          error: error instanceof Error ? error.message : 'Unknown error',
+        });
         throw this._mapError(error as { status?: number; message?: string });
       }),
     );

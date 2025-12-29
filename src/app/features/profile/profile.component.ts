@@ -18,6 +18,7 @@ import {
   heroUser,
 } from '@ng-icons/heroicons/outline';
 import { ionLogoGithub } from '@ng-icons/ionicons';
+import { LoggerService } from '../../core/services/logger';
 import { BadgeComponent } from '../../shared/components/badge/badge.component';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { CardComponent } from '../../shared/components/card/card.component';
@@ -65,6 +66,7 @@ import { ProfileStatsCardComponent } from './components/profile-stats-card/profi
 })
 export class ProfileComponent implements OnInit {
   private readonly _sanitizer = inject(DomSanitizer);
+  private readonly _logger = inject(LoggerService);
   readonly store = inject(ProfileStore);
 
   /** Controls resume preview modal visibility */
@@ -90,7 +92,7 @@ export class ProfileComponent implements OnInit {
     if (this._isValidResumeUrl(url)) {
       return this._sanitizer.bypassSecurityTrustResourceUrl(url);
     }
-    console.error('ProfileComponent: Invalid resume URL blocked by security check:', url);
+    this._logger.error('ProfileComponent: Invalid resume URL blocked by security check', { url });
     return null;
   });
 

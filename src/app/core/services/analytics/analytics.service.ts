@@ -2,6 +2,7 @@ import { afterNextRender, inject, Injectable } from '@angular/core';
 
 import type { AppEnvironment } from '../../config';
 import { ENVIRONMENT } from '../../config';
+import { LoggerService } from '../logger';
 import {
   ANALYTICS_PROVIDER,
   type AnalyticsProvider,
@@ -60,6 +61,7 @@ export type { EventProperties } from './analytics-provider.interface';
 @Injectable({ providedIn: 'root' })
 export class AnalyticsService {
   private readonly env: AppEnvironment = inject(ENVIRONMENT);
+  private readonly logger = inject(LoggerService);
   private readonly provider: AnalyticsProvider | null = this.env.analytics.enabled
     ? inject(ANALYTICS_PROVIDER)
     : null;
@@ -92,7 +94,7 @@ export class AnalyticsService {
       })
       .catch((error: unknown) => {
         this.initializationState = 'error';
-        console.error(`[Analytics] Failed to initialize ${this.providerName} provider:`, error);
+        this.logger.error(`[Analytics] Failed to initialize ${this.providerName} provider:`, error);
       });
   }
 
@@ -135,7 +137,7 @@ export class AnalyticsService {
    *   product_id: 'SKU-123',
    *   product_name: 'Widget Pro',
    *   price: 29.99,
-   *   quantity: 2
+   *   currency: 'USD'
    * });
    * ```
    */
