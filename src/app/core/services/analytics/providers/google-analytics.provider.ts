@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { inject, Injectable } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 
 import { ENVIRONMENT } from '../../../config';
 import { LoggerService } from '../../logger';
@@ -78,31 +79,29 @@ export class GoogleAnalyticsProvider implements AnalyticsProvider {
     return /^G-[A-Z0-9]+$/.test(id) || /^UA-\d+-\d+$/.test(id);
   }
 
-  private loadGtagScript(measurementId: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-      const win = this.document.defaultView;
-      if (!win) {
-        reject(new Error('Window not available'));
-        return;
-      }
+  private async loadGtagScript(measurementId: string): Promise<void> {
+    const win = this.document.defaultView;
+    if (!win) {
+      throw new Error('Window not available');
+    }
 
-      win.dataLayer = win.dataLayer ?? [];
+    win.dataLayer = win.dataLayer ?? [];
 
-      const gtag: GtagFunction = ((...args: unknown[]) => {
-        win.dataLayer?.push(args);
-      }) as GtagFunction;
+    const gtag: GtagFunction = ((...args: unknown[]) => {
+      win.dataLayer?.push(args);
+    }) as GtagFunction;
 
-      win.gtag = gtag;
-      this.gtag = gtag;
+    win.gtag = gtag;
+    this.gtag = gtag;
 
-      gtag('js', new Date());
-      gtag('config', measurementId, {
-        send_page_view: false,
-      });
-
-      const scriptUrl = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-
-      this.loader.loadScript(scriptUrl).then(resolve).catch(reject);
+    gtag('js', new Date());
+    gtag('config', measurementId, {
+      send_page_view: false,
     });
+
+    const scriptUrl = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+
+    // Convert Observable to Promise for async/await compatibility
+    await firstValueFrom(this.loader.loadScript(scriptUrl));
   }
 }

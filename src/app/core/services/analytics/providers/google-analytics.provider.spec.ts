@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
+import { of, throwError } from 'rxjs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { AppEnvironment } from '../../../../../environments/environment.type';
@@ -115,7 +116,7 @@ describe('GoogleAnalyticsProvider', () => {
     });
 
     it('should load gtag script via loader service with correct URL for GA4', async () => {
-      loaderSpy.loadScript.mockResolvedValue(undefined);
+      loaderSpy.loadScript.mockReturnValue(of(undefined));
       provider = createProvider(createMockEnv('G-TEST123'));
 
       await provider.initialize();
@@ -129,7 +130,7 @@ describe('GoogleAnalyticsProvider', () => {
     });
 
     it('should load gtag script via loader service with correct URL for UA', async () => {
-      loaderSpy.loadScript.mockResolvedValue(undefined);
+      loaderSpy.loadScript.mockReturnValue(of(undefined));
       provider = createProvider(createMockEnv('UA-12345-1'));
 
       await provider.initialize();
@@ -141,7 +142,7 @@ describe('GoogleAnalyticsProvider', () => {
 
     it('should handle script load error', async () => {
       const error = new Error('Load failed');
-      loaderSpy.loadScript.mockRejectedValue(error);
+      loaderSpy.loadScript.mockReturnValue(throwError(() => error));
       provider = createProvider(createMockEnv('G-TEST123'));
 
       await provider.initialize();
@@ -153,7 +154,7 @@ describe('GoogleAnalyticsProvider', () => {
     });
 
     it('should initialize dataLayer and gtag function', async () => {
-      loaderSpy.loadScript.mockResolvedValue(undefined);
+      loaderSpy.loadScript.mockReturnValue(of(undefined));
       const mockWindow = mockDocument.defaultView as Window;
       provider = createProvider(createMockEnv('G-TEST123'));
 
@@ -172,7 +173,7 @@ describe('GoogleAnalyticsProvider', () => {
     });
 
     it('should call gtag with event data when initialized', async () => {
-      loaderSpy.loadScript.mockResolvedValue(undefined);
+      loaderSpy.loadScript.mockReturnValue(of(undefined));
       const mockWindow = mockDocument.defaultView as Window;
       provider = createProvider(createMockEnv('G-TEST123'));
       await provider.initialize();
@@ -193,7 +194,7 @@ describe('GoogleAnalyticsProvider', () => {
 
   describe('trackPageView', () => {
     it('should call gtag with page view data when initialized', async () => {
-      loaderSpy.loadScript.mockResolvedValue(undefined);
+      loaderSpy.loadScript.mockReturnValue(of(undefined));
       const mockWindow = mockDocument.defaultView as Window;
       provider = createProvider(createMockEnv('G-TEST123'));
       await provider.initialize();
@@ -211,7 +212,7 @@ describe('GoogleAnalyticsProvider', () => {
 
   describe('identify', () => {
     it('should call gtag set with user ID when initialized', async () => {
-      loaderSpy.loadScript.mockResolvedValue(undefined);
+      loaderSpy.loadScript.mockReturnValue(of(undefined));
       const mockWindow = mockDocument.defaultView as Window;
       provider = createProvider(createMockEnv('G-TEST123'));
       await provider.initialize();
@@ -228,7 +229,7 @@ describe('GoogleAnalyticsProvider', () => {
 
   describe('reset', () => {
     it('should clear user_id when initialized', async () => {
-      loaderSpy.loadScript.mockResolvedValue(undefined);
+      loaderSpy.loadScript.mockReturnValue(of(undefined));
       const mockWindow = mockDocument.defaultView as Window;
       provider = createProvider(createMockEnv('G-TEST123'));
       await provider.initialize();

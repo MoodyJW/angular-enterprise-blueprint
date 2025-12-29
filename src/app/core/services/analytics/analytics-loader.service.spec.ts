@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
+import { firstValueFrom } from 'rxjs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { AnalyticsLoaderService } from './analytics-loader.service';
@@ -46,7 +47,8 @@ describe('AnalyticsLoaderService', () => {
   describe('loadScript', () => {
     it('should create and append script with correct src', async () => {
       const src = 'https://example.com/analytics.js';
-      const loadPromise = service.loadScript(src);
+
+      const loadPromise = firstValueFrom(service.loadScript(src));
 
       expect(mockDocument.createElement).toHaveBeenCalledWith('script');
       expect(mockScript.src).toBe(src);
@@ -62,14 +64,15 @@ describe('AnalyticsLoaderService', () => {
       const src = 'https://example.com/analytics.js';
       const nonce = 'random-nonce-value';
 
-      void service.loadScript(src, nonce);
+      service.loadScript(src, nonce).subscribe();
 
       expect(mockScript.setAttribute).toHaveBeenCalledWith('nonce', nonce);
     });
 
-    it('should reject promise on script load error', async () => {
+    it('should error observable on script load failure', async () => {
       const src = 'https://example.com/analytics.js';
-      const loadPromise = service.loadScript(src);
+
+      const loadPromise = firstValueFrom(service.loadScript(src));
 
       // Simulate error
       mockScript.onerror?.();
