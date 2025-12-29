@@ -48,7 +48,7 @@ describe('AnalyticsLoaderService', () => {
     it('should create and append script with correct src', async () => {
       const src = 'https://example.com/analytics.js';
 
-      const loadPromise = firstValueFrom(service.loadScript(src));
+      const load$ = firstValueFrom(service.loadScript(src));
 
       expect(mockDocument.createElement).toHaveBeenCalledWith('script');
       expect(mockScript.src).toBe(src);
@@ -57,7 +57,7 @@ describe('AnalyticsLoaderService', () => {
 
       // Simulate success
       mockScript.onload?.();
-      await expect(loadPromise).resolves.toBeUndefined();
+      await expect(load$).resolves.toBeUndefined();
     });
 
     it('should set nonce if provided', () => {
@@ -72,12 +72,12 @@ describe('AnalyticsLoaderService', () => {
     it('should error observable on script load failure', async () => {
       const src = 'https://example.com/analytics.js';
 
-      const loadPromise = firstValueFrom(service.loadScript(src));
+      const load$ = firstValueFrom(service.loadScript(src));
 
       // Simulate error
       mockScript.onerror?.();
 
-      await expect(loadPromise).rejects.toThrow(`Failed to load script: ${src}`);
+      await expect(load$).rejects.toThrow(`Failed to load script: ${src}`);
     });
   });
 });

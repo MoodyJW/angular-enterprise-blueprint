@@ -248,7 +248,7 @@ describe('AnalyticsService', () => {
       service = TestBed.inject(AnalyticsService);
       service.performInitialization();
 
-      // Wait for promise to resolve
+      // Wait for observable to complete
       await new Promise((resolve) => setTimeout(resolve, 10));
 
       expect(service._initializationState).toBe('done');
@@ -279,7 +279,7 @@ describe('AnalyticsService', () => {
       service = TestBed.inject(AnalyticsService);
       service.performInitialization();
 
-      // Wait for promise to reject
+      // Wait for observable to error
       await new Promise((resolve) => setTimeout(resolve, 10));
 
       expect(service._initializationState).toBe('error');
