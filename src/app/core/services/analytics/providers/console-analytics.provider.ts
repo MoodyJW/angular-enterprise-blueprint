@@ -1,4 +1,5 @@
 import { inject, Injectable } from '@angular/core';
+import { Observable, of, tap } from 'rxjs';
 
 import { LoggerService } from '../../logger';
 import type { AnalyticsProvider, EventProperties } from '../analytics-provider.interface';
@@ -29,9 +30,12 @@ export class ConsoleAnalyticsProvider implements AnalyticsProvider {
 
   private readonly logger = inject(LoggerService);
 
-  initialize(): Promise<void> {
-    this.logger.info('[Analytics:Console] Provider initialized');
-    return Promise.resolve();
+  initialize(): Observable<void> {
+    return of(undefined).pipe(
+      tap(() => {
+        this.logger.info('[Analytics:Console] Provider initialized');
+      }),
+    );
   }
 
   trackEvent(name: string, properties?: EventProperties): void {

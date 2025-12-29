@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { inject, Injectable } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 
 import { ENVIRONMENT } from '../../../config';
 import { LoggerService } from '../../logger';
@@ -19,25 +19,29 @@ export class GoogleAnalyticsProvider implements AnalyticsProvider {
 
   private gtag: GtagFunction | null = null;
 
-  async initialize(): Promise<void> {
+  initialize(): Observable<void> {
     const measurementId = this.env.analytics.google?.measurementId;
 
     if (measurementId === undefined || measurementId === '') {
       this.logger.warn('[Analytics:Google] No measurement ID configured, skipping initialization');
-      return;
+      return of(undefined);
     }
 
     if (!this.isValidMeasurementId(measurementId)) {
       this.logger.error('[Analytics:Google] Invalid measurement ID format', { measurementId });
-      return;
+      return of(undefined);
     }
 
-    try {
-      await this.loadGtagScript(measurementId);
-      this.logger.info(`[Analytics:Google] Initialized with ID: ${measurementId}`);
-    } catch (error) {
-      this.logger.error('[Analytics:Google] Failed to initialize:', error);
-    }
+    return this.loadGtagScript(measurementId).pipe(
+      tap({
+        next: () => {
+          this.logger.info(`[Analytics:Google] Initialized with ID: ${measurementId}`);
+        },
+        error: (error: unknown) => {
+          this.logger.error('[Analytics:Google] Failed to initialize:', error);
+        },
+      }),
+    );
   }
 
   trackEvent(name: string, properties?: EventProperties): void {
@@ -79,7 +83,7 @@ export class GoogleAnalyticsProvider implements AnalyticsProvider {
     return /^G-[A-Z0-9]+$/.test(id) || /^UA-\d+-\d+$/.test(id);
   }
 
-  private async loadGtagScript(measurementId: string): Promise<void> {
+  private loadGtagScript(measurementId: string): Observable<void> {
     const win = this.document.defaultView;
     if (!win) {
       throw new Error('Window not available');
@@ -101,7 +105,6 @@ export class GoogleAnalyticsProvider implements AnalyticsProvider {
 
     const scriptUrl = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
 
-    // Convert Observable to Promise for async/await compatibility
-    await firstValueFrom(this.loader.loadScript(scriptUrl));
+    return this.loader.loadScript(scriptUrl);
   }
 }

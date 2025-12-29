@@ -1,4 +1,5 @@
 import { InjectionToken } from '@angular/core';
+import { Observable } from 'rxjs';
 
 /**
  * Properties that can be sent with analytics events.
@@ -29,8 +30,10 @@ export type EventProperties = Record<string, string | number | boolean | null | 
  * export class MixpanelAnalyticsProvider implements AnalyticsProvider {
  *   readonly name = 'mixpanel';
  *
- *   initialize(): Promise<void> {
- *     // Load Mixpanel SDK
+ *   initialize(): Observable<void> {
+ *     return of(undefined).pipe(
+ *       tap(() => { // Load Mixpanel SDK })
+ *     );
  *   }
  *
  *   trackEvent(name: string, properties?: EventProperties): void {
@@ -56,9 +59,9 @@ export interface AnalyticsProvider {
    * Called once during application bootstrap.
    * Should load any required SDKs/scripts.
    *
-   * @returns Promise that resolves when initialization is complete
+   * @returns Observable that completes when initialization is done
    */
-  initialize(): Promise<void>;
+  initialize(): Observable<void>;
 
   /**
    * Track a custom event.

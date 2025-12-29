@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { firstValueFrom } from 'rxjs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { AppEnvironment } from '../../../../../environments/environment.type';
@@ -52,13 +53,13 @@ describe('ConsoleAnalyticsProvider', () => {
 
   describe('initialize', () => {
     it('should log initialization message', async () => {
-      await provider.initialize();
+      await firstValueFrom(provider.initialize());
 
       expect(loggerSpy.info).toHaveBeenCalledWith('[Analytics:Console] Provider initialized');
     });
 
-    it('should resolve successfully', async () => {
-      await expect(provider.initialize()).resolves.toBeUndefined();
+    it('should complete successfully', async () => {
+      await expect(firstValueFrom(provider.initialize())).resolves.toBeUndefined();
     });
   });
 

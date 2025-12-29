@@ -1,4 +1,5 @@
 import { afterNextRender, inject, Injectable } from '@angular/core';
+import { catchError, of, take } from 'rxjs';
 
 import type { AppEnvironment } from '../../config';
 import { ENVIRONMENT } from '../../config';
@@ -89,12 +90,23 @@ export class AnalyticsService {
     this.initializationState = 'initializing';
     this.provider
       .initialize()
-      .then(() => {
-        this.initializationState = 'done';
-      })
-      .catch((error: unknown) => {
-        this.initializationState = 'error';
-        this.logger.error(`[Analytics] Failed to initialize ${this.providerName} provider:`, error);
+      .pipe(
+        take(1),
+        catchError((error: unknown) => {
+          this.initializationState = 'error';
+          this.logger.error(
+            `[Analytics] Failed to initialize ${this.providerName} provider:`,
+            error,
+          );
+          return of(undefined);
+        }),
+      )
+      .subscribe({
+        complete: () => {
+          if (this.initializationState === 'initializing') {
+            this.initializationState = 'done';
+          }
+        },
       });
   }
 

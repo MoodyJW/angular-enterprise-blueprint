@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
-import { of, throwError } from 'rxjs';
+import { catchError, firstValueFrom, of, throwError } from 'rxjs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { AppEnvironment } from '../../../../../environments/environment.type';
@@ -85,7 +85,7 @@ describe('GoogleAnalyticsProvider', () => {
     it('should warn and skip when no measurement ID is configured', async () => {
       provider = createProvider(createMockEnv());
 
-      await provider.initialize();
+      await firstValueFrom(provider.initialize());
 
       expect(loggerSpy.warn).toHaveBeenCalledWith(
         '[Analytics:Google] No measurement ID configured, skipping initialization',
@@ -96,7 +96,7 @@ describe('GoogleAnalyticsProvider', () => {
     it('should warn and skip when measurement ID is empty', async () => {
       provider = createProvider(createMockEnv(''));
 
-      await provider.initialize();
+      await firstValueFrom(provider.initialize());
 
       expect(loggerSpy.warn).toHaveBeenCalledWith(
         '[Analytics:Google] No measurement ID configured, skipping initialization',
@@ -106,7 +106,7 @@ describe('GoogleAnalyticsProvider', () => {
     it('should error and skip when measurement ID format is invalid', async () => {
       provider = createProvider(createMockEnv('INVALID-ID'));
 
-      await provider.initialize();
+      await firstValueFrom(provider.initialize());
 
       expect(loggerSpy.error).toHaveBeenCalledWith(
         '[Analytics:Google] Invalid measurement ID format',
@@ -119,7 +119,7 @@ describe('GoogleAnalyticsProvider', () => {
       loaderSpy.loadScript.mockReturnValue(of(undefined));
       provider = createProvider(createMockEnv('G-TEST123'));
 
-      await provider.initialize();
+      await firstValueFrom(provider.initialize());
 
       expect(loaderSpy.loadScript).toHaveBeenCalledWith(
         'https://www.googletagmanager.com/gtag/js?id=G-TEST123',
@@ -133,7 +133,7 @@ describe('GoogleAnalyticsProvider', () => {
       loaderSpy.loadScript.mockReturnValue(of(undefined));
       provider = createProvider(createMockEnv('UA-12345-1'));
 
-      await provider.initialize();
+      await firstValueFrom(provider.initialize());
 
       expect(loaderSpy.loadScript).toHaveBeenCalledWith(
         'https://www.googletagmanager.com/gtag/js?id=UA-12345-1',
@@ -145,7 +145,7 @@ describe('GoogleAnalyticsProvider', () => {
       loaderSpy.loadScript.mockReturnValue(throwError(() => error));
       provider = createProvider(createMockEnv('G-TEST123'));
 
-      await provider.initialize();
+      await firstValueFrom(provider.initialize().pipe(catchError(() => of(undefined))));
 
       expect(loggerSpy.error).toHaveBeenCalledWith(
         '[Analytics:Google] Failed to initialize:',
@@ -158,7 +158,7 @@ describe('GoogleAnalyticsProvider', () => {
       const mockWindow = mockDocument.defaultView as Window;
       provider = createProvider(createMockEnv('G-TEST123'));
 
-      await provider.initialize();
+      await firstValueFrom(provider.initialize());
 
       expect(mockWindow.dataLayer).toBeDefined();
       expect(mockWindow.gtag).toBeDefined();
@@ -176,7 +176,7 @@ describe('GoogleAnalyticsProvider', () => {
       loaderSpy.loadScript.mockReturnValue(of(undefined));
       const mockWindow = mockDocument.defaultView as Window;
       provider = createProvider(createMockEnv('G-TEST123'));
-      await provider.initialize();
+      await firstValueFrom(provider.initialize());
 
       provider.trackEvent('button_click', { button_name: 'signup' });
 
@@ -197,7 +197,7 @@ describe('GoogleAnalyticsProvider', () => {
       loaderSpy.loadScript.mockReturnValue(of(undefined));
       const mockWindow = mockDocument.defaultView as Window;
       provider = createProvider(createMockEnv('G-TEST123'));
-      await provider.initialize();
+      await firstValueFrom(provider.initialize());
 
       provider.trackPageView('/dashboard', 'Dashboard');
 
@@ -215,7 +215,7 @@ describe('GoogleAnalyticsProvider', () => {
       loaderSpy.loadScript.mockReturnValue(of(undefined));
       const mockWindow = mockDocument.defaultView as Window;
       provider = createProvider(createMockEnv('G-TEST123'));
-      await provider.initialize();
+      await firstValueFrom(provider.initialize());
 
       provider.identify('user-123', { plan: 'premium' });
 
@@ -232,7 +232,7 @@ describe('GoogleAnalyticsProvider', () => {
       loaderSpy.loadScript.mockReturnValue(of(undefined));
       const mockWindow = mockDocument.defaultView as Window;
       provider = createProvider(createMockEnv('G-TEST123'));
-      await provider.initialize();
+      await firstValueFrom(provider.initialize());
 
       provider.reset();
 

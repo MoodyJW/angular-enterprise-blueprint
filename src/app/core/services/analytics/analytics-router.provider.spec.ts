@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
+import { of } from 'rxjs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { AppEnvironment } from '../../../../environments/environment.type';
@@ -37,7 +38,7 @@ describe('withAnalyticsRouterTracking', () => {
     trackPageViewSpy = vi.fn();
     return {
       name: 'mock',
-      initialize: (): Promise<void> => Promise.resolve(),
+      initialize: () => of(undefined),
       trackEvent: vi.fn() as unknown as (name: string, properties?: EventProperties) => void,
       trackPageView: trackPageViewSpy as unknown as (url: string, title?: string) => void,
       identify: vi.fn() as unknown as (userId: string, traits?: EventProperties) => void,

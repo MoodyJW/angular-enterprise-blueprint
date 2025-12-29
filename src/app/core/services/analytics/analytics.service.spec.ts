@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { of, throwError } from 'rxjs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { AppEnvironment } from '../../../../environments/environment.type';
@@ -38,7 +39,7 @@ describe('AnalyticsService', () => {
 
     mockProvider = {
       name: 'mock',
-      initialize: (): Promise<void> => Promise.resolve(),
+      initialize: () => of(undefined),
       trackEvent: trackEventSpy as unknown as (name: string, properties?: EventProperties) => void,
       trackPageView: trackPageViewSpy as unknown as (url: string, title?: string) => void,
       identify: identifySpy as unknown as (userId: string, traits?: EventProperties) => void,
@@ -197,7 +198,7 @@ describe('AnalyticsService', () => {
 
   describe('performInitialization', () => {
     it('should call provider.initialize() when invoked', () => {
-      const initSpy = vi.fn().mockResolvedValue(undefined);
+      const initSpy = vi.fn().mockReturnValue(of(undefined));
       TestBed.configureTestingModule({
         providers: [
           { provide: ENVIRONMENT, useValue: createMockEnv(true) },
@@ -226,7 +227,7 @@ describe('AnalyticsService', () => {
     });
 
     it('should transition to done state after successful initialization', async () => {
-      const initSpy = vi.fn().mockResolvedValue(undefined);
+      const initSpy = vi.fn().mockReturnValue(of(undefined));
       TestBed.configureTestingModule({
         providers: [
           { provide: ENVIRONMENT, useValue: createMockEnv(true) },
@@ -256,7 +257,7 @@ describe('AnalyticsService', () => {
     it('should transition to error state and log when initialization fails', async () => {
       const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
       const testError = new Error('Init failed');
-      const initSpy = vi.fn().mockRejectedValue(testError);
+      const initSpy = vi.fn().mockReturnValue(throwError(() => testError));
 
       TestBed.configureTestingModule({
         providers: [
@@ -298,7 +299,7 @@ describe('AnalyticsService', () => {
     });
 
     it('should only initialize once (idempotent)', () => {
-      const initSpy = vi.fn().mockResolvedValue(undefined);
+      const initSpy = vi.fn().mockReturnValue(of(undefined));
       TestBed.configureTestingModule({
         providers: [
           { provide: ENVIRONMENT, useValue: createMockEnv(true) },
