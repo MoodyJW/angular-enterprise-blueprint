@@ -98,6 +98,29 @@ describe('ThemeService', () => {
       expect(newService.currentThemeId()).toBe('dark-default');
     });
 
+    it('should initialize with theme from URL query param when present', () => {
+      // Mock window.location.search
+      const mockLocation = {
+        search: '?theme=dark-cool',
+      };
+      vi.stubGlobal('window', { location: mockLocation, matchMedia: mockMatchMedia });
+
+      TestBed.resetTestingModule();
+      TestBed.configureTestingModule({
+        providers: [
+          ThemeService,
+          { provide: DOCUMENT, useValue: mockDocument },
+          { provide: PLATFORM_ID, useValue: 'browser' },
+        ],
+      });
+
+      const newService = TestBed.inject(ThemeService);
+      expect(newService.currentThemeId()).toBe('dark-cool');
+
+      vi.unstubAllGlobals();
+      vi.stubGlobal('matchMedia', mockMatchMedia); // Restore matchMedia stub
+    });
+
     it('should initialize with dark theme when system prefers dark', () => {
       mockMatchMedia.mockImplementation((query: string) => ({
         matches: query.includes('dark'),

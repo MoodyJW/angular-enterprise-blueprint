@@ -7,8 +7,10 @@ import {
   signal,
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoModule } from '@jsverse/transloco';
 import { provideIcons } from '@ng-icons/core';
+
 import {
   heroArrowDownTray,
   heroBuildingOffice2,
@@ -67,6 +69,7 @@ import { ProfileStatsCardComponent } from './components/profile-stats-card/profi
 export class ProfileComponent implements OnInit {
   private readonly _sanitizer = inject(DomSanitizer);
   private readonly _logger = inject(LoggerService);
+  private readonly _seoService = inject(SeoService);
   readonly store = inject(ProfileStore);
 
   /** Controls resume preview modal visibility */
@@ -116,6 +119,13 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.loadGitHubStats();
+
+    this._seoService.updatePageSeo({
+      title: 'The Architect',
+      meta: {
+        description: 'Profile and technical skills of the system architect.',
+      },
+    });
   }
 
   /** Opens the resume preview modal */

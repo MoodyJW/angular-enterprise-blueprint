@@ -100,7 +100,7 @@
           <eb-stack card-body spacing="lg">
             <!-- Features -->
             <div class="detail-section">
-              <h3 class="detail-section__title">{{ t('modules.detail.features') }}</h3>
+              <h2 class="detail-section__title">{{ t('modules.detail.features') }}</h2>
               <ul class="detail-features">
                 @for (feature of mod.features; track $index) {
                   <li class="detail-features__item">
@@ -113,7 +113,7 @@
 
             <!-- Tech Stack -->
             <div class="detail-section">
-              <h3 class="detail-section__title">{{ t('modules.detail.techStack') }}</h3>
+              <h2 class="detail-section__title">{{ t('modules.detail.techStack') }}</h2>
               <div class="detail-tech-stack">
                 @for (tech of mod.techStack; track tech) {
                   <eb-badge
@@ -129,7 +129,7 @@
 
             <!-- Tags -->
             <div class="detail-section">
-              <h3 class="detail-section__title">{{ t('modules.detail.tags') }}</h3>
+              <h2 class="detail-section__title">{{ t('modules.detail.tags') }}</h2>
               <div class="detail-tags">
                 @for (tag of mod.tags; track tag) {
                   <span class="detail-tags__tag">{{ tag }}</span>

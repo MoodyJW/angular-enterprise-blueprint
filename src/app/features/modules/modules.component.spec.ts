@@ -4,6 +4,7 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 
 import { ICON_NAMES } from '@shared/constants';
@@ -13,6 +14,9 @@ import { ModulesComponent } from './modules.component';
 describe('ModulesComponent', () => {
   let component: ModulesComponent;
   let fixture: ComponentFixture<ModulesComponent>;
+  let mockSeoService: {
+    updatePageSeo: ReturnType<typeof vi.fn>;
+  };
 
   const translationsEn = {
     common: { loading: 'Loading...' },
@@ -49,6 +53,10 @@ describe('ModulesComponent', () => {
   };
 
   beforeEach(async () => {
+    mockSeoService = {
+      updatePageSeo: vi.fn(),
+    };
+
     await TestBed.configureTestingModule({
       imports: [
         ModulesComponent,
@@ -60,7 +68,12 @@ describe('ModulesComponent', () => {
           },
         }),
       ],
-      providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        provideRouter([]),
+        { provide: SeoService, useValue: mockSeoService },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ModulesComponent);
@@ -155,6 +168,17 @@ describe('ModulesComponent', () => {
       const loadModulesSpy = vi.spyOn(component['store'], 'loadModules');
       component.ngOnInit();
       expect(loadModulesSpy).toHaveBeenCalled();
+    });
+
+    it('should update SEO on init', () => {
+      component.ngOnInit();
+      expect(mockSeoService.updatePageSeo).toHaveBeenCalledWith({
+        title: 'Reference Modules',
+        meta: {
+          description:
+            'Explore our catalog of Angular Enterprise architectural modules and patterns.',
+        },
+      });
     });
   });
 

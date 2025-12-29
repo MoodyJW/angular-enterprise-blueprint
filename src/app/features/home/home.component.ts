@@ -12,6 +12,8 @@ import { GridComponent } from '@shared/components/grid';
 import { StackComponent } from '@shared/components/stack';
 import { DashboardStore } from './state/dashboard.store';
 
+import { SeoService } from '@core/services/seo/seo.service';
+
 @Component({
   selector: 'eb-home',
   standalone: true,
@@ -35,6 +37,7 @@ export class HomeComponent implements OnInit {
   readonly store = inject(DashboardStore);
   readonly themeService = inject(ThemeService);
   private readonly translocoService = inject(TranslocoService);
+  private readonly seoService = inject(SeoService);
 
   // Optimistic UI: Initialize with default English text for immediate LCP
   readonly title = toSignal(this.translocoService.selectTranslate('home.systemStatus.title'), {
@@ -50,6 +53,14 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.store.loadMetrics();
     this.store.loadVisitors();
+
+    this.seoService.updatePageSeo({
+      title: 'Dashboard',
+      meta: {
+        description:
+          'Angular Enterprise Blueprint Dashboard - Monitor system status, project health, and real-time visitor metrics.',
+      },
+    });
   }
 
   getTrendIcon(trend: 'up' | 'down' | 'stable'): string {

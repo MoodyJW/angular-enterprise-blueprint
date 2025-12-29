@@ -1,6 +1,7 @@
 import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 import { vi } from 'vitest';
 
@@ -13,6 +14,9 @@ import { ProfileStore } from './state/profile.store';
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
   let fixture: ComponentFixture<ProfileComponent>;
+  let mockSeoService: {
+    updatePageSeo: ReturnType<typeof vi.fn>;
+  };
 
   const mockStats: GitHubStats = {
     login: 'testuser',
@@ -54,6 +58,10 @@ describe('ProfileComponent', () => {
   };
 
   beforeEach(async () => {
+    mockSeoService = {
+      updatePageSeo: vi.fn(),
+    };
+
     await TestBed.configureTestingModule({
       imports: [
         ProfileComponent,
@@ -62,6 +70,7 @@ describe('ProfileComponent', () => {
           translocoConfig: { availableLangs: ['en'], defaultLang: 'en' },
         }),
       ],
+      providers: [{ provide: SeoService, useValue: mockSeoService }],
     })
       .overrideComponent(ProfileComponent, {
         set: {
@@ -89,6 +98,15 @@ describe('ProfileComponent', () => {
 
   it('should load stats on initialization', () => {
     expect(mockStore.loadGitHubStats).toHaveBeenCalled();
+  });
+
+  it('should update SEO on initialization', () => {
+    expect(mockSeoService.updatePageSeo).toHaveBeenCalledWith({
+      title: 'The Architect',
+      meta: {
+        description: 'Profile and technical skills of the system architect.',
+      },
+    });
   });
 
   describe('Header Section', () => {

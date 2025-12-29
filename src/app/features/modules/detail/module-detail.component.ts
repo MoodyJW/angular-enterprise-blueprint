@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  input,
+  OnInit,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { provideIcons } from '@ng-icons/core';
@@ -10,6 +18,7 @@ import {
   heroRocketLaunch,
 } from '@ng-icons/heroicons/outline';
 
+import { SeoService } from '@core/services/seo/seo.service';
 import { BadgeComponent } from '@shared/components/badge';
 import { ButtonComponent } from '@shared/components/button';
 import { CardComponent } from '@shared/components/card';
@@ -59,6 +68,7 @@ export class ModuleDetailComponent implements OnInit {
   readonly id = input.required<string>();
 
   protected readonly store = inject(ModulesStore);
+  private readonly _seoService = inject(SeoService);
 
   /** Icon name constants */
   protected readonly ICONS = ICON_NAMES;
@@ -68,6 +78,20 @@ export class ModuleDetailComponent implements OnInit {
     const getter = this.store.getModuleById();
     return getter(this.id());
   });
+
+  constructor() {
+    effect(() => {
+      const module = this.module();
+      if (module) {
+        this._seoService.updatePageSeo({
+          title: module.title,
+          meta: {
+            description: module.description,
+          },
+        });
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.store.loadModules();

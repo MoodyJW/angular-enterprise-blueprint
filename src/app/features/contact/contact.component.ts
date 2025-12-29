@@ -1,5 +1,13 @@
-import { ChangeDetectionStrategy, Component, effect, inject, OnDestroy } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { AbstractControl, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { provideIcons } from '@ng-icons/core';
 import { heroBriefcase, heroEnvelope, heroMapPin } from '@ng-icons/heroicons/outline';
@@ -62,12 +70,13 @@ const STRICT_EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     }),
   ],
 })
-export class ContactComponent implements OnDestroy {
+export class ContactComponent implements OnInit, OnDestroy {
   private readonly contactService = inject(ContactService);
   private readonly contactStore = inject(ContactStore);
   private readonly toastService = inject(ToastService);
   private readonly translocoService = inject(TranslocoService);
   private readonly formBuilder = inject(FormBuilder);
+  private readonly _seoService = inject(SeoService);
   private cooldownTimer: ReturnType<typeof setInterval> | null = null;
 
   readonly ICONS = ICON_NAMES;
@@ -132,6 +141,15 @@ export class ContactComponent implements OnDestroy {
     this.cooldownTimer = setInterval(() => {
       this.updateCooldown();
     }, 1000);
+  }
+
+  ngOnInit(): void {
+    this._seoService.updatePageSeo({
+      title: 'Hire Me',
+      meta: {
+        description: 'Get in touch for angular enterprise consulting and development.',
+      },
+    });
   }
 
   ngOnDestroy(): void {

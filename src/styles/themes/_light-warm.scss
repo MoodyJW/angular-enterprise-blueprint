@@ -6,10 +6,10 @@
  */
 
 [data-theme='light-warm'] {
-  // Primary brand colors - warm orange
-  --color-primary: #f97316;
-  --color-primary-hover: #ea580c;
-  --color-primary-active: #c2410c;
+  // Primary brand colors - warm orange (Darkened for accessibility)
+  --color-primary: #c2410c; // Orange 700 (Accessible with white text)
+  --color-primary-hover: #9a3412; // Orange 800
+  --color-primary-active: #7c2d12; // Orange 900
   --color-primary-subtle: #fff7ed;
   --color-on-primary: #ffffff;
 

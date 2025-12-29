@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  input,
+  OnInit,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { provideIcons } from '@ng-icons/core';
@@ -9,6 +17,7 @@ import {
 } from '@ng-icons/heroicons/outline';
 import { MarkdownComponent } from 'ngx-markdown';
 
+import { SeoService } from '@core/services/seo/seo.service';
 import { BadgeComponent } from '@shared/components/badge';
 import { ButtonComponent } from '@shared/components/button';
 import { ContainerComponent } from '@shared/components/container';
@@ -46,6 +55,7 @@ export class AdrViewerComponent implements OnInit {
   readonly id = input.required<string>();
 
   protected readonly store = inject(ArchitectureStore);
+  private readonly _seoService = inject(SeoService);
   protected readonly ICONS = ICON_NAMES;
 
   /** The currently selected ADR metadata */
@@ -53,6 +63,20 @@ export class AdrViewerComponent implements OnInit {
     const getter = this.store.getAdrById();
     return getter(this.id());
   });
+
+  constructor() {
+    effect(() => {
+      const adr = this.adr();
+      if (adr) {
+        this._seoService.updatePageSeo({
+          title: adr.title,
+          meta: {
+            description: adr.summary,
+          },
+        });
+      }
+    });
+  }
 
   ngOnInit(): void {
     // Load ADRs if not already loaded

@@ -23,6 +23,8 @@ import { InputComponent } from '@shared/components/input';
 import { StackComponent } from '@shared/components/stack';
 import { ICON_NAMES } from '@shared/constants/icon-names.constants';
 
+import { SeoService } from '@core/services/seo/seo.service';
+
 import { ModulesStore } from './state/modules.store';
 
 /**
@@ -54,6 +56,7 @@ import { ModulesStore } from './state/modules.store';
 })
 export class ModulesComponent implements OnInit {
   protected readonly store = inject(ModulesStore);
+  private readonly _seoService = inject(SeoService);
   private readonly _destroyRef = inject(DestroyRef);
 
   /** Icon name constants */
@@ -68,6 +71,14 @@ export class ModulesComponent implements OnInit {
   ngOnInit(): void {
     // Load modules on init
     this.store.loadModules();
+
+    this._seoService.updatePageSeo({
+      title: 'Reference Modules',
+      meta: {
+        description:
+          'Explore our catalog of Angular Enterprise architectural modules and patterns.',
+      },
+    });
 
     // Set up debounced search filter
     this._searchSubject
