@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   update-metrics:
@@ -27,8 +28,18 @@ jobs:
       - name: Update Metrics File
         run: node tools/update-metrics.js --simulate
 
-      - name: Commit Changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
         with:
-          commit_message: 'chore: update dashboard metrics [skip ci]'
-          file_pattern: src/assets/data/metrics.json
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: update dashboard metrics'
+          title: 'chore: update dashboard metrics'
+          body: |
+            Automated update of dashboard metrics based on latest test coverage results.
+
+            This PR was created automatically by the Update Metrics workflow.
+          branch: chore/update-metrics
+          delete-branch: true
+          labels: |
+            automation
+            metrics
