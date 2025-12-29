@@ -81,8 +81,8 @@ const items = [1, 2, 3]; // inferred as number[]
 
 // ✅ Correct - Explicit when helpful
 const config: AppConfig = loadConfig(); // Complex return type
-function getUserById(id: string): Promise<User> {
-  // Clear contract
+function getUserById(id: string): Observable<User> {
+  // Clear contract - prefer Observable over Promise
   return this.http.get<User>(`/users/${id}`);
 }
 
@@ -222,7 +222,65 @@ export class UserProfileComponent {
 }
 ```
 
-### 2.3 Input/Output Functions
+### 2.3 Avoid Promises, Prefer RxJS
+
+**Rule:** Use RxJS Observables instead of Promises for all asynchronous operations (except route lazy loading).
+
+**Why:**
+
+- Better composition with operators (map, filter, switchMap, etc.)
+- Cancelation support (unsubscribe)
+- Consistent error handling across the application
+- Superior multi-value stream handling
+- Better integration with Angular's async pipe and signals
+
+```typescript
+// ✅ Correct - Use Observable
+getUserById(id: string): Observable<User> {
+  return this.http.get<User>(`/users/${id}`);
+}
+
+// ✅ Correct - Convert Promise to Observable if necessary
+loadExternalData(): Observable<Data> {
+  return from(fetch('/api/data').then(r => r.json()));
+}
+
+// ✅ Correct - Multiple parallel requests
+loadDashboardData(): Observable<DashboardData> {
+  return forkJoin({
+    user: this.userService.getUser(),
+    stats: this.statsService.getStats(),
+    notifications: this.notificationService.getRecent()
+  });
+}
+
+// ❌ Incorrect - Don't use async/await
+async getUserById(id: string): Promise<User> {
+  return await this.http.get<User>(`/users/${id}`).toPromise(); // ❌
+}
+
+// ❌ Incorrect - Don't use .then()/.catch()
+loadUser(): void {
+  this.userService.getUser()
+    .toPromise()  // ❌
+    .then(user => this.user.set(user))
+    .catch(err => this.error.set(err));
+}
+```
+
+**Exception:** Route lazy loading with `import().then()` is standard Angular practice and should remain:
+
+```typescript
+// ✅ Acceptable - Standard Angular route lazy loading
+{
+  path: 'admin',
+  loadChildren: () => import('./admin/admin.routes').then(m => m.ADMIN_ROUTES)
+}
+```
+
+**Migration Guide:** See `docs/PROMISE_TO_RXJS_MIGRATION_REPORT.md` for converting existing Promises to Observables.
+
+### 2.4 Input/Output Functions
 
 **Rule:** Use `input()` and `output()` functions instead of decorators.
 
@@ -254,7 +312,7 @@ export class ButtonComponent {
 }
 ```
 
-### 2.4 Dependency Injection
+### 2.5 Dependency Injection
 
 **Rule:** Use `inject()` function instead of constructor injection.
 
@@ -281,7 +339,7 @@ export class UserService {
 }
 ```
 
-### 2.5 OnPush Change Detection
+### 2.6 OnPush Change Detection
 
 **Rule:** All components must use `OnPush` change detection strategy.
 
@@ -294,7 +352,7 @@ export class UserService {
 export class UserCardComponent {}
 ```
 
-### 2.6 Host Bindings
+### 2.7 Host Bindings
 
 **Rule:** Use `host` metadata object instead of decorators.
 
@@ -324,7 +382,7 @@ export class ButtonComponent {
 }
 ```
 
-### 2.7 Template Syntax
+### 2.8 Template Syntax
 
 **Rule:** Use native control flow instead of structural directives.
 
@@ -349,7 +407,7 @@ export class ButtonComponent {
 }
 ```
 
-### 2.8 Template Expressions
+### 2.9 Template Expressions
 
 **Rule:** No arrow functions or complex logic in templates. Do not assume globals are available.
 

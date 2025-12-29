@@ -227,11 +227,11 @@ _Goal: Ensure it builds and ships like enterprise software._
     - [x] Eliminate innerHTML usage with translation data
     - [x] Migrate from localStorage to encrypted sessionStorage for auth tokens
     - [x] Add URL validation for bypassSecurityTrustResourceUrl
-  - [ ] **Medium Priority (13-18h)**:
-    - [ ] Implement Content Security Policy headers
-    - [ ] Replace all console.\* calls with LoggerService
-    - [ ] Add CSRF protection strategy
-    - [ ] Validate Google Analytics measurement IDs
+  - [x] **Medium Priority (13-18h)**:
+    - [x] Implement Content Security Policy headers
+    - [x] Replace all console.\* calls with LoggerService
+    - [x] Add CSRF protection strategy
+    - [x] Validate Google Analytics measurement IDs
   - [ ] **Low Priority (3-5h)**:
     - [ ] Enhance client-side rate limiting with honeypot
     - [ ] Document production security headers configuration
@@ -282,27 +282,25 @@ _Goal: Clean up technical debt, refine implementation quality, and ensure produc
   - [ ] Add accessibility documentation to all component stories.
   - [ ] Verify all JSDoc comments are accurate and complete.
   - [ ] Add usage examples to complex components.
-- [ ] **7.6 UX/UI Polish & Improvements**:
-  - [ ] **7.6.1 Header Authentication UI**: Replace username text + logout button with user profile icon and dropdown menu.
-  - [ ] **7.6.2 Header Theme Picker UI**: Replace full theme picker with icon-only button that opens theme selection menu.
-  - [ ] **7.6.3 Home Page Portfolio Branding**: Add personal branding (name, title, tagline) to make it clear this is a portfolio.
-  - [ ] **7.6.4 Modules & ADR List Filtering**: Add filter chips for topic-based filtering (technologies, categories, status).
-  - [ ] **7.6.5 Profile Page Resume Button Layout**: Move resume buttons below profile card for better visual hierarchy.
-  - [ ] **7.6.6 Toast Component Visual Improvements**: Replace empty dismiss button with X icon, reduce badge size.
-  - [ ] Create `UserMenuComponent` with proper accessibility.
-  - [ ] Create `ThemePickerMenuComponent` for header.
-  - [ ] Create `FilterChipsComponent` (reusable).
-  - [ ] Update home page layout with hero/branding section.
-  - [ ] Add filters to Modules and ADR lists.
-  - [ ] Reposition resume buttons on Profile page.
-  - [ ] Fix toast dismiss button and badge sizing.
-  - [ ] See `/docs/specs/PHASE_7_POLISH.md` section 7.6 for detailed specifications.
-- [ ] **7.7 Code Quality Sweep**:
+- [ ] **7.6 UX/UI Polish & Improvements**: See `/docs/specs/PHASE_7_POLISH.md` section 7.6 for detailed specifications.
+  - [ ] Header Authentication UI: User profile icon with dropdown menu.
+  - [ ] Header Theme Picker UI: Icon-only button with theme selection menu.
+  - [ ] Home Page Portfolio Branding: Add personal branding (name, title, tagline).
+  - [ ] Modules & ADR List Filtering: Filter chips for technologies, categories, status.
+  - [ ] Profile Page Resume Button Layout: Reposition buttons below profile card.
+  - [ ] Toast Component Visual Improvements: X icon for dismiss, reduced badge size.
+- [ ] **7.7 Promise to RxJS Migration**: See `PROMISE_TO_RXJS_MIGRATION_PLAN.md`.
+  - [ ] Migrate analytics subsystem from Promises to Observables (8 instances, 4 files).
+  - [ ] Update AnalyticsProvider interface to return Observable.
+  - [ ] Update all provider implementations (Console, Google Analytics).
+  - [ ] Update AnalyticsService to use Observable patterns.
+  - [ ] Update all test files and verify 100% pass rate.
+- [ ] **7.8 Code Quality Sweep**:
   - [ ] Run full linting and fix all warnings.
   - [ ] Review and clean up any remaining `TODO` or `FIXME` comments.
   - [ ] Ensure consistent code formatting across entire codebase.
   - [ ] Verify all public APIs have proper TypeScript documentation.
-- [ ] **7.8 Blog Article**: Write about technical debt management and refactoring strategies.
+- [ ] **7.9 Blog Article**: Write about technical debt management and refactoring strategies.
 
 ---
 
