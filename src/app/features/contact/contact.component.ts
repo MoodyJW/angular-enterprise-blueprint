@@ -104,6 +104,8 @@ export class ContactComponent implements OnDestroy {
         (control: AbstractControl) => Validators.minLength(25)(control),
       ],
     ],
+    // Honeypot field - should remain empty
+    _gotcha: [''],
   });
 
   // Form state management - disable when submitting or in cooldown
@@ -144,6 +146,13 @@ export class ContactComponent implements OnDestroy {
   }
 
   onSubmit(): void {
+    const rawData = this.form.getRawValue();
+
+    // Honeypot check: If _gotcha is filled, silent return (bot detected)
+    if ((rawData._gotcha?.length ?? 0) > 0) {
+      return;
+    }
+
     if (this.form.invalid || this.isDisabled()) {
       return;
     }
@@ -156,6 +165,7 @@ export class ContactComponent implements OnDestroy {
       email: data.email ?? '',
       company: data.company ?? '',
       message: data.message ?? '',
+      _gotcha: data._gotcha ?? '',
     };
 
     this.contactStore.submitForm(formData);

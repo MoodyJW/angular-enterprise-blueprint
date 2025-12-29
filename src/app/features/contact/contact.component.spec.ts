@@ -25,6 +25,7 @@ describe('ContactComponent', () => {
     email: 'john@example.com',
     company: 'Acme Inc',
     message: 'Hello, I would like to discuss a potential project opportunity.',
+    _gotcha: '',
   };
 
   const mockTranslations = {
@@ -180,9 +181,9 @@ describe('ContactComponent', () => {
       expect(component.form.valid).toBe(false);
     });
 
-    it('should have four form fields (name, email, company, message)', () => {
+    it('should have five form fields (name, email, company, message, _gotcha)', () => {
       const formFields = fixture.debugElement.queryAll(By.css('eb-form-field'));
-      expect(formFields.length).toBe(4);
+      expect(formFields.length).toBe(5);
     });
 
     it('should render name input', () => {
@@ -268,6 +269,7 @@ describe('ContactComponent', () => {
         email: 'john@example.com',
         company: 'Acme Inc',
         message: 'Hello, I would like to discuss a potential project opportunity.',
+        _gotcha: '',
       });
       expect(component.form.valid).toBe(true);
     });
@@ -352,6 +354,17 @@ describe('ContactComponent', () => {
         email: 'invalid',
         company: '',
         message: '',
+        _gotcha: '',
+      });
+      component.onSubmit();
+
+      expect(contactServiceMock.sendContactMessage).not.toHaveBeenCalled();
+    });
+
+    it('should silently ignore submission if honeypot is filled', () => {
+      component.form.setValue({
+        ...validFormData,
+        _gotcha: 'I am a bot',
       });
       component.onSubmit();
 
@@ -463,8 +476,8 @@ describe('ContactComponent', () => {
       expect(component.cooldownSeconds()).toBe(0);
     });
 
-    it('should have form with four controls', () => {
-      expect(Object.keys(component.form.controls).length).toBe(4);
+    it('should have form with five controls', () => {
+      expect(Object.keys(component.form.controls).length).toBe(5);
     });
 
     it('should have correctly named form controls', () => {

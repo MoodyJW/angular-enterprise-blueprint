@@ -232,12 +232,12 @@ _Goal: Ensure it builds and ships like enterprise software._
     - [x] Replace all console.\* calls with LoggerService
     - [x] Add CSRF protection strategy
     - [x] Validate Google Analytics measurement IDs
-  - [ ] **Low Priority (3-5h)**:
-    - [ ] Enhance client-side rate limiting with honeypot
-    - [ ] Document production security headers configuration
-  - [ ] **Testing & Validation (2-3h + ongoing)**:
-    - [ ] Create security testing checklist
-    - [ ] Add automated security scanning to CI/CD
+  - [x] **Low Priority (3-5h)**:
+    - [x] Enhance client-side rate limiting with honeypot
+    - [x] Document production security headers configuration
+  - [x] **Testing & Validation (2-3h + ongoing)**:
+    - [x] Create security testing checklist (See `docs/SECURITY_CHECKLIST.md`)
+    - [x] Add automated security scanning to CI/CD (Leveraging existing GitHub CodeQL)
 - [ ] **6.3 Performance Tuning**:
   - [ ] Install `source-map-explorer`.
   - [ ] Configure Bundle Budgets in `angular.json` (Error on > 1MB).
