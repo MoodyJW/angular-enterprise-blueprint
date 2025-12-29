@@ -208,33 +208,48 @@ _Goal: Features that map 1:1 to the UI naming._
 - [x] **5.6 Contact** (`features/contact`):
   - [x] **UI Label:** "Hire Me".
   - [x] `ContactComponent`: Lead generation form with rate-limiting simulation.
-- [ ] **5.7 Tooltip Component** (`shared/components/tooltip`):
-  - [ ] **Status:** Missing shared component identified during Phase 5 implementation.
-  - [ ] `TooltipDirective`: Directive-based tooltip with signal inputs for hover/focus triggers.
-  - [ ] `TooltipComponent`: Dynamic overlay component with auto-positioning.
-  - [ ] Support top, right, bottom, left, and auto positioning.
-  - [ ] Full WCAG 2.1 AA accessibility compliance.
-  - [ ] Comprehensive unit tests and Storybook stories.
-  - [ ] See `/TOOLTIP_IMPLEMENTATION_PLAN.md` for detailed implementation guide.
-- [ ] **5.8 Blog Article**: Write about implementing feature modules in Angular.
+- [x] **5.7 Tooltip Component** (`shared/components/tooltip`):
+  - [x] **Status:** Missing shared component identified during Phase 5 implementation.
+  - [x] `TooltipDirective`: Directive-based tooltip with signal inputs for hover/focus triggers.
+  - [x] `TooltipComponent`: Dynamic overlay component with auto-positioning.
+  - [x] Support top, right, bottom, left, and auto positioning.
+  - [x] Full WCAG 2.1 AA accessibility compliance.
+  - [x] Comprehensive unit tests and Storybook stories.
+- [x] **5.8 Blog Article**: Write about implementing feature modules in Angular.
 
 ### ⚙️ Phase 6: Ops & Optimization
 
 _Goal: Ensure it builds and ships like enterprise software._
 
-- [ ] **6.1 Deployment**: Configure `.github/workflows/deploy.yml` for GitHub Pages.
-- [ ] **6.2 Performance Tuning**:
+- [x] **6.1 Deployment**: Configure `.github/workflows/deploy.yml` for GitHub Pages.
+- [ ] **6.2 Security Improvements**: See `SECURITY_IMPROVEMENT_PLAN.md`.
+  - [ ] **High Priority (8-12h)**:
+    - [ ] Eliminate innerHTML usage with translation data
+    - [ ] Migrate from localStorage to encrypted sessionStorage for auth tokens
+    - [ ] Add URL validation for bypassSecurityTrustResourceUrl
+  - [ ] **Medium Priority (13-18h)**:
+    - [ ] Implement Content Security Policy headers
+    - [ ] Replace all console.\* calls with LoggerService
+    - [ ] Add CSRF protection strategy
+    - [ ] Validate Google Analytics measurement IDs
+  - [ ] **Low Priority (3-5h)**:
+    - [ ] Enhance client-side rate limiting with honeypot
+    - [ ] Document production security headers configuration
+  - [ ] **Testing & Validation (2-3h + ongoing)**:
+    - [ ] Create security testing checklist
+    - [ ] Add automated security scanning to CI/CD
+- [ ] **6.3 Performance Tuning**:
   - [ ] Install `source-map-explorer`.
   - [ ] Configure Bundle Budgets in `angular.json` (Error on > 1MB).
   - [ ] Set up Lighthouse CI Action.
-- [ ] **6.3 Release Management**:
+- [ ] **6.4 Release Management**:
   - [ ] Install `standard-version` or `semantic-release`.
   - [ ] Create automated `CHANGELOG.md` generation pipeline.
-- [ ] **6.4 Final Documentation**:
+- [ ] **6.5 Final Documentation**:
   - [ ] `README.md`: The "Sales Pitch" for the repo.
   - [ ] `CONTRIBUTING.md`: How to run the repo.
   - [ ] `ARCHITECTURE.md`: High-level diagram.
-- [ ] **6.5 Blog Article**: Write about deploying and optimizing Angular applications.
+- [ ] **6.6 Blog Article**: Write about deploying and optimizing Angular applications.
 
 ### 🧹 Phase 7: Polish & Cleanup
 
