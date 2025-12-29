@@ -22,11 +22,27 @@ jobs:
 
       - run: npm ci
 
+      - name: Create Environment Files
+        run: |
+          cp src/environments/environment.example.ts src/environments/environment.ts
+          cp src/environments/environment.example.ts src/environments/environment.prod.ts
+
+      - name: Build production
+        run: npm run build
+
       - name: Run Tests with Coverage
         run: npm run test:coverage
 
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: ./lighthouserc.json
+          uploadArtifacts: false
+          temporaryPublicStorage: false
+        continue-on-error: true
+
       - name: Update Metrics File
-        run: node tools/update-metrics.js --simulate
+        run: node tools/update-metrics.js
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
