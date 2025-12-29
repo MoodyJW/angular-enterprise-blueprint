@@ -97,7 +97,9 @@
       "submit": "Sign In",
       "submitting": "Signing in...",
       "demoHint": "Demo credentials:",
-      "demoHintDetail": "Try <code>{{ demo }}</code> or <code>{{ admin }}</code> with any password",
+      "demoHintPrefix": "Try",
+      "demoHintOr": "or",
+      "demoHintSuffix": "with any password",
       "successTitle": "Login Successful",
       "successMessage": "Welcome back!",
       "errorTitle": "Login Failed"
@@ -342,7 +344,7 @@
     }
   },
   "profile": {
-    "title": "Jason Walker Moody: The Architect",
+    "title": "Jason Moody: The Architect",
     "subtitle": "Building enterprise-grade Angular applications",
     "bio": {
       "title": "About Me",

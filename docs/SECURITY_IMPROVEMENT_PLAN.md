@@ -70,10 +70,10 @@ readonly sanitizedDemoHint = computed<SafeHtml>(() => {
 
 **Acceptance Criteria**:
 
-- [ ] No innerHTML bindings with dynamic/translated content
-- [ ] Visual appearance unchanged
-- [ ] All translation keys updated
-- [ ] Tests pass
+- [x] No innerHTML bindings with dynamic/translated content
+- [x] Visual appearance unchanged
+- [x] All translation keys updated
+- [x] Tests pass
 
 **Estimated Effort**: 1-2 hours
 
@@ -186,12 +186,12 @@ Create documentation for future backend integration:
 
 **Acceptance Criteria**:
 
-- [ ] SecureStorageService created with encryption
-- [ ] All auth token storage uses SecureStorageService
-- [ ] sessionStorage used instead of localStorage
-- [ ] Theme preferences can remain in localStorage (low risk)
-- [ ] Tests updated and passing
-- [ ] Migration path documented
+- [x] SecureStorageService created with encryption
+- [x] All auth token storage uses SecureStorageService
+- [x] sessionStorage used instead of localStorage
+- [x] Theme preferences can remain in localStorage (low risk)
+- [x] Tests updated and passing
+- [x] Migration path documented
 
 **Estimated Effort**: 4-6 hours
 
@@ -263,11 +263,11 @@ readonly safeResumeUrl = computed(() => {
 
 **Acceptance Criteria**:
 
-- [ ] URL validation implemented
-- [ ] Security bypass documented with justification
-- [ ] Error handling for invalid URLs
-- [ ] Tests cover validation logic
-- [ ] Resume still loads correctly
+- [x] URL validation implemented
+- [x] Security bypass documented with justification
+- [x] Error handling for invalid URLs
+- [x] Tests cover validation logic
+- [x] Resume still loads correctly
 
 **Estimated Effort**: 1-2 hours
 

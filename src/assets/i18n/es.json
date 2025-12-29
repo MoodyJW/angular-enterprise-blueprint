@@ -103,7 +103,9 @@
       "submit": "Iniciar Sesión",
       "submitting": "Iniciando sesión...",
       "demoHint": "Credenciales de demostración:",
-      "demoHintDetail": "Prueba <code>{{ demo }}</code> o <code>{{ admin }}</code> con cualquier contraseña",
+      "demoHintPrefix": "Prueba",
+      "demoHintOr": "o",
+      "demoHintSuffix": "con cualquier contraseña",
       "successTitle": "Inicio de Sesión Exitoso",
       "successMessage": "¡Bienvenido de nuevo!",
       "errorTitle": "Error al Iniciar Sesión"
@@ -348,7 +350,7 @@
     }
   },
   "profile": {
-    "title": "Jason Walker Moody: El Arquitecto",
+    "title": "Jason Moody: El Arquitecto",
     "subtitle": "Construyendo aplicaciones Angular de nivel empresarial",
     "bio": {
       "title": "Sobre Mí",

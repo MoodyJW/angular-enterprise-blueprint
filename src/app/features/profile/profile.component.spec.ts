@@ -30,7 +30,7 @@ describe('ProfileComponent', () => {
   };
 
   const mockTranslations = {
-    'profile.title': 'Jason Walker Moody: The Architect',
+    'profile.title': 'Jason Moody: The Architect',
     'profile.subtitle': 'Building enterprise-grade Angular applications',
     'profile.bio.title': 'About Me',
     'profile.bio.content': 'Full-stack software engineer with a passion...',
@@ -95,7 +95,7 @@ describe('ProfileComponent', () => {
       const title = fixture.debugElement.query(By.css('.profile__title'));
       expect(title).toBeTruthy();
       expect((title.nativeElement as HTMLElement).textContent.trim()).toBe(
-        'Jason Walker Moody: The Architect',
+        'Jason Moody: The Architect',
       );
     });
 

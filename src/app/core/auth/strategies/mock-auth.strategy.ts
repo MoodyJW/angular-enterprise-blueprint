@@ -3,6 +3,7 @@ import { delay, Observable, of, throwError } from 'rxjs';
 
 import { ENVIRONMENT } from '../../config';
 import { LoggerService } from '../../services/logger';
+import { SecureStorageService } from '../../services/storage/secure-storage.service';
 import type { AuthStrategy } from '../auth-strategy.interface';
 import { AUTH_ERROR_CODES, type AuthError, type LoginCredentials, type User } from '../auth.types';
 
@@ -72,6 +73,7 @@ const ADMIN_USER: User = {
 export class MockAuthStrategy implements AuthStrategy {
   readonly name = 'MockAuthStrategy';
 
+  private readonly secureStorage = inject(SecureStorageService);
   private readonly logger = inject(LoggerService);
   private readonly env = inject(ENVIRONMENT);
 
@@ -107,7 +109,7 @@ export class MockAuthStrategy implements AuthStrategy {
       });
     }
 
-    // Store session in localStorage
+    // Store session in secure storage (sessionStorage)
     this.storeSession(user);
 
     this.logger.info('[MockAuth] Login successful', { userId: user.id, username: user.username });
@@ -117,7 +119,7 @@ export class MockAuthStrategy implements AuthStrategy {
   /**
    * Log out the current user.
    *
-   * Clears the session from localStorage.
+   * Clears the session from storage.
    */
   logout(): Observable<void> {
     this.logger.info('[MockAuth] Logout');
@@ -128,7 +130,7 @@ export class MockAuthStrategy implements AuthStrategy {
   /**
    * Check for an existing valid session.
    *
-   * Looks for a stored session in localStorage and validates it.
+   * Looks for a stored session in secure storage and validates it.
    *
    * @returns Observable<User | null> - The user if session exists, null otherwise
    */
@@ -165,27 +167,27 @@ export class MockAuthStrategy implements AuthStrategy {
   }
 
   /**
-   * Store session data in localStorage.
+   * Store session data in secure storage.
    */
   private storeSession(user: User): void {
     const token = this.generateMockToken(user);
-    localStorage.setItem(MOCK_TOKEN_KEY, token);
-    localStorage.setItem(MOCK_USER_KEY, JSON.stringify(user));
+    this.secureStorage.setItem(MOCK_TOKEN_KEY, token);
+    this.secureStorage.setItem(MOCK_USER_KEY, JSON.stringify(user));
   }
 
   /**
-   * Clear session data from localStorage.
+   * Clear session data from secure storage.
    */
   private clearSession(): void {
-    localStorage.removeItem(MOCK_TOKEN_KEY);
-    localStorage.removeItem(MOCK_USER_KEY);
+    this.secureStorage.removeItem(MOCK_TOKEN_KEY);
+    this.secureStorage.removeItem(MOCK_USER_KEY);
   }
 
   /**
-   * Get stored user from localStorage.
+   * Get stored user from secure storage.
    */
   private getStoredUser(): User | null {
-    const userJson = localStorage.getItem(MOCK_USER_KEY);
+    const userJson = this.secureStorage.getItem(MOCK_USER_KEY);
     if (userJson === null) {
       return null;
     }
@@ -200,10 +202,10 @@ export class MockAuthStrategy implements AuthStrategy {
   }
 
   /**
-   * Get stored token from localStorage.
+   * Get stored token from secure storage.
    */
   private getStoredToken(): string | null {
-    return localStorage.getItem(MOCK_TOKEN_KEY);
+    return this.secureStorage.getItem(MOCK_TOKEN_KEY);
   }
 
   /**

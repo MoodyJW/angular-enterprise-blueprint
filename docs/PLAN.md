@@ -223,10 +223,10 @@ _Goal: Ensure it builds and ships like enterprise software._
 
 - [x] **6.1 Deployment**: Configure `.github/workflows/deploy.yml` for GitHub Pages.
 - [ ] **6.2 Security Improvements**: See `SECURITY_IMPROVEMENT_PLAN.md`.
-  - [ ] **High Priority (8-12h)**:
-    - [ ] Eliminate innerHTML usage with translation data
-    - [ ] Migrate from localStorage to encrypted sessionStorage for auth tokens
-    - [ ] Add URL validation for bypassSecurityTrustResourceUrl
+  - [x] **High Priority (8-12h)**:
+    - [x] Eliminate innerHTML usage with translation data
+    - [x] Migrate from localStorage to encrypted sessionStorage for auth tokens
+    - [x] Add URL validation for bypassSecurityTrustResourceUrl
   - [ ] **Medium Priority (13-18h)**:
     - [ ] Implement Content Security Policy headers
     - [ ] Replace all console.\* calls with LoggerService

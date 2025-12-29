@@ -80,10 +80,29 @@ export class ProfileComponent implements OnInit {
   readonly resumePath = 'assets/resume/resume.pdf';
 
   /** Sanitized resume URL for embedding in object/iframe */
-  /** Sanitized resume URL for embedding in object/iframe */
-  readonly safeResumeUrl = computed(() =>
-    this._sanitizer.bypassSecurityTrustResourceUrl(this.resumePath),
-  );
+  /**
+   * Safe resume URL for binding to iframe/object.
+   *
+   * SECURITY NOTE: Validates URL against whitelist before bypassing sanitization.
+   */
+  readonly safeResumeUrl = computed(() => {
+    const url = this.resumePath;
+    if (this._isValidResumeUrl(url)) {
+      return this._sanitizer.bypassSecurityTrustResourceUrl(url);
+    }
+    console.error('ProfileComponent: Invalid resume URL blocked by security check:', url);
+    return null;
+  });
+
+  /**
+   * Validate resume URL against allowed pattern.
+   *
+   * Only allows local assets in the assets/resume directory.
+   */
+  private _isValidResumeUrl(url: string): boolean {
+    // Only allow local PDF assets
+    return /^assets\/resume\/.*\.pdf$/.test(url);
+  }
 
   /** Date range for stats (last 365 days) */
   readonly statsDateRange = computed(() => {

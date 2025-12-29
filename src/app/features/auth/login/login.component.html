@@ -65,9 +65,9 @@
         <span class="login__hint-icon">💡</span>
         <p class="login__hint-text">
           <strong>{{ t('auth.login.demoHint') }}</strong>
-          <span
-            [innerHTML]="t('auth.login.demoHintDetail', { demo: 'demo', admin: 'admin' })"
-          ></span>
+          {{ t('auth.login.demoHintPrefix') }} <code>demo</code>
+          {{ t('auth.login.demoHintOr') }}
+          <code>admin</code> {{ t('auth.login.demoHintSuffix') }}
         </p>
       </div>
     </div>

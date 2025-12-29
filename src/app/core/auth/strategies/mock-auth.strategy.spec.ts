@@ -5,12 +5,14 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { AppEnvironment } from '../../../../environments/environment.type';
 import { ENVIRONMENT } from '../../config';
 import { LoggerService } from '../../services/logger';
+import { SecureStorageService } from '../../services/storage/secure-storage.service';
 import { AUTH_ERROR_CODES, type LoginCredentials } from '../auth.types';
 import { MockAuthStrategy } from './mock-auth.strategy';
 
 describe('MockAuthStrategy', () => {
   let strategy: MockAuthStrategy;
   let loggerService: LoggerService;
+  let secureStorage: SecureStorageService;
 
   const mockEnv: AppEnvironment = {
     appName: 'Test App',
@@ -22,22 +24,28 @@ describe('MockAuthStrategy', () => {
   };
 
   beforeEach(() => {
-    // Clear localStorage before each test
-    localStorage.clear();
+    // Clear storage before each test
+    sessionStorage.clear();
 
     // Mock Math.random to prevent random errors during tests
     vi.spyOn(Math, 'random').mockReturnValue(0.5);
 
     TestBed.configureTestingModule({
-      providers: [MockAuthStrategy, LoggerService, { provide: ENVIRONMENT, useValue: mockEnv }],
+      providers: [
+        MockAuthStrategy,
+        LoggerService,
+        SecureStorageService,
+        { provide: ENVIRONMENT, useValue: mockEnv },
+      ],
     });
 
     strategy = TestBed.inject(MockAuthStrategy);
     loggerService = TestBed.inject(LoggerService);
+    secureStorage = TestBed.inject(SecureStorageService);
   });
 
   afterEach(() => {
-    localStorage.clear();
+    sessionStorage.clear();
     vi.restoreAllMocks();
   });
 
@@ -89,13 +97,13 @@ describe('MockAuthStrategy', () => {
       expect(user.username).toBe('demo');
     });
 
-    it('should store session in localStorage after login', async () => {
+    it('should store session in secure storage after login', async () => {
       const credentials: LoginCredentials = { username: 'demo', password: 'anypassword' };
 
       await firstValueFrom(strategy.login(credentials));
 
-      expect(localStorage.getItem('mock-auth-token')).toBeTruthy();
-      expect(localStorage.getItem('mock-auth-user')).toBeTruthy();
+      expect(secureStorage.getItem('mock-auth-token')).toBeTruthy();
+      expect(secureStorage.getItem('mock-auth-user')).toBeTruthy();
     });
 
     it('should generate a JWT-like token', async () => {
@@ -103,7 +111,7 @@ describe('MockAuthStrategy', () => {
 
       await firstValueFrom(strategy.login(credentials));
 
-      const token = localStorage.getItem('mock-auth-token');
+      const token = secureStorage.getItem('mock-auth-token');
       expect(token).toBeTruthy();
       // JWT tokens have 3 parts separated by dots
       const parts = token?.split('.');
@@ -157,16 +165,16 @@ describe('MockAuthStrategy', () => {
   });
 
   describe('logout', () => {
-    it('should clear session from localStorage', async () => {
+    it('should clear session from secure storage', async () => {
       // First login
       await firstValueFrom(strategy.login({ username: 'demo', password: 'password' }));
-      expect(localStorage.getItem('mock-auth-token')).toBeTruthy();
+      expect(secureStorage.getItem('mock-auth-token')).toBeTruthy();
 
       // Then logout
       await firstValueFrom(strategy.logout());
 
-      expect(localStorage.getItem('mock-auth-token')).toBeNull();
-      expect(localStorage.getItem('mock-auth-user')).toBeNull();
+      expect(secureStorage.getItem('mock-auth-token')).toBeNull();
+      expect(secureStorage.getItem('mock-auth-user')).toBeNull();
     });
 
     it('should log logout', async () => {
@@ -201,7 +209,7 @@ describe('MockAuthStrategy', () => {
     });
 
     it('should return null when only token exists without user', async () => {
-      localStorage.setItem('mock-auth-token', 'some-token');
+      secureStorage.setItem('mock-auth-token', 'some-token');
 
       const user = await firstValueFrom(strategy.checkSession());
 
@@ -209,7 +217,7 @@ describe('MockAuthStrategy', () => {
     });
 
     it('should return null when only user exists without token', async () => {
-      localStorage.setItem('mock-auth-user', JSON.stringify({ id: '1', username: 'test' }));
+      secureStorage.setItem('mock-auth-user', JSON.stringify({ id: '1', username: 'test' }));
 
       const user = await firstValueFrom(strategy.checkSession());
 
@@ -217,13 +225,18 @@ describe('MockAuthStrategy', () => {
     });
 
     it('should clear session on invalid JSON in user data', async () => {
-      localStorage.setItem('mock-auth-token', 'some-token');
-      localStorage.setItem('mock-auth-user', 'invalid-json');
+      secureStorage.setItem('mock-auth-token', 'some-token');
+      // We need to bypass encryption for this specific invalid JSON test or encrypt the invalid string
+      // Actually, SecureStorage decrypts it. If we put garbage in sessionStorage directly, decrypt might fail or return garbage.
+      // But here we use 'setItem' which encrypts 'invalid-json'. Decrypt('encrypted-invalid-json') -> 'invalid-json'.
+      // JSON.parse('invalid-json') -> SyntaxError. Catch block -> clearSession -> return null.
+      // So setItem is correct here.
+      secureStorage.setItem('mock-auth-user', 'invalid-json');
 
       const user = await firstValueFrom(strategy.checkSession());
 
       expect(user).toBeNull();
-      expect(localStorage.getItem('mock-auth-token')).toBeNull();
+      expect(secureStorage.getItem('mock-auth-token')).toBeNull();
     });
 
     it('should log session check', async () => {
