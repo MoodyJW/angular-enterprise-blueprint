@@ -226,7 +226,7 @@ describe('AnalyticsService', () => {
       expect(initSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('should transition to done state after successful initialization', async () => {
+    it('should transition to done state after successful initialization', () => {
       const initSpy = vi.fn().mockReturnValue(of(undefined));
       TestBed.configureTestingModule({
         providers: [
@@ -248,13 +248,11 @@ describe('AnalyticsService', () => {
       service = TestBed.inject(AnalyticsService);
       service.performInitialization();
 
-      // Wait for observable to complete
-      await new Promise((resolve) => setTimeout(resolve, 10));
-
+      // of() emits synchronously, so state is immediately 'done'
       expect(service._initializationState).toBe('done');
     });
 
-    it('should transition to error state and log when initialization fails', async () => {
+    it('should transition to error state and log when initialization fails', () => {
       const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
       const testError = new Error('Init failed');
       const initSpy = vi.fn().mockReturnValue(throwError(() => testError));
@@ -279,9 +277,7 @@ describe('AnalyticsService', () => {
       service = TestBed.inject(AnalyticsService);
       service.performInitialization();
 
-      // Wait for observable to error
-      await new Promise((resolve) => setTimeout(resolve, 10));
-
+      // throwError() emits synchronously, so state is immediately 'error'
       expect(service._initializationState).toBe('error');
       expect(consoleSpy).toHaveBeenCalledWith(
         expect.stringContaining('Failed to initialize failing-mock provider'),
