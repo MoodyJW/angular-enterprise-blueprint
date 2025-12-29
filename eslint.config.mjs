@@ -25,6 +25,8 @@ export default tseslint.config(
     rules: {
       // Allow empty classes with decorators (Angular components, directives, etc.)
       '@typescript-eslint/no-extraneous-class': ['error', { allowWithDecorator: true }],
+      // Console usage
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
       // Strict type rules
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/explicit-function-return-type': [
