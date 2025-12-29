@@ -49,7 +49,12 @@ storybook-static
 documentation.json
 /docs/api
 
+
 # Environments
 src/environments/environment.ts
 src/environments/environment.development.ts
+
+
+# Lighthouse CI
+.lighthouseci/
 

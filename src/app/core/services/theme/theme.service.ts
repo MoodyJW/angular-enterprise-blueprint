@@ -213,6 +213,13 @@ export class ThemeService {
    */
   private getInitialThemeId(): ThemeId {
     if (isPlatformBrowser(this.platformId)) {
+      // Check query param first (allows overriding for testing/Lighthouse)
+      const searchParams = new URLSearchParams(window.location.search);
+      const themeParam = searchParams.get('theme');
+      if (themeParam !== null && themeParam !== '' && this.isValidThemeId(themeParam)) {
+        return themeParam;
+      }
+
       const storedThemeId = localStorage.getItem(THEME_STORAGE_KEY);
       if (storedThemeId !== null && storedThemeId !== '' && this.isValidThemeId(storedThemeId)) {
         return storedThemeId;

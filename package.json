@@ -23,6 +23,7 @@
     "docs:build": "compodoc -p tsconfig.doc.json -d dist/documentation --theme material",
     "docs:serve": "compodoc -p tsconfig.doc.json -d docs/api --theme material -s",
     "docs:json": "compodoc -p .storybook/tsconfig.doc.json -e json -d .",
+    "analyze": "ng build --source-map=true --named-chunks=true --stats-json && source-map-explorer dist/angular-enterprise-blueprint/browser/**/*.js",
     "postinstall": "node scripts/ensure-env.js"
   },
   "prettier": {
@@ -101,6 +102,7 @@
     "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
     "prettier-plugin-organize-imports": "^4.3.0",
+    "source-map-explorer": "^2.5.3",
     "storybook": "^10.1.10",
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.50.0",

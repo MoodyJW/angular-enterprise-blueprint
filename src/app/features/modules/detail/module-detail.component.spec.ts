@@ -4,6 +4,7 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 import { of } from 'rxjs';
 
@@ -16,6 +17,9 @@ describe('ModuleDetailComponent', () => {
   let component: ModuleDetailComponent;
   let fixture: ComponentFixture<ModuleDetailComponent>;
   let modulesService: ModulesService;
+  let mockSeoService: {
+    updatePageSeo: ReturnType<typeof vi.fn>;
+  };
 
   const mockModule: Module = {
     id: 'test-module',
@@ -89,6 +93,10 @@ describe('ModuleDetailComponent', () => {
   };
 
   beforeEach(async () => {
+    mockSeoService = {
+      updatePageSeo: vi.fn(),
+    };
+
     await TestBed.configureTestingModule({
       imports: [
         ModuleDetailComponent,
@@ -100,7 +108,12 @@ describe('ModuleDetailComponent', () => {
           },
         }),
       ],
-      providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        provideRouter([]),
+        { provide: SeoService, useValue: mockSeoService },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ModuleDetailComponent);
@@ -160,6 +173,14 @@ describe('ModuleDetailComponent', () => {
       const module = component['module']();
       expect(module?.id).toBe('test-module');
       expect(module?.title).toBe('Test Module');
+
+      // Verify SEO update
+      expect(mockSeoService.updatePageSeo).toHaveBeenCalledWith({
+        title: 'Test Module',
+        meta: {
+          description: 'A test module description',
+        },
+      });
     });
   });
 

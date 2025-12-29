@@ -4,6 +4,7 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 
 import { ICON_NAMES } from '@shared/constants';
@@ -13,6 +14,9 @@ import { ArchitectureComponent } from './architecture.component';
 describe('ArchitectureComponent', () => {
   let component: ArchitectureComponent;
   let fixture: ComponentFixture<ArchitectureComponent>;
+  let mockSeoService: {
+    updatePageSeo: ReturnType<typeof vi.fn>;
+  };
 
   const translationsEn = {
     common: { loading: 'Loading...' },
@@ -53,6 +57,10 @@ describe('ArchitectureComponent', () => {
   };
 
   beforeEach(async () => {
+    mockSeoService = {
+      updatePageSeo: vi.fn(),
+    };
+
     await TestBed.configureTestingModule({
       imports: [
         ArchitectureComponent,
@@ -64,7 +72,12 @@ describe('ArchitectureComponent', () => {
           },
         }),
       ],
-      providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        provideRouter([]),
+        { provide: SeoService, useValue: mockSeoService },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ArchitectureComponent);
@@ -159,6 +172,16 @@ describe('ArchitectureComponent', () => {
       const loadAdrsSpy = vi.spyOn(component['store'], 'loadAdrs');
       component.ngOnInit();
       expect(loadAdrsSpy).toHaveBeenCalled();
+    });
+
+    it('should update SEO on init', () => {
+      component.ngOnInit();
+      expect(mockSeoService.updatePageSeo).toHaveBeenCalledWith({
+        title: 'Architecture Decisions',
+        meta: {
+          description: 'Browse Architectural Decision Records (ADRs) and design patterns.',
+        },
+      });
     });
   });
 

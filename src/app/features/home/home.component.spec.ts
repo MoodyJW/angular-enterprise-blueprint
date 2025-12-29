@@ -2,7 +2,9 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
+import { SeoService } from '@core/services/seo/seo.service';
 import { ThemeService } from '@core/services/theme/theme.service';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 import { HomeComponent } from './home.component';
@@ -23,6 +25,9 @@ describe('HomeComponent', () => {
   let mockThemeService: {
     currentTheme: ReturnType<typeof signal<{ name: string }>>;
     systemPrefersDark: ReturnType<typeof signal<boolean>>;
+  };
+  let mockSeoService: {
+    updatePageSeo: ReturnType<typeof vi.fn>;
   };
 
   const mockMetrics: DashboardMetrics = {
@@ -49,6 +54,10 @@ describe('HomeComponent', () => {
       systemPrefersDark: signal(false),
     };
 
+    mockSeoService = {
+      updatePageSeo: vi.fn(),
+    };
+
     await TestBed.configureTestingModule({
       imports: [
         HomeComponent,
@@ -60,13 +69,22 @@ describe('HomeComponent', () => {
                   operationalStatus: 'Operational Status',
                 },
                 projectHealth: {
+                  title: 'Project Health',
                   testCoverage: 'Test Coverage',
+                  perf: 'Performance',
+                  a11y: 'Accessibility',
+                  best: 'Best Practices',
+                  seo: 'SEO',
                 },
                 visitors: {
                   title: 'Real-time Visitors',
+                  live: 'Live',
                 },
                 theme: {
                   title: 'Active Theme',
+                },
+                cta: {
+                  title: 'Ready to Start?',
                 },
               },
             },
@@ -82,6 +100,7 @@ describe('HomeComponent', () => {
         provideHttpClientTesting(),
         provideRouter([]),
         { provide: ThemeService, useValue: mockThemeService },
+        { provide: SeoService, useValue: mockSeoService },
       ],
     })
       .overrideComponent(HomeComponent, {
@@ -103,6 +122,27 @@ describe('HomeComponent', () => {
   it('should load metrics and visitors on init', () => {
     expect(mockStore.loadMetrics).toHaveBeenCalled();
     expect(mockStore.loadVisitors).toHaveBeenCalled();
+    expect(mockSeoService.updatePageSeo).toHaveBeenCalledWith({
+      title: 'Dashboard',
+      meta: {
+        description:
+          'Angular Enterprise Blueprint Dashboard - Monitor system status, project health, and real-time visitor metrics.',
+      },
+    });
+  });
+
+  it('should render all section headings', () => {
+    fixture.detectChanges();
+    const headings = fixture.debugElement.queryAll(By.css('h2'));
+
+    // We expect 5 headings: Operational Status, Project Health, Visitors, Theme, CTA
+    expect(headings.length).toBe(5);
+
+    expect((headings[0].nativeElement as HTMLElement).textContent).toContain('Operational Status');
+    expect((headings[1].nativeElement as HTMLElement).textContent).toContain('Project Health');
+    expect((headings[2].nativeElement as HTMLElement).textContent).toContain('Real-time Visitors');
+    expect((headings[3].nativeElement as HTMLElement).textContent).toContain('Active Theme');
+    expect((headings[4].nativeElement as HTMLElement).textContent).toContain('Ready to Start?');
   });
 
   it('should render system status badge', () => {

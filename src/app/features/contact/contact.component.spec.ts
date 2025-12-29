@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 import { NEVER, of, throwError } from 'rxjs';
 import { Mock, vi } from 'vitest';
@@ -19,6 +20,9 @@ describe('ContactComponent', () => {
     isRateLimited: Mock;
   };
   let toastServiceMock: { success: Mock; error: Mock };
+  let mockSeoService: {
+    updatePageSeo: ReturnType<typeof vi.fn>;
+  };
 
   const validFormData = {
     name: 'John Doe',
@@ -77,6 +81,10 @@ describe('ContactComponent', () => {
       error: vi.fn(),
     };
 
+    mockSeoService = {
+      updatePageSeo: vi.fn(),
+    };
+
     await TestBed.configureTestingModule({
       imports: [
         ContactComponent,
@@ -88,6 +96,7 @@ describe('ContactComponent', () => {
       providers: [
         { provide: ContactService, useValue: contactServiceMock },
         { provide: ToastService, useValue: toastServiceMock },
+        { provide: SeoService, useValue: mockSeoService },
       ],
     }).compileComponents();
 
@@ -110,6 +119,16 @@ describe('ContactComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should update SEO on init', () => {
+    component.ngOnInit();
+    expect(mockSeoService.updatePageSeo).toHaveBeenCalledWith({
+      title: 'Hire Me',
+      meta: {
+        description: 'Get in touch for angular enterprise consulting and development.',
+      },
+    });
   });
 
   describe('Header Section', () => {

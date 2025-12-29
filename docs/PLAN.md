@@ -238,10 +238,10 @@ _Goal: Ensure it builds and ships like enterprise software._
   - [x] **Testing & Validation (2-3h + ongoing)**:
     - [x] Create security testing checklist (See `docs/SECURITY_CHECKLIST.md`)
     - [x] Add automated security scanning to CI/CD (Leveraging existing GitHub CodeQL)
-- [ ] **6.3 Performance Tuning**:
-  - [ ] Install `source-map-explorer`.
-  - [ ] Configure Bundle Budgets in `angular.json` (Error on > 1MB).
-  - [ ] Set up Lighthouse CI Action.
+- [x] **6.3 Performance Tuning**:
+  - [x] Install `source-map-explorer`.
+  - [x] Configure Bundle Budgets in `angular.json` (Error on > 1MB).
+  - [x] Set up Lighthouse CI Action.
 - [ ] **6.4 Release Management**:
   - [ ] Install `standard-version` or `semantic-release`.
   - [ ] Create automated `CHANGELOG.md` generation pipeline.

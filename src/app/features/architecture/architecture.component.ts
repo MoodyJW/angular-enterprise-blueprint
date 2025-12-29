@@ -23,6 +23,8 @@ import { InputComponent } from '@shared/components/input';
 import { StackComponent } from '@shared/components/stack';
 import { ICON_NAMES } from '@shared/constants/icon-names.constants';
 
+import { SeoService } from '@core/services/seo/seo.service';
+
 import { ArchitectureStore } from './state/architecture.store';
 
 /**
@@ -54,6 +56,7 @@ import { ArchitectureStore } from './state/architecture.store';
 })
 export class ArchitectureComponent implements OnInit {
   protected readonly store = inject(ArchitectureStore);
+  private readonly _seoService = inject(SeoService);
   private readonly _destroyRef = inject(DestroyRef);
 
   /** Icon name constants */
@@ -68,6 +71,13 @@ export class ArchitectureComponent implements OnInit {
   ngOnInit(): void {
     // Load ADRs on init
     this.store.loadAdrs();
+
+    this._seoService.updatePageSeo({
+      title: 'Architecture Decisions',
+      meta: {
+        description: 'Browse Architectural Decision Records (ADRs) and design patterns.',
+      },
+    });
 
     // Set up debounced search filter
     this._searchSubject
