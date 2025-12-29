@@ -24,6 +24,8 @@
     "docs:serve": "compodoc -p tsconfig.doc.json -d docs/api --theme material -s",
     "docs:json": "compodoc -p .storybook/tsconfig.doc.json -e json -d .",
     "analyze": "ng build --source-map=true --named-chunks=true --stats-json && source-map-explorer dist/angular-enterprise-blueprint/browser/**/*.js",
+    "release": "commit-and-tag-version",
+    "release:first": "commit-and-tag-version --first-release",
     "postinstall": "node scripts/ensure-env.js"
   },
   "prettier": {
@@ -93,6 +95,7 @@
     "@vitest/coverage-istanbul": "^4.0.16",
     "@vitest/coverage-v8": "^4.0.16",
     "angular-eslint": "^21.1.0",
+    "commit-and-tag-version": "^12.6.1",
     "eslint": "^9.39.2",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-boundaries": "^5.3.1",
