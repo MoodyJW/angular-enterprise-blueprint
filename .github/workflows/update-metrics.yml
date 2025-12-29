@@ -47,7 +47,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.AUTOMATE_PR_TOKEN }}
           commit-message: 'chore: update dashboard metrics'
           title: 'chore: update dashboard metrics'
           body: |
