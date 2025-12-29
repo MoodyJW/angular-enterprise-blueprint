@@ -51,8 +51,7 @@
       "eslint --fix",
       "prettier --write"
     ],
-    "*.{js,mjs}": "prettier --write",
-    "*.{scss,json,md}": "prettier --write"
+    "*.{js,mjs,scss,json,md,yml,yaml}": "prettier --write"
   },
   "private": true,
   "packageManager": "npm@11.7.0",
