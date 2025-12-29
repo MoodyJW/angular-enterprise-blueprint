@@ -55,9 +55,10 @@ function updateMetrics() {
   const LH_DIR = path.join(__dirname, '../.lighthouseci');
   if (fs.existsSync(LH_DIR)) {
     try {
-      const files = fs
-        .readdirSync(LH_DIR)
-        .filter((f) => f.startsWith('lhr-') && f.endsWith('.json'));
+      const allFiles = fs.readdirSync(LH_DIR);
+      console.log('Found files in .lighthouseci:', allFiles);
+
+      const files = allFiles.filter((f) => f.startsWith('lhr-') && f.endsWith('.json'));
       if (files.length > 0) {
         // Sort to get the latest file (filenames contain timestamps)
         const latestFile = files.sort().pop();
