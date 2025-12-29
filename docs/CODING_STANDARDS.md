@@ -386,6 +386,8 @@ export class ButtonComponent {
 
 **Rule:** Use native control flow instead of structural directives.
 
+{% raw %}
+
 ```typescript
 // ❌ Incorrect - Structural directives
 <div *ngIf="user">{{ user.name }}</div>
@@ -407,9 +409,13 @@ export class ButtonComponent {
 }
 ```
 
+{% endraw %}
+
 ### 2.9 Template Expressions
 
 **Rule:** No arrow functions or complex logic in templates. Do not assume globals are available.
+
+{% raw %}
 
 ```typescript
 // ❌ Incorrect - Arrow function in template
@@ -435,6 +441,8 @@ export class ListComponent {
 <button (click)="handleFilter()">Filter</button>
 <div>{{ currentDate() }}</div>
 ```
+
+{% endraw %}
 
 ---
 
@@ -507,6 +515,8 @@ export class UserListComponent {
 
 **Rule:** Inline templates for components under 10 lines, external files otherwise.
 
+{% raw %}
+
 ```typescript
 // ✅ Correct - Inline for small components
 @Component({
@@ -527,6 +537,8 @@ export class BadgeComponent {}
 })
 export class UserFormComponent {}
 ```
+
+{% endraw %}
 
 ### 3.4 Relative Paths
 
@@ -815,6 +827,8 @@ items.set([1, 2, 3, 4]);
 
 **Rule:** All user-facing text MUST use Transloco. No hardcoded strings.
 
+{% raw %}
+
 ```typescript
 // ❌ Incorrect
 <button>Save Changes</button>
@@ -826,6 +840,8 @@ items.set([1, 2, 3, 4]);
   <p>{{ t('auth.welcomeBack') }}</p>
 </ng-container>
 ```
+
+{% endraw %}
 
 ### 6.2 Translation Keys
 
@@ -867,6 +883,8 @@ items.set([1, 2, 3, 4]);
 
 **Rule:** Use interpolation for dynamic values.
 
+{% raw %}
+
 ```typescript
 // Translation file
 {
@@ -882,6 +900,8 @@ items.set([1, 2, 3, 4]);
   <p>{{ t('users.itemCount', { count: items().length }) }}</p>
 </ng-container>
 ```
+
+{% endraw %}
 
 ### 6.4 Aria Labels
 
@@ -1289,6 +1309,8 @@ export class UserListComponent {
 
 **Rule:** Always use `track` in `@for` loops.
 
+{% raw %}
+
 ```html
 <!-- ❌ Incorrect - No track -->
 @for (user of users(); track $index) {
@@ -1305,6 +1327,8 @@ export class UserListComponent {
 <div>{{ item }}</div>
 }
 ```
+
+{% endraw %}
 
 ### 10.3 Lazy Loading
 
@@ -1391,6 +1415,8 @@ loadUsers(): void {
 
 **Rule:** Never use `innerHTML` with untrusted content. Sanitize if necessary.
 
+{% raw %}
+
 ```typescript
 // ❌ Incorrect - XSS vulnerability
 <div [innerHTML]="userContent"></div>
@@ -1410,6 +1436,8 @@ export class ContentComponent {
 // ✅ Better - Use text binding
 <div>{{ userContent() }}</div>
 ```
+
+{% endraw %}
 
 ### 11.2 Authentication Guards
 
