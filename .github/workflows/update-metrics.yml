@@ -45,7 +45,7 @@ jobs:
         run: node tools/update-metrics.js
 
       - name: Disable Git Hooks
-        run: git config --global core.hooksPath /dev/null
+        run: git config core.hooksPath /dev/null
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
