@@ -26,6 +26,7 @@
     "analyze": "ng build --source-map=true --named-chunks=true --stats-json && source-map-explorer dist/angular-enterprise-blueprint/browser/**/*.js",
     "release": "commit-and-tag-version",
     "release:first": "commit-and-tag-version --first-release",
+    "prettier": "prettier --write .",
     "postinstall": "node scripts/ensure-env.js"
   },
   "prettier": {
