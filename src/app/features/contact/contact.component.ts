@@ -14,6 +14,7 @@ import { IconComponent } from '../../shared/components/icon/icon.component';
 import { InputComponent } from '../../shared/components/input/input.component';
 import { StackComponent } from '../../shared/components/stack/stack.component';
 import { TextareaComponent } from '../../shared/components/textarea/textarea.component';
+import { TooltipDirective } from '../../shared/components/tooltip/tooltip.directive';
 import { ICON_NAMES } from '../../shared/constants/icon-names.constants';
 import { ToastService } from '../../shared/services/toast/toast.service';
 import { ContactService } from './services/contact.service';
@@ -37,6 +38,7 @@ import { ContactService } from './services/contact.service';
     InputComponent,
     StackComponent,
     TextareaComponent,
+    TooltipDirective,
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',

@@ -35,6 +35,11 @@
     "profile": "L'Architecte",
     "contact": "Embauchez-moi"
   },
+  "contact": {
+    "form": {
+      "tooltipInvalid": "Le formulaire n'est pas valide"
+    }
+  },
   "footer": {
     "copyright": "Angular Enterprise Blueprint"
   }

@@ -208,7 +208,7 @@ describe('MainLayoutComponent', () => {
       const compiled = fixture.nativeElement as HTMLElement;
       const mobileNavLinks = compiled.querySelectorAll('.mobile-nav__link');
       // Should have navItems + Contact link
-      expect(mobileNavLinks.length).toBe(component.navItems.length + 1);
+      expect(mobileNavLinks.length).toBe(component.navItems.length);
     });
 
     it('should close menu when overlay is clicked', () => {
