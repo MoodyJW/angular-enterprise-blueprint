@@ -53,7 +53,7 @@ export const ArchitectureStore = signalStore(
      */
     filteredAdrs: computed(() => {
       const filter = store.filter().toLowerCase().trim();
-      if (filter !== '') {
+      if (filter === '') {
         return store.entities();
       }
       return store

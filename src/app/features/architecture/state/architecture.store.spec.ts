@@ -258,5 +258,32 @@ describe('ArchitectureStore', () => {
       store.setFilter('   ');
       expect(store.filteredAdrs().length).toBe(3);
     });
+
+    it('should filter ADRs by title', () => {
+      store.setFilter('Component');
+      const results = store.filteredAdrs();
+      expect(results.length).toBe(1);
+      expect(results[0].id).toBe('adr-002-component-library');
+    });
+
+    it('should filter ADRs by summary', () => {
+      store.setFilter('RxJS');
+      const results = store.filteredAdrs();
+      expect(results.length).toBe(1);
+      expect(results[0].id).toBe('adr-003-legacy-patterns');
+    });
+
+    it('should filter ADRs by number', () => {
+      store.setFilter('001');
+      const results = store.filteredAdrs();
+      expect(results.length).toBe(1);
+      expect(results[0].id).toBe('adr-001-angular-signals');
+    });
+
+    it('should be case insensitive', () => {
+      store.setFilter('signals');
+      const results = store.filteredAdrs();
+      expect(results.length).toBe(2); // Matches ADR-001 (title) and ADR-003 (summary)
+    });
   });
 });
