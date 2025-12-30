@@ -38,6 +38,9 @@ jobs:
       - name: Check Prettier formatting
         run: npx prettier --check .
 
+      - name: Check Markdown lint
+        run: npm run lint:md
+
   test:
     name: Test
     runs-on: ubuntu-latest

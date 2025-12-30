@@ -3,9 +3,12 @@ import storybook from 'eslint-plugin-storybook';
 
 import angular from 'angular-eslint';
 import boundaries from 'eslint-plugin-boundaries';
+import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
-export default tseslint.config(
+import headingOrder from './tools/eslint-rules/heading-order.mjs';
+
+export default defineConfig(
   {
     ignores: ['node_modules/**', 'dist/**', '.angular/**'],
   },
@@ -154,6 +157,16 @@ export default tseslint.config(
   {
     files: ['**/*.html'],
     extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
+    plugins: {
+      'custom-a11y': {
+        rules: {
+          'heading-order': headingOrder,
+        },
+      },
+    },
+    rules: {
+      'custom-a11y/heading-order': 'error',
+    },
   },
   // Storybook
   ...storybook.configs['flat/recommended'],

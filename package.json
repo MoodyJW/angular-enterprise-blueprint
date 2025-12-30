@@ -27,6 +27,7 @@
     "release": "commit-and-tag-version",
     "release:first": "commit-and-tag-version --first-release",
     "prettier": "prettier --write .",
+    "lint:md": "markdownlint-cli2 '**/*.md' '#node_modules'",
     "postinstall": "node scripts/ensure-env.js"
   },
   "prettier": {
@@ -51,7 +52,11 @@
       "eslint --fix",
       "prettier --write"
     ],
-    "*.{js,mjs,scss,json,md,yml,yaml}": "prettier --write"
+    "*.{js,mjs,scss,json,yml,yaml}": "prettier --write",
+    "*.md": [
+      "markdownlint-cli2 --fix",
+      "prettier --write"
+    ]
   },
   "private": true,
   "packageManager": "npm@11.7.0",
@@ -103,6 +108,7 @@
     "husky": "^9.1.7",
     "jsdom": "^27.3.0",
     "lint-staged": "^16.2.7",
+    "markdownlint-cli2": "^0.20.0",
     "prettier": "^3.7.4",
     "prettier-plugin-organize-imports": "^4.3.0",
     "source-map-explorer": "^2.5.3",
