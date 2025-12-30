@@ -6,6 +6,7 @@ import {
   effect,
   type ElementRef,
   forwardRef,
+  inject,
   input,
   output,
   signal,
@@ -13,6 +14,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { UniqueIdService } from '../../services/unique-id/unique-id.service';
 import { InputFooterComponent } from '../input-footer';
 
 export type InputVariant = 'default' | 'filled' | 'outlined';
@@ -251,6 +253,8 @@ export class InputComponent implements ControlValueAccessor {
    */
   readonly isDisabled = computed(() => this.disabled() || this._cvaDisabled());
 
+  private readonly uniqueIdService = inject(UniqueIdService);
+
   // CVA callbacks
   private _onChange: (value: string) => void = () => {};
   private _onTouched: () => void = () => {};
@@ -310,7 +314,7 @@ export class InputComponent implements ControlValueAccessor {
    */
   readonly helperTextId = computed(() => {
     const helperText = this.helperText();
-    return Boolean(helperText) ? `input-helper-${this._generateId()}` : undefined;
+    return helperText.length > 0 ? this.uniqueIdService.generateId('input-helper') : undefined;
   });
 
   /**
@@ -318,7 +322,7 @@ export class InputComponent implements ControlValueAccessor {
    */
   readonly labelId = computed(() => {
     const label = this.label();
-    return Boolean(label) ? `input-label-${this._generateId()}` : undefined;
+    return label.length > 0 ? this.uniqueIdService.generateId('input-label') : undefined;
   });
 
   /**
@@ -478,12 +482,5 @@ export class InputComponent implements ControlValueAccessor {
     }
 
     return classes.join(' ');
-  }
-
-  /**
-   * Generate a unique ID for this component instance
-   */
-  private _generateId(): string {
-    return Math.random().toString(36).substring(2, 9);
   }
 }

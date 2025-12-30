@@ -45,7 +45,7 @@ export const Default: Story = {
   },
   render: (args) => ({
     props: args,
-    template: `<eb--input-label ${argsToTemplate(args)}></eb--input-label>`,
+    template: `<eb-input-label ${argsToTemplate(args)}></eb-input-label>`,
   }),
 };
 
@@ -57,7 +57,7 @@ export const Required: Story = {
   },
   render: (args) => ({
     props: args,
-    template: `<eb--input-label ${argsToTemplate(args)}></eb--input-label>`,
+    template: `<eb-input-label ${argsToTemplate(args)}></eb-input-label>`,
   }),
 };
 
@@ -70,6 +70,6 @@ export const CustomClass: Story = {
   },
   render: (args) => ({
     props: args,
-    template: `<eb--input-label ${argsToTemplate(args)}></eb--input-label>`,
+    template: `<eb-input-label ${argsToTemplate(args)}></eb-input-label>`,
   }),
 };

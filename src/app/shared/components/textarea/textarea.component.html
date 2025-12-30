@@ -18,6 +18,7 @@
   <div class="textarea-container">
     <textarea
       #textareaElement
+      [id]="label() ? 'textarea-' + labelId() : undefined"
       [class]="textareaClasses()"
       [value]="internalValue()"
       [name]="name()"

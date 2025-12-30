@@ -9,6 +9,8 @@
   color: var(--color-text);
   font-size: inherit;
   transition: background-color var(--duration-normal) var(--ease-in-out);
+  max-width: 100%;
+  overflow: hidden;
 
   // Hover state
   &:hover:not(.select-option--disabled) {

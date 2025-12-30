@@ -52,6 +52,15 @@ import { IconComponent } from '../../icon/icon.component';
       </span>
     </li>
   `,
+  styles: [
+    `
+      :host {
+        display: block;
+        width: 100%;
+        max-width: 400px;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ heroCheck })],
 })

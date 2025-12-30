@@ -394,7 +394,7 @@ export class SelectComponent<T = unknown> implements OnDestroy {
    */
   readonly helperTextId = computed(() => {
     const helperText = this.helperText();
-    return helperText.length > 0 ? `select-helper-${this._generateId()}` : undefined;
+    return helperText.length > 0 ? this.uniqueIdService.generateId('select-helper') : undefined;
   });
 
   /**
@@ -402,13 +402,13 @@ export class SelectComponent<T = unknown> implements OnDestroy {
    */
   readonly labelId = computed(() => {
     const label = this.label();
-    return label.length > 0 ? `select-label-${this._generateId()}` : undefined;
+    return label.length > 0 ? this.uniqueIdService.generateId('select-label') : undefined;
   });
 
   /**
    * Computed ID for listbox element
    */
-  readonly listboxId = computed(() => `select-listbox-${this._generateId()}`);
+  readonly listboxId = computed(() => this.uniqueIdService.generateId('select-listbox'));
 
   /**
    * Computed aria-describedby value
@@ -772,13 +772,6 @@ export class SelectComponent<T = unknown> implements OnDestroy {
     classes.push(`select-dropdown--${this.size()}`);
 
     return classes.join(' ');
-  }
-
-  /**
-   * Generate a unique ID for this component instance
-   */
-  private _generateId(): string {
-    return this.uniqueIdService.generateId('select');
   }
 
   /**

@@ -6,6 +6,7 @@ import {
   effect,
   type ElementRef,
   forwardRef,
+  inject,
   input,
   output,
   signal,
@@ -13,6 +14,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { UniqueIdService } from '../../services/unique-id/unique-id.service';
 import { InputFooterComponent } from '../input-footer';
 
 export type TextareaVariant = 'default' | 'filled' | 'outlined';
@@ -254,13 +256,11 @@ export class TextareaComponent implements ControlValueAccessor {
    */
   readonly isDisabled = computed(() => this.disabled() || this._cvaDisabled());
 
+  private readonly uniqueIdService = inject(UniqueIdService);
+
   // CVA callbacks
-  private _onChange: (value: string) => void = () => {
-    // Empty implementation
-  };
-  private _onTouched: () => void = () => {
-    // Empty implementation
-  };
+  private _onChange: (value: string) => void = () => {};
+  private _onTouched: () => void = () => {};
 
   /**
    * Computed character count text
@@ -317,7 +317,7 @@ export class TextareaComponent implements ControlValueAccessor {
    */
   readonly helperTextId = computed(() => {
     const helperText = this.helperText();
-    return helperText.length > 0 ? `textarea-helper-${this._generateId()}` : undefined;
+    return helperText.length > 0 ? this.uniqueIdService.generateId('textarea-helper') : undefined;
   });
 
   /**
@@ -325,7 +325,7 @@ export class TextareaComponent implements ControlValueAccessor {
    */
   readonly labelId = computed(() => {
     const label = this.label();
-    return label.length > 0 ? `textarea-label-${this._generateId()}` : undefined;
+    return label.length > 0 ? this.uniqueIdService.generateId('textarea-label') : undefined;
   });
 
   /**
@@ -602,12 +602,5 @@ export class TextareaComponent implements ControlValueAccessor {
     } catch {
       return null;
     }
-  }
-
-  /**
-   * Generate a unique ID for this component instance
-   */
-  private _generateId(): string {
-    return Math.random().toString(36).substring(2, 9);
   }
 }

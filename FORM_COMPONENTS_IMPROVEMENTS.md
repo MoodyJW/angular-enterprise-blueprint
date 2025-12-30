@@ -339,21 +339,21 @@ imports: [FormsModule, InputFooterComponent];
 
 ### High Priority
 
-- [ ] **Input Component:** Remove `role="alert"` from required indicator
-- [ ] **Textarea Component:** Add `id` attribute to textarea element
-- [ ] **FormField Component:** Replace `@HostListener` with `host` object
+- [x] **Input Component:** Remove `role="alert"` from required indicator
+- [x] **Textarea Component:** Add `id` attribute to textarea element
+- [x] **FormField Component:** Replace `@HostListener` with `host` object
 
 ### Medium Priority
 
-- [ ] **Input Component:** Replace `_generateId()` with `UniqueIdService`
-- [ ] **Textarea Component:** Replace `_generateId()` with `UniqueIdService`
-- [ ] **FormField Component:** Replace `replace()` with `replaceAll()` in error messages
+- [x] **Input Component:** Replace `_generateId()` with `UniqueIdService`
+- [x] **Textarea Component:** Replace `_generateId()` with `UniqueIdService`
+- [x] **FormField Component:** Replace `replace()` with `replaceAll()` in error messages
 
 ### Low Priority
 
-- [ ] **InputLabel Component:** Fix JSDoc typo (double dash)
-- [ ] **Input Component:** Clean up CVA callback formatting
-- [ ] **Input & Textarea:** Review if `CommonModule` import is necessary
+- [x] **InputLabel Component:** Fix JSDoc typo (double dash)
+- [x] **Input Component:** Clean up CVA callback formatting
+- [x] **Input & Textarea:** Review if `CommonModule` import is necessary
 
 ---
 

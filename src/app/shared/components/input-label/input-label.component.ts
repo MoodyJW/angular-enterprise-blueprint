@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
  *
  * @example
  * ```html
- * <eb--input-label
+ * <eb-input-label
  *   [forId]="inputId"
  *   [label]="'Email Address'"
  *   [required]="true"
@@ -40,20 +40,13 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
         margin-bottom: var(--space-1, 0.5rem);
         font-size: var(--font-size-sm, 0.875rem);
         font-weight: var(--font-weight-medium, 500);
-        color: var(--text-primary, #1a1a1a);
+        color: var(--color-text, #0f172a);
         line-height: 1.5;
 
         &__required {
           color: var(--color-error, #dc2626);
           margin-left: var(--space-1, 0.25rem);
           font-weight: var(--font-weight-semibold, 600);
-        }
-      }
-
-      /* Dark theme support */
-      @media (prefers-color-scheme: dark) {
-        .input-label {
-          color: var(--text-primary-dark, #f5f5f5);
         }
       }
     `,

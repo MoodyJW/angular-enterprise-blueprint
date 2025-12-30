@@ -4,7 +4,6 @@ import {
   Component,
   computed,
   effect,
-  HostListener,
   inject,
   input,
   signal,
@@ -66,6 +65,9 @@ export type FormFieldValidationState = 'default' | 'success' | 'warning' | 'erro
   templateUrl: './form-field.component.html',
   styleUrls: ['./form-field.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(focusout)': 'onBlur()',
+  },
 })
 export class FormFieldComponent {
   private readonly uniqueIdService = inject(UniqueIdService);
@@ -183,7 +185,6 @@ export class FormFieldComponent {
    * Listen for blur events to detect touched state changes
    * Since Angular Forms doesn't emit on touched, we rely on the DOM event
    */
-  @HostListener('focusout')
   onBlur(): void {
     this._trigger.update((v) => v + 1);
   }
@@ -347,7 +348,7 @@ export class FormFieldComponent {
     let result = message;
     for (const [key, value] of Object.entries(params)) {
       const placeholder = `{${key}}`;
-      result = result.replace(placeholder, String(value));
+      result = result.replaceAll(placeholder, String(value));
     }
     return result;
   }

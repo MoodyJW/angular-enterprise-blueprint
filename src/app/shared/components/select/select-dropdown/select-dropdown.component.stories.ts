@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { applicationConfig } from '@storybook/angular';
+import { applicationConfig, moduleMetadata } from '@storybook/angular';
 
 import type { SelectOption } from '../select.component';
 
@@ -13,115 +13,74 @@ const meta: Meta<SelectDropdownComponent> = {
     applicationConfig({
       providers: [],
     }),
+    moduleMetadata({
+      imports: [SelectDropdownComponent],
+    }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'The dropdown panel for the Select component. Contains search input (optional) and options list. Note: This component uses position: relative for Storybook rendering (normally position: absolute inside the Select).',
+      },
+    },
+  },
   argTypes: {
     dropdownClass: {
       control: 'text',
       description: 'CSS classes to apply to the dropdown container',
-      table: {
-        type: { summary: 'string' },
-      },
     },
     searchable: {
       control: 'boolean',
       description: 'Whether to show search input',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
     },
     searchQuery: {
       control: 'text',
       description: 'Current search query value',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '' },
-      },
     },
     listboxId: {
       control: 'text',
       description: 'ID for the listbox element',
-      table: {
-        type: { summary: 'string' },
-      },
     },
     ariaLabel: {
       control: 'text',
       description: 'ARIA label for the listbox',
-      table: {
-        type: { summary: 'string | undefined' },
-      },
     },
     isMultiple: {
       control: 'boolean',
       description: 'Whether multiple selections are allowed',
-      table: {
-        type: { summary: 'boolean' },
-      },
     },
     maxHeight: {
       control: 'number',
       description: 'Maximum height of the dropdown in pixels',
-      table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '280' },
-      },
-    },
-    options: {
-      control: 'object',
-      description: 'Array of select options',
-      table: {
-        type: { summary: 'SelectOption[]' },
-      },
     },
     highlightedIndex: {
       control: 'number',
       description: 'Index of currently highlighted option',
-      table: {
-        type: { summary: 'number' },
-      },
     },
     searchInput: {
       action: 'searchInput',
       description: 'Event emitted when search input changes',
-      table: {
-        category: 'Events',
-      },
     },
     searchKeydown: {
       action: 'searchKeydown',
       description: 'Event emitted on search input keydown',
-      table: {
-        category: 'Events',
-      },
     },
     optionClicked: {
       action: 'optionClicked',
       description: 'Event emitted when an option is clicked',
-      table: {
-        category: 'Events',
-      },
     },
     optionEnterPressed: {
       action: 'optionEnterPressed',
       description: 'Event emitted when Enter is pressed on an option',
-      table: {
-        category: 'Events',
-      },
     },
     optionSpacePressed: {
       action: 'optionSpacePressed',
       description: 'Event emitted when Space is pressed on an option',
-      table: {
-        category: 'Events',
-      },
     },
     optionMouseEntered: {
       action: 'optionMouseEntered',
       description: 'Event emitted when mouse enters an option',
-      table: {
-        category: 'Events',
-      },
     },
   },
   args: {
@@ -141,6 +100,45 @@ const meta: Meta<SelectDropdownComponent> = {
     ],
     isOptionSelected: (_option: SelectOption) => false,
   },
+  // Use render to wrap in a container with proper positioning
+  render: (args) => ({
+    props: args,
+    styles: [
+      `
+        .storybook-dropdown-wrapper {
+          position: relative;
+          width: 300px;
+          min-height: 300px;
+        }
+        .storybook-dropdown-wrapper eb-select-dropdown .select-dropdown {
+          position: relative;
+          top: 0;
+        }
+      `,
+    ],
+    template: `
+      <div class="storybook-dropdown-wrapper">
+        <eb-select-dropdown
+          [dropdownClass]="dropdownClass"
+          [searchable]="searchable"
+          [searchQuery]="searchQuery"
+          [listboxId]="listboxId"
+          [ariaLabel]="ariaLabel"
+          [isMultiple]="isMultiple"
+          [maxHeight]="maxHeight"
+          [options]="options"
+          [highlightedIndex]="highlightedIndex"
+          [isOptionSelected]="isOptionSelected"
+          (searchInput)="searchInput($event)"
+          (searchKeydown)="searchKeydown($event)"
+          (optionClicked)="optionClicked($event)"
+          (optionEnterPressed)="optionEnterPressed($event)"
+          (optionSpacePressed)="optionSpacePressed($event)"
+          (optionMouseEntered)="optionMouseEntered($event)"
+        />
+      </div>
+    `,
+  }),
 };
 
 export default meta;
