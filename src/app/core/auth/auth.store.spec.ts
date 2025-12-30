@@ -4,7 +4,7 @@ import { provideRouter, Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import type { AppEnvironment } from '../../../environments/environment.type';
+import type { AppEnvironment } from '@environments/environment.type';
 import { ENVIRONMENT } from '../config';
 import { LoggerService } from '../services/logger';
 import { AUTH_STRATEGY, type AuthStrategy } from './auth-strategy.interface';

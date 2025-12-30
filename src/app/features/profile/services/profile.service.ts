@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+import { ENVIRONMENT } from '@core/config';
+import { LoggerService } from '@core/services/logger';
 import { Observable, catchError, map, of } from 'rxjs';
-import { ENVIRONMENT } from '../../../core/config/environment.token';
-import { LoggerService } from '../../../core/services/logger';
 import { GitHubStats } from '../models/github-stats.interface';
 
 /**

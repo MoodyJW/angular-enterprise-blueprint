@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import type { ComponentFixture } from '@angular/core/testing';
 import { TestBed } from '@angular/core/testing';
-import { ICON_NAMES } from '../../constants';
+import { ICON_NAMES } from '@shared/constants';
 
 import { TabComponent } from './tab.component';
 import type { TabsOrientation, TabsSize, TabsVariant } from './tabs.component';

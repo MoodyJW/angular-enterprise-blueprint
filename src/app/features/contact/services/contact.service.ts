@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, map, tap, throwError } from 'rxjs';
 
-import { ENVIRONMENT } from '../../../core/config/environment.token';
-import { LoggerService } from '../../../core/services/logger';
+import { ENVIRONMENT } from '@core/config';
+import { LoggerService } from '@core/services/logger';
 import type { ContactFormData } from '../models';
 
 @Injectable({

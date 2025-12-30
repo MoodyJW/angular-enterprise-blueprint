@@ -11,6 +11,7 @@ import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoModule } from '@jsverse/transloco';
 import { provideIcons } from '@ng-icons/core';
 
+import { LoggerService } from '@core/services/logger';
 import {
   heroArrowDownTray,
   heroBuildingOffice2,
@@ -20,13 +21,12 @@ import {
   heroUser,
 } from '@ng-icons/heroicons/outline';
 import { ionLogoGithub } from '@ng-icons/ionicons';
-import { LoggerService } from '../../core/services/logger';
-import { BadgeComponent } from '../../shared/components/badge/badge.component';
-import { ButtonComponent } from '../../shared/components/button/button.component';
-import { CardComponent } from '../../shared/components/card/card.component';
-import { GridComponent } from '../../shared/components/grid/grid.component';
-import { IconComponent } from '../../shared/components/icon/icon.component';
-import { ModalComponent } from '../../shared/components/modal/modal.component';
+import { BadgeComponent } from '@shared/components/badge';
+import { ButtonComponent } from '@shared/components/button';
+import { CardComponent } from '@shared/components/card';
+import { GridComponent } from '@shared/components/grid';
+import { IconComponent } from '@shared/components/icon';
+import { ModalComponent } from '@shared/components/modal';
 import { ProfileStore } from './state/profile.store';
 
 import { ProfileStatsCardComponent } from './components/profile-stats-card/profile-stats-card.component';

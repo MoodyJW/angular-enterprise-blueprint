@@ -1,6 +1,6 @@
+import { ICON_NAMES } from '@shared/constants';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { applicationConfig } from '@storybook/angular';
-import { ICON_NAMES } from '../../constants';
 
 import { TabComponent } from './tab.component';
 import { TabsComponent } from './tabs.component';

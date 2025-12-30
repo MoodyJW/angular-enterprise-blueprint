@@ -363,6 +363,28 @@ readonly variant = input<ButtonVariant>('primary');
 
 ---
 
+### 7.6.7 Profile Stats Caching
+
+**Reference:** `/docs/PROFILE_STATS_CACHING_PLAN.md`
+
+**Current:** Stats refetch on every navigation to profile page
+**Target:** Persist stats across navigation (app-level store provider)
+
+**Actions:**
+
+1. Create `provideProfileStore()` in `profile.store.provider.ts`
+2. Move provider from `ProfileComponent` to `app.config.ts`
+3. Update unit tests
+
+**Acceptance Criteria:**
+
+- [ ] Stats persist when navigating away and back
+- [ ] No API re-fetch within 1 hour cache window
+- [ ] Cache clears on hard refresh
+- [ ] All tests pass
+
+---
+
 ## 7.7 Code Quality Sweep
 
 ### Tasks
@@ -430,10 +452,10 @@ npm run format
 | 7.3 Style Audit          | 16-20 hours      |
 | 7.4 Theme Compliance     | 8-12 hours       |
 | 7.5 Documentation        | 8-12 hours       |
-| 7.6 UX/UI Polish         | 24-32 hours      |
+| 7.6 UX/UI Polish         | 25-34 hours      |
 | 7.7 Code Quality         | 4-8 hours        |
 | 7.8 Blog Article         | 6-8 hours        |
-| **Total**                | **86-120 hours** |
+| **Total**                | **87-122 hours** |
 
 **7.6 Breakdown:**
 
@@ -443,6 +465,7 @@ npm run format
 - Filter chips: 6-8 hours
 - Profile layout: 2 hours
 - Toast improvements: 1-2 hours
+- Profile stats caching: 1-2 hours
 
 ---
 

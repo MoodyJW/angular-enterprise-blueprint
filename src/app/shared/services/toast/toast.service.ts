@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 
-import { TOAST_DURATIONS } from '../../constants';
+import { TOAST_DURATIONS } from '@shared/constants';
 
 import type { ToastPosition, ToastVariant } from '../../components/toast/toast.component';
 

@@ -13,9 +13,9 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { DEBOUNCE_DELAYS, FOCUS_DELAYS } from '../../constants';
-import { UniqueIdService } from '../../services/unique-id/unique-id.service';
-import { debounce } from '../../utilities/debounce-throttle/debounce-throttle.utils';
+import { DEBOUNCE_DELAYS, FOCUS_DELAYS } from '@shared/constants';
+import { UniqueIdService } from '@shared/services/unique-id';
+import { debounce } from '@shared/utilities/debounce-throttle';
 
 import { InputFooterComponent } from '../input-footer';
 import { InputLabelComponent } from '../input-label';

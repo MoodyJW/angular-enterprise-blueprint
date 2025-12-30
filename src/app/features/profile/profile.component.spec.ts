@@ -5,7 +5,7 @@ import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 import { vi } from 'vitest';
 
-import { LoggerService } from '../../core/services/logger';
+import { LoggerService } from '@core/services/logger';
 import { ProfileStatsCardComponent } from './components/profile-stats-card/profile-stats-card.component';
 import { GitHubStats } from './models/github-stats.interface';
 import { ProfileComponent } from './profile.component';

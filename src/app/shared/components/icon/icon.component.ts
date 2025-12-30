@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { NgIconComponent } from '@ng-icons/core';
 
-import { type IconName } from '../../constants';
+import { type IconName } from '@shared/constants';
 
 export type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 export type IconColor =

@@ -4,7 +4,7 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 
-import { ENVIRONMENT } from '../../../core/config/environment.token';
+import { ENVIRONMENT } from '@core/config';
 import type { ContactFormData } from '../models';
 import { ContactService } from '../services/contact.service';
 import { ContactStore } from './contact.store';
