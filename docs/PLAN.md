@@ -242,14 +242,14 @@ _Goal: Ensure it builds and ships like enterprise software._
   - [x] Install `source-map-explorer`.
   - [x] Configure Bundle Budgets in `angular.json` (Error on > 1MB).
   - [x] Set up Lighthouse CI Action.
-- [ ] **6.4 Release Management**:
-  - [ ] Install `standard-version` or `semantic-release`.
-  - [ ] Create automated `CHANGELOG.md` generation pipeline.
-- [ ] **6.5 Final Documentation**:
-  - [ ] `README.md`: The "Sales Pitch" for the repo.
-  - [ ] `CONTRIBUTING.md`: How to run the repo.
-  - [ ] `ARCHITECTURE.md`: High-level diagram.
-- [ ] **6.6 Blog Article**: Write about deploying and optimizing Angular applications.
+- [x] **6.4 Release Management**:
+  - [x] Install `standard-version` or `semantic-release`.
+  - [x] Create automated `CHANGELOG.md` generation pipeline.
+- [x] **6.5 Final Documentation**:
+  - [x] `README.md`: The "Sales Pitch" for the repo.
+  - [x] `CONTRIBUTING.md`: How to run the repo.
+  - [x] `ARCHITECTURE.md`: High-level diagram.
+- [x] **6.6 Blog Article**: Write about deploying and optimizing Angular applications.
 
 ### 🧹 Phase 7: Polish & Cleanup
 
