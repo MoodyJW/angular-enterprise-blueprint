@@ -4,7 +4,7 @@ import { Observable, map, tap, throwError } from 'rxjs';
 
 import { ENVIRONMENT } from '@core/config';
 import { LoggerService } from '@core/services/logger';
-import type { ContactFormData } from '../models';
+import type { ContactFormData } from '@features/contact/models';
 
 @Injectable({
   providedIn: 'root',

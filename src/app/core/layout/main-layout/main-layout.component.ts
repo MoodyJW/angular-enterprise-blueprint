@@ -11,8 +11,8 @@ import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router
 import { TranslocoModule } from '@jsverse/transloco';
 import { filter } from 'rxjs/operators';
 
-import { FooterComponent } from '../footer';
-import { HeaderComponent } from '../header';
+import { FooterComponent } from '@core/layout/footer';
+import { HeaderComponent } from '@core/layout/header';
 import { NAV_ITEMS } from '../navigation.data';
 
 /**

@@ -2,9 +2,9 @@ import { NgZone } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { ENVIRONMENT } from '@core/config';
+import { LoggerService } from '@core/services/logger';
 import type { AppEnvironment } from '@environments/environment.type';
-import { ENVIRONMENT } from '../config';
-import { LoggerService } from '../services/logger';
 import { ErrorNotificationService } from './error-notification.service';
 import { GlobalErrorHandler } from './global-error-handler';
 

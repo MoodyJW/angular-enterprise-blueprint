@@ -4,7 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 
 import { provideHttpClient } from '@angular/common/http';
-import { Module, ModulesService } from '../services/modules.service';
+import { Module, ModulesService } from '@features/modules/services/modules.service';
 import { ModulesStore } from './modules.store';
 
 describe('ModulesStore', () => {

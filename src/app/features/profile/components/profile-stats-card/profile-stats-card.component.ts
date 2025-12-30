@@ -1,5 +1,6 @@
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
+import { GitHubStats } from '@features/profile/models/github-stats.interface';
 import { TranslocoModule } from '@jsverse/transloco';
 import { provideIcons } from '@ng-icons/core';
 import {
@@ -13,7 +14,6 @@ import { ButtonComponent } from '@shared/components/button';
 import { CardComponent } from '@shared/components/card';
 import { IconComponent } from '@shared/components/icon';
 import { SkeletonComponent } from '@shared/components/skeleton';
-import { GitHubStats } from '../../models/github-stats.interface';
 
 @Component({
   selector: 'eb-profile-stats-card',

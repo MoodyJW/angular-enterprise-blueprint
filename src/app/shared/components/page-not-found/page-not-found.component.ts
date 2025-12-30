@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoModule } from '@jsverse/transloco';
 
-import { ButtonComponent } from '../button';
+import { ButtonComponent } from '@shared/components/button';
 
 /**
  * Page not found (404) component.

@@ -1,6 +1,6 @@
 import { inject, makeEnvironmentProviders, type EnvironmentProviders } from '@angular/core';
 
-import { ENVIRONMENT } from '../../config';
+import { ENVIRONMENT } from '@core/config';
 import { ANALYTICS_PROVIDER, type AnalyticsProvider } from './analytics-provider.interface';
 import { ConsoleAnalyticsProvider } from './providers/console-analytics.provider';
 import { GoogleAnalyticsProvider } from './providers/google-analytics.provider';

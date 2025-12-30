@@ -3,8 +3,8 @@ import { firstValueFrom } from 'rxjs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { ENVIRONMENT } from '@core/config';
+import { LoggerService } from '@core/services/logger';
 import type { AppEnvironment } from '@environments/environment.type';
-import { LoggerService } from '../../logger';
 import { ConsoleAnalyticsProvider } from './console-analytics.provider';
 
 describe('ConsoleAnalyticsProvider', () => {

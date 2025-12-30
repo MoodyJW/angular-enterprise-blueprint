@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 import { provideIcons } from '@ng-icons/core';
 import { heroCheck } from '@ng-icons/heroicons/outline';
 
+import { IconComponent } from '@shared/components/icon';
 import { ICON_NAMES } from '@shared/constants';
-import { IconComponent } from '../../icon/icon.component';
 
 /**
  * Select option subcomponent

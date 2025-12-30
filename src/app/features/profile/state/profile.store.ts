@@ -1,10 +1,10 @@
 import { computed, inject } from '@angular/core';
+import { GitHubStats } from '@features/profile/models/github-stats.interface';
+import { ProfileService } from '@features/profile/services/profile.service';
 import { tapResponse } from '@ngrx/operators';
 import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap, tap } from 'rxjs';
-import { GitHubStats } from '../models/github-stats.interface';
-import { ProfileService } from '../services/profile.service';
 
 /**
  * Cache duration in milliseconds (1 hour).

@@ -3,10 +3,14 @@ import { inject, Injectable } from '@angular/core';
 import { Observable, of, tap } from 'rxjs';
 
 import { ENVIRONMENT } from '@core/config';
-import { LoggerService } from '../../logger';
+import type {
+  AnalyticsProvider,
+  EventProperties,
+  GtagEventParams,
+  GtagFunction,
+} from '@core/services/analytics';
+import { LoggerService } from '@core/services/logger';
 import { AnalyticsLoaderService } from '../analytics-loader.service';
-import type { AnalyticsProvider, EventProperties } from '../analytics-provider.interface';
-import type { GtagEventParams, GtagFunction } from '../gtag.types';
 
 @Injectable()
 export class GoogleAnalyticsProvider implements AnalyticsProvider {

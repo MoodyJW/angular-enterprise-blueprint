@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { type CanActivateFn, Router } from '@angular/router';
 
-import { AuthStore } from '../auth.store';
+import { AuthStore } from '@core/auth';
 
 /**
  * Route guard for guest-only pages.

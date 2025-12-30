@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { ENVIRONMENT } from '@core/config';
 import type { AppEnvironment } from '@environments/environment.type';
-import { ENVIRONMENT } from '../../config';
 import {
   ANALYTICS_PROVIDER,
   type AnalyticsProvider,

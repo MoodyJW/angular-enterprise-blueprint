@@ -27,8 +27,8 @@ import { IconComponent } from '@shared/components/icon';
 import { StackComponent } from '@shared/components/stack';
 import { ICON_NAMES } from '@shared/constants/icon-names.constants';
 
-import { Module } from '../services/modules.service';
-import { ModulesStore } from '../state/modules.store';
+import { Module } from '@features/modules/services/modules.service';
+import { ModulesStore } from '@features/modules/state/modules.store';
 
 /**
  * Module detail page component.

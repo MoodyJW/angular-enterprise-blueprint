@@ -1,7 +1,7 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 
-import { CsrfTokenService } from '../services/security/csrf-token.service';
+import { CsrfTokenService } from '@core/services/security/csrf-token.service';
 
 /**
  * Checks if a URL is a same-origin request or a relative URL.

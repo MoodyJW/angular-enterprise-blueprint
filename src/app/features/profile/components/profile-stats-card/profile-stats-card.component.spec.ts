@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 
-import { GitHubStats } from '../../models/github-stats.interface';
+import { GitHubStats } from '@features/profile/models/github-stats.interface';
 import { ProfileStatsCardComponent } from './profile-stats-card.component';
 
 describe('ProfileStatsCardComponent', () => {

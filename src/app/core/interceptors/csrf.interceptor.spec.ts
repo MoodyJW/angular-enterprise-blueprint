@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 import { describe, expect, it, vi } from 'vitest';
 
-import { CsrfTokenService } from '../services/security/csrf-token.service';
+import { CsrfTokenService } from '@core/services/security/csrf-token.service';
 import { csrfInterceptor } from './csrf.interceptor';
 
 describe('csrfInterceptor', () => {

@@ -1,11 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { delay, Observable, of, throwError } from 'rxjs';
 
-import { ENVIRONMENT } from '../../config';
-import { LoggerService } from '../../services/logger';
-import { SecureStorageService } from '../../services/storage/secure-storage.service';
-import type { AuthStrategy } from '../auth-strategy.interface';
-import { AUTH_ERROR_CODES, type AuthError, type LoginCredentials, type User } from '../auth.types';
+import type { AuthStrategy } from '@core/auth';
+import { AUTH_ERROR_CODES, type AuthError, type LoginCredentials, type User } from '@core/auth';
+import { ENVIRONMENT } from '@core/config';
+import { LoggerService } from '@core/services/logger';
+import { SecureStorageService } from '@core/services/storage/secure-storage.service';
 
 /**
  * Storage key for the mock auth token.

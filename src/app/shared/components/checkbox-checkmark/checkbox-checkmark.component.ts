@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
 import { provideIcons } from '@ng-icons/core';
 import { heroCheck, heroMinus } from '@ng-icons/heroicons/outline';
 
+import { IconComponent } from '@shared/components/icon';
 import { ICON_NAMES } from '@shared/constants';
-import { IconComponent } from '../icon';
 
 /**
  * Reusable checkmark component for checkbox states

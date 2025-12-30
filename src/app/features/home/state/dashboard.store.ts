@@ -1,9 +1,9 @@
 import { inject } from '@angular/core';
+import { DashboardMetrics, DashboardService } from '@features/home/services/dashboard.service';
 import { tapResponse } from '@ngrx/operators';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap, tap } from 'rxjs';
-import { DashboardMetrics, DashboardService } from '../services/dashboard.service';
 
 type DashboardState = {
   metrics: DashboardMetrics | null;

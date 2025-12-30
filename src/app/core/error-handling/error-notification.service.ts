@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 
-import { LoggerService } from '../services/logger';
+import { LoggerService } from '@core/services/logger';
 
 /**
  * Service for notifying users about errors and other important messages.

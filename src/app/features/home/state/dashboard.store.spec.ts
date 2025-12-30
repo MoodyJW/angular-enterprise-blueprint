@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
+import { DashboardMetrics, DashboardService } from '@features/home/services/dashboard.service';
 import { of, throwError } from 'rxjs';
-import { DashboardMetrics, DashboardService } from '../services/dashboard.service';
 import { DashboardStore } from './dashboard.store';
 
 describe('DashboardStore', () => {
