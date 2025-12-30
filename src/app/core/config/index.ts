@@ -4,5 +4,5 @@ export type {
   AppEnvironment,
   FeatureFlags,
   GoogleAnalyticsConfig,
-} from '../../../environments/environment.type';
+} from '@environments/environment.type';
 export { ENVIRONMENT, provideEnvironment } from './environment.token';

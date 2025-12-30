@@ -8,8 +8,8 @@ import {
 } from '@angular/router';
 import { beforeEach, describe, expect, it } from 'vitest';
 
+import type { AppEnvironment } from '@environments/environment.type';
 import { of } from 'rxjs';
-import type { AppEnvironment } from '../../../../environments/environment.type';
 import { ENVIRONMENT } from '../../config';
 import { LoggerService } from '../../services/logger';
 import { AUTH_STRATEGY, type AuthStrategy } from '../auth-strategy.interface';

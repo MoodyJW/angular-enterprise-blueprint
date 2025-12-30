@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { UniqueIdService } from '../../services/unique-id/unique-id.service';
+import { UniqueIdService } from '@shared/services/unique-id';
 
 import { CheckboxCheckmarkComponent } from '../checkbox-checkmark';
 import { InputFooterComponent } from '../input-footer';

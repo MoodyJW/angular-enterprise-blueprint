@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
-import { type Toast, ToastService } from '../../services/toast/toast.service';
+import { type Toast, ToastService } from '@shared/services/toast';
 
 import type { ToastPosition } from './toast.component';
 import { ToastComponent } from './toast.component';

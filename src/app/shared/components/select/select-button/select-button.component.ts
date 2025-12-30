@@ -10,7 +10,7 @@ import {
 import { provideIcons } from '@ng-icons/core';
 import { heroChevronDown, heroXMark } from '@ng-icons/heroicons/outline';
 
-import { ICON_NAMES } from '../../../constants/icon-names.constants';
+import { ICON_NAMES } from '@shared/constants';
 import { IconComponent } from '../../icon/icon.component';
 
 /**

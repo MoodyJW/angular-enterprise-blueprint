@@ -16,11 +16,28 @@
     "module": "preserve",
     "baseUrl": "src",
     "paths": {
+      // Top-level modules
       "@app/*": ["app/*"],
       "@core/*": ["app/core/*"],
       "@shared/*": ["app/shared/*"],
       "@assets/*": ["assets/*"],
-      "@env/*": ["environments/*"]
+      // Features module
+      "@features/*": ["app/features/*"],
+      // Core sub-modules
+      "@core/auth/*": ["app/core/auth/*"],
+      "@core/services/*": ["app/core/services/*"],
+      "@core/config/*": ["app/core/config/*"],
+      "@core/layout/*": ["app/core/layout/*"],
+      "@core/interceptors/*": ["app/core/interceptors/*"],
+      "@core/error-handling/*": ["app/core/error-handling/*"],
+      "@core/i18n/*": ["app/core/i18n/*"],
+      // Shared sub-modules
+      "@shared/components/*": ["app/shared/components/*"],
+      "@shared/services/*": ["app/shared/services/*"],
+      "@shared/utilities/*": ["app/shared/utilities/*"],
+      "@shared/constants/*": ["app/shared/constants/*"],
+      // Environments
+      "@environments/*": ["environments/*"]
     }
   },
   "angularCompilerOptions": {

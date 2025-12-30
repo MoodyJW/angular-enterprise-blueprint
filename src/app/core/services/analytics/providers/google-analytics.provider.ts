@@ -2,7 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { inject, Injectable } from '@angular/core';
 import { Observable, of, tap } from 'rxjs';
 
-import { ENVIRONMENT } from '../../../config';
+import { ENVIRONMENT } from '@core/config';
 import { LoggerService } from '../../logger';
 import { AnalyticsLoaderService } from '../analytics-loader.service';
 import type { AnalyticsProvider, EventProperties } from '../analytics-provider.interface';

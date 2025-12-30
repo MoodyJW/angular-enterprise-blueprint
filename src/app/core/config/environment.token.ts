@@ -1,7 +1,7 @@
 import { InjectionToken, Provider } from '@angular/core';
 
-import { environment } from '../../../environments/environment';
-import type { AppEnvironment } from '../../../environments/environment.type';
+import { environment } from '@environments/environment';
+import type { AppEnvironment } from '@environments/environment.type';
 
 /**
  * Injection token for the application environment configuration.

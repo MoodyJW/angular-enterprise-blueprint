@@ -9,7 +9,7 @@ import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import type { AppEnvironment } from '../../../environments/environment.type';
+import type { AppEnvironment } from '@environments/environment.type';
 import { ENVIRONMENT } from '../config';
 import { ErrorNotificationService } from '../error-handling';
 import { LoggerService } from '../services/logger';

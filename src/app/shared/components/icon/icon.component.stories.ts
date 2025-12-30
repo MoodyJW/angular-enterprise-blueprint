@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { applicationConfig, argsToTemplate } from '@storybook/angular';
 
-import { ICON_NAMES } from '../../constants';
+import { ICON_NAMES } from '@shared/constants';
 import { IconComponent } from './icon.component';
 
 const meta: Meta<IconComponent> = {

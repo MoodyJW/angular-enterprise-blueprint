@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 
-import { ToastService } from '../../services/toast/toast.service';
+import { ToastService } from '@shared/services/toast';
 
 import { ToastContainerComponent } from './toast-container.component';
 

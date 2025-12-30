@@ -9,10 +9,10 @@ import {
   heroUser,
 } from '@ng-icons/heroicons/outline';
 import { ionLogoGithub } from '@ng-icons/ionicons';
-import { ButtonComponent } from '../../../../shared/components/button/button.component';
-import { CardComponent } from '../../../../shared/components/card/card.component';
-import { IconComponent } from '../../../../shared/components/icon/icon.component';
-import { SkeletonComponent } from '../../../../shared/components/skeleton/skeleton.component';
+import { ButtonComponent } from '@shared/components/button';
+import { CardComponent } from '@shared/components/card';
+import { IconComponent } from '@shared/components/icon';
+import { SkeletonComponent } from '@shared/components/skeleton';
 import { GitHubStats } from '../../models/github-stats.interface';
 
 @Component({

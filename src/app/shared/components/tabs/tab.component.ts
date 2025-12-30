@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 
-import type { IconName } from '../../constants';
+import type { IconName } from '@shared/constants';
 
 /**
  * Individual tab component.

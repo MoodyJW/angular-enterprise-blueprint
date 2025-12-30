@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { describe, expect, it } from 'vitest';
 
-import type { AppEnvironment } from '../../../environments/environment.type';
+import type { AppEnvironment } from '@environments/environment.type';
 import { ENVIRONMENT, provideEnvironment } from './environment.token';
 
 describe('ENVIRONMENT Token', () => {

@@ -7,7 +7,7 @@ import {
   heroXCircle,
 } from '@ng-icons/heroicons/outline';
 
-import { ICON_NAMES } from '../../constants/icon-names.constants';
+import { ICON_NAMES } from '@shared/constants';
 
 import { ButtonComponent } from '../button/button.component';
 import { IconComponent } from '../icon/icon.component';

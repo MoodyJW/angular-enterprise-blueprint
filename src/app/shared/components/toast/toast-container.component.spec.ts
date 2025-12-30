@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { ToastService } from '../../services/toast/toast.service';
+import { ToastService } from '@shared/services/toast';
 import { ToastContainerComponent } from './toast-container.component';
 import { ToastComponent } from './toast.component';
 
