@@ -62,3 +62,5 @@ jobs:
           labels: |
             automation
             metrics
+          add-paths: |
+            src/assets/data/metrics.json

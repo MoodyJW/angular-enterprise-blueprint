@@ -3,7 +3,7 @@ import type { AppEnvironment } from './environment.type';
 /**
  * Production environment configuration.
  *
- * This configuration is used for production builds (\`ng build\`).
+ * This configuration is used for production builds (`ng build`).
  * It disables mock services and enables production optimizations.
  *
  * For GitHub Pages deployment:
@@ -16,12 +16,12 @@ import type { AppEnvironment } from './environment.type';
  * To enable Google Analytics for your deployment:
  *
  * @example GitHub Actions
- * \`\`\`yaml
+ * ```yaml
  * - name: Configure Analytics
  *   run: |
  *     sed -i "s/provider: 'console'/provider: 'google'/" src/environments/environment.prod.ts
- *     sed -i "s/google: undefined/google: { measurementId: '\${{ secrets.GA4_MEASUREMENT_ID }}' }/" src/environments/environment.prod.ts
- * \`\`\`
+ *     sed -i "s/google: undefined/google: { measurementId: '${{ secrets.GA4_MEASUREMENT_ID }}' }/" src/environments/environment.prod.ts
+ * ```
  */
 export const environment: AppEnvironment = {
   appName: 'Angular Enterprise Blueprint',
