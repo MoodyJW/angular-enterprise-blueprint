@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v1.0.0...v1.0.1) (2025-12-30)
+
+
+### Bug Fixes
+
+* **accessibility:** header hierarchy ([6d00f66](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/6d00f6619af19b523e8f1fee93242d04af5723c2))
+
 ## 1.0.0 (2025-12-30)
 
 
