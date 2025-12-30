@@ -96,7 +96,7 @@ function updateMetrics() {
   }
 
   // Write back
-  fs.writeFileSync(METRICS_PATH, JSON.stringify(metrics, null, 2));
+  fs.writeFileSync(METRICS_PATH, JSON.stringify(metrics, null, 2) + '\n');
   console.log('Metrics updated successfully.');
 }
 
