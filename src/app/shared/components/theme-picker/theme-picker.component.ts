@@ -4,7 +4,7 @@ import { heroCheck, heroChevronDown } from '@ng-icons/heroicons/outline';
 
 import type { Theme, ThemeCategory, ThemeId } from '@core/services';
 import { ThemeService } from '@core/services';
-import { IconComponent } from '../icon';
+import { IconComponent } from '@shared/components/icon';
 
 export type ThemePickerVariant = 'dropdown' | 'grid' | 'inline';
 export type ThemePickerSize = 'sm' | 'md' | 'lg';

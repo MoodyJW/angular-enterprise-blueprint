@@ -6,7 +6,7 @@ import { TranslocoTestingModule } from '@jsverse/transloco';
 import { NEVER, of, throwError } from 'rxjs';
 import { Mock, vi } from 'vitest';
 
-import { ToastService } from '../../shared/services/toast/toast.service';
+import { ToastService } from '@shared/services/toast';
 import { ContactComponent } from './contact.component';
 import { ContactService } from './services/contact.service';
 

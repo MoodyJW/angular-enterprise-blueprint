@@ -4,7 +4,7 @@ import { patchState, signalStore, withComputed, withMethods, withState } from '@
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { catchError, of, pipe, switchMap, tap } from 'rxjs';
 
-import { LoggerService } from '../services/logger';
+import { LoggerService } from '@core/services/logger';
 import { AUTH_STRATEGY } from './auth-strategy.interface';
 import {
   AUTH_ERROR_CODES,

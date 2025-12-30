@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { ENVIRONMENT } from '@core/config';
 import { LoggerService } from '@core/services/logger';
+import { GitHubStats } from '@features/profile/models/github-stats.interface';
 import { Observable, catchError, map, of } from 'rxjs';
-import { GitHubStats } from '../models/github-stats.interface';
 
 /**
  * GraphQL query for fetching user profile and contribution stats.

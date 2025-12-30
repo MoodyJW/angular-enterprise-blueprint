@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 
-import { ButtonContentComponent } from '../button-content/button-content.component';
+import { ButtonContentComponent } from '@shared/components/button-content';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'danger';
 export type ButtonSize = 'sm' | 'md' | 'lg';

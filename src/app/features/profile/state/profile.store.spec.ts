@@ -3,9 +3,9 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { ENVIRONMENT } from '@core/config';
+import { GitHubStats } from '@features/profile/models/github-stats.interface';
+import { ProfileService } from '@features/profile/services/profile.service';
 import { of, throwError } from 'rxjs';
-import { GitHubStats } from '../models/github-stats.interface';
-import { ProfileService } from '../services/profile.service';
 import { ProfileStore } from './profile.store';
 
 describe('ProfileStore', () => {

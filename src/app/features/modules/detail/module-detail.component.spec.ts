@@ -10,7 +10,7 @@ import { of } from 'rxjs';
 
 import { ICON_NAMES } from '@shared/constants';
 
-import { ModulesService, type Module } from '../services/modules.service';
+import { ModulesService, type Module } from '@features/modules/services/modules.service';
 import { ModuleDetailComponent } from './module-detail.component';
 
 describe('ModuleDetailComponent', () => {

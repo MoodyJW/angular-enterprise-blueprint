@@ -1,9 +1,9 @@
 import { computed, inject } from '@angular/core';
+import { Module, ModulesService } from '@features/modules/services/modules.service';
 import { tapResponse } from '@ngrx/operators';
 import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap, tap } from 'rxjs';
-import { Module, ModulesService } from '../services/modules.service';
 
 /**
  * State shape for the modules store.

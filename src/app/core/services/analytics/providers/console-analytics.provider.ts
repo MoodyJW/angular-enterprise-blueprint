@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable, of, tap } from 'rxjs';
 
-import { LoggerService } from '../../logger';
-import type { AnalyticsProvider, EventProperties } from '../analytics-provider.interface';
+import type { AnalyticsProvider, EventProperties } from '@core/services/analytics';
+import { LoggerService } from '@core/services/logger';
 
 /**
  * Console-based analytics provider for development and testing.

@@ -8,13 +8,12 @@ import {
 } from '@angular/router';
 import { beforeEach, describe, expect, it } from 'vitest';
 
+import type { User } from '@core/auth';
+import { AUTH_STRATEGY, AuthStore, type AuthStrategy } from '@core/auth';
+import { ENVIRONMENT } from '@core/config';
+import { LoggerService } from '@core/services/logger';
 import type { AppEnvironment } from '@environments/environment.type';
 import { of } from 'rxjs';
-import { ENVIRONMENT } from '../../config';
-import { LoggerService } from '../../services/logger';
-import { AUTH_STRATEGY, type AuthStrategy } from '../auth-strategy.interface';
-import { AuthStore } from '../auth.store';
-import type { User } from '../auth.types';
 import { guestGuard } from './guest.guard';
 
 const mockRoute = {} as ActivatedRouteSnapshot;

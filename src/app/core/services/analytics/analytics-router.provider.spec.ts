@@ -5,8 +5,8 @@ import { provideRouter, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { ENVIRONMENT } from '@core/config';
 import type { AppEnvironment } from '@environments/environment.type';
-import { ENVIRONMENT } from '../../config';
 import {
   ANALYTICS_PROVIDER,
   type AnalyticsProvider,

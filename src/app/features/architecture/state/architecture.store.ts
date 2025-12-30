@@ -4,7 +4,7 @@ import { patchState, signalStore, withComputed, withMethods, withState } from '@
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap, tap } from 'rxjs';
 
-import { Adr, ArchitectureService } from '../services/architecture.service';
+import { Adr, ArchitectureService } from '@features/architecture/services/architecture.service';
 
 /**
  * State shape for the architecture store.

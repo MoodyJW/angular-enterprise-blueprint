@@ -5,8 +5,8 @@ import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 
 import { ENVIRONMENT } from '@core/config';
-import type { ContactFormData } from '../models';
-import { ContactService } from '../services/contact.service';
+import type { ContactFormData } from '@features/contact/models';
+import { ContactService } from '@features/contact/services/contact.service';
 import { ContactStore } from './contact.store';
 
 describe('ContactStore', () => {

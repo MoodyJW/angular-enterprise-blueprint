@@ -5,8 +5,8 @@ import { patchState, signalStore, withComputed, withMethods, withState } from '@
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap, tap } from 'rxjs';
 
-import type { ContactFormData, FormspreeFieldError } from '../models';
-import { ContactService } from '../services/contact.service';
+import type { ContactFormData, FormspreeFieldError } from '@features/contact/models';
+import { ContactService } from '@features/contact/services/contact.service';
 
 /**
  * State shape for the contact store.

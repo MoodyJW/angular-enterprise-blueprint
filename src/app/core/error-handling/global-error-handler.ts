@@ -1,6 +1,6 @@
 import { ErrorHandler, inject, Injectable, NgZone } from '@angular/core';
 
-import { LoggerService } from '../services/logger';
+import { LoggerService } from '@core/services/logger';
 import { ErrorNotificationService } from './error-notification.service';
 import type { AppError } from './error.types';
 

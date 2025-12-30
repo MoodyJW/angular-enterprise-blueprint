@@ -10,7 +10,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
-import { ENVIRONMENT } from '../../config';
+import { ENVIRONMENT } from '@core/config';
 import { AnalyticsService } from './analytics.service';
 
 /**

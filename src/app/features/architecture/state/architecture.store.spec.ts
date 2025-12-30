@@ -4,7 +4,7 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 
-import { Adr, ArchitectureService } from '../services/architecture.service';
+import { Adr, ArchitectureService } from '@features/architecture/services/architecture.service';
 import { ArchitectureStore } from './architecture.store';
 
 describe('ArchitectureStore', () => {

@@ -14,7 +14,7 @@ import { provideIcons } from '@ng-icons/core';
 import { heroCheck, heroChevronDown, heroGlobeAlt } from '@ng-icons/heroicons/outline';
 
 import { AVAILABLE_LANGUAGES, type AvailableLanguage } from '@core/i18n';
-import { IconComponent } from '../icon';
+import { IconComponent } from '@shared/components/icon';
 
 /** Language information for display */
 export interface Language {

@@ -2,7 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { inject, Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
-import { ENVIRONMENT } from '../../config';
+import { ENVIRONMENT } from '@core/config';
 import type {
   DefaultSeoConfig,
   JsonLdConfig,

@@ -11,7 +11,7 @@ import {
   signal,
 } from '@angular/core';
 
-import { TabButtonComponent } from '../tab-button/tab-button.component';
+import { TabButtonComponent } from '@shared/components/tab-button';
 
 import { TabComponent } from './tab.component';
 

@@ -3,8 +3,8 @@ import { TestBed } from '@angular/core/testing';
 import { Meta, Title } from '@angular/platform-browser';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { ENVIRONMENT } from '@core/config';
 import type { AppEnvironment } from '@environments/environment.type';
-import { ENVIRONMENT } from '../../config';
 import { SeoService } from './seo.service';
 import type { JsonLdConfig, PageSeoConfig } from './seo.types';
 

@@ -6,8 +6,8 @@ import { UniqueIdService } from '@shared/services/unique-id';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { argsToTemplate, componentWrapperDecorator, moduleMetadata } from '@storybook/angular';
 
-import { InputFooterComponent } from '../input-footer';
-import { InputLabelComponent } from '../input-label';
+import { InputFooterComponent } from '@shared/components/input-footer';
+import { InputLabelComponent } from '@shared/components/input-label';
 
 import { FormFieldComponent } from './form-field.component';
 

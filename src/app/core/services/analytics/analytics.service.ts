@@ -1,9 +1,9 @@
 import { afterNextRender, inject, Injectable } from '@angular/core';
 import { catchError, of, take } from 'rxjs';
 
-import type { AppEnvironment } from '../../config';
-import { ENVIRONMENT } from '../../config';
-import { LoggerService } from '../logger';
+import type { AppEnvironment } from '@core/config';
+import { ENVIRONMENT } from '@core/config';
+import { LoggerService } from '@core/services/logger';
 import {
   ANALYTICS_PROVIDER,
   type AnalyticsProvider,

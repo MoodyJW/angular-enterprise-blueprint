@@ -7,8 +7,8 @@ import {
   ErrorNotificationService,
   HTTP_ERROR_MESSAGES,
   type HttpErrorDetails,
-} from '../error-handling';
-import { LoggerService } from '../services/logger';
+} from '@core/error-handling';
+import { LoggerService } from '@core/services/logger';
 
 /**
  * HTTP error interceptor that transforms HTTP errors into user-friendly messages.

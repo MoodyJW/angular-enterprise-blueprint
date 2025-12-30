@@ -4,9 +4,9 @@ import { provideRouter, Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { ENVIRONMENT } from '@core/config';
+import { LoggerService } from '@core/services/logger';
 import type { AppEnvironment } from '@environments/environment.type';
-import { ENVIRONMENT } from '../config';
-import { LoggerService } from '../services/logger';
 import { AUTH_STRATEGY, type AuthStrategy } from './auth-strategy.interface';
 import { AuthStore } from './auth.store';
 import { AUTH_ERROR_CODES, type AuthError, type LoginCredentials, type User } from './auth.types';

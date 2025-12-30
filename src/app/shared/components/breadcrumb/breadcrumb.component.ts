@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 import { provideIcons } from '@ng-icons/core';
 import { heroArrowRight, heroChevronRight, heroHome } from '@ng-icons/heroicons/outline';
 
+import { IconComponent } from '@shared/components/icon';
 import { ICON_NAMES, type IconName } from '@shared/constants';
-import { IconComponent } from '../icon/icon.component';
 
 export type BreadcrumbVariant = 'default' | 'slash' | 'chevron' | 'arrow';
 export type BreadcrumbSize = 'sm' | 'md' | 'lg';

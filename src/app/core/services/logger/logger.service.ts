@@ -1,7 +1,7 @@
 /* eslint-disable no-console -- LoggerService is the abstraction layer for console methods */
 import { inject, Injectable } from '@angular/core';
 
-import { ENVIRONMENT } from '../../config';
+import { ENVIRONMENT } from '@core/config';
 
 /**
  * Log levels supported by the LoggerService.

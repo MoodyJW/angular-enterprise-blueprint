@@ -3,7 +3,7 @@ import { signal } from '@angular/core';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 
-import { ButtonComponent } from '../button/button.component';
+import { ButtonComponent } from '@shared/components/button';
 
 import { ModalComponent } from './modal.component';
 

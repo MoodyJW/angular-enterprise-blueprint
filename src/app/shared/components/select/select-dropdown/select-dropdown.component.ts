@@ -8,7 +8,7 @@ import {
   viewChild,
 } from '@angular/core';
 
-import { IconComponent } from '../../icon/icon.component';
+import { IconComponent } from '@shared/components/icon';
 import { SelectOptionComponent } from '../select-option/select-option.component';
 import type { SelectOption } from '../select.component';
 

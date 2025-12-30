@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 
 import { type IconName } from '@shared/constants';
 
-import { ButtonComponent } from '../button/button.component';
-import { IconComponent } from '../icon/icon.component';
+import { ButtonComponent } from '@shared/components/button';
+import { IconComponent } from '@shared/components/icon';
 
 /**
  * Small wrapper around `eb-button` that contains tab-specific visual styles

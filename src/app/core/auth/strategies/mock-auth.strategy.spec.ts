@@ -2,11 +2,11 @@ import { TestBed } from '@angular/core/testing';
 import { firstValueFrom } from 'rxjs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { AUTH_ERROR_CODES, type LoginCredentials } from '@core/auth';
+import { ENVIRONMENT } from '@core/config';
+import { LoggerService } from '@core/services/logger';
+import { SecureStorageService } from '@core/services/storage/secure-storage.service';
 import type { AppEnvironment } from '@environments/environment.type';
-import { ENVIRONMENT } from '../../config';
-import { LoggerService } from '../../services/logger';
-import { SecureStorageService } from '../../services/storage/secure-storage.service';
-import { AUTH_ERROR_CODES, type LoginCredentials } from '../auth.types';
 import { MockAuthStrategy } from './mock-auth.strategy';
 
 describe('MockAuthStrategy', () => {

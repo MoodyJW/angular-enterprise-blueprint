@@ -2,7 +2,7 @@ import { Injectable, signal } from '@angular/core';
 
 import { TOAST_DURATIONS } from '@shared/constants';
 
-import type { ToastPosition, ToastVariant } from '../../components/toast/toast.component';
+import type { ToastPosition, ToastVariant } from '@shared/components/toast';
 
 /**
  * Configuration options for displaying a toast notification

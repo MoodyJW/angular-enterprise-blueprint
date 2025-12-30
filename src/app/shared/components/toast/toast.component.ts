@@ -9,8 +9,8 @@ import {
 
 import { ICON_NAMES } from '@shared/constants';
 
-import { ButtonComponent } from '../button/button.component';
-import { IconComponent } from '../icon/icon.component';
+import { ButtonComponent } from '@shared/components/button';
+import { IconComponent } from '@shared/components/icon';
 
 export type ToastVariant = 'success' | 'error' | 'warning' | 'info';
 export type ToastPosition =
