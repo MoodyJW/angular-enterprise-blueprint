@@ -273,12 +273,12 @@ export class InputComponent implements ControlValueAccessor {
    * Computed helper text CSS classes
    */
   readonly helperTextClasses = computed(() => {
-    const classes = ['input-helper-text'];
+    const classes = ['input__helper-text'];
     const state = this.validationState();
 
-    if (state === 'success') classes.push('input-helper-text--success');
-    if (state === 'warning') classes.push('input-helper-text--warning');
-    if (state === 'error') classes.push('input-helper-text--error');
+    if (state === 'success') classes.push('input__helper-text--success');
+    if (state === 'warning') classes.push('input__helper-text--warning');
+    if (state === 'error') classes.push('input__helper-text--error');
 
     return classes.join(' ');
   });
@@ -433,14 +433,14 @@ export class InputComponent implements ControlValueAccessor {
    * Generate BEM CSS classes for the wrapper
    */
   private _getWrapperClasses(): string {
-    const classes = ['input-wrapper'];
+    const classes = ['input'];
 
     // Size class
-    classes.push(`input-wrapper--${this.size()}`);
+    classes.push(`input--${this.size()}`);
 
     // Full width modifier
     if (this.fullWidth()) {
-      classes.push('input-wrapper--full-width');
+      classes.push('input--full-width');
     }
 
     return classes.join(' ');
@@ -450,35 +450,35 @@ export class InputComponent implements ControlValueAccessor {
    * Generate BEM CSS classes for the input element
    */
   private _getInputClasses(): string {
-    const classes = ['input'];
+    const classes = ['input__control'];
 
     // Variant class
-    classes.push(`input--${this.variant()}`);
+    classes.push(`input__control--${this.variant()}`);
 
     // Size class
-    classes.push(`input--${this.size()}`);
+    classes.push(`input__control--${this.size()}`);
 
     // Validation state class
     const validation = this.validationState();
     if (validation !== 'default') {
-      classes.push(`input--${validation}`);
+      classes.push(`input__control--${validation}`);
     }
 
     // State classes
     if (this.isDisabled()) {
-      classes.push('input--disabled');
+      classes.push('input__control--disabled');
     }
     if (this.readonly()) {
-      classes.push('input--readonly');
+      classes.push('input__control--readonly');
     }
     if (this.isFocused()) {
-      classes.push('input--focused');
+      classes.push('input__control--focused');
     }
     if (this.prefix() != null) {
-      classes.push('input--has-prefix');
+      classes.push('input__control--has-prefix');
     }
     if (this.suffix() != null) {
-      classes.push('input--has-suffix');
+      classes.push('input__control--has-suffix');
     }
 
     return classes.join(' ');

@@ -79,9 +79,9 @@
 
 **Acceptance Criteria:**
 
-- [ ] Zero relative imports (100% path alias usage)
-- [ ] All barrel exports used consistently
-- [ ] Build succeeds, all tests pass
+- [x] Zero relative imports (100% path alias usage)
+- [x] All barrel exports used consistently
+- [x] Build succeeds, all tests pass
 
 ---
 
@@ -91,33 +91,33 @@
 
 **BEM Naming:**
 
-- [ ] All classes follow `.block__element--modifier` pattern
-- [ ] No camelCase or snake_case in CSS
+- [x] All classes follow `.block__element--modifier` pattern
+- [x] No camelCase or snake_case in CSS
 
 **CSS Custom Properties:**
 
-- [ ] 100% color values from theme system (no hardcoded `#fff`, `rgb()`, etc.)
-- [ ] Spacing uses standardized scale (`--space-1` through `--space-12`)
-- [ ] Font sizes use typography scale (`--font-size-xs` through `--font-size-4xl`)
+- [x] 100% color values from theme system (no hardcoded `#fff`, `rgb()`, etc.)
+- [x] Spacing uses standardized scale (`--space-1` through `--space-12`)
+- [x] Font sizes use typography scale (`--font-size-xs` through `--font-size-4xl`)
 
 **Interactive States:**
 
-- [ ] `:hover`, `:focus`, `:active`, `:disabled` states defined
-- [ ] Focus indicators meet 3:1 contrast ratio, 2px minimum thickness
-- [ ] `[aria-disabled]` and `[aria-invalid]` selectors styled
+- [x] `:hover`, `:focus`, `:active`, `:disabled` states defined
+- [x] Focus indicators meet 3:1 contrast ratio, 2px minimum thickness
+- [x] `[aria-disabled]` and `[aria-invalid]` selectors styled
 
 **Motion:**
 
-- [ ] All transitions ≤200ms
-- [ ] `@media (prefers-reduced-motion: reduce)` removes animations
+- [x] All transitions ≤200ms
+- [x] `@media (prefers-reduced-motion: reduce)` removes animations
 
-**Components to Audit:** Input, Textarea, FormField, Button, Card, Badge, LoadingSpinner, Icon, Tabs, Breadcrumb, Toast, Modal, Skeleton
+**Components to Audit:** Input, Textarea, FormField, Button, Card, Badge, LoadingSpinner, Icon, Tabs, Breadcrumb, Toast, Modal, Skeleton, Select, ButtonContent, ThemePicker, LanguageSwitcher, TabButton, Tooltip, Checkbox, Container, Divider, Grid, InputFooter, InputLabel, PageNotFound, Radio, Stack
 
 **Acceptance Criteria:**
 
-- [ ] All components audited and updated
-- [ ] Tested in all 6 themes
-- [ ] Storybook stories demonstrate all states
+- [x] All components audited and updated
+- [x] Tested in all 6 themes
+- [x] Storybook stories demonstrate all states
 
 ---
 

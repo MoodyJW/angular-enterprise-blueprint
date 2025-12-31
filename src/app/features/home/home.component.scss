@@ -1,17 +1,16 @@
+@use '../../shared/styles/feature-page' as page;
+
 .home {
   &__header {
-    margin-bottom: var(--space-4);
+    @include page.feature-header;
   }
 
   &__title {
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text);
+    @include page.feature-title;
   }
 
   &__subtitle {
-    font-size: var(--font-size-lg);
-    color: var(--color-text-secondary);
+    @include page.feature-subtitle;
   }
 }
 

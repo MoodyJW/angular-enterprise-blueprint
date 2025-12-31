@@ -107,6 +107,8 @@
   --font-size-2xl: 1.5rem;
   --font-size-3xl: 1.875rem;
   --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 4rem;
 
   // Font weights
   --font-weight-light: 300;
@@ -226,6 +228,7 @@
   // Z-INDEX
   // ============================================
 
+  --z-above: 1;
   --z-dropdown: 1000;
   --z-sticky: 1020;
   --z-fixed: 1030;

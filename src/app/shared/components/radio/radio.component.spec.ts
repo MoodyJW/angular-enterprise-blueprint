@@ -19,7 +19,7 @@ describe('RadioComponent', () => {
       set: {
         template: `
           <div [class]="wrapperClasses()">
-            <div class="radio-input-wrapper">
+            <div class="radio__wrapper">
               <input
                 #radioElement
                 type="radio"
@@ -38,11 +38,6 @@ describe('RadioComponent', () => {
                 (focus)="handleFocus($event)"
                 (blur)="handleBlur($event)"
               />
-              <span class="radio-indicator" aria-hidden="true">
-                @if (checked()) {
-                  <span class="radio-indicator__dot"></span>
-                }
-              </span>
             </div>
 
             @if (label()) {
@@ -248,28 +243,6 @@ describe('RadioComponent', () => {
     describe('wrapperClasses', () => {
       it('should include base class', () => {
         const classes = component.wrapperClasses();
-        expect(classes).toContain('radio-wrapper');
-      });
-
-      it('should include size class', () => {
-        const sizes: RadioSize[] = ['sm', 'md', 'lg'];
-        sizes.forEach((size) => {
-          fixture.componentRef.setInput('size', size);
-          const classes = component.wrapperClasses();
-          expect(classes).toContain(`radio-wrapper--${size}`);
-        });
-      });
-
-      it('should include disabled class when disabled', () => {
-        fixture.componentRef.setInput('disabled', true);
-        const classes = component.wrapperClasses();
-        expect(classes).toContain('radio-wrapper--disabled');
-      });
-    });
-
-    describe('radioClasses', () => {
-      it('should include base class', () => {
-        const classes = component.radioClasses();
         expect(classes).toContain('radio');
       });
 
@@ -277,8 +250,30 @@ describe('RadioComponent', () => {
         const sizes: RadioSize[] = ['sm', 'md', 'lg'];
         sizes.forEach((size) => {
           fixture.componentRef.setInput('size', size);
-          const classes = component.radioClasses();
+          const classes = component.wrapperClasses();
           expect(classes).toContain(`radio--${size}`);
+        });
+      });
+
+      it('should include disabled class when disabled', () => {
+        fixture.componentRef.setInput('disabled', true);
+        const classes = component.wrapperClasses();
+        expect(classes).toContain('radio--disabled');
+      });
+    });
+
+    describe('radioClasses', () => {
+      it('should include base class', () => {
+        const classes = component.radioClasses();
+        expect(classes).toContain('radio__control');
+      });
+
+      it('should include size class', () => {
+        const sizes: RadioSize[] = ['sm', 'md', 'lg'];
+        sizes.forEach((size) => {
+          fixture.componentRef.setInput('size', size);
+          const classes = component.radioClasses();
+          expect(classes).toContain(`radio__control--${size}`);
         });
       });
 
@@ -287,39 +282,39 @@ describe('RadioComponent', () => {
         states.forEach((state) => {
           fixture.componentRef.setInput('validationState', state);
           const classes = component.radioClasses();
-          expect(classes).toContain(`radio--${state}`);
+          expect(classes).toContain(`radio__control--${state}`);
         });
       });
 
       it('should not include default validation state class', () => {
         fixture.componentRef.setInput('validationState', 'default');
         const classes = component.radioClasses();
-        expect(classes).not.toContain('radio--default');
+        expect(classes).not.toContain('radio__control--default');
       });
 
       it('should include disabled class when disabled', () => {
         fixture.componentRef.setInput('disabled', true);
         const classes = component.radioClasses();
-        expect(classes).toContain('radio--disabled');
+        expect(classes).toContain('radio__control--disabled');
       });
 
       it('should include focused class when focused', () => {
         component.isFocused.set(true);
         const classes = component.radioClasses();
-        expect(classes).toContain('radio--focused');
+        expect(classes).toContain('radio__control--focused');
       });
 
       it('should include checked class when checked', () => {
         fixture.componentRef.setInput('checked', true);
         const classes = component.radioClasses();
-        expect(classes).toContain('radio--checked');
+        expect(classes).toContain('radio__control--checked');
       });
     });
 
     describe('labelClasses', () => {
       it('should include base class', () => {
         const classes = component.labelClasses();
-        expect(classes).toContain('radio-label');
+        expect(classes).toContain('radio__label');
       });
 
       it('should include size class', () => {
@@ -327,38 +322,38 @@ describe('RadioComponent', () => {
         sizes.forEach((size) => {
           fixture.componentRef.setInput('size', size);
           const classes = component.labelClasses();
-          expect(classes).toContain(`radio-label--${size}`);
+          expect(classes).toContain(`radio__label--${size}`);
         });
       });
 
       it('should include disabled class when disabled', () => {
         fixture.componentRef.setInput('disabled', true);
         const classes = component.labelClasses();
-        expect(classes).toContain('radio-label--disabled');
+        expect(classes).toContain('radio__label--disabled');
       });
 
       it('should include required class when required', () => {
         fixture.componentRef.setInput('required', true);
         const classes = component.labelClasses();
-        expect(classes).toContain('radio-label--required');
+        expect(classes).toContain('radio__label--required');
       });
     });
 
     describe('helperTextClasses', () => {
       it('should include base class', () => {
         const classes = component.helperTextClasses();
-        expect(classes).toContain('input-helper-text');
+        expect(classes).toContain('radio__helper-text');
       });
 
       it('should include validation state classes', () => {
         fixture.componentRef.setInput('validationState', 'success');
-        expect(component.helperTextClasses()).toContain('input-helper-text--success');
+        expect(component.helperTextClasses()).toContain('radio__helper-text--success');
 
         fixture.componentRef.setInput('validationState', 'warning');
-        expect(component.helperTextClasses()).toContain('input-helper-text--warning');
+        expect(component.helperTextClasses()).toContain('radio__helper-text--warning');
 
         fixture.componentRef.setInput('validationState', 'error');
-        expect(component.helperTextClasses()).toContain('input-helper-text--error');
+        expect(component.helperTextClasses()).toContain('radio__helper-text--error');
       });
     });
   });
@@ -558,33 +553,17 @@ describe('RadioComponent', () => {
     });
 
     it('should not render helper text when not provided', () => {
-      const helperText = nativeElement.querySelector<HTMLElement>('.input-helper-text');
+      const helperText = nativeElement.querySelector<HTMLElement>('.radio__helper-text');
       expect(helperText).toBeFalsy();
     });
 
-    it('should render radio indicator dot when checked', () => {
-      fixture.componentRef.setInput('checked', true);
-      fixture.detectChanges();
-
-      const dot = nativeElement.querySelector<HTMLElement>('.radio-indicator__dot');
-      expect(dot).toBeTruthy();
-    });
-
-    it('should not render radio indicator dot when unchecked', () => {
-      fixture.componentRef.setInput('checked', false);
-      fixture.detectChanges();
-
-      const dot = nativeElement.querySelector<HTMLElement>('.radio-indicator__dot');
-      expect(dot).toBeFalsy();
-    });
-
     it('should apply correct wrapper classes', () => {
-      const wrapper = nativeElement.querySelector<HTMLElement>('.radio-wrapper');
+      const wrapper = nativeElement.querySelector<HTMLElement>('.radio');
       if (!wrapper) {
         throw new Error('Wrapper not found');
       }
-      expect(wrapper.className).toContain('radio-wrapper');
-      expect(wrapper.className).toContain('radio-wrapper--md');
+      expect(wrapper.className).toContain('radio');
+      expect(wrapper.className).toContain('radio--md');
     });
 
     it('should apply correct radio classes', () => {
@@ -596,9 +575,9 @@ describe('RadioComponent', () => {
       if (!radio) {
         throw new Error('Radio element not found');
       }
-      expect(radio.className).toContain('radio');
-      expect(radio.className).toContain('radio--lg');
-      expect(radio.className).toContain('radio--error');
+      expect(radio.className).toContain('radio__control');
+      expect(radio.className).toContain('radio__control--lg');
+      expect(radio.className).toContain('radio__control--error');
     });
   });
 
@@ -633,7 +612,7 @@ describe('RadioComponent', () => {
       fixture.detectChanges();
 
       const radio = nativeElement.querySelector<HTMLInputElement>('input[type="radio"]');
-      const helperText = nativeElement.querySelector<HTMLElement>('.input-helper-text');
+      const helperText = nativeElement.querySelector<HTMLElement>('.radio__helper-text');
       if (!radio || !helperText) {
         throw new Error('Radio or helper text not found');
       }
@@ -660,14 +639,6 @@ describe('RadioComponent', () => {
         throw new Error('Radio element not found');
       }
       expect(radio.getAttribute('aria-invalid')).toBe('true');
-    });
-
-    it('should hide radio indicator from screen readers', () => {
-      const indicator = nativeElement.querySelector<HTMLElement>('.radio-indicator');
-      if (!indicator) {
-        throw new Error('Indicator not found');
-      }
-      expect(indicator.getAttribute('aria-hidden')).toBe('true');
     });
 
     it('should hide required indicator from screen readers', () => {

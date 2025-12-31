@@ -17,26 +17,26 @@
 
   // Validation state modifiers
   &--success {
-    .form-field-label {
+    .form-field__label {
       color: var(--color-success, #10b981);
     }
   }
 
   &--warning {
-    .form-field-label {
+    .form-field__label {
       color: var(--color-warning, #f59e0b);
     }
   }
 
   &--error {
-    .form-field-label {
+    .form-field__label {
       color: var(--color-error, #dc2626);
     }
   }
 }
 
 // Label styling (applied via InputLabelComponent)
-.form-field-label {
+.form-field__label {
   display: block;
   margin-bottom: var(--space-2);
   font-size: var(--font-size-sm);
@@ -53,11 +53,11 @@
 
 // Dark theme support
 @media (prefers-color-scheme: dark) {
-  .form-field-label {
+  .form-field__label {
     color: var(--text-primary-dark);
   }
 
-  .form-field-helper-text {
+  .form-field__helper-text {
     color: var(--text-secondary-dark);
   }
 }
@@ -82,7 +82,7 @@
 }
 
 // Helper/Error text styling
-.form-field-helper-text {
+.form-field__helper-text {
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
 

@@ -54,7 +54,7 @@
     width: 18px;
     height: 18px;
     border: var(--border-width-medium) solid var(--color-border);
-    border-radius: 4px;
+    border-radius: var(--border-radius-sm);
     background-color: var(--color-background);
     flex-shrink: 0;
     transition:

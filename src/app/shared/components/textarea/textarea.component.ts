@@ -276,12 +276,12 @@ export class TextareaComponent implements ControlValueAccessor {
    * Computed helper text CSS classes
    */
   readonly helperTextClasses = computed(() => {
-    const classes = ['textarea-helper-text'];
+    const classes = ['textarea__helper-text'];
     const state = this.validationState();
 
-    if (state === 'success') classes.push('textarea-helper-text--success');
-    if (state === 'warning') classes.push('textarea-helper-text--warning');
-    if (state === 'error') classes.push('textarea-helper-text--error');
+    if (state === 'success') classes.push('textarea__helper-text--success');
+    if (state === 'warning') classes.push('textarea__helper-text--warning');
+    if (state === 'error') classes.push('textarea__helper-text--error');
 
     return classes.join(' ');
   });
@@ -449,14 +449,14 @@ export class TextareaComponent implements ControlValueAccessor {
    * Generate BEM CSS classes for the wrapper
    */
   private _getWrapperClasses(): string {
-    const classes = ['textarea-wrapper'];
+    const classes = ['textarea'];
 
     // Size class
-    classes.push(`textarea-wrapper--${this.size()}`);
+    classes.push(`textarea--${this.size()}`);
 
     // Full width modifier
     if (this.fullWidth()) {
-      classes.push('textarea-wrapper--full-width');
+      classes.push('textarea--full-width');
     }
 
     return classes.join(' ');
@@ -466,37 +466,37 @@ export class TextareaComponent implements ControlValueAccessor {
    * Generate BEM CSS classes for the textarea element
    */
   private _getTextareaClasses(): string {
-    const classes = ['textarea'];
+    const classes = ['textarea__control'];
 
     // Variant class
-    classes.push(`textarea--${this.variant()}`);
+    classes.push(`textarea__control--${this.variant()}`);
 
     // Size class
-    classes.push(`textarea--${this.size()}`);
+    classes.push(`textarea__control--${this.size()}`);
 
     // Resize class
-    classes.push(`textarea--resize-${this.resize()}`);
+    classes.push(`textarea__control--resize-${this.resize()}`);
 
     // Auto-resize modifier
     if (this.autoResize()) {
-      classes.push('textarea--auto-resize');
+      classes.push('textarea__control--auto-resize');
     }
 
     // Validation state class
     const validation = this.validationState();
     if (validation !== 'default') {
-      classes.push(`textarea--${validation}`);
+      classes.push(`textarea__control--${validation}`);
     }
 
     // State classes
     if (this.isDisabled()) {
-      classes.push('textarea--disabled');
+      classes.push('textarea__control--disabled');
     }
     if (this.readonly()) {
-      classes.push('textarea--readonly');
+      classes.push('textarea__control--readonly');
     }
     if (this.isFocused()) {
-      classes.push('textarea--focused');
+      classes.push('textarea__control--focused');
     }
 
     return classes.join(' ');

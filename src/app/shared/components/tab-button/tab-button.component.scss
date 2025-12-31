@@ -89,7 +89,7 @@
 .tabs__tab--boxed.tabs__tab--active {
   background-color: var(--color-background);
   border-bottom-color: var(--color-background);
-  z-index: 1;
+  z-index: var(--z-above);
 }
 
 .tabs__list--vertical .tabs__tab--boxed {
@@ -102,4 +102,12 @@
 
 .tabs__list--vertical .tabs__tab--boxed.tabs__tab--active {
   border-right-color: var(--color-background);
+}
+
+// Respect reduced motion preference
+@media (prefers-reduced-motion: reduce) {
+  .tabs__tab,
+  .tabs__indicator {
+    transition: none;
+  }
 }

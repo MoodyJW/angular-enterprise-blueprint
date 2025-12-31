@@ -451,9 +451,9 @@ describe('SelectComponent', () => {
       fixture.detectChanges();
 
       const classes = component.wrapperClasses();
-      expect(classes).toContain('select-wrapper');
-      expect(classes).toContain('select-wrapper--lg');
-      expect(classes).toContain('select-wrapper--full-width');
+      expect(classes).toContain('select');
+      expect(classes).toContain('select--lg');
+      expect(classes).toContain('select--full-width');
     });
 
     it('should apply button classes', () => {
@@ -500,7 +500,7 @@ describe('SelectComponent', () => {
       fixture.detectChanges();
 
       const classes = component.helperTextClasses();
-      expect(classes).toContain('select-helper-text--success');
+      expect(classes).toContain('select__helper-text--success');
     });
 
     it('should apply warning validation state', () => {
@@ -508,7 +508,7 @@ describe('SelectComponent', () => {
       fixture.detectChanges();
 
       const classes = component.helperTextClasses();
-      expect(classes).toContain('select-helper-text--warning');
+      expect(classes).toContain('select__helper-text--warning');
     });
 
     it('should apply error validation state', () => {
@@ -516,7 +516,7 @@ describe('SelectComponent', () => {
       fixture.detectChanges();
 
       const classes = component.helperTextClasses();
-      expect(classes).toContain('select-helper-text--error');
+      expect(classes).toContain('select__helper-text--error');
     });
   });
 
@@ -525,13 +525,13 @@ describe('SelectComponent', () => {
       fixture.componentRef.setInput('label', 'Select a country');
       fixture.detectChanges();
 
-      const label = nativeElement.querySelector('.select-label') as HTMLElement;
+      const label = nativeElement.querySelector('.select__label') as HTMLElement;
       expect(label).toBeTruthy();
       expect(label.textContent).toContain('Select a country');
     });
 
     it('should not display label when not provided', () => {
-      const label = nativeElement.querySelector('.select-label') as HTMLElement;
+      const label = nativeElement.querySelector('.select__label') as HTMLElement;
       expect(label).toBeFalsy();
     });
 
@@ -539,7 +539,7 @@ describe('SelectComponent', () => {
       fixture.componentRef.setInput('helperText', 'Choose your preferred option');
       fixture.detectChanges();
 
-      const helperText = nativeElement.querySelector('.select-helper-text') as HTMLElement;
+      const helperText = nativeElement.querySelector('.select__helper-text') as HTMLElement;
       expect(helperText).toBeTruthy();
       expect(helperText.textContent.trim()).toBe('Choose your preferred option');
     });

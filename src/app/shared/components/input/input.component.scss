@@ -1,31 +1,47 @@
-.input-wrapper {
+.input {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
 
-  &--full-width,
-  &--full-width .input-container,
-  &--full-width .input {
+  &--full-width {
     width: 100%;
+
+    .input__wrapper,
+    .input__control {
+      width: 100%;
+    }
   }
 
   &--sm {
     font-size: var(--font-size-sm);
   }
+
   &--md {
     font-size: var(--font-size-base);
   }
+
   &--lg {
     font-size: var(--font-size-lg);
   }
 }
 
-.input-label {
+.input__label {
   display: block;
   font-size: inherit;
   font-weight: var(--font-weight-medium);
   color: var(--color-text);
   margin-bottom: var(--space-1);
+
+  &__required-marker {
+    // If we use element inside label
+    color: var(--color-error);
+    margin-left: var(--space-1);
+  }
+
+  // NOTE: The HTML uses input-label__required class specifically in the template logic.
+  // We should align HTML to BEM first or ensure Styles match HTML updates.
+  // The plan says .input-label -> .input__label.
+  // Let's stick to the plan.
 
   &__required {
     color: var(--color-error);
@@ -38,13 +54,13 @@
   }
 }
 
-.input-container {
+.input__wrapper {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.input {
+.input__control {
   display: block;
   width: 100%;
   padding: var(--space-2) var(--space-3);
@@ -70,11 +86,13 @@
     padding: var(--space-1) var(--space-2);
     font-size: var(--font-size-sm);
   }
+
   &--md {
     min-height: 40px;
     padding: var(--space-2) var(--space-3);
     font-size: var(--font-size-base);
   }
+
   &--lg {
     min-height: 48px;
     padding: var(--space-3) var(--space-4);
@@ -85,9 +103,11 @@
     &--sm {
       min-height: 36px;
     }
+
     &--md {
       min-height: 44px;
     }
+
     &--lg {
       min-height: 52px;
     }
@@ -97,6 +117,7 @@
     border-color: transparent;
     background-color: var(--color-surface-hover);
   }
+
   &--outlined {
     border-width: var(--border-width-medium);
     background-color: transparent;
@@ -113,48 +134,59 @@
     outline-offset: var(--border-width-medium);
   }
 
-  &:hover:not(:disabled):not(.input--disabled):not(.input--readonly) {
+  &:hover:not(:disabled):not(.input__control--disabled):not(.input__control--readonly) {
     border-color: var(--color-primary-subtle);
   }
 
   &--success {
     border-color: var(--color-success);
   }
+
   &--warning {
     border-color: var(--color-warning);
   }
+
   &--error {
     border-color: var(--color-error);
   }
 
   &--success:focus,
-  &--success.input--focused {
+  &--success.input__control--focused {
     box-shadow: 0 0 0 3px rgba(var(--color-success-rgb), 0.1);
   }
+
   &--warning:focus,
-  &--warning.input--focused {
+  &--warning.input__control--focused {
     box-shadow: 0 0 0 3px rgba(var(--color-warning-rgb), 0.1);
   }
+
   &--error:focus,
-  &--error.input--focused {
+  &--error.input__control--focused {
     box-shadow: 0 0 0 3px rgba(var(--color-error-rgb), 0.1);
   }
 
   &:disabled,
-  &--disabled {
+  &--disabled,
+  &[aria-disabled='true'] {
     opacity: 0.6;
     cursor: not-allowed;
     background-color: var(--color-surface-disabled);
     color: var(--color-text-disabled);
   }
 
+  &[aria-invalid='true'] {
+    border-color: var(--color-error);
+  }
+
   &--readonly {
     background-color: var(--color-surface-disabled);
     cursor: default;
   }
+
   &--has-prefix {
     padding-left: calc(var(--space-5) * 2);
   }
+
   &--has-suffix {
     padding-right: calc(var(--space-5) * 2);
   }
@@ -164,8 +196,8 @@
   }
 }
 
-.input-prefix,
-.input-suffix {
+.input__prefix,
+.input__suffix {
   position: absolute;
   display: flex;
   align-items: center;
@@ -176,28 +208,30 @@
   user-select: none;
 }
 
-.input-prefix {
+.input__prefix {
   left: var(--space-3);
 }
-.input-suffix {
+
+.input__suffix {
   right: var(--space-3);
 }
 
 // Type-specific
-input[type='number'].input {
+input[type='number'].input__control {
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     appearance: none;
     margin: 0;
   }
+
   appearance: textfield;
 }
 
-input[type='search'].input::-webkit-search-cancel-button {
+input[type='search'].input__control::-webkit-search-cancel-button {
   appearance: none;
 }
 
-input[type='password'].input {
+input[type='password'].input__control {
   font-family: var(--font-family-mono);
   letter-spacing: 0.1em;
 }

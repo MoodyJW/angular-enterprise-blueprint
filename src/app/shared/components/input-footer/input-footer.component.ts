@@ -25,7 +25,7 @@ export class InputFooterComponent {
    * CSS classes applied to the helper text element. Use BEM modifiers to style
    * different validation states (e.g. `input-helper-text--error`).
    */
-  readonly helperTextClasses = input<string>('input-helper-text');
+  readonly helperTextClasses = input<string>('input-footer__helper-text');
 
   /**
    * When true, show a character count in the footer. Requires `maxLength` to be set.

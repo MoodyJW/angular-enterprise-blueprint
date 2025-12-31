@@ -35,7 +35,7 @@
   // Text variant (line of text)
   &--text {
     height: 1em;
-    border-radius: 4px;
+    border-radius: var(--border-radius-sm);
     transform-origin: 0 60%; // Natural text baseline
 
     &::before {
@@ -100,7 +100,7 @@
 
   // No animation
   &--animation-none {
-    // Static state, no animation
+    animation: none;
   }
 
   // Respect reduced motion preference

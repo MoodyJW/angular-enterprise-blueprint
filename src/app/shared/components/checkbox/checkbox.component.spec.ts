@@ -19,7 +19,7 @@ describe('CheckboxComponent', () => {
       set: {
         template: `
           <div [class]="wrapperClasses()">
-            <div class="checkbox-input-wrapper">
+            <div class="checkbox__wrapper">
               <input
                 #checkboxElement
                 type="checkbox"
@@ -448,7 +448,7 @@ describe('CheckboxComponent', () => {
       if (!checkboxElement) {
         throw new Error('Checkbox element not found');
       }
-      expect(checkboxElement.classList.contains('checkbox')).toBe(true);
+      expect(checkboxElement.classList.contains('checkbox__control')).toBe(true);
     });
 
     it('should apply size classes', () => {
@@ -463,7 +463,7 @@ describe('CheckboxComponent', () => {
         if (!checkboxElement) {
           throw new Error('Checkbox element not found');
         }
-        expect(checkboxElement.classList.contains(`checkbox--${size}`)).toBe(true);
+        expect(checkboxElement.classList.contains(`checkbox__control--${size}`)).toBe(true);
       });
     });
 
@@ -479,7 +479,7 @@ describe('CheckboxComponent', () => {
         if (!checkboxElement) {
           throw new Error('Checkbox element not found');
         }
-        expect(checkboxElement.classList.contains(`checkbox--${state}`)).toBe(true);
+        expect(checkboxElement.classList.contains(`checkbox__control--${state}`)).toBe(true);
       });
     });
 
@@ -492,7 +492,7 @@ describe('CheckboxComponent', () => {
       if (!checkboxElement) {
         throw new Error('Checkbox element not found');
       }
-      expect(checkboxElement.classList.contains('checkbox--disabled')).toBe(true);
+      expect(checkboxElement.classList.contains('checkbox__control--disabled')).toBe(true);
     });
 
     it('should apply checked class when checked', () => {
@@ -504,7 +504,7 @@ describe('CheckboxComponent', () => {
       if (!checkboxElement) {
         throw new Error('Checkbox element not found');
       }
-      expect(checkboxElement.classList.contains('checkbox--checked')).toBe(true);
+      expect(checkboxElement.classList.contains('checkbox__control--checked')).toBe(true);
     });
 
     it('should apply indeterminate class when indeterminate', () => {
@@ -516,29 +516,29 @@ describe('CheckboxComponent', () => {
       if (!checkboxElement) {
         throw new Error('Checkbox element not found');
       }
-      expect(checkboxElement.classList.contains('checkbox--indeterminate')).toBe(true);
+      expect(checkboxElement.classList.contains('checkbox__control--indeterminate')).toBe(true);
     });
 
     it('should apply wrapper size class', () => {
       fixture.componentRef.setInput('size', 'lg');
       fixture.detectChanges();
 
-      const wrapper = nativeElement.querySelector<HTMLElement>('.checkbox-wrapper');
+      const wrapper = nativeElement.querySelector<HTMLElement>('.checkbox');
       if (!wrapper) {
         throw new Error('Checkbox wrapper not found');
       }
-      expect(wrapper.classList.contains('checkbox-wrapper--lg')).toBe(true);
+      expect(wrapper.classList.contains('checkbox--lg')).toBe(true);
     });
 
     it('should apply wrapper disabled class', () => {
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();
 
-      const wrapper = nativeElement.querySelector<HTMLElement>('.checkbox-wrapper');
+      const wrapper = nativeElement.querySelector<HTMLElement>('.checkbox');
       if (!wrapper) {
         throw new Error('Checkbox wrapper not found');
       }
-      expect(wrapper.classList.contains('checkbox-wrapper--disabled')).toBe(true);
+      expect(wrapper.classList.contains('checkbox--disabled')).toBe(true);
     });
   });
 
@@ -604,7 +604,7 @@ describe('CheckboxComponent', () => {
       fixture.componentRef.setInput('helperText', 'This is required');
       fixture.detectChanges();
 
-      const helperText = nativeElement.querySelector<HTMLElement>('.input-helper-text');
+      const helperText = nativeElement.querySelector<HTMLElement>('.checkbox__helper-text');
       if (!helperText) {
         throw new Error('Helper text not found');
       }
@@ -618,7 +618,7 @@ describe('CheckboxComponent', () => {
       fixture.componentRef.setInput('helperText', '');
       fixture.detectChanges();
 
-      const helperText = nativeElement.querySelector<HTMLElement>('.input-helper-text');
+      const helperText = nativeElement.querySelector<HTMLElement>('.checkbox__helper-text');
       expect(helperText).toBeNull();
     });
 
@@ -627,11 +627,11 @@ describe('CheckboxComponent', () => {
       fixture.componentRef.setInput('validationState', 'error');
       fixture.detectChanges();
 
-      const helperText = nativeElement.querySelector<HTMLElement>('.input-helper-text');
+      const helperText = nativeElement.querySelector<HTMLElement>('.checkbox__helper-text');
       if (!helperText) {
         throw new Error('Helper text not found');
       }
-      expect(helperText.classList.contains('input-helper-text--error')).toBe(true);
+      expect(helperText.classList.contains('checkbox__helper-text--error')).toBe(true);
     });
   });
 
@@ -781,9 +781,9 @@ describe('CheckboxComponent', () => {
       fixture.detectChanges();
 
       const classes = component.wrapperClasses();
-      expect(classes).toContain('checkbox-wrapper');
-      expect(classes).toContain('checkbox-wrapper--lg');
-      expect(classes).toContain('checkbox-wrapper--disabled');
+      expect(classes).toContain('checkbox');
+      expect(classes).toContain('checkbox--lg');
+      expect(classes).toContain('checkbox--disabled');
     });
 
     it('should compute checkboxClasses correctly', () => {
@@ -793,10 +793,10 @@ describe('CheckboxComponent', () => {
       fixture.detectChanges();
 
       const classes = component.checkboxClasses();
-      expect(classes).toContain('checkbox');
-      expect(classes).toContain('checkbox--md');
-      expect(classes).toContain('checkbox--error');
-      expect(classes).toContain('checkbox--checked');
+      expect(classes).toContain('checkbox__control');
+      expect(classes).toContain('checkbox__control--md');
+      expect(classes).toContain('checkbox__control--error');
+      expect(classes).toContain('checkbox__control--checked');
     });
 
     it('should compute labelClasses correctly', () => {
@@ -806,10 +806,10 @@ describe('CheckboxComponent', () => {
       fixture.detectChanges();
 
       const classes = component.labelClasses();
-      expect(classes).toContain('checkbox-label');
-      expect(classes).toContain('checkbox-label--sm');
-      expect(classes).toContain('checkbox-label--disabled');
-      expect(classes).toContain('checkbox-label--required');
+      expect(classes).toContain('checkbox__label');
+      expect(classes).toContain('checkbox__label--sm');
+      expect(classes).toContain('checkbox__label--disabled');
+      expect(classes).toContain('checkbox__label--required');
     });
   });
 
@@ -820,7 +820,7 @@ describe('CheckboxComponent', () => {
       fixture.detectChanges();
 
       const label = nativeElement.querySelector<HTMLLabelElement>('label');
-      const helperText = nativeElement.querySelector<HTMLElement>('.input-helper-text');
+      const helperText = nativeElement.querySelector<HTMLElement>('.checkbox__helper-text');
       if (!label) {
         throw new Error('Label not found');
       }
@@ -837,7 +837,7 @@ describe('CheckboxComponent', () => {
       fixture.detectChanges();
 
       const label = nativeElement.querySelector<HTMLLabelElement>('label');
-      const helperText = nativeElement.querySelector<HTMLElement>('.input-helper-text');
+      const helperText = nativeElement.querySelector<HTMLElement>('.checkbox__helper-text');
       expect(label).toBeNull();
       expect(helperText).toBeNull();
     });

@@ -231,12 +231,12 @@ export class CheckboxComponent {
    * Computed CSS classes for helper text
    */
   readonly helperTextClasses = computed(() => {
-    const classes = ['input-helper-text'];
+    const classes = ['checkbox__helper-text'];
     const state = this.validationState();
 
-    if (state === 'success') classes.push('input-helper-text--success');
-    if (state === 'warning') classes.push('input-helper-text--warning');
-    if (state === 'error') classes.push('input-helper-text--error');
+    if (state === 'success') classes.push('checkbox__helper-text--success');
+    if (state === 'warning') classes.push('checkbox__helper-text--warning');
+    if (state === 'error') classes.push('checkbox__helper-text--error');
 
     return classes.join(' ');
   });
@@ -294,14 +294,14 @@ export class CheckboxComponent {
    * Generate BEM CSS classes for the wrapper
    */
   private _getWrapperClasses(): string {
-    const classes = ['checkbox-wrapper'];
+    const classes = ['checkbox'];
 
     // Size class
-    classes.push(`checkbox-wrapper--${this.size()}`);
+    classes.push(`checkbox--${this.size()}`);
 
     // State classes
     if (this.disabled()) {
-      classes.push('checkbox-wrapper--disabled');
+      classes.push('checkbox--disabled');
     }
 
     return classes.join(' ');
@@ -311,29 +311,29 @@ export class CheckboxComponent {
    * Generate BEM CSS classes for the checkbox input
    */
   private _getCheckboxClasses(): string {
-    const classes = ['checkbox'];
+    const classes = ['checkbox__control'];
 
     // Size class
-    classes.push(`checkbox--${this.size()}`);
+    classes.push(`checkbox__control--${this.size()}`);
 
     // Validation state class
     const validation = this.validationState();
     if (validation !== 'default') {
-      classes.push(`checkbox--${validation}`);
+      classes.push(`checkbox__control--${validation}`);
     }
 
     // State classes
     if (this.disabled()) {
-      classes.push('checkbox--disabled');
+      classes.push('checkbox__control--disabled');
     }
     if (this.isFocused()) {
-      classes.push('checkbox--focused');
+      classes.push('checkbox__control--focused');
     }
     if (this.checked()) {
-      classes.push('checkbox--checked');
+      classes.push('checkbox__control--checked');
     }
     if (this.indeterminate()) {
-      classes.push('checkbox--indeterminate');
+      classes.push('checkbox__control--indeterminate');
     }
 
     return classes.join(' ');
@@ -343,17 +343,17 @@ export class CheckboxComponent {
    * Generate BEM CSS classes for the label
    */
   private _getLabelClasses(): string {
-    const classes = ['checkbox-label'];
+    const classes = ['checkbox__label'];
 
     // Size class
-    classes.push(`checkbox-label--${this.size()}`);
+    classes.push(`checkbox__label--${this.size()}`);
 
     // State classes
     if (this.disabled()) {
-      classes.push('checkbox-label--disabled');
+      classes.push('checkbox__label--disabled');
     }
     if (this.required()) {
-      classes.push('checkbox-label--required');
+      classes.push('checkbox__label--required');
     }
 
     return classes.join(' ');

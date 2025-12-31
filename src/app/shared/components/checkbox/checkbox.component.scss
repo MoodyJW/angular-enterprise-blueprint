@@ -1,4 +1,4 @@
-.checkbox-wrapper {
+.checkbox {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
@@ -10,14 +10,14 @@
   }
 }
 
-.checkbox-input-wrapper {
+.checkbox__wrapper {
   display: inline-flex;
   align-items: center;
   position: relative;
   flex-shrink: 0;
 }
 
-.checkbox {
+.checkbox__control {
   appearance: none;
   position: relative;
   margin: 0;
@@ -39,12 +39,13 @@
     outline-offset: var(--border-width-medium);
   }
 
-  &:not(:disabled):not(.checkbox--disabled):hover {
+  &:not(:disabled):not(.checkbox__control--disabled):hover {
     border-color: var(--color-primary);
   }
 
   &:disabled,
-  &--disabled {
+  &--disabled,
+  &[aria-disabled='true'] {
     cursor: not-allowed;
     pointer-events: none;
   }
@@ -99,17 +100,17 @@
     background-color: var(--color-primary);
     border-color: var(--color-primary);
 
-    &.checkbox--success {
+    &.checkbox__control--success {
       background-color: var(--color-success);
       border-color: var(--color-success);
     }
 
-    &.checkbox--warning {
+    &.checkbox__control--warning {
       background-color: var(--color-warning);
       border-color: var(--color-warning);
     }
 
-    &.checkbox--error {
+    &.checkbox__control--error {
       background-color: var(--color-error);
       border-color: var(--color-error);
     }
@@ -120,17 +121,17 @@
     background-color: var(--color-primary);
     border-color: var(--color-primary);
 
-    &.checkbox--success {
+    &.checkbox__control--success {
       background-color: var(--color-success);
       border-color: var(--color-success);
     }
 
-    &.checkbox--warning {
+    &.checkbox__control--warning {
       background-color: var(--color-warning);
       border-color: var(--color-warning);
     }
 
-    &.checkbox--error {
+    &.checkbox__control--error {
       background-color: var(--color-error);
       border-color: var(--color-error);
     }
@@ -154,51 +155,51 @@
 }
 
 // Label customization for checkbox context
-.checkbox-label {
+.checkbox__label {
   padding-left: calc(20px + var(--space-2));
 
-  .checkbox-wrapper--sm & {
+  .checkbox--sm & {
     padding-left: calc(16px + var(--space-2));
   }
 
-  .checkbox-wrapper--lg & {
+  .checkbox--lg & {
     padding-left: calc(24px + var(--space-2));
   }
 
   @media (pointer: coarse) {
     padding-left: calc(44px + var(--space-2));
 
-    .checkbox-wrapper--sm & {
+    .checkbox--sm & {
       padding-left: calc(40px + var(--space-2));
     }
 
-    .checkbox-wrapper--lg & {
+    .checkbox--lg & {
       padding-left: calc(48px + var(--space-2));
     }
   }
 }
 
 // Helper text customization for checkbox context
-.checkbox-helper-text,
+.checkbox__helper-text,
 .input-helper-text {
   padding-left: calc(20px + var(--space-2));
 
-  .checkbox-wrapper--sm & {
+  .checkbox--sm & {
     padding-left: calc(16px + var(--space-2));
   }
 
-  .checkbox-wrapper--lg & {
+  .checkbox--lg & {
     padding-left: calc(24px + var(--space-2));
   }
 
   @media (pointer: coarse) {
     padding-left: calc(44px + var(--space-2));
 
-    .checkbox-wrapper--sm & {
+    .checkbox--sm & {
       padding-left: calc(40px + var(--space-2));
     }
 
-    .checkbox-wrapper--lg & {
+    .checkbox--lg & {
       padding-left: calc(48px + var(--space-2));
     }
   }
