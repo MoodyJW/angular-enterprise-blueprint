@@ -148,12 +148,11 @@
 **Acceptance Criteria:**
 
 - [ ] All themes pass WCAG AA requirements
-- [ ] Theme documentation complete
-- [ ] Preview page implemented
+- [ ] Theme switcher functionality verified
+- [ ] No flash of unstyled content (FOUC) on load
+- [x] **Optimization:** Lighthouse CI runs in parallel (Matrix Strategy)
 
----
-
-## 7.5 Component Documentation Cleanup
+## 7.5 Final Polish & Cleanup
 
 ### Storybook Requirements
 

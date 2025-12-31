@@ -20,10 +20,10 @@
   --color-secondary-subtle: #fafaf9;
   --color-on-secondary: #ffffff;
 
-  // Semantic colors - Success (slightly warmer green)
-  --color-success: #65a30d;
-  --color-success-hover: #4d7c0f;
-  --color-success-subtle: #f7fee7;
+  // Semantic colors - Success
+  --color-success: #12873d; // Darker Green for >4.5:1 contrast
+  --color-success-hover: #0e602b;
+  --color-success-subtle: #f0fdf4;
   --color-on-success: #ffffff;
 
   // Semantic colors - Warning (amber)

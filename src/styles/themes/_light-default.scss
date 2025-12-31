@@ -21,10 +21,10 @@
   --color-on-secondary: #0f172a;
 
   // Semantic colors - Success
-  --color-success: #22c55e;
-  --color-success-hover: #16a34a;
+  --color-success: #12873d; // Darker Green for >4.5:1 contrast
+  --color-success-hover: #0e602b; // Darker shade for hover
   --color-success-subtle: #f0fdf4;
-  --color-on-success: #0f172a;
+  --color-on-success: #ffffff; // Change to white for better contrast on dark green
 
   // Semantic colors - Warning
   --color-warning: #f59e0b;
@@ -33,10 +33,10 @@
   --color-on-warning: #000000;
 
   // Semantic colors - Error
-  --color-error: #ef4444;
-  --color-error-hover: #dc2626;
+  --color-error: #dc2626; // Red 600 (Accessible with white text)
+  --color-error-hover: #b91c1c; // Red 700
   --color-error-subtle: #fef2f2;
-  --color-on-error: #0f172a;
+  --color-on-error: #ffffff; // Change to white for better contrast on dark red
 
   // Semantic colors - Info
   --color-info: #0ea5e9;

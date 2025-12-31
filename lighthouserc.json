@@ -2,14 +2,6 @@
   "ci": {
     "collect": {
       "staticDistDir": "./dist/angular-enterprise-blueprint/browser",
-      "url": [
-        "http://localhost/index.html?theme=light-default",
-        "http://localhost/index.html?theme=light-warm",
-        "http://localhost/index.html?theme=dark-default",
-        "http://localhost/index.html?theme=dark-cool",
-        "http://localhost/index.html?theme=high-contrast-light",
-        "http://localhost/index.html?theme=high-contrast-dark"
-      ],
       "numberOfRuns": 3
     },
     "assert": {

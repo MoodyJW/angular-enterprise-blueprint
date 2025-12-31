@@ -12,8 +12,18 @@ concurrency:
 
 jobs:
   lighthouse:
-    name: Lighthouse Audit
+    name: Lighthouse Audit (${{ matrix.theme }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        theme:
+          - light-default
+          - light-warm
+          - dark-default
+          - dark-cool
+          - high-contrast-light
+          - high-contrast-dark
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,5 +49,22 @@ jobs:
         uses: treosh/lighthouse-ci-action@v12
         with:
           configPath: ./lighthouserc.json
+          urls: |
+            http://localhost/index.html?theme=${{ matrix.theme }}
           uploadArtifacts: true
+          artifactName: lighthouse-results-${{ matrix.theme }}
           temporaryPublicStorage: true
+
+  # Aggregation job to satisfy branch protection rules
+  lighthouse-check:
+    if: always()
+    needs: lighthouse
+    runs-on: ubuntu-latest
+    name: Lighthouse Audit
+    steps:
+      - name: Check matrix status
+        if: ${{ contains(needs.lighthouse.result, 'failure') || contains(needs.lighthouse.result, 'cancelled') }}
+        run: exit 1
+
+      - name: Success
+        run: echo "All Lighthouse audits passed"
