@@ -132,11 +132,17 @@
 
   // Disabled state
   &:disabled,
-  &--disabled {
+  &--disabled,
+  &[aria-disabled='true'] {
     opacity: 0.6;
     cursor: not-allowed;
     background-color: var(--color-surface-disabled);
     color: var(--color-text-disabled);
+  }
+
+  // Invalid state (aria)
+  &[aria-invalid='true'] {
+    border-color: var(--color-error);
   }
 
   // Button text

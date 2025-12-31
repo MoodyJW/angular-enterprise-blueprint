@@ -66,7 +66,7 @@ describe('TextareaComponent', () => {
         fixture.componentRef.setInput('variant', variant);
         fixture.detectChanges();
         const textarea = compiled.querySelector('textarea');
-        expect(textarea?.className).toContain(`textarea--${variant}`);
+        expect(textarea?.className).toContain(`textarea__control--${variant}`);
       });
     });
   });
@@ -93,8 +93,8 @@ describe('TextareaComponent', () => {
       sizes.forEach((size) => {
         fixture.componentRef.setInput('size', size);
         fixture.detectChanges();
-        const wrapper = compiled.querySelector('.textarea-wrapper');
-        expect(wrapper?.className).toContain(`textarea-wrapper--${size}`);
+        const wrapper = compiled.querySelector('.textarea');
+        expect(wrapper?.className).toContain(`textarea--${size}`);
       });
     });
 
@@ -105,7 +105,7 @@ describe('TextareaComponent', () => {
         fixture.componentRef.setInput('size', size);
         fixture.detectChanges();
         const textarea = compiled.querySelector('textarea');
-        expect(textarea?.className).toContain(`textarea--${size}`);
+        expect(textarea?.className).toContain(`textarea__control--${size}`);
       });
     });
   });
@@ -183,7 +183,7 @@ describe('TextareaComponent', () => {
         fixture.componentRef.setInput('resize', resize);
         fixture.detectChanges();
         const textarea = compiled.querySelector('textarea');
-        expect(textarea?.className).toContain(`textarea--resize-${resize}`);
+        expect(textarea?.className).toContain(`textarea__control--resize-${resize}`);
       });
     });
   });
@@ -204,21 +204,21 @@ describe('TextareaComponent', () => {
       fixture.componentRef.setInput('autoResize', true);
       fixture.detectChanges();
       const textarea = compiled.querySelector('textarea');
-      expect(textarea?.className).toContain('textarea--auto-resize');
+      expect(textarea?.className).toContain('textarea__control--auto-resize');
     });
   });
 
   describe('Label Handling', () => {
     it('should not render label by default', () => {
       fixture.detectChanges();
-      const label = compiled.querySelector('.textarea-label');
+      const label = compiled.querySelector('.textarea__label');
       expect(label).toBeNull();
     });
 
     it('should render label when provided', () => {
       fixture.componentRef.setInput('label', 'Test Label');
       fixture.detectChanges();
-      const label = compiled.querySelector('.textarea-label');
+      const label = compiled.querySelector('.textarea__label');
       expect(label?.textContent).toContain('Test Label');
     });
 
@@ -226,7 +226,7 @@ describe('TextareaComponent', () => {
       fixture.componentRef.setInput('label', 'Test Label');
       fixture.componentRef.setInput('required', true);
       fixture.detectChanges();
-      const required = compiled.querySelector('.textarea-label__required');
+      const required = compiled.querySelector('.textarea__label__required');
       expect(required).toBeTruthy();
       expect(required?.textContent).toContain('*');
     });
@@ -235,8 +235,8 @@ describe('TextareaComponent', () => {
       fixture.componentRef.setInput('label', 'Test Label');
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();
-      const label = compiled.querySelector('.textarea-label');
-      expect(label?.className).toContain('textarea-label--disabled');
+      const label = compiled.querySelector('.textarea__label');
+      expect(label?.className).toContain('textarea__label--disabled');
     });
   });
 
@@ -272,7 +272,7 @@ describe('TextareaComponent', () => {
         fixture.componentRef.setInput('validationState', state);
         fixture.detectChanges();
         const textarea = compiled.querySelector('textarea');
-        expect(textarea?.className).toContain(`textarea--${state}`);
+        expect(textarea?.className).toContain(`textarea__control--${state}`);
       });
     });
 
@@ -281,10 +281,10 @@ describe('TextareaComponent', () => {
       fixture.detectChanges();
       const textarea = compiled.querySelector('textarea');
       // Should have variant class but no validation state classes
-      expect(textarea?.className).toContain('textarea--default'); // variant class is fine
-      expect(textarea?.className).not.toContain('textarea--success');
-      expect(textarea?.className).not.toContain('textarea--warning');
-      expect(textarea?.className).not.toContain('textarea--error');
+      expect(textarea?.className).toContain('textarea__control--default'); // variant class is fine
+      expect(textarea?.className).not.toContain('textarea__control--success');
+      expect(textarea?.className).not.toContain('textarea__control--warning');
+      expect(textarea?.className).not.toContain('textarea__control--error');
     });
   });
 
@@ -311,7 +311,7 @@ describe('TextareaComponent', () => {
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();
       const textarea = compiled.querySelector('textarea');
-      expect(textarea?.className).toContain('textarea--disabled');
+      expect(textarea?.className).toContain('textarea__control--disabled');
     });
   });
 
@@ -338,7 +338,7 @@ describe('TextareaComponent', () => {
       fixture.componentRef.setInput('readonly', true);
       fixture.detectChanges();
       const textarea = compiled.querySelector('textarea');
-      expect(textarea?.className).toContain('textarea--readonly');
+      expect(textarea?.className).toContain('textarea__control--readonly');
     });
   });
 
@@ -377,8 +377,8 @@ describe('TextareaComponent', () => {
     it('should apply full width CSS class to wrapper', () => {
       fixture.componentRef.setInput('fullWidth', true);
       fixture.detectChanges();
-      const wrapper = compiled.querySelector('.textarea-wrapper');
-      expect(wrapper?.className).toContain('textarea-wrapper--full-width');
+      const wrapper = compiled.querySelector('.textarea');
+      expect(wrapper?.className).toContain('textarea--full-width');
     });
   });
 
@@ -415,7 +415,7 @@ describe('TextareaComponent', () => {
     it('should generate helperText classes based on validation state', () => {
       fixture.componentRef.setInput('validationState', 'error');
       fixture.detectChanges();
-      expect(component.helperTextClasses()).toContain('textarea-helper-text--error');
+      expect(component.helperTextClasses()).toContain('textarea__helper-text--error');
     });
   });
 
@@ -576,7 +576,7 @@ describe('TextareaComponent', () => {
       textarea.dispatchEvent(new FocusEvent('focus'));
       fixture.detectChanges();
 
-      expect(textarea.className).toContain('textarea--focused');
+      expect(textarea.className).toContain('textarea__control--focused');
     });
   });
 
@@ -802,9 +802,9 @@ describe('TextareaComponent', () => {
       fixture.componentRef.setInput('fullWidth', true);
       fixture.detectChanges();
       const classes = component.wrapperClasses();
-      expect(classes).toContain('textarea-wrapper');
-      expect(classes).toContain('textarea-wrapper--lg');
-      expect(classes).toContain('textarea-wrapper--full-width');
+      expect(classes).toContain('textarea');
+      expect(classes).toContain('textarea--lg');
+      expect(classes).toContain('textarea--full-width');
     });
 
     it('should generate correct textarea classes', () => {
@@ -815,12 +815,12 @@ describe('TextareaComponent', () => {
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();
       const classes = component.textareaClasses();
-      expect(classes).toContain('textarea');
-      expect(classes).toContain('textarea--outlined');
-      expect(classes).toContain('textarea--sm');
-      expect(classes).toContain('textarea--resize-both');
-      expect(classes).toContain('textarea--error');
-      expect(classes).toContain('textarea--disabled');
+      expect(classes).toContain('textarea__control');
+      expect(classes).toContain('textarea__control--outlined');
+      expect(classes).toContain('textarea__control--sm');
+      expect(classes).toContain('textarea__control--resize-both');
+      expect(classes).toContain('textarea__control--error');
+      expect(classes).toContain('textarea__control--disabled');
     });
   });
 });

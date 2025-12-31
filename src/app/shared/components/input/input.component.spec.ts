@@ -61,7 +61,7 @@ describe('InputComponent', () => {
         fixture.componentRef.setInput('variant', variant);
         fixture.detectChanges();
         const input = compiled.querySelector('input');
-        expect(input?.className).toContain(`input--${variant}`);
+        expect(input?.className).toContain(`input__control--${variant}`);
       });
     });
   });
@@ -88,8 +88,8 @@ describe('InputComponent', () => {
       sizes.forEach((size) => {
         fixture.componentRef.setInput('size', size);
         fixture.detectChanges();
-        const wrapper = compiled.querySelector('.input-wrapper');
-        expect(wrapper?.className).toContain(`input-wrapper--${size}`);
+        const wrapper = compiled.querySelector('.input');
+        expect(wrapper?.className).toContain(`input--${size}`);
       });
     });
 
@@ -100,7 +100,7 @@ describe('InputComponent', () => {
         fixture.componentRef.setInput('size', size);
         fixture.detectChanges();
         const input = compiled.querySelector('input');
-        expect(input?.className).toContain(`input--${size}`);
+        expect(input?.className).toContain(`input__control--${size}`);
       });
     });
   });
@@ -171,14 +171,14 @@ describe('InputComponent', () => {
   describe('Input Handling - Label', () => {
     it('should not render label when not provided', () => {
       fixture.detectChanges();
-      const label = compiled.querySelector('.input-label');
+      const label = compiled.querySelector('.input__label');
       expect(label).toBeNull();
     });
 
     it('should render label when provided', () => {
       fixture.componentRef.setInput('label', 'Username');
       fixture.detectChanges();
-      const label = compiled.querySelector('.input-label');
+      const label = compiled.querySelector('.input__label');
       expect(label?.textContent.trim()).toContain('Username');
     });
 
@@ -186,7 +186,7 @@ describe('InputComponent', () => {
       fixture.componentRef.setInput('label', 'Username');
       fixture.componentRef.setInput('required', true);
       fixture.detectChanges();
-      const required = compiled.querySelector('.input-label__required');
+      const required = compiled.querySelector('.input__label__required');
       expect(required).toBeTruthy();
       expect(required?.textContent).toBe('*');
     });
@@ -204,14 +204,14 @@ describe('InputComponent', () => {
   describe('Input Handling - Helper Text', () => {
     it('should not render helper text when not provided', () => {
       fixture.detectChanges();
-      const helperText = compiled.querySelector('.input-helper-text');
+      const helperText = compiled.querySelector('.input__helper-text');
       expect(helperText).toBeNull();
     });
 
     it('should render helper text when provided', () => {
       fixture.componentRef.setInput('helperText', 'This is a hint');
       fixture.detectChanges();
-      const helperText = compiled.querySelector('.input-helper-text');
+      const helperText = compiled.querySelector('.input__helper-text');
       expect(helperText?.textContent.trim()).toBe('This is a hint');
     });
   });
@@ -239,7 +239,7 @@ describe('InputComponent', () => {
         fixture.componentRef.setInput('validationState', state);
         fixture.detectChanges();
         const input = compiled.querySelector('input');
-        expect(input?.className).toContain(`input--${state}`);
+        expect(input?.className).toContain(`input__control--${state}`);
       });
     });
 
@@ -248,20 +248,20 @@ describe('InputComponent', () => {
       fixture.detectChanges();
       const classes = component.inputClasses();
       // Should not have validation state class, only variant and size classes
-      expect(classes).toContain('input--default'); // variant
-      expect(classes).toContain('input--md'); // size
+      expect(classes).toContain('input__control--default'); // variant
+      expect(classes).toContain('input__control--md'); // size
       // But validation states like success, warning, error should not be present
-      expect(classes).not.toContain('input--success');
-      expect(classes).not.toContain('input--warning');
-      expect(classes).not.toContain('input--error');
+      expect(classes).not.toContain('input__control--success');
+      expect(classes).not.toContain('input__control--warning');
+      expect(classes).not.toContain('input__control--error');
     });
 
     it('should apply validation CSS class to helper text', () => {
       fixture.componentRef.setInput('helperText', 'Helper text');
       fixture.componentRef.setInput('validationState', 'error');
       fixture.detectChanges();
-      const helperText = compiled.querySelector('.input-helper-text');
-      expect(helperText?.className).toContain('input-helper-text--error');
+      const helperText = compiled.querySelector('.input__helper-text');
+      expect(helperText?.className).toContain('input__helper-text--error');
     });
   });
 
@@ -294,14 +294,14 @@ describe('InputComponent', () => {
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();
       const input = compiled.querySelector('input');
-      expect(input?.className).toContain('input--disabled');
+      expect(input?.className).toContain('input__control--disabled');
     });
 
     it('should apply readonly CSS class', () => {
       fixture.componentRef.setInput('readonly', true);
       fixture.detectChanges();
       const input = compiled.querySelector('input');
-      expect(input?.className).toContain('input--readonly');
+      expect(input?.className).toContain('input__control--readonly');
     });
   });
 
@@ -343,14 +343,14 @@ describe('InputComponent', () => {
     it('should render prefix when provided', () => {
       fixture.componentRef.setInput('prefix', '$');
       fixture.detectChanges();
-      const prefix = compiled.querySelector('.input-prefix');
+      const prefix = compiled.querySelector('.input__prefix');
       expect(prefix?.textContent.trim()).toBe('$');
     });
 
     it('should render suffix when provided', () => {
       fixture.componentRef.setInput('suffix', '.com');
       fixture.detectChanges();
-      const suffix = compiled.querySelector('.input-suffix');
+      const suffix = compiled.querySelector('.input__suffix');
       expect(suffix?.textContent.trim()).toBe('.com');
     });
 
@@ -358,14 +358,14 @@ describe('InputComponent', () => {
       fixture.componentRef.setInput('prefix', '$');
       fixture.detectChanges();
       const input = compiled.querySelector('input');
-      expect(input?.className).toContain('input--has-prefix');
+      expect(input?.className).toContain('input__control--has-prefix');
     });
 
     it('should apply suffix CSS class to input', () => {
       fixture.componentRef.setInput('suffix', '.com');
       fixture.detectChanges();
       const input = compiled.querySelector('input');
-      expect(input?.className).toContain('input--has-suffix');
+      expect(input?.className).toContain('input__control--has-suffix');
     });
   });
 
@@ -373,7 +373,7 @@ describe('InputComponent', () => {
     it('should not show character count by default', () => {
       fixture.componentRef.setInput('maxLength', 10);
       fixture.detectChanges();
-      const charCount = compiled.querySelector('.input-char-count');
+      const charCount = compiled.querySelector('.input-footer__char-count');
       expect(charCount).toBeNull();
     });
 
@@ -381,7 +381,7 @@ describe('InputComponent', () => {
       fixture.componentRef.setInput('maxLength', 10);
       fixture.componentRef.setInput('showCharCount', true);
       fixture.detectChanges();
-      const charCount = compiled.querySelector('.input-char-count');
+      const charCount = compiled.querySelector('.input-footer__char-count');
       expect(charCount).toBeTruthy();
     });
 
@@ -392,7 +392,7 @@ describe('InputComponent', () => {
       fixture.detectChanges();
       // Wait for effect to sync value
       fixture.detectChanges();
-      const charCount = compiled.querySelector('.input-char-count');
+      const charCount = compiled.querySelector('.input-footer__char-count');
       expect(charCount?.textContent.trim()).toBe('4/10');
     });
 
@@ -413,7 +413,7 @@ describe('InputComponent', () => {
       // The internalValue signal should be updated
       expect(component.internalValue()).toBe('hello');
 
-      const charCount = compiled.querySelector('.input-char-count');
+      const charCount = compiled.querySelector('.input-footer__char-count');
       expect(charCount?.textContent.trim()).toBe('5/10');
     });
   });
@@ -422,8 +422,8 @@ describe('InputComponent', () => {
     it('should apply full width CSS class', () => {
       fixture.componentRef.setInput('fullWidth', true);
       fixture.detectChanges();
-      const wrapper = compiled.querySelector('.input-wrapper');
-      expect(wrapper?.className).toContain('input-wrapper--full-width');
+      const wrapper = compiled.querySelector('.input');
+      expect(wrapper?.className).toContain('input--full-width');
     });
   });
 
@@ -602,9 +602,9 @@ describe('InputComponent', () => {
       fixture.detectChanges();
 
       const classes = component.wrapperClasses();
-      expect(classes).toContain('input-wrapper');
-      expect(classes).toContain('input-wrapper--lg');
-      expect(classes).toContain('input-wrapper--full-width');
+      expect(classes).toContain('input');
+      expect(classes).toContain('input--lg');
+      expect(classes).toContain('input--full-width');
     });
 
     it('should generate correct input classes', () => {
@@ -615,11 +615,11 @@ describe('InputComponent', () => {
       fixture.detectChanges();
 
       const classes = component.inputClasses();
-      expect(classes).toContain('input');
-      expect(classes).toContain('input--outlined');
-      expect(classes).toContain('input--sm');
-      expect(classes).toContain('input--error');
-      expect(classes).toContain('input--disabled');
+      expect(classes).toContain('input__control');
+      expect(classes).toContain('input__control--outlined');
+      expect(classes).toContain('input__control--sm');
+      expect(classes).toContain('input__control--error');
+      expect(classes).toContain('input__control--disabled');
     });
 
     it('should apply focused class when focused', () => {
@@ -629,7 +629,7 @@ describe('InputComponent', () => {
       input.dispatchEvent(new FocusEvent('focus'));
       fixture.detectChanges();
 
-      expect(component.inputClasses()).toContain('input--focused');
+      expect(component.inputClasses()).toContain('input__control--focused');
     });
   });
 
@@ -708,11 +708,11 @@ describe('InputComponent', () => {
       fixture.componentRef.setInput('required', true);
       fixture.detectChanges();
 
-      expect(compiled.querySelector('.input-label')).toBeTruthy();
-      expect(compiled.querySelector('.input-prefix')).toBeTruthy();
-      expect(compiled.querySelector('.input-suffix')).toBeTruthy();
-      expect(compiled.querySelector('.input-helper-text')).toBeTruthy();
-      expect(compiled.querySelector('.input-char-count')).toBeTruthy();
+      expect(compiled.querySelector('.input__label')).toBeTruthy();
+      expect(compiled.querySelector('.input__prefix')).toBeTruthy();
+      expect(compiled.querySelector('.input__suffix')).toBeTruthy();
+      expect(compiled.querySelector('.input__helper-text')).toBeTruthy();
+      expect(compiled.querySelector('.input-footer__char-count')).toBeTruthy();
     });
   });
 });

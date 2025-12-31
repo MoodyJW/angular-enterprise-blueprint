@@ -171,3 +171,12 @@
     }
   }
 }
+
+// Respect reduced motion preference
+@media (prefers-reduced-motion: reduce) {
+  .theme-picker__trigger,
+  .theme-picker__option,
+  .theme-picker__inline-option {
+    transition: none;
+  }
+}

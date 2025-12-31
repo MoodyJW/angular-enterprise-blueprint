@@ -357,12 +357,12 @@ export class SelectComponent<T = unknown> implements OnDestroy {
    * Computed helper text CSS classes
    */
   readonly helperTextClasses = computed(() => {
-    const classes = ['select-helper-text'];
+    const classes = ['select__helper-text'];
     const state = this.validationState();
 
-    if (state === 'success') classes.push('select-helper-text--success');
-    if (state === 'warning') classes.push('select-helper-text--warning');
-    if (state === 'error') classes.push('select-helper-text--error');
+    if (state === 'success') classes.push('select__helper-text--success');
+    if (state === 'warning') classes.push('select__helper-text--warning');
+    if (state === 'error') classes.push('select__helper-text--error');
 
     return classes.join(' ');
   });
@@ -714,14 +714,14 @@ export class SelectComponent<T = unknown> implements OnDestroy {
    * Generate BEM CSS classes for the wrapper
    */
   private _getWrapperClasses(): string {
-    const classes = ['select-wrapper'];
+    const classes = ['select'];
 
     // Size class
-    classes.push(`select-wrapper--${this.size()}`);
+    classes.push(`select--${this.size()}`);
 
     // Full width modifier
     if (this.fullWidth()) {
-      classes.push('select-wrapper--full-width');
+      classes.push('select--full-width');
     }
 
     return classes.join(' ');

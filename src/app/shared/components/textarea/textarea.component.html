@@ -3,19 +3,19 @@
   @if (label()) {
     <label
       [id]="labelId()"
-      [class.textarea-label--disabled]="disabled()"
-      class="textarea-label"
+      [class.textarea__label--disabled]="disabled()"
+      class="textarea__label"
       [for]="'textarea-' + labelId()"
     >
       {{ label() }}
       @if (required()) {
-        <span class="textarea-label__required" aria-label="required">*</span>
+        <span class="textarea__label__required" aria-label="required">*</span>
       }
     </label>
   }
 
   <!-- Textarea Container -->
-  <div class="textarea-container">
+  <div class="textarea__wrapper">
     <textarea
       #textareaElement
       [id]="label() ? 'textarea-' + labelId() : undefined"

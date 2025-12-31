@@ -1,8 +1,9 @@
+@use '../../shared/styles/feature-page' as page;
+
 .contact-page {
-  width: 100%;
-  max-width: var(--max-width-lg);
-  margin: 0 auto;
-  padding: var(--space-4) var(--space-4) var(--space-12);
+  @include page.feature-container;
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-12);
 
   @media (min-width: 768px) {
     padding-top: var(--space-8);
@@ -22,17 +23,14 @@
 }
 
 .contact-header {
-  text-align: center;
-  margin-bottom: var(--space-8);
+  @include page.feature-header;
   max-width: var(--max-width-md);
   margin-left: auto;
   margin-right: auto;
 }
 
 .contact-title {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text);
+  @include page.feature-title;
   margin-bottom: var(--space-2);
   line-height: var(--line-height-tight);
 
@@ -42,8 +40,7 @@
 }
 
 .contact-description {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-secondary);
+  @include page.feature-subtitle;
   line-height: var(--line-height-relaxed);
 }
 

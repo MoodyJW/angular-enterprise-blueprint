@@ -4,7 +4,7 @@
 // - SelectDropdownComponent: ./select-dropdown/select-dropdown.component.scss
 // - SelectOptionComponent: ./select-option/select-option.component.scss
 
-.select-wrapper {
+.select {
   // Base wrapper styles
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
   &--full-width {
     width: var(--max-width-full);
 
-    .select-container {
+    .select__inner {
       width: var(--max-width-full);
     }
   }
@@ -35,7 +35,7 @@
   }
 }
 
-.select-label {
+.select__label {
   // Label styles (for compatibility, though InputLabelComponent is used)
   display: block;
   font-family: var(--font-family-sans);
@@ -51,7 +51,7 @@
   }
 }
 
-.select-container {
+.select__inner {
   // Container for select button and dropdown
   position: relative;
   width: var(--max-width-full);

@@ -3,20 +3,20 @@
     <label
       [id]="labelId()"
       [for]="'input-' + labelId()"
-      class="input-label"
-      [class.input-label--required]="required()"
-      [class.input-label--disabled]="disabled()"
+      class="input__label"
+      [class.input__label--required]="required()"
+      [class.input__label--disabled]="disabled()"
     >
       {{ label() }}
       @if (required()) {
-        <span class="input-label__required" aria-hidden="true">*</span>
+        <span class="input__label__required" aria-hidden="true">*</span>
       }
     </label>
   }
 
-  <div class="input-container">
+  <div class="input__wrapper">
     @if (prefix()) {
-      <span class="input-prefix" aria-hidden="true">
+      <span class="input__prefix" aria-hidden="true">
         {{ prefix() }}
       </span>
     }
@@ -48,7 +48,7 @@
     />
 
     @if (suffix()) {
-      <span class="input-suffix" aria-hidden="true">
+      <span class="input__suffix" aria-hidden="true">
         {{ suffix() }}
       </span>
     }

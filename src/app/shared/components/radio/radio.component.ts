@@ -238,12 +238,12 @@ export class RadioComponent {
    * Computed CSS classes for helper text
    */
   readonly helperTextClasses = computed(() => {
-    const classes = ['input-helper-text'];
+    const classes = ['radio__helper-text'];
     const state = this.validationState();
 
-    if (state === 'success') classes.push('input-helper-text--success');
-    if (state === 'warning') classes.push('input-helper-text--warning');
-    if (state === 'error') classes.push('input-helper-text--error');
+    if (state === 'success') classes.push('radio__helper-text--success');
+    if (state === 'warning') classes.push('radio__helper-text--warning');
+    if (state === 'error') classes.push('radio__helper-text--error');
 
     return classes.join(' ');
   });
@@ -304,14 +304,14 @@ export class RadioComponent {
    * Generate BEM CSS classes for the wrapper
    */
   private _getWrapperClasses(): string {
-    const classes = ['radio-wrapper'];
+    const classes = ['radio'];
 
     // Size class
-    classes.push(`radio-wrapper--${this.size()}`);
+    classes.push(`radio--${this.size()}`);
 
     // State classes
     if (this.disabled()) {
-      classes.push('radio-wrapper--disabled');
+      classes.push('radio--disabled');
     }
 
     return classes.join(' ');
@@ -321,26 +321,26 @@ export class RadioComponent {
    * Generate BEM CSS classes for the radio input
    */
   private _getRadioClasses(): string {
-    const classes = ['radio'];
+    const classes = ['radio__control'];
 
     // Size class
-    classes.push(`radio--${this.size()}`);
+    classes.push(`radio__control--${this.size()}`);
 
     // Validation state class
     const validation = this.validationState();
     if (validation !== 'default') {
-      classes.push(`radio--${validation}`);
+      classes.push(`radio__control--${validation}`);
     }
 
     // State classes
     if (this.disabled()) {
-      classes.push('radio--disabled');
+      classes.push('radio__control--disabled');
     }
     if (this.isFocused()) {
-      classes.push('radio--focused');
+      classes.push('radio__control--focused');
     }
     if (this.checked()) {
-      classes.push('radio--checked');
+      classes.push('radio__control--checked');
     }
 
     return classes.join(' ');
@@ -350,17 +350,17 @@ export class RadioComponent {
    * Generate BEM CSS classes for the label
    */
   private _getLabelClasses(): string {
-    const classes = ['radio-label'];
+    const classes = ['radio__label'];
 
     // Size class
-    classes.push(`radio-label--${this.size()}`);
+    classes.push(`radio__label--${this.size()}`);
 
     // State classes
     if (this.disabled()) {
-      classes.push('radio-label--disabled');
+      classes.push('radio__label--disabled');
     }
     if (this.required()) {
-      classes.push('radio-label--required');
+      classes.push('radio__label--required');
     }
 
     return classes.join(' ');

@@ -19,7 +19,7 @@
   text-align: center;
   white-space: nowrap;
   pointer-events: none; // Badge should not interfere with parent interactions
-  z-index: 1; // Ensure badge appears above parent content
+  z-index: var(--z-above); // Ensure badge appears above parent content
   transition-property: background-color, color, transform;
   transition-duration: var(--duration-normal);
   transition-timing-function: var(--ease-in-out);

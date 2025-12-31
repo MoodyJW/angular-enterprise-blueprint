@@ -26,8 +26,8 @@
     font-size: inherit;
     cursor: pointer;
     transition:
-      background-color var(--transition-fast),
-      border-color var(--transition-fast);
+      background-color var(--duration-fast),
+      border-color var(--duration-fast);
 
     &:hover {
       background-color: var(--color-surface-hover);
@@ -46,7 +46,7 @@
   }
 
   &__chevron {
-    transition: transform var(--transition-fast);
+    transition: transform var(--duration-fast);
 
     &--open {
       transform: rotate(180deg);
@@ -88,7 +88,7 @@
     gap: var(--space-2);
     padding: var(--space-2) var(--space-3);
     cursor: pointer;
-    transition: background-color var(--transition-fast);
+    transition: background-color var(--duration-fast);
 
     &:hover {
       background-color: var(--color-surface-hover);
@@ -127,8 +127,8 @@
     color: var(--color-text);
     cursor: pointer;
     transition:
-      background-color var(--transition-fast),
-      border-color var(--transition-fast);
+      background-color var(--duration-fast),
+      border-color var(--duration-fast);
 
     &:hover {
       background-color: var(--color-surface-hover);
@@ -145,5 +145,15 @@
       border-color: var(--color-primary);
       color: var(--color-on-primary);
     }
+  }
+}
+
+// Respect reduced motion preference
+@media (prefers-reduced-motion: reduce) {
+  .language-switcher__trigger,
+  .language-switcher__chevron,
+  .language-switcher__option,
+  .language-switcher__inline-option {
+    transition: none;
   }
 }

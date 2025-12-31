@@ -49,7 +49,7 @@
 }
 
 @mixin feature-placeholder-icon {
-  font-size: 4rem;
+  font-size: var(--font-size-6xl);
   margin-bottom: var(--space-4);
 }
 
