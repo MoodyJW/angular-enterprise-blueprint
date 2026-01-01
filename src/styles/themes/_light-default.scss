@@ -12,6 +12,7 @@
   --color-primary-active: #1e40af; // Blue 800
   --color-primary-subtle: #eff6ff;
   --color-on-primary: #ffffff;
+  --color-text-brand: var(--color-primary);
 
   // Secondary colors
   --color-secondary: #64748b;
@@ -21,7 +22,7 @@
   --color-on-secondary: #0f172a;
 
   // Semantic colors - Success
-  --color-success: #12873d; // Darker Green for >4.5:1 contrast
+  --color-success: #15803d; // Darker Green for >4.5:1 contrast on surface-active
   --color-success-hover: #0e602b; // Darker shade for hover
   --color-success-subtle: #f0fdf4;
   --color-on-success: #ffffff; // Change to white for better contrast on dark green

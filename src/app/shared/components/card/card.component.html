@@ -9,9 +9,9 @@
   (keydown)="handleKeydown($event)"
 >
   <!-- Header Slot -->
-  <header class="card__header">
+  <div class="card__header">
     <ng-content select="[card-header]" />
-  </header>
+  </div>
 
   <!-- Media Slot -->
   <div class="card__media">
@@ -19,12 +19,12 @@
   </div>
 
   <!-- Body Slot -->
-  <section class="card__body">
+  <div class="card__body">
     <ng-content select="[card-body]" />
-  </section>
+  </div>
 
   <!-- Footer Slot -->
-  <footer class="card__footer">
+  <div class="card__footer">
     <ng-content select="[card-footer]" />
-  </footer>
+  </div>
 </div>
