@@ -6,12 +6,7 @@ const config: StorybookConfig = {
     '../src/app/shared/**/*.mdx',
     '../src/app/shared/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
-  addons: [
-    '@storybook/addon-a11y',
-    '@storybook/addon-docs',
-    '@storybook/addon-onboarding',
-    '@storybook/addon-toolbars',
-  ],
+  addons: ['@storybook/addon-a11y', '@storybook/addon-docs', '@storybook/addon-onboarding'],
   framework: '@storybook/angular',
   docs: {},
 };
