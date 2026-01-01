@@ -98,7 +98,6 @@
     "@storybook/addon-a11y": "^10.1.10",
     "@storybook/addon-docs": "^10.1.10",
     "@storybook/addon-onboarding": "^10.1.10",
-    "@storybook/addon-toolbars": "^9.0.8",
     "@storybook/angular": "^10.1.10",
     "@typescript-eslint/parser": "^8.50.0",
     "@vitest/coverage-istanbul": "^4.0.16",
