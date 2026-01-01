@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 
+import { type IconName } from '@shared/constants';
 import { ButtonContentComponent } from './button-content';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'danger';
@@ -69,13 +70,13 @@ export class ButtonComponent {
    * Icon identifier for left position
    * Icon rendering will be implemented when icon system is added
    */
-  readonly iconLeft = input<string | undefined>(undefined);
+  readonly iconLeft = input<IconName | undefined>(undefined);
 
   /**
    * Icon identifier for right position
    * Icon rendering will be implemented when icon system is added
    */
-  readonly iconRight = input<string | undefined>(undefined);
+  readonly iconRight = input<IconName | undefined>(undefined);
 
   /**
    * Whether this is an icon-only button (no text content)

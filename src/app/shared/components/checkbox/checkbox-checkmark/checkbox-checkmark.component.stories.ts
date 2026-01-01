@@ -1,3 +1,6 @@
+import { provideIcons } from '@ng-icons/core';
+import { heroCheck, heroMinus } from '@ng-icons/heroicons/outline';
+import { ICON_NAMES } from '@shared/constants';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { applicationConfig } from '@storybook/angular';
 
@@ -9,7 +12,12 @@ const meta: Meta<CheckboxCheckmarkComponent> = {
   tags: ['autodocs'],
   decorators: [
     applicationConfig({
-      providers: [],
+      providers: [
+        provideIcons({
+          [ICON_NAMES.CHECK]: heroCheck,
+          [ICON_NAMES.REMOVE]: heroMinus,
+        }),
+      ],
     }),
   ],
   argTypes: {
@@ -52,7 +60,7 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <div style="position: relative; width: 20px; height: 20px; background-color: #f0f0f0; border: 2px solid #ccc; border-radius: 4px;">
+      <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-surface); border: 2px solid var(--color-border); border-radius: 4px;">
         <eb-checkbox-checkmark [checked]="checked" [indeterminate]="indeterminate" />
       </div>
     `,
@@ -75,7 +83,7 @@ export const Checked: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <div style="position: relative; width: 20px; height: 20px; background-color: #3b82f6; border: 2px solid #3b82f6; border-radius: 4px;">
+      <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-primary); border: 2px solid var(--color-primary); border-radius: 4px;">
         <eb-checkbox-checkmark [checked]="checked" [indeterminate]="indeterminate" />
       </div>
     `,
@@ -98,7 +106,7 @@ export const Indeterminate: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <div style="position: relative; width: 20px; height: 20px; background-color: #3b82f6; border: 2px solid #3b82f6; border-radius: 4px;">
+      <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-primary); border: 2px solid var(--color-primary); border-radius: 4px;">
         <eb-checkbox-checkmark [checked]="checked" [indeterminate]="indeterminate" />
       </div>
     `,
@@ -119,24 +127,24 @@ export const AllStates: Story = {
     template: `
       <div style="display: flex; gap: 2rem; align-items: center;">
         <div style="text-align: center;">
-          <div style="position: relative; width: 20px; height: 20px; background-color: #f0f0f0; border: 2px solid #ccc; border-radius: 4px; margin-bottom: 0.5rem;">
+          <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-surface); border: 2px solid var(--color-border); border-radius: 4px; margin-bottom: 0.5rem;">
             <eb-checkbox-checkmark [checked]="false" [indeterminate]="false" />
           </div>
-          <p style="font-size: 12px; margin: 0;">Unchecked</p>
+          <p style="font-size: 12px; margin: 0; color: var(--color-text);">Unchecked</p>
         </div>
 
         <div style="text-align: center;">
-          <div style="position: relative; width: 20px; height: 20px; background-color: #3b82f6; border: 2px solid #3b82f6; border-radius: 4px; margin-bottom: 0.5rem;">
+          <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-primary); border: 2px solid var(--color-primary); border-radius: 4px; margin-bottom: 0.5rem;">
             <eb-checkbox-checkmark [checked]="true" [indeterminate]="false" />
           </div>
-          <p style="font-size: 12px; margin: 0;">Checked</p>
+          <p style="font-size: 12px; margin: 0; color: var(--color-text);">Checked</p>
         </div>
 
         <div style="text-align: center;">
-          <div style="position: relative; width: 20px; height: 20px; background-color: #3b82f6; border: 2px solid #3b82f6; border-radius: 4px; margin-bottom: 0.5rem;">
+          <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-primary); border: 2px solid var(--color-primary); border-radius: 4px; margin-bottom: 0.5rem;">
             <eb-checkbox-checkmark [checked]="false" [indeterminate]="true" />
           </div>
-          <p style="font-size: 12px; margin: 0;">Indeterminate</p>
+          <p style="font-size: 12px; margin: 0; color: var(--color-text);">Indeterminate</p>
         </div>
       </div>
     `,
@@ -160,11 +168,11 @@ export const IndeterminatePrecedence: Story = {
     props: args,
     template: `
       <div style="text-align: center;">
-        <div style="position: relative; width: 20px; height: 20px; background-color: #3b82f6; border: 2px solid #3b82f6; border-radius: 4px; margin-bottom: 0.5rem;">
+        <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-primary); border: 2px solid var(--color-primary); border-radius: 4px; margin-bottom: 0.5rem;">
           <eb-checkbox-checkmark [checked]="checked" [indeterminate]="indeterminate" />
         </div>
-        <p style="font-size: 12px; margin: 0;">Both checked and indeterminate</p>
-        <p style="font-size: 12px; margin: 0; color: #666;">(indeterminate takes precedence)</p>
+        <p style="font-size: 12px; margin: 0; color: var(--color-text-brand, var(--color-text));">Both checked and indeterminate</p>
+        <p style="font-size: 12px; margin: 0; color: var(--color-text-secondary);">(indeterminate takes precedence)</p>
       </div>
     `,
   }),
@@ -222,31 +230,31 @@ export const WithValidationColors: Story = {
     template: `
       <div style="display: flex; gap: 2rem; align-items: center;">
         <div style="text-align: center;">
-          <div style="position: relative; width: 20px; height: 20px; background-color: #3b82f6; border: 2px solid #3b82f6; border-radius: 4px; margin-bottom: 0.5rem;">
+          <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-primary); border: 2px solid var(--color-primary); border-radius: 4px; margin-bottom: 0.5rem;">
             <eb-checkbox-checkmark [checked]="true" />
           </div>
-          <p style="font-size: 12px; margin: 0;">Default</p>
+          <p style="font-size: 12px; margin: 0; color: var(--color-text);">Default</p>
         </div>
 
         <div style="text-align: center;">
-          <div style="position: relative; width: 20px; height: 20px; background-color: #10b981; border: 2px solid #10b981; border-radius: 4px; margin-bottom: 0.5rem;">
+          <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-success); border: 2px solid var(--color-success); border-radius: 4px; margin-bottom: 0.5rem;">
             <eb-checkbox-checkmark [checked]="true" />
           </div>
-          <p style="font-size: 12px; margin: 0;">Success</p>
+          <p style="font-size: 12px; margin: 0; color: var(--color-text);">Success</p>
         </div>
 
         <div style="text-align: center;">
-          <div style="position: relative; width: 20px; height: 20px; background-color: #f59e0b; border: 2px solid #f59e0b; border-radius: 4px; margin-bottom: 0.5rem;">
+          <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-warning); border: 2px solid var(--color-warning); border-radius: 4px; margin-bottom: 0.5rem;">
             <eb-checkbox-checkmark [checked]="true" />
           </div>
-          <p style="font-size: 12px; margin: 0;">Warning</p>
+          <p style="font-size: 12px; margin: 0; color: var(--color-text);">Warning</p>
         </div>
 
         <div style="text-align: center;">
-          <div style="position: relative; width: 20px; height: 20px; background-color: #ef4444; border: 2px solid #ef4444; border-radius: 4px; margin-bottom: 0.5rem;">
+          <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-error); border: 2px solid var(--color-error); border-radius: 4px; margin-bottom: 0.5rem;">
             <eb-checkbox-checkmark [checked]="true" />
           </div>
-          <p style="font-size: 12px; margin: 0;">Error</p>
+          <p style="font-size: 12px; margin: 0; color: var(--color-text);">Error</p>
         </div>
       </div>
     `,
@@ -271,10 +279,10 @@ export const Interactive: Story = {
     props: args,
     template: `
       <div style="text-align: center;">
-        <div style="position: relative; width: 20px; height: 20px; background-color: ${args.checked || args.indeterminate ? '#3b82f6' : '#f0f0f0'}; border: 2px solid ${args.checked || args.indeterminate ? '#3b82f6' : '#ccc'}; border-radius: 4px; margin: 0 auto 1rem;">
+        <div style="position: relative; width: 20px; height: 20px; background-color: ${args.checked || args.indeterminate ? 'var(--color-primary)' : 'var(--color-surface)'}; border: 2px solid ${args.checked || args.indeterminate ? 'var(--color-primary)' : 'var(--color-border)'}; border-radius: 4px; margin: 0 auto 1rem;">
           <eb-checkbox-checkmark [checked]="checked" [indeterminate]="indeterminate" />
         </div>
-        <p style="font-size: 14px; margin: 0;">Use the controls below to toggle states</p>
+        <p style="font-size: 14px; margin: 0; color: var(--color-text);">Use the controls below to toggle states</p>
       </div>
     `,
   }),

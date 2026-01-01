@@ -24,7 +24,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       <label [for]="forId()" [class]="labelClass()">
         {{ label() }}
         @if (required()) {
-          <span class="input-label__required" aria-label="required">*</span>
+          <span class="input-label__required" aria-hidden="true">*</span>
         }
       </label>
     }

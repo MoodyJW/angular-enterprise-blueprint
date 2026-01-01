@@ -1,3 +1,6 @@
+import { provideIcons } from '@ng-icons/core';
+import { heroCheck, heroMinus } from '@ng-icons/heroicons/outline';
+import { ICON_NAMES } from '@shared/constants';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { applicationConfig } from '@storybook/angular';
 
@@ -9,7 +12,12 @@ const meta: Meta<CheckboxComponent> = {
   tags: ['autodocs'],
   decorators: [
     applicationConfig({
-      providers: [],
+      providers: [
+        provideIcons({
+          [ICON_NAMES.CHECK]: heroCheck,
+          [ICON_NAMES.REMOVE]: heroMinus,
+        }),
+      ],
     }),
   ],
   argTypes: {
@@ -114,6 +122,26 @@ const meta: Meta<CheckboxComponent> = {
       },
     },
   },
+  render: (args) => ({
+    props: args,
+    template: `
+      <eb-checkbox
+        [size]="size"
+        [(checked)]="checked"
+        [indeterminate]="indeterminate"
+        [label]="label"
+        [helperText]="helperText"
+        [validationState]="validationState"
+        [disabled]="disabled"
+        [required]="required"
+        [value]="value"
+        [name]="name"
+        [ariaLabel]="ariaLabel"
+        [ariaDescribedBy]="ariaDescribedBy"
+        [ariaInvalid]="ariaInvalid"
+      />
+    `,
+  }),
 };
 
 export default meta;
@@ -297,6 +325,12 @@ export const DisabledStates: Story = {
 // Checkbox Group Example
 export const CheckboxGroup: Story = {
   render: () => ({
+    props: {
+      web: false,
+      mobile: false,
+      cloud: false,
+      ml: false,
+    },
     template: `
       <div style="display: flex; flex-direction: column; gap: 0.5rem;">
         <h3 style="margin: 0 0 1rem 0; font-size: 16px; font-weight: 600;">Select your interests</h3>
@@ -304,24 +338,28 @@ export const CheckboxGroup: Story = {
           label="Web Development"
           name="interests"
           value="web"
+          [(checked)]="web"
           ariaLabel="Web Development"
         />
         <eb-checkbox
           label="Mobile Development"
           name="interests"
           value="mobile"
+          [(checked)]="mobile"
           ariaLabel="Mobile Development"
         />
         <eb-checkbox
           label="Cloud Computing"
           name="interests"
           value="cloud"
+          [(checked)]="cloud"
           ariaLabel="Cloud Computing"
         />
         <eb-checkbox
           label="Machine Learning"
           name="interests"
           value="ml"
+          [(checked)]="ml"
           ariaLabel="Machine Learning"
         />
       </div>
@@ -393,28 +431,6 @@ export const WithoutLabel: Story = {
       description: {
         story:
           'Checkbox without visible label. ARIA label is required for screen reader accessibility.',
-      },
-    },
-  },
-};
-
-// Interactive Example
-export const Interactive: Story = {
-  args: {
-    label: 'I agree to the terms',
-    size: 'md',
-    checked: false,
-    indeterminate: false,
-    disabled: false,
-    required: false,
-    validationState: 'default',
-    helperText: '',
-    ariaLabel: 'I agree to the terms',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Interactive checkbox - use the controls below to customize all properties.',
       },
     },
   },
@@ -500,7 +516,7 @@ export const FormIntegration: Story = {
           ariaLabel="I agree to the terms and conditions"
         />
 
-        <button type="submit" style="padding: 0.75rem 1.5rem; background: var(--color-primary); color: white; border: none; border-radius: var(--border-radius-md); cursor: pointer;">
+        <button type="submit" style="padding: 0.75rem 1.5rem; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: var(--border-radius-md); cursor: pointer;">
           Save Settings
         </button>
       </form>
