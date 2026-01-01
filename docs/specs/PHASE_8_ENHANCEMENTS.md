@@ -395,6 +395,231 @@ interface PortfolioHero {
 
 ---
 
+## 8.9 Enhanced Dashboard Metrics
+
+**Current:** Basic dashboard with build status, test coverage, last deployment
+**Target:** Comprehensive metrics dashboard showcasing code quality and project health
+
+### Overview
+
+Expand the home dashboard to display real, actionable metrics that demonstrate code quality, documentation coverage, and overall project health. This makes the portfolio more impressive and provides useful information at a glance.
+
+### New Metrics to Add
+
+**Code Quality Metrics:**
+
+1. **Documentation Coverage (Compodoc)**
+   - Parse `documentation.json` to extract coverage percentage
+   - Display percentage with visual indicator (progress bar or gauge)
+   - Show number of documented vs. total components/services
+   - Link to full Compodoc documentation
+
+2. **Test Coverage Details**
+   - Expand beyond single percentage
+   - Show breakdown: Statements, Branches, Functions, Lines
+   - Visual indicators for each metric
+   - Trend indicator (if coverage increased/decreased)
+
+3. **Bundle Size**
+   - Parse build stats to show main bundle size
+   - Show gzipped size
+   - Indicator if within budget thresholds
+   - Link to bundle analyzer
+
+4. **Linting Status**
+   - Show ESLint warning/error count (0 is goal)
+   - Prettier formatting status
+   - Last lint run timestamp
+
+5. **Dependency Health**
+   - Total dependencies count
+   - Outdated packages count
+   - Security vulnerabilities count (from npm audit)
+   - Link to dependency review
+
+6. **Storybook Coverage**
+   - Count of components with stories
+   - Percentage of shared components documented
+   - Link to Storybook
+
+**Project Activity Metrics:**
+
+7. **Git Statistics**
+   - Total commits
+   - Active branches count
+   - Last commit timestamp
+   - Contributors count
+
+8. **Lighthouse Scores**
+   - Performance, Accessibility, Best Practices, SEO scores
+   - Visual badges/indicators
+   - Link to latest Lighthouse report
+
+9. **Build Performance**
+   - Average build time
+   - Last successful build timestamp
+   - Build trend (faster/slower)
+
+### Data Sources
+
+**Static (Parse at Build Time):**
+
+- `documentation.json` → Compodoc coverage
+- `coverage/coverage-summary.json` → Test coverage details
+- `dist/stats.json` → Bundle sizes
+- `.git/` → Git statistics
+- `package.json` + `package-lock.json` → Dependency counts
+
+**Dynamic (Mock/Simulate):**
+
+- Lighthouse scores (could parse CI artifacts or mock)
+- Build times (could track via CI or mock)
+- Dependency vulnerabilities (`npm audit --json`)
+
+### Component Structure
+
+**DashboardMetricsComponent** (Smart Component)
+
+- Fetches all metrics data
+- Passes to presentational metric cards
+
+**MetricCardComponent** (Presentational)
+
+- Reusable card for displaying a single metric
+- Props: title, value, icon, trend, status (success/warning/error), link
+- Visual variants: percentage bar, number with icon, badge list
+
+**MetricGridComponent** (Presentational)
+
+- Responsive grid layout for metric cards
+- Auto-adjusts based on screen size
+
+### Data Model
+
+```typescript
+interface DashboardMetric {
+  readonly id: string;
+  readonly category: 'quality' | 'activity' | 'performance';
+  readonly title: string;
+  readonly value: string | number;
+  readonly subtitle?: string;
+  readonly icon: string;
+  readonly status: 'success' | 'warning' | 'error' | 'info';
+  readonly trend?: {
+    readonly direction: 'up' | 'down' | 'neutral';
+    readonly value: string;
+  };
+  readonly link?: {
+    readonly label: string;
+    readonly url: string;
+  };
+  readonly visualType: 'number' | 'percentage' | 'badge' | 'list';
+}
+
+interface DocumentationCoverage {
+  readonly total: number;
+  readonly documented: number;
+  readonly percentage: number;
+  readonly breakdown: {
+    readonly components: { total: number; documented: number };
+    readonly services: { total: number; documented: number };
+    readonly directives: { total: number; documented: number };
+    readonly pipes: { total: number; documented: number };
+  };
+}
+
+interface CoverageDetails {
+  readonly statements: { pct: number; covered: number; total: number };
+  readonly branches: { pct: number; covered: number; total: number };
+  readonly functions: { pct: number; covered: number; total: number };
+  readonly lines: { pct: number; covered: number; total: number };
+}
+
+interface BundleSize {
+  readonly main: { raw: number; gzipped: number };
+  readonly total: { raw: number; gzipped: number };
+  readonly withinBudget: boolean;
+}
+```
+
+### Implementation Approach
+
+**Phase 1: Static Metrics (Low-hanging fruit)**
+
+1. Parse `documentation.json` for Compodoc coverage
+2. Parse `coverage/coverage-summary.json` for detailed test coverage
+3. Parse `package.json` for dependency counts
+4. Display in new metric cards on dashboard
+
+**Phase 2: Build-time Metrics**
+
+1. Add script to generate `metrics.json` during build
+2. Include git stats, bundle sizes, build timestamp
+3. Serve as static asset
+
+**Phase 3: Dynamic/Simulated Metrics**
+
+1. Mock Lighthouse scores (or parse CI artifacts)
+2. Mock build performance trends
+3. Add npm audit integration (or mock)
+
+### Example Metrics Display
+
+```
+┌─────────────────────┬─────────────────────┬─────────────────────┐
+│ Documentation       │ Test Coverage       │ Bundle Size         │
+│ 94%                 │ 87% ↑               │ 245 KB ✓            │
+│ 142/151 documented  │ All metrics >85%    │ Within budget       │
+│ [View Docs]         │ [View Report]       │ [Analyze]           │
+└─────────────────────┴─────────────────────┴─────────────────────┘
+
+┌─────────────────────┬─────────────────────┬─────────────────────┐
+│ Linting             │ Dependencies        │ Storybook           │
+│ 0 errors ✓          │ 1,783 packages      │ 28/32 components    │
+│ 0 warnings ✓        │ 3 outdated          │ 87.5% coverage      │
+│ [Run Lint]          │ [Review]            │ [View Stories]      │
+└─────────────────────┴─────────────────────┴─────────────────────┘
+
+┌─────────────────────┬─────────────────────┬─────────────────────┐
+│ Lighthouse          │ Git Activity        │ Build Status        │
+│ 98 | 100 | 100 | 100│ 287 commits         │ ✓ Passing           │
+│ Perf|A11y|BP |SEO   │ Last: 2 hours ago   │ Avg: 45s            │
+│ [Latest Report]     │ [View Repo]         │ [CI Pipeline]       │
+└─────────────────────┴─────────────────────┴─────────────────────┘
+```
+
+### Scripts to Add
+
+```json
+{
+  "scripts": {
+    "metrics:generate": "node scripts/generate-metrics.js",
+    "metrics:coverage": "node scripts/parse-coverage.js",
+    "metrics:docs": "node scripts/parse-compodoc.js",
+    "metrics:audit": "npm audit --json > metrics/audit.json"
+  }
+}
+```
+
+### Acceptance Criteria
+
+- [ ] Compodoc documentation coverage displayed with percentage and breakdown
+- [ ] Test coverage shows all 4 metrics (statements, branches, functions, lines)
+- [ ] Bundle size displayed with budget status
+- [ ] Linting status shows error/warning counts
+- [ ] Dependency health metrics displayed
+- [ ] Storybook coverage percentage calculated and shown
+- [ ] Git statistics displayed (commits, last commit time)
+- [ ] Lighthouse scores displayed (real or mocked)
+- [ ] All metrics update when running `npm run metrics:generate`
+- [ ] Metric cards have consistent design with icons and status colors
+- [ ] Mobile responsive layout (cards stack on small screens)
+- [ ] Links to detailed reports work correctly
+- [ ] WCAG 2.1 AA compliant
+- [ ] All metrics accurate and verified
+
+---
+
 ## Timeline Estimate
 
 | Task                      | Estimated Time  |
@@ -407,7 +632,8 @@ interface PortfolioHero {
 | 8.6 Profile Layout        | 2 hours         |
 | 8.7 Toast Improvements    | 1-2 hours       |
 | 8.8 Profile Stats Caching | 1-2 hours       |
-| **Total**                 | **50-70 hours** |
+| 8.9 Enhanced Dashboard    | 12-16 hours     |
+| **Total**                 | **62-86 hours** |
 
 **8.1 Breakdown:**
 
@@ -416,6 +642,13 @@ interface PortfolioHero {
 - BlogDetailComponent: 8-10 hours
 - BlogCardComponent: 2-3 hours
 - Content migration: 2-3 hours
+
+**8.9 Breakdown:**
+
+- Metric parsing scripts: 4-5 hours
+- MetricCardComponent: 2-3 hours
+- DashboardMetricsComponent: 3-4 hours
+- Integration & testing: 3-4 hours
 
 ---
 
