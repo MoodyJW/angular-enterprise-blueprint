@@ -13,8 +13,9 @@ import { IconComponent } from '@shared/components/icon';
   selector: 'eb-tab-button',
   imports: [CommonModule, IconComponent],
   templateUrl: './tab-button.component.html',
-  styleUrls: ['./tab-button.component.scss'],
+  styleUrl: './tab-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { role: 'none' },
 })
 export class TabButtonComponent {
   readonly label = input<string>('');

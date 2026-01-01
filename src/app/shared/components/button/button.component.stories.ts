@@ -1,6 +1,9 @@
+import { provideIcons } from '@ng-icons/core';
+import * as heroIcons from '@ng-icons/heroicons/outline';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { applicationConfig, argsToTemplate } from '@storybook/angular';
 
+import { ICON_NAMES } from '@shared/constants';
 import { ButtonComponent } from './button.component';
 
 const meta: Meta<ButtonComponent> = {
@@ -9,7 +12,7 @@ const meta: Meta<ButtonComponent> = {
   tags: ['autodocs'],
   decorators: [
     applicationConfig({
-      providers: [],
+      providers: [provideIcons(heroIcons)],
     }),
   ],
   argTypes: {
@@ -73,11 +76,13 @@ const meta: Meta<ButtonComponent> = {
       },
     },
     iconLeft: {
-      control: 'text',
+      control: 'select',
+      options: [undefined, ...Object.values(ICON_NAMES)],
       description: 'Icon identifier for left position',
     },
     iconRight: {
-      control: 'text',
+      control: 'select',
+      options: [undefined, ...Object.values(ICON_NAMES)],
       description: 'Icon identifier for right position',
     },
     ariaLabel: {
@@ -227,8 +232,8 @@ export const WithIcons: Story = {
   render: () => ({
     template: `
       <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-        <eb-button variant="primary" iconLeft="←" ariaLabel="Go back">Back</eb-button>
-        <eb-button variant="primary" iconRight="→" ariaLabel="Continue forward">Continue</eb-button>
+        <eb-button variant="primary" iconLeft="${ICON_NAMES.ARROW_LEFT}" ariaLabel="Go back">Back</eb-button>
+        <eb-button variant="primary" iconRight="${ICON_NAMES.ARROW_RIGHT}" ariaLabel="Continue forward">Continue</eb-button>
       </div>
     `,
   }),
@@ -246,9 +251,9 @@ export const IconOnly: Story = {
   render: () => ({
     template: `
       <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-        <eb-button variant="ghost" [iconOnly]="true" size="sm" ariaLabel="Close dialog">×</eb-button>
-        <eb-button variant="ghost" [iconOnly]="true" size="md" ariaLabel="Close dialog">×</eb-button>
-        <eb-button variant="ghost" [iconOnly]="true" size="lg" ariaLabel="Close dialog">×</eb-button>
+        <eb-button variant="ghost" [iconOnly]="true" size="sm" iconLeft="${ICON_NAMES.CLOSE}" ariaLabel="Close dialog"></eb-button>
+        <eb-button variant="ghost" [iconOnly]="true" size="md" iconLeft="${ICON_NAMES.CLOSE}" ariaLabel="Close dialog"></eb-button>
+        <eb-button variant="ghost" [iconOnly]="true" size="lg" iconLeft="${ICON_NAMES.CLOSE}" ariaLabel="Close dialog"></eb-button>
       </div>
     `,
   }),

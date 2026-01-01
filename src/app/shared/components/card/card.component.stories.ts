@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { applicationConfig, argsToTemplate } from '@storybook/angular';
-
+import { applicationConfig, argsToTemplate, moduleMetadata } from '@storybook/angular';
+import { ButtonComponent } from '../button/button.component';
 import { CardComponent } from './card.component';
 
 const meta: Meta<CardComponent> = {
@@ -10,6 +10,9 @@ const meta: Meta<CardComponent> = {
   decorators: [
     applicationConfig({
       providers: [],
+    }),
+    moduleMetadata({
+      imports: [ButtonComponent],
     }),
   ],
   argTypes: {

@@ -1,3 +1,17 @@
+import { provideIcons } from '@ng-icons/core';
+import {
+  heroBeaker,
+  heroBell,
+  heroChartBar,
+  heroCheckCircle,
+  heroCog6Tooth,
+  heroEye,
+  heroHome,
+  heroInformationCircle,
+  heroListBullet,
+  heroUser,
+  heroUserGroup,
+} from '@ng-icons/heroicons/outline';
 import { ICON_NAMES } from '@shared/constants';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { applicationConfig } from '@storybook/angular';
@@ -11,7 +25,21 @@ const meta: Meta<TabsComponent> = {
   tags: ['autodocs'],
   decorators: [
     applicationConfig({
-      providers: [],
+      providers: [
+        provideIcons({
+          heroBeaker,
+          heroBell,
+          heroChartBar,
+          heroCheckCircle,
+          heroCog6Tooth,
+          heroEye,
+          heroHome,
+          heroInformationCircle,
+          heroListBullet,
+          heroUser,
+          heroUserGroup,
+        }),
+      ],
     }),
   ],
   argTypes: {

@@ -42,11 +42,11 @@
   line-height: 1;
 
   &--left {
-    margin-right: -4px;
+    margin-right: var(--space-1);
   }
 
   &--right {
-    margin-left: -4px;
+    margin-left: var(--space-1);
   }
 }
 

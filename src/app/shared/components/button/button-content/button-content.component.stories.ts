@@ -1,22 +1,33 @@
+import { provideIcons } from '@ng-icons/core';
+import * as heroIcons from '@ng-icons/heroicons/outline';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { applicationConfig } from '@storybook/angular';
 
+import { ICON_NAMES } from '@shared/constants';
 import { ButtonContentComponent } from './button-content.component';
 
 const meta: Meta<ButtonContentComponent> = {
   title: 'Shared/Button/ButtonContent',
   component: ButtonContentComponent,
   tags: ['autodocs'],
+  decorators: [
+    applicationConfig({
+      providers: [provideIcons(heroIcons)],
+    }),
+  ],
   argTypes: {
     loading: {
       control: 'boolean',
       description: 'Whether the button is in loading state (shows spinner)',
     },
     iconLeft: {
-      control: 'text',
+      control: 'select',
+      options: [undefined, ...Object.values(ICON_NAMES)],
       description: 'Icon identifier for left position',
     },
     iconRight: {
-      control: 'text',
+      control: 'select',
+      options: [undefined, ...Object.values(ICON_NAMES)],
       description: 'Icon identifier for right position',
     },
     iconOnly: {
@@ -56,7 +67,7 @@ export const Default: Story = {
 export const WithLeftIcon: Story = {
   args: {
     loading: false,
-    iconLeft: '←',
+    iconLeft: ICON_NAMES.ARROW_LEFT,
     iconRight: undefined,
     iconOnly: false,
   },
@@ -81,7 +92,7 @@ export const WithRightIcon: Story = {
   args: {
     loading: false,
     iconLeft: undefined,
-    iconRight: '→',
+    iconRight: ICON_NAMES.ARROW_RIGHT,
     iconOnly: false,
   },
   render: (args) => ({
@@ -104,8 +115,8 @@ export const WithRightIcon: Story = {
 export const WithBothIcons: Story = {
   args: {
     loading: false,
-    iconLeft: '←',
-    iconRight: '→',
+    iconLeft: ICON_NAMES.ARROW_LEFT,
+    iconRight: ICON_NAMES.ARROW_RIGHT,
     iconOnly: false,
   },
   render: (args) => ({
@@ -128,7 +139,7 @@ export const WithBothIcons: Story = {
 export const IconOnly: Story = {
   args: {
     loading: false,
-    iconLeft: '×',
+    iconLeft: ICON_NAMES.CLOSE,
     iconRight: undefined,
     iconOnly: true,
   },
@@ -176,8 +187,8 @@ export const Loading: Story = {
 export const LoadingWithIcons: Story = {
   args: {
     loading: true,
-    iconLeft: '←',
-    iconRight: '→',
+    iconLeft: ICON_NAMES.ARROW_LEFT,
+    iconRight: ICON_NAMES.ARROW_RIGHT,
     iconOnly: false,
   },
   render: (args) => ({
@@ -202,17 +213,17 @@ export const AllSizes: Story = {
     template: `
       <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
         <div class="btn btn--primary btn--sm">
-          <eb-button-content [iconLeft]="'⭐'">
+          <eb-button-content iconLeft="${ICON_NAMES.STAR}">
             Small
           </eb-button-content>
         </div>
         <div class="btn btn--primary btn--md">
-          <eb-button-content [iconLeft]="'⭐'">
+          <eb-button-content iconLeft="${ICON_NAMES.STAR}">
             Medium
           </eb-button-content>
         </div>
         <div class="btn btn--primary btn--lg">
-          <eb-button-content [iconLeft]="'⭐'">
+          <eb-button-content iconLeft="${ICON_NAMES.STAR}">
             Large
           </eb-button-content>
         </div>
@@ -226,27 +237,27 @@ export const AllVariants: Story = {
     template: `
       <div style="display: flex; gap: 16px; flex-direction: column;">
         <div class="btn btn--primary btn--md">
-          <eb-button-content [iconLeft]="'✓'">
+          <eb-button-content iconLeft="${ICON_NAMES.CHECK}">
             Primary
           </eb-button-content>
         </div>
         <div class="btn btn--secondary btn--md">
-          <eb-button-content [iconLeft]="'✓'">
+          <eb-button-content iconLeft="${ICON_NAMES.CHECK}">
             Secondary
           </eb-button-content>
         </div>
         <div class="btn btn--tertiary btn--md">
-          <eb-button-content [iconLeft]="'✓'">
+          <eb-button-content iconLeft="${ICON_NAMES.CHECK}">
             Tertiary
           </eb-button-content>
         </div>
         <div class="btn btn--ghost btn--md">
-          <eb-button-content [iconLeft]="'✓'">
+          <eb-button-content iconLeft="${ICON_NAMES.CHECK}">
             Ghost
           </eb-button-content>
         </div>
         <div class="btn btn--danger btn--md">
-          <eb-button-content [iconLeft]="'⚠'">
+          <eb-button-content iconLeft="${ICON_NAMES.WARNING}">
             Danger
           </eb-button-content>
         </div>

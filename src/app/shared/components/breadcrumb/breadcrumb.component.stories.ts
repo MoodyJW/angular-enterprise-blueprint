@@ -387,19 +387,19 @@ export const AllVariants: Story = {
     template: `
       <div style="display: flex; flex-direction: column; gap: 2rem;">
         <div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600; color: #4d4d4d;">Default</h3>
+          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600;">Default</h3>
           <eb-breadcrumb [items]="items" variant="default" ariaLabel="Default variant" />
         </div>
         <div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600; color: #4d4d4d;">Slash</h3>
+          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600;">Slash</h3>
           <eb-breadcrumb [items]="items" variant="slash" ariaLabel="Slash variant" />
         </div>
         <div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600; color: #4d4d4d;">Chevron</h3>
+          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600;">Chevron</h3>
           <eb-breadcrumb [items]="items" variant="chevron" ariaLabel="Chevron variant" />
         </div>
         <div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600; color: #4d4d4d;">Arrow</h3>
+          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600;">Arrow</h3>
           <eb-breadcrumb [items]="items" variant="arrow" ariaLabel="Arrow variant" />
         </div>
       </div>

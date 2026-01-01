@@ -373,14 +373,14 @@ export const OnDifferentElements: Story = {
 export const HideWhenZero: Story = {
   render: () => ({
     template: `
-      <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;">
+      <div style="background-color: var(--color-surface); padding: 20px; border-radius: 8px; display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;">
         <div>
           <h4 style="margin: 0 0 8px 0; font-size: 14px;">hideWhenZero=true (default)</h4>
           <div style="position: relative; display: inline-block;">
             <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Messages</button>
             <eb-badge [content]="0" [hideWhenZero]="true" ariaLabel="No messages" />
           </div>
-          <p style="font-size: 12px; color: #666; margin: 4px 0 0 0;">Badge is hidden</p>
+          <p style="font-size: 12px; color: var(--color-text-muted); margin: 4px 0 0 0;">Badge is hidden</p>
         </div>
 
         <div>
@@ -389,7 +389,7 @@ export const HideWhenZero: Story = {
             <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Messages</button>
             <eb-badge [content]="0" [hideWhenZero]="false" ariaLabel="No messages" />
           </div>
-          <p style="font-size: 12px; color: #666; margin: 4px 0 0 0;">Badge shows "0"</p>
+          <p style="font-size: 12px; color: var(--color-text-muted); margin: 4px 0 0 0;">Badge shows "0"</p>
         </div>
       </div>
     `,
