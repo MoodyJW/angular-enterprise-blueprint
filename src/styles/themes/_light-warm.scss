@@ -12,6 +12,7 @@
   --color-primary-active: #7c2d12; // Orange 900
   --color-primary-subtle: #fff7ed;
   --color-on-primary: #ffffff;
+  --color-text-brand: var(--color-primary);
 
   // Secondary colors - warm brown
   --color-secondary: #78716c;
@@ -21,7 +22,7 @@
   --color-on-secondary: #ffffff;
 
   // Semantic colors - Success
-  --color-success: #12873d; // Darker Green for >4.5:1 contrast
+  --color-success: #117e39; // Darker Green for >4.5:1 contrast
   --color-success-hover: #0e602b;
   --color-success-subtle: #f0fdf4;
   --color-on-success: #ffffff;

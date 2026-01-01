@@ -91,7 +91,7 @@ const meta: Meta<CardComponent> = {
           },
           {
             id: 'region',
-            enabled: true,
+            enabled: false,
           },
         ],
       },
@@ -462,7 +462,7 @@ export const StatCardExample: Story = {
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
         <eb-card variant="filled" padding="lg">
           <div card-body style="text-align: center;">
-            <h4 style="margin: 0; font-size: 2rem; font-weight: bold; color: var(--color-primary);">1,234</h4>
+            <h4 style="margin: 0; font-size: 2rem; font-weight: bold; color: var(--color-text-brand);">1,234</h4>
             <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--color-text-secondary);">Total Views</p>
             <p style="margin: 0.25rem 0 0; font-size: 0.75rem; color: var(--color-success);">+12.5%</p>
           </div>
@@ -470,7 +470,7 @@ export const StatCardExample: Story = {
 
         <eb-card variant="filled" padding="lg">
           <div card-body style="text-align: center;">
-            <h4 style="margin: 0; font-size: 2rem; font-weight: bold; color: var(--color-primary);">42</h4>
+            <h4 style="margin: 0; font-size: 2rem; font-weight: bold; color: var(--color-text-brand);">42</h4>
             <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--color-text-secondary);">Projects</p>
             <p style="margin: 0.25rem 0 0; font-size: 0.75rem; color: var(--color-success);">+3 this month</p>
           </div>
@@ -478,7 +478,7 @@ export const StatCardExample: Story = {
 
         <eb-card variant="filled" padding="lg">
           <div card-body style="text-align: center;">
-            <h4 style="margin: 0; font-size: 2rem; font-weight: bold; color: var(--color-primary);">98%</h4>
+            <h4 style="margin: 0; font-size: 2rem; font-weight: bold; color: var(--color-text-brand);">98%</h4>
             <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--color-text-secondary);">Test Coverage</p>
             <p style="margin: 0.25rem 0 0; font-size: 0.75rem; color: var(--color-success);">+2%</p>
           </div>
