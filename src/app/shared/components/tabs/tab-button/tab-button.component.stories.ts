@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { TabButtonComponent } from './tab-button.component';
 
 const meta: Meta<TabButtonComponent> = {
-  title: 'Components/TabButton',
+  title: 'Shared/Tabs/TabButton',
   component: TabButtonComponent,
   tags: ['autodocs'],
   argTypes: {
