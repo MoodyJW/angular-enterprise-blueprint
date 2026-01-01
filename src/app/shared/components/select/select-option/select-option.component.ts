@@ -16,7 +16,7 @@ import { ICON_NAMES } from '@shared/constants';
   imports: [CommonModule, IconComponent],
   styleUrl: './select-option.component.scss',
   template: `
-    <li
+    <div
       [class]="optionClass()"
       [class.select-option--selected]="isSelected()"
       [class.select-option--disabled]="isDisabled()"
@@ -50,7 +50,7 @@ import { ICON_NAMES } from '@shared/constants';
           <span class="select-option__description">{{ description() }}</span>
         }
       </span>
-    </li>
+    </div>
   `,
   styles: [
     `
@@ -63,6 +63,7 @@ import { ICON_NAMES } from '@shared/constants';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ heroCheck })],
+  host: { role: 'none' },
 })
 export class SelectOptionComponent {
   readonly iconNames = ICON_NAMES;

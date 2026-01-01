@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { applicationConfig } from '@storybook/angular';
+import { applicationConfig, componentWrapperDecorator } from '@storybook/angular';
 
 import { SelectOptionComponent } from './select-option.component';
 
@@ -11,6 +11,9 @@ const meta: Meta<SelectOptionComponent> = {
     applicationConfig({
       providers: [],
     }),
+    componentWrapperDecorator(
+      (story) => `<div role="listbox" aria-label="Select option test">${story}</div>`,
+    ),
   ],
   argTypes: {
     optionClass: {

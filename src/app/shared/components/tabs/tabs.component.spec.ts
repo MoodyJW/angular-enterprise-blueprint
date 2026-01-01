@@ -495,16 +495,11 @@ describe('TabsComponent with Icons', () => {
       expect(label).toBeTruthy();
 
       // Check that icon comes before label in DOM
-      // Note: Icon and label are now inside btn__content wrapper within eb-button-content
-      const contentWrapper = firstTab?.querySelector('.btn__content');
-      expect(contentWrapper).toBeTruthy();
-
-      // Guard against null to satisfy strict null checks before accessing children
-      if (contentWrapper) {
-        const iconIndex = Array.from(contentWrapper.children).indexOf(icon as Element);
-        const labelIndex = Array.from(contentWrapper.children).indexOf(label as Element);
-        expect(iconIndex).toBeLessThan(labelIndex);
-      }
+      // Check that icon comes before label in DOM
+      // Note: Icon and label are direct children of the button
+      const iconIndex = Array.from(firstTab?.children ?? []).indexOf(icon as Element);
+      const labelIndex = Array.from(firstTab?.children ?? []).indexOf(label as Element);
+      expect(iconIndex).toBeLessThan(labelIndex);
     });
 
     it('should apply decorative attribute to icons', () => {

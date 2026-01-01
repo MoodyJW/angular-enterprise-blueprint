@@ -99,6 +99,7 @@ const meta: Meta<SelectDropdownComponent> = {
       { value: '5', label: 'Option 5' },
     ],
     isOptionSelected: (_option: SelectOption) => false,
+    ariaLabel: 'Select options',
   },
   // Use render to wrap in a container with proper positioning
   render: (args) => ({
@@ -234,6 +235,7 @@ export const ManyOptions: Story = {
 export const ManyOptionsWithSearch: Story = {
   args: {
     searchable: true,
+    ariaLabel: 'Options with search',
     options: Array.from({ length: 20 }, (_, i) => ({
       value: String(i + 1),
       label: `Option ${String(i + 1)}`,

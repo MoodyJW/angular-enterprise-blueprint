@@ -3,16 +3,15 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 
 import { type IconName } from '@shared/constants';
 
-import { ButtonComponent } from '@shared/components/button';
 import { IconComponent } from '@shared/components/icon';
 
 /**
- * Small wrapper around `eb-button` that contains tab-specific visual styles
- * and ARIA wiring. Designed to keep per-tab styles scoped to a small file.
+ * Tab button component with native button element for accessibility.
+ * Uses native button to avoid nested interactive controls violation.
  */
 @Component({
   selector: 'eb-tab-button',
-  imports: [CommonModule, ButtonComponent, IconComponent],
+  imports: [CommonModule, IconComponent],
   templateUrl: './tab-button.component.html',
   styleUrls: ['./tab-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -41,7 +41,7 @@ import type { SelectOption } from '../select.component';
         </div>
       }
 
-      <ul
+      <div
         [id]="listboxId()"
         class="select-options"
         role="listbox"
@@ -50,14 +50,14 @@ import type { SelectOption } from '../select.component';
         [style.max-height.px]="maxHeight()"
       >
         @if (options().length === 0) {
-          <li
+          <div
             class="select-option select-option--empty"
             role="option"
             aria-disabled="true"
             aria-selected="false"
           >
             No options found
-          </li>
+          </div>
         }
         @for (option of options(); track option.value; let i = $index) {
           <eb-select-option
@@ -74,7 +74,7 @@ import type { SelectOption } from '../select.component';
             (mouseEntered)="optionMouseEntered.emit(i)"
           />
         }
-      </ul>
+      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

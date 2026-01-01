@@ -55,6 +55,16 @@ const preview: Preview = {
         locales: 'en-US',
       },
     },
+    a11y: {
+      config: {
+        rules: [
+          // Disabled: Stories are isolated components without page context.
+          // The 'region' rule requires content to be in landmark elements
+          // (<main>, <nav>, etc.), which is a page-level concern, not component.
+          { id: 'region', enabled: false },
+        ],
+      },
+    },
   },
 };
 

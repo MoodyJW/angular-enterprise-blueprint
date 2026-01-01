@@ -28,7 +28,7 @@ describe('SelectOptionComponent', () => {
     fixture.componentRef.setInput('label', 'Test Option');
 
     fixture.detectChanges();
-    listItem = compiled.querySelector('li') as HTMLElement;
+    listItem = compiled.querySelector('.select-option') as HTMLElement;
   });
 
   describe('Component Creation', () => {

@@ -150,7 +150,7 @@ describe('TabButtonComponent', () => {
   describe('DOM Rendering', () => {
     it('should render button element', () => {
       fixture.detectChanges();
-      const button = nativeElement.querySelector('eb-button');
+      const button = nativeElement.querySelector('button');
       expect(button).toBeTruthy();
     });
 
@@ -263,26 +263,12 @@ describe('TabButtonComponent', () => {
     it('should set aria-label from label', () => {
       fixture.componentRef.setInput('label', 'My Tab');
       fixture.detectChanges();
-      const host = nativeElement.querySelector('[role="tab"]');
-      const button =
-        host?.querySelector('button') ?? nativeElement.querySelector('eb-button button');
+      const button = nativeElement.querySelector('button');
       expect(button?.getAttribute('aria-label')).toBe('My Tab');
     });
   });
 
   describe('Button Properties', () => {
-    it('should set button variant to ghost', () => {
-      fixture.detectChanges();
-      const button = nativeElement.querySelector('eb-button');
-      expect(button).toBeTruthy();
-    });
-
-    it('should set button size to md', () => {
-      fixture.detectChanges();
-      const button = nativeElement.querySelector('eb-button');
-      expect(button).toBeTruthy();
-    });
-
     it('should pass disabled state to button', () => {
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();
@@ -330,16 +316,15 @@ describe('TabButtonComponent', () => {
       fixture.componentRef.setInput('label', 'Home');
       fixture.detectChanges();
 
-      const button = nativeElement.querySelector('[role="tab"]');
-      const contentWrapper = button?.querySelector('.btn__content');
-      const icon = contentWrapper?.querySelector('.tabs__tab-icon');
-      const label = contentWrapper?.querySelector('.tabs__tab-label');
+      const button = nativeElement.querySelector('button');
+      const icon = button?.querySelector('.tabs__tab-icon');
+      const label = button?.querySelector('.tabs__tab-label');
 
       expect(icon).toBeTruthy();
       expect(label).toBeTruthy();
 
-      const iconIndex = Array.from(contentWrapper?.children ?? []).indexOf(icon as Element);
-      const labelIndex = Array.from(contentWrapper?.children ?? []).indexOf(label as Element);
+      const iconIndex = Array.from(button?.children ?? []).indexOf(icon as Element);
+      const labelIndex = Array.from(button?.children ?? []).indexOf(label as Element);
 
       expect(iconIndex).toBeLessThan(labelIndex);
     });

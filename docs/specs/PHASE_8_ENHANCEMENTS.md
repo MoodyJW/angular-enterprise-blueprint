@@ -10,6 +10,80 @@
 - Ensure all new features meet WCAG 2.1 AA standards
 - Focus on portfolio presentation and user engagement
 
+## Component Reuse Strategy
+
+**IMPORTANT:** Before creating new components, leverage the existing design system in `src/app/shared/components/`.
+
+### Components to Reuse (NOT Create New)
+
+The following existing components should be reused instead of creating new ones:
+
+1. **CardComponent** → Use for BlogCardComponent and MetricCardComponent
+   - Already has variants (default, elevated, outlined, filled)
+   - Supports clickable, hoverable, full-width modes
+   - Has proper ARIA attributes and keyboard navigation
+   - Located at: [card.component.ts](../src/app/shared/components/card/card.component.ts)
+
+2. **GridComponent** → Use for MetricGridComponent layout
+   - Responsive grid system already implemented
+   - Located at: [grid.component.ts](../src/app/shared/components/grid/grid.component.ts)
+
+3. **BadgeComponent** → Use for status indicators (NOT filter chips)
+   - Designed for passive status/count displays
+   - Located at: [badge.component.ts](../src/app/shared/components/badge/badge.component.ts)
+
+4. **ThemePickerComponent** → Modify for ThemeMenuComponent
+   - Already has theme selection logic
+   - Refactor to icon-only trigger variant
+   - Located at: [theme-picker.component.ts](../src/app/shared/components/theme-picker/theme-picker.component.ts)
+
+### New Components to Create
+
+Only create these genuinely new components with unique functionality:
+
+1. **FilterChipsComponent** (Section 8.5)
+   - **Why new:** Interactive multi-select filter UI is distinct from passive BadgeComponent
+   - **Justification:** Reused across ModulesListComponent and AdrListComponent
+   - **Key difference:** Active filtering vs. passive status display
+   - Multi-select toggle behavior, chip removal, "Clear all" functionality
+
+2. **UserMenuComponent** (Section 8.2)
+   - **Why new:** Dropdown menu with account header and logout specific behavior
+   - **Justification:** Unique authentication-related UI pattern
+
+3. **DashboardMetricsComponent** (Section 8.9)
+   - **Why new:** Smart component for fetching and orchestrating metrics data
+   - **Note:** Uses existing CardComponent for individual metric displays
+
+4. **BlogListComponent** (Section 8.1)
+   - **Why new:** Smart component with blog-specific state and filtering logic
+   - **Note:** Uses existing CardComponent for article previews
+
+5. **BlogDetailComponent** (Section 8.1)
+   - **Why new:** Smart component with markdown rendering and article-specific features
+
+### Component Audit Summary
+
+Current shared components inventory (26 total):
+
+- ✅ Badge, Button, Card, Checkbox, Grid, Input, Modal, Radio, Select, Textarea, Toast, ThemePicker, etc.
+- All components follow BEM methodology, WCAG 2.1 AA standards, and theme system integration
+
+**Principle:** Maximize reuse to maintain consistency, reduce maintenance burden, and accelerate development.
+
+### Benefits of This Strategy
+
+By reusing existing components instead of creating duplicates:
+
+1. **Consistency:** All cards, grids, and badges look and behave the same across features
+2. **Maintenance:** Bug fixes and improvements benefit all use cases, not just one
+3. **Development Speed:** Less code to write, test, and document
+4. **Bundle Size:** Smaller production bundles (no duplicate component code)
+5. **Design System Integrity:** Reinforces the shared component library as single source of truth
+6. **Accessibility:** Reuses battle-tested, WCAG-compliant implementations
+
+**Result:** Phase 8 creates only 3 new shared components (FilterChips, UserMenu, DashboardMetrics) instead of the originally planned 6+, reducing development time while improving quality.
+
 ---
 
 ## 8.1 Blog Feature Module
@@ -43,12 +117,12 @@ Create a complete blog feature to showcase technical writing and thought leaders
 - Social sharing buttons (optional)
 - Syntax highlighting for code blocks
 
-**BlogCardComponent** (Presentational)
+**Article Card Display**
 
-- Reusable card for article preview
-- Props: title, excerpt, date, readingTime, tags, featuredImage, slug
-- Hover states and accessibility
-- Responsive layout
+- **Use existing CardComponent** with `clickable` and `hoverable` props
+- Pass article data (title, excerpt, date, readingTime, tags, featuredImage) via content projection
+- No need for separate BlogCardComponent - leverage design system
+- CardComponent already handles hover states, accessibility, and responsive layout
 
 ### Data Model
 
@@ -147,15 +221,19 @@ Migrate existing blog articles from phase completion:
 
 ### Components
 
-**UserMenuComponent** (New)
+**UserMenuComponent** (New Shared Component)
 
+- **Why new:** Dropdown menu pattern with authentication-specific behavior
 - Dropdown menu with account name header
 - Logout option
 - Future: Settings, Profile links
+- Uses Angular CDK Overlay for positioning and accessibility
+- Located at: `src/app/shared/components/user-menu/`
 
 **Changes:**
 
 - **Modify:** `HeaderComponent` (replace text/button with icon button)
+- **Create:** `UserMenuComponent` as reusable shared component
 
 ### Acceptance Criteria
 
@@ -175,15 +253,20 @@ Migrate existing blog articles from phase completion:
 
 ### Components
 
-**ThemeMenuComponent** (New)
+**ThemePickerComponent Enhancement** (Modify Existing)
 
-- Shows all 6 themes with visual previews
-- Current theme highlighted
-- Theme name and description
+- **Why modify existing:** Theme selection logic already implemented
+- Add icon-only variant mode (`compact: true` or similar)
+- Keep existing full picker for other use cases
+- Shows all 6 themes with visual previews (already has this)
+- Current theme highlighted (already has this)
+- Theme name and description (already has this)
+- Located at: `src/app/shared/components/theme-picker/`
 
 **Changes:**
 
-- **Modify:** `HeaderComponent` (replace picker with icon button)
+- **Modify:** `ThemePickerComponent` (add compact/icon-only mode)
+- **Modify:** `HeaderComponent` (use compact variant)
 
 ### Acceptance Criteria
 
@@ -258,12 +341,29 @@ interface PortfolioHero {
 
 ### Components
 
-**FilterChipsComponent** (New - Reusable)
+**FilterChipsComponent** (New Shared Component)
 
-- Multi-select chip filter
-- "Clear all" functionality
-- Chip removal
-- Props: filters[], selectedFilters[], (filterChange) event
+- **Why new:** Interactive multi-select filter UI distinct from passive BadgeComponent
+- **Key difference from Badge:** Active filtering with toggle behavior vs. passive status display
+- **Reuse justification:** Used in both ModulesListComponent and AdrListComponent
+- Multi-select chip filter with toggle on click
+- Individual chip removal with × button
+- "Clear all" functionality when filters active
+- Keyboard navigation (Tab, Enter/Space to toggle)
+- Props: `chips: FilterChip[]`, `multiSelect: boolean`, `ariaLabel: string`
+- Outputs: `chipToggled: FilterChip`, `cleared: void`
+- Located at: `src/app/shared/components/filter-chips/`
+
+**Data Model:**
+
+```typescript
+export interface FilterChip {
+  readonly id: string;
+  readonly label: string;
+  readonly selected: boolean;
+  readonly category?: string; // Optional grouping
+}
+```
 
 ### Changes
 
@@ -480,19 +580,24 @@ Expand the home dashboard to display real, actionable metrics that demonstrate c
 
 **DashboardMetricsComponent** (Smart Component)
 
-- Fetches all metrics data
-- Passes to presentational metric cards
+- **Why new:** Orchestrates metrics data fetching and state management
+- Fetches all metrics data from various sources
+- Parses JSON files (documentation.json, coverage-summary.json, etc.)
+- Passes data to existing CardComponent instances
+- Located at: `src/app/features/home/components/dashboard-metrics/`
 
-**MetricCardComponent** (Presentational)
+**Metric Display**
 
-- Reusable card for displaying a single metric
-- Props: title, value, icon, trend, status (success/warning/error), link
-- Visual variants: percentage bar, number with icon, badge list
+- **Use existing CardComponent** for individual metric displays
+- No need for separate MetricCardComponent - leverage design system
+- Pass metric data via content projection (title, value, icon, trend, status)
+- CardComponent variants handle visual differences (elevated, outlined, etc.)
 
-**MetricGridComponent** (Presentational)
+**Layout**
 
-- Responsive grid layout for metric cards
-- Auto-adjusts based on screen size
+- **Use existing GridComponent** for responsive metric card layout
+- No need for separate MetricGridComponent
+- GridComponent already handles responsive breakpoints and auto-adjustment
 
 ### Data Model
 
@@ -638,17 +743,36 @@ interface BundleSize {
 **8.1 Breakdown:**
 
 - BlogStore + data model: 4-6 hours
-- BlogListComponent: 8-10 hours
+- BlogListComponent (uses CardComponent): 6-8 hours
 - BlogDetailComponent: 8-10 hours
-- BlogCardComponent: 2-3 hours
+- Styling card content projection: 2-3 hours
 - Content migration: 2-3 hours
+- Routing & navigation: 2-3 hours
+
+**8.2 Breakdown:**
+
+- UserMenuComponent creation: 4-5 hours
+- HeaderComponent integration: 1-2 hours
+- Testing & accessibility: 1-2 hours
+
+**8.3 Breakdown:**
+
+- ThemePickerComponent compact mode: 2-3 hours
+- HeaderComponent integration: 1-2 hours
+- Testing: 1 hour
+
+**8.5 Breakdown:**
+
+- FilterChipsComponent creation: 4-5 hours
+- Integration in ModulesListComponent: 1-2 hours
+- Integration in AdrListComponent: 1-2 hours
 
 **8.9 Breakdown:**
 
 - Metric parsing scripts: 4-5 hours
-- MetricCardComponent: 2-3 hours
-- DashboardMetricsComponent: 3-4 hours
-- Integration & testing: 3-4 hours
+- DashboardMetricsComponent (uses CardComponent + GridComponent): 4-5 hours
+- Styling metric content projection: 2-3 hours
+- Integration & testing: 2-3 hours
 
 ---
 

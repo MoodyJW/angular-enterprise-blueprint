@@ -103,8 +103,8 @@ describe('CardComponent', () => {
       let clickedEvent: MouseEvent | undefined;
       component.clicked.subscribe((event) => (clickedEvent = event));
 
-      const cardElement = nativeElement.querySelector('article');
-      cardElement?.click();
+      const cardElement = nativeElement.querySelector('.card');
+      (cardElement as HTMLElement).click();
 
       expect(clickedEvent).toBeDefined();
     });
@@ -190,18 +190,18 @@ describe('CardComponent', () => {
   });
 
   describe('Accessibility - ARIA Attributes', () => {
-    it('should have article role by default', () => {
+    it('should not have role by default', () => {
       fixture.detectChanges();
 
-      const cardElement = nativeElement.querySelector('article');
-      expect(cardElement?.getAttribute('role')).toBe('article');
+      const cardElement = nativeElement.querySelector('.card');
+      expect(cardElement?.getAttribute('role')).toBeNull();
     });
 
     it('should have button role when clickable', () => {
       fixture.componentRef.setInput('clickable', true);
       fixture.detectChanges();
 
-      const cardElement = nativeElement.querySelector('article');
+      const cardElement = nativeElement.querySelector('.card');
       expect(cardElement?.getAttribute('role')).toBe('button');
     });
 
@@ -209,7 +209,7 @@ describe('CardComponent', () => {
       fixture.componentRef.setInput('role', 'region');
       fixture.detectChanges();
 
-      const cardElement = nativeElement.querySelector('article');
+      const cardElement = nativeElement.querySelector('.card');
       expect(cardElement?.getAttribute('role')).toBe('region');
     });
 
@@ -217,7 +217,7 @@ describe('CardComponent', () => {
       fixture.componentRef.setInput('ariaLabel', 'Project card');
       fixture.detectChanges();
 
-      const cardElement = nativeElement.querySelector('article');
+      const cardElement = nativeElement.querySelector('.card');
       expect(cardElement?.getAttribute('aria-label')).toBe('Project card');
     });
 
@@ -225,7 +225,7 @@ describe('CardComponent', () => {
       fixture.componentRef.setInput('ariaLabelledBy', 'card-title');
       fixture.detectChanges();
 
-      const cardElement = nativeElement.querySelector('article');
+      const cardElement = nativeElement.querySelector('.card');
       expect(cardElement?.getAttribute('aria-labelledby')).toBe('card-title');
     });
 
@@ -233,7 +233,7 @@ describe('CardComponent', () => {
       fixture.componentRef.setInput('ariaDescribedBy', 'card-description');
       fixture.detectChanges();
 
-      const cardElement = nativeElement.querySelector('article');
+      const cardElement = nativeElement.querySelector('.card');
       expect(cardElement?.getAttribute('aria-describedby')).toBe('card-description');
     });
 
@@ -241,7 +241,7 @@ describe('CardComponent', () => {
       fixture.componentRef.setInput('clickable', true);
       fixture.detectChanges();
 
-      const cardElement = nativeElement.querySelector('article');
+      const cardElement = nativeElement.querySelector('.card');
       expect(cardElement?.getAttribute('tabindex')).toBe('0');
     });
 
@@ -249,18 +249,18 @@ describe('CardComponent', () => {
       fixture.componentRef.setInput('clickable', false);
       fixture.detectChanges();
 
-      const cardElement = nativeElement.querySelector('article');
+      const cardElement = nativeElement.querySelector('.card');
       expect(cardElement?.getAttribute('tabindex')).toBeNull();
     });
   });
 
   describe('Accessibility - Semantic HTML', () => {
-    it('should use article element', () => {
+    it('should use div element', () => {
       fixture.detectChanges();
 
-      const cardElement = nativeElement.querySelector('article');
+      const cardElement = nativeElement.querySelector('.card');
       expect(cardElement).toBeTruthy();
-      expect(cardElement?.tagName).toBe('ARTICLE');
+      expect(cardElement?.tagName).toBe('DIV');
     });
 
     it('should have header element', () => {
@@ -292,7 +292,7 @@ describe('CardComponent', () => {
     it('should apply base card class', () => {
       fixture.detectChanges();
 
-      const cardElement = nativeElement.querySelector('article');
+      const cardElement = nativeElement.querySelector('.card');
       expect(cardElement?.classList.contains('card')).toBe(true);
     });
 
@@ -303,7 +303,7 @@ describe('CardComponent', () => {
         fixture.componentRef.setInput('variant', variant);
         fixture.detectChanges();
 
-        const cardElement = nativeElement.querySelector('article');
+        const cardElement = nativeElement.querySelector('.card');
         expect(cardElement?.classList.contains(`card--${variant}`)).toBe(true);
       });
     });
@@ -315,7 +315,7 @@ describe('CardComponent', () => {
         fixture.componentRef.setInput('padding', padding);
         fixture.detectChanges();
 
-        const cardElement = nativeElement.querySelector('article');
+        const cardElement = nativeElement.querySelector('.card');
         expect(cardElement?.classList.contains(`card--padding-${padding}`)).toBe(true);
       });
     });
@@ -324,7 +324,7 @@ describe('CardComponent', () => {
       fixture.componentRef.setInput('clickable', true);
       fixture.detectChanges();
 
-      const cardElement = nativeElement.querySelector('article');
+      const cardElement = nativeElement.querySelector('.card');
       expect(cardElement?.classList.contains('card--clickable')).toBe(true);
     });
 
@@ -332,7 +332,7 @@ describe('CardComponent', () => {
       fixture.componentRef.setInput('hoverable', true);
       fixture.detectChanges();
 
-      const cardElement = nativeElement.querySelector('article');
+      const cardElement = nativeElement.querySelector('.card');
       expect(cardElement?.classList.contains('card--hoverable')).toBe(true);
     });
 
@@ -340,7 +340,7 @@ describe('CardComponent', () => {
       fixture.componentRef.setInput('fullWidth', true);
       fixture.detectChanges();
 
-      const cardElement = nativeElement.querySelector('article');
+      const cardElement = nativeElement.querySelector('.card');
       expect(cardElement?.classList.contains('card--full-width')).toBe(true);
     });
   });
@@ -399,9 +399,9 @@ describe('CardComponent', () => {
       expect(classes).toContain('card--clickable');
     });
 
-    it('should compute cardRole as article by default', () => {
+    it('should compute cardRole as undefined by default', () => {
       fixture.detectChanges();
-      expect(component.cardRole()).toBe('article');
+      expect(component.cardRole()).toBeUndefined();
     });
 
     it('should compute cardRole as button when clickable', () => {
