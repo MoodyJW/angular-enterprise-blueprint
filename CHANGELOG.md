@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v1.0.1...v1.0.2) (2026-01-01)
+
+
+### Bug Fixes
+
+* **adr-viewer:** search filtering ([20baa4e](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/20baa4eaecd005b342eb8965be7ea95a803dcecc))
+
 ## [1.0.1](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v1.0.0...v1.0.1) (2025-12-30)
 
 
