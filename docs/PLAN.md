@@ -253,6 +253,8 @@ _Goal: Ensure it builds and ships like enterprise software._
 
 ### 🧹 Phase 7: Polish & Cleanup
 
+**Reference:** See `/docs/specs/PHASE_7_POLISH.md` for detailed specifications.
+
 _Goal: Clean up technical debt, refine implementation quality, and ensure production-ready presentation._
 
 - [x] **7.1 Form Components Improvements**: Implement all improvements from code review.
@@ -260,53 +262,81 @@ _Goal: Clean up technical debt, refine implementation quality, and ensure produc
   - [x] High-priority accessibility fixes.
   - [x] Medium-priority code quality improvements.
   - [x] Low-priority cleanup items.
-- [ ] **7.2 Path Alias Migration**: Migrate all relative imports to path aliases.
-  - [ ] See `/PATH_ALIAS_MIGRATION_PLAN.md` for detailed migration strategy.
-  - [ ] Add new path aliases to `tsconfig.json`.
-  - [ ] Migrate ~180-200 files from relative imports to aliases.
-  - [ ] Ensure all barrel exports are used consistently.
-- [ ] **7.3 Shared Components Style Audit**:
-  - [ ] Review all shared components for consistent BEM naming.
-  - [ ] Ensure all components use CSS custom properties from theme system.
-  - [ ] Verify WCAG 2.1 AA color contrast compliance across all themes.
-  - [ ] Standardize spacing, sizing, and typography scales.
-  - [ ] Add missing `:hover`, `:focus`, `:active`, `:disabled` states.
-  - [ ] Ensure `prefers-reduced-motion` support in all animations.
+- [x] **7.2 Path Alias Migration**: Migrate all relative imports to path aliases.
+  - [x] See `/PATH_ALIAS_MIGRATION_PLAN.md` for detailed migration strategy.
+  - [x] Add new path aliases to `tsconfig.json`.
+  - [x] Migrate ~180-200 files from relative imports to aliases.
+  - [x] Ensure all barrel exports are used consistently.
+- [x] **7.3 Shared Components Style Audit**:
+  - [x] Review all shared components for consistent BEM naming.
+  - [x] Ensure all components use CSS custom properties from theme system.
+  - [x] Verify WCAG 2.1 AA color contrast compliance across all themes.
+  - [x] Standardize spacing, sizing, and typography scales.
+  - [x] Add missing `:hover`, `:focus`, `:active`, `:disabled` states.
+  - [x] Ensure `prefers-reduced-motion` support in all animations.
 - [ ] **7.4 Theme System Compliance**:
-  - [ ] Audit all 6 themes for WCAG AA color contrast (min 4.5:1 for normal text, 3:1 for large text).
-  - [ ] Test all themes with automated accessibility tools (axe, Lighthouse).
-  - [ ] Document color palette rationale in `/docs/THEME_SYSTEM.md`.
-  - [ ] Create theme preview page showing all components in all themes.
+  - [ ] Setup: Add theme switcher to Storybook global toolbar.
+  - [ ] Coverage: Verify all components have complete Storybook stories.
+  - [ ] Testing: Run axe DevTools for each theme, document violations.
+  - [ ] Audit: Verify all 6 themes for WCAG AA color contrast.
+  - [ ] Documentation: Create `/docs/THEME_SYSTEM.md`.
 - [ ] **7.5 Component Documentation Cleanup**:
   - [ ] Ensure all Storybook stories are up-to-date and comprehensive.
   - [ ] Add accessibility documentation to all component stories.
   - [ ] Verify all JSDoc comments are accurate and complete.
   - [ ] Add usage examples to complex components.
-- [ ] **7.6 UX/UI Polish & Improvements**: See `/docs/specs/PHASE_7_POLISH.md` section 7.6 for detailed specifications.
-  - [ ] Header Authentication UI: User profile icon with dropdown menu.
-  - [ ] Header Theme Picker UI: Icon-only button with theme selection menu.
-  - [ ] Home Page Portfolio Branding: Add personal branding (name, title, tagline).
-  - [ ] Modules & ADR List Filtering: Filter chips for technologies, categories, status.
-  - [ ] Profile Page Resume Button Layout: Reposition buttons below profile card.
-  - [ ] Toast Component Visual Improvements: X icon for dismiss, reduced badge size.
-- [ ] **7.7 Promise to RxJS Migration**: See `PROMISE_TO_RXJS_MIGRATION_PLAN.md`.
-  - [ ] Migrate analytics subsystem from Promises to Observables (8 instances, 4 files).
-  - [ ] Update AnalyticsProvider interface to return Observable.
-  - [ ] Update all provider implementations (Console, Google Analytics).
-  - [ ] Update AnalyticsService to use Observable patterns.
-  - [ ] Update all test files and verify 100% pass rate.
-- [ ] **7.8 Profile Stats Caching**: See `PROFILE_STATS_CACHING_PLAN.md`.
-  - [ ] Create `provideProfileStore()` function for app-level provider.
-  - [ ] Move ProfileStore from component-level to app-level (app.config.ts).
-  - [ ] Remove component-level provider from ProfileComponent.
-  - [ ] Update unit tests to mock app-level store.
-  - [ ] Verify cache persists across navigation, clears on page refresh.
-- [ ] **7.9 Code Quality Sweep**:
+- [ ] **7.6 Code Quality Sweep**:
   - [ ] Run full linting and fix all warnings.
   - [ ] Review and clean up any remaining `TODO` or `FIXME` comments.
   - [ ] Ensure consistent code formatting across entire codebase.
   - [ ] Verify all public APIs have proper TypeScript documentation.
-- [ ] **7.10 Blog Article**: Write about technical debt management and refactoring strategies.
+- [ ] **7.7 Blog Article**: Write about technical debt management and refactoring strategies.
+
+### ✨ Phase 8: Enhancements & New Features
+
+**Reference:** See `/docs/specs/PHASE_8_ENHANCEMENTS.md` for detailed specifications.
+
+_Goal: Add new capabilities and features to enhance portfolio presentation and user experience._
+
+- [ ] **8.1 Blog Feature Module**: Complete blog implementation for showcasing technical articles.
+  - [ ] Create BlogStore (NgRx SignalStore) with articles state management.
+  - [ ] Build BlogListComponent with search, filter, and pagination.
+  - [ ] Build BlogDetailComponent with markdown rendering and syntax highlighting.
+  - [ ] Create BlogCardComponent for article previews.
+  - [ ] Migrate existing phase articles to JSON format.
+  - [ ] Configure routes and lazy loading.
+  - [ ] Implement SEO meta tags per article.
+  - [ ] Add to main navigation.
+- [ ] **8.2 Header Authentication UI**: User profile icon with dropdown menu.
+  - [ ] Create UserMenuComponent with account header and logout option.
+  - [ ] Modify HeaderComponent to replace text/button with icon.
+  - [ ] Ensure keyboard accessibility and mobile responsiveness.
+- [ ] **8.3 Header Theme Picker UI**: Icon-only button with theme selection menu.
+  - [ ] Create ThemeMenuComponent showing all 6 themes with previews.
+  - [ ] Modify HeaderComponent to replace picker with icon button.
+  - [ ] Add tooltip and keyboard navigation support.
+- [ ] **8.4 Home Page Portfolio Branding**: Add hero section with personal branding.
+  - [ ] Add name, title, and tagline to home page.
+  - [ ] Implement recommended split layout (bio left, dashboard right).
+  - [ ] Add CTA buttons to key sections.
+  - [ ] Ensure i18n support and mobile responsiveness.
+- [ ] **8.5 Modules & ADR List Filtering**: Filter chips for technologies, categories, status.
+  - [ ] Create reusable FilterChipsComponent.
+  - [ ] Add technology and category filters to ModulesListComponent.
+  - [ ] Add category and status filters to AdrListComponent.
+  - [ ] Implement "Clear all" functionality.
+- [ ] **8.6 Profile Page Resume Button Layout**: Reposition buttons below profile card.
+  - [ ] Move buttons outside profile card to separate section.
+  - [ ] Add section heading and improve spacing.
+  - [ ] Ensure mobile responsiveness.
+- [ ] **8.7 Toast Component Visual Improvements**: X icon for dismiss, reduced badge size.
+  - [ ] Add close icon to dismiss button.
+  - [ ] Reduce status badge/dot size for better visual balance.
+  - [ ] Verify WCAG AA compliance in all themes.
+- [ ] **8.8 Profile Stats Caching**: Persist stats across navigation.
+  - [ ] Create `provideProfileStore()` function.
+  - [ ] Move ProfileStore to app-level in `app.config.ts`.
+  - [ ] Implement 1-hour cache window with invalidation.
 
 ---
 

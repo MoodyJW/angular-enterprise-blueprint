@@ -138,16 +138,30 @@
 5. High Contrast Light
 6. High Contrast Dark
 
-### Process
+### Process (in order)
 
-1. **Automated Testing:** Run axe DevTools for each theme
-2. **Manual Checks:** Verify critical color pairs (text/background, button text/button bg, focus ring/background, etc.)
-3. **Documentation:** Create `/docs/THEME_SYSTEM.md` documenting rationale
-4. **Preview Page:** Build demo showing all components in all themes
+1. **Setup Infrastructure:** Add theme switcher to Storybook global toolbar
+   - Configure `.storybook/preview.ts` with theme decorator
+   - Add theme selection toolbar control
+   - Test theme switching works across all stories
+
+2. **Verify Coverage:** Ensure all components have Storybook stories
+   - Audit shared components directory
+   - Create missing stories for any components without them
+   - Verify stories demonstrate all component states
+
+3. **Accessibility Testing:** Run axe DevTools for each theme
+   - Test each component in all 6 themes
+   - Document violations and fixes needed
+   - Verify critical color pairs (text/background, button text/button bg, focus ring/background, etc.)
+
+4. **Documentation:** Create `/docs/THEME_SYSTEM.md` documenting rationale
 
 **Acceptance Criteria:**
 
-- [ ] All themes pass WCAG AA requirements
+- [ ] Storybook has global theme switcher toolbar
+- [ ] All shared components have complete Storybook stories
+- [ ] All themes pass WCAG AA requirements via axe DevTools
 - [ ] Theme switcher functionality verified
 - [ ] No flash of unstyled content (FOUC) on load
 - [x] **Optimization:** Lighthouse CI runs in parallel (Matrix Strategy)
@@ -164,6 +178,8 @@ Each component needs stories for:
 4. Interactive states (hover, focus, active, disabled)
 5. Accessibility demo (keyboard navigation, screen reader)
 6. Edge cases (empty, long text, overflow)
+
+Storybook file structure should be logical and easy to navigate, currently it is not.
 
 ### JSDoc Requirements
 
@@ -189,202 +205,7 @@ readonly variant = input<ButtonVariant>('primary');
 
 ---
 
-## 7.6 UX/UI Polish & Improvements
-
-### 7.6.1 Header Authentication UI
-
-**Current:** Username text + logout button (takes up horizontal space)
-**Target:** User profile icon → opens dropdown menu
-
-**Components:**
-
-- **Create:** `UserMenuComponent` (menu with account name header + logout option)
-- **Modify:** `HeaderComponent` (replace text/button with icon)
-
-**Acceptance Criteria:**
-
-- [ ] Icon displays when authenticated
-- [ ] Menu opens/closes on click, Escape, outside-click
-- [ ] Keyboard accessible
-- [ ] Mobile responsive
-
----
-
-### 7.6.2 Header Theme Picker UI
-
-**Current:** Full theme picker showing selected theme
-**Target:** Icon-only button (paint palette) → opens theme menu
-
-**Components:**
-
-- **Create:** `ThemePickerMenuComponent` (shows all 6 themes with previews)
-- **Modify:** `HeaderComponent` (replace picker with icon button)
-
-**Acceptance Criteria:**
-
-- [ ] Icon button with tooltip
-- [ ] Menu shows all themes with visual previews
-- [ ] Current theme highlighted
-- [ ] Keyboard accessible
-
----
-
-### 7.6.3 Home Page Portfolio Branding
-
-**Current:** Generic "System Status" dashboard (no personal branding)
-**Target:** Add hero section with name, title, tagline
-
-**Layout Options:**
-
-- **A:** Hero above dashboard
-- **B:** Split (bio left, dashboard right) ← Recommended
-- **C:** Branded header bar above dashboard
-
-**Content:**
-
-```typescript
-{
-  name: 'Jay [Last Name]',
-  title: 'Senior Angular Architect',
-  tagline: 'Building Enterprise-Grade Applications with Modern Angular',
-  bio: 'Welcome to my Angular Enterprise Blueprint...',
-  cta: [
-    { label: 'View Projects', route: '/modules' },
-    { label: 'Contact Me', route: '/contact' }
-  ]
-}
-```
-
-**Acceptance Criteria:**
-
-- [ ] Name prominently displayed
-- [ ] Professional title/tagline clear
-- [ ] CTA buttons to key sections
-- [ ] Maintains dashboard functionality
-- [ ] i18n support
-
----
-
-### 7.6.4 Modules & ADR List Filtering
-
-**Current:** Search only, no category/tag filtering
-**Target:** Filter chips for technologies, categories, status
-
-**Components:**
-
-- **Create:** `FilterChipsComponent` (reusable chip filter)
-- **Modify:** `ModulesListComponent` (add technology + category filters)
-- **Modify:** `AdrListComponent` (add category + status filters)
-
-**Filter Examples:**
-
-```typescript
-// Modules
-{ id: 'angular', label: 'Angular', category: 'technology' }
-{ id: 'frontend', label: 'Frontend', category: 'category' }
-
-// ADRs
-{ id: 'architecture', label: 'Architecture', category: 'category' }
-{ id: 'accepted', label: 'Accepted', category: 'status' }
-```
-
-**Acceptance Criteria:**
-
-- [ ] Filter chips component created
-- [ ] Filters work with search
-- [ ] "Clear all" button when filters active
-- [ ] Keyboard accessible
-- [ ] Mobile responsive (chips wrap)
-
----
-
-### 7.6.5 Profile Page Resume Button Layout
-
-**Current:** Resume buttons inside profile card (feels cramped)
-**Target:** Move buttons to separate section below card
-
-**Changes:**
-
-- Move `<eb-button>` elements outside profile card
-- Create `.profile-actions` section below card
-- Add "Resume" section heading
-
-**Acceptance Criteria:**
-
-- [ ] Buttons below card in left column
-- [ ] Section has clear heading
-- [ ] Mobile responsive (buttons stack)
-- [ ] ARIA labels added
-
----
-
-### 7.6.6 Toast Component Visual Improvements
-
-**Current:**
-
-- Dismiss button is empty block (no icon)
-- Status badge/dot may be too large
-
-**Target:**
-
-- Replace empty dismiss button with X icon (close icon)
-- Reduce size of status badge/dot for better visual balance
-
-**Components:**
-
-- **Modify:** `ToastComponent` (add close icon, adjust badge size)
-
-**Changes:**
-
-```typescript
-// Add icon to dismiss button
-<button class="toast__dismiss" (click)="dismiss()">
-  <eb-icon name="close" size="sm" ariaLabel="Dismiss notification" />
-</button>
-```
-
-```scss
-// Adjust badge size
-.toast__badge {
-  width: 8px; // Reduce from current size
-  height: 8px; // Reduce from current size
-}
-```
-
-**Acceptance Criteria:**
-
-- [ ] Dismiss button shows X/close icon
-- [ ] Icon is appropriately sized and visible
-- [ ] Badge/dot size reduced and visually balanced
-- [ ] ARIA label on dismiss button
-- [ ] Works in all 6 themes
-- [ ] Storybook story updated
-
----
-
-### 7.6.7 Profile Stats Caching
-
-**Reference:** `/docs/PROFILE_STATS_CACHING_PLAN.md`
-
-**Current:** Stats refetch on every navigation to profile page
-**Target:** Persist stats across navigation (app-level store provider)
-
-**Actions:**
-
-1. Create `provideProfileStore()` in `profile.store.provider.ts`
-2. Move provider from `ProfileComponent` to `app.config.ts`
-3. Update unit tests
-
-**Acceptance Criteria:**
-
-- [ ] Stats persist when navigating away and back
-- [ ] No API re-fetch within 1 hour cache window
-- [ ] Cache clears on hard refresh
-- [ ] All tests pass
-
----
-
-## 7.7 Code Quality Sweep
+## 7.6 Code Quality Sweep
 
 ### Tasks
 
@@ -420,7 +241,7 @@ npm run format
 
 ---
 
-## 7.8 Blog Article: Technical Debt Management
+## 7.7 Blog Article: Technical Debt Management
 
 ### Outline
 
@@ -444,27 +265,16 @@ npm run format
 
 ## Timeline Estimate
 
-| Task                     | Estimated Time   |
-| ------------------------ | ---------------- |
-| 7.1 Form Components      | 8-12 hours       |
-| 7.2 Path Alias Migration | 12-16 hours      |
-| 7.3 Style Audit          | 16-20 hours      |
-| 7.4 Theme Compliance     | 8-12 hours       |
-| 7.5 Documentation        | 8-12 hours       |
-| 7.6 UX/UI Polish         | 25-34 hours      |
-| 7.7 Code Quality         | 4-8 hours        |
-| 7.8 Blog Article         | 6-8 hours        |
-| **Total**                | **87-122 hours** |
-
-**7.6 Breakdown:**
-
-- User menu: 6-8 hours
-- Theme picker: 4-6 hours
-- Home branding: 6-10 hours
-- Filter chips: 6-8 hours
-- Profile layout: 2 hours
-- Toast improvements: 1-2 hours
-- Profile stats caching: 1-2 hours
+| Task                     | Estimated Time  |
+| ------------------------ | --------------- |
+| 7.1 Form Components      | 8-12 hours      |
+| 7.2 Path Alias Migration | 12-16 hours     |
+| 7.3 Style Audit          | 16-20 hours     |
+| 7.4 Theme Compliance     | 12-16 hours     |
+| 7.5 Documentation        | 8-12 hours      |
+| 7.6 Code Quality         | 4-8 hours       |
+| 7.7 Blog Article         | 6-8 hours       |
+| **Total**                | **66-92 hours** |
 
 ---
 
