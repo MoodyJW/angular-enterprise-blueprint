@@ -60,6 +60,9 @@
   },
   "private": true,
   "packageManager": "npm@11.7.0",
+  "overrides": {
+    "qs": "^6.14.1"
+  },
   "dependencies": {
     "@angular/cdk": "^21.0.5",
     "@angular/common": "^21.0.6",
@@ -81,11 +84,11 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "^0.2100.3",
-    "@angular-devkit/build-angular": "^21.0.3",
-    "@angular-devkit/core": "^21.0.3",
-    "@angular/build": "^21.0.3",
-    "@angular/cli": "^21.0.3",
+    "@angular-devkit/architect": "^0.2100.4",
+    "@angular-devkit/build-angular": "^21.0.4",
+    "@angular-devkit/core": "^21.0.4",
+    "@angular/build": "^21.0.4",
+    "@angular/cli": "^21.0.4",
     "@angular/compiler-cli": "^21.0.6",
     "@angular/platform-browser-dynamic": "^21.0.6",
     "@commitlint/cli": "^20.2.0",
