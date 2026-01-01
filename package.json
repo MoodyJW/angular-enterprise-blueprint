@@ -107,10 +107,12 @@
     "angular-eslint": "^21.1.0",
     "axe-playwright": "^2.2.2",
     "commit-and-tag-version": "^12.6.1",
+    "concurrently": "^9.2.1",
     "eslint": "^9.39.2",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-boundaries": "^5.3.1",
     "eslint-plugin-storybook": "^10.1.10",
+    "http-server": "^14.1.1",
     "husky": "^9.1.7",
     "jsdom": "^27.3.0",
     "lint-staged": "^16.2.7",
@@ -122,6 +124,7 @@
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.50.0",
     "vite-tsconfig-paths": "^6.0.3",
-    "vitest": "^4.0.16"
+    "vitest": "^4.0.16",
+    "wait-on": "^9.0.3"
   }
 }
