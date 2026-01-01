@@ -14,8 +14,7 @@ import { FormsModule } from '@angular/forms';
 
 import { UniqueIdService } from '@shared/services/unique-id';
 
-import { InputFooterComponent } from '@shared/components/input-footer';
-import { InputLabelComponent } from '@shared/components/input-label';
+import { InputFooterComponent, InputLabelComponent } from '@shared/components/input';
 
 export type RadioSize = 'sm' | 'md' | 'lg';
 export type RadioValidationState = 'default' | 'success' | 'warning' | 'error';

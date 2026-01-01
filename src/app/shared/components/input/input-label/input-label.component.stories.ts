@@ -4,7 +4,7 @@ import { argsToTemplate } from '@storybook/angular';
 import { InputLabelComponent } from './input-label.component';
 
 const meta: Meta<InputLabelComponent> = {
-  title: 'Shared/InputLabel',
+  title: 'Shared/Input/InputLabel',
   component: InputLabelComponent,
   tags: ['autodocs'],
   argTypes: {

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { ButtonContentComponent } from './button-content.component';
 
 const meta: Meta<ButtonContentComponent> = {
-  title: 'Components/Button Content',
+  title: 'Shared/Button/ButtonContent',
   component: ButtonContentComponent,
   tags: ['autodocs'],
   argTypes: {

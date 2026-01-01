@@ -17,8 +17,7 @@ import { DEBOUNCE_DELAYS, FOCUS_DELAYS } from '@shared/constants';
 import { UniqueIdService } from '@shared/services/unique-id';
 import { debounce } from '@shared/utilities/debounce-throttle';
 
-import { InputFooterComponent } from '@shared/components/input-footer';
-import { InputLabelComponent } from '@shared/components/input-label';
+import { InputFooterComponent, InputLabelComponent } from '@shared/components/input';
 
 import { SelectButtonComponent } from './select-button/select-button.component';
 import { SelectDropdownComponent } from './select-dropdown/select-dropdown.component';

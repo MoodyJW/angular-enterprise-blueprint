@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { InputFooterComponent } from './input-footer.component';
 
 const meta: Meta<InputFooterComponent> = {
-  title: 'Shared/Input/Footer',
+  title: 'Shared/Input/InputFooter',
   component: InputFooterComponent,
   tags: ['autodocs'],
   parameters: {

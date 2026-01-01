@@ -12,8 +12,7 @@ import type { AbstractControl } from '@angular/forms';
 
 import { UniqueIdService } from '@shared/services/unique-id';
 
-import { InputFooterComponent } from '@shared/components/input-footer';
-import { InputLabelComponent } from '@shared/components/input-label';
+import { InputFooterComponent, InputLabelComponent } from '@shared/components/input';
 
 export type FormFieldValidationState = 'default' | 'success' | 'warning' | 'error';
 

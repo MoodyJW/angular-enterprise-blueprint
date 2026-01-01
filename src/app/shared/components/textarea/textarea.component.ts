@@ -14,7 +14,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { InputFooterComponent } from '@shared/components/input-footer';
+import { InputFooterComponent } from '@shared/components/input';
 import { UniqueIdService } from '@shared/services/unique-id';
 
 export type TextareaVariant = 'default' | 'filled' | 'outlined';

@@ -6,13 +6,12 @@ import { UniqueIdService } from '@shared/services/unique-id';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { argsToTemplate, componentWrapperDecorator, moduleMetadata } from '@storybook/angular';
 
-import { InputFooterComponent } from '@shared/components/input-footer';
-import { InputLabelComponent } from '@shared/components/input-label';
+import { InputFooterComponent, InputLabelComponent } from '@shared/components/input';
 
 import { FormFieldComponent } from './form-field.component';
 
 const meta: Meta<FormFieldComponent> = {
-  title: 'Shared/Form/FormField',
+  title: 'Shared/FormField',
   component: FormFieldComponent,
   tags: ['autodocs'],
   decorators: [

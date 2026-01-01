@@ -21,7 +21,7 @@ import { TooltipDirective } from './tooltip.directive';
  * ```
  */
 const meta: Meta = {
-  title: 'Components/Tooltip',
+  title: 'Shared/Tooltip',
   tags: ['autodocs'],
   parameters: {
     docs: {

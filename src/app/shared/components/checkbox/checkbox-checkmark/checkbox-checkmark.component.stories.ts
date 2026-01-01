@@ -4,7 +4,7 @@ import { applicationConfig } from '@storybook/angular';
 import { CheckboxCheckmarkComponent } from './checkbox-checkmark.component';
 
 const meta: Meta<CheckboxCheckmarkComponent> = {
-  title: 'Shared/CheckboxCheckmark',
+  title: 'Shared/Checkbox/CheckboxCheckmark',
   component: CheckboxCheckmarkComponent,
   tags: ['autodocs'],
   decorators: [
