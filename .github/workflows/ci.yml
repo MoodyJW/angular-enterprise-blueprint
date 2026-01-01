@@ -139,8 +139,18 @@ jobs:
           retention-days: 7
 
   storybook-a11y:
-    name: Storybook Accessibility
+    name: Storybook A11y (${{ matrix.theme }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        theme:
+          - light-default
+          - light-warm
+          - dark-default
+          - dark-cool
+          - high-contrast-light
+          - high-contrast-dark
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -166,6 +176,8 @@ jobs:
         run: npm run build-storybook
 
       - name: Run Storybook tests
+        env:
+          STORYBOOK_THEME: ${{ matrix.theme }}
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "npx http-server dist/storybook --port 6006 --silent" \
@@ -175,6 +187,6 @@ jobs:
         uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: storybook-test-results
+          name: storybook-test-results-${{ matrix.theme }}
           path: storybook-static/
           retention-days: 7
