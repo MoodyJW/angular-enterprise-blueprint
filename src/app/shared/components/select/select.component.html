@@ -18,14 +18,12 @@
       [ariaInvalid]="computedAriaInvalid()"
       [ariaRequired]="required() ? 'true' : undefined"
       [isOpen]="isOpen()"
-      [ariaControls]="listboxId()"
+      [ariaControls]="isOpen() ? listboxId() : undefined"
       [displayText]="displayText()"
       [hasValue]="hasValue()"
       [showClear]="clearable() && hasValue() && !disabled()"
       (clicked)="toggleDropdown()"
       (clearClicked)="clearValue($event)"
-      (focused)="handleFocus($event)"
-      (blurred)="handleBlur($event)"
       (keydown)="handleKeydown($event)"
     />
 

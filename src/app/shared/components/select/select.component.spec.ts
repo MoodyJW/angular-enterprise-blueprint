@@ -406,7 +406,7 @@ describe('SelectComponent', () => {
       component.focused.subscribe(focusedSpy);
 
       const event = new FocusEvent('focus');
-      component.handleFocus(event);
+      component.handleFocusIn(event);
 
       expect(focusedSpy).toHaveBeenCalledWith(event);
       expect(component.isFocused()).toBe(true);
@@ -418,7 +418,7 @@ describe('SelectComponent', () => {
       component.blurred.subscribe(blurredSpy);
 
       const event = new FocusEvent('blur');
-      component.handleBlur(event);
+      component.handleFocusOut(event);
 
       expect(blurredSpy).toHaveBeenCalledWith(event);
     });

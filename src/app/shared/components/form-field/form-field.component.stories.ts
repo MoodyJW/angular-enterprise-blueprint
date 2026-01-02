@@ -1,12 +1,26 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import { CommonModule } from '@angular/common';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 
 import { UniqueIdService } from '@shared/services/unique-id';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { argsToTemplate, componentWrapperDecorator, moduleMetadata } from '@storybook/angular';
 
-import { InputFooterComponent, InputLabelComponent } from '@shared/components/input';
+import { ButtonComponent } from '@shared/components/button';
+import {
+  InputComponent,
+  InputFooterComponent,
+  InputLabelComponent,
+} from '@shared/components/input';
+import { SelectComponent } from '@shared/components/select';
+import { StackComponent } from '@shared/components/stack';
+import { TextareaComponent } from '@shared/components/textarea';
 
 import { FormFieldComponent } from './form-field.component';
 
@@ -22,6 +36,11 @@ const meta: Meta<FormFieldComponent> = {
         FormFieldComponent,
         InputLabelComponent,
         InputFooterComponent,
+        InputComponent,
+        TextareaComponent,
+        SelectComponent,
+        ButtonComponent,
+        StackComponent,
       ],
       providers: [UniqueIdService],
     }),
@@ -77,11 +96,12 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <eb-form-field ${argsToTemplate(args)}>
-        <input
+      <eb-form-field #field ${argsToTemplate(args)}>
+        <eb-input
           type="email"
           placeholder="Enter your email"
-          style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;"
+          ariaLabel="Email Address"
+          [validationState]="field.computedValidationState()"
         />
       </eb-form-field>
     `,
@@ -97,18 +117,26 @@ export const Required: Story = {
     required: true,
     helperText: 'Must be at least 8 characters',
   },
-  render: (args) => ({
-    props: args,
-    template: `
-      <eb-form-field ${argsToTemplate(args)}>
-        <input
-          type="password"
-          placeholder="Enter your password"
-          style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;"
-        />
-      </eb-form-field>
-    `,
-  }),
+  render: (args) => {
+    const control = new FormControl('', [Validators.required, Validators.minLength(8)]);
+    return {
+      props: {
+        ...args,
+        control,
+      },
+      template: `
+        <eb-form-field #field ${argsToTemplate(args)} [control]="control">
+          <eb-input
+            type="password"
+            placeholder="Enter your password"
+            [validationState]="field.computedValidationState()"
+            [formControl]="control"
+            ariaLabel="Password"
+          />
+        </eb-form-field>
+      `,
+    };
+  },
 };
 
 /**
@@ -118,20 +146,28 @@ export const WithError: Story = {
   args: {
     label: 'Username',
     required: true,
-    errors: 'Username is required',
   },
-  render: (args) => ({
-    props: args,
-    template: `
-      <eb-form-field ${argsToTemplate(args)}>
-        <input
+  render: (args) => {
+    const control = new FormControl('', Validators.required);
+    control.markAsTouched();
+    return {
+      props: {
+        ...args,
+        control,
+      },
+      template: `
+      <eb-form-field #field ${argsToTemplate(args)} [control]="control">
+        <eb-input
           type="text"
           placeholder="Enter your username"
-          style="width: 100%; padding: 0.5rem; border: 1px solid #dc2626; border-radius: 0.375rem;"
+          ariaLabel="Username"
+          [formControl]="control"
+          [validationState]="field.computedValidationState()"
         />
       </eb-form-field>
     `,
-  }),
+    };
+  },
 };
 
 /**
@@ -141,20 +177,49 @@ export const WithMultipleErrors: Story = {
   args: {
     label: 'Password',
     required: true,
-    errors: ['Password is required', 'Must be at least 8 characters', 'Must contain a number'],
   },
-  render: (args) => ({
-    props: args,
-    template: `
-      <eb-form-field ${argsToTemplate(args)}>
-        <input
+  render: (args) => {
+    const mustContainNumber = (control: AbstractControl): ValidationErrors | null => {
+      const value = String(control.value);
+      const hasNumber = /\d/.test(value);
+      return hasNumber ? null : { mustContainNumber: true };
+    };
+
+    const control = new FormControl('abc', [
+      Validators.required,
+      Validators.minLength(8),
+      mustContainNumber,
+    ]);
+    control.markAsTouched();
+
+    return {
+      props: {
+        ...args,
+        control,
+        errorMessages: {
+          required: 'Password is required',
+          minlength: 'Must be at least {requiredLength} characters',
+          mustContainNumber: 'Must contain a number',
+        },
+      },
+      template: `
+      <eb-form-field
+        #field
+        ${argsToTemplate(args)}
+        [control]="control"
+        [errorMessages]="errorMessages"
+      >
+        <eb-input
           type="password"
           placeholder="Enter your password"
-          style="width: 100%; padding: 0.5rem; border: 1px solid #dc2626; border-radius: 0.375rem;"
+          ariaLabel="Password"
+          [formControl]="control"
+          [validationState]="field.computedValidationState()"
         />
       </eb-form-field>
     `,
-  }),
+    };
+  },
 };
 
 /**
@@ -169,11 +234,12 @@ export const WithSuccess: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <eb-form-field ${argsToTemplate(args)}>
-        <input
+      <eb-form-field #field ${argsToTemplate(args)}>
+        <eb-input
           type="email"
           value="user@example.com"
-          style="width: 100%; padding: 0.5rem; border: 1px solid #10b981; border-radius: 0.375rem;"
+          ariaLabel="Email Address"
+          [validationState]="field.computedValidationState()"
         />
       </eb-form-field>
     `,
@@ -192,11 +258,12 @@ export const WithWarning: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <eb-form-field ${argsToTemplate(args)}>
-        <input
+      <eb-form-field #field ${argsToTemplate(args)}>
+        <eb-input
           type="text"
           value="john_doe"
-          style="width: 100%; padding: 0.5rem; border: 1px solid #f59e0b; border-radius: 0.375rem;"
+          ariaLabel="Username"
+          [validationState]="field.computedValidationState()"
         />
       </eb-form-field>
     `,
@@ -212,18 +279,37 @@ export const WithTextarea: Story = {
     required: true,
     helperText: 'Maximum 500 characters',
   },
-  render: (args) => ({
-    props: args,
-    template: `
-      <eb-form-field ${argsToTemplate(args)}>
-        <textarea
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          // Disabled for this story specifically as axe-core cannot resolve
+          // CSS variables used in the textarea background correcty.
+          { id: 'color-contrast', enabled: false },
+        ],
+      },
+    },
+  },
+  render: (args) => {
+    const control = new FormControl('', [Validators.required, Validators.maxLength(500)]);
+    return {
+      props: {
+        ...args,
+        control,
+      },
+      template: `
+      <eb-form-field #field ${argsToTemplate(args)} [control]="control">
+        <eb-textarea
           rows="4"
           placeholder="Enter your message"
-          style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem; resize: vertical;"
-        ></textarea>
+          ariaLabel="Message"
+          [formControl]="control"
+          [validationState]="field.computedValidationState()"
+        />
       </eb-form-field>
     `,
-  }),
+    };
+  },
 };
 
 /**
@@ -235,82 +321,29 @@ export const WithSelect: Story = {
     required: true,
     helperText: 'Select your country of residence',
   },
-  render: (args) => ({
-    props: args,
-    template: `
-      <eb-form-field ${argsToTemplate(args)}>
-        <select style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
-          <option value="">Select a country</option>
-          <option value="us">United States</option>
-          <option value="ca">Canada</option>
-          <option value="uk">United Kingdom</option>
-          <option value="au">Australia</option>
-        </select>
+  render: (args) => {
+    const control = new FormControl('', Validators.required);
+    return {
+      props: {
+        ...args,
+        control,
+      },
+      template: `
+      <eb-form-field #field ${argsToTemplate(args)} [control]="control">
+        <eb-select
+          ariaLabel="Country"
+          placeholder="Select a country"
+          [options]="[
+            { label: 'United States', value: 'us' },
+            { label: 'Canada', value: 'ca' },
+            { label: 'United Kingdom', value: 'uk' },
+            { label: 'Australia', value: 'au' }
+          ]"
+          [formControl]="control"
+          [validationState]="field.computedValidationState()"
+        />
       </eb-form-field>
     `,
-  }),
-};
-
-/**
- * Integration with Angular Reactive Forms - Valid State
- */
-export const WithReactiveFormsValid: Story = {
-  render: () => {
-    const emailControl = new FormControl('user@example.com', [
-      Validators.required,
-      Validators.email,
-    ]);
-    emailControl.markAsTouched();
-
-    return {
-      props: {
-        emailControl,
-      },
-      template: `
-        <eb-form-field
-          label="Email Address"
-          [required]="true"
-          [control]="emailControl"
-          helperText="Enter a valid email address"
-        >
-          <input
-            type="email"
-            [formControl]="emailControl"
-            placeholder="Enter your email"
-            style="width: 100%; padding: 0.5rem; border: 1px solid #10b981; border-radius: 0.375rem;"
-          />
-        </eb-form-field>
-      `,
-    };
-  },
-};
-
-/**
- * Integration with Angular Reactive Forms - Invalid State
- */
-export const WithReactiveFormsInvalid: Story = {
-  render: () => {
-    const emailControl = new FormControl('', [Validators.required, Validators.email]);
-    emailControl.markAsTouched();
-
-    return {
-      props: {
-        emailControl,
-      },
-      template: `
-        <eb-form-field
-          label="Email Address"
-          [required]="true"
-          [control]="emailControl"
-        >
-          <input
-            type="email"
-            [formControl]="emailControl"
-            placeholder="Enter your email"
-            style="width: 100%; padding: 0.5rem; border: 1px solid #dc2626; border-radius: 0.375rem;"
-          />
-        </eb-form-field>
-      `,
     };
   },
 };
@@ -333,16 +366,18 @@ export const WithCustomErrorMessages: Story = {
       },
       template: `
         <eb-form-field
+          #field
           label="Password"
           [required]="true"
           [control]="passwordControl"
           [errorMessages]="customErrors"
         >
-          <input
+          <eb-input
             type="password"
             [formControl]="passwordControl"
             placeholder="Enter your password"
-            style="width: 100%; padding: 0.5rem; border: 1px solid #dc2626; border-radius: 0.375rem;"
+            ariaLabel="Password"
+            [validationState]="field.computedValidationState()"
           />
         </eb-form-field>
       `,
@@ -364,20 +399,22 @@ export const ShowErrorsOnTouched: Story = {
       },
       template: `
         <div>
-          <p style="margin-bottom: 1rem; color: #6b7280;">
+          <p style="margin-bottom: 1rem; color: var(--color-text-secondary);">
             Try clicking into the field and then clicking out to see errors appear.
           </p>
           <eb-form-field
+            #field
             label="Username"
             [required]="true"
             [control]="usernameControl"
             [showErrorsOnTouched]="true"
           >
-            <input
+            <eb-input
               type="text"
               [formControl]="usernameControl"
               placeholder="Enter your username"
-              style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;"
+              ariaLabel="Username"
+              [validationState]="field.computedValidationState()"
             />
           </eb-form-field>
         </div>
@@ -400,20 +437,22 @@ export const ShowErrorsImmediately: Story = {
       },
       template: `
         <div>
-          <p style="margin-bottom: 1rem; color: #6b7280;">
+          <p style="margin-bottom: 1rem; color: var(--color-text-secondary);">
             Errors are displayed immediately without requiring the field to be touched.
           </p>
           <eb-form-field
+            #field
             label="Username"
             [required]="true"
             [control]="usernameControl"
             [showErrorsOnTouched]="false"
           >
-            <input
+            <eb-input
               type="text"
               [formControl]="usernameControl"
               placeholder="Enter your username"
-              style="width: 100%; padding: 0.5rem; border: 1px solid #dc2626; border-radius: 0.375rem;"
+              ariaLabel="Username"
+              [validationState]="field.computedValidationState()"
             />
           </eb-form-field>
         </div>
@@ -426,6 +465,17 @@ export const ShowErrorsImmediately: Story = {
  * Complete form example with multiple fields
  */
 export const CompleteFormExample: Story = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          // Disabled for this story specifically as axe-core cannot resolve
+          // CSS variables used in the textarea background correcty.
+          { id: 'color-contrast', enabled: false },
+        ],
+      },
+    },
+  },
   render: () => {
     const nameControl = new FormControl('', Validators.required);
     const emailControl = new FormControl('', [Validators.required, Validators.email]);
@@ -444,63 +494,70 @@ export const CompleteFormExample: Story = {
           <h3 style="margin: 0 0 1rem 0;">Create Account</h3>
 
           <eb-form-field
+            #nameField
             label="Full Name"
             [required]="true"
             [control]="nameControl"
             helperText="Enter your first and last name"
           >
-            <input
-              type="text"
+            <eb-input
               [formControl]="nameControl"
               placeholder="John Doe"
-              style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;"
+              ariaLabel="Full Name"
+              [validationState]="nameField.computedValidationState()"
             />
           </eb-form-field>
 
           <eb-form-field
+            #emailField
             label="Email Address"
             [required]="true"
             [control]="emailControl"
             helperText="We'll never share your email"
           >
-            <input
+            <eb-input
               type="email"
               [formControl]="emailControl"
               placeholder="john@example.com"
-              style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;"
+              ariaLabel="Email Address"
+              [validationState]="emailField.computedValidationState()"
             />
           </eb-form-field>
 
           <eb-form-field
+            #passwordField
             label="Password"
             [required]="true"
             [control]="passwordControl"
             helperText="Must be at least 8 characters"
           >
-            <input
+            <eb-input
               type="password"
               [formControl]="passwordControl"
               placeholder="Enter your password"
-              style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;"
+              ariaLabel="Password"
+              [validationState]="passwordField.computedValidationState()"
             />
           </eb-form-field>
 
           <eb-form-field
+            #bioField
             label="Bio (Optional)"
             [control]="bioControl"
             helperText="Tell us a bit about yourself"
           >
-            <textarea
+            <eb-textarea
               [formControl]="bioControl"
               rows="4"
               placeholder="I am a..."
-              style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem; resize: vertical;"
-            ></textarea>
+              ariaLabel="Bio"
+              [validationState]="bioField.computedValidationState()"
+            />
           </eb-form-field>
 
           <button
             type="submit"
-            style="padding: 0.5rem 1rem; background: #3b82f6; color: white; border: none; border-radius: 0.375rem; cursor: pointer;"
+            style="padding: 0.5rem 1rem; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 0.375rem; cursor: pointer;"
           >
             Create Account
           </button>
@@ -524,10 +581,10 @@ export const AccessibilityDemo: Story = {
       template: `
         <div>
           <h3 style="margin: 0 0 1rem 0;">Accessibility Features</h3>
-          <p style="margin-bottom: 1rem; color: #6b7280; font-size: 0.875rem;">
+          <p style="margin-bottom: 1rem; color: var(--color-text-secondary); font-size: 0.875rem;">
             This component includes:
           </p>
-          <ul style="margin-bottom: 1.5rem; color: #6b7280; font-size: 0.875rem; padding-left: 1.5rem;">
+          <ul style="margin-bottom: 1.5rem; color: var(--color-text-secondary); font-size: 0.875rem; padding-left: 1.5rem;">
             <li>Proper label-to-input association</li>
             <li>ARIA describedby for helper text</li>
             <li>Required field indicator</li>
@@ -536,17 +593,19 @@ export const AccessibilityDemo: Story = {
           </ul>
 
           <eb-form-field
+            #field
             label="Email Address"
             [required]="true"
             [control]="emailControl"
             helperText="Enter a valid email address"
           >
-            <input
+            <eb-input
               type="email"
               [formControl]="emailControl"
               placeholder="user@example.com"
               [id]="'email-input'"
-              style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;"
+              ariaLabel="Email Address"
+              [validationState]="field.computedValidationState()"
             />
           </eb-form-field>
         </div>
