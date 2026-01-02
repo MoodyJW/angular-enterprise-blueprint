@@ -2,6 +2,7 @@ import { signal } from '@angular/core';
 
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
+import { expect, waitFor, within } from 'storybook/test';
 
 import { ButtonComponent } from '@shared/components/button';
 
@@ -878,8 +879,142 @@ export const KeyboardNavigation: Story = {
             Submit
           </eb-button>
         </div>
+      \u003c/eb-modal\u003e
+    `,
+    };
+  },
+};
+
+/**
+ * Interactive test story demonstrating automated user interactions.
+ * Click the "Play" button in the Storybook toolbar to run the interaction test.
+ */
+export const InteractionTest: Story = {
+  args: {
+    ...Default.args,
+    ariaLabel: 'Interaction test modal',
+  },
+  render: (args) => {
+    const isOpenSignal = signal(false);
+    return {
+      props: {
+        ...args,
+        isOpen: isOpenSignal,
+        openModal() {
+          isOpenSignal.set(true);
+        },
+        closeModal() {
+          isOpenSignal.set(false);
+        },
+      },
+      template: `
+      <eb-button
+        variant="primary"
+        ariaLabel="Open modal"
+        data-testid="open-modal-btn"
+        (clicked)="openModal()">
+        Open Modal
+      </eb-button>
+
+      <eb-modal
+        [open]="isOpen()"
+        [ariaLabel]="ariaLabel"
+        data-testid="modal"
+        (closed)="closeModal()">
+
+        <div modal-header>
+          <h2 style="margin: 0; font-size: 1.5rem; font-weight: 600;" data-testid="modal-title">Interactive Test Modal</h2>
+        </div>
+
+        <div modal-body>
+          <p data-testid="modal-content">This story demonstrates Storybook interaction tests.</p>
+        </div>
+
+        <div modal-footer>
+          <eb-button
+            variant="secondary"
+            ariaLabel="Cancel"
+            data-testid="cancel-btn"
+            (clicked)="closeModal()">
+            Cancel
+          </eb-button>
+          <eb-button
+            variant="primary"
+            ariaLabel="Confirm"
+            data-testid="confirm-btn"
+            (clicked)="closeModal()">
+            Confirm
+          </eb-button>
+        </div>
       </eb-modal>
     `,
     };
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const doc = canvasElement.ownerDocument;
+
+    // Step 1: Verify the "Open Modal" button is visible
+    const openButton = canvas.getByTestId('open-modal-btn');
+    await expect(openButton).toBeVisible();
+
+    // Step 2: Click the button to open the modal using native click
+    // Note: We target the actual button element inside our custom component
+    const nativeButton = openButton.querySelector('button') ?? openButton;
+    nativeButton.click();
+
+    // Step 3: Wait for Angular change detection and modal animation
+    await waitFor(
+      async () => {
+        const modalTitle = doc.querySelector('[data-testid="modal-title"]');
+        await expect(modalTitle).not.toBeNull();
+      },
+      { timeout: 3000, interval: 100 },
+    );
+
+    // Step 4: Verify modal content is displayed
+    const modalContent = doc.querySelector('[data-testid="modal-content"]');
+    await expect(modalContent).toHaveTextContent(
+      'This story demonstrates Storybook interaction tests.',
+    );
+
+    // Step 5: Verify action buttons are present
+    const cancelBtn = doc.querySelector('[data-testid="cancel-btn"]');
+    const confirmBtn = doc.querySelector('[data-testid="confirm-btn"]');
+    await expect(cancelBtn).not.toBeNull();
+    await expect(confirmBtn).not.toBeNull();
+
+    // Step 6: Click the Cancel button to close the modal
+    const cancelNativeBtn = (cancelBtn as HTMLElement).querySelector('button') ?? cancelBtn;
+    (cancelNativeBtn as HTMLElement).click();
+
+    // Step 7: Wait for modal to close (animation + change detection)
+    await waitFor(
+      async () => {
+        const modalTitle = doc.querySelector('[data-testid="modal-title"]');
+        await expect(modalTitle).toBeNull();
+      },
+      { timeout: 3000, interval: 100 },
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+This story includes automated interaction tests using Storybook's play function.
+
+**Test steps:**
+1. ✅ Verify "Open Modal" button is visible
+2. ✅ Click button to open modal
+3. ✅ Wait for modal to appear
+4. ✅ Verify modal title and content
+5. ✅ Verify Cancel and Confirm buttons are present
+6. ✅ Click Cancel to close modal
+7. ✅ Verify modal closes
+
+Click the **Play** button in the Storybook toolbar to run these interaction tests.
+        `,
+      },
+    },
   },
 };

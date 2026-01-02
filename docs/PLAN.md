@@ -337,6 +337,17 @@ _Goal: Add new capabilities and features to enhance portfolio presentation and u
   - [ ] Create `provideProfileStore()` function.
   - [ ] Move ProfileStore to app-level in `app.config.ts`.
   - [ ] Implement 1-hour cache window with invalidation.
+- [ ] **8.9 Enhanced Dashboard Metrics**: Expand dashboard with comprehensive code quality metrics.
+  - [ ] Add Compodoc documentation coverage percentage and breakdown.
+  - [ ] Display detailed test coverage (statements, branches, functions, lines).
+  - [ ] Show bundle size with budget status.
+  - [ ] Display linting status (errors/warnings count).
+  - [ ] Add dependency health metrics (total, outdated, vulnerabilities).
+  - [ ] Show Storybook coverage percentage.
+  - [ ] Display Git statistics (commits, last commit time).
+  - [ ] Add Lighthouse scores display.
+  - [ ] Create metric parsing scripts for build-time data.
+  - [ ] Build reusable MetricCardComponent.
 
 ---
 

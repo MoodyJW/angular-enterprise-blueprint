@@ -18,7 +18,7 @@
   <div class="textarea__wrapper">
     <textarea
       #textareaElement
-      [id]="label() ? 'textarea-' + labelId() : undefined"
+      [attr.id]="label() ? 'textarea-' + labelId() : null"
       [class]="textareaClasses()"
       [value]="internalValue()"
       [name]="name()"

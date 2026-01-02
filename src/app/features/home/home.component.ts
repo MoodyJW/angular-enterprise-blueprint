@@ -2,6 +2,7 @@ import { TitleCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
+import { SeoService } from '@core/services/seo/seo.service';
 import { ThemeService } from '@core/services/theme/theme.service';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { BadgeComponent } from '@shared/components/badge';
@@ -11,8 +12,6 @@ import { ContainerComponent } from '@shared/components/container';
 import { GridComponent } from '@shared/components/grid';
 import { StackComponent } from '@shared/components/stack';
 import { DashboardStore } from './state/dashboard.store';
-
-import { SeoService } from '@core/services/seo/seo.service';
 
 @Component({
   selector: 'eb-home',
@@ -34,6 +33,7 @@ import { SeoService } from '@core/services/seo/seo.service';
   providers: [DashboardStore],
 })
 export class HomeComponent implements OnInit {
+  x = true;
   readonly store = inject(DashboardStore);
   readonly themeService = inject(ThemeService);
   private readonly translocoService = inject(TranslocoService);

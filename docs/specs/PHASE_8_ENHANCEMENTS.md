@@ -10,6 +10,80 @@
 - Ensure all new features meet WCAG 2.1 AA standards
 - Focus on portfolio presentation and user engagement
 
+## Component Reuse Strategy
+
+**IMPORTANT:** Before creating new components, leverage the existing design system in `src/app/shared/components/`.
+
+### Components to Reuse (NOT Create New)
+
+The following existing components should be reused instead of creating new ones:
+
+1. **CardComponent** → Use for BlogCardComponent and MetricCardComponent
+   - Already has variants (default, elevated, outlined, filled)
+   - Supports clickable, hoverable, full-width modes
+   - Has proper ARIA attributes and keyboard navigation
+   - Located at: [card.component.ts](../src/app/shared/components/card/card.component.ts)
+
+2. **GridComponent** → Use for MetricGridComponent layout
+   - Responsive grid system already implemented
+   - Located at: [grid.component.ts](../src/app/shared/components/grid/grid.component.ts)
+
+3. **BadgeComponent** → Use for status indicators (NOT filter chips)
+   - Designed for passive status/count displays
+   - Located at: [badge.component.ts](../src/app/shared/components/badge/badge.component.ts)
+
+4. **ThemePickerComponent** → Modify for ThemeMenuComponent
+   - Already has theme selection logic
+   - Refactor to icon-only trigger variant
+   - Located at: [theme-picker.component.ts](../src/app/shared/components/theme-picker/theme-picker.component.ts)
+
+### New Components to Create
+
+Only create these genuinely new components with unique functionality:
+
+1. **FilterChipsComponent** (Section 8.5)
+   - **Why new:** Interactive multi-select filter UI is distinct from passive BadgeComponent
+   - **Justification:** Reused across ModulesListComponent and AdrListComponent
+   - **Key difference:** Active filtering vs. passive status display
+   - Multi-select toggle behavior, chip removal, "Clear all" functionality
+
+2. **UserMenuComponent** (Section 8.2)
+   - **Why new:** Dropdown menu with account header and logout specific behavior
+   - **Justification:** Unique authentication-related UI pattern
+
+3. **DashboardMetricsComponent** (Section 8.9)
+   - **Why new:** Smart component for fetching and orchestrating metrics data
+   - **Note:** Uses existing CardComponent for individual metric displays
+
+4. **BlogListComponent** (Section 8.1)
+   - **Why new:** Smart component with blog-specific state and filtering logic
+   - **Note:** Uses existing CardComponent for article previews
+
+5. **BlogDetailComponent** (Section 8.1)
+   - **Why new:** Smart component with markdown rendering and article-specific features
+
+### Component Audit Summary
+
+Current shared components inventory (26 total):
+
+- ✅ Badge, Button, Card, Checkbox, Grid, Input, Modal, Radio, Select, Textarea, Toast, ThemePicker, etc.
+- All components follow BEM methodology, WCAG 2.1 AA standards, and theme system integration
+
+**Principle:** Maximize reuse to maintain consistency, reduce maintenance burden, and accelerate development.
+
+### Benefits of This Strategy
+
+By reusing existing components instead of creating duplicates:
+
+1. **Consistency:** All cards, grids, and badges look and behave the same across features
+2. **Maintenance:** Bug fixes and improvements benefit all use cases, not just one
+3. **Development Speed:** Less code to write, test, and document
+4. **Bundle Size:** Smaller production bundles (no duplicate component code)
+5. **Design System Integrity:** Reinforces the shared component library as single source of truth
+6. **Accessibility:** Reuses battle-tested, WCAG-compliant implementations
+
+**Result:** Phase 8 creates only 3 new shared components (FilterChips, UserMenu, DashboardMetrics) instead of the originally planned 6+, reducing development time while improving quality.
+
 ---
 
 ## 8.1 Blog Feature Module
@@ -43,12 +117,12 @@ Create a complete blog feature to showcase technical writing and thought leaders
 - Social sharing buttons (optional)
 - Syntax highlighting for code blocks
 
-**BlogCardComponent** (Presentational)
+**Article Card Display**
 
-- Reusable card for article preview
-- Props: title, excerpt, date, readingTime, tags, featuredImage, slug
-- Hover states and accessibility
-- Responsive layout
+- **Use existing CardComponent** with `clickable` and `hoverable` props
+- Pass article data (title, excerpt, date, readingTime, tags, featuredImage) via content projection
+- No need for separate BlogCardComponent - leverage design system
+- CardComponent already handles hover states, accessibility, and responsive layout
 
 ### Data Model
 
@@ -147,15 +221,19 @@ Migrate existing blog articles from phase completion:
 
 ### Components
 
-**UserMenuComponent** (New)
+**UserMenuComponent** (New Shared Component)
 
+- **Why new:** Dropdown menu pattern with authentication-specific behavior
 - Dropdown menu with account name header
 - Logout option
 - Future: Settings, Profile links
+- Uses Angular CDK Overlay for positioning and accessibility
+- Located at: `src/app/shared/components/user-menu/`
 
 **Changes:**
 
 - **Modify:** `HeaderComponent` (replace text/button with icon button)
+- **Create:** `UserMenuComponent` as reusable shared component
 
 ### Acceptance Criteria
 
@@ -175,15 +253,20 @@ Migrate existing blog articles from phase completion:
 
 ### Components
 
-**ThemeMenuComponent** (New)
+**ThemePickerComponent Enhancement** (Modify Existing)
 
-- Shows all 6 themes with visual previews
-- Current theme highlighted
-- Theme name and description
+- **Why modify existing:** Theme selection logic already implemented
+- Add icon-only variant mode (`compact: true` or similar)
+- Keep existing full picker for other use cases
+- Shows all 6 themes with visual previews (already has this)
+- Current theme highlighted (already has this)
+- Theme name and description (already has this)
+- Located at: `src/app/shared/components/theme-picker/`
 
 **Changes:**
 
-- **Modify:** `HeaderComponent` (replace picker with icon button)
+- **Modify:** `ThemePickerComponent` (add compact/icon-only mode)
+- **Modify:** `HeaderComponent` (use compact variant)
 
 ### Acceptance Criteria
 
@@ -258,12 +341,29 @@ interface PortfolioHero {
 
 ### Components
 
-**FilterChipsComponent** (New - Reusable)
+**FilterChipsComponent** (New Shared Component)
 
-- Multi-select chip filter
-- "Clear all" functionality
-- Chip removal
-- Props: filters[], selectedFilters[], (filterChange) event
+- **Why new:** Interactive multi-select filter UI distinct from passive BadgeComponent
+- **Key difference from Badge:** Active filtering with toggle behavior vs. passive status display
+- **Reuse justification:** Used in both ModulesListComponent and AdrListComponent
+- Multi-select chip filter with toggle on click
+- Individual chip removal with × button
+- "Clear all" functionality when filters active
+- Keyboard navigation (Tab, Enter/Space to toggle)
+- Props: `chips: FilterChip[]`, `multiSelect: boolean`, `ariaLabel: string`
+- Outputs: `chipToggled: FilterChip`, `cleared: void`
+- Located at: `src/app/shared/components/filter-chips/`
+
+**Data Model:**
+
+```typescript
+export interface FilterChip {
+  readonly id: string;
+  readonly label: string;
+  readonly selected: boolean;
+  readonly category?: string; // Optional grouping
+}
+```
 
 ### Changes
 
@@ -395,27 +495,410 @@ interface PortfolioHero {
 
 ---
 
+## 8.9 Checkbox Component Icon Refactor
+
+**Current:** Checkbox uses CheckboxCheckmarkComponent with conditional icon rendering (check/minus icons for checked/indeterminate, nothing for unchecked)
+**Target:** Use two distinct icons - one for unchecked box and one for checked box - to improve visual clarity and consistency
+
+### Overview
+
+Refactor the checkbox component to use icon-based rendering for both checked and unchecked states. This will improve the visual appearance across all 6 themes, provide better consistency with the design system, and simplify the component logic.
+
+### Current Implementation
+
+The current checkbox uses:
+
+- Native HTML checkbox input with custom styling
+- `CheckboxCheckmarkComponent` that conditionally shows icons only when checked/indeterminate
+- CSS-based box rendering for the unchecked state
+- Located at: [checkbox.component.ts](../src/app/shared/components/checkbox/checkbox.component.ts)
+
+### Proposed Changes
+
+**Icon Strategy (Using Material Icons):**
+
+1. **Unchecked state:** Use `matCheckBoxOutlineBlank` - outline empty square box
+2. **Checked state:** Use `matCheckBox` - filled square with checkmark
+3. **Indeterminate state:** Use `matIndeterminateCheckBox` - square with minus/dash line
+
+**Why Material Icons:**
+
+- Provides dedicated checkbox-specific icons (`matCheckBox`, `matCheckBoxOutlineBlank`, `matIndeterminateCheckBox`)
+- Perfect semantic naming for checkbox UI patterns
+- Designed specifically for form controls and checkboxes
+- Consistent visual style with Material Design principles
+- Need to install `@ng-icons/material-icons` package
+
+**Component Updates:**
+
+- **CheckboxCheckmarkComponent** ([checkbox-checkmark.component.ts](../src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.ts))
+  - Update to always show an icon (not conditionally)
+  - Add logic to display `matCheckBoxOutlineBlank` when `!checked && !indeterminate`
+  - Update icon imports from Heroicons to Material Icons
+  - Icon mapping:
+    - `heroCheck` → `matCheckBox`
+    - `heroMinus` → `matIndeterminateCheckBox`
+    - New: `matCheckBoxOutlineBlank`
+
+- **CheckboxComponent** ([checkbox.component.ts](../src/app/shared/components/checkbox/checkbox.component.ts))
+  - Update SCSS to remove CSS-based box rendering
+  - Simplify styles to focus on layout and spacing
+  - Ensure proper color theming for all icon states
+
+- **ICON_NAMES Constants** (if applicable)
+  - Add new Material icon names to `src/app/shared/constants/icon-names.ts` if using centralized icon name constants
+
+### Benefits
+
+1. **Visual Consistency:** Icons provide clearer visual feedback across all themes
+2. **Accessibility:** Icon states are more distinct, improving usability for users with visual impairments
+3. **Maintainability:** Removes complex CSS for custom checkbox rendering
+4. **Theme Compliance:** Icons automatically inherit theme colors and contrast ratios
+5. **Simplified Logic:** Clearer state representation with dedicated icons
+
+### Implementation Steps
+
+1. Install `@ng-icons/material-icons` package
+   ```bash
+   npm install @ng-icons/material-icons@^33.0.0
+   ```
+2. Update `CheckboxCheckmarkComponent` to:
+   - Replace Heroicons imports with Material Icons
+   - Import `matCheckBox`, `matCheckBoxOutlineBlank`, `matIndeterminateCheckBox`
+   - Update `iconName()` computed to return appropriate Material icon for each state
+   - Remove conditional `showIcon()` - always show icon
+3. Update `checkbox.component.scss` to remove CSS-based box rendering
+4. Update Storybook stories to showcase new icon-based states
+5. Update unit tests for both components to verify icon selection logic
+6. Visual regression testing across all 6 themes
+7. Update component documentation and JSDoc comments
+
+### Acceptance Criteria
+
+- [ ] Unchecked state displays `matCheckBoxOutlineBlank` icon
+- [ ] Checked state displays `matCheckBox` icon
+- [ ] Indeterminate state displays `matIndeterminateCheckBox` icon
+- [ ] All three states visually distinct and clear
+- [ ] `@ng-icons/material-icons` package installed and configured
+- [ ] Icons properly themed across all 6 themes (especially high-contrast)
+- [ ] Color contrast meets WCAG 2.1 AA standards in all states
+- [ ] Focus states clearly visible with proper outline
+- [ ] Hover states provide visual feedback
+- [ ] Disabled states have reduced opacity and proper cursor
+- [ ] All existing checkbox tests pass with updates
+- [ ] Storybook updated with all state variants
+- [ ] No visual regressions in components using checkbox
+- [ ] Keyboard navigation unchanged (Space to toggle, Tab to navigate)
+- [ ] Screen reader announcements unchanged
+
+### Files to Update
+
+1. `src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.ts`
+2. `src/app/shared/components/checkbox/checkbox.component.scss`
+3. `src/app/shared/components/checkbox/checkbox.component.spec.ts`
+4. `src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts`
+5. `src/app/shared/components/checkbox/checkbox.stories.ts`
+6. Update any visual snapshots if using snapshot testing
+
+### Testing Strategy
+
+- Unit tests: Verify icon selection logic for all states
+- Visual tests: Storybook chromatic tests across themes
+- Integration tests: Verify in actual form usage (login, settings, etc.)
+- Accessibility tests: axe DevTools validation in Storybook
+- Cross-browser testing: Ensure icons render consistently
+
+---
+
+## 8.10 Enhanced Dashboard Metrics
+
+**Current:** Basic dashboard with build status, test coverage, last deployment
+**Target:** Comprehensive metrics dashboard showcasing code quality and project health
+
+### Overview
+
+Expand the home dashboard to display real, actionable metrics that demonstrate code quality, documentation coverage, and overall project health. This makes the portfolio more impressive and provides useful information at a glance.
+
+### New Metrics to Add
+
+**Code Quality Metrics:**
+
+1. **Documentation Coverage (Compodoc)**
+   - Parse `documentation.json` to extract coverage percentage
+   - Display percentage with visual indicator (progress bar or gauge)
+   - Show number of documented vs. total components/services
+   - Link to full Compodoc documentation
+
+2. **Test Coverage Details**
+   - Expand beyond single percentage
+   - Show breakdown: Statements, Branches, Functions, Lines
+   - Visual indicators for each metric
+   - Trend indicator (if coverage increased/decreased)
+
+3. **Bundle Size**
+   - Parse build stats to show main bundle size
+   - Show gzipped size
+   - Indicator if within budget thresholds
+   - Link to bundle analyzer
+
+4. **Linting Status**
+   - Show ESLint warning/error count (0 is goal)
+   - Prettier formatting status
+   - Last lint run timestamp
+
+5. **Dependency Health**
+   - Total dependencies count
+   - Outdated packages count
+   - Security vulnerabilities count (from npm audit)
+   - Link to dependency review
+
+6. **Storybook Coverage**
+   - Count of components with stories
+   - Percentage of shared components documented
+   - Link to Storybook
+
+**Project Activity Metrics:**
+
+7. **Git Statistics**
+   - Total commits
+   - Active branches count
+   - Last commit timestamp
+   - Contributors count
+
+8. **Lighthouse Scores**
+   - Performance, Accessibility, Best Practices, SEO scores
+   - Visual badges/indicators
+   - Link to latest Lighthouse report
+
+9. **Build Performance**
+   - Average build time
+   - Last successful build timestamp
+   - Build trend (faster/slower)
+
+### Data Sources
+
+**Static (Parse at Build Time):**
+
+- `documentation.json` → Compodoc coverage
+- `coverage/coverage-summary.json` → Test coverage details
+- `dist/stats.json` → Bundle sizes
+- `.git/` → Git statistics
+- `package.json` + `package-lock.json` → Dependency counts
+
+**Dynamic (Mock/Simulate):**
+
+- Lighthouse scores (could parse CI artifacts or mock)
+- Build times (could track via CI or mock)
+- Dependency vulnerabilities (`npm audit --json`)
+
+### Component Structure
+
+**DashboardMetricsComponent** (Smart Component)
+
+- **Why new:** Orchestrates metrics data fetching and state management
+- Fetches all metrics data from various sources
+- Parses JSON files (documentation.json, coverage-summary.json, etc.)
+- Passes data to existing CardComponent instances
+- Located at: `src/app/features/home/components/dashboard-metrics/`
+
+**Metric Display**
+
+- **Use existing CardComponent** for individual metric displays
+- No need for separate MetricCardComponent - leverage design system
+- Pass metric data via content projection (title, value, icon, trend, status)
+- CardComponent variants handle visual differences (elevated, outlined, etc.)
+
+**Layout**
+
+- **Use existing GridComponent** for responsive metric card layout
+- No need for separate MetricGridComponent
+- GridComponent already handles responsive breakpoints and auto-adjustment
+
+### Data Model
+
+```typescript
+interface DashboardMetric {
+  readonly id: string;
+  readonly category: 'quality' | 'activity' | 'performance';
+  readonly title: string;
+  readonly value: string | number;
+  readonly subtitle?: string;
+  readonly icon: string;
+  readonly status: 'success' | 'warning' | 'error' | 'info';
+  readonly trend?: {
+    readonly direction: 'up' | 'down' | 'neutral';
+    readonly value: string;
+  };
+  readonly link?: {
+    readonly label: string;
+    readonly url: string;
+  };
+  readonly visualType: 'number' | 'percentage' | 'badge' | 'list';
+}
+
+interface DocumentationCoverage {
+  readonly total: number;
+  readonly documented: number;
+  readonly percentage: number;
+  readonly breakdown: {
+    readonly components: { total: number; documented: number };
+    readonly services: { total: number; documented: number };
+    readonly directives: { total: number; documented: number };
+    readonly pipes: { total: number; documented: number };
+  };
+}
+
+interface CoverageDetails {
+  readonly statements: { pct: number; covered: number; total: number };
+  readonly branches: { pct: number; covered: number; total: number };
+  readonly functions: { pct: number; covered: number; total: number };
+  readonly lines: { pct: number; covered: number; total: number };
+}
+
+interface BundleSize {
+  readonly main: { raw: number; gzipped: number };
+  readonly total: { raw: number; gzipped: number };
+  readonly withinBudget: boolean;
+}
+```
+
+### Implementation Approach
+
+**Phase 1: Static Metrics (Low-hanging fruit)**
+
+1. Parse `documentation.json` for Compodoc coverage
+2. Parse `coverage/coverage-summary.json` for detailed test coverage
+3. Parse `package.json` for dependency counts
+4. Display in new metric cards on dashboard
+
+**Phase 2: Build-time Metrics**
+
+1. Add script to generate `metrics.json` during build
+2. Include git stats, bundle sizes, build timestamp
+3. Serve as static asset
+
+**Phase 3: Dynamic/Simulated Metrics**
+
+1. Mock Lighthouse scores (or parse CI artifacts)
+2. Mock build performance trends
+3. Add npm audit integration (or mock)
+
+### Example Metrics Display
+
+```
+┌─────────────────────┬─────────────────────┬─────────────────────┐
+│ Documentation       │ Test Coverage       │ Bundle Size         │
+│ 94%                 │ 87% ↑               │ 245 KB ✓            │
+│ 142/151 documented  │ All metrics >85%    │ Within budget       │
+│ [View Docs]         │ [View Report]       │ [Analyze]           │
+└─────────────────────┴─────────────────────┴─────────────────────┘
+
+┌─────────────────────┬─────────────────────┬─────────────────────┐
+│ Linting             │ Dependencies        │ Storybook           │
+│ 0 errors ✓          │ 1,783 packages      │ 28/32 components    │
+│ 0 warnings ✓        │ 3 outdated          │ 87.5% coverage      │
+│ [Run Lint]          │ [Review]            │ [View Stories]      │
+└─────────────────────┴─────────────────────┴─────────────────────┘
+
+┌─────────────────────┬─────────────────────┬─────────────────────┐
+│ Lighthouse          │ Git Activity        │ Build Status        │
+│ 98 | 100 | 100 | 100│ 287 commits         │ ✓ Passing           │
+│ Perf|A11y|BP |SEO   │ Last: 2 hours ago   │ Avg: 45s            │
+│ [Latest Report]     │ [View Repo]         │ [CI Pipeline]       │
+└─────────────────────┴─────────────────────┴─────────────────────┘
+```
+
+### Scripts to Add
+
+```json
+{
+  "scripts": {
+    "metrics:generate": "node scripts/generate-metrics.js",
+    "metrics:coverage": "node scripts/parse-coverage.js",
+    "metrics:docs": "node scripts/parse-compodoc.js",
+    "metrics:audit": "npm audit --json > metrics/audit.json"
+  }
+}
+```
+
+### Acceptance Criteria
+
+- [ ] Compodoc documentation coverage displayed with percentage and breakdown
+- [ ] Test coverage shows all 4 metrics (statements, branches, functions, lines)
+- [ ] Bundle size displayed with budget status
+- [ ] Linting status shows error/warning counts
+- [ ] Dependency health metrics displayed
+- [ ] Storybook coverage percentage calculated and shown
+- [ ] Git statistics displayed (commits, last commit time)
+- [ ] Lighthouse scores displayed (real or mocked)
+- [ ] All metrics update when running `npm run metrics:generate`
+- [ ] Metric cards have consistent design with icons and status colors
+- [ ] Mobile responsive layout (cards stack on small screens)
+- [ ] Links to detailed reports work correctly
+- [ ] WCAG 2.1 AA compliant
+- [ ] All metrics accurate and verified
+
+---
+
 ## Timeline Estimate
 
-| Task                      | Estimated Time  |
-| ------------------------- | --------------- |
-| 8.1 Blog Feature Module   | 24-32 hours     |
-| 8.2 User Menu             | 6-8 hours       |
-| 8.3 Theme Menu            | 4-6 hours       |
-| 8.4 Home Branding         | 6-10 hours      |
-| 8.5 Filter Chips          | 6-8 hours       |
-| 8.6 Profile Layout        | 2 hours         |
-| 8.7 Toast Improvements    | 1-2 hours       |
-| 8.8 Profile Stats Caching | 1-2 hours       |
-| **Total**                 | **50-70 hours** |
+| Task                       | Estimated Time  |
+| -------------------------- | --------------- |
+| 8.1 Blog Feature Module    | 24-32 hours     |
+| 8.2 User Menu              | 6-8 hours       |
+| 8.3 Theme Menu             | 4-6 hours       |
+| 8.4 Home Branding          | 6-10 hours      |
+| 8.5 Filter Chips           | 6-8 hours       |
+| 8.6 Profile Layout         | 2 hours         |
+| 8.7 Toast Improvements     | 1-2 hours       |
+| 8.8 Profile Stats Caching  | 1-2 hours       |
+| 8.9 Checkbox Icon Refactor | 4-6 hours       |
+| 8.10 Enhanced Dashboard    | 12-16 hours     |
+| **Total**                  | **66-92 hours** |
 
 **8.1 Breakdown:**
 
 - BlogStore + data model: 4-6 hours
-- BlogListComponent: 8-10 hours
+- BlogListComponent (uses CardComponent): 6-8 hours
 - BlogDetailComponent: 8-10 hours
-- BlogCardComponent: 2-3 hours
+- Styling card content projection: 2-3 hours
 - Content migration: 2-3 hours
+- Routing & navigation: 2-3 hours
+
+**8.2 Breakdown:**
+
+- UserMenuComponent creation: 4-5 hours
+- HeaderComponent integration: 1-2 hours
+- Testing & accessibility: 1-2 hours
+
+**8.3 Breakdown:**
+
+- ThemePickerComponent compact mode: 2-3 hours
+- HeaderComponent integration: 1-2 hours
+- Testing: 1 hour
+
+**8.5 Breakdown:**
+
+- FilterChipsComponent creation: 4-5 hours
+- Integration in ModulesListComponent: 1-2 hours
+- Integration in AdrListComponent: 1-2 hours
+
+**8.9 Breakdown:**
+
+- Install `@ng-icons/material-icons` package: 0.25 hours
+- Research Material Icons checkbox icons: 0.25 hours
+- Update CheckboxCheckmarkComponent with three Material icon states: 1.5-2 hours
+- Update checkbox.component.scss to remove CSS box rendering: 1 hour
+- Update Storybook stories and visual tests: 1-1.5 hours
+- Update unit tests: 1 hour
+- Cross-theme testing and accessibility validation: 1 hour
+
+**8.10 Breakdown:**
+
+- Metric parsing scripts: 4-5 hours
+- DashboardMetricsComponent (uses CardComponent + GridComponent): 4-5 hours
+- Styling metric content projection: 2-3 hours
+- Integration & testing: 2-3 hours
 
 ---
 

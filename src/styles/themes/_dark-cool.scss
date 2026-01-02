@@ -12,6 +12,7 @@
   --color-primary-active: #7c3aed;
   --color-primary-subtle: rgba(139, 92, 246, 0.15);
   --color-on-primary: #0f0a1a;
+  --color-text-brand: #c4b5fd; // Violet 300 for better contrast on dark surfaces
 
   // Secondary colors - cool slate
   --color-secondary: #a1a1aa;
@@ -47,6 +48,7 @@
   // Surface colors - cool purple-tinted
   --color-background: #0f0a1a;
   --color-surface: #1a1325;
+  --color-surface-disabled: #1a1325;
   --color-surface-hover: #2d2438;
   --color-surface-active: #3d3350;
   --color-surface-elevated: #1e1730;
@@ -54,7 +56,7 @@
   // Text colors
   --color-text: #faf5ff;
   --color-text-secondary: #d8b4fe;
-  --color-text-muted: #7e6c99;
+  --color-text-muted: #a39fbc;
   --color-text-disabled: #4c3d66;
   --color-text-inverse: #0f0a1a;
 

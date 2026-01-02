@@ -1,4 +1,5 @@
-<eb-button
+<button
+  type="button"
   class="tabs__tab"
   [class.tabs__tab--active]="isActive()"
   [class.tabs__tab--disabled]="disabled()"
@@ -8,14 +9,12 @@
   [attr.aria-controls]="ariaControls()"
   [attr.tabindex]="tabindex()"
   [disabled]="disabled()"
-  [ariaLabel]="label()"
-  (clicked)="onClick()"
-  variant="ghost"
-  size="md"
+  [attr.aria-label]="label()"
+  (click)="onClick()"
 >
   @if (icon()) {
     <eb-icon [name]="icon()!" size="sm" [decorative]="true" class="tabs__tab-icon" />
   }
 
   <span class="tabs__tab-label">{{ label() }}</span>
-</eb-button>
+</button>

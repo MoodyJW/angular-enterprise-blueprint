@@ -1,18 +1,30 @@
+:host {
+  display: block;
+  width: 100%; // Ensure horizontal divider takes full width
+}
+
+:host([data-orientation='vertical']) {
+  display: inline-block;
+  width: auto; // Let width be defined by inner divider
+  height: 100%; // Fill parent height
+  vertical-align: middle;
+}
+
 .divider {
   border: none;
   background-color: var(--color-border);
   box-sizing: border-box;
+  height: var(--border-width-thin);
 
-  // Horizontal orientation
   &--horizontal {
     width: 100%;
-    height: 1px;
+    height: var(--border-width-thin);
     display: block;
   }
 
   // Vertical orientation
   &--vertical {
-    width: 1px;
+    width: var(--border-width-thin);
     height: 100%;
     display: inline-block;
     vertical-align: middle;
@@ -21,21 +33,21 @@
   // Thickness variants (consolidated)
   &--medium {
     &.divider--horizontal {
-      height: 2px;
+      height: var(--border-width-medium);
     }
 
     &.divider--vertical {
-      width: 2px;
+      width: var(--border-width-medium);
     }
   }
 
   &--thick {
     &.divider--horizontal {
-      height: 4px;
+      height: var(--border-width-thick);
     }
 
     &.divider--vertical {
-      width: 4px;
+      width: var(--border-width-thick);
     }
   }
 
@@ -85,39 +97,51 @@
   &--spacing-none {
     margin: var(--space-0);
   }
+
   &--space-1.divider--horizontal {
     margin: var(--space-1) var(--space-0);
   }
+
   &--space-1.divider--vertical {
     margin: var(--space-0) var(--space-1);
   }
+
   &--space-2.divider--horizontal {
     margin: var(--space-2) var(--space-0);
   }
+
   &--space-2.divider--vertical {
     margin: var(--space-0) var(--space-2);
   }
+
   &--space-3.divider--horizontal {
     margin: var(--space-4) var(--space-0);
   }
+
   &--space-3.divider--vertical {
     margin: var(--space-0) var(--space-4);
   }
+
   &--space-4.divider--horizontal {
     margin: var(--space-5) var(--space-0);
   }
+
   &--space-4.divider--vertical {
     margin: var(--space-0) var(--space-5);
   }
+
   &--space-5.divider--horizontal {
     margin: var(--space-6) var(--space-0);
   }
+
   &--space-5.divider--vertical {
     margin: var(--space-0) var(--space-6);
   }
+
   &--space-6.divider--horizontal {
     margin: var(--space-12) var(--space-0);
   }
+
   &--space-6.divider--vertical {
     margin: var(--space-0) var(--space-12);
   }
@@ -144,7 +168,7 @@
 
     .divider__line {
       flex: 1;
-      height: 1px;
+      height: var(--border-width-thin);
       background-color: var(--color-border);
     }
 
@@ -158,11 +182,11 @@
 
     // Thickness variants for label lines
     &.divider--medium .divider__line {
-      height: 2px;
+      height: var(--border-width-medium);
     }
 
     &.divider--thick .divider__line {
-      height: 4px;
+      height: var(--border-width-thick);
     }
 
     // Bordered variants for label lines (consolidated)

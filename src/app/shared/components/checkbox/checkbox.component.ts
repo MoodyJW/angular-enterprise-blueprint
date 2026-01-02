@@ -14,9 +14,8 @@ import { FormsModule } from '@angular/forms';
 
 import { UniqueIdService } from '@shared/services/unique-id';
 
-import { CheckboxCheckmarkComponent } from '@shared/components/checkbox-checkmark';
-import { InputFooterComponent } from '@shared/components/input-footer';
-import { InputLabelComponent } from '@shared/components/input-label';
+import { InputFooterComponent, InputLabelComponent } from '@shared/components/input';
+import { CheckboxCheckmarkComponent } from './checkbox-checkmark';
 
 export type CheckboxSize = 'sm' | 'md' | 'lg';
 export type CheckboxValidationState = 'default' | 'success' | 'warning' | 'error';

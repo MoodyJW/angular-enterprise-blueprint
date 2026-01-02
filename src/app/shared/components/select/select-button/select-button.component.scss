@@ -1,3 +1,11 @@
+// Select button wrapper - contains both main button and clear button as siblings
+.select-button-wrapper {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
 // Select button styles
 .select-button {
   // Base button styles
@@ -5,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: var(--max-width-full);
+  flex: 1;
   padding: var(--space-2) var(--space-3);
   border: var(--border-width-thin) solid var(--color-border);
   border-radius: var(--border-radius-md);
@@ -167,34 +175,12 @@
     flex-shrink: 0;
   }
 
-  // Clear button
-  &__clear {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-1);
-    border: none;
-    background: none;
-    color: var(--color-text-muted);
-    cursor: pointer;
-    border-radius: var(--border-radius-md);
-    transition: color var(--duration-normal) var(--ease-in-out);
-
-    &:hover {
-      color: var(--color-text);
-      background-color: var(--color-surface-elevated);
-    }
-
-    &:focus {
-      outline: var(--border-width-medium) solid var(--color-primary);
-      outline-offset: var(--border-width-medium);
-    }
-  }
-
   // Arrow icon
   &__arrow {
     display: flex;
     align-items: center;
+    gap: var(--space-1);
+    flex-shrink: 0;
     color: var(--color-text-secondary);
     transition: transform var(--duration-normal) var(--ease-in-out);
 
@@ -203,13 +189,47 @@
       transform: rotate(180deg);
     }
   }
+}
 
-  // Respect reduced motion preference
-  @media (prefers-reduced-motion: reduce) {
+// Clear button - positioned as sibling to main button
+.select-button__clear {
+  position: absolute;
+  right: var(--space-8);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-1);
+  border: none;
+  background: var(--color-background);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  border-radius: var(--border-radius-md);
+  transition: color var(--duration-normal) var(--ease-in-out);
+  z-index: 1;
+
+  &:hover {
+    color: var(--color-text);
+    background-color: var(--color-surface-elevated);
+  }
+
+  &:focus {
+    outline: var(--border-width-medium) solid var(--color-primary);
+    outline-offset: var(--border-width-medium);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// Respect reduced motion preference
+@media (prefers-reduced-motion: reduce) {
+  .select-button,
+  .select-button__arrow,
+  .select-button__clear {
     transition: none;
-
-    .select-button__arrow {
-      transition: none;
-    }
   }
 }

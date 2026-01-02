@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="74" failures="74" errors="0" time="0.037126581">
-    <testsuite name="src/app/shared/components/select/select.component.spec.ts" timestamp="2025-12-30T22:04:00.602Z" hostname="jay-MS-7971" tests="74" failures="74" errors="0" skipped="0" time="0.037126581">
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Component Initialization &gt; should create" time="0.006017274">
+<testsuites name="vitest tests" tests="74" failures="74" errors="0" time="0.038354613">
+    <testsuite name="src/app/shared/components/select/select.component.spec.ts" timestamp="2026-01-02T21:03:37.757Z" hostname="jay-MS-7971" tests="74" failures="74" errors="0" skipped="0" time="0.038354613">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Component Initialization &gt; should create" time="0.009090822">
             <failure message="Need to call TestBed.initTestEnvironment() first" type="Error">
 Error: Need to call TestBed.initTestEnvironment() first
  ❯ TestBedImpl.get compiler [as compiler] node_modules/@angular/core/fesm2022/testing.mjs:1486:13
@@ -10,7 +10,7 @@ Error: Need to call TestBed.initTestEnvironment() first
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Component Initialization &gt; should have default values" time="0.002506649">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Component Initialization &gt; should have default values" time="0.00373881">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -30,7 +30,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Component Initialization &gt; should accept custom input values" time="0.000497326">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Component Initialization &gt; should accept custom input values" time="0.00093006">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -50,7 +50,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Display Text &gt; should show placeholder when no value is selected" time="0.000419302">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Display Text &gt; should show placeholder when no value is selected" time="0.000882953">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -70,7 +70,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Display Text &gt; should show selected option label" time="0.000383025">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Display Text &gt; should show selected option label" time="0.000727112">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -90,7 +90,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Display Text &gt; should show multiple selected options in multiple mode" time="0.000376061">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Display Text &gt; should show multiple selected options in multiple mode" time="0.000525509">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -110,7 +110,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Display Text &gt; should show custom placeholder" time="0.000554433">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Display Text &gt; should show custom placeholder" time="0.000519216">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -130,7 +130,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Dropdown Toggle &gt; should toggle dropdown when button is clicked" time="0.000421961">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Dropdown Toggle &gt; should toggle dropdown when button is clicked" time="0.00045716">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -150,7 +150,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Dropdown Toggle &gt; should not toggle dropdown when disabled" time="0.000469398">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Dropdown Toggle &gt; should not toggle dropdown when disabled" time="0.000647963">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -170,7 +170,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Dropdown Toggle &gt; should emit opened event when dropdown opens" time="0.000421492">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Dropdown Toggle &gt; should emit opened event when dropdown opens" time="0.000570926">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -190,7 +190,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Dropdown Toggle &gt; should emit closed event when dropdown closes" time="0.000289509">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Dropdown Toggle &gt; should emit closed event when dropdown closes" time="0.000384865">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -210,7 +210,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Option Selection &gt; should select an option in single mode" time="0.000438298">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Option Selection &gt; should select an option in single mode" time="0.000581311">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -230,7 +230,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Option Selection &gt; should not select disabled options" time="0.000270663">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Option Selection &gt; should not select disabled options" time="0.000446444">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -250,7 +250,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Option Selection &gt; should add option in multiple mode" time="0.000434036">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Option Selection &gt; should add option in multiple mode" time="0.000480584">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -270,7 +270,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Option Selection &gt; should remove option in multiple mode when already selected" time="0.000518871">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Option Selection &gt; should remove option in multiple mode when already selected" time="0.000492947">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -290,7 +290,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Option Selection &gt; should check if option is selected" time="0.000576021">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Option Selection &gt; should check if option is selected" time="0.000380774">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -310,7 +310,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Option Selection &gt; should check if option is selected in multiple mode" time="0.000581703">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Option Selection &gt; should check if option is selected in multiple mode" time="0.000399666">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -330,7 +330,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Clear Functionality &gt; should clear value in single mode" time="0.000507983">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Clear Functionality &gt; should clear value in single mode" time="0.000390418">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -350,7 +350,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Clear Functionality &gt; should clear values in multiple mode" time="0.000508026">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Clear Functionality &gt; should clear values in multiple mode" time="0.000499307">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -370,7 +370,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Search Functionality &gt; should filter options based on search query" time="0.000418631">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Search Functionality &gt; should filter options based on search query" time="0.00040994">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -390,7 +390,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Search Functionality &gt; should filter options by label" time="0.00037985">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Search Functionality &gt; should filter options by label" time="0.000404694">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -410,7 +410,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Search Functionality &gt; should filter options by description" time="0.000411495">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Search Functionality &gt; should filter options by description" time="0.00037608">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -430,7 +430,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Search Functionality &gt; should return all options when search query is empty" time="0.000364055">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Search Functionality &gt; should return all options when search query is empty" time="0.000237249">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -450,7 +450,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Search Functionality &gt; should be case insensitive" time="0.000350665">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Search Functionality &gt; should be case insensitive" time="0.000229098">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -470,7 +470,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should open dropdown on Enter key" time="0.000363985">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should open dropdown on Enter key" time="0.000220367">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -490,7 +490,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should open dropdown on Space key" time="0.000370342">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should open dropdown on Space key" time="0.000208755">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -510,7 +510,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should close dropdown on Escape key" time="0.000450666">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should close dropdown on Escape key" time="0.000270945">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -530,7 +530,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should highlight next option on ArrowDown" time="0.000368156">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should highlight next option on ArrowDown" time="0.000241844">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -550,7 +550,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should highlight previous option on ArrowUp" time="0.00026865">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should highlight previous option on ArrowUp" time="0.000214022">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -570,7 +570,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should skip disabled options when navigating down" time="0.000210976">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should skip disabled options when navigating down" time="0.000210518">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -590,7 +590,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should jump to first option on Home key" time="0.000208699">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should jump to first option on Home key" time="0.000295124">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -610,7 +610,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should jump to last option on End key" time="0.000201574">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should jump to last option on End key" time="0.000233601">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -630,7 +630,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should select highlighted option on Enter" time="0.000206704">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should select highlighted option on Enter" time="0.000222239">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -650,7 +650,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should close dropdown on Tab key" time="0.000209959">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Keyboard Navigation &gt; should close dropdown on Tab key" time="0.000205237">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -670,7 +670,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Focus Management &gt; should emit focused event" time="0.000205331">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Focus Management &gt; should emit focused event" time="0.0002076">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -690,7 +690,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Focus Management &gt; should emit blurred event" time="0.000200328">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Focus Management &gt; should emit blurred event" time="0.000206374">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -710,7 +710,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Focus Management &gt; should focus button programmatically" time="0.000199091">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Focus Management &gt; should focus button programmatically" time="0.000209056">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -730,7 +730,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Focus Management &gt; should blur button programmatically" time="0.000205174">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Focus Management &gt; should blur button programmatically" time="0.000204659">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -750,7 +750,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; CSS Classes &gt; should apply wrapper classes" time="0.000203184">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; CSS Classes &gt; should apply wrapper classes" time="0.000208467">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -770,7 +770,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; CSS Classes &gt; should apply button classes" time="0.000199865">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; CSS Classes &gt; should apply button classes" time="0.00020582">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -790,7 +790,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; CSS Classes &gt; should apply disabled class" time="0.000202848">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; CSS Classes &gt; should apply disabled class" time="0.000212776">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -810,7 +810,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; CSS Classes &gt; should apply dropdown classes" time="0.000199303">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; CSS Classes &gt; should apply dropdown classes" time="0.000204649">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -830,7 +830,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Validation States &gt; should apply success validation state" time="0.000220218">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Validation States &gt; should apply success validation state" time="0.000229775">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -850,7 +850,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Validation States &gt; should apply warning validation state" time="0.000301215">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Validation States &gt; should apply warning validation state" time="0.00020848">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -870,7 +870,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Validation States &gt; should apply error validation state" time="0.000345645">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Validation States &gt; should apply error validation state" time="0.000202334">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -890,7 +890,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Label and Helper Text &gt; should display label when provided" time="0.000421323">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Label and Helper Text &gt; should display label when provided" time="0.000221956">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -910,7 +910,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Label and Helper Text &gt; should not display label when not provided" time="0.000432933">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Label and Helper Text &gt; should not display label when not provided" time="0.000235486">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -930,7 +930,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Label and Helper Text &gt; should display helper text when provided" time="0.000391592">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Label and Helper Text &gt; should display helper text when provided" time="0.000206029">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -950,7 +950,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Label and Helper Text &gt; should show required indicator" time="0.00041539">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Label and Helper Text &gt; should show required indicator" time="0.000228193">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -970,7 +970,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Label and Helper Text &gt; should show footer only when helper text is present" time="0.000408104">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Label and Helper Text &gt; should show footer only when helper text is present" time="0.000203537">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -990,7 +990,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should have required aria-label" time="0.000403521">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should have required aria-label" time="0.000206235">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1010,7 +1010,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set aria-expanded" time="0.000411152">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set aria-expanded" time="0.000211054">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1030,7 +1030,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set aria-required when required" time="0.000436583">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set aria-required when required" time="0.000200244">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1050,7 +1050,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set aria-invalid when validation fails" time="0.000408971">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set aria-invalid when validation fails" time="0.000206461">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1070,7 +1070,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set aria-describedby when helper text is present" time="0.000397215">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set aria-describedby when helper text is present" time="0.000199484">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1090,7 +1090,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set role=&quot;listbox&quot; on options container" time="0.000383417">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set role=&quot;listbox&quot; on options container" time="0.00020037">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1110,7 +1110,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set aria-multiselectable in multiple mode" time="0.000392018">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set aria-multiselectable in multiple mode" time="0.000202621">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1130,7 +1130,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set aria-selected on options" time="0.000358404">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set aria-selected on options" time="0.000196783">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1150,7 +1150,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set aria-disabled on disabled options" time="0.000378374">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Accessibility &gt; should set aria-disabled on disabled options" time="0.000204728">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1170,7 +1170,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Value Sync &gt; should sync value input with internal state" time="0.000458824">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Value Sync &gt; should sync value input with internal state" time="0.000201137">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1190,7 +1190,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Value Sync &gt; should handle null value" time="0.000420321">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Value Sync &gt; should handle null value" time="0.000198101">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1210,7 +1210,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Value Sync &gt; should handle array value in multiple mode" time="0.000381665">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Value Sync &gt; should handle array value in multiple mode" time="0.000196881">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1230,7 +1230,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Edge Cases &gt; should handle empty options array" time="0.000358126">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Edge Cases &gt; should handle empty options array" time="0.000205627">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1250,7 +1250,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Edge Cases &gt; should handle selecting from filtered results" time="0.000379193">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Edge Cases &gt; should handle selecting from filtered results" time="0.000196539">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1270,7 +1270,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Edge Cases &gt; should reset search query when closing dropdown" time="0.000382124">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Edge Cases &gt; should reset search query when closing dropdown" time="0.00022448">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1290,7 +1290,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Edge Cases &gt; should handle highlighting out of bounds" time="0.000369093">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Edge Cases &gt; should handle highlighting out of bounds" time="0.000203955">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1310,7 +1310,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should return all options if query is present but searchable is false" time="0.000374736">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should return all options if query is present but searchable is false" time="0.000203672">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1330,7 +1330,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should open dropdown on ArrowDown if closed" time="0.000300915">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should open dropdown on ArrowDown if closed" time="0.000204093">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1350,7 +1350,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should open dropdown on ArrowUp if closed" time="0.00026207">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should open dropdown on ArrowUp if closed" time="0.000197334">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1370,7 +1370,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should skip multiple disabled options during navigation" time="0.000275325">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should skip multiple disabled options during navigation" time="0.000269267">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1390,7 +1390,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should stop at last enabled option if all following are disabled" time="0.000262849">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should stop at last enabled option if all following are disabled" time="0.000353387">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1410,7 +1410,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should combine helperTextId and ariaDescribedBy" time="0.000258318">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should combine helperTextId and ariaDescribedBy" time="0.000299093">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1430,7 +1430,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should not do anything when closing closed dropdown" time="0.000259594">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should not do anything when closing closed dropdown" time="0.00022844">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss
@@ -1450,7 +1450,7 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ src/app/shared/components/select/select.component.spec.ts:22:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should focus search input when opening in searchable mode" time="0.000268723">
+        <testcase classname="src/app/shared/components/select/select.component.spec.ts" name="SelectComponent &gt; Branch Coverage Improvements &gt; should focus search input when opening in searchable mode" time="0.000214426">
             <failure message="Component &apos;SelectComponent&apos; is not resolved:
  - templateUrl: ./select.component.html
  - styleUrl: ./select.component.scss

@@ -159,7 +159,7 @@ describe('SelectButtonComponent', () => {
 
   describe('Clear Button', () => {
     it('should not show clear button by default', () => {
-      const clearBtn = button.querySelector('.select-button__clear');
+      const clearBtn = compiled.querySelector('.select-button__clear');
       expect(clearBtn).toBeFalsy();
     });
 
@@ -167,7 +167,7 @@ describe('SelectButtonComponent', () => {
       fixture.componentRef.setInput('showClear', true);
       fixture.detectChanges();
 
-      const clearBtn = button.querySelector('.select-button__clear');
+      const clearBtn = compiled.querySelector('.select-button__clear');
       expect(clearBtn).toBeTruthy();
     });
 
@@ -175,7 +175,7 @@ describe('SelectButtonComponent', () => {
       fixture.componentRef.setInput('showClear', false);
       fixture.detectChanges();
 
-      const clearBtn = button.querySelector('.select-button__clear');
+      const clearBtn = compiled.querySelector('.select-button__clear');
       expect(clearBtn).toBeFalsy();
     });
 
@@ -186,7 +186,7 @@ describe('SelectButtonComponent', () => {
       const clearEmitSpy = vi.fn();
       component.clearClicked.subscribe(clearEmitSpy);
 
-      const clearBtn = button.querySelector('.select-button__clear') as HTMLButtonElement;
+      const clearBtn = compiled.querySelector('.select-button__clear') as HTMLButtonElement;
       clearBtn.click();
 
       expect(clearEmitSpy).toHaveBeenCalledTimes(1);
@@ -253,15 +253,8 @@ describe('SelectButtonComponent', () => {
       expect(button.getAttribute('aria-invalid')).toBe('true');
     });
 
-    it('should not have aria-required when not provided', () => {
-      expect(button.hasAttribute('aria-required')).toBe(false);
-    });
-
-    it('should apply aria-required when provided', () => {
-      fixture.componentRef.setInput('ariaRequired', 'true');
-      fixture.detectChanges();
-
-      expect(button.getAttribute('aria-required')).toBe('true');
+    it('should not have aria-invalid when not provided', () => {
+      expect(button.hasAttribute('aria-invalid')).toBe(false);
     });
   });
 

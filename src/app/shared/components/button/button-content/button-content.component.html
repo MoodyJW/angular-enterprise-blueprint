@@ -5,8 +5,8 @@
 }
 
 @if (iconLeft() && !loading()) {
-  <span class="btn__icon btn__icon--left" aria-hidden="true">
-    {{ iconLeft() }}
+  <span class="btn__icon" [class.btn__icon--left]="!iconOnly()" aria-hidden="true">
+    <eb-icon [name]="iconLeft()!" [decorative]="true" />
   </span>
 }
 
@@ -18,6 +18,6 @@
 
 @if (iconRight() && !loading() && !iconOnly()) {
   <span class="btn__icon btn__icon--right" aria-hidden="true">
-    {{ iconRight() }}
+    <eb-icon [name]="iconRight()!" [decorative]="true" />
   </span>
 }

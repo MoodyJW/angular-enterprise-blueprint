@@ -90,6 +90,9 @@ export type DividerThickness = 'thin' | 'medium' | 'thick';
   templateUrl: './divider.component.html',
   styleUrl: './divider.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[attr.data-orientation]': 'orientation()',
+  },
 })
 export class DividerComponent {
   /**

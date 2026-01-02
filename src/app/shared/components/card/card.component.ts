@@ -163,10 +163,10 @@ export class CardComponent {
   /**
    * Get appropriate ARIA role based on state
    */
-  private _getCardRole(): string {
+  private _getCardRole(): string | undefined {
     const role = this.role();
     if (role != null) return role;
     if (this.clickable()) return 'button';
-    return 'article';
+    return undefined;
   }
 }

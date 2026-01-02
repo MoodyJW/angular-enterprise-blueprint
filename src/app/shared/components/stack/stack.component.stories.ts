@@ -130,10 +130,15 @@ export default meta;
 type Story = StoryObj<StackComponent>;
 
 // Helper function to create stack items
-const createStackItem = (text: string, color = 'var(--color-surface)'): string => `
+const createStackItem = (
+  text: string,
+  color = 'var(--color-surface)',
+  textColor = 'var(--color-text)',
+): string => `
   <div style="
     padding: 1rem 1.5rem;
     background: ${color};
+    color: ${textColor};
     border: 2px solid var(--color-border);
     border-radius: var(--border-radius-md);
     font-weight: 500;
@@ -289,14 +294,13 @@ export const VerticalAlignment: Story = {
 export const HorizontalAlignment: Story = {
   render: () => ({
     template: `
-      <div style="display: flex; flex-direction: column; gap: 2rem;">
         <div>
           <h4 style="margin: 0 0 0.5rem 0;">Align Start (Top)</h4>
           <div style="height: 150px; border: 2px dashed var(--color-border); border-radius: var(--border-radius-md); padding: 1rem;">
             <eb-stack direction="horizontal" spacing="md" align="start">
-              ${createStackItem('Short', 'var(--color-primary)')}
-              ${createStackItem('Medium<br>height', 'var(--color-primary)')}
-              ${createStackItem('Tall<br>item<br>here', 'var(--color-primary)')}
+              ${createStackItem('Short', 'var(--color-primary)', 'var(--color-primary-contrast, #ffffff)')}
+              ${createStackItem('Medium<br>height', 'var(--color-primary)', 'var(--color-primary-contrast, #ffffff)')}
+              ${createStackItem('Tall<br>item<br>here', 'var(--color-primary)', 'var(--color-primary-contrast, #ffffff)')}
             </eb-stack>
           </div>
         </div>
@@ -305,9 +309,9 @@ export const HorizontalAlignment: Story = {
           <h4 style="margin: 0 0 0.5rem 0;">Align Center</h4>
           <div style="height: 150px; border: 2px dashed var(--color-border); border-radius: var(--border-radius-md); padding: 1rem;">
             <eb-stack direction="horizontal" spacing="md" align="center">
-              ${createStackItem('Short', 'var(--color-primary)')}
-              ${createStackItem('Medium<br>height', 'var(--color-primary)')}
-              ${createStackItem('Tall<br>item<br>here', 'var(--color-primary)')}
+              ${createStackItem('Short', 'var(--color-primary)', 'var(--color-primary-contrast, #ffffff)')}
+              ${createStackItem('Medium<br>height', 'var(--color-primary)', 'var(--color-primary-contrast, #ffffff)')}
+              ${createStackItem('Tall<br>item<br>here', 'var(--color-primary)', 'var(--color-primary-contrast, #ffffff)')}
             </eb-stack>
           </div>
         </div>
@@ -316,9 +320,9 @@ export const HorizontalAlignment: Story = {
           <h4 style="margin: 0 0 0.5rem 0;">Align End (Bottom)</h4>
           <div style="height: 150px; border: 2px dashed var(--color-border); border-radius: var(--border-radius-md); padding: 1rem;">
             <eb-stack direction="horizontal" spacing="md" align="end">
-              ${createStackItem('Short', 'var(--color-primary)')}
-              ${createStackItem('Medium<br>height', 'var(--color-primary)')}
-              ${createStackItem('Tall<br>item<br>here', 'var(--color-primary)')}
+              ${createStackItem('Short', 'var(--color-primary)', 'var(--color-primary-contrast, #ffffff)')}
+              ${createStackItem('Medium<br>height', 'var(--color-primary)', 'var(--color-primary-contrast, #ffffff)')}
+              ${createStackItem('Tall<br>item<br>here', 'var(--color-primary)', 'var(--color-primary-contrast, #ffffff)')}
             </eb-stack>
           </div>
         </div>

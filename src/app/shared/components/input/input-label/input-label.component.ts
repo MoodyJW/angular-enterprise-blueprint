@@ -21,10 +21,10 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   imports: [CommonModule],
   template: `
     @if (label()) {
-      <label [for]="forId()" [class]="labelClass()">
+      <label [id]="forId()" [for]="forId()" [class]="labelClass()">
         {{ label() }}
         @if (required()) {
-          <span class="input-label__required" aria-label="required">*</span>
+          <span class="input-label__required" aria-hidden="true">*</span>
         }
       </label>
     }

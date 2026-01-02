@@ -37,7 +37,9 @@
       "@shared/utilities/*": ["app/shared/utilities/*"],
       "@shared/constants/*": ["app/shared/constants/*"],
       // Environments
-      "@environments/*": ["environments/*"]
+      "@environments/*": ["environments/*"],
+      // Storybook utilities
+      "@storybook-utils/*": ["../.storybook/*"]
     }
   },
   "angularCompilerOptions": {

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { applicationConfig, argsToTemplate } from '@storybook/angular';
 
 import { ICON_NAMES } from '@shared/constants';
+import { provideStoryIcons } from '@storybook-utils/story-icons';
 import { IconComponent } from './icon.component';
 
 const meta: Meta<IconComponent> = {
@@ -10,7 +11,7 @@ const meta: Meta<IconComponent> = {
   tags: ['autodocs'],
   decorators: [
     applicationConfig({
-      providers: [],
+      providers: [provideStoryIcons()],
     }),
   ],
   argTypes: {
@@ -104,27 +105,27 @@ export const AllSizes: Story = {
       <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.HOME}" size="xs" ariaLabel="Extra small home icon" color="primary" />
-          <span style="font-size: 12px; color: #666;">xs (12px)</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">xs (12px)</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.HOME}" size="sm" ariaLabel="Small home icon" color="primary" />
-          <span style="font-size: 12px; color: #666;">sm (16px)</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">sm (16px)</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.HOME}" size="md" ariaLabel="Medium home icon" color="primary" />
-          <span style="font-size: 12px; color: #666;">md (20px)</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">md (20px)</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.HOME}" size="lg" ariaLabel="Large home icon" color="primary" />
-          <span style="font-size: 12px; color: #666;">lg (24px)</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">lg (24px)</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.HOME}" size="xl" ariaLabel="Extra large home icon" color="primary" />
-          <span style="font-size: 12px; color: #666;">xl (32px)</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">xl (32px)</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.HOME}" size="2xl" ariaLabel="2x large home icon" color="primary" />
-          <span style="font-size: 12px; color: #666;">2xl (40px)</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">2xl (40px)</span>
         </div>
       </div>
     `,
@@ -145,31 +146,31 @@ export const AllColors: Story = {
       <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.HEART}" size="xl" color="current" ariaLabel="Current color" />
-          <span style="font-size: 12px; color: #666;">current</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">current</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.HEART}" size="xl" color="primary" ariaLabel="Primary color" />
-          <span style="font-size: 12px; color: #666;">primary</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">primary</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.HEART}" size="xl" color="secondary" ariaLabel="Secondary color" />
-          <span style="font-size: 12px; color: #666;">secondary</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">secondary</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.HEART}" size="xl" color="success" ariaLabel="Success color" />
-          <span style="font-size: 12px; color: #666;">success</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">success</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.HEART}" size="xl" color="warning" ariaLabel="Warning color" />
-          <span style="font-size: 12px; color: #666;">warning</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">warning</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.HEART}" size="xl" color="error" ariaLabel="Error color" />
-          <span style="font-size: 12px; color: #666;">error</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">error</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.HEART}" size="xl" color="info" ariaLabel="Info color" />
-          <span style="font-size: 12px; color: #666;">info</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">info</span>
         </div>
       </div>
     `,
@@ -190,51 +191,51 @@ export const CommonIcons: Story = {
       <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 1.5rem;">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.HOME}" size="lg" ariaLabel="Home" color="primary" />
-          <span style="font-size: 12px; color: #666; text-align: center;">Home</span>
+          <span style="font-size: 12px; color: var(--color-text-muted); text-align: center;">Home</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.USER}" size="lg" ariaLabel="User" color="primary" />
-          <span style="font-size: 12px; color: #666; text-align: center;">User</span>
+          <span style="font-size: 12px; color: var(--color-text-muted); text-align: center;">User</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.EMAIL}" size="lg" ariaLabel="Email" color="primary" />
-          <span style="font-size: 12px; color: #666; text-align: center;">Email</span>
+          <span style="font-size: 12px; color: var(--color-text-muted); text-align: center;">Email</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.SEARCH}" size="lg" ariaLabel="Search" color="primary" />
-          <span style="font-size: 12px; color: #666; text-align: center;">Search</span>
+          <span style="font-size: 12px; color: var(--color-text-muted); text-align: center;">Search</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.SETTINGS}" size="lg" ariaLabel="Settings" color="primary" />
-          <span style="font-size: 12px; color: #666; text-align: center;">Settings</span>
+          <span style="font-size: 12px; color: var(--color-text-muted); text-align: center;">Settings</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.NOTIFICATION}" size="lg" ariaLabel="Notifications" color="primary" />
-          <span style="font-size: 12px; color: #666; text-align: center;">Notification</span>
+          <span style="font-size: 12px; color: var(--color-text-muted); text-align: center;">Notification</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.HEART}" size="lg" ariaLabel="Heart" color="primary" />
-          <span style="font-size: 12px; color: #666; text-align: center;">Heart</span>
+          <span style="font-size: 12px; color: var(--color-text-muted); text-align: center;">Heart</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.STAR}" size="lg" ariaLabel="Star" color="primary" />
-          <span style="font-size: 12px; color: #666; text-align: center;">Star</span>
+          <span style="font-size: 12px; color: var(--color-text-muted); text-align: center;">Star</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.CART}" size="lg" ariaLabel="Shopping cart" color="primary" />
-          <span style="font-size: 12px; color: #666; text-align: center;">Cart</span>
+          <span style="font-size: 12px; color: var(--color-text-muted); text-align: center;">Cart</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.MENU}" size="lg" ariaLabel="Menu" color="primary" />
-          <span style="font-size: 12px; color: #666; text-align: center;">Menu</span>
+          <span style="font-size: 12px; color: var(--color-text-muted); text-align: center;">Menu</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.CLOSE}" size="lg" ariaLabel="Close" color="primary" />
-          <span style="font-size: 12px; color: #666; text-align: center;">Close</span>
+          <span style="font-size: 12px; color: var(--color-text-muted); text-align: center;">Close</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.CHECK}" size="lg" ariaLabel="Check" color="primary" />
-          <span style="font-size: 12px; color: #666; text-align: center;">Check</span>
+          <span style="font-size: 12px; color: var(--color-text-muted); text-align: center;">Check</span>
         </div>
       </div>
     `,
@@ -255,19 +256,19 @@ export const StatusIcons: Story = {
       <div style="display: flex; gap: 3rem; align-items: center; flex-wrap: wrap;">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.SUCCESS}" size="2xl" color="success" ariaLabel="Success" />
-          <span style="font-size: 12px; color: #666;">Success</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">Success</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.WARNING}" size="2xl" color="warning" ariaLabel="Warning" />
-          <span style="font-size: 12px; color: #666;">Warning</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">Warning</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.ERROR}" size="2xl" color="error" ariaLabel="Error" />
-          <span style="font-size: 12px; color: #666;">Error</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">Error</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.INFO}" size="2xl" color="info" ariaLabel="Information" />
-          <span style="font-size: 12px; color: #666;">Info</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">Info</span>
         </div>
       </div>
     `,
@@ -305,19 +306,19 @@ export const InButtons: Story = {
   render: () => ({
     template: `
       <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <button style="display: flex; align-items: center; gap: 0.5rem; padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white; cursor: pointer;">
+        <button style="display: flex; align-items: center; gap: 0.5rem; padding: 8px 16px; border: 1px solid var(--color-border); border-radius: var(--border-radius-base); background: var(--color-surface); color: var(--color-text); cursor: pointer;">
           <eb-icon name="${ICON_NAMES.HOME}" size="sm" [decorative]="true" color="primary" />
           Home
         </button>
-        <button style="display: flex; align-items: center; gap: 0.5rem; padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white; cursor: pointer;">
+        <button style="display: flex; align-items: center; gap: 0.5rem; padding: 8px 16px; border: 1px solid var(--color-border); border-radius: var(--border-radius-base); background: var(--color-surface); color: var(--color-text); cursor: pointer;">
           <eb-icon name="${ICON_NAMES.SEARCH}" size="sm" [decorative]="true" color="primary" />
           Search
         </button>
-        <button style="display: flex; align-items: center; gap: 0.5rem; padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white; cursor: pointer;">
+        <button style="display: flex; align-items: center; gap: 0.5rem; padding: 8px 16px; border: 1px solid var(--color-border); border-radius: var(--border-radius-base); background: var(--color-surface); color: var(--color-text); cursor: pointer;">
           <eb-icon name="${ICON_NAMES.SETTINGS}" size="sm" [decorative]="true" color="primary" />
           Settings
         </button>
-        <button style="display: flex; align-items: center; gap: 0.5rem; padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white; cursor: pointer;">
+        <button style="display: flex; align-items: center; gap: 0.5rem; padding: 8px 16px; border: 1px solid var(--color-border); border-radius: var(--border-radius-base); background: var(--color-surface); color: var(--color-text); cursor: pointer;">
           Download
           <eb-icon name="${ICON_NAMES.DOWNLOAD}" size="sm" [decorative]="true" color="primary" />
         </button>
@@ -341,11 +342,11 @@ export const ThemeIcons: Story = {
       <div style="display: flex; gap: 2rem; align-items: center;">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.SUN}" size="xl" color="warning" ariaLabel="Light mode" />
-          <span style="font-size: 12px; color: #666;">Light Mode</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">Light Mode</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <eb-icon name="${ICON_NAMES.MOON}" size="xl" color="primary" ariaLabel="Dark mode" />
-          <span style="font-size: 12px; color: #666;">Dark Mode</span>
+          <span style="font-size: 12px; color: var(--color-text-muted);">Dark Mode</span>
         </div>
       </div>
     `,
@@ -389,7 +390,7 @@ export const AccessibilityDemo: Story = {
   render: () => ({
     template: `
       <div style="max-width: 600px;">
-        <h4 style="margin: 0 0 16px 0;">Accessibility Features</h4>
+        <h4 style="margin: 0 0 16px 0; color: var(--color-text);">Accessibility Features</h4>
         <ul style="font-size: 14px; line-height: 1.8; color: var(--color-text-secondary);">
           <li><strong>ARIA Labels:</strong> Non-decorative icons require aria-label</li>
           <li><strong>Decorative Icons:</strong> Set decorative=true for icons that are purely visual</li>

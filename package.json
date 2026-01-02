@@ -19,6 +19,7 @@
     "prepare": "husky",
     "storybook": "npm run docs:json && ng run angular-enterprise-blueprint:storybook",
     "build-storybook": "npm run docs:json && ng run angular-enterprise-blueprint:build-storybook",
+    "test-storybook": "test-storybook",
     "docs": "compodoc -p tsconfig.doc.json -d docs/api --theme material",
     "docs:build": "compodoc -p tsconfig.doc.json -d dist/documentation --theme material",
     "docs:serve": "compodoc -p tsconfig.doc.json -d docs/api --theme material -s",
@@ -99,15 +100,19 @@
     "@storybook/addon-docs": "^10.1.10",
     "@storybook/addon-onboarding": "^10.1.10",
     "@storybook/angular": "^10.1.10",
+    "@storybook/test-runner": "^0.24.2",
     "@typescript-eslint/parser": "^8.50.0",
     "@vitest/coverage-istanbul": "^4.0.16",
     "@vitest/coverage-v8": "^4.0.16",
     "angular-eslint": "^21.1.0",
+    "axe-playwright": "^2.2.2",
     "commit-and-tag-version": "^12.6.1",
+    "concurrently": "^9.2.1",
     "eslint": "^9.39.2",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-boundaries": "^5.3.1",
     "eslint-plugin-storybook": "^10.1.10",
+    "http-server": "^14.1.1",
     "husky": "^9.1.7",
     "jsdom": "^27.3.0",
     "lint-staged": "^16.2.7",
@@ -119,6 +124,7 @@
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.50.0",
     "vite-tsconfig-paths": "^6.0.3",
-    "vitest": "^4.0.16"
+    "vitest": "^4.0.16",
+    "wait-on": "^9.0.3"
   }
 }

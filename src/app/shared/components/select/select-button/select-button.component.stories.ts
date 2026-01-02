@@ -64,13 +64,6 @@ const meta: Meta<SelectButtonComponent> = {
         type: { summary: 'string | undefined' },
       },
     },
-    ariaRequired: {
-      control: 'text',
-      description: 'Whether the button is required',
-      table: {
-        type: { summary: 'string | undefined' },
-      },
-    },
     isOpen: {
       control: 'boolean',
       description: 'Whether the dropdown is open',
@@ -149,7 +142,6 @@ const meta: Meta<SelectButtonComponent> = {
     buttonClass: 'select-button',
     disabled: false,
     isOpen: false,
-    ariaControls: 'listbox-1',
     displayText: 'Select an option',
     hasValue: false,
     showClear: false,

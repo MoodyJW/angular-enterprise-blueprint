@@ -37,25 +37,19 @@ import { ICON_NAMES } from '@shared/constants';
   styles: [
     `
       .checkbox-checkmark {
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        pointer-events: none;
-        left: 0;
-        top: 0;
-        width: 20px;
-        height: 20px;
-
-        @media (pointer: coarse) {
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-        }
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
       }
 
       .checkbox-icon {
-        color: var(--color-background);
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--color-on-primary);
         transition: opacity var(--duration-normal) var(--ease-in-out);
 
         @media (prefers-reduced-motion: reduce) {
@@ -65,7 +59,12 @@ import { ICON_NAMES } from '@shared/constants';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  viewProviders: [provideIcons({ heroCheck, heroMinus })],
+  providers: [
+    provideIcons({
+      [ICON_NAMES.CHECK]: heroCheck,
+      [ICON_NAMES.REMOVE]: heroMinus,
+    }),
+  ],
 })
 export class CheckboxCheckmarkComponent {
   /**

@@ -1,6 +1,7 @@
 .checkbox {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: var(--space-1);
   position: relative;
 
@@ -15,6 +16,17 @@
   align-items: center;
   position: relative;
   flex-shrink: 0;
+
+  eb-checkbox-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    z-index: 10;
+  }
 }
 
 .checkbox__control {
@@ -202,5 +214,17 @@
     .checkbox--lg & {
       padding-left: calc(48px + var(--space-2));
     }
+  }
+
+  &--success {
+    color: var(--color-success);
+  }
+
+  &--warning {
+    color: var(--color-warning);
+  }
+
+  &--error {
+    color: var(--color-error);
   }
 }
