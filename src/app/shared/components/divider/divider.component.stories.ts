@@ -273,7 +273,7 @@ export const Inset: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <div style="padding: 2rem; border: 1px dashed #ccc;">
+      <div style="padding: 2rem; border: 1px dashed var(--color-border);">
         <p>Regular divider (full width):</p>
         <eb-divider spacing="sm" />
         <p>Inset divider (with padding):</p>
@@ -341,30 +341,30 @@ export const ContentSections: Story = {
 export const LoginForm: Story = {
   render: () => ({
     template: `
-      <div style="max-width: 400px; padding: 2rem; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px;">
+      <div style="max-width: 400px; padding: 2rem; margin: 0 auto; border: 1px solid var(--color-border); border-radius: 8px;">
         <h2 style="margin-top: 0;">Sign In</h2>
 
         <div style="margin-bottom: 1rem;">
-          <label style="display: block; margin-bottom: 0.5rem;">Email</label>
-          <input type="email" style="width: 100%; padding: 0.5rem; box-sizing: border-box;" />
+          <label for="divider-login-email" style="display: block; margin-bottom: 0.5rem;">Email</label>
+          <input id="divider-login-email" type="email" style="width: 100%; padding: 0.5rem; box-sizing: border-box;" />
         </div>
 
         <div style="margin-bottom: 1rem;">
-          <label style="display: block; margin-bottom: 0.5rem;">Password</label>
-          <input type="password" style="width: 100%; padding: 0.5rem; box-sizing: border-box;" />
+          <label for="divider-login-password" style="display: block; margin-bottom: 0.5rem;">Password</label>
+          <input id="divider-login-password" type="password" style="width: 100%; padding: 0.5rem; box-sizing: border-box;" />
         </div>
 
-        <button style="width: 100%; padding: 0.75rem; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
+        <button style="width: 100%; padding: 0.75rem; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 4px; cursor: pointer;">
           Sign In
         </button>
 
         <eb-divider label="Or continue with" spacing="lg" />
 
-        <button style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">
+        <button style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); border-radius: 4px; cursor: pointer;">
           Google
         </button>
 
-        <button style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">
+        <button style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); border-radius: 4px; cursor: pointer;">
           GitHub
         </button>
       </div>
@@ -378,14 +378,14 @@ export const LoginForm: Story = {
 export const VerticalToolbar: Story = {
   render: () => ({
     template: `
-      <div style="display: flex; align-items: center; padding: 1rem; background: #f5f5f5; gap: 1rem;">
-        <button style="padding: 0.5rem 1rem; border: none; background: white; border-radius: 4px; cursor: pointer;">New</button>
+      <div style="display: flex; align-items: center; padding: 1rem; background: var(--color-surface-active); gap: 1rem;">
+        <button style="padding: 0.5rem 1rem; border: none; background: var(--color-surface); color: var(--color-text); border-radius: 4px; cursor: pointer;">New</button>
         <eb-divider orientation="vertical" spacing="none" style="height: 24px;" />
-        <button style="padding: 0.5rem 1rem; border: none; background: white; border-radius: 4px; cursor: pointer;">Edit</button>
+        <button style="padding: 0.5rem 1rem; border: none; background: var(--color-surface); color: var(--color-text); border-radius: 4px; cursor: pointer;">Edit</button>
         <eb-divider orientation="vertical" spacing="none" style="height: 24px;" />
-        <button style="padding: 0.5rem 1rem; border: none; background: white; border-radius: 4px; cursor: pointer;">Delete</button>
+        <button style="padding: 0.5rem 1rem; border: none; background: var(--color-surface); color: var(--color-text); border-radius: 4px; cursor: pointer;">Delete</button>
         <eb-divider orientation="vertical" spacing="none" style="height: 24px;" />
-        <button style="padding: 0.5rem 1rem; border: none; background: white; border-radius: 4px; cursor: pointer;">Share</button>
+        <button style="padding: 0.5rem 1rem; border: none; background: var(--color-surface); color: var(--color-text); border-radius: 4px; cursor: pointer;">Share</button>
       </div>
     `,
   }),
