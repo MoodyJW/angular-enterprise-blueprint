@@ -87,7 +87,7 @@ describe('InputLabelComponent', () => {
       fixture.detectChanges();
 
       const required = nativeElement.querySelector('.input-label__required');
-      expect(required?.getAttribute('aria-label')).toBe('required');
+      expect(required?.getAttribute('aria-hidden')).toBe('true');
     });
   });
 

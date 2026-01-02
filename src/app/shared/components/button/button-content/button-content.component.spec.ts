@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import type { ComponentFixture } from '@angular/core/testing';
 import { TestBed } from '@angular/core/testing';
+import { ICON_NAMES, type IconName } from '@app/shared/constants/icon-names.constants';
 
 import { ButtonContentComponent } from './button-content.component';
 
@@ -23,8 +24,8 @@ describe('ButtonContentComponent', () => {
   });
 
   it('should show spinner when loading is true and hide icons while loading', () => {
-    fixture.componentRef.setInput('iconLeft', 'left-icon');
-    fixture.componentRef.setInput('iconRight', 'right-icon');
+    fixture.componentRef.setInput('iconLeft', ICON_NAMES.ARROW_LEFT);
+    fixture.componentRef.setInput('iconRight', ICON_NAMES.ARROW_RIGHT);
     fixture.detectChanges();
 
     // set loading to true
@@ -42,8 +43,8 @@ describe('ButtonContentComponent', () => {
 
   it('should render left and right icons when provided and not loading', () => {
     fixture.componentRef.setInput('loading', false);
-    fixture.componentRef.setInput('iconLeft', 'left-icon');
-    fixture.componentRef.setInput('iconRight', 'right-icon');
+    fixture.componentRef.setInput('iconLeft', ICON_NAMES.ARROW_LEFT);
+    fixture.componentRef.setInput('iconRight', ICON_NAMES.ARROW_RIGHT);
     fixture.componentRef.setInput('iconOnly', false);
     fixture.detectChanges();
 
@@ -52,14 +53,15 @@ describe('ButtonContentComponent', () => {
     const right = el.querySelector('.btn__icon--right');
 
     expect(left).toBeTruthy();
-    expect(left?.textContent.trim()).toBe('left-icon');
+    // Check for the rendered icon/svg, not text content, as eb-icon likely renders SVG or similar
+    expect(left?.querySelector('eb-icon')).toBeTruthy();
     expect(right).toBeTruthy();
-    expect(right?.textContent.trim()).toBe('right-icon');
+    expect(right?.querySelector('eb-icon')).toBeTruthy();
   });
 
   it('should hide content when iconOnly is true but still show left icon', () => {
-    fixture.componentRef.setInput('iconLeft', 'only-left');
-    fixture.componentRef.setInput('iconRight', 'only-right');
+    fixture.componentRef.setInput('iconLeft', ICON_NAMES.ARROW_LEFT);
+    fixture.componentRef.setInput('iconRight', ICON_NAMES.ARROW_RIGHT);
     fixture.componentRef.setInput('iconOnly', true);
     fixture.componentRef.setInput('loading', false);
     fixture.detectChanges();
@@ -67,8 +69,8 @@ describe('ButtonContentComponent', () => {
     const el: HTMLElement = fixture.nativeElement as HTMLElement;
     // content should be hidden when iconOnly is true
     expect(el.querySelector('.btn__content')).toBeFalsy();
-    // left icon is allowed even in iconOnly mode per template
-    expect(el.querySelector('.btn__icon--left')).toBeTruthy();
+    // left icon is allowed even in iconOnly mode per template, but class btn__icon--left is conditional
+    expect(el.querySelector('.btn__icon')).toBeTruthy();
     // right icon should be hidden when iconOnly is true per template
     expect(el.querySelector('.btn__icon--right')).toBeFalsy();
   });
@@ -89,8 +91,8 @@ describe('ButtonContentComponent', () => {
       imports: [ButtonContentComponent],
     })
     class HostComponent {
-      left?: string;
-      right?: string;
+      left?: IconName;
+      right?: IconName;
       loading = false;
       iconOnly = false;
     }

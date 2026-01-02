@@ -495,7 +495,122 @@ export interface FilterChip {
 
 ---
 
-## 8.9 Enhanced Dashboard Metrics
+## 8.9 Checkbox Component Icon Refactor
+
+**Current:** Checkbox uses CheckboxCheckmarkComponent with conditional icon rendering (check/minus icons for checked/indeterminate, nothing for unchecked)
+**Target:** Use two distinct icons - one for unchecked box and one for checked box - to improve visual clarity and consistency
+
+### Overview
+
+Refactor the checkbox component to use icon-based rendering for both checked and unchecked states. This will improve the visual appearance across all 6 themes, provide better consistency with the design system, and simplify the component logic.
+
+### Current Implementation
+
+The current checkbox uses:
+
+- Native HTML checkbox input with custom styling
+- `CheckboxCheckmarkComponent` that conditionally shows icons only when checked/indeterminate
+- CSS-based box rendering for the unchecked state
+- Located at: [checkbox.component.ts](../src/app/shared/components/checkbox/checkbox.component.ts)
+
+### Proposed Changes
+
+**Icon Strategy (Using Material Icons):**
+
+1. **Unchecked state:** Use `matCheckBoxOutlineBlank` - outline empty square box
+2. **Checked state:** Use `matCheckBox` - filled square with checkmark
+3. **Indeterminate state:** Use `matIndeterminateCheckBox` - square with minus/dash line
+
+**Why Material Icons:**
+
+- Provides dedicated checkbox-specific icons (`matCheckBox`, `matCheckBoxOutlineBlank`, `matIndeterminateCheckBox`)
+- Perfect semantic naming for checkbox UI patterns
+- Designed specifically for form controls and checkboxes
+- Consistent visual style with Material Design principles
+- Need to install `@ng-icons/material-icons` package
+
+**Component Updates:**
+
+- **CheckboxCheckmarkComponent** ([checkbox-checkmark.component.ts](../src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.ts))
+  - Update to always show an icon (not conditionally)
+  - Add logic to display `matCheckBoxOutlineBlank` when `!checked && !indeterminate`
+  - Update icon imports from Heroicons to Material Icons
+  - Icon mapping:
+    - `heroCheck` → `matCheckBox`
+    - `heroMinus` → `matIndeterminateCheckBox`
+    - New: `matCheckBoxOutlineBlank`
+
+- **CheckboxComponent** ([checkbox.component.ts](../src/app/shared/components/checkbox/checkbox.component.ts))
+  - Update SCSS to remove CSS-based box rendering
+  - Simplify styles to focus on layout and spacing
+  - Ensure proper color theming for all icon states
+
+- **ICON_NAMES Constants** (if applicable)
+  - Add new Material icon names to `src/app/shared/constants/icon-names.ts` if using centralized icon name constants
+
+### Benefits
+
+1. **Visual Consistency:** Icons provide clearer visual feedback across all themes
+2. **Accessibility:** Icon states are more distinct, improving usability for users with visual impairments
+3. **Maintainability:** Removes complex CSS for custom checkbox rendering
+4. **Theme Compliance:** Icons automatically inherit theme colors and contrast ratios
+5. **Simplified Logic:** Clearer state representation with dedicated icons
+
+### Implementation Steps
+
+1. Install `@ng-icons/material-icons` package
+   ```bash
+   npm install @ng-icons/material-icons@^33.0.0
+   ```
+2. Update `CheckboxCheckmarkComponent` to:
+   - Replace Heroicons imports with Material Icons
+   - Import `matCheckBox`, `matCheckBoxOutlineBlank`, `matIndeterminateCheckBox`
+   - Update `iconName()` computed to return appropriate Material icon for each state
+   - Remove conditional `showIcon()` - always show icon
+3. Update `checkbox.component.scss` to remove CSS-based box rendering
+4. Update Storybook stories to showcase new icon-based states
+5. Update unit tests for both components to verify icon selection logic
+6. Visual regression testing across all 6 themes
+7. Update component documentation and JSDoc comments
+
+### Acceptance Criteria
+
+- [ ] Unchecked state displays `matCheckBoxOutlineBlank` icon
+- [ ] Checked state displays `matCheckBox` icon
+- [ ] Indeterminate state displays `matIndeterminateCheckBox` icon
+- [ ] All three states visually distinct and clear
+- [ ] `@ng-icons/material-icons` package installed and configured
+- [ ] Icons properly themed across all 6 themes (especially high-contrast)
+- [ ] Color contrast meets WCAG 2.1 AA standards in all states
+- [ ] Focus states clearly visible with proper outline
+- [ ] Hover states provide visual feedback
+- [ ] Disabled states have reduced opacity and proper cursor
+- [ ] All existing checkbox tests pass with updates
+- [ ] Storybook updated with all state variants
+- [ ] No visual regressions in components using checkbox
+- [ ] Keyboard navigation unchanged (Space to toggle, Tab to navigate)
+- [ ] Screen reader announcements unchanged
+
+### Files to Update
+
+1. `src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.ts`
+2. `src/app/shared/components/checkbox/checkbox.component.scss`
+3. `src/app/shared/components/checkbox/checkbox.component.spec.ts`
+4. `src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts`
+5. `src/app/shared/components/checkbox/checkbox.stories.ts`
+6. Update any visual snapshots if using snapshot testing
+
+### Testing Strategy
+
+- Unit tests: Verify icon selection logic for all states
+- Visual tests: Storybook chromatic tests across themes
+- Integration tests: Verify in actual form usage (login, settings, etc.)
+- Accessibility tests: axe DevTools validation in Storybook
+- Cross-browser testing: Ensure icons render consistently
+
+---
+
+## 8.10 Enhanced Dashboard Metrics
 
 **Current:** Basic dashboard with build status, test coverage, last deployment
 **Target:** Comprehensive metrics dashboard showcasing code quality and project health
@@ -727,18 +842,19 @@ interface BundleSize {
 
 ## Timeline Estimate
 
-| Task                      | Estimated Time  |
-| ------------------------- | --------------- |
-| 8.1 Blog Feature Module   | 24-32 hours     |
-| 8.2 User Menu             | 6-8 hours       |
-| 8.3 Theme Menu            | 4-6 hours       |
-| 8.4 Home Branding         | 6-10 hours      |
-| 8.5 Filter Chips          | 6-8 hours       |
-| 8.6 Profile Layout        | 2 hours         |
-| 8.7 Toast Improvements    | 1-2 hours       |
-| 8.8 Profile Stats Caching | 1-2 hours       |
-| 8.9 Enhanced Dashboard    | 12-16 hours     |
-| **Total**                 | **62-86 hours** |
+| Task                       | Estimated Time  |
+| -------------------------- | --------------- |
+| 8.1 Blog Feature Module    | 24-32 hours     |
+| 8.2 User Menu              | 6-8 hours       |
+| 8.3 Theme Menu             | 4-6 hours       |
+| 8.4 Home Branding          | 6-10 hours      |
+| 8.5 Filter Chips           | 6-8 hours       |
+| 8.6 Profile Layout         | 2 hours         |
+| 8.7 Toast Improvements     | 1-2 hours       |
+| 8.8 Profile Stats Caching  | 1-2 hours       |
+| 8.9 Checkbox Icon Refactor | 4-6 hours       |
+| 8.10 Enhanced Dashboard    | 12-16 hours     |
+| **Total**                  | **66-92 hours** |
 
 **8.1 Breakdown:**
 
@@ -768,6 +884,16 @@ interface BundleSize {
 - Integration in AdrListComponent: 1-2 hours
 
 **8.9 Breakdown:**
+
+- Install `@ng-icons/material-icons` package: 0.25 hours
+- Research Material Icons checkbox icons: 0.25 hours
+- Update CheckboxCheckmarkComponent with three Material icon states: 1.5-2 hours
+- Update checkbox.component.scss to remove CSS box rendering: 1 hour
+- Update Storybook stories and visual tests: 1-1.5 hours
+- Update unit tests: 1 hour
+- Cross-theme testing and accessibility validation: 1 hour
+
+**8.10 Breakdown:**
 
 - Metric parsing scripts: 4-5 hours
 - DashboardMetricsComponent (uses CardComponent + GridComponent): 4-5 hours

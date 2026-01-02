@@ -100,6 +100,21 @@ const meta: Meta<CheckboxComponent> = {
       description: 'Whether the checkbox is invalid',
     },
   },
+  args: {
+    size: 'md',
+    checked: false,
+    indeterminate: false,
+    disabled: false,
+    required: false,
+    label: '',
+    helperText: '',
+    validationState: 'default',
+    value: '',
+    name: '',
+    ariaLabel: 'Checkbox',
+    ariaDescribedBy: undefined,
+    ariaInvalid: false,
+  },
   parameters: {
     docs: {
       description: {
@@ -184,21 +199,29 @@ export const Indeterminate: Story = {
 // All Sizes
 export const AllSizes: Story = {
   render: () => ({
+    props: {
+      smallChecked: false,
+      mediumChecked: false,
+      largeChecked: false,
+    },
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem;">
         <eb-checkbox
           size="sm"
           label="Small checkbox"
+          [(checked)]="smallChecked"
           ariaLabel="Small checkbox"
         />
         <eb-checkbox
           size="md"
           label="Medium checkbox (default)"
+          [(checked)]="mediumChecked"
           ariaLabel="Medium checkbox"
         />
         <eb-checkbox
           size="lg"
           label="Large checkbox"
+          [(checked)]="largeChecked"
           ariaLabel="Large checkbox"
         />
       </div>
@@ -377,11 +400,28 @@ export const CheckboxGroup: Story = {
 // Select All Pattern
 export const SelectAllPattern: Story = {
   render: () => ({
+    props: {
+      item1: true,
+      item2: true,
+      item3: false,
+      item4: false,
+      toggleAll(checked: boolean): void {
+        this['item1'] = checked;
+        this['item2'] = checked;
+        this['item3'] = checked;
+        this['item4'] = checked;
+      },
+    },
     template: `
       <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <p style="font-size: 12px; color: var(--color-text-secondary); margin: 0;">
+          Click "Select all" to toggle all items, or click individual items
+        </p>
         <eb-checkbox
           label="Select all items"
-          indeterminate="true"
+          [checked]="item1 && item2 && item3 && item4"
+          [indeterminate]="(item1 || item2 || item3 || item4) && !(item1 && item2 && item3 && item4)"
+          (checkedChange)="toggleAll($event)"
           size="md"
           ariaLabel="Select all items"
           style="font-weight: 600; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"
@@ -389,20 +429,22 @@ export const SelectAllPattern: Story = {
         <div style="padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
           <eb-checkbox
             label="Item 1"
-            checked="true"
+            [(checked)]="item1"
             ariaLabel="Item 1"
           />
           <eb-checkbox
             label="Item 2"
-            checked="true"
+            [(checked)]="item2"
             ariaLabel="Item 2"
           />
           <eb-checkbox
             label="Item 3"
+            [(checked)]="item3"
             ariaLabel="Item 3"
           />
           <eb-checkbox
             label="Item 4"
+            [(checked)]="item4"
             ariaLabel="Item 4"
           />
         </div>
@@ -413,7 +455,7 @@ export const SelectAllPattern: Story = {
     docs: {
       description: {
         story:
-          'Common "select all" pattern where the parent checkbox shows indeterminate state when some (but not all) children are selected.',
+          'Common "select all" pattern where the parent checkbox shows indeterminate state when some (but not all) children are selected. Click "Select all" to toggle all items.',
       },
     },
   },
@@ -439,6 +481,11 @@ export const WithoutLabel: Story = {
 // Keyboard Navigation Demo
 export const KeyboardNavigation: Story = {
   render: () => ({
+    props: {
+      check1: false,
+      check2: false,
+      check3: false,
+    },
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 400px;">
         <p style="font-size: 14px; color: var(--color-text-secondary);">
@@ -449,14 +496,17 @@ export const KeyboardNavigation: Story = {
         </p>
         <eb-checkbox
           label="First checkbox"
+          [(checked)]="check1"
           ariaLabel="First checkbox"
         />
         <eb-checkbox
           label="Second checkbox"
+          [(checked)]="check2"
           ariaLabel="Second checkbox"
         />
         <eb-checkbox
           label="Third checkbox"
+          [(checked)]="check3"
           ariaLabel="Third checkbox"
         />
       </div>
@@ -475,15 +525,28 @@ export const KeyboardNavigation: Story = {
 // Form Integration Example
 export const FormIntegration: Story = {
   render: () => ({
+    props: {
+      emailNotifications: true,
+      marketing: false,
+      twoFactor: true,
+      terms: false,
+      saveSettings: (event: Event) => {
+        event.preventDefault();
+        alert('Settings saved! (Form submission prevented)');
+      },
+    },
     template: `
-      <form style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 500px; padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
+      <form 
+        (submit)="saveSettings($event)"
+        style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 500px; padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--border-radius-md);"
+      >
         <h3 style="margin: 0; font-size: 18px; font-weight: 600;">Account Settings</h3>
 
         <eb-checkbox
           label="Email notifications"
           name="email_notifications"
           value="enabled"
-          checked="true"
+          [(checked)]="emailNotifications"
           helperText="Receive email updates about your account"
           ariaLabel="Email notifications"
         />
@@ -492,6 +555,7 @@ export const FormIntegration: Story = {
           label="Marketing communications"
           name="marketing"
           value="enabled"
+          [(checked)]="marketing"
           helperText="Receive promotional emails and special offers"
           ariaLabel="Marketing communications"
         />
@@ -501,7 +565,7 @@ export const FormIntegration: Story = {
           name="2fa"
           value="enabled"
           validationState="success"
-          checked="true"
+          [(checked)]="twoFactor"
           helperText="Recommended for enhanced security"
           ariaLabel="Two-factor authentication"
         />
@@ -512,6 +576,7 @@ export const FormIntegration: Story = {
           value="agreed"
           required="true"
           validationState="error"
+          [(checked)]="terms"
           helperText="You must accept the terms to continue"
           ariaLabel="I agree to the terms and conditions"
         />
@@ -527,24 +592,6 @@ export const FormIntegration: Story = {
       description: {
         story:
           'Example of checkboxes integrated into a form with various states and configurations.',
-      },
-    },
-  },
-};
-
-// Dark Theme Example
-export const DarkTheme: Story = {
-  args: {
-    label: 'Dark theme checkbox',
-    ariaLabel: 'Dark theme checkbox',
-  },
-  parameters: {
-    backgrounds: {
-      default: 'dark',
-    },
-    docs: {
-      description: {
-        story: 'Checkbox component adapts to dark themes using CSS variables.',
       },
     },
   },

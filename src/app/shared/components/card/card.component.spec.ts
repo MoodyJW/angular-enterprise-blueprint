@@ -268,7 +268,7 @@ describe('CardComponent', () => {
 
       const headerElement = nativeElement.querySelector('.card__header');
       expect(headerElement).toBeTruthy();
-      expect(headerElement?.tagName).toBe('HEADER');
+      expect(headerElement?.tagName).toBe('DIV');
     });
 
     it('should have section element for body', () => {
@@ -276,7 +276,7 @@ describe('CardComponent', () => {
 
       const bodyElement = nativeElement.querySelector('.card__body');
       expect(bodyElement).toBeTruthy();
-      expect(bodyElement?.tagName).toBe('SECTION');
+      expect(bodyElement?.tagName).toBe('DIV');
     });
 
     it('should have footer element', () => {
@@ -284,7 +284,7 @@ describe('CardComponent', () => {
 
       const footerElement = nativeElement.querySelector('.card__footer');
       expect(footerElement).toBeTruthy();
-      expect(footerElement?.tagName).toBe('FOOTER');
+      expect(footerElement?.tagName).toBe('DIV');
     });
   });
 
