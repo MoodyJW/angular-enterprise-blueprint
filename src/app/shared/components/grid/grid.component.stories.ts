@@ -145,10 +145,9 @@ const meta: Meta<GridComponent> = {
     a11y: {
       config: {
         rules: [
-          {
-            id: 'region',
-            enabled: true,
-          },
+          // Disabled: Grid is a layout utility component, not a page-level
+          // landmark. Stories are isolated components without page context.
+          { id: 'region', enabled: false },
         ],
       },
     },
@@ -483,8 +482,8 @@ export const CardGridExample: Story = {
             A modern web application built with Angular and TypeScript.
           </p>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-            <span style="padding: 0.25rem 0.75rem; background: var(--color-primary); color: white; border-radius: 9999px; font-size: 12px;">Angular</span>
-            <span style="padding: 0.25rem 0.75rem; background: var(--color-primary); color: white; border-radius: 9999px; font-size: 12px;">TypeScript</span>
+            <span style="padding: 0.25rem 0.75rem; background: var(--color-background); color: var(--color-text-primary); border-radius: 9999px; font-size: 12px;">Angular</span>
+            <span style="padding: 0.25rem 0.75rem; background: var(--color-background); color: var(--color-text-primary); border-radius: 9999px; font-size: 12px;">TypeScript</span>
           </div>
         </div>
 
@@ -494,8 +493,8 @@ export const CardGridExample: Story = {
             Data visualization dashboard with real-time analytics.
           </p>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-            <span style="padding: 0.25rem 0.75rem; background: var(--color-primary); color: white; border-radius: 9999px; font-size: 12px;">React</span>
-            <span style="padding: 0.25rem 0.75rem; background: var(--color-primary); color: white; border-radius: 9999px; font-size: 12px;">D3.js</span>
+            <span style="padding: 0.25rem 0.75rem; background: var(--color-background); color: var(--color-text-primary); border-radius: 9999px; font-size: 12px;">React</span>
+            <span style="padding: 0.25rem 0.75rem; background: var(--color-background); color: var(--color-text-primary); border-radius: 9999px; font-size: 12px;">D3.js</span>
           </div>
         </div>
 
@@ -505,8 +504,8 @@ export const CardGridExample: Story = {
             E-commerce platform with integrated payment processing.
           </p>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-            <span style="padding: 0.25rem 0.75rem; background: var(--color-primary); color: white; border-radius: 9999px; font-size: 12px;">Vue</span>
-            <span style="padding: 0.25rem 0.75rem; background: var(--color-primary); color: white; border-radius: 9999px; font-size: 12px;">Node.js</span>
+            <span style="padding: 0.25rem 0.75rem; background: var(--color-background); color: var(--color-text-primary); border-radius: 9999px; font-size: 12px;">Vue</span>
+            <span style="padding: 0.25rem 0.75rem; background: var(--color-background); color: var(--color-text-primary); border-radius: 9999px; font-size: 12px;">Node.js</span>
           </div>
         </div>
 
@@ -516,8 +515,8 @@ export const CardGridExample: Story = {
             Mobile-first progressive web application for productivity.
           </p>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-            <span style="padding: 0.25rem 0.75rem; background: var(--color-primary); color: white; border-radius: 9999px; font-size: 12px;">PWA</span>
-            <span style="padding: 0.25rem 0.75rem; background: var(--color-primary); color: white; border-radius: 9999px; font-size: 12px;">Svelte</span>
+            <span style="padding: 0.25rem 0.75rem; background: var(--color-background); color: var(--color-text-primary); border-radius: 9999px; font-size: 12px;">PWA</span>
+            <span style="padding: 0.25rem 0.75rem; background: var(--color-background); color: var(--color-text-primary); border-radius: 9999px; font-size: 12px;">Svelte</span>
           </div>
         </div>
 
@@ -527,8 +526,8 @@ export const CardGridExample: Story = {
             AI-powered chatbot with natural language processing.
           </p>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-            <span style="padding: 0.25rem 0.75rem; background: var(--color-primary); color: white; border-radius: 9999px; font-size: 12px;">Python</span>
-            <span style="padding: 0.25rem 0.75rem; background: var(--color-primary); color: white; border-radius: 9999px; font-size: 12px;">ML</span>
+            <span style="padding: 0.25rem 0.75rem; background: var(--color-background); color: var(--color-text-primary); border-radius: 9999px; font-size: 12px;">Python</span>
+            <span style="padding: 0.25rem 0.75rem; background: var(--color-background); color: var(--color-text-primary); border-radius: 9999px; font-size: 12px;">ML</span>
           </div>
         </div>
 
@@ -538,8 +537,8 @@ export const CardGridExample: Story = {
             Real-time collaboration tool for distributed teams.
           </p>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-            <span style="padding: 0.25rem 0.75rem; background: var(--color-primary); color: white; border-radius: 9999px; font-size: 12px;">WebRTC</span>
-            <span style="padding: 0.25rem 0.75rem; background: var(--color-primary); color: white; border-radius: 9999px; font-size: 12px;">Socket.io</span>
+            <span style="padding: 0.25rem 0.75rem; background: var(--color-background); color: var(--color-text-primary); border-radius: 9999px; font-size: 12px;">WebRTC</span>
+            <span style="padding: 0.25rem 0.75rem; background: var(--color-background); color: var(--color-text-primary); border-radius: 9999px; font-size: 12px;">Socket.io</span>
           </div>
         </div>
       </eb-grid>
@@ -560,7 +559,7 @@ export const DashboardLayoutExample: Story = {
     template: `
       <eb-grid [cols]="12" gap="lg">
         <!-- Header spanning full width -->
-        <div class="col-span-12" style="padding: 1.5rem; background: var(--color-primary); color: white; border-radius: var(--border-radius-md);">
+        <div class="col-span-12" style="padding: 1.5rem; background: var(--color-surface); color: var(--color-text-primary); border-radius: var(--border-radius-md);">
           <h2 style="margin: 0;">Dashboard Header</h2>
         </div>
 

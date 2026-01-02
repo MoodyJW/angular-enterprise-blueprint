@@ -186,7 +186,8 @@ describe('GridComponent', () => {
       expect(gridElement?.getAttribute('role')).toBe('grid');
     });
 
-    it('should set aria-label when provided', () => {
+    it('should set aria-label when provided with role', () => {
+      fixture.componentRef.setInput('role', 'grid');
       fixture.componentRef.setInput('ariaLabel', 'Product grid');
       fixture.detectChanges();
 
@@ -201,7 +202,8 @@ describe('GridComponent', () => {
       expect(gridElement?.getAttribute('aria-label')).toBeNull();
     });
 
-    it('should set aria-labelledby when provided', () => {
+    it('should set aria-labelledby when provided with role', () => {
+      fixture.componentRef.setInput('role', 'grid');
       fixture.componentRef.setInput('ariaLabelledBy', 'grid-title');
       fixture.detectChanges();
 
