@@ -98,35 +98,35 @@ export const AllMaxWidthVariants: Story = {
   render: () => ({
     template: `
       <div style="display: flex; flex-direction: column; gap: 2rem;">
-        <eb-container maxWidth="sm" padding="md">
+        <eb-container maxWidth="sm" padding="md" ariaLabel="Small container variant">
           <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
             <h3 style="margin-top: 0;">Small (600px)</h3>
             <p style="font-size: 14px; color: var(--color-text-secondary);">Best for narrow content like forms and login pages</p>
           </div>
         </eb-container>
 
-        <eb-container maxWidth="md" padding="md">
+        <eb-container maxWidth="md" padding="md" ariaLabel="Medium container variant">
           <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
             <h3 style="margin-top: 0;">Medium (900px)</h3>
             <p style="font-size: 14px; color: var(--color-text-secondary);">Ideal for articles, blog posts, and documentation</p>
           </div>
         </eb-container>
 
-        <eb-container maxWidth="lg" padding="md">
+        <eb-container maxWidth="lg" padding="md" ariaLabel="Large container variant">
           <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
             <h3 style="margin-top: 0;">Large (1200px) - Default</h3>
             <p style="font-size: 14px; color: var(--color-text-secondary);">Standard page content width matching design system</p>
           </div>
         </eb-container>
 
-        <eb-container maxWidth="xl" padding="md">
+        <eb-container maxWidth="xl" padding="md" ariaLabel="Extra large container variant">
           <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
             <h3 style="margin-top: 0;">Extra Large (1400px)</h3>
             <p style="font-size: 14px; color: var(--color-text-secondary);">Wide layouts for dashboards and data tables</p>
           </div>
         </eb-container>
 
-        <eb-container maxWidth="full" padding="md">
+        <eb-container maxWidth="full" padding="md" ariaLabel="Full width container variant">
           <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
             <h3 style="margin-top: 0;">Full Width (100%)</h3>
             <p style="font-size: 14px; color: var(--color-text-secondary);">No width constraint - spans full viewport</p>
@@ -150,25 +150,25 @@ export const PaddingOptions: Story = {
   render: () => ({
     template: `
       <div style="display: flex; flex-direction: column; gap: 2rem;">
-        <eb-container maxWidth="md" padding="none">
+        <eb-container maxWidth="md" padding="none" ariaLabel="Container with no padding">
           <div style="padding: 1rem; background: var(--color-surface); border: 2px dashed var(--color-border);">
             <strong>None</strong> - No horizontal padding
           </div>
         </eb-container>
 
-        <eb-container maxWidth="md" padding="sm">
+        <eb-container maxWidth="md" padding="sm" ariaLabel="Container with small padding">
           <div style="padding: 1rem; background: var(--color-surface); border: 2px dashed var(--color-border);">
             <strong>Small</strong> - 12px padding (8px on mobile)
           </div>
         </eb-container>
 
-        <eb-container maxWidth="md" padding="md">
+        <eb-container maxWidth="md" padding="md" ariaLabel="Container with medium padding">
           <div style="padding: 1rem; background: var(--color-surface); border: 2px dashed var(--color-border);">
             <strong>Medium (Default)</strong> - 16px padding (12px on mobile)
           </div>
         </eb-container>
 
-        <eb-container maxWidth="md" padding="lg">
+        <eb-container maxWidth="md" padding="lg" ariaLabel="Container with large padding">
           <div style="padding: 1rem; background: var(--color-surface); border: 2px dashed var(--color-border);">
             <strong>Large</strong> - 24px padding (16px on mobile)
           </div>
@@ -189,10 +189,10 @@ export const PaddingOptions: Story = {
 export const CenteringOptions: Story = {
   render: () => ({
     template: `
-      <div style="display: flex; flex-direction: column; gap: 2rem;">
+      <main style="display: flex; flex-direction: column; gap: 2rem;">
         <div>
           <h3 style="margin-bottom: 0.5rem;">Centered (Default)</h3>
-          <eb-container maxWidth="md" padding="md" [centerContent]="true">
+          <eb-container maxWidth="md" padding="md" [centerContent]="true" ariaLabel="Centered container example">
             <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md); text-align: center;">
               <p style="margin: 0;">Container is horizontally centered with margin: 0 auto</p>
             </div>
@@ -201,13 +201,13 @@ export const CenteringOptions: Story = {
 
         <div>
           <h3 style="margin-bottom: 0.5rem;">Not Centered</h3>
-          <eb-container maxWidth="md" padding="md" [centerContent]="false">
+          <eb-container maxWidth="md" padding="md" [centerContent]="false" ariaLabel="Non-centered container example">
             <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
               <p style="margin: 0;">Container aligns to the left without auto margins</p>
             </div>
           </eb-container>
         </div>
-      </div>
+      </main>
     `,
   }),
   parameters: {
@@ -225,16 +225,16 @@ export const PageLayoutExample: Story = {
     template: `
       <div style="min-height: 100vh; display: flex; flex-direction: column;">
         <!-- Hero Section - Full width -->
-        <section style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%); color: white; padding: 4rem 0;">
-          <eb-container maxWidth="lg" padding="lg">
+        <section style="background: var(--color-primary); color: var(--color-on-primary); padding: 4rem 0;">
+          <eb-container maxWidth="lg" padding="lg" ariaLabel="Hero content container">
             <h1 style="font-size: 3rem; margin: 0 0 1rem 0;">Hero Section</h1>
-            <p style="font-size: 1.25rem; margin: 0; opacity: 0.95;">Full-width background with contained content (lg)</p>
+            <p style="font-size: 1.25rem; margin: 0; color: var(--color-on-primary);">Full-width background with contained content (lg)</p>
           </eb-container>
         </section>
 
         <!-- Main Content - Standard width -->
         <main style="flex: 1; padding: 3rem 0;">
-          <eb-container maxWidth="lg" padding="md">
+          <eb-container maxWidth="lg" padding="md" ariaLabel="Main content container">
             <h2>Main Content Area</h2>
             <p>This is the main content area using the standard lg container (1200px). Most page content will use this width for consistency.</p>
 
@@ -247,7 +247,7 @@ export const PageLayoutExample: Story = {
 
         <!-- Footer - Full width background -->
         <footer style="background: var(--color-surface); padding: 2rem 0; margin-top: auto;">
-          <eb-container maxWidth="lg" padding="md">
+          <eb-container maxWidth="lg" padding="md" ariaLabel="Footer content container">
             <p style="margin: 0; text-align: center; color: var(--color-text-secondary); font-size: 14px;">
               Footer content contained within lg container
             </p>
@@ -268,12 +268,18 @@ export const PageLayoutExample: Story = {
 // Narrow Content Example
 export const NarrowContentExample: Story = {
   render: () => ({
+    props: {
+      signIn: (event: Event) => {
+        event.preventDefault();
+        alert('Sign In clicked! (Form submission prevented)');
+      },
+    },
     template: `
-      <eb-container maxWidth="sm" padding="lg">
+      <eb-container maxWidth="sm" padding="lg" ariaLabel="Login form container">
         <div style="padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
           <h2 style="margin-top: 0; text-align: center;">Login Form</h2>
 
-          <form style="display: flex; flex-direction: column; gap: 1rem;">
+          <form (submit)="signIn($event)" style="display: flex; flex-direction: column; gap: 1rem;">
             <div>
               <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email</label>
               <input type="email" placeholder="you@example.com" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--border-radius-md); font-size: 1rem;" />
@@ -284,7 +290,7 @@ export const NarrowContentExample: Story = {
               <input type="password" placeholder="••••••••" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--border-radius-md); font-size: 1rem;" />
             </div>
 
-            <button type="submit" style="margin-top: 0.5rem; padding: 0.75rem; background: var(--color-primary); color: white; border: none; border-radius: var(--border-radius-md); font-size: 1rem; font-weight: 500; cursor: pointer;">
+            <button type="submit" style="margin-top: 0.5rem; padding: 0.75rem; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: var(--border-radius-md); font-size: 1rem; font-weight: 500; cursor: pointer;">
               Sign In
             </button>
           </form>
@@ -306,7 +312,7 @@ export const NarrowContentExample: Story = {
 export const ArticleContentExample: Story = {
   render: () => ({
     template: `
-      <eb-container maxWidth="md" padding="md">
+      <eb-container maxWidth="md" padding="md" ariaLabel="Article content container">
         <article style="line-height: 1.7;">
           <header style="margin-bottom: 2rem;">
             <h1 style="font-size: 2.5rem; margin: 0 0 0.5rem 0;">Understanding Angular Signals</h1>
@@ -355,27 +361,27 @@ export const ArticleContentExample: Story = {
 export const DashboardLayoutExample: Story = {
   render: () => ({
     template: `
-      <eb-container maxWidth="xl" padding="lg">
-        <header style="margin-bottom: 2rem;">
+      <eb-container maxWidth="xl" padding="lg" ariaLabel="Dashboard content container">
+        <div style="margin-bottom: 2rem;">
           <h1 style="font-size: 2rem; margin: 0 0 0.5rem 0;">Analytics Dashboard</h1>
           <p style="margin: 0; color: var(--color-text-secondary);">Wide container (xl - 1400px) for data-dense layouts</p>
-        </header>
+        </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
           <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
-            <h3 style="margin: 0; font-size: 2rem; color: var(--color-primary);">1,234</h3>
+            <h2 style="margin: 0; font-size: 2rem; color: var(--color-primary);">1,234</h2>
             <p style="margin: 0.5rem 0 0; color: var(--color-text-secondary);">Total Views</p>
           </div>
           <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
-            <h3 style="margin: 0; font-size: 2rem; color: var(--color-primary);">42</h3>
+            <h2 style="margin: 0; font-size: 2rem; color: var(--color-primary);">42</h2>
             <p style="margin: 0.5rem 0 0; color: var(--color-text-secondary);">Projects</p>
           </div>
           <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
-            <h3 style="margin: 0; font-size: 2rem; color: var(--color-primary);">98%</h3>
+            <h2 style="margin: 0; font-size: 2rem; color: var(--color-primary);">98%</h2>
             <p style="margin: 0.5rem 0 0; color: var(--color-text-secondary);">Coverage</p>
           </div>
           <div style="padding: 1.5rem; background: var(--color-surface); border-radius: var(--border-radius-md);">
-            <h3 style="margin: 0; font-size: 2rem; color: var(--color-primary);">5.2s</h3>
+            <h2 style="margin: 0; font-size: 2rem; color: var(--color-primary);">5.2s</h2>
             <p style="margin: 0.5rem 0 0; color: var(--color-text-secondary);">Avg Load Time</p>
           </div>
         </div>
@@ -401,12 +407,12 @@ export const DashboardLayoutExample: Story = {
 export const NestedContainers: Story = {
   render: () => ({
     template: `
-      <eb-container maxWidth="xl" padding="lg">
+      <eb-container maxWidth="xl" padding="lg" ariaLabel="Outer container">
         <div style="padding: 2rem; background: var(--color-surface); border-radius: var(--border-radius-md); margin-bottom: 2rem;">
           <h2 style="margin-top: 0;">Outer Container (XL - 1400px)</h2>
           <p>This is the outer container with a wide layout.</p>
 
-          <eb-container maxWidth="md" padding="md">
+          <eb-container maxWidth="md" padding="md" ariaLabel="Nested inner container">
             <div style="padding: 1.5rem; background: var(--color-background); border: 2px dashed var(--color-border); border-radius: var(--border-radius-md);">
               <h3 style="margin-top: 0;">Nested Container (MD - 900px)</h3>
               <p style="margin-bottom: 0;">You can nest containers to create focused content areas within wider layouts. The nested container will be centered within the outer container.</p>

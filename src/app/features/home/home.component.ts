@@ -8,7 +8,6 @@ import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { BadgeComponent } from '@shared/components/badge';
 import { ButtonComponent } from '@shared/components/button';
 import { CardComponent } from '@shared/components/card';
-import { CheckboxComponent } from '@shared/components/checkbox';
 import { ContainerComponent } from '@shared/components/container';
 import { GridComponent } from '@shared/components/grid';
 import { StackComponent } from '@shared/components/stack';
@@ -23,7 +22,6 @@ import { DashboardStore } from './state/dashboard.store';
     StackComponent,
     BadgeComponent,
     ButtonComponent,
-    CheckboxComponent,
     ContainerComponent,
     RouterLink,
     TitleCasePipe,
