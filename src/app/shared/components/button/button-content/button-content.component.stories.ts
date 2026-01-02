@@ -1,9 +1,8 @@
-import { provideIcons } from '@ng-icons/core';
-import * as heroIcons from '@ng-icons/heroicons/outline';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { applicationConfig } from '@storybook/angular';
 
 import { ICON_NAMES } from '@shared/constants';
+import { provideStoryIcons } from '@storybook-utils/story-icons';
 import { ButtonContentComponent } from './button-content.component';
 
 const meta: Meta<ButtonContentComponent> = {
@@ -12,7 +11,7 @@ const meta: Meta<ButtonContentComponent> = {
   tags: ['autodocs'],
   decorators: [
     applicationConfig({
-      providers: [provideIcons(heroIcons)],
+      providers: [provideStoryIcons()],
     }),
   ],
   argTypes: {
