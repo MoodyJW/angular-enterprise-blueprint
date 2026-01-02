@@ -84,7 +84,7 @@ export class SelectButtonComponent {
   readonly ariaInvalid = input<string | undefined>(undefined);
   readonly ariaRequired = input<string | undefined>(undefined);
   readonly isOpen = input.required<boolean>();
-  readonly ariaControls = input.required<string>();
+  readonly ariaControls = input<string | undefined>(undefined);
   readonly displayText = input.required<string>();
   readonly hasValue = input.required<boolean>();
   readonly showClear = input<boolean>(false);

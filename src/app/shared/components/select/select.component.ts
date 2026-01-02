@@ -5,13 +5,16 @@ import {
   Component,
   computed,
   effect,
+  ElementRef,
+  forwardRef,
+  HostListener,
   inject,
   input,
   output,
   signal,
   viewChild,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { DEBOUNCE_DELAYS, FOCUS_DELAYS } from '@shared/constants';
 import { UniqueIdService } from '@shared/services/unique-id';
@@ -93,6 +96,13 @@ export interface SelectOption<T = unknown> {
   templateUrl: './select.component.html',
   styleUrl: './select.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SelectComponent),
+      multi: true,
+    },
+  ],
 })
 /**
  * Accessible Select component with full feature set for forms.
@@ -101,11 +111,17 @@ export interface SelectOption<T = unknown> {
  * and keyboard navigation. All public inputs use `input()` signals and events
  * are exposed via `output()` for integration with parent forms and stores.
  */
-export class SelectComponent<T = unknown> implements OnDestroy {
+export class SelectComponent<T = unknown> implements OnDestroy, ControlValueAccessor {
   /**
    * Service for generating unique IDs
    */
   private readonly uniqueIdService = inject(UniqueIdService);
+  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  /**
+   * Track pending timers for cleanup
+   */
+  // ... (rest of class)
 
   /**
    * Track pending timers for cleanup
@@ -117,7 +133,8 @@ export class SelectComponent<T = unknown> implements OnDestroy {
    */
   private readonly debouncedClose = debounce(() => {
     if (!this.isFocused()) {
-      this.closeDropdown();
+      this.closeDropdown(false);
+      this.onTouched();
     }
   }, DEBOUNCE_DELAYS.BLUR);
 
@@ -287,6 +304,23 @@ export class SelectComponent<T = unknown> implements OnDestroy {
   readonly internalValue = signal<T | T[] | null>(null);
 
   /**
+   * Internal disabled state
+   */
+  /**
+   * Internal disabled state from ControlValueAccessor
+   */
+  private readonly cvaDisabled = signal<boolean>(false);
+
+  /**
+   * Effective disabled state (combines input and CVA)
+   */
+  readonly isDisabled = computed(() => this.disabled() || this.cvaDisabled());
+
+  // ControlValueAccessor methods
+  onChange: (value: T | T[] | null) => void = () => {};
+  onTouched: () => void = () => {};
+
+  /**
    * Filtered options based on search query
    */
   readonly filteredOptions = computed(() => {
@@ -433,19 +467,43 @@ export class SelectComponent<T = unknown> implements OnDestroy {
   /**
    * Effect to sync value input with internal state
    */
-  private readonly _syncValue = effect(() => {
-    const value = this.value();
+  private readonly _syncValue = effect(
+    () => {
+      const value = this.value();
+      // Only update if no interactive writing is happening - or initially
+      // Since input is readonly in effect, we mostly rely on writeValue for forms
+      // But for [(value)] compatibility we sync if changed from outside via input
+      this.internalValue.set(value);
+    },
+    { allowSignalWrites: true },
+  );
+
+  // ControlValueAccessor Implementation
+  writeValue(value: T | T[] | null): void {
     this.internalValue.set(value);
-  });
+  }
+
+  registerOnChange(fn: (value: T | T[] | null) => void): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.cvaDisabled.set(isDisabled);
+  }
 
   /**
    * Toggle the dropdown open/closed
    */
   toggleDropdown(): void {
-    if (this.disabled()) return;
+    if (this.isDisabled()) return;
 
     if (this.isOpen()) {
-      this.closeDropdown();
+      this.closeDropdown(true);
+      this.onTouched();
     } else {
       this.openDropdown();
     }
@@ -455,7 +513,7 @@ export class SelectComponent<T = unknown> implements OnDestroy {
    * Open the dropdown
    */
   openDropdown(): void {
-    if (this.disabled() || this.isOpen()) return;
+    if (this.isDisabled() || this.isOpen()) return;
 
     this.isOpen.set(true);
     this.highlightedIndex.set(-1);
@@ -473,8 +531,9 @@ export class SelectComponent<T = unknown> implements OnDestroy {
 
   /**
    * Close the dropdown
+   * @param restoreFocus Whether to return focus to the select button
    */
-  closeDropdown(): void {
+  closeDropdown(restoreFocus: boolean = true): void {
     if (!this.isOpen()) return;
 
     this.isOpen.set(false);
@@ -482,8 +541,10 @@ export class SelectComponent<T = unknown> implements OnDestroy {
     this.searchQuery.set('');
     this.closed.emit();
 
-    // Return focus to button
-    this.selectButton()?.buttonElement()?.nativeElement.focus();
+    // Return focus to button if requested
+    if (restoreFocus) {
+      this.selectButton()?.buttonElement()?.nativeElement.focus();
+    }
   }
 
   /**
@@ -508,6 +569,7 @@ export class SelectComponent<T = unknown> implements OnDestroy {
 
       this.internalValue.set(newValue);
       this.valueChange.emit(newValue);
+      this.onChange(newValue);
 
       // Keep dropdown open for multiple select
       if (this.searchable()) {
@@ -517,7 +579,9 @@ export class SelectComponent<T = unknown> implements OnDestroy {
     } else {
       this.internalValue.set(option.value);
       this.valueChange.emit(option.value);
-      this.closeDropdown();
+      this.onChange(option.value);
+      this.closeDropdown(true);
+      this.onTouched();
     }
   }
 
@@ -547,10 +611,13 @@ export class SelectComponent<T = unknown> implements OnDestroy {
     if (this.multiple()) {
       this.internalValue.set([]);
       this.valueChange.emit([]);
+      this.onChange([]);
     } else {
       this.internalValue.set(null);
       this.valueChange.emit(null);
+      this.onChange(null);
     }
+    this.onTouched();
   }
 
   /**
@@ -563,25 +630,24 @@ export class SelectComponent<T = unknown> implements OnDestroy {
   }
 
   /**
-   * Handle focus events
+   * Handle host focus events (capturing phase) to ensure state updates before parent
    */
-  handleFocus(event: FocusEvent): void {
-    this.isFocused.set(true);
-    this.focused.emit(event);
-  }
-
-  /**
-   * Handle blur events
-   */
-  handleBlur(event: FocusEvent): void {
-    // Only blur if focus is moving outside the component
-    const relatedTarget = event.relatedTarget as HTMLElement;
-    if (!(this.selectButton()?.buttonElement()?.nativeElement.contains(relatedTarget) ?? false)) {
+  @HostListener('focusout', ['$event'])
+  handleFocusOut(event: FocusEvent): void {
+    const relatedTarget = event.relatedTarget as HTMLElement | null;
+    // Only blur if focus is moving outside the ENTIRE component
+    if (!relatedTarget || !this.elementRef.nativeElement.contains(relatedTarget)) {
       this.isFocused.set(false);
       this.blurred.emit(event);
-      // Close dropdown when focus leaves the component (debounced)
+      this.onTouched(); // Mark touched IMMEDIATELY
       this.debouncedClose();
     }
+  }
+
+  @HostListener('focusin', ['$event'])
+  handleFocusIn(event: FocusEvent): void {
+    this.isFocused.set(true);
+    this.focused.emit(event);
   }
 
   /**
@@ -625,7 +691,8 @@ export class SelectComponent<T = unknown> implements OnDestroy {
 
       case 'Escape':
         event.preventDefault();
-        this.closeDropdown();
+        this.closeDropdown(true);
+        this.onTouched(); // Ensure touched on escape
         break;
 
       case 'Home':
@@ -643,8 +710,11 @@ export class SelectComponent<T = unknown> implements OnDestroy {
         break;
 
       case 'Tab':
+        // Tab handling is now redundant for blur detection if focus moves away,
+        // but we keep closeDropdown for visual consistency before blur happens.
+        // onTouched will be called by handleFocusOut
         if (this.isOpen()) {
-          this.closeDropdown();
+          this.closeDropdown(false);
         }
         break;
     }
@@ -745,7 +815,7 @@ export class SelectComponent<T = unknown> implements OnDestroy {
     }
 
     // State classes
-    if (this.disabled()) {
+    if (this.isDisabled()) {
       classes.push('select-button--disabled');
     }
     if (this.isFocused()) {
