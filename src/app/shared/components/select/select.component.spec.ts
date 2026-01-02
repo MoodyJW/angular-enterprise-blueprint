@@ -580,14 +580,6 @@ describe('SelectComponent', () => {
       expect(button.getAttribute('aria-expanded')).toBe('true');
     });
 
-    it('should set aria-required when required', () => {
-      fixture.componentRef.setInput('required', true);
-      fixture.detectChanges();
-
-      const button = nativeElement.querySelector('.select-button') as HTMLElement;
-      expect(button.getAttribute('aria-required')).toBe('true');
-    });
-
     it('should set aria-invalid when validation fails', () => {
       fixture.componentRef.setInput('validationState', 'error');
       fixture.detectChanges();

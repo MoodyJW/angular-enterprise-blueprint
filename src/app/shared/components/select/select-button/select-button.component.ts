@@ -23,45 +23,45 @@ import { ICON_NAMES } from '@shared/constants';
   imports: [CommonModule, IconComponent],
   styleUrl: './select-button.component.scss',
   template: `
-    <button
-      #buttonElement
-      type="button"
-      [id]="buttonId()"
-      [class]="buttonClass()"
-      [disabled]="disabled()"
-      [attr.aria-label]="ariaLabel()"
-      [attr.aria-labelledby]="ariaLabelledby()"
-      [attr.aria-describedby]="ariaDescribedby()"
-      [attr.aria-invalid]="ariaInvalid()"
-      [attr.aria-required]="ariaRequired()"
-      [attr.aria-expanded]="isOpen()"
-      [attr.aria-haspopup]="'listbox'"
-      [attr.aria-controls]="ariaControls()"
-      (click)="clicked.emit()"
-      (focus)="focused.emit($event)"
-      (blur)="blurred.emit($event)"
-      (keydown)="keydownEvent.emit($event)"
-    >
-      <span class="select-button__text" [class.select-button__text--placeholder]="!hasValue()">
-        {{ displayText() }}
-      </span>
+    <div class="select-button-wrapper">
+      <button
+        #buttonElement
+        type="button"
+        [id]="buttonId()"
+        [class]="buttonClass()"
+        [disabled]="disabled()"
+        [attr.aria-label]="ariaLabel()"
+        [attr.aria-labelledby]="ariaLabelledby()"
+        [attr.aria-describedby]="ariaDescribedby()"
+        [attr.aria-invalid]="ariaInvalid()"
+        [attr.aria-expanded]="isOpen()"
+        [attr.aria-haspopup]="'listbox'"
+        [attr.aria-controls]="ariaControls()"
+        (click)="clicked.emit()"
+        (focus)="focused.emit($event)"
+        (blur)="blurred.emit($event)"
+        (keydown)="keydownEvent.emit($event)"
+      >
+        <span class="select-button__text" [class.select-button__text--placeholder]="!hasValue()">
+          {{ displayText() }}
+        </span>
 
-      <span class="select-button__icons">
-        @if (showClear()) {
-          <button
-            type="button"
-            class="select-button__clear"
-            aria-label="Clear selection"
-            (click)="clearClicked.emit($event)"
-          >
-            <eb-icon [name]="iconNames.CLOSE" [size]="'sm'" [ariaHidden]="true" />
-          </button>
-        }
         <span class="select-button__arrow" [class.select-button__arrow--open]="isOpen()">
           <eb-icon [name]="iconNames.CHEVRON_DOWN" [size]="'sm'" [ariaHidden]="true" />
         </span>
-      </span>
-    </button>
+      </button>
+
+      @if (showClear()) {
+        <button
+          type="button"
+          class="select-button__clear"
+          aria-label="Clear selection"
+          (click)="clearClicked.emit($event)"
+        >
+          <eb-icon [name]="iconNames.CLOSE" [size]="'sm'" [ariaHidden]="true" />
+        </button>
+      }
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ heroChevronDown, heroXMark })],
@@ -82,7 +82,6 @@ export class SelectButtonComponent {
   readonly ariaLabelledby = input<string | undefined>(undefined);
   readonly ariaDescribedby = input<string | undefined>(undefined);
   readonly ariaInvalid = input<string | undefined>(undefined);
-  readonly ariaRequired = input<string | undefined>(undefined);
   readonly isOpen = input.required<boolean>();
   readonly ariaControls = input<string | undefined>(undefined);
   readonly displayText = input.required<string>();

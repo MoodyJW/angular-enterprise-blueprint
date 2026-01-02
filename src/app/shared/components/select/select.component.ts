@@ -467,16 +467,13 @@ export class SelectComponent<T = unknown> implements OnDestroy, ControlValueAcce
   /**
    * Effect to sync value input with internal state
    */
-  private readonly _syncValue = effect(
-    () => {
-      const value = this.value();
-      // Only update if no interactive writing is happening - or initially
-      // Since input is readonly in effect, we mostly rely on writeValue for forms
-      // But for [(value)] compatibility we sync if changed from outside via input
-      this.internalValue.set(value);
-    },
-    { allowSignalWrites: true },
-  );
+  private readonly _syncValue = effect(() => {
+    const value = this.value();
+    // Only update if no interactive writing is happening - or initially
+    // Since input is readonly in effect, we mostly rely on writeValue for forms
+    // But for [(value)] compatibility we sync if changed from outside via input
+    this.internalValue.set(value);
+  });
 
   // ControlValueAccessor Implementation
   writeValue(value: T | T[] | null): void {
