@@ -71,6 +71,10 @@
   // Overlay
   --color-overlay: rgba(0, 0, 0, 0.7);
 
+  // Skeleton loading colors
+  --color-skeleton: #475569;
+  --color-skeleton-wave: rgba(255, 255, 255, 0.1);
+
   // Shadows - darker and more prominent for dark mode
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);

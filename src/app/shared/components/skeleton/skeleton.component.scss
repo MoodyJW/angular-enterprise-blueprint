@@ -1,5 +1,5 @@
 // Skeleton component styles using BEM methodology
-// Integrates with existing theme system via CSS variables
+// Uses theme CSS variables for proper theming support
 
 .skeleton-container {
   // Base container styles
@@ -14,11 +14,11 @@
 }
 
 .skeleton {
-  // Base skeleton styles
+  // Base skeleton styles - uses theme CSS variable
   position: relative;
   display: block;
   overflow: hidden;
-  background-color: var(--color-surface-elevated, rgba(0, 0, 0, 0.11));
+  background-color: var(--color-skeleton, #d1d5db);
   width: var(--max-width-full);
 
   // Ensure proper aspect ratio rendering
@@ -85,7 +85,7 @@
 
   // Wave animation (shimmer effect)
   &--animation-wave {
-    // Wave element
+    // Wave element - uses theme CSS variable
     .skeleton__wave {
       position: absolute;
       top: 0;
@@ -93,7 +93,12 @@
       right: 0;
       bottom: 0;
       transform: translateX(-100%);
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--color-skeleton-wave, rgba(255, 255, 255, 0.6)),
+        transparent
+      );
       animation: skeleton-wave 1.6s linear 0.5s infinite;
     }
   }
@@ -146,42 +151,5 @@
 
   100% {
     transform: translateX(100%);
-  }
-}
-
-// Dark theme adjustments
-@media (prefers-color-scheme: dark) {
-  .skeleton {
-    background-color: var(--color-surface-variant, rgba(255, 255, 255, 0.11));
-
-    &--animation-wave {
-      .skeleton__wave {
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      }
-    }
-  }
-}
-
-// Theme-aware skeleton background
-[data-theme='nocturne'] .skeleton,
-[data-theme='cosmos'] .skeleton {
-  background-color: rgba(255, 255, 255, 0.11);
-
-  &--animation-wave {
-    .skeleton__wave {
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    }
-  }
-}
-
-[data-theme='lumen'] .skeleton,
-[data-theme='aurora'] .skeleton,
-[data-theme='light-default'] .skeleton {
-  background-color: rgba(0, 0, 0, 0.11);
-
-  &--animation-wave {
-    .skeleton__wave {
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    }
   }
 }
