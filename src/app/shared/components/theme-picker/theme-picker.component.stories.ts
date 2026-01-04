@@ -329,7 +329,7 @@ export const AccessibilityDemo: Story = {
             <td style="padding: 8px; border: 1px solid var(--color-border);">Open dropdown / Select theme</td>
           </tr>
           <tr>
-            <td style="padding: 8px; border: 1px solid var(--color-border);"><kbd>↑</kbd> / <kbd>↓</kbd></td>
+            <td style="padding: 8px; border: 1px solid var(--color-border);"><kbd>Up</kbd> / <kbd>Down</kbd></td>
             <td style="padding: 8px; border: 1px solid var(--color-border);">Navigate options</td>
           </tr>
           <tr>
