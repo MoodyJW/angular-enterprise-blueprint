@@ -88,6 +88,20 @@ interface A11yParameter {
   };
 }
 
+declare global {
+  interface Window {
+    __STORYBOOK_PREVIEW__?: {
+      storyStore?: {
+        fromId: (id: string) => {
+          parameters?: {
+            a11y?: A11yParameter;
+          };
+        };
+      };
+    };
+  }
+}
+
 const config: TestRunnerConfig = {
   async preVisit(page) {
     // Inject axe-core into the page for accessibility testing
@@ -106,10 +120,8 @@ const config: TestRunnerConfig = {
     let a11yConfig = await page.evaluate(
       ({ storyId }) => {
         try {
-          // @ts-expect-error - accessing internal Storybook API
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
           return (
-            window.__STORYBOOK_PREVIEW__?.storyStore?.fromId(storyId)?.parameters
+            window.__STORYBOOK_PREVIEW__?.storyStore?.fromId(storyId).parameters
               ?.a11y as A11yParameter
           ).config;
         } catch {

@@ -296,59 +296,69 @@ _Goal: Clean up technical debt, refine implementation quality, and ensure produc
 
 **Reference:** See `/docs/specs/PHASE_8_ENHANCEMENTS.md` for detailed specifications.
 
-_Goal: Add new capabilities and features to enhance portfolio presentation and user experience._
+_Goal: Refactor existing components for consistency, then add new capabilities and features to enhance portfolio presentation and user experience._
 
-- [ ] **8.1 Blog Feature Module**: Complete blog implementation for showcasing technical articles.
-  - [ ] Create BlogStore (NgRx SignalStore) with articles state management.
-  - [ ] Build BlogListComponent with search, filter, and pagination.
-  - [ ] Build BlogDetailComponent with markdown rendering and syntax highlighting.
-  - [ ] Create BlogCardComponent for article previews.
-  - [ ] Migrate existing phase articles to JSON format.
-  - [ ] Configure routes and lazy loading.
-  - [ ] Implement SEO meta tags per article.
-  - [ ] Add to main navigation.
-- [ ] **8.2 Header Authentication UI**: User profile icon with dropdown menu.
-  - [ ] Create UserMenuComponent with account header and logout option.
-  - [ ] Modify HeaderComponent to replace text/button with icon.
-  - [ ] Ensure keyboard accessibility and mobile responsiveness.
-- [ ] **8.3 Header Theme Picker UI**: Icon-only button with theme selection menu.
-  - [ ] Create ThemeMenuComponent showing all 6 themes with previews.
-  - [ ] Modify HeaderComponent to replace picker with icon button.
-  - [ ] Add tooltip and keyboard navigation support.
-- [ ] **8.4 Home Page Portfolio Branding**: Add hero section with personal branding.
-  - [ ] Add name, title, and tagline to home page.
-  - [ ] Implement recommended split layout (bio left, dashboard right).
-  - [ ] Add CTA buttons to key sections.
-  - [ ] Ensure i18n support and mobile responsiveness.
-- [ ] **8.5 Modules & ADR List Filtering**: Filter chips for technologies, categories, status.
-  - [ ] Create reusable FilterChipsComponent.
-  - [ ] Add technology and category filters to ModulesListComponent.
-  - [ ] Add category and status filters to AdrListComponent.
-  - [ ] Implement "Clear all" functionality.
-- [ ] **8.6 Profile Page Resume Button Layout**: Reposition buttons below profile card.
-  - [ ] Move buttons outside profile card to separate section.
-  - [ ] Add section heading and improve spacing.
-  - [ ] Ensure mobile responsiveness.
-- [ ] **8.7 Toast Component Visual Improvements**: X icon for dismiss, reduced badge size.
-  - [ ] Add close icon to dismiss button.
-  - [ ] Reduce status badge/dot size for better visual balance.
-  - [ ] Verify WCAG AA compliance in all themes.
-- [ ] **8.8 Profile Stats Caching**: Persist stats across navigation.
-  - [ ] Create `provideProfileStore()` function.
-  - [ ] Move ProfileStore to app-level in `app.config.ts`.
-  - [ ] Implement 1-hour cache window with invalidation.
-- [ ] **8.9 Checkbox Component Icon Refactor**: Replace CSS-based checkbox with Material Icons.
+**Part A: Component Refactoring & Style Improvements (8.1-8.5)**
+
+- [ ] **8.1 Checkbox Component Icon Refactor**: Replace CSS-based checkbox with Material Icons.
   - [ ] Install `@ng-icons/material-icons` package.
   - [ ] Update CheckboxCheckmarkComponent with three icon states.
   - [ ] Use `matCheckBoxOutlineBlank` (unchecked), `matCheckBox` (checked), `matIndeterminateCheckBox` (indeterminate).
   - [ ] Update Storybook and tests across all 6 themes.
-- [ ] **8.10 Card Visibility Improvements**: Fix poor card visibility in light themes.
+- [ ] **8.2 Radio Component Icon Refactor**: Replace CSS-based radio with Material Icons.
+  - [ ] Create RadioButtonIconComponent for icon rendering.
+  - [ ] Use `matRadioButtonUnchecked` (unchecked), `matRadioButtonChecked` (checked).
+  - [ ] Update RadioComponent to integrate new icon component.
+  - [ ] Update Storybook and tests across all 6 themes.
+- [ ] **8.3 Card Visibility Improvements**: Fix poor card visibility in light themes.
   - [ ] Update `_light-default.scss` background color from `#ffffff` to `#f8fafc`.
   - [ ] Update `_light-warm.scss` with warm equivalent background tint.
   - [ ] Verify high-contrast light theme doesn't need changes.
   - [ ] Optional: Enhance shadow opacity and border colors if needed.
   - [ ] Test all card variants in Storybook across all 6 themes.
-- [ ] **8.11 Enhanced Dashboard Metrics**: Expand dashboard with comprehensive code quality metrics.
+- [ ] **8.4 Toast Component Visual Improvements**: X icon for dismiss, reduced badge size.
+  - [ ] Add close icon to dismiss button.
+  - [ ] Reduce status badge/dot size for better visual balance.
+  - [ ] Verify WCAG AA compliance in all themes.
+- [ ] **8.5 Profile Stats Caching**: Persist stats across navigation.
+  - [ ] Create `provideProfileStore()` function.
+  - [ ] Move ProfileStore to app-level in `app.config.ts`.
+  - [ ] Implement 1-hour cache window with invalidation.
+
+**Part B: New Features & Enhancements (8.6-8.12)**
+
+- [ ] **8.6 Header Theme Picker UI**: Icon-only button with theme selection menu.
+  - [ ] Modify ThemePickerComponent to add compact/icon-only mode.
+  - [ ] Update HeaderComponent to use compact variant.
+  - [ ] Add tooltip and keyboard navigation support.
+- [ ] **8.7 Header Authentication UI**: User profile icon with dropdown menu.
+  - [ ] Create UserMenuComponent with account header and logout option.
+  - [ ] Modify HeaderComponent to replace text/button with icon.
+  - [ ] Ensure keyboard accessibility and mobile responsiveness.
+- [ ] **8.8 Profile Page Resume Button Layout**: Reposition buttons below profile card.
+  - [ ] Move buttons outside profile card to separate section.
+  - [ ] Add section heading and improve spacing.
+  - [ ] Ensure mobile responsiveness.
+- [ ] **8.9 Home Page Portfolio Branding**: Add hero section with personal branding.
+  - [ ] Add name, title, and tagline to home page.
+  - [ ] Implement recommended split layout (bio left, dashboard right).
+  - [ ] Add CTA buttons to key sections.
+  - [ ] Ensure i18n support and mobile responsiveness.
+- [ ] **8.10 Modules & ADR List Filtering**: Filter chips for technologies, categories, status.
+  - [ ] Create reusable FilterChipsComponent.
+  - [ ] Add technology and category filters to ModulesListComponent.
+  - [ ] Add category and status filters to AdrListComponent.
+  - [ ] Implement "Clear all" functionality.
+- [ ] **8.11 Blog Feature Module**: Complete blog implementation for showcasing technical articles.
+  - [ ] Create BlogStore (NgRx SignalStore) with articles state management.
+  - [ ] Build BlogListComponent with search, filter, and pagination.
+  - [ ] Build BlogDetailComponent with markdown rendering and syntax highlighting.
+  - [ ] Use existing CardComponent for article previews.
+  - [ ] Migrate existing phase articles to JSON format.
+  - [ ] Configure routes and lazy loading.
+  - [ ] Implement SEO meta tags per article.
+  - [ ] Add to main navigation.
+- [ ] **8.12 Enhanced Dashboard Metrics**: Expand dashboard with comprehensive code quality metrics.
   - [ ] Add Compodoc documentation coverage percentage and breakdown.
   - [ ] Display detailed test coverage (statements, branches, functions, lines).
   - [ ] Show bundle size with budget status.
@@ -358,7 +368,7 @@ _Goal: Add new capabilities and features to enhance portfolio presentation and u
   - [ ] Display Git statistics (commits, last commit time).
   - [ ] Add Lighthouse scores display.
   - [ ] Create metric parsing scripts for build-time data.
-  - [ ] Build reusable MetricCardComponent.
+  - [ ] Use existing CardComponent and GridComponent for metric displays.
 
 ---
 

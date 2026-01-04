@@ -1,7 +1,7 @@
 # ✨ Phase 8: Enhancements & New Features
 
 **Status:** Not Started
-**Goal:** Add new capabilities and features to enhance the portfolio presentation and user experience.
+**Goal:** Refactor existing components for better consistency, then add new capabilities and features to enhance the portfolio presentation and user experience.
 
 **Principles:**
 
@@ -9,6 +9,20 @@
 - Maintain consistency with existing design system
 - Ensure all new features meet WCAG 2.1 AA standards
 - Focus on portfolio presentation and user engagement
+
+**Phase Organization:**
+
+Phase 8 is organized into two parts:
+
+1. **Part A: Refactoring & Improvements (8.1-8.5)**
+   - Refactor existing components for consistency
+   - Fix styling and visibility issues
+   - Improve existing UX patterns
+
+2. **Part B: New Features (8.6-8.12)**
+   - Add new functionality
+   - Expand capabilities
+   - Enhance portfolio presentation
 
 ## Component Reuse Strategy
 
@@ -41,25 +55,25 @@ The following existing components should be reused instead of creating new ones:
 
 Only create these genuinely new components with unique functionality:
 
-1. **FilterChipsComponent** (Section 8.5)
+1. **FilterChipsComponent** (Section 8.10)
    - **Why new:** Interactive multi-select filter UI is distinct from passive BadgeComponent
    - **Justification:** Reused across ModulesListComponent and AdrListComponent
    - **Key difference:** Active filtering vs. passive status display
    - Multi-select toggle behavior, chip removal, "Clear all" functionality
 
-2. **UserMenuComponent** (Section 8.2)
+2. **UserMenuComponent** (Section 8.7)
    - **Why new:** Dropdown menu with account header and logout specific behavior
    - **Justification:** Unique authentication-related UI pattern
 
-3. **DashboardMetricsComponent** (Section 8.9)
+3. **DashboardMetricsComponent** (Section 8.12)
    - **Why new:** Smart component for fetching and orchestrating metrics data
    - **Note:** Uses existing CardComponent for individual metric displays
 
-4. **BlogListComponent** (Section 8.1)
+4. **BlogListComponent** (Section 8.11)
    - **Why new:** Smart component with blog-specific state and filtering logic
    - **Note:** Uses existing CardComponent for article previews
 
-5. **BlogDetailComponent** (Section 8.1)
+5. **BlogDetailComponent** (Section 8.11)
    - **Why new:** Smart component with markdown rendering and article-specific features
 
 ### Component Audit Summary
@@ -86,416 +100,7 @@ By reusing existing components instead of creating duplicates:
 
 ---
 
-## 8.1 Blog Feature Module
-
-**Reference:** New feature for displaying technical articles
-
-### Overview
-
-Create a complete blog feature to showcase technical writing and thought leadership. The blog will display articles written during the project phases and future content.
-
-### Components
-
-**BlogListComponent** (Smart Component)
-
-- Grid/list view of all blog articles
-- Search functionality (filter by title, excerpt, tags)
-- Category filter chips (Angular, Architecture, Performance, etc.)
-- Pagination or infinite scroll
-- Sort by date, title, or reading time
-- Card-based layout with featured image, title, excerpt, date, reading time, and tags
-
-**BlogDetailComponent** (Smart Component)
-
-- Full article view with markdown rendering
-- Table of contents (auto-generated from headings)
-- Estimated reading time
-- Publication date and last updated date
-- Author information
-- Tag list with links to filtered views
-- Previous/Next article navigation
-- Social sharing buttons (optional)
-- Syntax highlighting for code blocks
-
-**Article Card Display**
-
-- **Use existing CardComponent** with `clickable` and `hoverable` props
-- Pass article data (title, excerpt, date, readingTime, tags, featuredImage) via content projection
-- No need for separate BlogCardComponent - leverage design system
-- CardComponent already handles hover states, accessibility, and responsive layout
-
-### Data Model
-
-```typescript
-interface BlogArticle {
-  readonly id: string;
-  readonly slug: string;
-  readonly title: string;
-  readonly excerpt: string;
-  readonly content: string; // Markdown content
-  readonly featuredImage?: string;
-  readonly author: {
-    readonly name: string;
-    readonly title: string;
-  };
-  readonly publishedAt: Date;
-  readonly updatedAt?: Date;
-  readonly readingTimeMinutes: number;
-  readonly tags: readonly string[];
-  readonly category: BlogCategory;
-  readonly status: 'draft' | 'published';
-}
-
-type BlogCategory =
-  | 'angular'
-  | 'architecture'
-  | 'performance'
-  | 'testing'
-  | 'deployment'
-  | 'security'
-  | 'design-system';
-```
-
-### State Management
-
-**BlogStore** (NgRx SignalStore)
-
-- `withState`: articles[], selectedArticle, filters, loading, error
-- `withComputed`: filteredArticles, categories, tags
-- `withMethods`: loadArticles, loadArticle, setFilters, clearFilters
-- Data source: `src/assets/data/blog-articles.json`
-
-### Routes
-
-```typescript
-{
-  path: 'blog',
-  children: [
-    { path: '', component: BlogListComponent },
-    { path: ':slug', component: BlogDetailComponent }
-  ]
-}
-```
-
-### Initial Content
-
-Migrate existing blog articles from phase completion:
-
-1. Phase 1: Angular Enterprise Blueprint Setup
-2. Phase 2: Core Architecture Design
-3. Phase 3: Design System Implementation
-4. Phase 4: Application Shell
-5. Phase 5: Feature Module Development
-6. Phase 6: Deployment & Optimization
-7. Phase 7: Technical Debt Management (to be written)
-
-### Technical Requirements
-
-- **Markdown Rendering**: Use a markdown library (e.g., `marked` or `ngx-markdown`)
-- **Syntax Highlighting**: Code blocks with syntax highlighting (e.g., `highlight.js`)
-- **SEO**: Dynamic meta tags per article (title, description, OG tags)
-- **Analytics**: Track article views and reading time
-- **i18n**: Translatable UI elements (article content can remain in English initially)
-- **Accessibility**: Proper heading hierarchy, skip links, keyboard navigation
-
-### Acceptance Criteria
-
-- [ ] BlogStore created with full CRUD operations
-- [ ] BlogListComponent with search, filter, and sort
-- [ ] BlogDetailComponent with markdown rendering and syntax highlighting
-- [ ] All existing phase articles migrated to JSON format
-- [ ] Routes configured and lazy-loaded
-- [ ] SEO meta tags dynamic per article
-- [ ] Storybook stories for BlogCardComponent
-- [ ] Unit tests for store and components (85%+ coverage)
-- [ ] E2E tests for navigation and filtering
-- [ ] Mobile responsive design
-- [ ] WCAG 2.1 AA compliant
-
----
-
-## 8.2 Header Authentication UI
-
-**Current:** Username text + logout button (takes up horizontal space)
-**Target:** User profile icon → opens dropdown menu
-
-### Components
-
-**UserMenuComponent** (New Shared Component)
-
-- **Why new:** Dropdown menu pattern with authentication-specific behavior
-- Dropdown menu with account name header
-- Logout option
-- Future: Settings, Profile links
-- Uses Angular CDK Overlay for positioning and accessibility
-- Located at: `src/app/shared/components/user-menu/`
-
-**Changes:**
-
-- **Modify:** `HeaderComponent` (replace text/button with icon button)
-- **Create:** `UserMenuComponent` as reusable shared component
-
-### Acceptance Criteria
-
-- [ ] Icon displays when authenticated
-- [ ] Menu opens/closes on click, Escape, outside-click
-- [ ] Keyboard accessible (Tab, Enter, Arrow keys)
-- [ ] Mobile responsive
-- [ ] ARIA attributes for accessibility
-- [ ] Smooth animations (respects `prefers-reduced-motion`)
-
----
-
-## 8.3 Header Theme Picker UI
-
-**Current:** Full theme picker showing selected theme
-**Target:** Icon-only button (paint palette/theme icon) → opens theme menu
-
-### Components
-
-**ThemePickerComponent Enhancement** (Modify Existing)
-
-- **Why modify existing:** Theme selection logic already implemented
-- Add icon-only variant mode (`compact: true` or similar)
-- Keep existing full picker for other use cases
-- Shows all 6 themes with visual previews (already has this)
-- Current theme highlighted (already has this)
-- Theme name and description (already has this)
-- Located at: `src/app/shared/components/theme-picker/`
-
-**Changes:**
-
-- **Modify:** `ThemePickerComponent` (add compact/icon-only mode)
-- **Modify:** `HeaderComponent` (use compact variant)
-
-### Acceptance Criteria
-
-- [ ] Icon button with tooltip ("Change theme")
-- [ ] Menu shows all themes with visual previews
-- [ ] Current theme has checkmark/highlight
-- [ ] Keyboard accessible
-- [ ] Click outside to close
-- [ ] Mobile responsive
-- [ ] Smooth theme transitions
-
----
-
-## 8.4 Home Page Portfolio Branding
-
-**Current:** Generic "System Status" dashboard (no personal branding)
-**Target:** Add hero section with name, title, tagline
-
-### Layout Options
-
-- **A:** Hero above dashboard
-- **B:** Split (bio left, dashboard right) ← Recommended
-- **C:** Branded header bar above dashboard
-
-### Content Structure
-
-```typescript
-interface PortfolioHero {
-  readonly name: string;
-  readonly title: string;
-  readonly tagline: string;
-  readonly bio: string;
-  readonly cta: readonly {
-    readonly label: string;
-    readonly route: string;
-  }[];
-}
-```
-
-### Example Content
-
-```typescript
-{
-  name: 'Jay [Last Name]',
-  title: 'Senior Angular Architect',
-  tagline: 'Building Enterprise-Grade Applications with Modern Angular',
-  bio: 'Welcome to my Angular Enterprise Blueprint - a production-ready reference architecture demonstrating modern Angular best practices, enterprise patterns, and scalable design.',
-  cta: [
-    { label: 'View Projects', route: '/modules' },
-    { label: 'Read Articles', route: '/blog' },
-    { label: 'Contact Me', route: '/contact' }
-  ]
-}
-```
-
-### Acceptance Criteria
-
-- [ ] Name prominently displayed
-- [ ] Professional title/tagline clear
-- [ ] CTA buttons to key sections
-- [ ] Maintains dashboard functionality
-- [ ] i18n support for all text
-- [ ] Mobile responsive (hero stacks on mobile)
-- [ ] Professional appearance in all 6 themes
-
----
-
-## 8.5 Modules & ADR List Filtering
-
-**Current:** Search only, no category/tag filtering
-**Target:** Filter chips for technologies, categories, status
-
-### Components
-
-**FilterChipsComponent** (New Shared Component)
-
-- **Why new:** Interactive multi-select filter UI distinct from passive BadgeComponent
-- **Key difference from Badge:** Active filtering with toggle behavior vs. passive status display
-- **Reuse justification:** Used in both ModulesListComponent and AdrListComponent
-- Multi-select chip filter with toggle on click
-- Individual chip removal with × button
-- "Clear all" functionality when filters active
-- Keyboard navigation (Tab, Enter/Space to toggle)
-- Props: `chips: FilterChip[]`, `multiSelect: boolean`, `ariaLabel: string`
-- Outputs: `chipToggled: FilterChip`, `cleared: void`
-- Located at: `src/app/shared/components/filter-chips/`
-
-**Data Model:**
-
-```typescript
-export interface FilterChip {
-  readonly id: string;
-  readonly label: string;
-  readonly selected: boolean;
-  readonly category?: string; // Optional grouping
-}
-```
-
-### Changes
-
-**Modify:** `ModulesListComponent`
-
-- Add technology filter (Angular, React, TypeScript, Node.js, etc.)
-- Add category filter (Frontend, Backend, Full-stack, etc.)
-- Combine with existing search
-
-**Modify:** `AdrListComponent`
-
-- Add category filter (Architecture, Security, Performance, etc.)
-- Add status filter (Accepted, Proposed, Deprecated, Superseded)
-- Combine with existing search
-
-### Filter Examples
-
-```typescript
-// Modules
-{ id: 'angular', label: 'Angular', category: 'technology' }
-{ id: 'typescript', label: 'TypeScript', category: 'technology' }
-{ id: 'frontend', label: 'Frontend', category: 'category' }
-
-// ADRs
-{ id: 'architecture', label: 'Architecture', category: 'category' }
-{ id: 'accepted', label: 'Accepted', category: 'status' }
-```
-
-### Acceptance Criteria
-
-- [ ] FilterChipsComponent created and reusable
-- [ ] Filters work in combination with search
-- [ ] "Clear all" button when filters active
-- [ ] Filter state persists during session
-- [ ] Keyboard accessible
-- [ ] Mobile responsive (chips wrap)
-- [ ] Visual feedback for selected chips
-- [ ] Smooth animations
-
----
-
-## 8.6 Profile Page Resume Button Layout
-
-**Current:** Resume buttons inside profile card (feels cramped)
-**Target:** Move buttons to separate section below card
-
-### Changes
-
-- Move `<eb-button>` elements outside profile card
-- Create `.profile-actions` section below card
-- Add "Resume" section heading
-- Improve spacing and visual hierarchy
-
-### Acceptance Criteria
-
-- [ ] Buttons below card in left column
-- [ ] Section has clear heading
-- [ ] Mobile responsive (buttons stack or go full-width)
-- [ ] ARIA labels on all buttons
-- [ ] Proper focus management
-- [ ] Consistent with design system spacing
-
----
-
-## 8.7 Toast Component Visual Improvements
-
-**Current:**
-
-- Dismiss button is empty block (no icon)
-- Status badge/dot may be too large
-
-**Target:**
-
-- Replace empty dismiss button with X/close icon
-- Reduce size of status badge/dot for better visual balance
-
-### Changes
-
-**Modify:** `ToastComponent`
-
-```typescript
-// Add icon to dismiss button
-<button class="toast__dismiss" (click)="dismiss()">
-  <eb-icon name="close" size="sm" [ariaLabel]="'Dismiss notification'" />
-</button>
-```
-
-```scss
-// Adjust badge size
-.toast__badge {
-  width: 8px; // Reduce from current size
-  height: 8px; // Reduce from current size
-}
-```
-
-### Acceptance Criteria
-
-- [ ] Dismiss button shows X/close icon
-- [ ] Icon is appropriately sized and visible
-- [ ] Badge/dot size reduced and visually balanced
-- [ ] ARIA label on dismiss button
-- [ ] Works in all 6 themes
-- [ ] Color contrast meets WCAG AA
-- [ ] Storybook story updated
-
----
-
-## 8.8 Profile Stats Caching
-
-**Reference:** `/docs/PROFILE_STATS_CACHING_PLAN.md`
-
-**Current:** Stats refetch on every navigation to profile page
-**Target:** Persist stats across navigation (app-level store provider)
-
-### Actions
-
-1. Create `provideProfileStore()` in `profile.store.provider.ts`
-2. Move provider from `ProfileComponent` to `app.config.ts`
-3. Update unit tests to mock app-level store
-4. Implement cache invalidation strategy
-
-### Acceptance Criteria
-
-- [ ] Stats persist when navigating away and back
-- [ ] No API re-fetch within 1 hour cache window
-- [ ] Cache clears on hard refresh
-- [ ] All tests pass
-- [ ] No memory leaks from store persistence
-
----
-
-## 8.9 Checkbox Component Icon Refactor
+## 8.1 Checkbox Component Icon Refactor
 
 **Current:** Checkbox uses CheckboxCheckmarkComponent with conditional icon rendering (check/minus icons for checked/indeterminate, nothing for unchecked)
 **Target:** Use two distinct icons - one for unchecked box and one for checked box - to improve visual clarity and consistency
@@ -610,7 +215,130 @@ The current checkbox uses:
 
 ---
 
-## 8.10 Card Visibility Improvements in Light Themes
+## 8.2 Radio Component Icon Refactor
+
+**Current:** Radio uses CSS-based circle rendering for radio button states
+**Target:** Use Material Icons for checked and unchecked states - `matRadioButtonChecked` and `matRadioButtonUnchecked`
+
+### Overview
+
+Refactor the radio component to use icon-based rendering for both checked and unchecked states, matching the checkbox icon refactor approach. This will improve visual consistency across form controls and provide better theming support.
+
+### Current Implementation
+
+The current radio component uses:
+
+- Native HTML radio input with custom CSS styling
+- CSS-based circle rendering for checked/unchecked states
+- Located at: [radio.component.ts](../src/app/shared/components/radio/radio.component.ts)
+
+### Proposed Changes
+
+**Icon Strategy (Using Material Icons):**
+
+1. **Unchecked state:** Use `matRadioButtonUnchecked` - outline empty circle
+2. **Checked state:** Use `matRadioButtonChecked` - filled circle with inner dot
+
+**Why Material Icons:**
+
+- Matches checkbox icon refactor approach for consistency
+- Provides dedicated radio button-specific icons
+- Perfect semantic naming (`matRadioButtonChecked`, `matRadioButtonUnchecked`)
+- Designed specifically for form controls
+- Same `@ng-icons/material-icons` package already used for checkbox
+
+**Component Updates:**
+
+- **Create RadioButtonIconComponent** (similar to CheckboxCheckmarkComponent)
+  - New presentational component for radio icon rendering
+  - Location: `src/app/shared/components/radio/radio-button-icon/`
+  - Props: `checked: boolean`
+  - Imports Material Icons via `provideIcons`
+  - Icon logic:
+    - `checked === true` → `matRadioButtonChecked`
+    - `checked === false` → `matRadioButtonUnchecked`
+
+- **RadioComponent** ([radio.component.ts](../src/app/shared/components/radio/radio.component.ts))
+  - Integrate `RadioButtonIconComponent` in template
+  - Update SCSS to remove CSS-based circle rendering
+  - Simplify styles to focus on layout and spacing
+  - Ensure proper color theming for all icon states
+
+### Benefits
+
+1. **Visual Consistency:** Icons provide clearer visual feedback across all themes
+2. **Form Control Parity:** Radio buttons match checkbox implementation pattern
+3. **Maintainability:** Removes complex CSS for custom radio rendering
+4. **Theme Compliance:** Icons automatically inherit theme colors and contrast ratios
+5. **Simplified Logic:** Clearer state representation with dedicated icons
+
+### Implementation Steps
+
+1. Material Icons package already installed from checkbox refactor (8.1)
+2. Create `RadioButtonIconComponent`:
+   - Import `matRadioButtonChecked` and `matRadioButtonUnchecked`
+   - Implement icon selection logic based on `checked` prop
+   - Add proper ARIA attributes (`aria-hidden="true"`)
+3. Update `radio.component.ts` to integrate new icon component
+4. Update `radio.component.scss` to remove CSS-based circle rendering
+5. Update Storybook stories to showcase new icon-based states
+6. Update unit tests for RadioComponent and RadioButtonIconComponent
+7. Visual regression testing across all 6 themes
+8. Update component documentation and JSDoc comments
+
+### Acceptance Criteria
+
+- [ ] Unchecked state displays `matRadioButtonUnchecked` icon
+- [ ] Checked state displays `matRadioButtonChecked` icon
+- [ ] Both states visually distinct and clear
+- [ ] Icons properly themed across all 6 themes (especially high-contrast)
+- [ ] Color contrast meets WCAG 2.1 AA standards in all states
+- [ ] Focus states clearly visible with proper outline
+- [ ] Hover states provide visual feedback
+- [ ] Disabled states have reduced opacity and proper cursor
+- [ ] All existing radio tests pass with updates
+- [ ] Storybook updated with all state variants
+- [ ] No visual regressions in components using radio buttons
+- [ ] Keyboard navigation unchanged (Arrow keys in radio group, Space to select)
+- [ ] Screen reader announcements unchanged
+- [ ] Radio groups function correctly with new implementation
+
+### Files to Update
+
+1. `src/app/shared/components/radio/radio-button-icon/radio-button-icon.component.ts` (NEW)
+2. `src/app/shared/components/radio/radio-button-icon/radio-button-icon.component.spec.ts` (NEW)
+3. `src/app/shared/components/radio/radio.component.ts`
+4. `src/app/shared/components/radio/radio.component.html`
+5. `src/app/shared/components/radio/radio.component.scss`
+6. `src/app/shared/components/radio/radio.component.spec.ts`
+7. `src/app/shared/components/radio/radio.stories.ts`
+8. `src/app/shared/components/radio/index.ts` (export RadioButtonIconComponent)
+
+### Testing Strategy
+
+- Unit tests: Verify icon selection logic for checked/unchecked states
+- Visual tests: Storybook chromatic tests across themes
+- Integration tests: Verify in radio groups and forms
+- Accessibility tests: axe DevTools validation in Storybook
+- Cross-browser testing: Ensure icons render consistently
+
+### Design Considerations
+
+**Icon Sizing:**
+
+- Radio icons should match checkbox icon sizes
+- Size variants (sm, md, lg) must be consistent with checkbox
+
+**Color Strategy:**
+
+- Unchecked: Use muted color (--color-text-muted or --color-border)
+- Checked: Use primary color (--color-primary)
+- Disabled: Use disabled color (--color-text-disabled)
+- Focus: Add focus ring with --color-focus-ring
+
+---
+
+## 8.3 Card Visibility Improvements in Light Themes
 
 **Current:** Cards in light themes have poor visibility - background and surface colors are identical (#ffffff), borders are very light (#e2e8f0), and shadows are too subtle
 **Target:** Improve card contrast and visibility in light themes while maintaining WCAG AA compliance
@@ -786,7 +514,416 @@ Update light theme color variables to create better visual separation between su
 
 ---
 
-## 8.11 Enhanced Dashboard Metrics
+## 8.4 Toast Component Visual Improvements
+
+**Current:**
+
+- Dismiss button is empty block (no icon)
+- Status badge/dot may be too large
+
+**Target:**
+
+- Replace empty dismiss button with X/close icon
+- Reduce size of status badge/dot for better visual balance
+
+### Changes
+
+**Modify:** `ToastComponent`
+
+```typescript
+// Add icon to dismiss button
+<button class="toast__dismiss" (click)="dismiss()">
+  <eb-icon name="close" size="sm" [ariaLabel]="'Dismiss notification'" />
+</button>
+```
+
+```scss
+// Adjust badge size
+.toast__badge {
+  width: 8px; // Reduce from current size
+  height: 8px; // Reduce from current size
+}
+```
+
+### Acceptance Criteria
+
+- [ ] Dismiss button shows X/close icon
+- [ ] Icon is appropriately sized and visible
+- [ ] Badge/dot size reduced and visually balanced
+- [ ] ARIA label on dismiss button
+- [ ] Works in all 6 themes
+- [ ] Color contrast meets WCAG AA
+- [ ] Storybook story updated
+
+---
+
+## 8.5 Profile Stats Caching
+
+**Reference:** `/docs/PROFILE_STATS_CACHING_PLAN.md`
+
+**Current:** Stats refetch on every navigation to profile page
+**Target:** Persist stats across navigation (app-level store provider)
+
+### Actions
+
+1. Create `provideProfileStore()` in `profile.store.provider.ts`
+2. Move provider from `ProfileComponent` to `app.config.ts`
+3. Update unit tests to mock app-level store
+4. Implement cache invalidation strategy
+
+### Acceptance Criteria
+
+- [ ] Stats persist when navigating away and back
+- [ ] No API re-fetch within 1 hour cache window
+- [ ] Cache clears on hard refresh
+- [ ] All tests pass
+- [ ] No memory leaks from store persistence
+
+---
+
+## 8.6 Header Theme Picker UI
+
+**Current:** Full theme picker showing selected theme
+**Target:** Icon-only button (paint palette/theme icon) → opens theme menu
+
+### Components
+
+**ThemePickerComponent Enhancement** (Modify Existing)
+
+- **Why modify existing:** Theme selection logic already implemented
+- Add icon-only variant mode (`compact: true` or similar)
+- Keep existing full picker for other use cases
+- Shows all 6 themes with visual previews (already has this)
+- Current theme highlighted (already has this)
+- Theme name and description (already has this)
+- Located at: `src/app/shared/components/theme-picker/`
+
+**Changes:**
+
+- **Modify:** `ThemePickerComponent` (add compact/icon-only mode)
+- **Modify:** `HeaderComponent` (use compact variant)
+
+### Acceptance Criteria
+
+- [ ] Icon button with tooltip ("Change theme")
+- [ ] Menu shows all themes with visual previews
+- [ ] Current theme has checkmark/highlight
+- [ ] Keyboard accessible
+- [ ] Click outside to close
+- [ ] Mobile responsive
+- [ ] Smooth theme transitions
+
+---
+
+## 8.7 Header Authentication UI
+
+**Current:** Username text + logout button (takes up horizontal space)
+**Target:** User profile icon → opens dropdown menu
+
+### Components
+
+**UserMenuComponent** (New Shared Component)
+
+- **Why new:** Dropdown menu pattern with authentication-specific behavior
+- Dropdown menu with account name header
+- Logout option
+- Future: Settings, Profile links
+- Uses Angular CDK Overlay for positioning and accessibility
+- Located at: `src/app/shared/components/user-menu/`
+
+**Changes:**
+
+- **Modify:** `HeaderComponent` (replace text/button with icon button)
+- **Create:** `UserMenuComponent` as reusable shared component
+
+### Acceptance Criteria
+
+- [ ] Icon displays when authenticated
+- [ ] Menu opens/closes on click, Escape, outside-click
+- [ ] Keyboard accessible (Tab, Enter, Arrow keys)
+- [ ] Mobile responsive
+- [ ] ARIA attributes for accessibility
+- [ ] Smooth animations (respects `prefers-reduced-motion`)
+
+---
+
+## 8.8 Profile Page Resume Button Layout
+
+**Current:** Resume buttons inside profile card (feels cramped)
+**Target:** Move buttons to separate section below card
+
+### Changes
+
+- Move `<eb-button>` elements outside profile card
+- Create `.profile-actions` section below card
+- Add "Resume" section heading
+- Improve spacing and visual hierarchy
+
+### Acceptance Criteria
+
+- [ ] Buttons below card in left column
+- [ ] Section has clear heading
+- [ ] Mobile responsive (buttons stack or go full-width)
+- [ ] ARIA labels on all buttons
+- [ ] Proper focus management
+- [ ] Consistent with design system spacing
+
+---
+
+## 8.9 Home Page Portfolio Branding
+
+**Current:** Generic "System Status" dashboard (no personal branding)
+**Target:** Add hero section with name, title, tagline
+
+### Layout Options
+
+- **A:** Hero above dashboard
+- **B:** Split (bio left, dashboard right) ← Recommended
+- **C:** Branded header bar above dashboard
+
+### Content Structure
+
+```typescript
+interface PortfolioHero {
+  readonly name: string;
+  readonly title: string;
+  readonly tagline: string;
+  readonly bio: string;
+  readonly cta: readonly {
+    readonly label: string;
+    readonly route: string;
+  }[];
+}
+```
+
+### Example Content
+
+```typescript
+{
+  name: 'Jay [Last Name]',
+  title: 'Senior Angular Architect',
+  tagline: 'Building Enterprise-Grade Applications with Modern Angular',
+  bio: 'Welcome to my Angular Enterprise Blueprint - a production-ready reference architecture demonstrating modern Angular best practices, enterprise patterns, and scalable design.',
+  cta: [
+    { label: 'View Projects', route: '/modules' },
+    { label: 'Read Articles', route: '/blog' },
+    { label: 'Contact Me', route: '/contact' }
+  ]
+}
+```
+
+### Acceptance Criteria
+
+- [ ] Name prominently displayed
+- [ ] Professional title/tagline clear
+- [ ] CTA buttons to key sections
+- [ ] Maintains dashboard functionality
+- [ ] i18n support for all text
+- [ ] Mobile responsive (hero stacks on mobile)
+- [ ] Professional appearance in all 6 themes
+
+---
+
+## 8.10 Modules & ADR List Filtering
+
+**Current:** Search only, no category/tag filtering
+**Target:** Filter chips for technologies, categories, status
+
+### Components
+
+**FilterChipsComponent** (New Shared Component)
+
+- **Why new:** Interactive multi-select filter UI distinct from passive BadgeComponent
+- **Key difference from Badge:** Active filtering with toggle behavior vs. passive status display
+- **Reuse justification:** Used in both ModulesListComponent and AdrListComponent
+- Multi-select chip filter with toggle on click
+- Individual chip removal with × button
+- "Clear all" functionality when filters active
+- Keyboard navigation (Tab, Enter/Space to toggle)
+- Props: `chips: FilterChip[]`, `multiSelect: boolean`, `ariaLabel: string`
+- Outputs: `chipToggled: FilterChip`, `cleared: void`
+- Located at: `src/app/shared/components/filter-chips/`
+
+**Data Model:**
+
+```typescript
+export interface FilterChip {
+  readonly id: string;
+  readonly label: string;
+  readonly selected: boolean;
+  readonly category?: string; // Optional grouping
+}
+```
+
+### Changes
+
+**Modify:** `ModulesListComponent`
+
+- Add technology filter (Angular, React, TypeScript, Node.js, etc.)
+- Add category filter (Frontend, Backend, Full-stack, etc.)
+- Combine with existing search
+
+**Modify:** `AdrListComponent`
+
+- Add category filter (Architecture, Security, Performance, etc.)
+- Add status filter (Accepted, Proposed, Deprecated, Superseded)
+- Combine with existing search
+
+### Filter Examples
+
+```typescript
+// Modules
+{ id: 'angular', label: 'Angular', category: 'technology' }
+{ id: 'typescript', label: 'TypeScript', category: 'technology' }
+{ id: 'frontend', label: 'Frontend', category: 'category' }
+
+// ADRs
+{ id: 'architecture', label: 'Architecture', category: 'category' }
+{ id: 'accepted', label: 'Accepted', category: 'status' }
+```
+
+### Acceptance Criteria
+
+- [ ] FilterChipsComponent created and reusable
+- [ ] Filters work in combination with search
+- [ ] "Clear all" button when filters active
+- [ ] Filter state persists during session
+- [ ] Keyboard accessible
+- [ ] Mobile responsive (chips wrap)
+- [ ] Visual feedback for selected chips
+- [ ] Smooth animations
+
+---
+
+## 8.11 Blog Feature Module
+
+**Reference:** New feature for displaying technical articles
+
+### Overview
+
+Create a complete blog feature to showcase technical writing and thought leadership. The blog will display articles written during the project phases and future content.
+
+### Components
+
+**BlogListComponent** (Smart Component)
+
+- Grid/list view of all blog articles
+- Search functionality (filter by title, excerpt, tags)
+- Category filter chips (Angular, Architecture, Performance, etc.)
+- Pagination or infinite scroll
+- Sort by date, title, or reading time
+- Card-based layout with featured image, title, excerpt, date, reading time, and tags
+
+**BlogDetailComponent** (Smart Component)
+
+- Full article view with markdown rendering
+- Table of contents (auto-generated from headings)
+- Estimated reading time
+- Publication date and last updated date
+- Author information
+- Tag list with links to filtered views
+- Previous/Next article navigation
+- Social sharing buttons (optional)
+- Syntax highlighting for code blocks
+
+**Article Card Display**
+
+- **Use existing CardComponent** with `clickable` and `hoverable` props
+- Pass article data (title, excerpt, date, readingTime, tags, featuredImage) via content projection
+- No need for separate BlogCardComponent - leverage design system
+- CardComponent already handles hover states, accessibility, and responsive layout
+
+### Data Model
+
+```typescript
+interface BlogArticle {
+  readonly id: string;
+  readonly slug: string;
+  readonly title: string;
+  readonly excerpt: string;
+  readonly content: string; // Markdown content
+  readonly featuredImage?: string;
+  readonly author: {
+    readonly name: string;
+    readonly title: string;
+  };
+  readonly publishedAt: Date;
+  readonly updatedAt?: Date;
+  readonly readingTimeMinutes: number;
+  readonly tags: readonly string[];
+  readonly category: BlogCategory;
+  readonly status: 'draft' | 'published';
+}
+
+type BlogCategory =
+  | 'angular'
+  | 'architecture'
+  | 'performance'
+  | 'testing'
+  | 'deployment'
+  | 'security'
+  | 'design-system';
+```
+
+### State Management
+
+**BlogStore** (NgRx SignalStore)
+
+- `withState`: articles[], selectedArticle, filters, loading, error
+- `withComputed`: filteredArticles, categories, tags
+- `withMethods`: loadArticles, loadArticle, setFilters, clearFilters
+- Data source: `src/assets/data/blog-articles.json`
+
+### Routes
+
+```typescript
+{
+  path: 'blog',
+  children: [
+    { path: '', component: BlogListComponent },
+    { path: ':slug', component: BlogDetailComponent }
+  ]
+}
+```
+
+### Initial Content
+
+Migrate existing blog articles from phase completion:
+
+1. Phase 1: Angular Enterprise Blueprint Setup
+2. Phase 2: Core Architecture Design
+3. Phase 3: Design System Implementation
+4. Phase 4: Application Shell
+5. Phase 5: Feature Module Development
+6. Phase 6: Deployment & Optimization
+7. Phase 7: Technical Debt Management (to be written)
+
+### Technical Requirements
+
+- **Markdown Rendering**: Use a markdown library (e.g., `marked` or `ngx-markdown`)
+- **Syntax Highlighting**: Code blocks with syntax highlighting (e.g., `highlight.js`)
+- **SEO**: Dynamic meta tags per article (title, description, OG tags)
+- **Analytics**: Track article views and reading time
+- **i18n**: Translatable UI elements (article content can remain in English initially)
+- **Accessibility**: Proper heading hierarchy, skip links, keyboard navigation
+
+### Acceptance Criteria
+
+- [ ] BlogStore created with full CRUD operations
+- [ ] BlogListComponent with search, filter, and sort
+- [ ] BlogDetailComponent with markdown rendering and syntax highlighting
+- [ ] All existing phase articles migrated to JSON format
+- [ ] Routes configured and lazy-loaded
+- [ ] SEO meta tags dynamic per article
+- [ ] Storybook stories for BlogCardComponent
+- [ ] Unit tests for store and components (85%+ coverage)
+- [ ] E2E tests for navigation and filtering
+- [ ] Mobile responsive design
+- [ ] WCAG 2.1 AA compliant
+
+---
+
+## 8.12 Enhanced Dashboard Metrics
 
 **Current:** Basic dashboard with build status, test coverage, last deployment
 **Target:** Comprehensive metrics dashboard showcasing code quality and project health
@@ -1018,49 +1155,23 @@ interface BundleSize {
 
 ## Timeline Estimate
 
-| Task                       | Estimated Time  |
-| -------------------------- | --------------- |
-| 8.1 Blog Feature Module    | 24-32 hours     |
-| 8.2 User Menu              | 6-8 hours       |
-| 8.3 Theme Menu             | 4-6 hours       |
-| 8.4 Home Branding          | 6-10 hours      |
-| 8.5 Filter Chips           | 6-8 hours       |
-| 8.6 Profile Layout         | 2 hours         |
-| 8.7 Toast Improvements     | 1-2 hours       |
-| 8.8 Profile Stats Caching  | 1-2 hours       |
-| 8.9 Checkbox Icon Refactor | 4-6 hours       |
-| 8.10 Card Visibility       | 3-5 hours       |
-| 8.11 Enhanced Dashboard    | 12-16 hours     |
-| **Total**                  | **69-97 hours** |
+| Task                       | Estimated Time   |
+| -------------------------- | ---------------- |
+| 8.1 Checkbox Icon Refactor | 4-6 hours        |
+| 8.2 Radio Icon Refactor    | 4-6 hours        |
+| 8.3 Card Visibility        | 3-5 hours        |
+| 8.4 Toast Improvements     | 1-2 hours        |
+| 8.5 Profile Stats Caching  | 1-2 hours        |
+| 8.6 Theme Menu             | 4-6 hours        |
+| 8.7 User Menu              | 6-8 hours        |
+| 8.8 Profile Layout         | 2 hours          |
+| 8.9 Home Branding          | 6-10 hours       |
+| 8.10 Filter Chips          | 6-8 hours        |
+| 8.11 Blog Feature Module   | 24-32 hours      |
+| 8.12 Enhanced Dashboard    | 12-16 hours      |
+| **Total**                  | **73-103 hours** |
 
 **8.1 Breakdown:**
-
-- BlogStore + data model: 4-6 hours
-- BlogListComponent (uses CardComponent): 6-8 hours
-- BlogDetailComponent: 8-10 hours
-- Styling card content projection: 2-3 hours
-- Content migration: 2-3 hours
-- Routing & navigation: 2-3 hours
-
-**8.2 Breakdown:**
-
-- UserMenuComponent creation: 4-5 hours
-- HeaderComponent integration: 1-2 hours
-- Testing & accessibility: 1-2 hours
-
-**8.3 Breakdown:**
-
-- ThemePickerComponent compact mode: 2-3 hours
-- HeaderComponent integration: 1-2 hours
-- Testing: 1 hour
-
-**8.5 Breakdown:**
-
-- FilterChipsComponent creation: 4-5 hours
-- Integration in ModulesListComponent: 1-2 hours
-- Integration in AdrListComponent: 1-2 hours
-
-**8.9 Breakdown:**
 
 - Install `@ng-icons/material-icons` package: 0.25 hours
 - Research Material Icons checkbox icons: 0.25 hours
@@ -1070,7 +1181,16 @@ interface BundleSize {
 - Update unit tests: 1 hour
 - Cross-theme testing and accessibility validation: 1 hour
 
-**8.10 Breakdown:**
+**8.2 Breakdown:**
+
+- Create RadioButtonIconComponent: 1.5-2 hours
+- Update RadioComponent to integrate icon component: 1 hour
+- Update radio.component.scss to remove CSS circle rendering: 1 hour
+- Update Storybook stories and visual tests: 1-1.5 hours
+- Update unit tests for both components: 1 hour
+- Cross-theme testing and accessibility validation: 0.5-1 hour
+
+**8.3 Breakdown:**
 
 - Audit current card usage and screenshot all themes: 0.5 hours
 - Update `_light-default.scss` theme variables: 0.5 hours
@@ -1080,7 +1200,34 @@ interface BundleSize {
 - Cross-component testing in real features: 0.5-1 hour
 - Optional card.component.scss adjustments (if needed): 0.5-1 hour
 
+**8.6 Breakdown:**
+
+- ThemePickerComponent compact mode: 2-3 hours
+- HeaderComponent integration: 1-2 hours
+- Testing: 1 hour
+
+**8.7 Breakdown:**
+
+- UserMenuComponent creation: 4-5 hours
+- HeaderComponent integration: 1-2 hours
+- Testing & accessibility: 1-2 hours
+
+**8.10 Breakdown:**
+
+- FilterChipsComponent creation: 4-5 hours
+- Integration in ModulesListComponent: 1-2 hours
+- Integration in AdrListComponent: 1-2 hours
+
 **8.11 Breakdown:**
+
+- BlogStore + data model: 4-6 hours
+- BlogListComponent (uses CardComponent): 6-8 hours
+- BlogDetailComponent: 8-10 hours
+- Styling card content projection: 2-3 hours
+- Content migration: 2-3 hours
+- Routing & navigation: 2-3 hours
+
+**8.12 Breakdown:**
 
 - Metric parsing scripts: 4-5 hours
 - DashboardMetricsComponent (uses CardComponent + GridComponent): 4-5 hours
@@ -1093,6 +1240,8 @@ interface BundleSize {
 
 ### Quantitative
 
+- [ ] All component icon refactors complete with Material Icons
+- [ ] Card visibility improved in all light themes
 - [ ] Blog feature fully functional with all existing articles
 - [ ] All new components have 85%+ test coverage
 - [ ] All new features WCAG 2.1 AA compliant
@@ -1107,6 +1256,8 @@ interface BundleSize {
 - [ ] Professional appearance
 - [ ] Consistent with existing design
 - [ ] Easy content management for blog
+- [ ] Form controls have consistent visual treatment
+- [ ] Cards clearly distinguishable in all themes
 
 ---
 
@@ -1127,9 +1278,11 @@ interface BundleSize {
 | Markdown rendering performance    | Low    | Use virtual scrolling for long articles if needed     |
 | Scope creep on blog features      | Medium | Start with MVP, create issues for future enhancements |
 | Breaking existing features        | High   | Comprehensive regression testing, feature flags       |
+| Icon refactor visual regressions  | Medium | Thorough cross-theme testing, Storybook visual tests  |
+| Theme changes affecting contrast  | Medium | WCAG validation at each step, rollback plan ready     |
 
 ---
 
-**Last Updated:** 2026-01-01
+**Last Updated:** 2026-01-04
 **Document Owner:** Development Team
 **Status:** Ready for Implementation
