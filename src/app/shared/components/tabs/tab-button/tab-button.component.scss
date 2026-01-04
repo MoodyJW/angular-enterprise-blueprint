@@ -7,6 +7,7 @@
   font-size: var(--tabs-tab-font-size, var(--font-size-base));
   min-height: var(--tabs-tab-min-height, 44px);
   color: var(--color-text-secondary);
+  background-color: var(--color-tab-background);
   white-space: nowrap;
 
   &:hover:not(.tabs__tab--disabled):not(.tabs__tab--active) {
@@ -16,6 +17,7 @@
 
   &--active {
     color: var(--color-primary-hover);
+    background-color: var(--color-tab-background-active);
     border-bottom-color: var(--color-primary);
   }
 

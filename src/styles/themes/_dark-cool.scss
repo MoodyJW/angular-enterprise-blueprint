@@ -83,4 +83,8 @@
   --shadow-xl: 0 20px 25px -5px rgba(15, 10, 26, 0.6), 0 8px 10px -6px rgba(15, 10, 26, 0.6);
   --shadow-2xl: 0 25px 50px -12px rgba(15, 10, 26, 0.7);
   --shadow-inner: inset 0 2px 4px 0 rgba(15, 10, 26, 0.4);
+
+  // Tabs
+  --color-tab-background: var(--color-background);
+  --color-tab-background-active: var(--color-background);
 }

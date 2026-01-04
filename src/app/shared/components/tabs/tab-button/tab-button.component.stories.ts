@@ -1,6 +1,11 @@
 import { ICON_NAMES } from '@shared/constants';
-import type { Meta, StoryObj } from '@storybook/angular';
-import { componentWrapperDecorator } from '@storybook/angular';
+import { provideStoryIcons } from '@storybook-utils/story-icons';
+import {
+  applicationConfig,
+  componentWrapperDecorator,
+  type Meta,
+  type StoryObj,
+} from '@storybook/angular';
 
 import { TabButtonComponent } from './tab-button.component';
 
@@ -9,24 +14,28 @@ const meta: Meta<TabButtonComponent> = {
   component: TabButtonComponent,
   tags: ['autodocs'],
   decorators: [
+    applicationConfig({
+      providers: [provideStoryIcons()],
+    }),
     componentWrapperDecorator(
       (story) => `
       <div role="tablist" aria-label="Tab button test">
         ${story}
       </div>
-      <div id="panel-1" role="tabpanel" aria-label="Panel 1">Panel 1 Content</div>
-      <div id="panel-active" role="tabpanel" aria-label="Panel Active">Panel Active Content</div>
-      <div id="panel-disabled" role="tabpanel" aria-label="Panel Disabled">Panel Disabled Content</div>
-      <div id="panel-home" role="tabpanel" aria-label="Panel Home">Panel Home Content</div>
-      <div id="panel-settings" role="tabpanel" aria-label="Panel Settings">Panel Settings Content</div>
-      <div id="panel-projects" role="tabpanel" aria-label="Panel Projects">Panel Projects Content</div>
-      <div id="panel-long" role="tabpanel" aria-label="Panel Long">Panel Long Content</div>
-      <div id="panel-short" role="tabpanel" aria-label="Panel Short">Panel Short Content</div>
-      <div id="panel-2" role="tabpanel" aria-label="Panel 2">Panel 2 Content</div>
-      <div id="panel-3" role="tabpanel" aria-label="Panel 3">Panel 3 Content</div>
-      <div id="panel-4" role="tabpanel" aria-label="Panel 4">Panel 4 Content</div>
-      <div id="panel-5" role="tabpanel" aria-label="Panel 5">Panel 5 Content</div>
-      <div id="panel-6" role="tabpanel" aria-label="Panel 6">Panel 6 Content</div>
+      <!-- Panels required for aria-controls valid references -->
+      <div id="panel-1" role="tabpanel" hidden></div>
+      <div id="panel-active" role="tabpanel" hidden></div>
+      <div id="panel-disabled" role="tabpanel" hidden></div>
+      <div id="panel-home" role="tabpanel" hidden></div>
+      <div id="panel-settings" role="tabpanel" hidden></div>
+      <div id="panel-projects" role="tabpanel" hidden></div>
+      <div id="panel-long" role="tabpanel" hidden></div>
+      <div id="panel-short" role="tabpanel" hidden></div>
+      <div id="panel-2" role="tabpanel" hidden></div>
+      <div id="panel-3" role="tabpanel" hidden></div>
+      <div id="panel-4" role="tabpanel" hidden></div>
+      <div id="panel-5" role="tabpanel" hidden></div>
+      <div id="panel-6" role="tabpanel" hidden></div>
     `,
     ),
   ],

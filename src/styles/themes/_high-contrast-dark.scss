@@ -87,5 +87,10 @@
   // Border widths - thicker for visibility
   --border-width-thin: 2px;
   --border-width-medium: 3px;
+  --border-width-medium: 3px;
   --border-width-thick: 5px;
+
+  // Tabs
+  --color-tab-background: var(--color-background);
+  --color-tab-background-active: var(--color-background);
 }
