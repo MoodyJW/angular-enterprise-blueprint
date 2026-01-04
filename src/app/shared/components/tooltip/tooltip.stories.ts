@@ -44,7 +44,7 @@ export const Default: StoryObj = {
       <div style="display: flex; justify-content: center; align-items: center; min-height: 200px;">
         <button
           ebTooltip="This is a helpful tooltip"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Hover me
         </button>
@@ -66,7 +66,7 @@ export const TopPosition: StoryObj = {
         <button
           ebTooltip="Tooltip positioned on top"
           tooltipPosition="top"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Top Tooltip
         </button>
@@ -88,7 +88,7 @@ export const BottomPosition: StoryObj = {
         <button
           ebTooltip="Tooltip positioned on bottom"
           tooltipPosition="bottom"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Bottom Tooltip
         </button>
@@ -110,7 +110,7 @@ export const LeftPosition: StoryObj = {
         <button
           ebTooltip="Tooltip positioned on left"
           tooltipPosition="left"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Left Tooltip
         </button>
@@ -132,7 +132,7 @@ export const RightPosition: StoryObj = {
         <button
           ebTooltip="Tooltip positioned on right"
           tooltipPosition="right"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Right Tooltip
         </button>
@@ -154,7 +154,7 @@ export const AutoPosition: StoryObj = {
         <button
           ebTooltip="Auto-positioned tooltip that adapts to available space"
           tooltipPosition="auto"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Auto Position
         </button>
@@ -177,7 +177,7 @@ export const AllPositions: StoryObj = {
           <button
             ebTooltip="Top position"
             tooltipPosition="top"
-            style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+            style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
           >
             Top
           </button>
@@ -186,7 +186,7 @@ export const AllPositions: StoryObj = {
           <button
             ebTooltip="Right position"
             tooltipPosition="right"
-            style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+            style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
           >
             Right
           </button>
@@ -195,7 +195,7 @@ export const AllPositions: StoryObj = {
           <button
             ebTooltip="Bottom position"
             tooltipPosition="bottom"
-            style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+            style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
           >
             Bottom
           </button>
@@ -204,7 +204,7 @@ export const AllPositions: StoryObj = {
           <button
             ebTooltip="Left position"
             tooltipPosition="left"
-            style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+            style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
           >
             Left
           </button>
@@ -226,7 +226,7 @@ export const LongContent: StoryObj = {
       <div style="display: flex; justify-content: center; align-items: center; min-height: 200px;">
         <button
           ebTooltip="This is a much longer tooltip that contains more detailed information about the action you're about to perform. It wraps nicely within the max-width constraint."
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Hover for long tooltip
         </button>
@@ -248,20 +248,20 @@ export const CustomShowDelay: StoryObj = {
         <button
           ebTooltip="Quick tooltip (100ms)"
           [tooltipShowDelay]="100"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Fast (100ms)
         </button>
         <button
           ebTooltip="Default tooltip (200ms)"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Default (200ms)
         </button>
         <button
           ebTooltip="Slow tooltip (1000ms)"
           [tooltipShowDelay]="1000"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Slow (1000ms)
         </button>
@@ -283,14 +283,14 @@ export const CustomHideDelay: StoryObj = {
         <button
           ebTooltip="Instant hide"
           [tooltipHideDelay]="0"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Instant Hide
         </button>
         <button
           ebTooltip="Delayed hide (500ms)"
           [tooltipHideDelay]="500"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Delayed Hide
         </button>
@@ -311,14 +311,14 @@ export const Disabled: StoryObj = {
       <div style="display: flex; justify-content: center; align-items: center; min-height: 200px; gap: 24px;">
         <button
           ebTooltip="This tooltip is enabled"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Enabled Tooltip
         </button>
         <button
           ebTooltip="This tooltip is disabled"
           [tooltipDisabled]="true"
-          style="padding: 12px 24px; background: var(--color-text-secondary); color: white; border: none; border-radius: 6px; cursor: not-allowed; opacity: 0.6;"
+          style="padding: 12px 24px; background: var(--color-secondary); color: var(--color-on-secondary); border: none; border-radius: 6px; cursor: not-allowed;"
         >
           Disabled Tooltip
         </button>
@@ -339,12 +339,14 @@ export const DifferentElements: StoryObj = {
       <div style="display: flex; flex-direction: column; gap: 24px; padding: 80px; align-items: center;">
         <button
           ebTooltip="Tooltip on a button"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Button with tooltip
         </button>
 
         <span
+          tabindex="0"
+          role="button"
           ebTooltip="Tooltip on inline text"
           style="padding: 8px 12px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 4px; cursor: help;"
         >
@@ -352,6 +354,8 @@ export const DifferentElements: StoryObj = {
         </span>
 
         <div
+          tabindex="0"
+          role="button"
           ebTooltip="Tooltip on a div element"
           style="padding: 16px; background: var(--color-surface-hover); border-radius: 8px; cursor: pointer; width: 200px; text-align: center;"
         >
@@ -392,19 +396,19 @@ export const Accessibility: StoryObj = {
         </p>
         <button
           ebTooltip="First button tooltip - shows on focus"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           First Button
         </button>
         <button
           ebTooltip="Second button tooltip - also keyboard accessible"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Second Button
         </button>
         <button
           ebTooltip="Third button tooltip - fully WCAG compliant"
-          style="padding: 12px 24px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 12px 24px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Third Button
         </button>
