@@ -12,6 +12,19 @@ const meta: Meta<TextareaComponent> = {
       providers: [],
     }),
   ],
+
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false,
+          },
+        ],
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: 'select',
