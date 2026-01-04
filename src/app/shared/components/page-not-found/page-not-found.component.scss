@@ -17,10 +17,7 @@
     font-size: clamp(6rem, 20vw, 10rem);
     font-weight: var(--font-weight-bold);
     line-height: 1;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-primary);
     margin-bottom: var(--space-4);
   }
 
