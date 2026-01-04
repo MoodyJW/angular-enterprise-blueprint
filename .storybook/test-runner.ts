@@ -56,17 +56,18 @@ function checkAccessibility(axeResults: AxeResults, storyId: string, themeName: 
       console.warn(formatA11yResults(incomplete, 'inconclusive'));
     }
 
-    // Only fail on violations, not on inconclusive results
-    if (hasViolations) {
-      throw new Error(
-        `Found ${String(violations.length)} accessibility violation(s) in story "${storyId}" with theme "${themeName}". See console output above for details.`,
-      );
-    }
+    // Fail on violations OR inconclusive results
+    if (hasViolations || hasInconclusive) {
+      const errorParts: string[] = [];
+      if (hasViolations) {
+        errorParts.push(`${String(violations.length)} violation(s)`);
+      }
+      if (hasInconclusive) {
+        errorParts.push(`${String(incomplete.length)} inconclusive check(s)`);
+      }
 
-    // Log warning for inconclusive but don't fail
-    if (hasInconclusive) {
-      console.warn(
-        `⚠️  ${String(incomplete.length)} inconclusive accessibility check(s) require manual review.`,
+      throw new Error(
+        `Found ${errorParts.join(' and ')} in story "${storyId}" with theme "${themeName}". See console output above for details.`,
       );
     }
   }

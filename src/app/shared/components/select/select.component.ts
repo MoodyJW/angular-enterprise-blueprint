@@ -439,6 +439,14 @@ export class SelectComponent<T = unknown> implements OnDestroy, ControlValueAcce
   });
 
   /**
+   * Computed ID for the select button element
+   */
+  readonly selectButtonId = computed(() => {
+    const labelId = this.labelId();
+    return labelId !== undefined && labelId !== '' ? `select-${labelId}` : undefined;
+  });
+
+  /**
    * Computed ID for listbox element
    */
   readonly listboxId = computed(() => this.uniqueIdService.generateId('select-listbox'));

@@ -1,6 +1,7 @@
 <div [class]="wrapperClasses()">
   <eb-input-label
-    [forId]="labelId()"
+    [id]="labelId()"
+    [forId]="selectButtonId()"
     [label]="label()"
     [required]="required()"
     [labelClass]="'select__label' + (disabled() ? ' select__label--disabled' : '')"
@@ -9,7 +10,7 @@
   <div class="select__inner">
     <eb-select-button
       #selectButton
-      [buttonId]="label() ? 'select-' + labelId() : undefined"
+      [buttonId]="selectButtonId()"
       [buttonClass]="buttonClasses()"
       [disabled]="disabled()"
       [ariaLabel]="ariaLabel()"
