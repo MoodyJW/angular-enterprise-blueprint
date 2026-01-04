@@ -8,6 +8,9 @@ import {
   viewChild,
 } from '@angular/core';
 
+import { provideIcons } from '@ng-icons/core';
+import { heroMagnifyingGlass } from '@ng-icons/heroicons/outline';
+
 import { IconComponent } from '@shared/components/icon';
 import { SelectOptionComponent } from '../select-option/select-option.component';
 import type { SelectOption } from '../select.component';
@@ -20,6 +23,7 @@ import type { SelectOption } from '../select.component';
 @Component({
   selector: 'eb-select-dropdown',
   imports: [CommonModule, IconComponent, SelectOptionComponent],
+  viewProviders: [provideIcons({ heroMagnifyingGlass })],
   styleUrl: './select-dropdown.component.scss',
   template: `
     <div [class]="dropdownClass()" role="presentation">
