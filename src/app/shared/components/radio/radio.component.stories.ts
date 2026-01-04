@@ -358,19 +358,29 @@ export const ValidationStates: Story = {
 };
 
 export const FormIntegration: Story = {
-  render: (args) => ({
-    props: {
-      ...args,
-      preferences: signal({
-        notifications: 'email',
-        theme: 'auto',
-        privacy: 'private',
-      }),
-      handlePreferenceChange: (_key: string, _value: string) => {
-        // Handle preference change
+  render: (args) => {
+    const preferences = signal({
+      notifications: 'email',
+      theme: 'auto',
+      privacy: 'private',
+    });
+
+    const updateNotification = (value: string): void => {
+      preferences.update((p) => ({ ...p, notifications: value }));
+    };
+
+    const updateTheme = (value: string): void => {
+      preferences.update((p) => ({ ...p, theme: value }));
+    };
+
+    return {
+      props: {
+        ...args,
+        preferences,
+        updateNotification,
+        updateTheme,
       },
-    },
-    template: `
+      template: `
       <div style="display: flex; flex-direction: column; gap: 2rem; max-width: 600px;">
         <div>
           <h3 style="margin: 0 0 1rem 0; font-size: 1.125rem; font-weight: 600;">Notification Preferences</h3>
@@ -380,7 +390,7 @@ export const FormIntegration: Story = {
               name="notifications"
               value="email"
               [checked]="preferences().notifications === 'email'"
-              (selected)="preferences.update(p => ({ ...p, notifications: $event })); handlePreferenceChange('notifications', $event)"
+              (selected)="updateNotification($event)"
               ariaLabel="Email notifications"
               helperText="Receive updates via email"
             />
@@ -389,7 +399,7 @@ export const FormIntegration: Story = {
               name="notifications"
               value="sms"
               [checked]="preferences().notifications === 'sms'"
-              (selected)="preferences.update(p => ({ ...p, notifications: $event })); handlePreferenceChange('notifications', $event)"
+              (selected)="updateNotification($event)"
               ariaLabel="SMS notifications"
               helperText="Receive updates via text message"
             />
@@ -398,7 +408,7 @@ export const FormIntegration: Story = {
               name="notifications"
               value="none"
               [checked]="preferences().notifications === 'none'"
-              (selected)="preferences.update(p => ({ ...p, notifications: $event })); handlePreferenceChange('notifications', $event)"
+              (selected)="updateNotification($event)"
               ariaLabel="No notifications"
               helperText="Don't send me any updates"
             />
@@ -413,7 +423,7 @@ export const FormIntegration: Story = {
               name="theme"
               value="light"
               [checked]="preferences().theme === 'light'"
-              (selected)="preferences.update(p => ({ ...p, theme: $event })); handlePreferenceChange('theme', $event)"
+              (selected)="updateTheme($event)"
               ariaLabel="Light theme"
             />
             <eb-radio
@@ -421,7 +431,7 @@ export const FormIntegration: Story = {
               name="theme"
               value="dark"
               [checked]="preferences().theme === 'dark'"
-              (selected)="preferences.update(p => ({ ...p, theme: $event })); handlePreferenceChange('theme', $event)"
+              (selected)="updateTheme($event)"
               ariaLabel="Dark theme"
             />
             <eb-radio
@@ -429,7 +439,7 @@ export const FormIntegration: Story = {
               name="theme"
               value="auto"
               [checked]="preferences().theme === 'auto'"
-              (selected)="preferences.update(p => ({ ...p, theme: $event })); handlePreferenceChange('theme', $event)"
+              (selected)="updateTheme($event)"
               ariaLabel="Auto theme based on system preference"
             />
           </div>
@@ -443,7 +453,8 @@ export const FormIntegration: Story = {
         </div>
       </div>
     `,
-  }),
+    };
+  },
 };
 
 export const AccessibilityDemo: Story = {

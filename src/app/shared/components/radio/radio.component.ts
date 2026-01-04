@@ -303,14 +303,14 @@ export class RadioComponent {
    * Generate BEM CSS classes for the wrapper
    */
   private _getWrapperClasses(): string {
-    const classes = ['radio'];
+    const classes = ['radio-wrapper'];
 
     // Size class
-    classes.push(`radio--${this.size()}`);
+    classes.push(`radio-wrapper--${this.size()}`);
 
     // State classes
     if (this.disabled()) {
-      classes.push('radio--disabled');
+      classes.push('radio-wrapper--disabled');
     }
 
     return classes.join(' ');
@@ -320,26 +320,26 @@ export class RadioComponent {
    * Generate BEM CSS classes for the radio input
    */
   private _getRadioClasses(): string {
-    const classes = ['radio__control'];
+    const classes = ['radio'];
 
     // Size class
-    classes.push(`radio__control--${this.size()}`);
+    classes.push(`radio--${this.size()}`);
 
     // Validation state class
     const validation = this.validationState();
     if (validation !== 'default') {
-      classes.push(`radio__control--${validation}`);
+      classes.push(`radio--${validation}`);
     }
 
     // State classes
     if (this.disabled()) {
-      classes.push('radio__control--disabled');
+      classes.push('radio--disabled');
     }
     if (this.isFocused()) {
-      classes.push('radio__control--focused');
+      classes.push('radio--focused');
     }
     if (this.checked()) {
-      classes.push('radio__control--checked');
+      classes.push('radio--checked');
     }
 
     return classes.join(' ');
@@ -349,17 +349,17 @@ export class RadioComponent {
    * Generate BEM CSS classes for the label
    */
   private _getLabelClasses(): string {
-    const classes = ['radio__label'];
+    const classes = ['radio-label'];
 
     // Size class
-    classes.push(`radio__label--${this.size()}`);
+    classes.push(`radio-label--${this.size()}`);
 
     // State classes
     if (this.disabled()) {
-      classes.push('radio__label--disabled');
+      classes.push('radio-label--disabled');
     }
     if (this.required()) {
-      classes.push('radio__label--required');
+      classes.push('radio-label--required');
     }
 
     return classes.join(' ');

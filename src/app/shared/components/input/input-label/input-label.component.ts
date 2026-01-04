@@ -21,7 +21,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   imports: [CommonModule],
   template: `
     @if (label()) {
-      <label [id]="forId()" [for]="forId()" [class]="labelClass()">
+      <label [id]="id()" [for]="forId()" [class]="labelClass()">
         {{ label() }}
         @if (required()) {
           <span class="input-label__required" aria-hidden="true">*</span>
@@ -58,6 +58,11 @@ export class InputLabelComponent {
    * The ID of the input element this label is for
    */
   readonly forId = input<string | undefined>(undefined);
+
+  /**
+   * The ID of the label element itself
+   */
+  readonly id = input<string | undefined>(undefined);
 
   /**
    * The label text to display
