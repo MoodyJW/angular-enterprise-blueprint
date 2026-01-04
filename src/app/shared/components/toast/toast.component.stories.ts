@@ -273,7 +273,7 @@ export const Interactive: Story = {
   selector: 'eb-toast-demo',
   imports: [ToastContainerComponent],
   template: `
-    <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 600px;">
+    <main style="display: flex; flex-direction: column; gap: 1rem; max-width: 600px;">
       <h3 style="margin: 0; font-size: 18px;">Toast Service Demo</h3>
       <p style="font-size: 14px; color: var(--color-text-secondary); margin: 0;">
         Click the buttons below to trigger toast notifications using the ToastService. Toasts will
@@ -283,25 +283,25 @@ export const Interactive: Story = {
       <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
         <button
           (click)="showSuccess()"
-          style="padding: 8px 16px; background: var(--color-success); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 8px 16px; background: var(--color-success); color: var(--color-on-success); border: none; border-radius: 6px; cursor: pointer;"
         >
           Show Success
         </button>
         <button
           (click)="showError()"
-          style="padding: 8px 16px; background: var(--color-error); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 8px 16px; background: var(--color-error); color: var(--color-on-error); border: none; border-radius: 6px; cursor: pointer;"
         >
           Show Error
         </button>
         <button
           (click)="showWarning()"
-          style="padding: 8px 16px; background: var(--color-warning); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 8px 16px; background: var(--color-warning); color: var(--color-on-warning); border: none; border-radius: 6px; cursor: pointer;"
         >
           Show Warning
         </button>
         <button
           (click)="showInfo()"
-          style="padding: 8px 16px; background: var(--color-info); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 8px 16px; background: var(--color-info); color: var(--color-on-info); border: none; border-radius: 6px; cursor: pointer;"
         >
           Show Info
         </button>
@@ -310,19 +310,19 @@ export const Interactive: Story = {
       <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
         <button
           (click)="showMultiple()"
-          style="padding: 8px 16px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 8px 16px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Show Multiple
         </button>
         <button
           (click)="showAtPosition('bottom-center')"
-          style="padding: 8px 16px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 8px 16px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Show Bottom Center
         </button>
         <button
           (click)="showPersistent()"
-          style="padding: 8px 16px; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 8px 16px; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: 6px; cursor: pointer;"
         >
           Show Persistent (No Auto-Dismiss)
         </button>
@@ -333,7 +333,7 @@ export const Interactive: Story = {
           Dismiss All
         </button>
       </div>
-    </div>
+    </main>
 
     <eb-toast-container />
   `,
@@ -419,7 +419,7 @@ export const ServiceIntegration: Story = {
 export const AccessibilityFeatures: Story = {
   render: () => ({
     template: `
-      <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px;">
+    <main style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px;">
         <h3 style="margin: 0; font-size: 18px;">Accessibility Features</h3>
 
         <div>
@@ -453,7 +453,7 @@ export const AccessibilityFeatures: Story = {
             Respects <code>prefers-reduced-motion</code>. Animations are simplified or removed for users who prefer less motion.
           </p>
         </div>
-      </div>
+      </main>
     `,
   }),
   parameters: {
