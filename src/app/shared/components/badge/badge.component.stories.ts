@@ -113,12 +113,17 @@ const meta: Meta<BadgeComponent> = {
 export default meta;
 type Story = StoryObj<BadgeComponent>;
 
+// Helper for consistent button styling
+const buttonStyle = `padding: 8px 16px; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-surface); color: var(--color-text);`;
+const largeButtonStyle = `padding: 16px 24px; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-surface); color: var(--color-text);`;
+const iconButtonStyle = `padding: 12px 20px; border: 1px solid var(--color-border); border-radius: 6px; background: var(--color-surface); color: var(--color-text); cursor: pointer; display: flex; align-items: center; gap: 8px;`;
+
 // Primary Badge with Count
 export const Primary: Story = {
   render: () => ({
     template: `
       <div style="position: relative; display: inline-block; padding: 20px;">
-        <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">
+        <button style="${buttonStyle}">
           Messages
         </button>
         <eb-badge [content]="5" ariaLabel="5 unread messages" />
@@ -140,27 +145,27 @@ export const AllVariants: Story = {
     template: `
       <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;">
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Primary</button>
+          <button style="${buttonStyle}">Primary</button>
           <eb-badge variant="primary" [content]="5" ariaLabel="5 notifications" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Secondary</button>
+          <button style="${buttonStyle}">Secondary</button>
           <eb-badge variant="secondary" [content]="3" ariaLabel="3 notifications" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Success</button>
+          <button style="${buttonStyle}">Success</button>
           <eb-badge variant="success" [content]="8" ariaLabel="8 notifications" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Warning</button>
+          <button style="${buttonStyle}">Warning</button>
           <eb-badge variant="warning" [content]="2" ariaLabel="2 warnings" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Error</button>
+          <button style="${buttonStyle}">Error</button>
           <eb-badge variant="error" [content]="12" ariaLabel="12 errors" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Info</button>
+          <button style="${buttonStyle}">Info</button>
           <eb-badge variant="info" [content]="7" ariaLabel="7 info items" />
         </div>
       </div>
@@ -181,15 +186,15 @@ export const AllSizes: Story = {
     template: `
       <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;">
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Small</button>
+          <button style="${buttonStyle}">Small</button>
           <eb-badge size="sm" [content]="3" ariaLabel="3 items" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Medium</button>
+          <button style="${buttonStyle}">Medium</button>
           <eb-badge size="md" [content]="5" ariaLabel="5 items" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Large</button>
+          <button style="${buttonStyle}">Large</button>
           <eb-badge size="lg" [content]="8" ariaLabel="8 items" />
         </div>
       </div>
@@ -210,19 +215,19 @@ export const AllPositions: Story = {
     template: `
       <div style="display: flex; gap: 3rem; flex-wrap: wrap; align-items: center;">
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 16px 24px; border: 1px solid #ccc; border-radius: 4px; background: white;">Top Right</button>
+          <button style="${largeButtonStyle}">Top Right</button>
           <eb-badge position="top-right" [content]="5" ariaLabel="5 items top right" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 16px 24px; border: 1px solid #ccc; border-radius: 4px; background: white;">Top Left</button>
+          <button style="${largeButtonStyle}">Top Left</button>
           <eb-badge position="top-left" [content]="3" ariaLabel="3 items top left" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 16px 24px; border: 1px solid #ccc; border-radius: 4px; background: white;">Bottom Right</button>
+          <button style="${largeButtonStyle}">Bottom Right</button>
           <eb-badge position="bottom-right" [content]="7" ariaLabel="7 items bottom right" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 16px 24px; border: 1px solid #ccc; border-radius: 4px; background: white;">Bottom Left</button>
+          <button style="${largeButtonStyle}">Bottom Left</button>
           <eb-badge position="bottom-left" [content]="9" ariaLabel="9 items bottom left" />
         </div>
       </div>
@@ -243,15 +248,15 @@ export const DotBadge: Story = {
     template: `
       <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;">
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Notifications</button>
+          <button style="${buttonStyle}">Notifications</button>
           <eb-badge [dot]="true" ariaLabel="Has notifications" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Alert</button>
+          <button style="${buttonStyle}">Alert</button>
           <eb-badge variant="error" [dot]="true" ariaLabel="Has alert" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Success</button>
+          <button style="${buttonStyle}">Success</button>
           <eb-badge variant="success" [dot]="true" size="lg" ariaLabel="Success status" />
         </div>
       </div>
@@ -272,15 +277,15 @@ export const MaxNumber: Story = {
     template: `
       <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;">
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Messages</button>
+          <button style="${buttonStyle}">Messages</button>
           <eb-badge [content]="99" [max]="99" ariaLabel="99 messages" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Notifications</button>
+          <button style="${buttonStyle}">Notifications</button>
           <eb-badge [content]="150" [max]="99" ariaLabel="150 notifications" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Items</button>
+          <button style="${buttonStyle}">Items</button>
           <eb-badge [content]="1500" [max]="999" ariaLabel="1500 items" />
         </div>
       </div>
@@ -301,15 +306,15 @@ export const StringContent: Story = {
     template: `
       <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;">
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Features</button>
+          <button style="${buttonStyle}">Features</button>
           <eb-badge variant="success" content="NEW" ariaLabel="New features available" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Beta</button>
+          <button style="${buttonStyle}">Beta</button>
           <eb-badge variant="warning" content="β" size="lg" ariaLabel="Beta version" />
         </div>
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Status</button>
+          <button style="${buttonStyle}">Status</button>
           <eb-badge variant="info" content="!" ariaLabel="Important status update" />
         </div>
       </div>
@@ -330,21 +335,21 @@ export const OnDifferentElements: Story = {
     template: `
       <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;">
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">
+          <button style="${buttonStyle}">
             Button
           </button>
           <eb-badge [content]="5" ariaLabel="5 items" />
         </div>
 
         <div style="position: relative; display: inline-block;">
-          <span style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white; display: inline-block;">
+          <span style="padding: 8px 16px; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-surface); color: var(--color-text); display: inline-block;">
             Text Span
           </span>
           <eb-badge variant="error" [content]="3" ariaLabel="3 errors" />
         </div>
 
         <div style="position: relative; display: inline-block;">
-          <div style="width: 40px; height: 40px; border-radius: var(--border-radius-half); background: #ddd; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 40px; height: 40px; border-radius: var(--border-radius-half); background: var(--color-surface-elevated); display: flex; align-items: center; justify-content: center;">
             👤
           </div>
           <eb-badge variant="success" [content]="12" ariaLabel="12 profile updates" />
@@ -375,18 +380,18 @@ export const HideWhenZero: Story = {
     template: `
       <div style="background-color: var(--color-surface); padding: 20px; border-radius: 8px; display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;">
         <div>
-          <h4 style="margin: 0 0 8px 0; font-size: 14px;">hideWhenZero=true (default)</h4>
+          <h4 style="margin: 0 0 8px 0; font-size: 14px; color: var(--color-text);">hideWhenZero=true (default)</h4>
           <div style="position: relative; display: inline-block;">
-            <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Messages</button>
+            <button style="${buttonStyle}">Messages</button>
             <eb-badge [content]="0" [hideWhenZero]="true" ariaLabel="No messages" />
           </div>
           <p style="font-size: 12px; color: var(--color-text-muted); margin: 4px 0 0 0;">Badge is hidden</p>
         </div>
 
         <div>
-          <h4 style="margin: 0 0 8px 0; font-size: 14px;">hideWhenZero=false</h4>
+          <h4 style="margin: 0 0 8px 0; font-size: 14px; color: var(--color-text);">hideWhenZero=false</h4>
           <div style="position: relative; display: inline-block;">
-            <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">Messages</button>
+            <button style="${buttonStyle}">Messages</button>
             <eb-badge [content]="0" [hideWhenZero]="false" ariaLabel="No messages" />
           </div>
           <p style="font-size: 12px; color: var(--color-text-muted); margin: 4px 0 0 0;">Badge shows "0"</p>
@@ -409,7 +414,7 @@ export const ShoppingCart: Story = {
     template: `
       <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;">
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 12px 20px; border: 1px solid #ccc; border-radius: 6px; background: white; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+          <button style="${iconButtonStyle}">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="9" cy="21" r="1"></circle>
               <circle cx="20" cy="21" r="1"></circle>
@@ -421,7 +426,7 @@ export const ShoppingCart: Story = {
         </div>
 
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 12px 20px; border: 1px solid #ccc; border-radius: 6px; background: white; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+          <button style="${iconButtonStyle}">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
               <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
@@ -432,7 +437,7 @@ export const ShoppingCart: Story = {
         </div>
 
         <div style="position: relative; display: inline-block;">
-          <button style="padding: 12px 20px; border: 1px solid #ccc; border-radius: 6px; background: white; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+          <button style="${iconButtonStyle}">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
@@ -459,7 +464,7 @@ export const AccessibilityDemo: Story = {
   render: () => ({
     template: `
       <div style="max-width: 600px;">
-        <h4 style="margin: 0 0 16px 0;">Accessibility Features</h4>
+        <h4 style="margin: 0 0 16px 0; color: var(--color-text);">Accessibility Features</h4>
         <ul style="font-size: 14px; line-height: 1.8; color: var(--color-text-secondary);">
           <li><strong>ARIA Labels:</strong> All badges require aria-label for screen readers</li>
           <li><strong>Role="status":</strong> Badges use status role for semantic meaning</li>
@@ -470,7 +475,7 @@ export const AccessibilityDemo: Story = {
 
         <div style="display: flex; gap: 2rem; margin-top: 20px;">
           <div style="position: relative; display: inline-block;">
-            <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">
+            <button style="${buttonStyle}">
               Notifications
             </button>
             <eb-badge
@@ -481,7 +486,7 @@ export const AccessibilityDemo: Story = {
           </div>
 
           <div style="position: relative; display: inline-block;">
-            <button style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white;">
+            <button style="${buttonStyle}">
               Messages
             </button>
             <eb-badge
@@ -522,7 +527,7 @@ export const Interactive: Story = {
     props: args,
     template: `
       <div style="position: relative; display: inline-block; padding: 20px;">
-        <button style="padding: 12px 24px; border: 1px solid #ccc; border-radius: 4px; background: white; cursor: pointer;">
+        <button style="padding: 12px 24px; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-surface); color: var(--color-text); cursor: pointer;">
           Interactive Badge
         </button>
         <eb-badge ${argsToTemplate(args)} />

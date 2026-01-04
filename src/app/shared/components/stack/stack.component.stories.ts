@@ -480,7 +480,7 @@ export const FormActionsExample: Story = {
           </div>
           <eb-stack direction="horizontal" spacing="md" justify="end">
             <button type="button" style="padding: 0.75rem 1.5rem; background: transparent; color: var(--color-text); border: 1px solid var(--color-border); border-radius: var(--border-radius-md); cursor: pointer;">Cancel</button>
-            <button type="submit" style="padding: 0.75rem 1.5rem; background: var(--color-primary); color: white; border: none; border-radius: var(--border-radius-md); cursor: pointer;">Submit</button>
+            <button type="submit" style="padding: 0.75rem 1.5rem; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: var(--border-radius-md); cursor: pointer;">Submit</button>
           </eb-stack>
         </eb-stack>
       </div>
@@ -547,7 +547,7 @@ export const NavigationExample: Story = {
             <a href="#" style="color: var(--color-text); text-decoration: none;">Services</a>
             <a href="#" style="color: var(--color-text); text-decoration: none;">Contact</a>
           </eb-stack>
-          <button style="margin-left: auto; padding: 0.5rem 1rem; background: var(--color-primary); color: white; border: none; border-radius: var(--border-radius-md); cursor: pointer;">Sign In</button>
+          <button style="margin-left: auto; padding: 0.5rem 1rem; background: var(--color-primary); color: var(--color-on-primary); border: none; border-radius: var(--border-radius-md); cursor: pointer;">Sign In</button>
         </eb-stack>
       </div>
     `,

@@ -1,6 +1,9 @@
 import { provideRouter } from '@angular/router';
 
 import type { Meta, StoryObj } from '@storybook/angular';
+import { applicationConfig } from '@storybook/angular';
+
+import { provideStoryIcons } from '@storybook-utils/story-icons';
 
 import type { BreadcrumbItem } from './breadcrumb.component';
 import { BreadcrumbComponent } from './breadcrumb.component';
@@ -10,11 +13,8 @@ const meta: Meta<BreadcrumbComponent> = {
   component: BreadcrumbComponent,
   tags: ['autodocs'],
   decorators: [
-    (story) => ({
-      ...story(),
-      applicationConfig: {
-        providers: [provideRouter([])],
-      },
+    applicationConfig({
+      providers: [provideRouter([]), provideStoryIcons()],
     }),
   ],
   argTypes: {
@@ -387,19 +387,19 @@ export const AllVariants: Story = {
     template: `
       <div style="display: flex; flex-direction: column; gap: 2rem;">
         <div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600;">Default</h3>
+          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600; color: var(--color-text);">Default</h3>
           <eb-breadcrumb [items]="items" variant="default" ariaLabel="Default variant" />
         </div>
         <div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600;">Slash</h3>
+          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600; color: var(--color-text);">Slash</h3>
           <eb-breadcrumb [items]="items" variant="slash" ariaLabel="Slash variant" />
         </div>
         <div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600;">Chevron</h3>
+          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600; color: var(--color-text);">Chevron</h3>
           <eb-breadcrumb [items]="items" variant="chevron" ariaLabel="Chevron variant" />
         </div>
         <div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600;">Arrow</h3>
+          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600; color: var(--color-text);">Arrow</h3>
           <eb-breadcrumb [items]="items" variant="arrow" ariaLabel="Arrow variant" />
         </div>
       </div>
@@ -425,15 +425,15 @@ export const AllSizes: Story = {
     template: `
       <div style="display: flex; flex-direction: column; gap: 2rem;">
         <div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600; color: #4d4d4d;">Small</h3>
+          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600; color: var(--color-text-secondary);">Small</h3>
           <eb-breadcrumb [items]="items" variant="chevron" size="sm" ariaLabel="Small size" />
         </div>
         <div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600; color: #4d4d4d;">Medium (Default)</h3>
+          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600; color: var(--color-text-secondary);">Medium (Default)</h3>
           <eb-breadcrumb [items]="items" variant="chevron" size="md" ariaLabel="Medium size" />
         </div>
         <div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600; color: #4d4d4d;">Large</h3>
+          <h3 style="margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600; color: var(--color-text-secondary);">Large</h3>
           <eb-breadcrumb [items]="items" variant="chevron" size="lg" ariaLabel="Large size" />
         </div>
       </div>
