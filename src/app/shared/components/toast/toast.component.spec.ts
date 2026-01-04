@@ -1,7 +1,9 @@
 // @vitest-environment jsdom
 import type { ComponentFixture } from '@angular/core/testing';
 import { TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
+import { IconComponent } from '../icon/icon.component';
 import type { ToastPosition, ToastVariant } from './toast.component';
 import { ToastComponent } from './toast.component';
 
@@ -336,8 +338,10 @@ describe('ToastComponent', () => {
       fixture.componentRef.setInput('variant', 'success');
       fixture.detectChanges();
 
-      const iconElement = nativeElement.querySelector('.toast__icon');
-      expect(iconElement?.getAttribute('aria-label')).toBe('Success');
+      const iconDebugEl = fixture.debugElement.query(By.css('eb-icon'));
+      expect(iconDebugEl).toBeTruthy();
+      const iconComponent = iconDebugEl.componentInstance as IconComponent;
+      expect(iconComponent.ariaLabel()).toBe('Success');
     });
 
     it('should set correct aria-label on dismiss button', () => {
@@ -353,46 +357,46 @@ describe('ToastComponent', () => {
       // Let's just check the element exists for now to pass.
       expect(dismissButton).toBeTruthy();
     });
-  });
 
-  describe('CSS Class Application', () => {
-    it('should apply correct variant classes to DOM element', () => {
-      const variants: ToastVariant[] = ['success', 'error', 'warning', 'info'];
+    describe('CSS Class Application', () => {
+      it('should apply correct variant classes to DOM element', () => {
+        const variants: ToastVariant[] = ['success', 'error', 'warning', 'info'];
 
-      variants.forEach((variant) => {
-        fixture.componentRef.setInput('variant', variant);
+        variants.forEach((variant) => {
+          fixture.componentRef.setInput('variant', variant);
+          fixture.detectChanges();
+
+          const toastElement = nativeElement.querySelector('.toast');
+          expect(toastElement?.classList.contains(`toast--${variant}`)).toBe(true);
+        });
+      });
+
+      it('should apply correct position classes to DOM element', () => {
+        const positions: ToastPosition[] = [
+          'top-left',
+          'top-center',
+          'top-right',
+          'bottom-left',
+          'bottom-center',
+          'bottom-right',
+        ];
+
+        positions.forEach((position) => {
+          fixture.componentRef.setInput('position', position);
+          fixture.detectChanges();
+
+          const toastElement = nativeElement.querySelector('.toast');
+          expect(toastElement?.classList.contains(`toast--${position}`)).toBe(true);
+        });
+      });
+
+      it('should apply exiting class when isExiting is true', () => {
+        fixture.componentRef.setInput('isExiting', true);
         fixture.detectChanges();
 
         const toastElement = nativeElement.querySelector('.toast');
-        expect(toastElement?.classList.contains(`toast--${variant}`)).toBe(true);
+        expect(toastElement?.classList.contains('toast--exiting')).toBe(true);
       });
-    });
-
-    it('should apply correct position classes to DOM element', () => {
-      const positions: ToastPosition[] = [
-        'top-left',
-        'top-center',
-        'top-right',
-        'bottom-left',
-        'bottom-center',
-        'bottom-right',
-      ];
-
-      positions.forEach((position) => {
-        fixture.componentRef.setInput('position', position);
-        fixture.detectChanges();
-
-        const toastElement = nativeElement.querySelector('.toast');
-        expect(toastElement?.classList.contains(`toast--${position}`)).toBe(true);
-      });
-    });
-
-    it('should apply exiting class when isExiting is true', () => {
-      fixture.componentRef.setInput('isExiting', true);
-      fixture.detectChanges();
-
-      const toastElement = nativeElement.querySelector('.toast');
-      expect(toastElement?.classList.contains('toast--exiting')).toBe(true);
     });
   });
 });
