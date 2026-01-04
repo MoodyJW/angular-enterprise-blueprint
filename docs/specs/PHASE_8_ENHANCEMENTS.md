@@ -610,7 +610,183 @@ The current checkbox uses:
 
 ---
 
-## 8.10 Enhanced Dashboard Metrics
+## 8.10 Card Visibility Improvements in Light Themes
+
+**Current:** Cards in light themes have poor visibility - background and surface colors are identical (#ffffff), borders are very light (#e2e8f0), and shadows are too subtle
+**Target:** Improve card contrast and visibility in light themes while maintaining WCAG AA compliance
+
+### Problem Analysis
+
+**Light Default Theme Issues:**
+
+- `--color-background: #ffffff` (page background)
+- `--color-surface: #ffffff` (card background) - **Same as background!**
+- `--color-border: #e2e8f0` - Very light gray, barely visible
+- `--shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05)` - Only 5% opacity, nearly invisible
+
+**Result:** Cards blend into the page background, making it difficult to distinguish card boundaries, especially for the `default` variant which relies on subtle shadows.
+
+### Proposed Solution
+
+Update light theme color variables to create better visual separation between surfaces:
+
+**Option 1: Differentiate Surface from Background**
+
+- Keep `--color-background: #ffffff` (pure white page)
+- Change `--color-surface: #f8fafc` (very light blue-gray for cards)
+- Increase `--color-border` darkness slightly: `#cbd5e1` → `#94a3b8`
+- Enhance shadows: `rgba(0, 0, 0, 0.05)` → `rgba(0, 0, 0, 0.08)`
+
+**Option 2: Subtle Background Tint**
+
+- Change `--color-background: #f8fafc` (very light gray page)
+- Keep `--color-surface: #ffffff` (white cards)
+- Maintain current border and shadow values
+
+**Recommendation:** Option 2 is preferred because:
+
+- White cards on light gray background is a proven pattern
+- Maintains accessibility (cards remain high contrast)
+- Minimal changes to existing color system
+- Better aligns with common design patterns (GitHub, Tailwind docs, etc.)
+
+### Changes Required
+
+**Light Default Theme** (`_light-default.scss`):
+
+```scss
+// Surface colors
+--color-background: #f8fafc; // Change from #ffffff
+--color-surface: #ffffff;
+--color-surface-hover: #f8fafc;
+--color-surface-active: #f1f5f9;
+--color-surface-elevated: #ffffff;
+
+// Optional: Slightly darker border for better visibility
+--color-border: #cbd5e1; // Keep current, or darken to #94a3b8
+
+// Optional: Enhance shadows slightly
+--shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.08); // From 0.05
+--shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.12), 0 2px 4px -2px rgba(0, 0, 0, 0.08); // From 0.1
+```
+
+**Light Warm Theme** (`_light-warm.scss`):
+
+- Apply same pattern with warm color palette
+- `--color-background: #fef9f5` (warm off-white)
+- `--color-surface: #ffffff`
+
+**High Contrast Light Theme** (`_high-contrast-light.scss`):
+
+- Verify existing contrast is sufficient (likely already correct)
+- May need stronger borders/shadows for maximum distinction
+
+### Card Component Updates (Optional)
+
+**If theme changes aren't sufficient**, enhance card variants:
+
+```scss
+// card.component.scss - Add stronger default elevation
+&--default {
+  box-shadow: var(--shadow-md); // From shadow-sm for better visibility
+  border: 1px solid var(--color-border); // Add subtle border as fallback
+
+  &.card--hoverable:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+}
+
+&--elevated {
+  box-shadow: var(--shadow-lg); // From shadow-md
+
+  &.card--hoverable:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+  }
+}
+```
+
+### Implementation Steps
+
+1. **Analyze current card usage** across the app
+   - Audit all pages with cards (Home, Profile, Modules, ADRs, etc.)
+   - Screenshot cards in all 6 themes for comparison
+2. **Update light theme variables**
+   - Modify `_light-default.scss` with new background/surface colors
+   - Modify `_light-warm.scss` with warm equivalents
+   - Verify `_high-contrast-light.scss` doesn't need changes
+3. **Test across all card variants**
+   - Default, Elevated, Outlined, Filled variants in Storybook
+   - Verify clickable, hoverable, and padding variations
+4. **Validate WCAG compliance**
+   - Run axe DevTools on all themes
+   - Verify color contrast ratios (background vs. surface, text on surface, etc.)
+   - Ensure focus states remain visible
+5. **Cross-component testing**
+   - Verify cards in all features (Dashboard, Profile, Modules, ADRs)
+   - Check nested components (buttons, badges inside cards)
+   - Test responsive layouts (mobile, tablet, desktop)
+6. **Optional: Adjust card component SCSS** if theme changes insufficient
+7. **Update Storybook documentation**
+   - Add notes about theme-based card visibility
+   - Document when to use each variant
+
+### Acceptance Criteria
+
+- [ ] Cards clearly distinguishable from page background in light themes
+- [ ] `--color-background` and `--color-surface` have visible difference (at least 2-3 shades)
+- [ ] Border visibility improved (if needed) without being too prominent
+- [ ] Shadow enhancements provide depth without being too heavy
+- [ ] All 6 themes tested and cards visible in each
+- [ ] WCAG 2.1 AA contrast ratios maintained for all text on cards
+- [ ] Focus states remain clearly visible on all card variants
+- [ ] No visual regressions in dark themes or high-contrast themes
+- [ ] Card variants (default, elevated, outlined, filled) each have distinct appearance
+- [ ] Hover states provide clear visual feedback
+- [ ] Mobile responsive layouts unaffected
+- [ ] Storybook stories demonstrate improved visibility
+- [ ] All existing card tests pass without modification
+
+### Files to Update
+
+1. `src/styles/themes/_light-default.scss` (primary changes)
+2. `src/styles/themes/_light-warm.scss` (apply same pattern)
+3. `src/styles/themes/_high-contrast-light.scss` (verify/adjust if needed)
+4. `src/app/shared/components/card/card.component.scss` (optional, if theme changes insufficient)
+5. `src/app/shared/components/card/card.stories.ts` (update documentation)
+
+### Testing Strategy
+
+- Visual comparison: Before/after screenshots in all 6 themes
+- Storybook: Test all card variants with theme switcher
+- Accessibility: axe DevTools validation across themes
+- User testing: Get feedback on card visibility improvements
+- Cross-browser: Verify shadow rendering (Safari, Firefox, Chrome)
+
+### Design Considerations
+
+**Background Color Selection:**
+
+- Too dark: Reduces overall "light theme" feel
+- Too similar to surface: No improvement
+- Sweet spot: `#f8fafc` to `#f1f5f9` range (barely perceptible but effective)
+
+**Shadow Opacity:**
+
+- Current 5% opacity is common in modern design but may be too subtle
+- 8-10% opacity provides better depth without being heavy
+- Consider using layered shadows (multiple shadow definitions) for richer depth
+
+**Border Strategy:**
+
+- Borders are fallback for when shadows aren't visible (print, high contrast, etc.)
+- Very light borders (#e2e8f0) work when background/surface differ
+- Darker borders (#cbd5e1 or #94a3b8) needed when colors are too similar
+
+---
+
+## 8.11 Enhanced Dashboard Metrics
 
 **Current:** Basic dashboard with build status, test coverage, last deployment
 **Target:** Comprehensive metrics dashboard showcasing code quality and project health
@@ -853,8 +1029,9 @@ interface BundleSize {
 | 8.7 Toast Improvements     | 1-2 hours       |
 | 8.8 Profile Stats Caching  | 1-2 hours       |
 | 8.9 Checkbox Icon Refactor | 4-6 hours       |
-| 8.10 Enhanced Dashboard    | 12-16 hours     |
-| **Total**                  | **66-92 hours** |
+| 8.10 Card Visibility       | 3-5 hours       |
+| 8.11 Enhanced Dashboard    | 12-16 hours     |
+| **Total**                  | **69-97 hours** |
 
 **8.1 Breakdown:**
 
@@ -894,6 +1071,16 @@ interface BundleSize {
 - Cross-theme testing and accessibility validation: 1 hour
 
 **8.10 Breakdown:**
+
+- Audit current card usage and screenshot all themes: 0.5 hours
+- Update `_light-default.scss` theme variables: 0.5 hours
+- Update `_light-warm.scss` theme variables: 0.5 hours
+- Test all card variants in Storybook with theme switcher: 1 hour
+- WCAG compliance validation with axe DevTools: 0.5 hours
+- Cross-component testing in real features: 0.5-1 hour
+- Optional card.component.scss adjustments (if needed): 0.5-1 hour
+
+**8.11 Breakdown:**
 
 - Metric parsing scripts: 4-5 hours
 - DashboardMetricsComponent (uses CardComponent + GridComponent): 4-5 hours

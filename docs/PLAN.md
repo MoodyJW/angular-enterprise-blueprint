@@ -337,7 +337,18 @@ _Goal: Add new capabilities and features to enhance portfolio presentation and u
   - [ ] Create `provideProfileStore()` function.
   - [ ] Move ProfileStore to app-level in `app.config.ts`.
   - [ ] Implement 1-hour cache window with invalidation.
-- [ ] **8.9 Enhanced Dashboard Metrics**: Expand dashboard with comprehensive code quality metrics.
+- [ ] **8.9 Checkbox Component Icon Refactor**: Replace CSS-based checkbox with Material Icons.
+  - [ ] Install `@ng-icons/material-icons` package.
+  - [ ] Update CheckboxCheckmarkComponent with three icon states.
+  - [ ] Use `matCheckBoxOutlineBlank` (unchecked), `matCheckBox` (checked), `matIndeterminateCheckBox` (indeterminate).
+  - [ ] Update Storybook and tests across all 6 themes.
+- [ ] **8.10 Card Visibility Improvements**: Fix poor card visibility in light themes.
+  - [ ] Update `_light-default.scss` background color from `#ffffff` to `#f8fafc`.
+  - [ ] Update `_light-warm.scss` with warm equivalent background tint.
+  - [ ] Verify high-contrast light theme doesn't need changes.
+  - [ ] Optional: Enhance shadow opacity and border colors if needed.
+  - [ ] Test all card variants in Storybook across all 6 themes.
+- [ ] **8.11 Enhanced Dashboard Metrics**: Expand dashboard with comprehensive code quality metrics.
   - [ ] Add Compodoc documentation coverage percentage and breakdown.
   - [ ] Display detailed test coverage (statements, branches, functions, lines).
   - [ ] Show bundle size with budget status.
