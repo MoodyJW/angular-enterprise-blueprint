@@ -274,12 +274,12 @@ _Goal: Clean up technical debt, refine implementation quality, and ensure produc
   - [x] Standardize spacing, sizing, and typography scales.
   - [x] Add missing `:hover`, `:focus`, `:active`, `:disabled` states.
   - [x] Ensure `prefers-reduced-motion` support in all animations.
-- [ ] **7.4 Theme System Compliance**:
+- [x] **7.4 Theme System Compliance**:
   - [x] Setup: Add theme switcher to Storybook global toolbar.
   - [x] Coverage: Verify all components have complete Storybook stories.
   - [x] Testing: Run axe DevTools for each theme, document violations.
-  - [ ] Audit: Verify all 6 themes for WCAG AA color contrast.
-  - [ ] Documentation: Create `/docs/THEME_SYSTEM.md`.
+  - [x] Audit: Verify all 6 themes for WCAG AA color contrast.
+  - [x] Documentation: Create `/docs/THEME_SYSTEM.md`.
 - [ ] **7.5 Component Documentation Cleanup**:
   - [ ] Ensure all Storybook stories are up-to-date and comprehensive.
   - [ ] Add accessibility documentation to all component stories.
