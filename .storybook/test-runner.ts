@@ -118,32 +118,19 @@ const config: TestRunnerConfig = {
     await page.waitForTimeout(100);
 
     // Get story parameters to check for a11y overrides
-    let a11yConfig = await page.evaluate(
-      ({ storyId }) => {
-        try {
-          return (
-            window.__STORYBOOK_PREVIEW__?.storyStore?.fromId(storyId).parameters
-              ?.a11y as A11yParameter
-          ).config;
-        } catch {
-          return undefined;
-        }
-      },
-      { storyId: context.id },
-    );
-
-    // Fallback: manually apply override for Textarea stories if config not found
-    // This handles cases where story parameter retrieval fails
-    if (!a11yConfig && context.title.includes('Textarea')) {
-      a11yConfig = {
-        rules: {
-          'color-contrast': {
-            enabled: false,
-            id: 'color-contrast',
-          },
-        },
-      };
-    }
+    // Use currentRender which exposes the active story's configuration
+    const a11yConfig = await page.evaluate(() => {
+      try {
+        const preview = window.__STORYBOOK_PREVIEW__;
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
+        const a11y = (preview as any)?.currentRender?.story?.parameters?.a11y as
+          | A11yParameter
+          | undefined;
+        return a11y?.config;
+      } catch {
+        return undefined;
+      }
+    });
 
     // Convert Storybook's array-style rules to Axe's object-style rules if needed
     if (a11yConfig?.rules && Array.isArray(a11yConfig.rules)) {
