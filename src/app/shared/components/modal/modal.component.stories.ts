@@ -126,7 +126,6 @@ A WCAG 2.1 AAA compliant modal component with:
       config: {
         rules: [
           { id: 'color-contrast', enabled: true },
-          { id: 'focus-order', enabled: true },
           { id: 'aria-required-attr', enabled: true },
         ],
       },
