@@ -280,11 +280,12 @@ _Goal: Clean up technical debt, refine implementation quality, and ensure produc
   - [x] Testing: Run axe DevTools for each theme, document violations.
   - [x] Audit: Verify all 6 themes for WCAG AA color contrast.
   - [x] Documentation: Create `/docs/THEME_SYSTEM.md`.
-- [ ] **7.5 Component Documentation Cleanup**:
-  - [ ] Ensure all Storybook stories are up-to-date and comprehensive.
-  - [ ] Add accessibility documentation to all component stories.
-  - [ ] Verify all JSDoc comments are accurate and complete.
-  - [ ] Add usage examples to complex components.
+- [x] **7.5 Component Documentation Cleanup**:
+  - [x] Ensure all Storybook stories are up-to-date and comprehensive.
+  - [x] Add accessibility documentation to all component stories.
+  - [x] Verify all JSDoc comments are accurate and complete.
+  - [x] Add usage examples to complex components.
+  - [x] Verify `prefers-reduced-motion` is respected in all animated components.
 - [ ] **7.6 Code Quality Sweep**:
   - [ ] Run full linting and fix all warnings.
   - [ ] Review and clean up any remaining `TODO` or `FIXME` comments.

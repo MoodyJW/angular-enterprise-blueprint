@@ -33,6 +33,36 @@
   </head>
 
   <body>
+    <!-- Theme FOUC prevention: Set theme before Angular loads -->
+    <script>
+      (function () {
+        var storageKey = 'theme-id';
+        var defaultLight = 'light-default';
+        var defaultDark = 'dark-default';
+
+        // Check URL param first (for testing)
+        var urlParams = new URLSearchParams(window.location.search);
+        var themeParam = urlParams.get('theme');
+        if (themeParam) {
+          document.documentElement.setAttribute('data-theme', themeParam);
+          return;
+        }
+
+        // Check localStorage
+        var stored = localStorage.getItem(storageKey);
+        if (stored) {
+          document.documentElement.setAttribute('data-theme', stored);
+          return;
+        }
+
+        // Fall back to system preference
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute(
+          'data-theme',
+          prefersDark ? defaultDark : defaultLight,
+        );
+      })();
+    </script>
     <eb-root></eb-root>
   </body>
 </html>
