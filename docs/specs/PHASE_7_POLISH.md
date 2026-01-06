@@ -159,11 +159,11 @@
 
 **Acceptance Criteria:**
 
-- [ ] Storybook has global theme switcher toolbar
-- [ ] All shared components have complete Storybook stories
-- [ ] All themes pass WCAG AA requirements via axe DevTools
-- [ ] Theme switcher functionality verified
-- [ ] No flash of unstyled content (FOUC) on load
+- [x] Storybook has global theme switcher toolbar
+- [x] All shared components have complete Storybook stories
+- [x] All themes pass WCAG AA requirements via axe DevTools
+- [x] Theme switcher functionality verified
+- [x] No flash of unstyled content (FOUC) on load
 - [x] **Optimization:** Lighthouse CI runs in parallel (Matrix Strategy)
 
 ## 7.5 Final Polish & Cleanup
@@ -199,9 +199,9 @@ readonly variant = input<ButtonVariant>('primary');
 
 **Acceptance Criteria:**
 
-- [ ] All stories comprehensive and up-to-date
-- [ ] All public APIs have JSDoc
-- [ ] Feature module READMEs complete
+- [x] All stories comprehensive and up-to-date
+- [x] All public APIs have JSDoc
+- [x] Feature module READMEs complete
 
 ---
 

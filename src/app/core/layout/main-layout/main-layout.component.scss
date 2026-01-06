@@ -112,3 +112,14 @@
     transform: translateX(0);
   }
 }
+
+// Respect reduced motion preference
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav-overlay {
+    animation: none;
+  }
+
+  .mobile-nav {
+    animation: none;
+  }
+}

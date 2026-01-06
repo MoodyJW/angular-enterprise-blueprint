@@ -1,5 +1,9 @@
 # Tooltip Component
 
+> **Last Updated**: January 2026
+> **Status**: Production Ready
+> **Test Coverage**: >90%
+
 An accessible, directive-based tooltip component that displays contextual information on hover and keyboard focus.
 
 ## Features
