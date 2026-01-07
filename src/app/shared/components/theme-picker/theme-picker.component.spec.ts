@@ -393,6 +393,76 @@ describe('ThemePickerComponent', () => {
 
       expect(component.currentTheme().id).toBe(THEMES[2].id);
     });
+
+    it('should not do anything when Home is pressed and dropdown is closed', () => {
+      expect(component.isOpen()).toBe(false);
+      const initialIndex = component.focusedIndex();
+
+      const event = new KeyboardEvent('keydown', { key: 'Home' });
+      component.handleKeydown(event);
+
+      expect(component.focusedIndex()).toBe(initialIndex);
+      expect(component.isOpen()).toBe(false);
+    });
+
+    it('should not do anything when End is pressed and dropdown is closed', () => {
+      expect(component.isOpen()).toBe(false);
+      const initialIndex = component.focusedIndex();
+
+      const event = new KeyboardEvent('keydown', { key: 'End' });
+      component.handleKeydown(event);
+
+      expect(component.focusedIndex()).toBe(initialIndex);
+      expect(component.isOpen()).toBe(false);
+    });
+
+    it('should not select theme when Enter is pressed with negative focused index', () => {
+      component.toggleDropdown();
+      component.focusedIndex.set(-1);
+      fixture.detectChanges();
+
+      const currentThemeId = component.currentTheme().id;
+      const event = new KeyboardEvent('keydown', { key: 'Enter' });
+      component.handleKeydown(event);
+
+      // Should not change theme
+      expect(component.currentTheme().id).toBe(currentThemeId);
+    });
+
+    it('should not select theme when Enter is pressed with out-of-bounds focused index', () => {
+      component.toggleDropdown();
+      component.focusedIndex.set(999);
+      fixture.detectChanges();
+
+      const currentThemeId = component.currentTheme().id;
+      const event = new KeyboardEvent('keydown', { key: 'Enter' });
+      component.handleKeydown(event);
+
+      // Should not change theme
+      expect(component.currentTheme().id).toBe(currentThemeId);
+    });
+
+    it('should not navigate beyond first theme with ArrowUp', () => {
+      component.toggleDropdown();
+      component.focusedIndex.set(0);
+      fixture.detectChanges();
+
+      const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
+      component.handleKeydown(event);
+
+      expect(component.focusedIndex()).toBe(0);
+    });
+
+    it('should not navigate beyond last theme with ArrowDown', () => {
+      component.toggleDropdown();
+      component.focusedIndex.set(THEMES.length - 1);
+      fixture.detectChanges();
+
+      const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
+      component.handleKeydown(event);
+
+      expect(component.focusedIndex()).toBe(THEMES.length - 1);
+    });
   });
 
   describe('Accessibility', () => {

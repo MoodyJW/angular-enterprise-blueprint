@@ -7,12 +7,15 @@ import {
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
+import { of } from 'rxjs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { AUTH_STRATEGY } from '@core/auth';
 import { ENVIRONMENT } from '@core/config';
 import { ErrorNotificationService } from '@core/error-handling';
 import { LoggerService } from '@core/services/logger';
 import type { AppEnvironment } from '@environments/environment.type';
+import { ToastService } from '@shared/services/toast';
 import { httpErrorInterceptor } from './http-error.interceptor';
 
 describe('httpErrorInterceptor', () => {
@@ -31,6 +34,22 @@ describe('httpErrorInterceptor', () => {
     version: '1.0.0',
   };
 
+  // Mock AuthStrategy for AuthStore - must return Observables
+  const mockAuthStrategy = {
+    login: vi.fn().mockReturnValue(of(null)),
+    logout: vi.fn().mockReturnValue(of(undefined)),
+    checkSession: vi.fn().mockReturnValue(of(null)),
+  };
+
+  // Mock ToastService for ErrorNotificationService
+  const mockToastService = {
+    success: vi.fn(),
+    error: vi.fn(),
+    warning: vi.fn(),
+    info: vi.fn(),
+    show: vi.fn(),
+  };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
@@ -39,6 +58,8 @@ describe('httpErrorInterceptor', () => {
         ErrorNotificationService,
         LoggerService,
         { provide: ENVIRONMENT, useValue: mockEnv },
+        { provide: AUTH_STRATEGY, useValue: mockAuthStrategy },
+        { provide: ToastService, useValue: mockToastService },
         {
           provide: Router,
           useValue: {

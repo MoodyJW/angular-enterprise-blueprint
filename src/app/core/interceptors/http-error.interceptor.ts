@@ -3,6 +3,7 @@ import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 
+import { AuthStore } from '@core/auth';
 import {
   ErrorNotificationService,
   HTTP_ERROR_MESSAGES,
@@ -29,8 +30,7 @@ export const httpErrorInterceptor: HttpInterceptorFn = (req, next) => {
   const logger = inject(LoggerService);
   const errorNotification = inject(ErrorNotificationService);
   const router = inject(Router);
-  // TODO: Uncomment when AuthStore is implemented in section 2.4
-  // const authStore = inject(AuthStore);
+  const authStore = inject(AuthStore);
 
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
@@ -44,7 +44,7 @@ export const httpErrorInterceptor: HttpInterceptorFn = (req, next) => {
       });
 
       // Handle specific status codes
-      handleHttpError(error, errorDetails, errorNotification, router);
+      handleHttpError(error, errorDetails, errorNotification, router, authStore);
 
       // Re-throw the error so calling code can handle it if needed
       return throwError(() => error);
@@ -60,6 +60,7 @@ function handleHttpError(
   errorDetails: HttpErrorDetails,
   errorNotification: ErrorNotificationService,
   router: Router,
+  authStore: InstanceType<typeof AuthStore>,
 ): void {
   switch (error.status) {
     case 0:
@@ -74,8 +75,7 @@ function handleHttpError(
 
     case 401:
       // Unauthorized - session expired or invalid credentials
-      // TODO: Trigger logout when AuthStore is implemented
-      // authStore.logout();
+      authStore.logout(undefined);
       errorNotification.notifyWarning(HTTP_ERROR_MESSAGES[401]);
       void router.navigate(['/auth/login']);
       break;

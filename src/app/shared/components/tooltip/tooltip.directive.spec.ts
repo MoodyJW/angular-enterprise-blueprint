@@ -328,5 +328,110 @@ describe('TooltipDirective', () => {
       expect(tooltips.length).toBe(1);
       vi.useRealTimers();
     });
+
+    it('should handle mouseleave when tooltip is not yet created', async () => {
+      fixture.detectChanges();
+      vi.useFakeTimers();
+
+      // Dispatch mouseleave without prior mouseenter (or before tooltip would be created)
+      buttonNative.dispatchEvent(new MouseEvent('mouseleave'));
+      vi.advanceTimersByTime(50);
+      await vi.runAllTimersAsync();
+
+      // Should not throw and no tooltip should exist
+      expect(document.querySelector('eb-tooltip')).toBeNull();
+      vi.useRealTimers();
+    });
+
+    it('should handle blur when tooltip is not yet created', async () => {
+      fixture.detectChanges();
+      vi.useFakeTimers();
+
+      // Dispatch blur without prior focus showing tooltip
+      buttonNative.dispatchEvent(new FocusEvent('blur'));
+      vi.advanceTimersByTime(50);
+      await vi.runAllTimersAsync();
+
+      // Should not throw and no tooltip should exist
+      expect(document.querySelector('eb-tooltip')).toBeNull();
+      vi.useRealTimers();
+    });
+
+    it('should handle component destroy when no tooltip was ever created', () => {
+      fixture.detectChanges();
+      // Destroy without ever showing tooltip
+      expect(() => {
+        fixture.destroy();
+      }).not.toThrow();
+    });
+
+    it('should handle component destroy while tooltip is mid-show', async () => {
+      fixture.detectChanges();
+      vi.useFakeTimers();
+
+      buttonNative.dispatchEvent(new MouseEvent('mouseenter'));
+      vi.advanceTimersByTime(100); // Mid-way through show delay
+
+      // Destroy before tooltip appears
+      fixture.destroy();
+      vi.advanceTimersByTime(200);
+      await vi.runAllTimersAsync();
+
+      // Should not create tooltip after destroy
+      expect(document.querySelector('eb-tooltip')).toBeNull();
+      vi.useRealTimers();
+    });
+  });
+});
+
+// Test with empty tooltip content
+@Component({
+  template: ` <button ebTooltip="" [tooltipPosition]="'top'">Empty tooltip</button> `,
+  imports: [TooltipDirective],
+})
+class EmptyTooltipHostComponent {}
+
+describe('TooltipDirective with empty content', () => {
+  let fixture: ComponentFixture<EmptyTooltipHostComponent>;
+  let buttonNative: HTMLButtonElement;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [EmptyTooltipHostComponent, TooltipDirective],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(EmptyTooltipHostComponent);
+    const buttonElement = fixture.debugElement.query(By.css('button'));
+    buttonNative = buttonElement.nativeElement as HTMLButtonElement;
+  });
+
+  afterEach(() => {
+    const tooltips = document.querySelectorAll('eb-tooltip');
+    tooltips.forEach((tooltip) => {
+      tooltip.remove();
+    });
+    vi.clearAllTimers();
+  });
+
+  it('should not show tooltip when content is empty', async () => {
+    fixture.detectChanges();
+    vi.useFakeTimers();
+
+    buttonNative.dispatchEvent(new MouseEvent('mouseenter'));
+    vi.advanceTimersByTime(250);
+    await vi.runAllTimersAsync();
+    fixture.detectChanges();
+
+    // Should not create tooltip with empty content
+    expect(document.querySelector('eb-tooltip')).toBeNull();
+    vi.useRealTimers();
+  });
+
+  it('should not set aria-label when content is empty', () => {
+    fixture.detectChanges();
+
+    // aria-label should not be set for empty tooltip
+    const ariaLabel = buttonNative.getAttribute('aria-label');
+    expect(ariaLabel).toBeNull();
   });
 });

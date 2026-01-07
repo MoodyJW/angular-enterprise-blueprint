@@ -22,6 +22,9 @@ class HomeComponent {}
 @Component({ selector: 'eb-test-dashboard', template: '' })
 class DashboardComponent {}
 
+@Component({ selector: 'eb-test-about', template: '' })
+class AboutComponent {}
+
 describe('withAnalyticsRouterTracking', () => {
   let trackPageViewSpy: ReturnType<typeof vi.fn>;
 
@@ -66,6 +69,7 @@ describe('withAnalyticsRouterTracking', () => {
           provideRouter([
             { path: '', component: HomeComponent },
             { path: 'dashboard', component: DashboardComponent },
+            { path: 'about', component: AboutComponent },
           ]),
           withAnalyticsRouterTracking(),
           { provide: ENVIRONMENT, useValue: createMockEnv(true) },
@@ -94,6 +98,49 @@ describe('withAnalyticsRouterTracking', () => {
       analyticsService.trackPageView('/test', 'Test');
 
       expect(trackPageViewSpy).toHaveBeenCalledWith('/test', 'Test');
+    });
+
+    it('should track page view on NavigationEnd', async () => {
+      const router = TestBed.inject(Router);
+
+      await router.navigate(['/dashboard']);
+
+      expect(trackPageViewSpy).toHaveBeenCalledWith('/dashboard', 'Test Page Title');
+    });
+
+    it('should track multiple page views on navigation', async () => {
+      const router = TestBed.inject(Router);
+
+      await router.navigate(['/dashboard']);
+      await router.navigate(['/about']);
+
+      expect(trackPageViewSpy).toHaveBeenCalledTimes(2);
+      expect(trackPageViewSpy).toHaveBeenCalledWith('/dashboard', 'Test Page Title');
+      expect(trackPageViewSpy).toHaveBeenCalledWith('/about', 'Test Page Title');
+    });
+
+    it('should use urlAfterRedirects for tracking', async () => {
+      TestBed.resetTestingModule();
+      TestBed.configureTestingModule({
+        providers: [
+          provideRouter([
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: 'home', component: HomeComponent },
+            { path: 'dashboard', component: DashboardComponent },
+          ]),
+          withAnalyticsRouterTracking(),
+          { provide: ENVIRONMENT, useValue: createMockEnv(true) },
+          { provide: ANALYTICS_PROVIDER, useFactory: createMockProvider },
+          { provide: DOCUMENT, useValue: mockDocument },
+        ],
+      });
+
+      const router = TestBed.inject(Router);
+
+      await router.navigate(['/']);
+
+      // Should track the final URL after redirect, not the original
+      expect(trackPageViewSpy).toHaveBeenCalledWith('/home', 'Test Page Title');
     });
   });
 
@@ -131,6 +178,15 @@ describe('withAnalyticsRouterTracking', () => {
       expect(() => {
         analyticsService.trackPageView('/test', 'Test');
       }).not.toThrow();
+    });
+
+    it('should not track page views on navigation when disabled', async () => {
+      const router = TestBed.inject(Router);
+
+      await router.navigate(['/dashboard']);
+
+      // trackPageViewSpy should not be called since analytics is disabled
+      expect(trackPageViewSpy).not.toHaveBeenCalled();
     });
   });
 

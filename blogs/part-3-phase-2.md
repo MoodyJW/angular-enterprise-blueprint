@@ -2,9 +2,11 @@
 
 ## Core Services, Error Handling, and Authentication That Power Everything
 
-In the previous article, I covered Phase 1: the tooling and governance that establish the rules of engagement for the entire project. With ESLint, Prettier, Vitest, Playwright, and CI/CD pipelines in place, the foundation was solid. Phase 2 builds on that foundation by implementing what I call the "invisible architecture"—the singleton services, error handling, and authentication system that run underneath every feature without the user ever seeing them.
+In the [previous article](https://dev.to/moodyjw/building-a-portfolio-that-actually-demonstrates-enterprise-skills-part-2-47e1), I covered Phase 1, where I established the tooling and governance that set the rules of engagement for the entire project. With ESLint, Prettier, Vitest, Playwright, and CI/CD pipelines in place, the foundation was solid. Phase 2 builds on that foundation by implementing what I call the "invisible architecture," the singleton services, error handling, and authentication system that run underneath every feature without the user ever seeing them.
 
 This is the code that separates production applications from demos. Anyone can build a login form. The difference is what happens when the network fails, when sessions expire, when errors cascade, and when the application needs to recover gracefully. Phase 2 addresses all of these concerns.
+
+The [Phase 2 specification](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/docs/specs/PHASE_2_CORE.md) breaks this work into four major areas: typed environment configuration, infrastructure services (logging, analytics, SEO, theming), global error handling, and authentication. Each area follows the same principle: abstract what might change behind clean interfaces.
 
 ## The Philosophy: Abstractions That Enable Change
 
@@ -17,6 +19,29 @@ The solution is to define interfaces (contracts) and use Angular's dependency in
 - `AuthStrategy` defines what any authentication provider must do, whether it's a mock for demos or a real OAuth flow
 - `AnalyticsProvider` defines what any analytics service must implement, whether it's console logging or Google Analytics
 - Environment configuration is injected via tokens, not imported directly
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    Application Code                      │
+│         (Components, Services, Features)                 │
+└────────────────────┬────────────────────────────────────┘
+                     │ depends on
+                     ▼
+         ┌───────────────────────┐
+         │  Strategy Interface   │  (Contract: what must be done)
+         │  - AnalyticsProvider  │
+         │  - AuthStrategy       │
+         └───────────┬───────────┘
+                     │ implemented by (swappable)
+        ┌────────────┴────────────┐
+        ▼                         ▼
+┌──────────────────┐    ┌──────────────────┐
+│ Implementation A │    │ Implementation B │
+│ (Mock/Console)   │    │ (Real/Google)    │
+└──────────────────┘    └──────────────────┘
+   Selected via             Selected via
+   app.config.ts           app.config.ts
+```
 
 This approach adds a small amount of upfront complexity, but it pays dividends when requirements inevitably change. Swapping an analytics provider becomes a one-line change in `app.config.ts` rather than a refactoring project.
 
@@ -49,7 +74,7 @@ export function provideEnvironment(): Provider {
 }
 ```
 
-Services inject `ENVIRONMENT` rather than importing the file. This makes testing trivial—you can provide a mock environment in tests without any module gymnastics. It also means the environment source could change (perhaps loading from a server in the future) without touching any consuming code.
+Services inject `ENVIRONMENT` rather than importing the file directly. This makes testing trivial since you can provide a mock environment in tests without any module gymnastics. It also means the environment source could change in the future without touching any consuming code.
 
 ## Infrastructure Services
 
@@ -61,7 +86,7 @@ The simplest service is also one of the most important. `LoggerService` wraps `c
 
 This seems trivial, but it serves two purposes. First, it provides a single point where logging behavior can change. If the application later needs to send errors to Sentry or Datadog, only `LoggerService` needs modification. Second, it prevents the common mistake of leaving debug logs in production code. With the logger checking the environment, debug information never reaches production users' consoles.
 
-The service is intentionally simple—15 tests cover all the behavior. Sometimes the best code is the code that does exactly one thing well.
+The service is intentionally simple. Just 15 tests cover all the behavior. Sometimes the best code is the code that does exactly one thing well.
 
 ### AnalyticsService: The Strategy Pattern in Action
 
@@ -152,7 +177,7 @@ The error handling system has three layers:
 2. **HttpErrorInterceptor** catches and transforms HTTP errors into user-friendly messages
 3. **ErrorNotificationService** provides a way to display errors to users (and will integrate with the toast system in Phase 3)
 
-The `GlobalErrorHandler` extends Angular's `ErrorHandler` class. When an error occurs, it extracts useful information (error message, stack trace, component context), logs it via `LoggerService`, and could report it to an external service like Sentry. The handler distinguishes between different error types—HTTP errors, chunk loading failures, standard JavaScript errors—and handles each appropriately.
+The `GlobalErrorHandler` extends Angular's `ErrorHandler` class. When an error occurs, it extracts useful information like the error message, stack trace, and component context, then logs it via `LoggerService`. The handler could also report errors to an external service like Sentry. It distinguishes between different error types and handles each appropriately, whether they're HTTP errors, chunk loading failures, or standard JavaScript errors.
 
 One subtle but important detail: the handler checks for `Error.cause`, a relatively new JavaScript feature that allows errors to wrap underlying causes. Many frameworks now use this pattern, so properly extracting the root cause is essential for useful error messages.
 
@@ -169,7 +194,7 @@ The `HttpErrorInterceptor` transforms HTTP errors into consistent, user-friendly
 
 For 429 (rate limiting) responses, the interceptor extracts the `Retry-After` header and includes the wait time in the error message. For 401 responses, it triggers the authentication store's session expiration flow, redirecting users to login.
 
-The interceptor also logs errors appropriately—network failures log differently than server errors, and the logging includes relevant context like the HTTP method, URL, and status code.
+The interceptor also logs errors appropriately. Network failures log differently than server errors, and each log entry includes relevant context like the HTTP method, URL, and status code.
 
 Between the `GlobalErrorHandler`, `HttpErrorInterceptor`, and `ErrorNotificationService`, the error handling code has 77 tests covering every error type, edge case, and recovery scenario.
 
@@ -192,7 +217,7 @@ export interface AuthStrategy {
 }
 ```
 
-The interface is intentionally minimal. It doesn't prescribe how authentication works—only that any strategy must be able to log in with credentials, log out, and check whether a valid session exists. This abstraction allows the mock implementation used during development to be swapped for a real OAuth implementation later without changing any consuming code.
+The interface is intentionally minimal. It doesn't prescribe how authentication works, only that any strategy must be able to log in with credentials, log out, and check whether a valid session exists. This abstraction allows the mock implementation used during development to be swapped for a real OAuth implementation later without changing any consuming code.
 
 ### MockAuthStrategy: Simulating Real-World Conditions
 
@@ -222,7 +247,7 @@ withComputed((store) => ({
 
 These computed signals derive from the user state, so components can use `authStore.displayName()` or `authStore.isAdmin()` without manually checking for null users or extracting role information.
 
-The store uses `rxMethod` from `@ngrx/signals` for operations that involve observables. The `login`, `logout`, and `checkSession` methods are reactive—they accept input (credentials or nothing), pipe through the authentication strategy, update state on success or failure, and handle side effects like navigation and logging.
+The store uses `rxMethod` from `@ngrx/signals` for operations that involve observables. The `login`, `logout`, and `checkSession` methods are reactive. They accept input (credentials or nothing), pipe through the authentication strategy, update state on success or failure, and handle side effects like navigation and logging.
 
 A critical detail: the store integrates with the HTTP error interceptor. When a 401 response occurs, the interceptor calls `authStore.handleSessionExpired()`, which clears the user state and redirects to login. This ensures session expiration is handled consistently regardless of which HTTP request triggered it.
 
@@ -271,9 +296,9 @@ export function provideAuth(): EnvironmentProviders {
 }
 ```
 
-This function provides the mock strategy and registers an app initializer that checks for an existing session on startup. When a user refreshes the page, the initializer restores their session from localStorage so they don't need to log in again.
+This function provides the mock strategy and registers an app initializer that checks for an existing session on startup. The app initializer runs before Angular bootstraps the application, ensuring authentication state is ready before any components render. When a user refreshes the page, the initializer restores their session from localStorage, creating a seamless experience. Users stay logged in across page refreshes without seeing loading states or being kicked to the login page. This detail matters for perceived performance and user experience.
 
-Swapping to a real authentication strategy later requires only changing which class is provided for `AUTH_STRATEGY`. Everything else—the store, guards, error handling integration—continues working unchanged.
+Swapping to a real authentication strategy later requires only changing which class is provided for `AUTH_STRATEGY`. Everything else continues working unchanged: the store, guards, and error handling integration all remain the same.
 
 ## The Test Coverage Story
 
@@ -298,7 +323,7 @@ Phase 2 concludes with 318 unit tests across all services and components. Here's
 
 Every service has tests covering its public API, edge cases, error conditions, and integration points. The CI pipeline enforces 85% coverage thresholds, and the actual coverage exceeds that in most areas.
 
-This test coverage isn't just a vanity metric. It provides confidence that the invisible architecture works correctly, enabling faster development in later phases. When a feature relies on `AuthStore` or `SeoService`, the feature developer doesn't need to worry about whether those services work—the tests already prove they do.
+This test coverage isn't just a vanity metric. It provides confidence that the invisible architecture works correctly, enabling faster development in later phases. When a feature relies on `AuthStore` or `SeoService`, the feature developer doesn't need to worry about whether those services work. The tests already prove they do.
 
 ## Lessons Learned
 
@@ -306,19 +331,21 @@ Building Phase 2 reinforced several lessons:
 
 **Abstractions require discipline.** It's tempting to skip the interface and code directly against an implementation when you "only have one implementation." But the interface forces you to think about the contract, makes testing easier, and enables future flexibility. The small upfront cost is worth it.
 
-**Error handling is a feature.** Users don't see error handling when it works—they just see an application that recovers gracefully. But they definitely notice when it fails. Investing in comprehensive error handling early prevents embarrassing production incidents later.
+**Error handling is a feature.** Users don't see error handling when it works. They just see an application that recovers gracefully. But they definitely notice when it fails. Investing in comprehensive error handling early prevents embarrassing production incidents later.
 
 **Mock implementations should be realistic.** A mock that always succeeds instantly doesn't prepare the application for real-world conditions. Adding delays, random failures, and edge cases to mocks surfaces issues during development when they're cheap to fix.
 
-**SignalStore simplifies reactive state.** Previous authentication implementations I've built used services with BehaviorSubjects, or full NgRx with actions and reducers. SignalStore hits a sweet spot—it's simpler than traditional NgRx but more structured than ad-hoc service state. The `rxMethod` pattern for async operations is particularly elegant.
+**SignalStore simplifies reactive state.** Previous authentication implementations I've built used services with BehaviorSubjects, or full NgRx with actions and reducers. SignalStore hits a sweet spot. It's simpler than traditional NgRx but more structured than ad-hoc service state. The `rxMethod` pattern for async operations is particularly elegant.
 
-**Comprehensive testing enables fearless refactoring.** Several times during Phase 2, I refactored implementation details—changing how errors were logged, restructuring the auth flow, adjusting how providers initialized. The tests caught regressions immediately, making refactoring safe rather than scary.
+**Comprehensive testing enables fearless refactoring.** Several times during Phase 2, I refactored implementation details. I changed how errors were logged, restructured the auth flow, and adjusted how providers initialized. The tests caught regressions immediately, making refactoring safe rather than scary.
+
+**The foundation enables everything else.** None of the work in Phase 2 is visible to end users, but all of it is essential for building features quickly and confidently. This invisible architecture is what makes the rest of the project possible.
 
 ## What's Next
 
 With Phase 2 complete, the application has a solid invisible architecture. Environment configuration is typed and injectable. Logging, analytics, SEO, and theming are abstracted behind clean interfaces. Errors are caught, transformed, and handled consistently. Authentication works with session persistence and route protection.
 
-The next article will cover Phase 3: the Design System. That phase builds the visual component library—buttons, forms, cards, modals, and all the UI primitives that features will compose. With the core architecture in place, the design system can focus purely on presentation, knowing that services, state, and error handling are already solved.
+The next article will cover Phase 3, the Design System. That phase builds the visual component library with all the UI primitives that features will compose. With the core architecture in place, the design system can focus purely on presentation, knowing that services, state, and error handling are already solved.
 
 You can explore the complete Phase 2 implementation on GitHub: [MoodyJW/angular-enterprise-blueprint](https://github.com/MoodyJW/angular-enterprise-blueprint)
 

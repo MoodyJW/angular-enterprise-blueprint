@@ -223,21 +223,21 @@ npm run format
 
 ### Checks
 
-- [ ] All files end with newline
-- [ ] No trailing whitespace
-- [ ] Consistent indentation (2 spaces)
-- [ ] Consistent quotes (single)
-- [ ] Consistent semicolons (required)
-- [ ] All public APIs documented
-- [ ] No commented-out code
-- [ ] No unused imports/variables
+- [x] All files end with newline
+- [x] No trailing whitespace
+- [x] Consistent indentation (2 spaces)
+- [x] Consistent quotes (single)
+- [x] Consistent semicolons (required)
+- [x] All public APIs documented
+- [x] No commented-out code
+- [x] No unused imports/variables
 
 **Acceptance Criteria:**
 
-- [ ] Zero linting errors/warnings
-- [ ] Zero TODO/FIXME comments
-- [ ] All code formatted consistently
-- [ ] Code coverage ≥85%
+- [x] Zero linting errors/warnings
+- [x] Zero TODO/FIXME comments
+- [x] All code formatted consistently
+- [x] Code coverage ≥85%
 
 ---
 

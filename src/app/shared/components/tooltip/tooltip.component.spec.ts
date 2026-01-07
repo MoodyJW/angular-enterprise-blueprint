@@ -251,4 +251,187 @@ describe('TooltipComponent', () => {
       document.body.removeChild(mockHost);
     });
   });
+
+  describe('Edge Cases', () => {
+    it('should handle tooltip positioned near top edge of viewport', () => {
+      vi.useFakeTimers();
+
+      // Mock element near top of viewport
+      Element.prototype.getBoundingClientRect = vi.fn(() => ({
+        width: 100,
+        height: 40,
+        top: 10, // Very close to top
+        left: 500,
+        bottom: 50,
+        right: 600,
+        x: 500,
+        y: 10,
+        toJSON: () => {},
+      }));
+
+      const mockHost = document.createElement('div');
+      document.body.appendChild(mockHost);
+
+      componentRef.setInput('content', 'Test');
+      componentRef.setInput('position', 'top'); // Request top, but not enough space
+      componentRef.setInput('hostElement', mockHost);
+      fixture.detectChanges();
+
+      vi.advanceTimersByTime(10);
+      fixture.detectChanges();
+
+      // Should fall back to a position that fits
+      const tooltip = nativeElement.querySelector('.tooltip') as HTMLElement;
+      expect(tooltip).toBeTruthy();
+
+      document.body.removeChild(mockHost);
+      vi.useRealTimers();
+    });
+
+    it('should handle tooltip positioned near left edge of viewport', () => {
+      vi.useFakeTimers();
+
+      // Mock element near left of viewport
+      Element.prototype.getBoundingClientRect = vi.fn(() => ({
+        width: 100,
+        height: 40,
+        top: 500,
+        left: 10, // Very close to left
+        bottom: 540,
+        right: 110,
+        x: 10,
+        y: 500,
+        toJSON: () => {},
+      }));
+
+      const mockHost = document.createElement('div');
+      document.body.appendChild(mockHost);
+
+      componentRef.setInput('content', 'Test');
+      componentRef.setInput('position', 'left'); // Request left, but not enough space
+      componentRef.setInput('hostElement', mockHost);
+      fixture.detectChanges();
+
+      vi.advanceTimersByTime(10);
+      fixture.detectChanges();
+
+      const tooltip = nativeElement.querySelector('.tooltip') as HTMLElement;
+      expect(tooltip).toBeTruthy();
+
+      document.body.removeChild(mockHost);
+      vi.useRealTimers();
+    });
+
+    it('should handle tooltip that cannot fit in any position', () => {
+      vi.useFakeTimers();
+
+      // Mock very large tooltip that cannot fit anywhere
+      Element.prototype.getBoundingClientRect = vi.fn(() => ({
+        width: 2000, // Larger than viewport
+        height: 1500,
+        top: 500,
+        left: 500,
+        bottom: 2000,
+        right: 2500,
+        x: 500,
+        y: 500,
+        toJSON: () => {},
+      }));
+
+      const mockHost = document.createElement('div');
+      document.body.appendChild(mockHost);
+
+      componentRef.setInput('content', 'Test');
+      componentRef.setInput('position', 'auto');
+      componentRef.setInput('hostElement', mockHost);
+      fixture.detectChanges();
+
+      vi.advanceTimersByTime(10);
+      fixture.detectChanges();
+
+      // Should default to 'top' when nothing fits
+      const tooltip = nativeElement.querySelector('.tooltip') as HTMLElement;
+      expect(tooltip).toBeTruthy();
+
+      document.body.removeChild(mockHost);
+      vi.useRealTimers();
+    });
+
+    it('should try opposite position when preferred position does not fit', () => {
+      vi.useFakeTimers();
+
+      // Mock element at bottom, so 'bottom' position won't fit
+      Element.prototype.getBoundingClientRect = vi.fn(() => ({
+        width: 100,
+        height: 40,
+        top: 700, // Near bottom of typical viewport
+        left: 500,
+        bottom: 740,
+        right: 600,
+        x: 500,
+        y: 700,
+        toJSON: () => {},
+      }));
+
+      const mockHost = document.createElement('div');
+      document.body.appendChild(mockHost);
+
+      componentRef.setInput('content', 'Test');
+      componentRef.setInput('position', 'bottom');
+      componentRef.setInput('hostElement', mockHost);
+      fixture.detectChanges();
+
+      vi.advanceTimersByTime(10);
+      fixture.detectChanges();
+
+      const tooltip = nativeElement.querySelector('.tooltip') as HTMLElement;
+      expect(tooltip).toBeTruthy();
+
+      document.body.removeChild(mockHost);
+      vi.useRealTimers();
+    });
+
+    it('should try alternative positions when preferred and opposite do not fit', () => {
+      vi.useFakeTimers();
+
+      // Mock element in corner where top and bottom don't fit
+      Element.prototype.getBoundingClientRect = vi.fn(() => ({
+        width: 100,
+        height: 40,
+        top: 20, // Near top
+        left: 500,
+        bottom: 60,
+        right: 600,
+        x: 500,
+        y: 20,
+        toJSON: () => {},
+      }));
+
+      // Override window dimensions to be small
+      Object.defineProperty(window, 'innerHeight', { value: 100, writable: true });
+      Object.defineProperty(window, 'innerWidth', { value: 1200, writable: true });
+
+      const mockHost = document.createElement('div');
+      document.body.appendChild(mockHost);
+
+      componentRef.setInput('content', 'Test');
+      componentRef.setInput('position', 'top'); // Neither top nor bottom will fit
+      componentRef.setInput('hostElement', mockHost);
+      fixture.detectChanges();
+
+      vi.advanceTimersByTime(10);
+      fixture.detectChanges();
+
+      // Should try left or right as alternatives
+      const tooltip = nativeElement.querySelector('.tooltip') as HTMLElement;
+      expect(tooltip).toBeTruthy();
+
+      document.body.removeChild(mockHost);
+      vi.useRealTimers();
+
+      // Reset window dimensions
+      Object.defineProperty(window, 'innerHeight', { value: 768, writable: true });
+      Object.defineProperty(window, 'innerWidth', { value: 1024, writable: true });
+    });
+  });
 });

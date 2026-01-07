@@ -1,13 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 
 import { LoggerService } from '@core/services/logger';
+import { ToastService } from '@shared/services/toast';
 
 /**
  * Service for notifying users about errors and other important messages.
  *
- * This is an abstraction layer that currently uses LoggerService for
- * console output. When ToastService is implemented in Phase 3, this
- * service can be updated to display visual notifications to users.
+ * This is an abstraction layer that uses ToastService to display visual
+ * notifications to users, and LoggerService for debugging/auditing.
  *
  * @example
  * ```typescript
@@ -25,19 +25,18 @@ import { LoggerService } from '@core/services/logger';
 })
 export class ErrorNotificationService {
   private readonly logger = inject(LoggerService);
+  private readonly toastService = inject(ToastService);
 
   /**
    * Notify user of an error.
    *
    * @param message - User-friendly error message
    * @param details - Optional additional details or error code
-   *
-   * TODO: Replace with ToastService in Phase 3.
    */
   notifyError(message: string, details?: string): void {
     const fullMessage = details !== undefined ? `${message} (${details})` : message;
     this.logger.error(`[User Notification] ${fullMessage}`);
-    // Future: this.toastService.error(message, { details });
+    this.toastService.error(message);
   }
 
   /**
@@ -45,13 +44,11 @@ export class ErrorNotificationService {
    *
    * @param message - User-friendly warning message
    * @param details - Optional additional details
-   *
-   * TODO: Replace with ToastService in Phase 3.
    */
   notifyWarning(message: string, details?: string): void {
     const fullMessage = details !== undefined ? `${message} (${details})` : message;
     this.logger.warn(`[User Notification] ${fullMessage}`);
-    // Future: this.toastService.warning(message, { details });
+    this.toastService.warning(message);
   }
 
   /**
@@ -59,23 +56,19 @@ export class ErrorNotificationService {
    * Useful for recovery scenarios or confirming important actions.
    *
    * @param message - Success message to display
-   *
-   * TODO: Replace with ToastService in Phase 3.
    */
   notifySuccess(message: string): void {
     this.logger.info(`[User Notification] ${message}`);
-    // Future: this.toastService.success(message);
+    this.toastService.success(message);
   }
 
   /**
    * Notify user of informational content.
    *
    * @param message - Informational message to display
-   *
-   * TODO: Replace with ToastService in Phase 3.
    */
   notifyInfo(message: string): void {
     this.logger.info(`[User Notification] ${message}`);
-    // Future: this.toastService.info(message);
+    this.toastService.info(message);
   }
 }
