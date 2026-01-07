@@ -222,7 +222,7 @@ _Goal: Features that map 1:1 to the UI naming._
 _Goal: Ensure it builds and ships like enterprise software._
 
 - [x] **6.1 Deployment**: Configure `.github/workflows/deploy.yml` for GitHub Pages.
-- [ ] **6.2 Security Improvements**: See `SECURITY_IMPROVEMENT_PLAN.md`.
+- [x] **6.2 Security Improvements**: See `SECURITY_IMPROVEMENT_PLAN.md`.
   - [x] **High Priority (8-12h)**:
     - [x] Eliminate innerHTML usage with translation data
     - [x] Migrate from localStorage to encrypted sessionStorage for auth tokens
