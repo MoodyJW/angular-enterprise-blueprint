@@ -2,11 +2,11 @@
 
 ## Core Services, Error Handling, and Authentication That Power Everything
 
-In the [previous article](https://dev.to/moodyjw/building-a-portfolio-that-actually-demonstrates-enterprise-skills-part-2-47e1), I covered Phase 1, where I established the tooling and governance that set the rules of engagement for the entire project. With ESLint, Prettier, Vitest, Playwright, and CI/CD pipelines in place, the foundation was solid. Phase 2 builds on that foundation by implementing what I call the "invisible architecture," the singleton services, error handling, and authentication system that run underneath every feature without the user ever seeing them.
+In the [previous article](https://dev.to/moodyjw/building-a-portfolio-that-actually-demonstrates-enterprise-skills-part-2-47e1), I covered Phase 1, where I established the tooling and governance that set the rules of engagement for the entire project. With [ESLint](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/eslint.config.mjs), Prettier, [Vitest](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/vitest.config.ts), [Playwright](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/playwright.config.ts), and [CI/CD pipelines](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/.github/workflows/ci.yml) in place, the foundation was solid. Phase 2 builds on that foundation by implementing what I call the "invisible architecture," the singleton services, error handling, and authentication system that run underneath every feature without the user ever seeing them.
 
 This is the code that separates production applications from demos. Anyone can build a login form. The difference is what happens when the network fails, when sessions expire, when errors cascade, and when the application needs to recover gracefully. Phase 2 addresses all of these concerns.
 
-The [Phase 2 specification](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/docs/specs/PHASE_2_CORE.md) breaks this work into four major areas: typed environment configuration, infrastructure services (logging, analytics, SEO, theming), global error handling, and authentication. Each area follows the same principle: abstract what might change behind clean interfaces.
+The [Phase 2 specification](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/docs/specs/PHASE_2_CORE.md) breaks this work into four major areas: [typed environment configuration](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/config), [infrastructure services](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/services) (logging, analytics, SEO, theming), [global error handling](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/services), and [authentication](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/auth). Each area follows the same principle: abstract what might change behind clean interfaces.
 
 ## The Philosophy: Abstractions That Enable Change
 
@@ -14,16 +14,16 @@ Before diving into implementation details, it's worth explaining the guiding pri
 
 In enterprise software, requirements change constantly. The analytics vendor you use today might be replaced next quarter. The authentication provider might switch from a mock implementation to OAuth to SAML. The logging service might need to pipe errors to Sentry instead of the console. If these concerns are hardcoded throughout the application, changing them requires touching dozens of files and risking regressions everywhere.
 
-The solution is to define interfaces (contracts) and use Angular's dependency injection to swap implementations without changing consuming code. This is the Strategy Pattern, and it appears throughout Phase 2:
+The solution is to define interfaces (contracts) and use [Angular's dependency injection](https://angular.dev/guide/di) to swap implementations without changing consuming code. This is the [Strategy Pattern](https://vugar-005.medium.com/angular-design-patterns-strategy-pattern-ace359ae77b3), and it appears throughout Phase 2:
 
-- `AuthStrategy` defines what any authentication provider must do, whether it's a mock for demos or a real OAuth flow
-- `AnalyticsProvider` defines what any analytics service must implement, whether it's console logging or Google Analytics
-- Environment configuration is injected via tokens, not imported directly
+- [`AuthStrategy`](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/app/core/auth/auth-strategy.interface.ts) defines what any authentication provider must do, whether it's a mock for demos or a real OAuth flow
+- [`AnalyticsProvider`](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/app/core/services/analytics/analytics.provider.ts) defines what any analytics service must implement, whether it's console logging or Google Analytics
+- [Environment configuration is injected via tokens](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/app/core/config/environment.token.ts), not imported directly
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    Application Code                      │
-│         (Components, Services, Features)                 │
+│                    Application Code                     │
+│         (Components, Services, Features)                │
 └────────────────────┬────────────────────────────────────┘
                      │ depends on
                      ▼
@@ -43,16 +43,17 @@ The solution is to define interfaces (contracts) and use Angular's dependency in
    app.config.ts           app.config.ts
 ```
 
-This approach adds a small amount of upfront complexity, but it pays dividends when requirements inevitably change. Swapping an analytics provider becomes a one-line change in `app.config.ts` rather than a refactoring project.
+This approach adds a small amount of upfront complexity, but it pays dividends when requirements inevitably change. Swapping an analytics provider becomes a one-line change in [`app.config.ts`](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/app/app.config.ts) rather than a refactoring project.
 
 ## Typed Environment Configuration
 
 The first piece of Phase 2 is typed environment configuration. Angular provides an environment file mechanism, but out of the box, there's no type safety. You can access `environment.anything` without the compiler complaining, even if that property doesn't exist.
 
-The solution is a TypeScript interface that defines exactly what the environment must contain:
+The solution is a [TypeScript interface](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/environments/environment.type.ts) that defines exactly what the environment must contain:
 
 ```typescript
 export interface AppEnvironment {
+  url;
   readonly appName: string;
   readonly production: boolean;
   readonly apiUrl: string;
@@ -67,7 +68,7 @@ Every environment file must satisfy this interface. The compiler catches typos, 
 Rather than importing the environment file directly (which creates tight coupling), the configuration is provided via an injection token:
 
 ```typescript
-export const ENVIRONMENT = new InjectionToken<AppEnvironment>('ENVIRONMENT');
+export const ENVIRONMENT = new InjectionToken<AppEnvironment>('ENVIRONMENT');Figure 3: Errors are caught at the network layer, transformed into user-friendly messages, and logged with context for debugging.
 
 export function provideEnvironment(): Provider {
   return { provide: ENVIRONMENT, useValue: environment };
@@ -80,7 +81,7 @@ Services inject `ENVIRONMENT` rather than importing the file directly. This make
 
 Phase 2 implements four infrastructure services that other parts of the application depend on. Each follows the same pattern: a clear interface, comprehensive logging, and thorough test coverage.
 
-### LoggerService: The Foundation of Observability
+### [LoggerService: The Foundation of Observability](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/services/logger)
 
 The simplest service is also one of the most important. `LoggerService` wraps `console` methods with environment-aware behavior. In development, all log levels output normally. In production, `log()` and `info()` are suppressed to avoid console noise, while `warn()` and `error()` always output.
 
@@ -88,7 +89,7 @@ This seems trivial, but it serves two purposes. First, it provides a single poin
 
 The service is intentionally simple. Just 15 tests cover all the behavior. Sometimes the best code is the code that does exactly one thing well.
 
-### AnalyticsService: The Strategy Pattern in Action
+### [AnalyticsService: The Strategy Pattern in Action](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/services/analytics)
 
 Analytics demonstrates the Strategy Pattern clearly. The application needs to track events and page views, but the destination might be console logging during development, Google Analytics in production, or something else entirely.
 
@@ -121,7 +122,7 @@ The `provideAnalytics()` function reads this configuration and provides the appr
 
 The total test count across all analytics code: 55 tests covering the service, both providers, and the router integration.
 
-### SeoService: Beyond Basic Meta Tags
+### [SeoService: Beyond Basic Meta Tags](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/services/seo)
 
 SEO in modern applications goes far beyond setting a page title. Search engines and social platforms expect specific meta tags, Open Graph properties, Twitter Card metadata, and JSON-LD structured data. `SeoService` handles all of these concerns through a unified API.
 
@@ -155,7 +156,10 @@ One method call sets the page title, description, keywords, canonical URL, Open 
 
 This service required 49 tests to cover all the combinations of metadata and edge cases around tag cleanup.
 
-### ThemeService: System Preferences and Persistence
+### [ThemeService: System Preferences and Persistence](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/services/theme)
+
+![A split-screen screenshot of your app. Left side: Light Mode. Right side: Dark Mode](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/k3osdpj2z817g8lbitue.webp)
+_Figure 2: The theming engine supports multiple color schemes and high-contrast modes, persisted via LocalStorage._
 
 Modern applications need to support light mode, dark mode, and often a "system" setting that follows the operating system preference. `ThemeService` implements this with signals for reactive state management.
 
@@ -163,9 +167,45 @@ The service tracks three things: the available themes, the currently active them
 
 Theme changes update a `data-theme` attribute on the document element, which CSS custom properties can target. This approach is simpler and more performant than maintaining theme state in JavaScript and passing it through the component tree.
 
+I also included a script in the [`index.html`](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/index.html).
+
+```html
+<script>
+  (function () {
+    var storageKey = 'theme-id';
+    var defaultLight = 'light-default';
+    var defaultDark = 'dark-default';
+
+    // Check URL param first (for testing)
+    var urlParams = new URLSearchParams(window.location.search);
+    var themeParam = urlParams.get('theme');
+    if (themeParam) {
+      document.documentElement.setAttribute('data-theme', themeParam);
+      return;
+    }
+
+    // Check localStorage
+    var stored = localStorage.getItem(storageKey);
+    if (stored) {
+      document.documentElement.setAttribute('data-theme', stored);
+      return;
+    }
+
+    // Fall back to system preference
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme', prefersDark ? defaultDark : defaultLight);
+  })();
+</script>
+```
+
+Note that this script lives in `index.html`, **outside** of the Angular bootstrap process. This ensures it runs instantly when the DOM parses, preventing the dreaded 'flash of white light' that occurs if you wait for Angular to load before applying a dark theme preference.
+
 The service includes 41 tests covering theme switching, system preference detection, persistence, and edge cases around initialization order.
 
-## Global Error Handling
+## [Global Error Handling](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/error-handling)
+
+![Screenshot of Chrome console showing error logging](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mqcrz3yfq9a6gen47l3a.png)
+_Figure 3: Errors are caught at the network layer, transformed into user-friendly messages, and logged with context for debugging._
 
 Error handling is where production applications diverge most sharply from demos. Demos assume everything works. Production applications assume everything can fail and plan accordingly.
 
@@ -173,15 +213,15 @@ Error handling is where production applications diverge most sharply from demos.
 
 The error handling system has three layers:
 
-1. **GlobalErrorHandler** catches any uncaught error in the Angular application
-2. **HttpErrorInterceptor** catches and transforms HTTP errors into user-friendly messages
-3. **ErrorNotificationService** provides a way to display errors to users (and will integrate with the toast system in Phase 3)
+1. **[GlobalErrorHandler](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/app/core/error-handling/global-error-handler.ts)** catches any uncaught error in the Angular application
+2. **[HttpErrorInterceptor](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/app/core/interceptors/http-error.interceptor.ts)** catches and transforms HTTP errors into user-friendly messages
+3. **[ErrorNotificationService](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/app/core/error-handling/error-notification.service.spec.ts)** provides a way to display errors to users (and will integrate with the toast system in Phase 3)
 
 The `GlobalErrorHandler` extends Angular's `ErrorHandler` class. When an error occurs, it extracts useful information like the error message, stack trace, and component context, then logs it via `LoggerService`. The handler could also report errors to an external service like Sentry. It distinguishes between different error types and handles each appropriately, whether they're HTTP errors, chunk loading failures, or standard JavaScript errors.
 
 One subtle but important detail: the handler checks for `Error.cause`, a relatively new JavaScript feature that allows errors to wrap underlying causes. Many frameworks now use this pattern, so properly extracting the root cause is essential for useful error messages.
 
-### HTTP Error Interception
+### [HTTP Error Interception](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/app/core/interceptors/http-error.interceptor.ts)
 
 The `HttpErrorInterceptor` transforms HTTP errors into consistent, user-friendly messages. A raw `HttpErrorResponse` might contain technical details that are useless to end users. The interceptor maps status codes to human-readable messages:
 
@@ -198,11 +238,11 @@ The interceptor also logs errors appropriately. Network failures log differently
 
 Between the `GlobalErrorHandler`, `HttpErrorInterceptor`, and `ErrorNotificationService`, the error handling code has 77 tests covering every error type, edge case, and recovery scenario.
 
-## Authentication: The Most Critical System
+## [Authentication: The Most Critical System](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/auth)
 
 Authentication is Phase 2's most complex system and demonstrates several patterns working together. The design uses the Strategy Pattern to support different authentication mechanisms, NgRx SignalStore for state management, and functional route guards for access control.
 
-### The Strategy Pattern for Auth
+### [The Strategy Pattern for Auth](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/app/core/auth/auth-strategy.interface.ts)
 
 Authentication requirements vary wildly between applications. Some use simple username/password flows. Others use OAuth with external providers. Some need SAML for enterprise SSO. A demo application might use mock authentication with localStorage.
 
@@ -217,9 +257,9 @@ export interface AuthStrategy {
 }
 ```
 
-The interface is intentionally minimal. It doesn't prescribe how authentication works, only that any strategy must be able to log in with credentials, log out, and check whether a valid session exists. This abstraction allows the mock implementation used during development to be swapped for a real OAuth implementation later without changing any consuming code.
+The interface is intentionally minimal. It doesn't prescribe how authentication works, only that any strategy must be able to login with credentials, log out, and check whether a valid session exists. This abstraction allows the mock implementation used during development to be swapped for a real OAuth implementation later without changing any consuming code.
 
-### MockAuthStrategy: Simulating Real-World Conditions
+### [MockAuthStrategy: Simulating Real-World Conditions](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/app/core/auth/strategies/mock-auth.strategy.ts)
 
 The mock implementation isn't just a stub that returns success. It simulates real-world conditions that the application must handle:
 
@@ -232,7 +272,7 @@ These behaviors ensure the application handles loading states, error recovery, a
 
 The mock strategy has 25 tests covering all login scenarios, logout behavior, session restoration, error simulation, and the differences between production and development modes.
 
-### AuthStore: Reactive State with SignalStore
+### [AuthStore: Reactive State with SignalStore](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/app/core/auth/auth.store.ts)
 
 Authentication state lives in an NgRx SignalStore. The store manages the current user, authentication status, loading states, and error messages. It exposes computed signals for derived state:
 
@@ -253,7 +293,7 @@ A critical detail: the store integrates with the HTTP error interceptor. When a 
 
 The store has 40 tests covering state management, login/logout flows, session restoration, error handling, and the session expiration integration.
 
-### Route Guards: Protecting Resources
+### [Route Guards: Protecting Resources](https://github.com/MoodyJW/angular-enterprise-blueprint/tree/main/src/app/core/auth/guards)
 
 Three functional guards control route access:
 
@@ -280,7 +320,7 @@ Functional guards are a newer Angular pattern that replaces class-based guards. 
 
 The guards have 9 tests covering all access control scenarios.
 
-### Provider Registration
+### [Provider Registration](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/src/app/core/auth/auth.provider.ts)
 
 All authentication components register through a single `provideAuth()` function:
 
@@ -335,7 +375,7 @@ Building Phase 2 reinforced several lessons:
 
 **Mock implementations should be realistic.** A mock that always succeeds instantly doesn't prepare the application for real-world conditions. Adding delays, random failures, and edge cases to mocks surfaces issues during development when they're cheap to fix.
 
-**SignalStore simplifies reactive state.** Previous authentication implementations I've built used services with BehaviorSubjects, or full NgRx with actions and reducers. SignalStore hits a sweet spot. It's simpler than traditional NgRx but more structured than ad-hoc service state. The `rxMethod` pattern for async operations is particularly elegant.
+**SignalStore simplifies reactive state.** Previous authentication implementations I've built used services with BehaviorSubjects, or full NgRx with actions and reducers. SignalStore hits a sweet spot. It's simpler than traditional NgRx but more structured than ad-hoc service state. The `rxMethod` pattern for async operations is particularly elegant. It effectively replaces the 'Service with a Subject' pattern that has dominated Angular for a decade. Instead of manually managing `BehaviorSubject.next()`, we just update the signal.
 
 **Comprehensive testing enables fearless refactoring.** Several times during Phase 2, I refactored implementation details. I changed how errors were logged, restructured the auth flow, and adjusted how providers initialized. The tests caught regressions immediately, making refactoring safe rather than scary.
 
@@ -345,7 +385,7 @@ Building Phase 2 reinforced several lessons:
 
 With Phase 2 complete, the application has a solid invisible architecture. Environment configuration is typed and injectable. Logging, analytics, SEO, and theming are abstracted behind clean interfaces. Errors are caught, transformed, and handled consistently. Authentication works with session persistence and route protection.
 
-The next article will cover Phase 3, the Design System. That phase builds the visual component library with all the UI primitives that features will compose. With the core architecture in place, the design system can focus purely on presentation, knowing that services, state, and error handling are already solved.
+The next article will cover [Phase 3, the Design System](https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/docs/specs/PHASE_3_DS.md). That phase builds the visual component library with all the UI primitives that features will compose. With the core architecture in place, the design system can focus purely on presentation, knowing that services, state, and error handling are already solved.
 
 You can explore the complete Phase 2 implementation on GitHub: [MoodyJW/angular-enterprise-blueprint](https://github.com/MoodyJW/angular-enterprise-blueprint)
 
