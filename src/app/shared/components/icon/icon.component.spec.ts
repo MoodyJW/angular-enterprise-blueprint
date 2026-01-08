@@ -1,6 +1,15 @@
 // @vitest-environment jsdom
 import type { ComponentFixture } from '@angular/core/testing';
 import { TestBed } from '@angular/core/testing';
+import { provideIcons } from '@ng-icons/core';
+import {
+  heroCheck,
+  heroCog6Tooth,
+  heroEnvelope,
+  heroHome,
+  heroMagnifyingGlass,
+  heroUser,
+} from '@ng-icons/heroicons/outline';
 
 import { ICON_NAMES } from '@shared/constants';
 import type { IconColor, IconSize } from './icon.component';
@@ -14,6 +23,16 @@ describe('IconComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [IconComponent],
+      providers: [
+        provideIcons({
+          [ICON_NAMES.HOME]: heroHome,
+          [ICON_NAMES.USER]: heroUser,
+          [ICON_NAMES.EMAIL]: heroEnvelope,
+          [ICON_NAMES.SETTINGS]: heroCog6Tooth,
+          [ICON_NAMES.SEARCH]: heroMagnifyingGlass,
+          [ICON_NAMES.CHECK]: heroCheck,
+        }),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(IconComponent);
