@@ -1,5 +1,5 @@
 <div [class]="wrapperClasses()">
-  <div class="radio-input-wrapper">
+  <div [class]="wrapperInnerClasses()">
     <input
       #radioElement
       type="radio"
@@ -18,9 +18,7 @@
       (focus)="handleFocus($event)"
       (blur)="handleBlur($event)"
     />
-    <div class="radio-indicator">
-      <span class="radio-indicator__dot"></span>
-    </div>
+    <eb-radio-button-icon [checked]="checked()" />
   </div>
 
   <eb-input-label

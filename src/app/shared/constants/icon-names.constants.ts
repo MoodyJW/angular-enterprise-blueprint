@@ -15,6 +15,8 @@ export const ICON_NAMES = {
   CHECKBOX_UNCHECKED: 'matCheckBoxOutlineBlank',
   CHECKBOX_CHECKED: 'matCheckBox',
   CHECKBOX_INDETERMINATE: 'matIndeterminateCheckBox',
+  RADIO_UNCHECKED: 'matRadioButtonUnchecked',
+  RADIO_CHECKED: 'matRadioButtonChecked',
 
   // Navigation
   ARROW_LEFT: 'heroArrowLeft',

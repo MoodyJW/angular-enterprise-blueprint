@@ -305,11 +305,11 @@ _Goal: Refactor existing components for consistency, then add new capabilities a
   - [x] Update CheckboxCheckmarkComponent with three icon states.
   - [x] Use `matCheckBoxOutlineBlank` (unchecked), `matCheckBox` (checked), `matIndeterminateCheckBox` (indeterminate).
   - [x] Update Storybook and tests across all 6 themes.
-- [ ] **8.2 Radio Component Icon Refactor**: Replace CSS-based radio with Material Icons.
-  - [ ] Create RadioButtonIconComponent for icon rendering.
-  - [ ] Use `matRadioButtonUnchecked` (unchecked), `matRadioButtonChecked` (checked).
-  - [ ] Update RadioComponent to integrate new icon component.
-  - [ ] Update Storybook and tests across all 6 themes.
+- [x] **8.2 Radio Component Icon Refactor**: Replace CSS-based radio with Material Icons.
+  - [x] Create RadioButtonIconComponent for icon rendering.
+  - [x] Use `matRadioButtonUnchecked` (unchecked), `matRadioButtonChecked` (checked).
+  - [x] Update RadioComponent to integrate new icon component.
+  - [x] Update Storybook and tests across all 6 themes.
 - [ ] **8.3 Card Visibility Improvements**: Fix poor card visibility in light themes.
   - [ ] Update `_light-default.scss` background color from `#ffffff` to `#f8fafc`.
   - [ ] Update `_light-warm.scss` with warm equivalent background tint.

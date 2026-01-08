@@ -16,6 +16,8 @@ import { UniqueIdService } from '@shared/services/unique-id';
 
 import { InputFooterComponent, InputLabelComponent } from '@shared/components/input';
 
+import { RadioButtonIconComponent } from './radio-button-icon/radio-button-icon.component';
+
 export type RadioSize = 'sm' | 'md' | 'lg';
 export type RadioValidationState = 'default' | 'success' | 'warning' | 'error';
 
@@ -61,12 +63,32 @@ export type RadioValidationState = 'default' | 'success' | 'warning' | 'error';
  *     [(checked)]="paymentMethod"
  *     ariaLabel="PayPal"
  *   />
+ *   <eb-radio
+ *     label="Credit Card"
+ *     name="payment"
+ *     value="credit"
+ *     [(checked)]="paymentMethod"
+ *     ariaLabel="Credit Card"
+ *   />
+ *   <eb-radio
+ *     label="PayPal"
+ *     name="payment"
+ *     value="paypal"
+ *     [(checked)]="paymentMethod"
+ *     ariaLabel="PayPal"
+ *   />
  * </div>
  * ```
  */
 @Component({
   selector: 'eb-radio',
-  imports: [CommonModule, FormsModule, InputFooterComponent, InputLabelComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    InputFooterComponent,
+    InputLabelComponent,
+    RadioButtonIconComponent,
+  ],
   templateUrl: './radio.component.html',
   styleUrl: './radio.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -232,6 +254,15 @@ export class RadioComponent {
    * Computed CSS classes for the label
    */
   readonly labelClasses = computed(() => this._getLabelClasses());
+
+  /**
+   * Computed CSS classes for the radio wrapper inner div
+   */
+  readonly wrapperInnerClasses = computed(() => {
+    const classes = ['radio__wrapper'];
+    classes.push(`radio__wrapper--${this.size()}`);
+    return classes.join(' ');
+  });
 
   /**
    * Computed CSS classes for helper text

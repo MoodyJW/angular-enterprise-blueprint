@@ -1,8 +1,10 @@
 // @vitest-environment jsdom
-import { ResourceLoader } from '@angular/compiler';
 import type { ComponentFixture } from '@angular/core/testing';
 import { TestBed } from '@angular/core/testing';
+import { provideIcons } from '@ng-icons/core';
+import { matRadioButtonChecked, matRadioButtonUnchecked } from '@ng-icons/material-icons/baseline';
 
+import { ICON_NAMES } from '@shared/constants';
 import { UniqueIdService } from '@shared/services/unique-id';
 
 import type { RadioSize, RadioValidationState } from './radio.component';
@@ -15,60 +17,15 @@ describe('RadioComponent', () => {
   let uniqueIdService: UniqueIdService;
 
   beforeEach(async () => {
-    TestBed.overrideComponent(RadioComponent, {
-      set: {
-        template: `
-          <div [class]="wrapperClasses()">
-            <div class="radio-input-wrapper">
-              <input
-                #radioElement
-                type="radio"
-                [id]="radioId()"
-                [class]="radioClasses()"
-                [checked]="checked()"
-                [disabled]="disabled()"
-                [required]="required()"
-                [value]="value()"
-                [name]="name()"
-                [attr.aria-label]="ariaLabel()"
-                [attr.aria-describedby]="computedAriaDescribedBy()"
-                [attr.aria-invalid]="computedAriaInvalid()"
-                [attr.aria-labelledby]="labelId()"
-                (change)="handleChange($event)"
-                (focus)="handleFocus($event)"
-                (blur)="handleBlur($event)"
-              />
-              <div class="radio-indicator">
-                <span class="radio-indicator__dot"></span>
-              </div>
-            </div>
-
-            @if (label()) {
-              <label [id]="labelId()" [for]="radioId()" [class]="labelClasses()">
-                {{ label() }}
-                @if (required()) {
-                  <span class="input-label__required" aria-hidden="true">*</span>
-                }
-              </label>
-            }
-
-            @if (helperText()) {
-              <div [id]="helperTextId()" [class]="helperTextClasses()">
-                {{ helperText() }}
-              </div>
-            }
-          </div>
-        `,
-        styles: [''],
-      },
-    });
-
-    TestBed.configureCompiler({
-      providers: [{ provide: ResourceLoader, useValue: { get: (_url: string) => '' } }],
-    });
-
     await TestBed.configureTestingModule({
-      providers: [UniqueIdService],
+      imports: [RadioComponent],
+      providers: [
+        UniqueIdService,
+        provideIcons({
+          [ICON_NAMES.RADIO_UNCHECKED]: matRadioButtonUnchecked,
+          [ICON_NAMES.RADIO_CHECKED]: matRadioButtonChecked,
+        }),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(RadioComponent);
@@ -239,6 +196,12 @@ describe('RadioComponent', () => {
       fixture.componentRef.setInput('ariaInvalid', false);
       fixture.componentRef.setInput('validationState', 'error');
       expect(component.computedAriaInvalid()).toBe('true');
+    });
+
+    it('should compute wrapperInnerClasses correctly', () => {
+      fixture.componentRef.setInput('size', 'lg');
+      expect(component.wrapperInnerClasses()).toContain('radio__wrapper');
+      expect(component.wrapperInnerClasses()).toContain('radio__wrapper--lg');
     });
   });
 
@@ -567,6 +530,17 @@ describe('RadioComponent', () => {
       }
       expect(wrapper.className).toContain('radio-wrapper');
       expect(wrapper.className).toContain('radio-wrapper--md');
+    });
+
+    it('should apply correct inner wrapper classes', () => {
+      const innerWrapper = nativeElement.querySelector<HTMLElement>('.radio__wrapper');
+      expect(innerWrapper).toBeTruthy();
+      expect(innerWrapper?.className).toContain('radio__wrapper--md');
+    });
+
+    it('should render radio button icon', () => {
+      const icon = nativeElement.querySelector('eb-radio-button-icon');
+      expect(icon).toBeTruthy();
     });
 
     it('should apply correct radio classes', () => {

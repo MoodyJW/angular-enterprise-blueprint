@@ -288,20 +288,20 @@ The current radio component uses:
 
 ### Acceptance Criteria
 
-- [ ] Unchecked state displays `matRadioButtonUnchecked` icon
-- [ ] Checked state displays `matRadioButtonChecked` icon
-- [ ] Both states visually distinct and clear
-- [ ] Icons properly themed across all 6 themes (especially high-contrast)
-- [ ] Color contrast meets WCAG 2.1 AA standards in all states
-- [ ] Focus states clearly visible with proper outline
-- [ ] Hover states provide visual feedback
-- [ ] Disabled states have reduced opacity and proper cursor
-- [ ] All existing radio tests pass with updates
-- [ ] Storybook updated with all state variants
-- [ ] No visual regressions in components using radio buttons
-- [ ] Keyboard navigation unchanged (Arrow keys in radio group, Space to select)
-- [ ] Screen reader announcements unchanged
-- [ ] Radio groups function correctly with new implementation
+- [x] Unchecked state displays `matRadioButtonUnchecked` icon
+- [x] Checked state displays `matRadioButtonChecked` icon
+- [x] Both states visually distinct and clear
+- [x] Icons properly themed across all 6 themes (especially high-contrast)
+- [x] Color contrast meets WCAG 2.1 AA standards in all states
+- [x] Focus states clearly visible with proper outline
+- [x] Hover states provide visual feedback
+- [x] Disabled states have reduced opacity and proper cursor
+- [x] All existing radio tests pass with updates
+- [x] Storybook updated with all state variants
+- [x] No visual regressions in components using radio buttons
+- [x] Keyboard navigation unchanged (Arrow keys in radio group, Space to select)
+- [x] Screen reader announcements unchanged
+- [x] Radio groups function correctly with new implementation
 
 ### Files to Update
 

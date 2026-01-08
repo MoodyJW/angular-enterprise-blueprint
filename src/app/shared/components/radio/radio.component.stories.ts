@@ -1,7 +1,11 @@
 import { signal } from '@angular/core';
 
+import { provideIcons } from '@ng-icons/core';
+import { matRadioButtonChecked, matRadioButtonUnchecked } from '@ng-icons/material-icons/baseline';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { applicationConfig } from '@storybook/angular';
+
+import { ICON_NAMES } from '@shared/constants';
 
 import { RadioComponent } from './radio.component';
 
@@ -11,7 +15,12 @@ const meta: Meta<RadioComponent> = {
   tags: ['autodocs'],
   decorators: [
     applicationConfig({
-      providers: [],
+      providers: [
+        provideIcons({
+          [ICON_NAMES.RADIO_UNCHECKED]: matRadioButtonUnchecked,
+          [ICON_NAMES.RADIO_CHECKED]: matRadioButtonChecked,
+        }),
+      ],
     }),
   ],
   argTypes: {
