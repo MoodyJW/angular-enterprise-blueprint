@@ -11,6 +11,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false",
+    "test:file": "ng test --watch=false --include",
+    "test:file:coverage": "ng test --watch=false --coverage --include",
     "test:watch": "ng test --watch",
     "test:coverage": "ng test --coverage",
     "e2e": "playwright test",
