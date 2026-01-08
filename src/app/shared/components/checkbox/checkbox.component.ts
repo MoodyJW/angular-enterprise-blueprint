@@ -227,6 +227,15 @@ export class CheckboxComponent {
   readonly labelClasses = computed(() => this._getLabelClasses());
 
   /**
+   * Computed CSS classes for the checkbox wrapper inner div
+   */
+  readonly wrapperInnerClasses = computed(() => {
+    const classes = ['checkbox__wrapper'];
+    classes.push(`checkbox__wrapper--${this.size()}`);
+    return classes.join(' ');
+  });
+
+  /**
    * Computed CSS classes for helper text
    */
   readonly helperTextClasses = computed(() => {

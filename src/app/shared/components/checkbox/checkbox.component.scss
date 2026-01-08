@@ -17,136 +17,102 @@
   position: relative;
   flex-shrink: 0;
 
+  // Size variants for the wrapper (controls icon size via CSS custom property)
+  &--sm {
+    --checkbox-size: 16px;
+  }
+
+  &--md {
+    --checkbox-size: 20px;
+  }
+
+  &--lg {
+    --checkbox-size: 24px;
+  }
+
   eb-checkbox-checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     display: block;
+    width: var(--checkbox-size, 20px);
+    height: var(--checkbox-size, 20px);
     pointer-events: none;
     z-index: 10;
   }
 }
 
+// Visually hidden native checkbox input for accessibility
+// Still focusable and interactive but not visible
 .checkbox__control {
-  appearance: none;
-  position: relative;
+  position: absolute;
+  width: var(--checkbox-size, 20px);
+  height: var(--checkbox-size, 20px);
   margin: 0;
-  width: 20px;
-  height: 20px;
-  border: var(--border-width-medium) solid var(--color-border);
-  border-radius: var(--border-radius-sm);
-  background-color: var(--color-background);
+  padding: 0;
+  opacity: 0;
   cursor: pointer;
-  transition: all var(--duration-normal) var(--ease-in-out);
-  flex-shrink: 0;
-
-  &:focus {
-    outline: none;
-  }
-
-  &:focus-visible {
-    outline: var(--border-width-medium) solid var(--color-primary);
-    outline-offset: var(--border-width-medium);
-  }
-
-  &:not(:disabled):not(.checkbox__control--disabled):hover {
-    border-color: var(--color-primary);
-  }
+  z-index: 20; // Above the icon so it receives clicks
 
   &:disabled,
-  &--disabled,
   &[aria-disabled='true'] {
     cursor: not-allowed;
     pointer-events: none;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
+  // Focus styles applied to sibling checkmark when input is focused
+  &:focus-visible + eb-checkbox-checkmark {
+    outline: var(--border-width-medium) solid var(--color-primary);
+    outline-offset: var(--border-width-medium);
+    border-radius: var(--border-radius-sm);
   }
 
-  // Size variants
-  &--sm {
-    width: 16px;
-    height: 16px;
+  // Hover styles
+  &:not(:disabled):hover + eb-checkbox-checkmark .checkbox-icon {
+    color: var(--color-primary);
   }
 
-  &--md {
-    width: 20px;
-    height: 20px;
+  // Validation states - focus outline colors
+  &.checkbox__control--success:focus-visible + eb-checkbox-checkmark {
+    outline-color: var(--color-success);
   }
 
-  &--lg {
-    width: 24px;
-    height: 24px;
+  &.checkbox__control--warning:focus-visible + eb-checkbox-checkmark {
+    outline-color: var(--color-warning);
   }
 
-  // Validation states
-  &--success {
-    border-color: var(--color-success);
-
-    &:focus-visible {
-      outline-color: var(--color-success);
-    }
+  &.checkbox__control--error:focus-visible + eb-checkbox-checkmark {
+    outline-color: var(--color-error);
   }
 
-  &--warning {
-    border-color: var(--color-warning);
-
-    &:focus-visible {
-      outline-color: var(--color-warning);
-    }
+  // Checked/Indeterminate icon colors
+  &:checked + eb-checkbox-checkmark .checkbox-icon,
+  &[data-indeterminate='true'] + eb-checkbox-checkmark .checkbox-icon,
+  &.checkbox__control--checked + eb-checkbox-checkmark .checkbox-icon,
+  &.checkbox__control--indeterminate + eb-checkbox-checkmark .checkbox-icon {
+    color: var(--color-primary);
   }
 
-  &--error {
-    border-color: var(--color-error);
-
-    &:focus-visible {
-      outline-color: var(--color-error);
-    }
+  // Validation state colors for checked/indeterminate
+  &.checkbox__control--success:checked + eb-checkbox-checkmark .checkbox-icon,
+  &.checkbox__control--success.checkbox__control--checked + eb-checkbox-checkmark .checkbox-icon,
+  &.checkbox__control--success.checkbox__control--indeterminate
+    + eb-checkbox-checkmark
+    .checkbox-icon {
+    color: var(--color-success);
   }
 
-  // Checked state
-  &--checked {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-
-    &.checkbox__control--success {
-      background-color: var(--color-success);
-      border-color: var(--color-success);
-    }
-
-    &.checkbox__control--warning {
-      background-color: var(--color-warning);
-      border-color: var(--color-warning);
-    }
-
-    &.checkbox__control--error {
-      background-color: var(--color-error);
-      border-color: var(--color-error);
-    }
+  &.checkbox__control--warning:checked + eb-checkbox-checkmark .checkbox-icon,
+  &.checkbox__control--warning.checkbox__control--checked + eb-checkbox-checkmark .checkbox-icon,
+  &.checkbox__control--warning.checkbox__control--indeterminate
+    + eb-checkbox-checkmark
+    .checkbox-icon {
+    color: var(--color-warning);
   }
 
-  // Indeterminate state
-  &--indeterminate {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-
-    &.checkbox__control--success {
-      background-color: var(--color-success);
-      border-color: var(--color-success);
-    }
-
-    &.checkbox__control--warning {
-      background-color: var(--color-warning);
-      border-color: var(--color-warning);
-    }
-
-    &.checkbox__control--error {
-      background-color: var(--color-error);
-      border-color: var(--color-error);
-    }
+  &.checkbox__control--error:checked + eb-checkbox-checkmark .checkbox-icon,
+  &.checkbox__control--error.checkbox__control--checked + eb-checkbox-checkmark .checkbox-icon,
+  &.checkbox__control--error.checkbox__control--indeterminate
+    + eb-checkbox-checkmark
+    .checkbox-icon {
+    color: var(--color-error);
   }
 
   // Touch target for mobile
@@ -154,12 +120,12 @@
     min-width: 44px;
     min-height: 44px;
 
-    &--sm {
+    &.checkbox__control--sm {
       min-width: 40px;
       min-height: 40px;
     }
 
-    &--lg {
+    &.checkbox__control--lg {
       min-width: 48px;
       min-height: 48px;
     }
@@ -168,7 +134,7 @@
 
 // Label customization for checkbox context
 .checkbox__label {
-  padding-left: calc(20px + var(--space-2));
+  padding-left: calc(var(--checkbox-size, 20px) + var(--space-2));
 
   .checkbox--sm & {
     padding-left: calc(16px + var(--space-2));
@@ -194,7 +160,7 @@
 // Helper text customization for checkbox context
 .checkbox__helper-text,
 .input-helper-text {
-  padding-left: calc(20px + var(--space-2));
+  padding-left: calc(var(--checkbox-size, 20px) + var(--space-2));
 
   .checkbox--sm & {
     padding-left: calc(16px + var(--space-2));

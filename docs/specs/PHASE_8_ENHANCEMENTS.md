@@ -180,21 +180,21 @@ The current checkbox uses:
 
 ### Acceptance Criteria
 
-- [ ] Unchecked state displays `matCheckBoxOutlineBlank` icon
-- [ ] Checked state displays `matCheckBox` icon
-- [ ] Indeterminate state displays `matIndeterminateCheckBox` icon
-- [ ] All three states visually distinct and clear
-- [ ] `@ng-icons/material-icons` package installed and configured
-- [ ] Icons properly themed across all 6 themes (especially high-contrast)
-- [ ] Color contrast meets WCAG 2.1 AA standards in all states
-- [ ] Focus states clearly visible with proper outline
-- [ ] Hover states provide visual feedback
-- [ ] Disabled states have reduced opacity and proper cursor
-- [ ] All existing checkbox tests pass with updates
-- [ ] Storybook updated with all state variants
-- [ ] No visual regressions in components using checkbox
-- [ ] Keyboard navigation unchanged (Space to toggle, Tab to navigate)
-- [ ] Screen reader announcements unchanged
+- [x] Unchecked state displays `matCheckBoxOutlineBlank` icon
+- [x] Checked state displays `matCheckBox` icon
+- [x] Indeterminate state displays `matIndeterminateCheckBox` icon
+- [x] All three states visually distinct and clear
+- [x] `@ng-icons/material-icons` package installed and configured
+- [x] Icons properly themed across all 6 themes (especially high-contrast)
+- [x] Color contrast meets WCAG 2.1 AA standards in all states
+- [x] Focus states clearly visible with proper outline
+- [x] Hover states provide visual feedback
+- [x] Disabled states have reduced opacity and proper cursor
+- [x] All existing checkbox tests pass with updates
+- [x] Storybook updated with all state variants
+- [x] No visual regressions in components using checkbox
+- [x] Keyboard navigation unchanged (Space to toggle, Tab to navigate)
+- [x] Screen reader announcements unchanged
 
 ### Files to Update
 

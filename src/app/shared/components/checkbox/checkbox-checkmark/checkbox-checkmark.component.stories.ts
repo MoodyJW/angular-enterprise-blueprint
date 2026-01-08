@@ -1,5 +1,9 @@
 import { provideIcons } from '@ng-icons/core';
-import { heroCheck, heroMinus } from '@ng-icons/heroicons/outline';
+import {
+  matCheckBox,
+  matCheckBoxOutlineBlank,
+  matIndeterminateCheckBox,
+} from '@ng-icons/material-icons/baseline';
 import { ICON_NAMES } from '@shared/constants';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { applicationConfig } from '@storybook/angular';
@@ -14,8 +18,9 @@ const meta: Meta<CheckboxCheckmarkComponent> = {
     applicationConfig({
       providers: [
         provideIcons({
-          [ICON_NAMES.CHECK]: heroCheck,
-          [ICON_NAMES.REMOVE]: heroMinus,
+          [ICON_NAMES.CHECKBOX_UNCHECKED]: matCheckBoxOutlineBlank,
+          [ICON_NAMES.CHECKBOX_CHECKED]: matCheckBox,
+          [ICON_NAMES.CHECKBOX_INDETERMINATE]: matIndeterminateCheckBox,
         }),
       ],
     }),
@@ -42,7 +47,7 @@ const meta: Meta<CheckboxCheckmarkComponent> = {
     docs: {
       description: {
         component:
-          'Reusable checkmark component for checkbox states. Displays check icon when checked and minus icon when indeterminate. Uses the shared Icon component internally.',
+          'Reusable checkmark component for checkbox states. Uses Material Design Icons for all three states: unchecked (outline), checked (filled), and indeterminate (partial fill). The icon is always visible and represents the checkbox visual itself.',
       },
     },
   },
@@ -60,15 +65,17 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-surface); border: 2px solid var(--color-border); border-radius: 4px;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
         <eb-checkbox-checkmark [checked]="checked" [indeterminate]="indeterminate" />
+        <span style="color: var(--color-text);">Unchecked state</span>
       </div>
     `,
   }),
   parameters: {
     docs: {
       description: {
-        story: 'Default unchecked state - no icon is displayed.',
+        story:
+          'Default unchecked state - displays the outline checkbox icon (matCheckBoxOutlineBlank).',
       },
     },
   },
@@ -83,15 +90,16 @@ export const Checked: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-primary); border: 2px solid var(--color-primary); border-radius: 4px;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
         <eb-checkbox-checkmark [checked]="checked" [indeterminate]="indeterminate" />
+        <span style="color: var(--color-text);">Checked state</span>
       </div>
     `,
   }),
   parameters: {
     docs: {
       description: {
-        story: 'Checked state - displays a check icon (heroCheck).',
+        story: 'Checked state - displays the filled checkbox icon (matCheckBox).',
       },
     },
   },
@@ -106,8 +114,9 @@ export const Indeterminate: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-primary); border: 2px solid var(--color-primary); border-radius: 4px;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
         <eb-checkbox-checkmark [checked]="checked" [indeterminate]="indeterminate" />
+        <span style="color: var(--color-text);">Indeterminate state</span>
       </div>
     `,
   }),
@@ -115,7 +124,7 @@ export const Indeterminate: Story = {
     docs: {
       description: {
         story:
-          'Indeterminate state - displays a minus icon (heroMinus). Used for "select all" scenarios.',
+          'Indeterminate state - displays the partial checkbox icon (matIndeterminateCheckBox). Used for "select all" scenarios.',
       },
     },
   },
@@ -127,24 +136,18 @@ export const AllStates: Story = {
     template: `
       <div style="display: flex; gap: 2rem; align-items: center;">
         <div style="text-align: center;">
-          <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-surface); border: 2px solid var(--color-border); border-radius: 4px; margin-bottom: 0.5rem;">
-            <eb-checkbox-checkmark [checked]="false" [indeterminate]="false" />
-          </div>
-          <p style="font-size: 12px; margin: 0; color: var(--color-text);">Unchecked</p>
+          <eb-checkbox-checkmark [checked]="false" [indeterminate]="false" />
+          <p style="font-size: 12px; margin: 0.5rem 0 0; color: var(--color-text);">Unchecked</p>
         </div>
 
         <div style="text-align: center;">
-          <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-primary); border: 2px solid var(--color-primary); border-radius: 4px; margin-bottom: 0.5rem;">
-            <eb-checkbox-checkmark [checked]="true" [indeterminate]="false" />
-          </div>
-          <p style="font-size: 12px; margin: 0; color: var(--color-text);">Checked</p>
+          <eb-checkbox-checkmark [checked]="true" [indeterminate]="false" />
+          <p style="font-size: 12px; margin: 0.5rem 0 0; color: var(--color-text);">Checked</p>
         </div>
 
         <div style="text-align: center;">
-          <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-primary); border: 2px solid var(--color-primary); border-radius: 4px; margin-bottom: 0.5rem;">
-            <eb-checkbox-checkmark [checked]="false" [indeterminate]="true" />
-          </div>
-          <p style="font-size: 12px; margin: 0; color: var(--color-text);">Indeterminate</p>
+          <eb-checkbox-checkmark [checked]="false" [indeterminate]="true" />
+          <p style="font-size: 12px; margin: 0.5rem 0 0; color: var(--color-text);">Indeterminate</p>
         </div>
       </div>
     `,
@@ -152,7 +155,8 @@ export const AllStates: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'All possible states of the checkbox checkmark component.',
+        story:
+          'All three states of the checkbox checkmark component side by side. Each state uses a distinct Material Design icon.',
       },
     },
   },
@@ -168,10 +172,8 @@ export const IndeterminatePrecedence: Story = {
     props: args,
     template: `
       <div style="text-align: center;">
-        <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-primary); border: 2px solid var(--color-primary); border-radius: 4px; margin-bottom: 0.5rem;">
-          <eb-checkbox-checkmark [checked]="checked" [indeterminate]="indeterminate" />
-        </div>
-        <p style="font-size: 12px; margin: 0; color: var(--color-text-brand, var(--color-text));">Both checked and indeterminate</p>
+        <eb-checkbox-checkmark [checked]="checked" [indeterminate]="indeterminate" />
+        <p style="font-size: 12px; margin: 0.5rem 0 0; color: var(--color-text-brand, var(--color-text));">Both checked and indeterminate</p>
         <p style="font-size: 12px; margin: 0; color: var(--color-text-secondary);">(indeterminate takes precedence)</p>
       </div>
     `,
@@ -180,36 +182,36 @@ export const IndeterminatePrecedence: Story = {
     docs: {
       description: {
         story:
-          'When both checked and indeterminate are true, indeterminate takes precedence and shows the minus icon.',
+          'When both checked and indeterminate are true, indeterminate takes precedence and shows the indeterminate icon.',
       },
     },
   },
 };
 
-// Different Sizes
+// Different Sizes (simulated with CSS)
 export const DifferentSizes: Story = {
   render: () => ({
     template: `
-      <div style="display: flex; gap: 2rem; align-items: center;">
+      <div style="display: flex; gap: 2rem; align-items: flex-end;">
         <div style="text-align: center;">
-          <div style="position: relative; width: 16px; height: 16px; background-color: #3b82f6; border: 2px solid #3b82f6; border-radius: 4px; margin-bottom: 0.5rem;">
+          <div style="width: 16px; height: 16px;">
             <eb-checkbox-checkmark [checked]="true" />
           </div>
-          <p style="font-size: 12px; margin: 0;">Small (16px)</p>
+          <p style="font-size: 12px; margin: 0.5rem 0 0;">Small (16px)</p>
         </div>
 
         <div style="text-align: center;">
-          <div style="position: relative; width: 20px; height: 20px; background-color: #3b82f6; border: 2px solid #3b82f6; border-radius: 4px; margin-bottom: 0.5rem;">
+          <div style="width: 20px; height: 20px;">
             <eb-checkbox-checkmark [checked]="true" />
           </div>
-          <p style="font-size: 12px; margin: 0;">Medium (20px)</p>
+          <p style="font-size: 12px; margin: 0.5rem 0 0;">Medium (20px)</p>
         </div>
 
         <div style="text-align: center;">
-          <div style="position: relative; width: 24px; height: 24px; background-color: #3b82f6; border: 2px solid #3b82f6; border-radius: 4px; margin-bottom: 0.5rem;">
+          <div style="width: 24px; height: 24px;">
             <eb-checkbox-checkmark [checked]="true" />
           </div>
-          <p style="font-size: 12px; margin: 0;">Large (24px)</p>
+          <p style="font-size: 12px; margin: 0.5rem 0 0;">Large (24px)</p>
         </div>
       </div>
     `,
@@ -218,43 +220,50 @@ export const DifferentSizes: Story = {
     docs: {
       description: {
         story:
-          'The checkmark component adapts to different checkbox sizes. The icon size is fixed at "sm" (16px) for optimal visibility.',
+          'The checkmark component adapts to its container size. The parent checkbox controls the size variant.',
       },
     },
   },
 };
 
-// With Validation Colors
-export const WithValidationColors: Story = {
+// Icon Colors (via CSS custom properties)
+export const IconColors: Story = {
   render: () => ({
     template: `
       <div style="display: flex; gap: 2rem; align-items: center;">
         <div style="text-align: center;">
-          <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-primary); border: 2px solid var(--color-primary); border-radius: 4px; margin-bottom: 0.5rem;">
-            <eb-checkbox-checkmark [checked]="true" />
+          <div style="--checkbox-icon-color: var(--color-text-muted);">
+            <eb-checkbox-checkmark [checked]="false" />
           </div>
-          <p style="font-size: 12px; margin: 0; color: var(--color-text);">Default</p>
+          <p style="font-size: 12px; margin: 0.5rem 0 0; color: var(--color-text);">Muted (unchecked)</p>
         </div>
 
         <div style="text-align: center;">
-          <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-success); border: 2px solid var(--color-success); border-radius: 4px; margin-bottom: 0.5rem;">
+          <div style="--checkbox-icon-color: var(--color-primary);">
             <eb-checkbox-checkmark [checked]="true" />
           </div>
-          <p style="font-size: 12px; margin: 0; color: var(--color-text);">Success</p>
+          <p style="font-size: 12px; margin: 0.5rem 0 0; color: var(--color-text);">Primary (checked)</p>
         </div>
 
         <div style="text-align: center;">
-          <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-warning); border: 2px solid var(--color-warning); border-radius: 4px; margin-bottom: 0.5rem;">
+          <div style="--checkbox-icon-color: var(--color-success);">
             <eb-checkbox-checkmark [checked]="true" />
           </div>
-          <p style="font-size: 12px; margin: 0; color: var(--color-text);">Warning</p>
+          <p style="font-size: 12px; margin: 0.5rem 0 0; color: var(--color-text);">Success</p>
         </div>
 
         <div style="text-align: center;">
-          <div style="position: relative; width: 20px; height: 20px; background-color: var(--color-error); border: 2px solid var(--color-error); border-radius: 4px; margin-bottom: 0.5rem;">
+          <div style="--checkbox-icon-color: var(--color-warning);">
             <eb-checkbox-checkmark [checked]="true" />
           </div>
-          <p style="font-size: 12px; margin: 0; color: var(--color-text);">Error</p>
+          <p style="font-size: 12px; margin: 0.5rem 0 0; color: var(--color-text);">Warning</p>
+        </div>
+
+        <div style="text-align: center;">
+          <div style="--checkbox-icon-color: var(--color-error);">
+            <eb-checkbox-checkmark [checked]="true" />
+          </div>
+          <p style="font-size: 12px; margin: 0.5rem 0 0; color: var(--color-text);">Error</p>
         </div>
       </div>
     `,
@@ -263,7 +272,7 @@ export const WithValidationColors: Story = {
     docs: {
       description: {
         story:
-          'The checkmark component works with different validation state colors from the parent checkbox.',
+          'Icon color can be customized via the --checkbox-icon-color CSS custom property. This is controlled by the parent checkbox based on validation state.',
       },
     },
   },
@@ -279,7 +288,7 @@ export const Interactive: Story = {
     props: args,
     template: `
       <div style="text-align: center;">
-        <div style="position: relative; width: 20px; height: 20px; background-color: ${args.checked || args.indeterminate ? 'var(--color-primary)' : 'var(--color-surface)'}; border: 2px solid ${args.checked || args.indeterminate ? 'var(--color-primary)' : 'var(--color-border)'}; border-radius: 4px; margin: 0 auto 1rem;">
+        <div style="margin-bottom: 1rem;">
           <eb-checkbox-checkmark [checked]="checked" [indeterminate]="indeterminate" />
         </div>
         <p style="font-size: 14px; margin: 0; color: var(--color-text);">Use the controls below to toggle states</p>

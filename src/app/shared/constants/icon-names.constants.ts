@@ -11,6 +11,11 @@ export const ICON_NAMES = {
   GITHUB: 'ionLogoGithub',
   LINKEDIN: 'ionLogoLinkedin',
 
+  // Checkbox/Form Controls (Material Icons)
+  CHECKBOX_UNCHECKED: 'matCheckBoxOutlineBlank',
+  CHECKBOX_CHECKED: 'matCheckBox',
+  CHECKBOX_INDETERMINATE: 'matIndeterminateCheckBox',
+
   // Navigation
   ARROW_LEFT: 'heroArrowLeft',
   ARROW_RIGHT: 'heroArrowRight',

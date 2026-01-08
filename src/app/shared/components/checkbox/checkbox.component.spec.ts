@@ -19,7 +19,7 @@ describe('CheckboxComponent', () => {
       set: {
         template: `
           <div [class]="wrapperClasses()">
-            <div class="checkbox__wrapper">
+            <div [class]="wrapperInnerClasses()">
               <input
                 #checkboxElement
                 type="checkbox"

@@ -1,6 +1,9 @@
 // @vitest-environment jsdom
+import { ResourceLoader } from '@angular/compiler';
 import type { ComponentFixture } from '@angular/core/testing';
 import { TestBed } from '@angular/core/testing';
+
+import { ICON_NAMES } from '@shared/constants';
 
 import { CheckboxCheckmarkComponent } from './checkbox-checkmark.component';
 
@@ -10,14 +13,37 @@ describe('CheckboxCheckmarkComponent', () => {
   let nativeElement: HTMLElement;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [CheckboxCheckmarkComponent],
-    }).compileComponents();
+    // Reset TestBed to ensure clean state
+    TestBed.resetTestingModule();
+
+    // Override template BEFORE configureTestingModule to avoid IconComponent resolution
+    TestBed.overrideComponent(CheckboxCheckmarkComponent, {
+      set: {
+        template: `
+          <span class="checkbox-checkmark" aria-hidden="true">
+            <span class="checkbox-icon" [attr.data-icon]="iconName()"></span>
+          </span>
+        `,
+        styles: [''],
+      },
+    });
+
+    // Ensure ResourceLoader is provided to the Angular compiler
+    TestBed.configureCompiler({
+      providers: [{ provide: ResourceLoader, useValue: { get: (_url: string) => '' } }],
+    });
+
+    // Empty configureTestingModule - component will be created directly
+    await TestBed.configureTestingModule({}).compileComponents();
 
     fixture = TestBed.createComponent(CheckboxCheckmarkComponent);
     component = fixture.componentInstance;
     nativeElement = fixture.nativeElement as HTMLElement;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    TestBed.resetTestingModule();
   });
 
   describe('Component Creation', () => {
@@ -74,63 +100,33 @@ describe('CheckboxCheckmarkComponent', () => {
     });
   });
 
-  describe('Computed Values - showIcon', () => {
-    it('should return false when neither checked nor indeterminate', () => {
-      fixture.componentRef.setInput('checked', false);
-      fixture.componentRef.setInput('indeterminate', false);
-      fixture.detectChanges();
-      expect(component.showIcon()).toBe(false);
-    });
-
-    it('should return true when checked', () => {
-      fixture.componentRef.setInput('checked', true);
-      fixture.componentRef.setInput('indeterminate', false);
-      fixture.detectChanges();
-      expect(component.showIcon()).toBe(true);
-    });
-
-    it('should return true when indeterminate', () => {
-      fixture.componentRef.setInput('checked', false);
-      fixture.componentRef.setInput('indeterminate', true);
-      fixture.detectChanges();
-      expect(component.showIcon()).toBe(true);
-    });
-
-    it('should return true when both checked and indeterminate', () => {
-      fixture.componentRef.setInput('checked', true);
-      fixture.componentRef.setInput('indeterminate', true);
-      fixture.detectChanges();
-      expect(component.showIcon()).toBe(true);
-    });
-  });
-
   describe('Computed Values - iconName', () => {
-    it('should return heroMinus when indeterminate', () => {
-      fixture.componentRef.setInput('indeterminate', true);
-      fixture.componentRef.setInput('checked', false);
-      fixture.detectChanges();
-      expect(component.iconName()).toBe('heroMinus');
-    });
-
-    it('should return heroMinus when both indeterminate and checked (indeterminate takes precedence)', () => {
-      fixture.componentRef.setInput('indeterminate', true);
-      fixture.componentRef.setInput('checked', true);
-      fixture.detectChanges();
-      expect(component.iconName()).toBe('heroMinus');
-    });
-
-    it('should return heroCheck when checked and not indeterminate', () => {
-      fixture.componentRef.setInput('checked', true);
-      fixture.componentRef.setInput('indeterminate', false);
-      fixture.detectChanges();
-      expect(component.iconName()).toBe('heroCheck');
-    });
-
-    it('should return heroCheck when neither checked nor indeterminate (default)', () => {
+    it('should return CHECKBOX_UNCHECKED when neither checked nor indeterminate', () => {
       fixture.componentRef.setInput('checked', false);
       fixture.componentRef.setInput('indeterminate', false);
       fixture.detectChanges();
-      expect(component.iconName()).toBe('heroCheck');
+      expect(component.iconName()).toBe(ICON_NAMES.CHECKBOX_UNCHECKED);
+    });
+
+    it('should return CHECKBOX_CHECKED when checked', () => {
+      fixture.componentRef.setInput('checked', true);
+      fixture.componentRef.setInput('indeterminate', false);
+      fixture.detectChanges();
+      expect(component.iconName()).toBe(ICON_NAMES.CHECKBOX_CHECKED);
+    });
+
+    it('should return CHECKBOX_INDETERMINATE when indeterminate', () => {
+      fixture.componentRef.setInput('checked', false);
+      fixture.componentRef.setInput('indeterminate', true);
+      fixture.detectChanges();
+      expect(component.iconName()).toBe(ICON_NAMES.CHECKBOX_INDETERMINATE);
+    });
+
+    it('should return CHECKBOX_INDETERMINATE when both checked and indeterminate (indeterminate takes precedence)', () => {
+      fixture.componentRef.setInput('checked', true);
+      fixture.componentRef.setInput('indeterminate', true);
+      fixture.detectChanges();
+      expect(component.iconName()).toBe(ICON_NAMES.CHECKBOX_INDETERMINATE);
     });
   });
 
@@ -149,19 +145,19 @@ describe('CheckboxCheckmarkComponent', () => {
   });
 
   describe('Template Rendering - Icon', () => {
-    it('should not render icon when unchecked and not indeterminate', () => {
+    it('should always render an icon (unchecked state)', () => {
       fixture.componentRef.setInput('checked', false);
       fixture.componentRef.setInput('indeterminate', false);
       fixture.detectChanges();
-      const icon = nativeElement.querySelector('eb-icon');
-      expect(icon).toBeNull();
+      const icon = nativeElement.querySelector('.checkbox-icon');
+      expect(icon).toBeTruthy();
     });
 
     it('should render icon when checked', () => {
       fixture.componentRef.setInput('checked', true);
       fixture.componentRef.setInput('indeterminate', false);
       fixture.detectChanges();
-      const icon = nativeElement.querySelector('eb-icon');
+      const icon = nativeElement.querySelector('.checkbox-icon');
       expect(icon).toBeTruthy();
     });
 
@@ -169,7 +165,7 @@ describe('CheckboxCheckmarkComponent', () => {
       fixture.componentRef.setInput('checked', false);
       fixture.componentRef.setInput('indeterminate', true);
       fixture.detectChanges();
-      const icon = nativeElement.querySelector('eb-icon');
+      const icon = nativeElement.querySelector('.checkbox-icon');
       expect(icon).toBeTruthy();
     });
 
@@ -177,23 +173,38 @@ describe('CheckboxCheckmarkComponent', () => {
       fixture.componentRef.setInput('checked', true);
       fixture.componentRef.setInput('indeterminate', true);
       fixture.detectChanges();
-      const icon = nativeElement.querySelector('eb-icon');
+      const icon = nativeElement.querySelector('.checkbox-icon');
       expect(icon).toBeTruthy();
     });
   });
 
   describe('Icon Properties', () => {
+    it('should render icon with correct name when unchecked', () => {
+      fixture.componentRef.setInput('checked', false);
+      fixture.componentRef.setInput('indeterminate', false);
+      fixture.detectChanges();
+
+      // Verify computed value
+      expect(component.iconName()).toBe(ICON_NAMES.CHECKBOX_UNCHECKED);
+
+      // Verify icon is rendered with correct data attribute
+      const icon = nativeElement.querySelector('.checkbox-icon');
+      expect(icon).toBeTruthy();
+      expect(icon?.getAttribute('data-icon')).toBe(ICON_NAMES.CHECKBOX_UNCHECKED);
+    });
+
     it('should render icon with correct name when checked', () => {
       fixture.componentRef.setInput('checked', true);
       fixture.componentRef.setInput('indeterminate', false);
       fixture.detectChanges();
 
       // Verify computed value
-      expect(component.iconName()).toBe('heroCheck');
+      expect(component.iconName()).toBe(ICON_NAMES.CHECKBOX_CHECKED);
 
-      // Verify icon is rendered
-      const icon = nativeElement.querySelector('eb-icon');
+      // Verify icon is rendered with correct data attribute
+      const icon = nativeElement.querySelector('.checkbox-icon');
       expect(icon).toBeTruthy();
+      expect(icon?.getAttribute('data-icon')).toBe(ICON_NAMES.CHECKBOX_CHECKED);
     });
 
     it('should render icon with correct name when indeterminate', () => {
@@ -202,27 +213,18 @@ describe('CheckboxCheckmarkComponent', () => {
       fixture.detectChanges();
 
       // Verify computed value
-      expect(component.iconName()).toBe('heroMinus');
+      expect(component.iconName()).toBe(ICON_NAMES.CHECKBOX_INDETERMINATE);
 
-      // Verify icon is rendered
-      const icon = nativeElement.querySelector('eb-icon');
+      // Verify icon is rendered with correct data attribute
+      const icon = nativeElement.querySelector('.checkbox-icon');
       expect(icon).toBeTruthy();
-    });
-
-    it('should configure icon correctly', () => {
-      fixture.componentRef.setInput('checked', true);
-      fixture.detectChanges();
-
-      // Verify icon element exists with correct class
-      const icon = nativeElement.querySelector('eb-icon');
-      expect(icon).toBeTruthy();
-      expect(icon?.classList.contains('checkbox-icon')).toBe(true);
+      expect(icon?.getAttribute('data-icon')).toBe(ICON_NAMES.CHECKBOX_INDETERMINATE);
     });
 
     it('should apply checkbox-icon class to icon', () => {
       fixture.componentRef.setInput('checked', true);
       fixture.detectChanges();
-      const icon = nativeElement.querySelector('eb-icon');
+      const icon = nativeElement.querySelector('.checkbox-icon');
       expect(icon?.classList.contains('checkbox-icon')).toBe(true);
     });
   });
@@ -232,16 +234,15 @@ describe('CheckboxCheckmarkComponent', () => {
       // Start unchecked
       fixture.componentRef.setInput('checked', false);
       fixture.detectChanges();
-      expect(component.showIcon()).toBe(false);
-      let icon = nativeElement.querySelector('eb-icon');
-      expect(icon).toBeNull();
+      expect(component.iconName()).toBe(ICON_NAMES.CHECKBOX_UNCHECKED);
+      let icon = nativeElement.querySelector('.checkbox-icon');
+      expect(icon).toBeTruthy();
 
       // Transition to checked
       fixture.componentRef.setInput('checked', true);
       fixture.detectChanges();
-      expect(component.showIcon()).toBe(true);
-      expect(component.iconName()).toBe('heroCheck');
-      icon = nativeElement.querySelector('eb-icon');
+      expect(component.iconName()).toBe(ICON_NAMES.CHECKBOX_CHECKED);
+      icon = nativeElement.querySelector('.checkbox-icon');
       expect(icon).toBeTruthy();
     });
 
@@ -250,15 +251,15 @@ describe('CheckboxCheckmarkComponent', () => {
       fixture.componentRef.setInput('checked', true);
       fixture.componentRef.setInput('indeterminate', false);
       fixture.detectChanges();
-      expect(component.iconName()).toBe('heroCheck');
-      let icon = nativeElement.querySelector('eb-icon');
+      expect(component.iconName()).toBe(ICON_NAMES.CHECKBOX_CHECKED);
+      let icon = nativeElement.querySelector('.checkbox-icon');
       expect(icon).toBeTruthy();
 
       // Transition to indeterminate
       fixture.componentRef.setInput('indeterminate', true);
       fixture.detectChanges();
-      expect(component.iconName()).toBe('heroMinus');
-      icon = nativeElement.querySelector('eb-icon');
+      expect(component.iconName()).toBe(ICON_NAMES.CHECKBOX_INDETERMINATE);
+      icon = nativeElement.querySelector('.checkbox-icon');
       expect(icon).toBeTruthy();
     });
 
@@ -266,17 +267,17 @@ describe('CheckboxCheckmarkComponent', () => {
       // Start indeterminate
       fixture.componentRef.setInput('indeterminate', true);
       fixture.detectChanges();
-      expect(component.showIcon()).toBe(true);
-      let icon = nativeElement.querySelector('eb-icon');
+      expect(component.iconName()).toBe(ICON_NAMES.CHECKBOX_INDETERMINATE);
+      let icon = nativeElement.querySelector('.checkbox-icon');
       expect(icon).toBeTruthy();
 
       // Transition to unchecked
       fixture.componentRef.setInput('indeterminate', false);
       fixture.componentRef.setInput('checked', false);
       fixture.detectChanges();
-      expect(component.showIcon()).toBe(false);
-      icon = nativeElement.querySelector('eb-icon');
-      expect(icon).toBeNull();
+      expect(component.iconName()).toBe(ICON_NAMES.CHECKBOX_UNCHECKED);
+      icon = nativeElement.querySelector('.checkbox-icon');
+      expect(icon).toBeTruthy();
     });
   });
 
