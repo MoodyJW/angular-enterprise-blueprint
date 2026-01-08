@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.0](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v1.0.2...v1.1.0) (2026-01-08)
+
+
+### Features
+
+* add theme picker to storybook toolbar, create page not found ([e77cbdd](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/e77cbddcd93d0aca13a38cb3cc857775fd3b1654))
+
+
+### Bug Fixes
+
+* **accessibility:** improve accessibility across shared components ([d087d97](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/d087d97197a8495791b4a444fe830d47acaca2ea))
+* **card:** color contrast issues ([b9c295a](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/b9c295a81a7f17075ea0e8cce2db2c559de23cb6))
+* **modal:** remove invalid focus-order ([3066429](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/30664293ce540927e0bac7f969d8d5ee81172bed))
+* remove outdated storybook toolbar package ([b6e76d0](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/b6e76d09e4b604547a14ee13b67bdb9b487718e4))
+
 ## [1.0.2](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v1.0.1...v1.0.2) (2026-01-01)
 
 
