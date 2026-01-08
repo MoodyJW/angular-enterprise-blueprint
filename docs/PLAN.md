@@ -290,7 +290,7 @@ _Goal: Clean up technical debt, refine implementation quality, and ensure produc
   - [x] Run full linting and fix all warnings.
   - [x] Review and clean up any remaining `TODO` or `FIXME` comments.
   - [x] Ensure consistent code formatting across entire codebase.
-- [ ] **7.7 Blog Article**: Write about technical debt management and refactoring strategies.
+- [x] **7.7 Blog Article**: Write about technical debt management and refactoring strategies.
 
 ### ✨ Phase 8: Enhancements & New Features
 
@@ -300,11 +300,11 @@ _Goal: Refactor existing components for consistency, then add new capabilities a
 
 **Part A: Component Refactoring & Style Improvements (8.1-8.5)**
 
-- [ ] **8.1 Checkbox Component Icon Refactor**: Replace CSS-based checkbox with Material Icons.
-  - [ ] Install `@ng-icons/material-icons` package.
-  - [ ] Update CheckboxCheckmarkComponent with three icon states.
-  - [ ] Use `matCheckBoxOutlineBlank` (unchecked), `matCheckBox` (checked), `matIndeterminateCheckBox` (indeterminate).
-  - [ ] Update Storybook and tests across all 6 themes.
+- [x] **8.1 Checkbox Component Icon Refactor**: Replace CSS-based checkbox with Material Icons.
+  - [x] Install `@ng-icons/material-icons` package.
+  - [x] Update CheckboxCheckmarkComponent with three icon states.
+  - [x] Use `matCheckBoxOutlineBlank` (unchecked), `matCheckBox` (checked), `matIndeterminateCheckBox` (indeterminate).
+  - [x] Update Storybook and tests across all 6 themes.
 - [ ] **8.2 Radio Component Icon Refactor**: Replace CSS-based radio with Material Icons.
   - [ ] Create RadioButtonIconComponent for icon rendering.
   - [ ] Use `matRadioButtonUnchecked` (unchecked), `matRadioButtonChecked` (checked).

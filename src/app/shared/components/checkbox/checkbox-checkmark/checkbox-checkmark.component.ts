@@ -1,27 +1,33 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { provideIcons } from '@ng-icons/core';
-import { heroCheck, heroMinus } from '@ng-icons/heroicons/outline';
+import {
+  matCheckBox,
+  matCheckBoxOutlineBlank,
+  matIndeterminateCheckBox,
+} from '@ng-icons/material-icons/baseline';
 
 import { IconComponent } from '@shared/components/icon';
 import { ICON_NAMES } from '@shared/constants';
 
 /**
- * Reusable checkmark component for checkbox states
+ * Reusable checkbox icon component for checkbox states.
  *
- * Displays icons for checked and indeterminate states using the shared Icon component.
- * Indeterminate takes precedence over checked.
+ * Displays Material Icons for all checkbox states:
+ * - Unchecked: Empty outline box (matCheckBoxOutlineBlank)
+ * - Checked: Filled box with checkmark (matCheckBox)
+ * - Indeterminate: Box with minus line (matIndeterminateCheckBox)
  *
  * @example
  * ```html
+ * <!-- Unchecked state -->
+ * <eb-checkbox-checkmark />
+ *
  * <!-- Checked state -->
  * <eb-checkbox-checkmark [checked]="true" />
  *
  * <!-- Indeterminate state -->
  * <eb-checkbox-checkmark [indeterminate]="true" />
- *
- * <!-- Unchecked state (no icon shown) -->
- * <eb-checkbox-checkmark />
  * ```
  */
 @Component({
@@ -29,28 +35,26 @@ import { ICON_NAMES } from '@shared/constants';
   imports: [CommonModule, IconComponent],
   template: `
     <span class="checkbox-checkmark" aria-hidden="true">
-      @if (showIcon()) {
-        <eb-icon [name]="iconName()" size="sm" [decorative]="true" class="checkbox-icon" />
-      }
+      <eb-icon [name]="iconName()" size="md" [decorative]="true" class="checkbox-icon" />
     </span>
   `,
   styles: [
     `
       .checkbox-checkmark {
         position: relative;
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 100%;
         height: 100%;
       }
 
       .checkbox-icon {
         display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: var(--color-on-primary);
-        transition: opacity var(--duration-normal) var(--ease-in-out);
+        color: var(--checkbox-icon-color, var(--color-text-muted));
+        transition:
+          color var(--duration-normal) var(--ease-in-out),
+          opacity var(--duration-normal) var(--ease-in-out);
 
         @media (prefers-reduced-motion: reduce) {
           transition: none;
@@ -61,8 +65,9 @@ import { ICON_NAMES } from '@shared/constants';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     provideIcons({
-      [ICON_NAMES.CHECK]: heroCheck,
-      [ICON_NAMES.REMOVE]: heroMinus,
+      [ICON_NAMES.CHECKBOX_UNCHECKED]: matCheckBoxOutlineBlank,
+      [ICON_NAMES.CHECKBOX_CHECKED]: matCheckBox,
+      [ICON_NAMES.CHECKBOX_INDETERMINATE]: matIndeterminateCheckBox,
     }),
   ],
 })
@@ -78,19 +83,20 @@ export class CheckboxCheckmarkComponent {
   readonly indeterminate = input<boolean>(false);
 
   /**
-   * Computed flag to determine if an icon should be shown
-   */
-  readonly showIcon = computed(() => this.checked() || this.indeterminate());
-
-  /**
    * Computed icon name based on state
-   * - indeterminate: shows minus icon (heroMinus)
-   * - checked: shows check icon (heroCheck)
+   * - indeterminate: shows indeterminate icon (matIndeterminateCheckBox)
+   * - checked: shows checked icon (matCheckBox)
+   * - unchecked: shows outline box icon (matCheckBoxOutlineBlank)
+   *
+   * Note: Indeterminate takes precedence over checked.
    */
   readonly iconName = computed(() => {
     if (this.indeterminate()) {
-      return ICON_NAMES.REMOVE;
+      return ICON_NAMES.CHECKBOX_INDETERMINATE;
     }
-    return ICON_NAMES.CHECK;
+    if (this.checked()) {
+      return ICON_NAMES.CHECKBOX_CHECKED;
+    }
+    return ICON_NAMES.CHECKBOX_UNCHECKED;
   });
 }

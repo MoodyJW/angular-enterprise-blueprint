@@ -76,6 +76,7 @@
     "@ng-icons/core": "^33.0.0",
     "@ng-icons/heroicons": "^33.0.0",
     "@ng-icons/ionicons": "^33.0.0",
+    "@ng-icons/material-icons": "^33.0.0",
     "@ngrx/operators": "^21.0.1",
     "@ngrx/signals": "^21.0.0",
     "marked": "^17.0.1",
