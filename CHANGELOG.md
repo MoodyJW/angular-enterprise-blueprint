@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v1.1.0...v1.2.0) (2026-01-10)
+
+
+### Features
+
+* **theme-picker:** add tooltip ([4d7f673](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/4d7f673dbf2f54a0376398a0723064d20ae8b779))
+
 ## [1.1.0](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v1.0.2...v1.1.0) (2026-01-08)
 
 
