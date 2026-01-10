@@ -23,6 +23,7 @@ import { provideTranslocoConfig } from './core/i18n';
 import { httpErrorInterceptor } from './core/interceptors';
 import { csrfInterceptor } from './core/interceptors/csrf.interceptor';
 import { provideAnalytics, withAnalyticsRouterTracking } from './core/services';
+import { provideProfileStore } from './features/profile/state/profile.store';
 
 // Cast the imported analytics helpers to known callable signatures so
 // TypeScript/ESLint know they are safe to call and return Provider/EnvironmentProviders.
@@ -55,6 +56,7 @@ export const appConfig: ApplicationConfig = {
     provideAnalyticsFn(),
     withAnalyticsRouterTrackingFn(),
     provideAuth(),
+    provideProfileStore(),
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
   ],
 };

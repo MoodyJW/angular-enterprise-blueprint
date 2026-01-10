@@ -50,7 +50,7 @@ import { ProfileStatsCardComponent } from './components/profile-stats-card/profi
     ModalComponent,
     ProfileStatsCardComponent,
   ],
-  providers: [ProfileStore],
+  providers: [],
   viewProviders: [
     provideIcons({
       heroArrowDownTray,

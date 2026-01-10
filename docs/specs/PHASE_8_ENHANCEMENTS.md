@@ -573,11 +573,11 @@ Update light theme color variables to create better visual separation between su
 
 ### Acceptance Criteria
 
-- [ ] Stats persist when navigating away and back
-- [ ] No API re-fetch within 1 hour cache window
-- [ ] Cache clears on hard refresh
-- [ ] All tests pass
-- [ ] No memory leaks from store persistence
+- [x] Stats persist when navigating away and back
+- [x] No API re-fetch within 1 hour cache window
+- [x] Cache clears on hard refresh
+- [x] All tests pass
+- [x] No memory leaks from store persistence
 
 ---
 
