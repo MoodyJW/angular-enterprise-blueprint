@@ -133,6 +133,17 @@ describe('ThemePickerComponent', () => {
 
       expect(component.isOpen()).toBe(false);
     });
+
+    it('should close dropdown when clicking outside', () => {
+      component.toggleDropdown();
+      fixture.detectChanges();
+      expect(component.isOpen()).toBe(true);
+
+      document.body.click();
+      fixture.detectChanges();
+
+      expect(component.isOpen()).toBe(false);
+    });
   });
 
   describe('Grid Variant', () => {
@@ -218,6 +229,48 @@ describe('ThemePickerComponent', () => {
       fixture.detectChanges();
 
       expect(component.currentTheme().id).toBe('dark-default');
+    });
+  });
+
+  describe('Icon Variant', () => {
+    beforeEach(() => {
+      fixture.componentRef.setInput('variant', 'icon');
+      fixture.detectChanges();
+    });
+
+    it('should render icon variant', () => {
+      const wrapper = nativeElement.querySelector('.theme-picker__icon-wrapper');
+      expect(wrapper).toBeTruthy();
+    });
+
+    it('should have icon trigger button', () => {
+      const trigger = nativeElement.querySelector('.theme-picker__icon-trigger');
+      expect(trigger).toBeTruthy();
+    });
+
+    it('should display paint brush icon', () => {
+      const icon = nativeElement.querySelector('eb-icon[name="matFormatPaint"]');
+      expect(icon).toBeTruthy();
+    });
+
+    it('should toggle dropdown when icon is clicked', () => {
+      const trigger = nativeElement.querySelector(
+        '.theme-picker__icon-trigger',
+      ) as HTMLButtonElement;
+      expect(component.isOpen()).toBe(false);
+
+      trigger.click();
+      fixture.detectChanges();
+
+      expect(component.isOpen()).toBe(true);
+
+      const dropdown = nativeElement.querySelector('.theme-picker__dropdown');
+      expect(dropdown).toBeTruthy();
+    });
+
+    it('should have correct aria labels', () => {
+      const trigger = nativeElement.querySelector('.theme-picker__icon-trigger');
+      expect(trigger?.getAttribute('aria-label')).toContain('Change theme');
     });
   });
 
@@ -562,8 +615,8 @@ describe('ThemePickerComponent', () => {
       const lightTheme = THEMES.find((t) => t.category === 'light');
       if (lightTheme) {
         const preview = component.getThemePreview(lightTheme);
-        expect(preview).toContain('linear-gradient');
-        expect(preview).toContain('#ffffff');
+        expect(preview).toContain('var(--color-background)');
+        expect(preview).toContain('var(--color-primary)');
       }
     });
 
@@ -571,8 +624,8 @@ describe('ThemePickerComponent', () => {
       const darkTheme = THEMES.find((t) => t.category === 'dark');
       if (darkTheme) {
         const preview = component.getThemePreview(darkTheme);
-        expect(preview).toContain('linear-gradient');
-        expect(preview).toContain('#1a1a2e');
+        expect(preview).toContain('var(--color-background)');
+        expect(preview).toContain('var(--color-primary)');
       }
     });
 
@@ -580,9 +633,22 @@ describe('ThemePickerComponent', () => {
       const hcTheme = THEMES.find((t) => t.category === 'high-contrast-light');
       if (hcTheme) {
         const preview = component.getThemePreview(hcTheme);
-        expect(preview).toContain('linear-gradient');
-        expect(preview).toContain('#000000');
+        expect(preview).toContain('var(--color-background)');
+        expect(preview).toContain('var(--color-primary)');
       }
+    });
+
+    it('should apply data-theme attribute to swatch', () => {
+      component.toggleDropdown();
+      fixture.detectChanges();
+
+      const options = nativeElement.querySelectorAll('.theme-picker__option');
+      const lightOption = Array.from(options).find((opt) =>
+        opt.textContent.includes('Daylight'),
+      ) as HTMLButtonElement;
+
+      const swatch = lightOption.querySelector('.theme-picker__swatch');
+      expect(swatch?.getAttribute('data-theme')).toBe('light-default');
     });
 
     it('should display swatch with theme preview', () => {

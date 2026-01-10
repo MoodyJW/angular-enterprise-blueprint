@@ -593,7 +593,7 @@ Update light theme color variables to create better visual separation between su
 - **Why modify existing:** Theme selection logic already implemented
 - Add icon-only variant mode (`compact: true` or similar)
 - Keep existing full picker for other use cases
-- Shows all 6 themes with visual previews (already has this)
+- Shows all 6 themes with visual previews (already has this, but the previews are incorrect)
 - Current theme highlighted (already has this)
 - Theme name and description (already has this)
 - Located at: `src/app/shared/components/theme-picker/`

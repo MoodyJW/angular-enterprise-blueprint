@@ -1,21 +1,24 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  ElementRef,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { provideIcons } from '@ng-icons/core';
 import { heroCheck, heroChevronDown } from '@ng-icons/heroicons/outline';
+import { matFormatPaint } from '@ng-icons/material-icons/baseline';
+import { fromEvent } from 'rxjs';
 
-import type { Theme, ThemeCategory, ThemeId } from '@core/services';
+import type { Theme, ThemeId } from '@core/services';
 import { ThemeService } from '@core/services';
 import { IconComponent } from '@shared/components/icon';
 
-export type ThemePickerVariant = 'dropdown' | 'grid' | 'inline';
+export type ThemePickerVariant = 'dropdown' | 'grid' | 'inline' | 'icon';
 export type ThemePickerSize = 'sm' | 'md' | 'lg';
-
-/** Map theme categories to preview colors */
-const THEME_PREVIEW_COLORS: Record<ThemeCategory, string> = {
-  light: 'linear-gradient(135deg, #ffffff 50%, #f0f0f0 50%)',
-  dark: 'linear-gradient(135deg, #1a1a2e 50%, #16213e 50%)',
-  'high-contrast-light': 'linear-gradient(135deg, #ffffff 50%, #000000 50%)',
-  'high-contrast-dark': 'linear-gradient(135deg, #000000 50%, #ffffff 50%)',
-};
 
 /** Theme categories for grouping */
 type GroupedThemeKey = 'light' | 'dark' | 'highContrast';
@@ -23,13 +26,32 @@ type GroupedThemeKey = 'light' | 'dark' | 'highContrast';
 @Component({
   selector: 'eb-theme-picker',
   imports: [IconComponent],
-  viewProviders: [provideIcons({ heroChevronDown, heroCheck })],
+  viewProviders: [provideIcons({ heroChevronDown, heroCheck, matFormatPaint })],
   templateUrl: './theme-picker.component.html',
   styleUrl: './theme-picker.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThemePickerComponent {
   private readonly _themeService = inject(ThemeService);
+  private readonly _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  /**
+   * Close dropdown when clicking outside
+   */
+  constructor() {
+    fromEvent<MouseEvent>(document, 'click')
+      .pipe(takeUntilDestroyed())
+      .subscribe((event) => {
+        const target = event.target;
+        if (
+          target instanceof Node &&
+          !this._elementRef.nativeElement.contains(target) &&
+          this.isOpen()
+        ) {
+          this.closeDropdown();
+        }
+      });
+  }
 
   /**
    * Display variant
@@ -116,8 +138,8 @@ export class ThemePickerComponent {
   /**
    * Get preview color for a theme
    */
-  getThemePreview(theme: Theme): string {
-    return THEME_PREVIEW_COLORS[theme.category];
+  getThemePreview(_theme: Theme): string {
+    return 'linear-gradient(135deg, var(--color-background) 50%, var(--color-primary) 50%)';
   }
 
   /**
