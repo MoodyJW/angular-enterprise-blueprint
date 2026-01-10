@@ -10,6 +10,9 @@
 - Ensure all new features meet WCAG 2.1 AA standards
 - Focus on portfolio presentation and user engagement
 
+> [!NOTE]
+> **Maintenance Note (Jan 2026)**: Upgraded Angular dependencies to `21.0.8` to resolve high-priority security vulnerabilities. This update ensures the enterprise blueprint adheres to the principle of maintaining a secure, modern dependency tree.
+
 **Phase Organization:**
 
 Phase 8 is organized into two parts:

@@ -296,6 +296,9 @@ _Goal: Clean up technical debt, refine implementation quality, and ensure produc
 
 **Reference:** See `/docs/specs/PHASE_8_ENHANCEMENTS.md` for detailed specifications.
 
+> [!NOTE]
+> **Maintenance Aside**: During this phase, the project was upgraded from Angular `21.0.6` to `21.0.8` (latest) to resolve security vulnerabilities (CVEs) and ensure the blueprint remains at the leading edge of the framework.
+
 _Goal: Refactor existing components for consistency, then add new capabilities and features to enhance portfolio presentation and user experience._
 
 **Part A: Component Refactoring & Style Improvements (8.1-8.5)**
@@ -320,17 +323,17 @@ _Goal: Refactor existing components for consistency, then add new capabilities a
   - [x] Add close icon to dismiss button.
   - [x] Reduce status badge/dot size for better visual balance.
   - [x] Verify WCAG AA compliance in all themes.
-- [ ] **8.5 Profile Stats Caching**: Persist stats across navigation.
-  - [ ] Create `provideProfileStore()` function.
-  - [ ] Move ProfileStore to app-level in `app.config.ts`.
-  - [ ] Implement 1-hour cache window with invalidation.
+- [x] **8.5 Profile Stats Caching**: Persist stats across navigation.
+  - [x] Create `provideProfileStore()` function.
+  - [x] Move ProfileStore to app-level in `app.config.ts`.
+  - [x] Implement 1-hour cache window with invalidation.
 
 **Part B: New Features & Enhancements (8.6-8.12)**
 
-- [ ] **8.6 Header Theme Picker UI**: Icon-only button with theme selection menu.
-  - [ ] Modify ThemePickerComponent to add compact/icon-only mode.
-  - [ ] Update HeaderComponent to use compact variant.
-  - [ ] Add tooltip and keyboard navigation support.
+- [x] **8.6 Header Theme Picker UI**: Icon-only button with theme selection menu.
+  - [x] Modify ThemePickerComponent to add compact/icon-only mode.
+  - [x] Update HeaderComponent to use compact variant.
+  - [x] Add tooltip and keyboard navigation support.
 - [ ] **8.7 Header Authentication UI**: User profile icon with dropdown menu.
   - [ ] Create UserMenuComponent with account header and logout option.
   - [ ] Modify HeaderComponent to replace text/button with icon.
