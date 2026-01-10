@@ -11,6 +11,12 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
+import { provideIcons } from '@ng-icons/core';
+import { heroXMark } from '@ng-icons/heroicons/outline';
+
+import { ButtonComponent } from '@shared/components/button/button.component';
+import { IconComponent } from '@shared/components/icon/icon.component';
+import { ICON_NAMES } from '@shared/constants/icon-names.constants';
 
 export type ModalVariant = 'default' | 'fullscreen' | 'dialog' | 'sidebar';
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
@@ -56,12 +62,18 @@ export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
  */
 @Component({
   selector: 'eb-modal',
-  imports: [CommonModule, A11yModule],
+  imports: [CommonModule, A11yModule, ButtonComponent, IconComponent],
+  viewProviders: [provideIcons({ heroXMark })],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalComponent {
+  /**
+   * Icon names for template binding.
+   */
+  readonly icons = ICON_NAMES;
+
   /**
    * Visual variant of the modal
    * - default: Standard modal with centered position
