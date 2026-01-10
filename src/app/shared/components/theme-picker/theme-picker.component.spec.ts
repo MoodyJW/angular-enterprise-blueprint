@@ -4,6 +4,8 @@ import { TestBed } from '@angular/core/testing';
 import { THEMES } from '@core/services';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { By } from '@angular/platform-browser';
+import { TooltipDirective } from '../tooltip/tooltip.directive';
 import { ThemePickerComponent } from './theme-picker.component';
 
 describe('ThemePickerComponent', () => {
@@ -251,6 +253,13 @@ describe('ThemePickerComponent', () => {
     it('should display paint brush icon', () => {
       const icon = nativeElement.querySelector('eb-icon[name="matFormatPaint"]');
       expect(icon).toBeTruthy();
+    });
+
+    it('should have tooltip on icon trigger', () => {
+      const triggerDebugEl = fixture.debugElement.query(By.css('.theme-picker__icon-trigger'));
+      const tooltipDirective = triggerDebugEl.injector.get(TooltipDirective);
+      expect(tooltipDirective).toBeTruthy();
+      expect(tooltipDirective.ebTooltip()).toBe('Change theme');
     });
 
     it('should toggle dropdown when icon is clicked', () => {

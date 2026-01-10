@@ -17,6 +17,9 @@ import type { Theme, ThemeId } from '@core/services';
 import { ThemeService } from '@core/services';
 import { IconComponent } from '@shared/components/icon';
 
+import { TooltipDirective } from '@shared/components/tooltip/tooltip.directive';
+import { CHANGE_THEME_TOOLTIP } from './theme-picker.constants';
+
 export type ThemePickerVariant = 'dropdown' | 'grid' | 'inline' | 'icon';
 export type ThemePickerSize = 'sm' | 'md' | 'lg';
 
@@ -25,7 +28,7 @@ type GroupedThemeKey = 'light' | 'dark' | 'highContrast';
 
 @Component({
   selector: 'eb-theme-picker',
-  imports: [IconComponent],
+  imports: [IconComponent, TooltipDirective],
   viewProviders: [provideIcons({ heroChevronDown, heroCheck, matFormatPaint })],
   templateUrl: './theme-picker.component.html',
   styleUrl: './theme-picker.component.scss',
@@ -34,6 +37,9 @@ type GroupedThemeKey = 'light' | 'dark' | 'highContrast';
 export class ThemePickerComponent {
   private readonly _themeService = inject(ThemeService);
   private readonly _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  /** Tooltip text for the trigger button */
+  readonly changeThemeTooltip = CHANGE_THEME_TOOLTIP;
 
   /**
    * Close dropdown when clicking outside

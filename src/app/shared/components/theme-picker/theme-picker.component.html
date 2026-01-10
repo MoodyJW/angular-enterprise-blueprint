@@ -141,6 +141,7 @@
           [attr.aria-expanded]="isOpen()"
           aria-haspopup="listbox"
           [attr.aria-label]="'Change theme, current theme: ' + currentTheme().name"
+          [ebTooltip]="changeThemeTooltip"
           (click)="toggleDropdown()"
           (keydown)="handleKeydown($event)"
         >
