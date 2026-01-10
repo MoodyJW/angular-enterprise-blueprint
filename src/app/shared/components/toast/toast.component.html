@@ -25,13 +25,12 @@
 
   @if (dismissible()) {
     <eb-button
-      variant="ghost"
+      variant="tertiary"
       size="sm"
       [iconOnly]="true"
+      [iconLeft]="closeIconName"
       ariaLabel="Dismiss notification"
       (clicked)="handleDismiss()"
-    >
-      x
-    </eb-button>
+    />
   }
 </div>
