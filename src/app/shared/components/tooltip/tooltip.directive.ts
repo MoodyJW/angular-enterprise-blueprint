@@ -75,6 +75,12 @@ export class TooltipDirective implements OnDestroy {
   readonly tooltipHideDelay = input<number>(0);
 
   /**
+   * Whether to automatically set aria-label on the host element
+   * Set to false if the host element already handles accessibility or delegates it to children
+   */
+  readonly tooltipSetAriaLabel = input<boolean>(true);
+
+  /**
    * Whether to show the tooltip
    */
   private readonly _isVisible = signal<boolean>(false);
@@ -105,7 +111,7 @@ export class TooltipDirective implements OnDestroy {
     // Set up ARIA attributes on the host element
     effect(() => {
       const tooltipText = this.ebTooltip();
-      if (tooltipText !== '') {
+      if (tooltipText !== '' && this.tooltipSetAriaLabel()) {
         this._hostElement.setAttribute('aria-label', tooltipText);
       }
     });

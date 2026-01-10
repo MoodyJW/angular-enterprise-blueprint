@@ -500,7 +500,8 @@ describe('ModalComponent', () => {
       });
 
       const compiled = fixture.nativeElement as HTMLElement;
-      const closeButton = compiled.querySelector('.modal__close') as HTMLButtonElement;
+      // Find the native button inside eb-button
+      const closeButton = compiled.querySelector('.modal__close button') as HTMLButtonElement;
       expect(closeButton).toBeTruthy();
 
       closeButton.click();

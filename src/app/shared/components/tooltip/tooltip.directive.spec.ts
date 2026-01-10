@@ -27,6 +27,12 @@ class TestHostComponent {
   hideDelay = 0;
 }
 
+@Component({
+  template: ` <button ebTooltip="Test tooltip" [tooltipSetAriaLabel]="false">Hover me</button> `,
+  imports: [TooltipDirective],
+})
+class DisabledAriaLabelHostComponent {}
+
 describe('TooltipDirective', () => {
   let component: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
@@ -431,6 +437,28 @@ describe('TooltipDirective with empty content', () => {
     fixture.detectChanges();
 
     // aria-label should not be set for empty tooltip
+    const ariaLabel = buttonNative.getAttribute('aria-label');
+    expect(ariaLabel).toBeNull();
+  });
+});
+
+describe('TooltipDirective with disabled aria-label', () => {
+  let fixture: ComponentFixture<DisabledAriaLabelHostComponent>;
+  let buttonNative: HTMLButtonElement;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [DisabledAriaLabelHostComponent, TooltipDirective],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(DisabledAriaLabelHostComponent);
+    const buttonElement = fixture.debugElement.query(By.css('button'));
+    buttonNative = buttonElement.nativeElement as HTMLButtonElement;
+  });
+
+  it('should not set aria-label when tooltipSetAriaLabel is false', () => {
+    fixture.detectChanges();
+
     const ariaLabel = buttonNative.getAttribute('aria-label');
     expect(ariaLabel).toBeNull();
   });

@@ -33,7 +33,7 @@ const meta: Meta<LanguageSwitcherComponent> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['dropdown', 'inline'],
+      options: ['dropdown', 'inline', 'icon'],
       description: 'Display variant of the language switcher',
       table: {
         type: { summary: 'LanguageSwitcherVariant' },
@@ -81,7 +81,7 @@ type Story = StoryObj<LanguageSwitcherComponent>;
 export const Default: Story = {
   render: () => ({
     template: `
-      <div style="padding: 20px;">
+      <div style="padding: 20px; margin-left: 50px;">
         <eb-language-switcher />
       </div>
     `,
@@ -116,11 +116,10 @@ export const InlineVariant: Story = {
   },
 };
 
-// All Variants Comparison
 export const AllVariants: Story = {
   render: () => ({
     template: `
-      <div style="display: flex; flex-direction: column; gap: 32px; padding: 20px;">
+      <div style="display: flex; flex-direction: column; gap: 32px; padding: 20px; margin-left: 50px;">
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; color: var(--color-text-secondary);">Dropdown</h4>
           <eb-language-switcher variant="dropdown" />
@@ -130,13 +129,18 @@ export const AllVariants: Story = {
           <h4 style="margin: 0 0 12px 0; font-size: 14px; color: var(--color-text-secondary);">Inline</h4>
           <eb-language-switcher variant="inline" />
         </div>
+
+        <div>
+          <h4 style="margin: 0 0 12px 0; font-size: 14px; color: var(--color-text-secondary);">Icon</h4>
+          <eb-language-switcher variant="icon" />
+        </div>
       </div>
     `,
   }),
   parameters: {
     docs: {
       description: {
-        story: 'Comparison of both language switcher variants.',
+        story: 'Comparison of all language switcher variants: dropdown, inline, and icon.',
       },
     },
   },
@@ -231,7 +235,7 @@ export const InSettingsPanel: Story = {
 export const AccessibilityDemo: Story = {
   render: () => ({
     template: `
-      <div style="max-width: 600px; padding: 20px;">
+      <div style="max-width: 600px; padding: 20px; margin-left: 50px;">
         <h4 style="margin: 0 0 16px 0;">Accessibility Features</h4>
         <ul style="font-size: 14px; line-height: 1.8; color: var(--color-text-secondary); margin: 0 0 24px 0; padding-left: 20px;">
           <li><strong>ARIA Labels:</strong> Descriptive labels for screen readers</li>
@@ -282,7 +286,7 @@ export const Interactive: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <div style="padding: 20px;">
+      <div style="padding: 20px; margin-left: 50px;">
         <eb-language-switcher ${argsToTemplate(args)} />
       </div>
     `,
