@@ -665,4 +665,39 @@ describe('ThemePickerComponent', () => {
       expect(swatch.style.background).toContain('linear-gradient');
     });
   });
+
+  describe('Edge Cases', () => {
+    it('should not close dropdown when clicking inside', () => {
+      component.toggleDropdown();
+      fixture.detectChanges();
+      expect(component.isOpen()).toBe(true);
+
+      const trigger = nativeElement.querySelector('.theme-picker__dropdown');
+      (trigger as HTMLElement).click();
+      fixture.detectChanges();
+
+      expect(component.isOpen()).toBe(true);
+    });
+
+    it('should correctly merge high contrast themes in grouped view', () => {
+      const grouped = component.groupedThemes();
+      const hcThemes = [...THEMES.filter((t) => t.category.includes('high-contrast'))];
+      expect(grouped.highContrast.length).toBe(hcThemes.length);
+      expect(grouped.highContrast[0].id).toBe(hcThemes[0].id);
+    });
+
+    it('should handle click with null target safely', () => {
+      component.toggleDropdown();
+      expect(component.isOpen()).toBe(true);
+
+      // Simulate a click event with null target (e.g. detached element)
+      const event = new MouseEvent('click', { bubbles: true });
+      Object.defineProperty(event, 'target', { value: null });
+      document.dispatchEvent(event);
+      fixture.detectChanges();
+
+      // Should remain open as target is not a Node outside
+      expect(component.isOpen()).toBe(true);
+    });
+  });
 });
