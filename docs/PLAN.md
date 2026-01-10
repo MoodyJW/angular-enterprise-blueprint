@@ -310,16 +310,16 @@ _Goal: Refactor existing components for consistency, then add new capabilities a
   - [x] Use `matRadioButtonUnchecked` (unchecked), `matRadioButtonChecked` (checked).
   - [x] Update RadioComponent to integrate new icon component.
   - [x] Update Storybook and tests across all 6 themes.
-- [ ] **8.3 Card Visibility Improvements**: Fix poor card visibility in light themes.
-  - [ ] Update `_light-default.scss` background color from `#ffffff` to `#f8fafc`.
-  - [ ] Update `_light-warm.scss` with warm equivalent background tint.
-  - [ ] Verify high-contrast light theme doesn't need changes.
-  - [ ] Optional: Enhance shadow opacity and border colors if needed.
-  - [ ] Test all card variants in Storybook across all 6 themes.
-- [ ] **8.4 Toast Component Visual Improvements**: X icon for dismiss, reduced badge size.
-  - [ ] Add close icon to dismiss button.
-  - [ ] Reduce status badge/dot size for better visual balance.
-  - [ ] Verify WCAG AA compliance in all themes.
+- [x] **8.3 Card Visibility Improvements**: Fix poor card visibility in light themes.
+  - [x] Update `_light-default.scss` background color from `#ffffff` to `#f8fafc`.
+  - [x] Update `_light-warm.scss` with warm equivalent background tint.
+  - [x] Verify high-contrast light theme doesn't need changes.
+  - [x] Optional: Enhance shadow opacity and border colors if needed.
+  - [x] Test all card variants in Storybook across all 6 themes.
+- [x] **8.4 Toast Component Visual Improvements**: X icon for dismiss, reduced badge size.
+  - [x] Add close icon to dismiss button.
+  - [x] Reduce status badge/dot size for better visual balance.
+  - [x] Verify WCAG AA compliance in all themes.
 - [ ] **8.5 Profile Stats Caching**: Persist stats across navigation.
   - [ ] Create `provideProfileStore()` function.
   - [ ] Move ProfileStore to app-level in `app.config.ts`.

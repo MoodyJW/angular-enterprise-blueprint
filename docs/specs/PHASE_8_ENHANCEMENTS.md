@@ -462,19 +462,19 @@ Update light theme color variables to create better visual separation between su
 
 ### Acceptance Criteria
 
-- [ ] Cards clearly distinguishable from page background in light themes
-- [ ] `--color-background` and `--color-surface` have visible difference (at least 2-3 shades)
-- [ ] Border visibility improved (if needed) without being too prominent
-- [ ] Shadow enhancements provide depth without being too heavy
-- [ ] All 6 themes tested and cards visible in each
-- [ ] WCAG 2.1 AA contrast ratios maintained for all text on cards
-- [ ] Focus states remain clearly visible on all card variants
-- [ ] No visual regressions in dark themes or high-contrast themes
-- [ ] Card variants (default, elevated, outlined, filled) each have distinct appearance
-- [ ] Hover states provide clear visual feedback
-- [ ] Mobile responsive layouts unaffected
-- [ ] Storybook stories demonstrate improved visibility
-- [ ] All existing card tests pass without modification
+- [x] Cards clearly distinguishable from page background in light themes
+- [x] `--color-background` and `--color-surface` have visible difference (at least 2-3 shades)
+- [x] Border visibility improved (if needed) without being too prominent
+- [x] Shadow enhancements provide depth without being too heavy
+- [x] All 6 themes tested and cards visible in each
+- [x] WCAG 2.1 AA contrast ratios maintained for all text on cards
+- [x] Focus states remain clearly visible on all card variants
+- [x] No visual regressions in dark themes or high-contrast themes
+- [x] Card variants (default, elevated, outlined, filled) each have distinct appearance
+- [x] Hover states provide clear visual feedback
+- [x] Mobile responsive layouts unaffected
+- [x] Storybook stories demonstrate improved visibility
+- [x] All existing card tests pass without modification
 
 ### Files to Update
 
@@ -547,13 +547,13 @@ Update light theme color variables to create better visual separation between su
 
 ### Acceptance Criteria
 
-- [ ] Dismiss button shows X/close icon
-- [ ] Icon is appropriately sized and visible
-- [ ] Badge/dot size reduced and visually balanced
-- [ ] ARIA label on dismiss button
-- [ ] Works in all 6 themes
-- [ ] Color contrast meets WCAG AA
-- [ ] Storybook story updated
+- [x] Dismiss button shows X/close icon
+- [x] Icon is appropriately sized and visible
+- [x] Badge/dot size reduced and visually balanced
+- [x] ARIA label on dismiss button
+- [x] Works in all 6 themes
+- [x] Color contrast meets WCAG AA
+- [x] Storybook story updated
 
 ---
 

@@ -15,6 +15,10 @@
   justify-content: center;
 }
 
+.btn__content {
+  gap: var(--space-1);
+}
+
 .btn__icon,
 .btn__spinner {
   width: 20px;

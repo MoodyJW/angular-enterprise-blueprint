@@ -5,6 +5,7 @@ import {
   heroExclamationTriangle,
   heroInformationCircle,
   heroXCircle,
+  heroXMark,
 } from '@ng-icons/heroicons/outline';
 
 import { ICON_NAMES } from '@shared/constants';
@@ -58,6 +59,7 @@ export type ToastPosition =
       heroXCircle,
       heroExclamationTriangle,
       heroInformationCircle,
+      heroXMark,
     }),
   ],
 })
@@ -161,6 +163,11 @@ export class ToastComponent {
     };
     return labels[this.variant()];
   });
+
+  /**
+   * Icon name for the dismiss button
+   */
+  readonly closeIconName = ICON_NAMES.CLOSE;
 
   /**
    * Computed CSS classes for the toast

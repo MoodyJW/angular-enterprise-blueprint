@@ -53,10 +53,12 @@
 
   @media (prefers-reduced-motion: reduce) {
     transition: none;
+
     &:hover {
       transform: none;
     }
   }
+
   &--primary,
   &--tertiary,
   &--danger {
@@ -161,12 +163,14 @@
     font-size: var(--font-size-sm);
 
     &.btn--icon-only {
-      width: 32px;
+      min-height: 24px;
+      width: 24px;
     }
   }
 
   &--md.btn--icon-only {
-    width: 40px;
+    min-height: 32px;
+    width: 32px;
   }
 
   &--lg {
@@ -176,13 +180,15 @@
     font-size: var(--font-size-lg);
 
     &.btn--icon-only {
-      width: 48px;
+      min-height: 40px;
+      width: 40px;
     }
   }
 
   &--sm.btn--icon-only,
   &--md.btn--icon-only {
     @media (pointer: coarse) {
+      min-height: 44px;
       width: 44px;
     }
   }
@@ -193,6 +199,7 @@
 
   &--icon-only {
     aspect-ratio: 1;
-    padding: var(--space-0);
+    padding: var(--space-1);
+    min-width: unset;
   }
 }
