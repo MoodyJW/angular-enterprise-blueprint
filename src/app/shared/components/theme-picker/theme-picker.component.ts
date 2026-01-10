@@ -15,6 +15,7 @@ import { fromEvent } from 'rxjs';
 
 import type { Theme, ThemeId } from '@core/services';
 import { ThemeService } from '@core/services';
+import { ButtonComponent } from '@shared/components/button/button.component';
 import { IconComponent } from '@shared/components/icon';
 
 import { TooltipDirective } from '@shared/components/tooltip/tooltip.directive';
@@ -28,7 +29,7 @@ type GroupedThemeKey = 'light' | 'dark' | 'highContrast';
 
 @Component({
   selector: 'eb-theme-picker',
-  imports: [IconComponent, TooltipDirective],
+  imports: [IconComponent, TooltipDirective, ButtonComponent],
   viewProviders: [provideIcons({ heroChevronDown, heroCheck, matFormatPaint })],
   templateUrl: './theme-picker.component.html',
   styleUrl: './theme-picker.component.scss',

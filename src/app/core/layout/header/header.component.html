@@ -28,7 +28,7 @@
       <!-- Actions -->
       <div class="header__actions">
         <!-- Language Switcher -->
-        <eb-language-switcher variant="dropdown" size="sm" />
+        <eb-language-switcher variant="icon" size="lg" />
 
         <!-- Theme Picker -->
         <eb-theme-picker variant="icon" />
@@ -59,24 +59,17 @@
         }
 
         <!-- Mobile Menu Toggle -->
-        <button
-          type="button"
-          class="header__menu-toggle"
-          (click)="onToggleMenu()"
-          [attr.aria-label]="t('header.ariaLabels.toggleMenu')"
-          aria-expanded="false"
+        <eb-button
+          variant="tertiary"
+          size="lg"
+          [iconOnly]="true"
+          class="header__mobile-toggle"
+          [ariaLabel]="t('header.ariaLabels.toggleMenu')"
+          [ariaExpanded]="false"
+          (clicked)="onToggleMenu()"
         >
-          <svg
-            class="header__menu-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            aria-hidden="true"
-          >
-            <path d="M3 12h18M3 6h18M3 18h18" />
-          </svg>
-        </button>
+          <eb-icon [name]="icons.MENU" size="lg" [decorative]="true" />
+        </eb-button>
       </div>
     </div>
   </header>

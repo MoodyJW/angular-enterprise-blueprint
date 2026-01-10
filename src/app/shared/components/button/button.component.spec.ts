@@ -22,6 +22,9 @@ describe('ButtonComponent', () => {
             [attr.aria-label]="ariaLabel()"
             [attr.aria-describedby]="ariaDescribedBy()"
             [attr.aria-pressed]="ariaPressed()"
+            [attr.aria-expanded]="ariaExpanded()"
+            [attr.aria-haspopup]="ariaHasPopup()"
+            [attr.aria-controls]="ariaControls()"
             [attr.aria-busy]="ariaBusyValue()"
             [attr.aria-disabled]="disabled() ? 'true' : undefined"
             (click)="handleClick($event)"
@@ -324,6 +327,33 @@ describe('ButtonComponent', () => {
 
       const buttonElement = nativeElement.querySelector('button');
       expect(buttonElement?.getAttribute('aria-disabled')).toBeNull();
+    });
+
+    it('should set aria-expanded when provided', () => {
+      fixture.componentRef.setInput('ariaLabel', 'Test button');
+      fixture.componentRef.setInput('ariaExpanded', true);
+      fixture.detectChanges();
+
+      const buttonElement = nativeElement.querySelector('button');
+      expect(buttonElement?.getAttribute('aria-expanded')).toBe('true');
+    });
+
+    it('should set aria-haspopup when provided', () => {
+      fixture.componentRef.setInput('ariaLabel', 'Test button');
+      fixture.componentRef.setInput('ariaHasPopup', 'menu');
+      fixture.detectChanges();
+
+      const buttonElement = nativeElement.querySelector('button');
+      expect(buttonElement?.getAttribute('aria-haspopup')).toBe('menu');
+    });
+
+    it('should set aria-controls when provided', () => {
+      fixture.componentRef.setInput('ariaLabel', 'Test button');
+      fixture.componentRef.setInput('ariaControls', 'menu-id');
+      fixture.detectChanges();
+
+      const buttonElement = nativeElement.querySelector('button');
+      expect(buttonElement?.getAttribute('aria-controls')).toBe('menu-id');
     });
   });
 

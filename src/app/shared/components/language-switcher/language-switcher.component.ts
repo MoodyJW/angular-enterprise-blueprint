@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   DestroyRef,
+  ElementRef,
   inject,
   input,
   OnInit,
@@ -14,7 +15,10 @@ import { provideIcons } from '@ng-icons/core';
 import { heroCheck, heroChevronDown, heroGlobeAlt } from '@ng-icons/heroicons/outline';
 
 import { AVAILABLE_LANGUAGES, type AvailableLanguage } from '@core/i18n';
+import { ButtonComponent } from '@shared/components/button/button.component';
 import { IconComponent } from '@shared/components/icon';
+import { TooltipDirective } from '@shared/components/tooltip/tooltip.directive';
+import { CHANGE_LANGUAGE_TOOLTIP } from './language-switcher.constants';
 
 /** Language information for display */
 export interface Language {
@@ -31,8 +35,8 @@ export const LANGUAGES: readonly Language[] = [
 /** Storage key for language preference */
 const LANGUAGE_STORAGE_KEY = 'preferred-language';
 
-export type LanguageSwitcherVariant = 'dropdown' | 'inline';
-export type LanguageSwitcherSize = 'sm' | 'md';
+export type LanguageSwitcherVariant = 'dropdown' | 'inline' | 'icon';
+export type LanguageSwitcherSize = 'sm' | 'md' | 'lg';
 
 /**
  * Language switcher component for changing the application's active language.
@@ -51,15 +55,22 @@ export type LanguageSwitcherSize = 'sm' | 'md';
 @Component({
   selector: 'eb-language-switcher',
   standalone: true,
-  imports: [TranslocoModule, IconComponent],
+  imports: [TranslocoModule, IconComponent, ButtonComponent, TooltipDirective],
   viewProviders: [provideIcons({ heroChevronDown, heroCheck, heroGlobeAlt })],
   templateUrl: './language-switcher.component.html',
   styleUrl: './language-switcher.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(document:click)': 'onDocumentClick($event)',
+  },
 })
 export class LanguageSwitcherComponent implements OnInit {
+  private readonly _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly _transloco = inject(TranslocoService);
   private readonly _destroyRef = inject(DestroyRef);
+
+  /** Tooltip text for the trigger button */
+  readonly changeLanguageTooltip = CHANGE_LANGUAGE_TOOLTIP;
 
   /**
    * Display variant
@@ -139,6 +150,18 @@ export class LanguageSwitcherComponent implements OnInit {
       localStorage.setItem(LANGUAGE_STORAGE_KEY, language.code);
     } catch {
       // localStorage may not be available
+    }
+  }
+
+  /**
+   * Handle document click to close dropdown when clicking outside
+   */
+  onDocumentClick(event: MouseEvent): void {
+    if (!this.isOpen()) return;
+
+    const target = event.target as HTMLElement;
+    if (!this._elementRef.nativeElement.contains(target)) {
+      this.closeDropdown();
     }
   }
 

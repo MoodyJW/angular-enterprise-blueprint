@@ -104,7 +104,29 @@ export class ButtonComponent {
   /**
    * Whether the button is in a pressed/active state (for toggle buttons)
    */
+  /**
+   * Whether the button is in a pressed/active state (for toggle buttons)
+   */
   readonly ariaPressed = input<boolean | undefined>(undefined);
+
+  /**
+   * Indicates whether the button controls the expansion of another element.
+   * - true: Expanded
+   * - false: Collapsed
+   * - undefined: Not expandable
+   */
+  readonly ariaExpanded = input<boolean | undefined>(undefined);
+
+  /**
+   * Indicates the availability and type of interactive popup element.
+   * Common values: 'menu', 'listbox', 'tree', 'grid', 'dialog', or true/false (as string)
+   */
+  readonly ariaHasPopup = input<string | undefined>(undefined);
+
+  /**
+   * Identifies the element(s) whose contents or presence are controlled by the button.
+   */
+  readonly ariaControls = input<string | undefined>(undefined);
 
   /**
    * Emitted when the button is clicked (if not disabled or loading)

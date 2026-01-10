@@ -3,9 +3,13 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslocoModule } from '@jsverse/transloco';
 
 import { AuthStore } from '@core/auth';
+import { provideIcons } from '@ng-icons/core';
+import { heroBars3 } from '@ng-icons/heroicons/outline';
 import { ButtonComponent } from '@shared/components/button';
+import { IconComponent } from '@shared/components/icon';
 import { LanguageSwitcherComponent } from '@shared/components/language-switcher';
 import { ThemePickerComponent } from '@shared/components/theme-picker';
+import { ICON_NAMES } from '@shared/constants/icon-names.constants';
 import { NAV_ITEMS } from '../navigation.data';
 
 /**
@@ -33,12 +37,15 @@ import { NAV_ITEMS } from '../navigation.data';
     LanguageSwitcherComponent,
     ThemePickerComponent,
     ButtonComponent,
+    IconComponent,
   ],
+  viewProviders: [provideIcons({ heroBars3 })],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
+  protected readonly icons = ICON_NAMES;
   private readonly _authStore = inject(AuthStore);
 
   /**

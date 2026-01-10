@@ -199,7 +199,28 @@
 
   &--icon-only {
     aspect-ratio: 1;
-    padding: var(--space-1);
+    padding: 0;
     min-width: unset;
+    border-radius: var(--border-radius-full);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    // Ensure icon-only buttons are static (no "jump" on hover)
+    &:hover,
+    &:active {
+      transform: none;
+    }
+
+    // Reset line-height to prevent vertical misalignment
+    line-height: 0;
+
+    // Ensure direct children (like .btn__content or icons) are centered
+    > * {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 0;
+    }
   }
 }

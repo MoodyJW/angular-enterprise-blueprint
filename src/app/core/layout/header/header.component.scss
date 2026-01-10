@@ -141,36 +141,9 @@
   }
 
   // Mobile Menu Toggle
-  &__menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    padding: 0;
-    background: transparent;
-    border: none;
-    border-radius: var(--border-radius-md);
-    color: var(--color-text);
-    cursor: pointer;
-    transition: background-color var(--duration-fast);
-
+  &__mobile-toggle {
     @media (min-width: 768px) {
       display: none;
     }
-
-    &:hover {
-      background-color: var(--color-surface-hover);
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-focus-ring);
-      outline-offset: 2px;
-    }
-  }
-
-  &__menu-icon {
-    width: 1.5rem;
-    height: 1.5rem;
   }
 }

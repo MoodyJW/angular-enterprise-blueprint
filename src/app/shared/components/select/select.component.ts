@@ -7,7 +7,6 @@ import {
   effect,
   ElementRef,
   forwardRef,
-  HostListener,
   inject,
   input,
   output,
@@ -103,6 +102,10 @@ export interface SelectOption<T = unknown> {
       multi: true,
     },
   ],
+  host: {
+    '(focusout)': 'handleFocusOut($event)',
+    '(focusin)': 'handleFocusIn($event)',
+  },
 })
 /**
  * Accessible Select component with full feature set for forms.
@@ -637,7 +640,6 @@ export class SelectComponent<T = unknown> implements OnDestroy, ControlValueAcce
   /**
    * Handle host focus events (capturing phase) to ensure state updates before parent
    */
-  @HostListener('focusout', ['$event'])
   handleFocusOut(event: FocusEvent): void {
     const relatedTarget = event.relatedTarget as HTMLElement | null;
     // Only blur if focus is moving outside the ENTIRE component
@@ -649,7 +651,6 @@ export class SelectComponent<T = unknown> implements OnDestroy, ControlValueAcce
     }
   }
 
-  @HostListener('focusin', ['$event'])
   handleFocusIn(event: FocusEvent): void {
     this.isFocused.set(true);
     this.focused.emit(event);

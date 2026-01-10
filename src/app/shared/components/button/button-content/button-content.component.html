@@ -10,7 +10,7 @@
   </span>
 }
 
-@if (!iconOnly()) {
+@if (!iconOnly() || (iconOnly() && !iconLeft() && !iconRight())) {
   <span class="btn__content">
     <ng-content />
   </span>

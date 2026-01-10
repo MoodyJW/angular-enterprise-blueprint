@@ -114,12 +114,22 @@ describe('ButtonContentComponent', () => {
       expect(hostEl.querySelector('.btn__content')?.textContent).toContain('Projected text');
     });
 
-    it('should not render projected content when iconOnly is true', () => {
+    it('should not render projected content when iconOnly is true and icon provided', () => {
       hostFixture.componentInstance.iconOnly = true;
+      hostFixture.componentInstance.left = ICON_NAMES.ARROW_LEFT;
       hostFixture.detectChanges();
 
       const hostEl: HTMLElement = hostFixture.nativeElement as HTMLElement;
       expect(hostEl.querySelector('.btn__content')).toBeFalsy();
+    });
+
+    it('should render projected content when iconOnly is true but no icon provided', () => {
+      hostFixture.componentInstance.iconOnly = true;
+      hostFixture.componentInstance.left = undefined;
+      hostFixture.detectChanges();
+
+      const hostEl: HTMLElement = hostFixture.nativeElement as HTMLElement;
+      expect(hostEl.querySelector('.btn__content')).toBeTruthy();
     });
   });
 });

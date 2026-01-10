@@ -608,13 +608,15 @@ Update light theme color variables to create better visual separation between su
 
 ### Acceptance Criteria
 
-- [ ] Icon button with tooltip ("Change theme")
-- [ ] Menu shows all themes with visual previews
-- [ ] Current theme has checkmark/highlight
-- [ ] Keyboard accessible
-- [ ] Click outside to close
-- [ ] Mobile responsive
-- [ ] Smooth theme transitions
+- [x] Icon button with tooltip ("Change theme")
+- [x] Menu shows all themes with visual previews
+- [x] Current theme has checkmark/highlight
+- [x] Keyboard accessible
+- [x] Click outside to close
+- [x] Mobile responsive
+- [x] Smooth theme transitions
+
+NOTE: made a similar change to the language switcher component
 
 ---
 

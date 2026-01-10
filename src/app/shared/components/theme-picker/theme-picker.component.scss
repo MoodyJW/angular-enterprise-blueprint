@@ -153,32 +153,7 @@
   }
 
   &__icon-trigger {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    background: transparent;
-    border: 1px solid transparent;
     border-radius: var(--border-radius-full);
-    color: inherit;
-    cursor: pointer;
-    transition: background-color var(--duration-fast) var(--ease-out);
-
-    &:hover {
-      background: var(--color-surface-hover);
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-focus-ring);
-      outline-offset: 2px;
-    }
-
-    // Active state when dropdown is open
-    &[aria-expanded='true'] {
-      background: var(--color-surface-active);
-    }
   }
 
   // Dropdown modifier for right alignment (useful for header)

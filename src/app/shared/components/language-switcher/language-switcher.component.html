@@ -1,41 +1,53 @@
 <ng-container *transloco="let t">
   <div [class]="pickerClasses()">
-    @if (variant() === 'dropdown') {
-      <!-- Dropdown Trigger Button -->
-      <button
-        type="button"
-        class="language-switcher__button"
-        [attr.aria-label]="dropdownAriaLabel()"
-        [attr.aria-expanded]="isOpen()"
-        aria-haspopup="listbox"
-        (click)="toggleDropdown()"
-        (keydown)="handleKeydown($event)"
-      >
-        <eb-icon name="heroGlobeAlt" [size]="size()" aria-hidden="true" />
-        <span class="language-switcher__code">{{ currentLanguage().code.toUpperCase() }}</span>
-        <eb-icon
-          name="heroChevronDown"
-          size="sm"
-          aria-hidden="true"
-          class="language-switcher__chevron"
-          [class.language-switcher__chevron--open]="isOpen()"
-        />
-      </button>
+    @if (variant() === 'dropdown' || variant() === 'icon') {
+      @if (variant() === 'icon') {
+        <!-- Icon Trigger Button -->
+        <eb-button
+          variant="tertiary"
+          [size]="size()"
+          [iconOnly]="true"
+          class="language-switcher__icon-trigger"
+          [ariaLabel]="changeLanguageTooltip"
+          [ebTooltip]="changeLanguageTooltip"
+          [ariaExpanded]="isOpen()"
+          ariaHasPopup="listbox"
+          [ariaControls]="isOpen() ? 'language-listbox' : undefined"
+          (clicked)="toggleDropdown()"
+        >
+          <eb-icon name="heroGlobeAlt" [size]="size()" aria-hidden="true" />
+        </eb-button>
+      } @else {
+        <!-- Dropdown Trigger Button -->
+        <eb-button
+          variant="ghost"
+          [size]="size()"
+          (clicked)="toggleDropdown()"
+          [ariaLabel]="dropdownAriaLabel()"
+          [ariaExpanded]="isOpen()"
+          ariaHasPopup="listbox"
+          [ariaControls]="isOpen() ? 'language-listbox' : undefined"
+          class="language-switcher__button"
+        >
+          <div class="language-switcher__trigger-content">
+            <eb-icon name="heroGlobeAlt" [size]="size()" aria-hidden="true" />
+            <span class="language-switcher__code">{{ currentLanguage().code.toUpperCase() }}</span>
+            <eb-icon
+              name="heroChevronDown"
+              size="sm"
+              aria-hidden="true"
+              class="language-switcher__chevron"
+              [class.language-switcher__chevron--open]="isOpen()"
+            />
+          </div>
+        </eb-button>
+      }
 
       <!-- Dropdown Menu -->
       @if (isOpen()) {
         <div class="language-switcher__dropdown">
-          <!-- Backdrop for click-outside -->
-          <div
-            class="language-switcher__backdrop"
-            (click)="closeDropdown()"
-            (keydown.escape)="closeDropdown()"
-            tabindex="-1"
-            aria-hidden="true"
-          ></div>
-
           <!-- Options List -->
-          <ul class="language-switcher__menu" role="listbox">
+          <ul id="language-listbox" class="language-switcher__menu" role="listbox">
             @for (language of languages; track language.code) {
               <li
                 role="option"
@@ -64,18 +76,16 @@
     } @else {
       <!-- Inline Variant -->
       @for (language of languages; track language.code) {
-        <button
-          type="button"
+        <eb-button
+          [variant]="language.code === currentLanguage().code ? 'primary' : 'ghost'"
+          [size]="size()"
           class="language-switcher__inline-button"
-          [class.language-switcher__inline-button--active]="
-            language.code === currentLanguage().code
-          "
-          [attr.aria-label]="language.nativeName"
-          [attr.aria-pressed]="language.code === currentLanguage().code"
-          (click)="selectLanguage(language)"
+          [ariaLabel]="language.nativeName"
+          [ariaPressed]="language.code === currentLanguage().code"
+          (clicked)="selectLanguage(language)"
         >
           {{ language.code.toUpperCase() }}
-        </button>
+        </eb-button>
       }
     }
   </div>

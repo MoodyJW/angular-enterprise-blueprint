@@ -135,18 +135,20 @@
     }
     @case ('icon') {
       <div class="theme-picker__icon-wrapper">
-        <button
-          type="button"
+        <eb-button
+          variant="tertiary"
+          size="lg"
+          [iconOnly]="true"
           class="theme-picker__icon-trigger"
-          [attr.aria-expanded]="isOpen()"
-          aria-haspopup="listbox"
-          [attr.aria-label]="'Change theme, current theme: ' + currentTheme().name"
+          [ariaExpanded]="isOpen()"
+          ariaHasPopup="listbox"
+          [ariaLabel]="'Change theme, current theme: ' + currentTheme().name"
           [ebTooltip]="changeThemeTooltip"
-          (click)="toggleDropdown()"
+          (clicked)="toggleDropdown()"
           (keydown)="handleKeydown($event)"
         >
           <eb-icon name="matFormatPaint" size="md" [decorative]="true" />
-        </button>
+        </eb-button>
 
         @if (isOpen()) {
           <div

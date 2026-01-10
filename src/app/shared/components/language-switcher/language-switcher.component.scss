@@ -1,8 +1,6 @@
 .language-switcher {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
+  display: inline-block;
 
   // Size Variants
   &--sm {
@@ -13,31 +11,15 @@
     font-size: var(--font-size-base);
   }
 
-  // Dropdown Button
-  &__button {
-    display: inline-flex;
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+
+  // Trigger Content (Inside eb-button)
+  &__trigger-content {
+    display: flex;
     align-items: center;
-    gap: var(--space-1);
-    padding: var(--space-2) var(--space-3);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-md);
-    color: var(--color-text);
-    font-size: inherit;
-    cursor: pointer;
-    transition:
-      background-color var(--duration-fast),
-      border-color var(--duration-fast);
-
-    &:hover {
-      background-color: var(--color-surface-hover);
-      border-color: var(--color-border-hover);
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-focus-ring);
-      outline-offset: 2px;
-    }
+    gap: var(--space-2);
   }
 
   &__code {
@@ -53,22 +35,24 @@
     }
   }
 
-  // Dropdown Menu Container
-  &__dropdown {
-    position: relative;
+  // Icon Trigger (Variant: 'icon')
+  &__icon-trigger {
+    border-radius: var(--border-radius-full);
   }
 
-  // Backdrop for click-outside behavior
-  &__backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: var(--z-dropdown-backdrop, 9);
+  // Dropdown Menu Container (Wrapper)
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: var(--z-dropdown, 10);
   }
 
   // Options Menu
   &__menu {
-    position: absolute;
-    top: calc(100% + var(--space-1));
+    position: relative;
+    min-width: 160px;
+    margin-top: var(--space-1);
     right: 0;
     min-width: 160px;
     padding: var(--space-1) 0;
@@ -114,46 +98,21 @@
 
   // Inline Variant
   &--inline {
+    display: inline-flex;
+    align-items: center;
     gap: var(--space-2);
   }
 
   &__inline-button {
-    padding: var(--space-2) var(--space-3);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-md);
     font-family: var(--font-family-mono, monospace);
     font-weight: var(--font-weight-semibold);
-    color: var(--color-text);
-    cursor: pointer;
-    transition:
-      background-color var(--duration-fast),
-      border-color var(--duration-fast);
-
-    &:hover {
-      background-color: var(--color-surface-hover);
-      border-color: var(--color-border-hover);
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-focus-ring);
-      outline-offset: 2px;
-    }
-
-    &--active {
-      background-color: var(--color-primary);
-      border-color: var(--color-primary);
-      color: var(--color-on-primary);
-    }
   }
 }
 
 // Respect reduced motion preference
 @media (prefers-reduced-motion: reduce) {
-  .language-switcher__trigger,
   .language-switcher__chevron,
-  .language-switcher__option,
-  .language-switcher__inline-option {
+  .language-switcher__option {
     transition: none;
   }
 }

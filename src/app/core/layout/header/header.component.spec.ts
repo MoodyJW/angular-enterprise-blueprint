@@ -1,5 +1,6 @@
 import { signal, WritableSignal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 import { afterEach, beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
@@ -153,6 +154,23 @@ describe('HeaderComponent', () => {
       expect(navLinks.length).toBe(component.navItems.length);
     });
 
+    it('should have correct routerLinkActive configuration', () => {
+      const compiled = fixture.nativeElement as HTMLElement;
+      const navLinks = compiled.querySelectorAll('.header__nav-link');
+
+      // Check local dashboard link (first one usually) that needs exact match
+      const dashboardLink = navLinks[0];
+      // We can't verify runtime active class switch easily without RouterTestingModule validation,
+      // but checking the attribute/input existence is good enough for unit tests.
+      // Actually, let's checking the directive instance via DebugElement
+
+      const debugLinks = fixture.debugElement.queryAll(By.css('.header__nav-link'));
+      expect(debugLinks.length).toBeGreaterThan(0);
+
+      // Just verify it's not null and has some property bindings
+      expect(dashboardLink.getAttribute('routerLinkActive')).toBe('header__nav-link--active');
+    });
+
     it('should show login button when not authenticated', () => {
       const compiled = fixture.nativeElement as HTMLElement;
       // The text content should include "Login"
@@ -161,7 +179,7 @@ describe('HeaderComponent', () => {
 
     it('should show mobile menu toggle button', () => {
       const compiled = fixture.nativeElement as HTMLElement;
-      const toggleButton = compiled.querySelector('.header__menu-toggle');
+      const toggleButton = compiled.querySelector('.header__mobile-toggle');
       expect(toggleButton).toBeTruthy();
     });
 
@@ -209,6 +227,56 @@ describe('HeaderComponent', () => {
       const compiled = fixture.nativeElement as HTMLElement;
       const navItems = compiled.querySelectorAll('.header__nav-item');
       expect(navItems.length).toBe(component.navItems.length);
+    });
+
+    it('should render theme picker', () => {
+      const compiled = fixture.nativeElement as HTMLElement;
+      const themePicker = compiled.querySelector('eb-theme-picker');
+      expect(themePicker).toBeTruthy();
+    });
+
+    it('should render language switcher', () => {
+      const compiled = fixture.nativeElement as HTMLElement;
+      const languageSwitcher = compiled.querySelector('eb-language-switcher');
+      expect(languageSwitcher).toBeTruthy();
+    });
+  });
+
+  describe('User Interactions', () => {
+    it('should emit toggleMenu when mobile toggle is clicked', () => {
+      const emitSpy = vi.spyOn(component.toggleMenu, 'emit');
+
+      // Use DebugElement to find the ButtonComponent directive
+      const toggleDebugEl = fixture.debugElement.query(By.css('.header__mobile-toggle'));
+      expect(toggleDebugEl).toBeTruthy();
+
+      // Trigger the custom 'clicked' event from eb-button
+      toggleDebugEl.triggerEventHandler('clicked', null);
+
+      expect(emitSpy).toHaveBeenCalled();
+    });
+
+    it('should call logout when logout button is clicked', () => {
+      mockAuthStore.isAuthenticated.set(true);
+      fixture.detectChanges();
+
+      const logoutSpy = vi.spyOn(component, 'onLogout');
+
+      // Find logout button (it's the second button when authenticated: theme picker, lang switcher, then logout?)
+      // It has aria-label="Logout" from translation or text content
+      // Let's find it by checking text content via DebugElement
+      const buttons = fixture.debugElement.queryAll(By.css('eb-button'));
+      const logoutBtn = buttons.find((btn) =>
+        (btn.nativeElement as HTMLElement).textContent.includes('Logout'),
+      );
+
+      expect(logoutBtn).toBeTruthy();
+
+      // Trigger the standard 'click' event (Header uses (click) binding for logout)
+      logoutBtn?.triggerEventHandler('click', { PreventDefault: () => {} });
+
+      expect(logoutSpy).toHaveBeenCalled();
+      expect(mockAuthStore.logout).toHaveBeenCalled();
     });
   });
 });

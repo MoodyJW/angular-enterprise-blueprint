@@ -5,6 +5,7 @@ import { THEMES } from '@core/services';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { By } from '@angular/platform-browser';
+import { ButtonComponent } from '@shared/components/button/button.component';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
 import { ThemePickerComponent } from './theme-picker.component';
 
@@ -245,9 +246,10 @@ describe('ThemePickerComponent', () => {
       expect(wrapper).toBeTruthy();
     });
 
-    it('should have icon trigger button', () => {
-      const trigger = nativeElement.querySelector('.theme-picker__icon-trigger');
+    it('should have icon trigger button (eb-button)', () => {
+      const trigger = fixture.debugElement.query(By.css('.theme-picker__icon-trigger'));
       expect(trigger).toBeTruthy();
+      expect(trigger.componentInstance).toBeInstanceOf(ButtonComponent);
     });
 
     it('should display paint brush icon', () => {
@@ -263,23 +265,22 @@ describe('ThemePickerComponent', () => {
     });
 
     it('should toggle dropdown when icon is clicked', () => {
-      const trigger = nativeElement.querySelector(
-        '.theme-picker__icon-trigger',
-      ) as HTMLButtonElement;
+      const triggerDebugEl = fixture.debugElement.query(By.css('.theme-picker__icon-trigger'));
+      const buttonInstance = triggerDebugEl.componentInstance as ButtonComponent;
+
       expect(component.isOpen()).toBe(false);
 
-      trigger.click();
+      buttonInstance.clicked.emit(new MouseEvent('click'));
       fixture.detectChanges();
 
       expect(component.isOpen()).toBe(true);
-
-      const dropdown = nativeElement.querySelector('.theme-picker__dropdown');
-      expect(dropdown).toBeTruthy();
+      expect(nativeElement.querySelector('.theme-picker__dropdown')).toBeTruthy();
     });
 
     it('should have correct aria labels', () => {
-      const trigger = nativeElement.querySelector('.theme-picker__icon-trigger');
-      expect(trigger?.getAttribute('aria-label')).toContain('Change theme');
+      const triggerDebugEl = fixture.debugElement.query(By.css('.theme-picker__icon-trigger'));
+      const buttonInstance = triggerDebugEl.componentInstance as ButtonComponent;
+      expect(buttonInstance.ariaLabel()).toContain('Change theme');
     });
   });
 
