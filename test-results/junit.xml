@@ -1,396 +1,953 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="28" failures="28" errors="0" time="0.023558169">
-    <testsuite name="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" timestamp="2026-01-08T20:06:11.480Z" hostname="jay-MS-7971" tests="28" failures="28" errors="0" skipped="0" time="0.023558169">
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Component Creation &gt; should create" time="0.007379374">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+<testsuites name="vitest tests" tests="48" failures="48" errors="0" time="0.022008308">
+    <testsuite name="src/app/shared/components/card/card.component.spec.ts" timestamp="2026-01-08T20:59:42.705Z" hostname="jay-MS-7971" tests="48" failures="48" errors="0" skipped="0" time="0.022008308">
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Component Creation &gt; should create" time="0.005002377">
+            <failure message="Need to call TestBed.initTestEnvironment() first" type="Error">
+Error: Need to call TestBed.initTestEnvironment() first
+ ❯ TestBedImpl.get compiler [as compiler] node_modules/@angular/core/fesm2022/testing.mjs:1486:13
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:10
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Component Creation &gt; should be standalone" time="0.000757605">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Component Creation &gt; should be standalone" time="0.002217112">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Component Creation &gt; should use OnPush change detection" time="0.000405073">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Component Creation &gt; should use OnPush change detection" time="0.000426255">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Input Handling - Checked &gt; should have default checked state as false" time="0.000416458">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Input Handling - Variant &gt; should have default variant as default" time="0.000409334">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Input Handling - Checked &gt; should handle checked state as true" time="0.000431031">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Input Handling - Variant &gt; should apply custom variant" time="0.000367729">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Input Handling - Checked &gt; should handle checked state as false" time="0.00065348">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Input Handling - Padding &gt; should have default padding as md" time="0.000385791">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Input Handling - Indeterminate &gt; should have default indeterminate state as false" time="0.000651596">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Input Handling - Padding &gt; should apply custom padding" time="0.000299757">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Input Handling - Indeterminate &gt; should handle indeterminate state as true" time="0.000637099">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Input Handling - States &gt; should handle clickable state" time="0.000297225">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Input Handling - Indeterminate &gt; should handle indeterminate state as false" time="0.000632891">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Input Handling - States &gt; should handle hoverable state" time="0.000454269">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Computed Values - iconName &gt; should return CHECKBOX_UNCHECKED when neither checked nor indeterminate" time="0.000641049">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Input Handling - States &gt; should have hoverable true by default" time="0.000408816">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Computed Values - iconName &gt; should return CHECKBOX_CHECKED when checked" time="0.000654606">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Input Handling - States &gt; should handle fullWidth option" time="0.0004001">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Computed Values - iconName &gt; should return CHECKBOX_INDETERMINATE when indeterminate" time="0.000749927">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Click Events &gt; should emit click event when clickable and clicked" time="0.000597872">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Computed Values - iconName &gt; should return CHECKBOX_INDETERMINATE when both checked and indeterminate (indeterminate takes precedence)" time="0.000702621">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Click Events &gt; should NOT emit click when not clickable" time="0.000356654">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Template Rendering - Wrapper &gt; should render checkbox-checkmark wrapper" time="0.000751392">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Click Events &gt; should call handleClick with MouseEvent" time="0.000371855">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Template Rendering - Wrapper &gt; should have aria-hidden=&quot;true&quot; on wrapper" time="0.000747357">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Keyboard Events &gt; should emit click on Enter key when clickable" time="0.000315156">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Template Rendering - Icon &gt; should always render an icon (unchecked state)" time="0.000475333">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Keyboard Events &gt; should emit click on Space key when clickable" time="0.000354689">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Template Rendering - Icon &gt; should render icon when checked" time="0.00037231">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Keyboard Events &gt; should NOT emit click on other keys" time="0.000297548">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Template Rendering - Icon &gt; should render icon when indeterminate" time="0.00036066">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Keyboard Events &gt; should NOT emit click on keyboard when not clickable" time="0.000285367">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Template Rendering - Icon &gt; should render icon when both checked and indeterminate" time="0.00038525">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Accessibility - ARIA Attributes &gt; should not have role by default" time="0.000279628">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Icon Properties &gt; should render icon with correct name when unchecked" time="0.00038296">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Accessibility - ARIA Attributes &gt; should have button role when clickable" time="0.000282708">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Icon Properties &gt; should render icon with correct name when checked" time="0.000386359">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Accessibility - ARIA Attributes &gt; should allow custom role override" time="0.000337069">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Icon Properties &gt; should render icon with correct name when indeterminate" time="0.000343868">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Accessibility - ARIA Attributes &gt; should set aria-label when provided" time="0.000241622">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; Icon Properties &gt; should apply checkbox-icon class to icon" time="0.000408542">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Accessibility - ARIA Attributes &gt; should set aria-labelledby when provided" time="0.00023127">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; State Transitions &gt; should transition from unchecked to checked" time="0.000455266">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Accessibility - ARIA Attributes &gt; should set aria-describedby when provided" time="0.000211671">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; State Transitions &gt; should transition from checked to indeterminate" time="0.000360853">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Accessibility - ARIA Attributes &gt; should set tabindex=0 when clickable" time="0.000200707">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; State Transitions &gt; should transition from indeterminate to unchecked" time="0.000416542">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Accessibility - ARIA Attributes &gt; should not set tabindex when not clickable" time="0.000235202">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; CSS Classes &gt; should apply checkbox-checkmark class to wrapper" time="0.000354557">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Accessibility - Semantic HTML &gt; should use div element" time="0.000255853">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
-        <testcase classname="src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.spec.ts" name="CheckboxCheckmarkComponent &gt; CSS Classes &gt; should apply checkbox-icon class to icon" time="0.000460939">
-            <failure message="Cannot read properties of null (reading &apos;ngModule&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;ngModule&apos;)
- ❯ isModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:7242:16
- ❯ expandModuleWithProviders node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17743:7
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17458:84
- ❯ getNgModuleDef node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:471:14
- ❯ getNgModuleDefOrThrow node_modules/@angular/core/fesm2022/_untracked-chunk.mjs:474:23
- ❯ verifySemanticsOfNgModuleDef node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17531:19
- ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17495:22
- ❯ TestBedCompiler.applyProviderOverridesInScope node_modules/@angular/core/fesm2022/testing.mjs:825:29
- ❯ TestBedCompiler.compileTestModule node_modules/@angular/core/fesm2022/testing.mjs:1065:10
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Accessibility - Semantic HTML &gt; should have header element" time="0.000210552">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Accessibility - Semantic HTML &gt; should have section element for body" time="0.000201683">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Accessibility - Semantic HTML &gt; should have footer element" time="0.000227523">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; CSS Classes &gt; should apply base card class" time="0.00020255">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; CSS Classes &gt; should apply variant classes" time="0.00019884">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; CSS Classes &gt; should apply padding classes" time="0.000228925">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; CSS Classes &gt; should apply clickable class when clickable" time="0.000215272">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; CSS Classes &gt; should apply hoverable class when hoverable" time="0.000202915">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; CSS Classes &gt; should apply full-width class when fullWidth" time="0.000201925">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Content Projection &gt; should render header slot content" time="0.000203835">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Content Projection &gt; should render media slot content" time="0.00020422">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Content Projection &gt; should render body slot content" time="0.00022915">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Content Projection &gt; should render footer slot content" time="0.000195197">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Computed Values &gt; should compute isInteractive as true when clickable" time="0.000200019">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Computed Values &gt; should compute isInteractive as false when not clickable" time="0.000221712">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Computed Values &gt; should compute cardClasses correctly" time="0.000239697">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Computed Values &gt; should compute cardRole as undefined by default" time="0.000199565">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Computed Values &gt; should compute cardRole as button when clickable" time="0.000193763">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Computed Values &gt; should compute cardRole as custom role when provided" time="0.00019214">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Computed Values &gt; should compute tabIndexValue as 0 when clickable" time="0.000231399">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/shared/components/card/card.component.spec.ts" name="CardComponent &gt; Computed Values &gt; should compute tabIndexValue as undefined when not clickable" time="0.000219025">
+            <failure message="Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;CardComponent&apos; is not resolved:
+ - templateUrl: ./card.component.html
+ - styleUrl: ./card.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17775:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/card/card.component.spec.ts:14:19
             </failure>
         </testcase>
     </testsuite>
