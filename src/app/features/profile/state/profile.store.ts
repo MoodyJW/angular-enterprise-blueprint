@@ -1,4 +1,4 @@
-import { computed, inject } from '@angular/core';
+import { computed, inject, Provider } from '@angular/core';
 import { GitHubStats } from '@features/profile/models/github-stats.interface';
 import { ProfileService } from '@features/profile/services/profile.service';
 import { tapResponse } from '@ngrx/operators';
@@ -155,3 +155,12 @@ export const ProfileStore = signalStore(
     },
   })),
 );
+
+/**
+ * Provider for the ProfileStore.
+ * Include this in app.config.ts to ensure profile stats are cached
+ * at the application level.
+ */
+export function provideProfileStore(): Provider {
+  return ProfileStore;
+}

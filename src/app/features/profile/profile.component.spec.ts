@@ -70,14 +70,11 @@ describe('ProfileComponent', () => {
           translocoConfig: { availableLangs: ['en'], defaultLang: 'en' },
         }),
       ],
-      providers: [{ provide: SeoService, useValue: mockSeoService }],
-    })
-      .overrideComponent(ProfileComponent, {
-        set: {
-          providers: [{ provide: ProfileStore, useValue: mockStore }],
-        },
-      })
-      .compileComponents();
+      providers: [
+        { provide: SeoService, useValue: mockSeoService },
+        { provide: ProfileStore, useValue: mockStore },
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ProfileComponent);
     component = fixture.componentInstance;
