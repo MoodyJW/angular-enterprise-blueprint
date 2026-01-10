@@ -12,6 +12,7 @@
       >
         <span
           class="theme-picker__swatch"
+          [attr.data-theme]="currentTheme().id"
           [style.background]="getThemePreview(currentTheme())"
         ></span>
         @if (showLabels()) {
@@ -49,6 +50,7 @@
                   >
                     <span
                       class="theme-picker__swatch"
+                      [attr.data-theme]="theme.id"
                       [style.background]="getThemePreview(theme)"
                     ></span>
                     <span class="theme-picker__option-label">{{ theme.name }}</span>
@@ -72,6 +74,7 @@
               >
                 <span
                   class="theme-picker__swatch"
+                  [attr.data-theme]="theme.id"
                   [style.background]="getThemePreview(theme)"
                 ></span>
                 @if (showLabels()) {
@@ -98,6 +101,7 @@
           >
             <span
               class="theme-picker__swatch theme-picker__swatch--large"
+              [attr.data-theme]="theme.id"
               [style.background]="getThemePreview(theme)"
             ></span>
             @if (showLabels()) {
@@ -120,8 +124,95 @@
             [attr.aria-label]="theme.name"
             (click)="selectTheme(theme.id)"
           >
-            <span class="theme-picker__swatch" [style.background]="getThemePreview(theme)"></span>
+            <span
+              class="theme-picker__swatch"
+              [attr.data-theme]="theme.id"
+              [style.background]="getThemePreview(theme)"
+            ></span>
           </button>
+        }
+      </div>
+    }
+    @case ('icon') {
+      <div class="theme-picker__icon-wrapper">
+        <button
+          type="button"
+          class="theme-picker__icon-trigger"
+          [attr.aria-expanded]="isOpen()"
+          aria-haspopup="listbox"
+          [attr.aria-label]="'Change theme, current theme: ' + currentTheme().name"
+          (click)="toggleDropdown()"
+          (keydown)="handleKeydown($event)"
+        >
+          <eb-icon name="matFormatPaint" size="md" [decorative]="true" />
+        </button>
+
+        @if (isOpen()) {
+          <div
+            class="theme-picker__dropdown theme-picker__dropdown--right"
+            role="listbox"
+            [attr.aria-label]="ariaLabel()"
+            [attr.aria-activedescendant]="currentTheme().id"
+          >
+            @if (groupByCategory()) {
+              @for (category of categoryKeys; track category) {
+                <div
+                  class="theme-picker__group"
+                  role="group"
+                  [attr.aria-label]="categoryLabels[category]"
+                >
+                  <span class="theme-picker__group-label" aria-hidden="true">{{
+                    categoryLabels[category]
+                  }}</span>
+                  @for (theme of groupedThemes()[category]; track theme.id) {
+                    <button
+                      type="button"
+                      class="theme-picker__option"
+                      [class.theme-picker__option--active]="theme.id === currentTheme().id"
+                      role="option"
+                      [id]="theme.id"
+                      [attr.aria-selected]="theme.id === currentTheme().id"
+                      (click)="selectTheme(theme.id)"
+                    >
+                      <span
+                        class="theme-picker__swatch"
+                        [attr.data-theme]="theme.id"
+                        [style.background]="getThemePreview(theme)"
+                      ></span>
+                      <span class="theme-picker__option-label">{{ theme.name }}</span>
+                      @if (theme.id === currentTheme().id) {
+                        <eb-icon name="heroCheck" size="sm" [decorative]="true" />
+                      }
+                    </button>
+                  }
+                </div>
+              }
+            } @else {
+              @for (theme of themes(); track theme.id) {
+                <button
+                  type="button"
+                  class="theme-picker__option"
+                  [class.theme-picker__option--active]="theme.id === currentTheme().id"
+                  role="option"
+                  [id]="theme.id"
+                  [attr.aria-selected]="theme.id === currentTheme().id"
+                  (click)="selectTheme(theme.id)"
+                >
+                  <span
+                    class="theme-picker__swatch"
+                    [attr.data-theme]="theme.id"
+                    [style.background]="getThemePreview(theme)"
+                  ></span>
+                  @if (showLabels()) {
+                    <span class="theme-picker__option-label">{{ theme.name }}</span>
+                  }
+                  @if (theme.id === currentTheme().id) {
+                    <eb-icon name="heroCheck" size="sm" [decorative]="true" />
+                  }
+                </button>
+              }
+            }
+          </div>
         }
       </div>
     }

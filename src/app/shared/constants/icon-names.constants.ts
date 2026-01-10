@@ -96,6 +96,7 @@ export const ICON_NAMES = {
   SUN: 'heroSun',
   SUN_SOLID: 'heroSunSolid',
   GLOBE: 'heroGlobeAlt',
+  THEME_PICKER: 'matFormatPaint',
 
   // Time & Calendar
   CALENDAR: 'heroCalendar',
