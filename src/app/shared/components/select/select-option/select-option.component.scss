@@ -25,7 +25,9 @@
   // Selected state
   &--selected {
     background-color: rgba(var(--color-primary-rgb), 0.1);
-    color: var(--color-primary-hover);
+    // Use default text color for accessibility across all themes.
+    // Selection is indicated by background tint and checkmark icon.
+    color: var(--color-text);
 
     &:hover {
       background-color: rgba(var(--color-primary-rgb), 0.15);
