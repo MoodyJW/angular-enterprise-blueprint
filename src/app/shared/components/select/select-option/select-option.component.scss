@@ -25,7 +25,7 @@
   // Selected state
   &--selected {
     background-color: rgba(var(--color-primary-rgb), 0.1);
-    color: var(--color-primary);
+    color: var(--color-primary-hover);
 
     &:hover {
       background-color: rgba(var(--color-primary-rgb), 0.15);
