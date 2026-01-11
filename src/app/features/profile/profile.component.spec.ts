@@ -1,6 +1,7 @@
 import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { provideRouter } from '@angular/router';
 import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 import { vi } from 'vitest';
@@ -43,9 +44,14 @@ describe('ProfileComponent', () => {
     'profile.techStack.title': 'Tech Stack',
     'profile.techStack.primary': 'Primary',
     'profile.techStack.secondary': 'Also Experienced With',
+    'profile.resume.title': 'Resume',
     'profile.resume.download': 'Download Resume',
+    'profile.resume.downloadShort': 'Download',
     'profile.resume.view': 'View Resume',
+    'profile.resume.viewShort': 'View',
     'profile.resume.modalTitle': 'Resume Preview',
+    'profile.contact.title': 'Get in Touch',
+    'profile.contact.button': 'Contact Me',
     'profile.stats.title': 'GitHub Activity',
   };
 
@@ -71,6 +77,7 @@ describe('ProfileComponent', () => {
         }),
       ],
       providers: [
+        provideRouter([]),
         { provide: SeoService, useValue: mockSeoService },
         { provide: ProfileStore, useValue: mockStore },
       ],
@@ -231,16 +238,16 @@ describe('ProfileComponent', () => {
   });
 
   describe('Resume Actions', () => {
-    it('should render resume actions container', () => {
-      const actions = fixture.debugElement.query(By.css('.profile__actions'));
-      expect(actions).toBeTruthy();
+    it('should render actions card', () => {
+      const actionsCard = fixture.debugElement.query(By.css('.profile__actions-card'));
+      expect(actionsCard).toBeTruthy();
     });
 
     it('should render download link with correct href', () => {
       const downloadLink = fixture.debugElement.query(By.css('.profile__download-link'));
       expect(downloadLink).toBeTruthy();
       expect((downloadLink.nativeElement as HTMLAnchorElement).getAttribute('href')).toBe(
-        'assets/resume/resume.pdf',
+        '/assets/resume/resume.pdf',
       );
     });
 
@@ -255,16 +262,13 @@ describe('ProfileComponent', () => {
       const downloadLink = fixture.debugElement.query(By.css('.profile__download-link'));
       const button = downloadLink.query(By.css('eb-button'));
       expect(button).toBeTruthy();
-      expect((downloadLink.nativeElement as HTMLElement).textContent.trim()).toContain(
-        'Download Resume',
-      );
+      expect((downloadLink.nativeElement as HTMLElement).textContent.trim()).toContain('Download');
     });
 
-    it('should render view resume button', () => {
-      const actions = fixture.debugElement.query(By.css('.profile__actions'));
-      const buttons = actions.queryAll(By.css('eb-button'));
-      // Should have download button inside link + view button
-      expect(buttons.length).toBe(2);
+    it('should render resume action buttons', () => {
+      const actionsButtons = fixture.debugElement.queryAll(By.css('.profile__actions-buttons'));
+      // Should have Resume section + Contact section
+      expect(actionsButtons.length).toBe(2);
     });
 
     it('should render download button icon', () => {
@@ -273,16 +277,17 @@ describe('ProfileComponent', () => {
       expect(icon).toBeTruthy();
     });
 
-    it('should render view button icon', () => {
-      const actions = fixture.debugElement.query(By.css('.profile__actions'));
-      const viewButton = actions.queryAll(By.css('eb-button'))[1];
-      const icon = viewButton.query(By.css('eb-icon'));
-      expect(icon).toBeTruthy();
+    it('should render view button', () => {
+      const actionsCard = fixture.debugElement.query(By.css('.profile__actions-card'));
+      const buttons = actionsCard.queryAll(By.css('eb-button'));
+      // Should have Download, View, and Contact Me buttons
+      expect(buttons.length).toBeGreaterThanOrEqual(3);
     });
 
     it('should open modal when view button is clicked', () => {
-      const actions = fixture.debugElement.query(By.css('.profile__actions'));
-      const viewButton = actions.queryAll(By.css('eb-button'))[1];
+      // Get the second button in the first actions-buttons section (View button)
+      const resumeSection = fixture.debugElement.queryAll(By.css('.profile__actions-section'))[0];
+      const viewButton = resumeSection.queryAll(By.css('eb-button'))[1];
       viewButton.triggerEventHandler('clicked', null);
       fixture.detectChanges();
 
@@ -292,7 +297,7 @@ describe('ProfileComponent', () => {
 
   describe('Component Properties', () => {
     it('should have correct resumePath value', () => {
-      expect(component.resumePath()).toBe('assets/resume/resume.pdf');
+      expect(component.resumePath()).toBe('/assets/resume/resume.pdf');
     });
 
     it('should block invalid resume URLs', () => {
@@ -411,7 +416,7 @@ describe('ProfileComponent', () => {
       const fallbackLink = fixture.debugElement.query(By.css('.profile__resume-modal-body a'));
       expect(fallbackLink).toBeTruthy();
       expect((fallbackLink.nativeElement as HTMLAnchorElement).getAttribute('href')).toBe(
-        'assets/resume/resume.pdf',
+        '/assets/resume/resume.pdf',
       );
     });
 

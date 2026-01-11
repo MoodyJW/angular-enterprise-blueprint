@@ -655,19 +655,20 @@ NOTE: made a similar change to the language switcher component
 ## 8.8 Profile Page Resume Button Layout
 
 **Current:** Resume buttons inside profile card (feels cramped)
-**Target:** Move buttons to separate section below card
+**Target:** Move buttons to below the stats card
 
 ### Changes
 
 - Move `<eb-button>` elements outside profile card
-- Create `.profile-actions` section below card
-- Add "Resume" section heading
-- Improve spacing and visual hierarchy
+- Position buttons below the stats card (no separate card wrapper needed)
+- Fix "View Resume" button not opening PDF (broken PDF viewer)
+- Fix skeleton loading overflow on mobile (skeleton widths should be responsive)
 
 ### Acceptance Criteria
 
-- [ ] Buttons below card in left column
-- [ ] Section has clear heading
+- [ ] Buttons positioned below stats card
+- [ ] "View Resume" button opens PDF correctly
+- [ ] Skeleton loading does not overflow on mobile
 - [ ] Mobile responsive (buttons stack or go full-width)
 - [ ] ARIA labels on all buttons
 - [ ] Proper focus management

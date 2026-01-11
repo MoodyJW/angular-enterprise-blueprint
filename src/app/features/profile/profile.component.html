@@ -7,7 +7,7 @@
       </header>
 
       <eb-grid [cols]="1" [colsMd]="2" [gap]="'xl'" class="profile__grid">
-        <!-- Left Column: Stats Card with Avatar -->
+        <!-- Left Column: Stats Card with Avatar + Resume Actions -->
         <div class="profile__left">
           <eb-profile-stats-card
             [stats]="store.stats()"
@@ -16,6 +16,49 @@
             (retry)="store.loadGitHubStats()"
           >
           </eb-profile-stats-card>
+
+          <!-- Actions Card -->
+          <eb-card class="profile__actions-card" [hoverable]="false">
+            <div card-body>
+              <!-- Resume Section -->
+              <div class="profile__actions-section">
+                <h2 class="profile__actions-title">{{ t('profile.resume.title') }}</h2>
+                <div class="profile__actions-buttons">
+                  <a [href]="resumePath()" download="resume.pdf" class="profile__download-link">
+                    <eb-button variant="primary" size="md" ariaLabel="Download resume as PDF">
+                      <eb-icon name="heroArrowDownTray" size="sm" ariaLabel="" />
+                      {{ t('profile.resume.downloadShort') }}
+                    </eb-button>
+                  </a>
+                  <eb-button
+                    variant="secondary"
+                    size="md"
+                    ariaLabel="Open resume preview"
+                    (clicked)="openResumeModal()"
+                  >
+                    <eb-icon name="heroDocument" size="sm" ariaLabel="" />
+                    {{ t('profile.resume.viewShort') }}
+                  </eb-button>
+                </div>
+              </div>
+
+              <!-- Contact Section -->
+              <div class="profile__actions-section">
+                <h2 class="profile__actions-title">{{ t('profile.contact.title') }}</h2>
+                <div class="profile__actions-buttons">
+                  <eb-button
+                    variant="tertiary"
+                    size="md"
+                    ariaLabel="Contact me"
+                    routerLink="/contact"
+                  >
+                    <eb-icon name="heroEnvelope" size="sm" ariaLabel="" />
+                    {{ t('profile.contact.button') }}
+                  </eb-button>
+                </div>
+              </div>
+            </div>
+          </eb-card>
         </div>
 
         <!-- Right Column: Bio & Tech Stack -->
@@ -65,26 +108,6 @@
               </div>
             </div>
           </eb-card>
-
-          <!-- Resume Actions -->
-          <div class="profile__actions">
-            <a [href]="resumePath()" download="resume.pdf" class="profile__download-link">
-              <eb-button variant="primary" size="lg" ariaLabel="Download resume as PDF">
-                <eb-icon name="heroArrowDownTray" size="sm" ariaLabel="" />
-                {{ t('profile.resume.download') }}
-              </eb-button>
-            </a>
-
-            <eb-button
-              variant="secondary"
-              size="lg"
-              ariaLabel="Open resume preview"
-              (clicked)="openResumeModal()"
-            >
-              <eb-icon name="heroDocument" size="sm" ariaLabel="" />
-              {{ t('profile.resume.view') }}
-            </eb-button>
-          </div>
         </div>
       </eb-grid>
     </div>

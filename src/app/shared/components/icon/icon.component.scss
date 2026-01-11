@@ -1,6 +1,15 @@
 // Icon component styles using BEM methodology
 // Integrates with existing theme system via CSS variables
 
+// Host element styles - ensure proper inline alignment in flex containers
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 0;
+}
+
 .icon {
   // Base icon styles
   display: inline-flex;

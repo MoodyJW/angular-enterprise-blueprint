@@ -7,6 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { RouterLink } from '@angular/router';
 import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoModule } from '@jsverse/transloco';
 import { provideIcons } from '@ng-icons/core';
@@ -42,6 +43,7 @@ import { ProfileStatsCardComponent } from './components/profile-stats-card/profi
   standalone: true,
   imports: [
     TranslocoModule,
+    RouterLink,
     CardComponent,
     ButtonComponent,
     BadgeComponent,
@@ -82,7 +84,7 @@ export class ProfileComponent implements OnInit {
   readonly secondaryTech = ['Vitest', 'Playwright', 'Storybook', 'SCSS', 'GitHub Actions'];
 
   /** Resume file path */
-  readonly resumePath = signal('assets/resume/resume.pdf');
+  readonly resumePath = signal('/assets/resume/resume.pdf');
 
   /** Sanitized resume URL for embedding in object/iframe */
   /**
@@ -105,8 +107,8 @@ export class ProfileComponent implements OnInit {
    * Only allows local assets in the assets/resume directory.
    */
   private _isValidResumeUrl(url: string): boolean {
-    // Only allow local PDF assets
-    return /^assets\/resume\/.*\.pdf$/.test(url);
+    // Only allow local PDF assets (with or without leading slash)
+    return /^\/?assets\/resume\/.*\.pdf$/.test(url);
   }
 
   /** Date range for stats (last 365 days) */

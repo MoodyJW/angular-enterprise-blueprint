@@ -372,11 +372,18 @@
       "secondary": "Also Experienced With"
     },
     "resume": {
+      "title": "Resume",
       "download": "Download Resume",
+      "downloadShort": "Download",
       "view": "View Resume",
+      "viewShort": "View",
       "modalTitle": "Resume Preview",
       "downloadHint": "Download PDF resume",
       "close": "Close preview"
+    },
+    "contact": {
+      "title": "Get in Touch",
+      "button": "Contact Me"
     }
   },
   "pageNotFound": {

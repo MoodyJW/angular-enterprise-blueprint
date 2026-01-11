@@ -7,46 +7,31 @@
           <eb-skeleton variant="circular" width="100px" height="100px" ariaLabel="Loading avatar" />
           <div class="stats-card__info">
             <div class="stats-card__info-left">
-              <eb-skeleton variant="text" width="150px" height="28px" ariaLabel="Loading name" />
-              <eb-skeleton
-                variant="text"
-                width="100px"
-                height="20px"
-                ariaLabel="Loading username"
-              />
-              <eb-skeleton
-                variant="text"
-                width="120px"
-                height="16px"
-                ariaLabel="Loading join date"
-              />
+              <eb-skeleton variant="text" width="100%" height="28px" ariaLabel="Loading name" />
+              <eb-skeleton variant="text" width="80%" height="20px" ariaLabel="Loading username" />
+              <eb-skeleton variant="text" width="60%" height="16px" ariaLabel="Loading join date" />
             </div>
             <div class="stats-card__info-right">
-              <eb-skeleton variant="text" width="120px" height="16px" ariaLabel="Loading company" />
-              <eb-skeleton
-                variant="text"
-                width="100px"
-                height="16px"
-                ariaLabel="Loading location"
-              />
+              <eb-skeleton variant="text" width="100%" height="16px" ariaLabel="Loading company" />
+              <eb-skeleton variant="text" width="80%" height="16px" ariaLabel="Loading location" />
             </div>
           </div>
         </div>
         <div class="stats-card__range">
-          <eb-skeleton variant="text" width="200px" height="14px" ariaLabel="Loading date range" />
+          <eb-skeleton variant="text" width="100%" height="14px" ariaLabel="Loading date range" />
         </div>
         <div class="stats-card__grid">
           @for (_ of [1, 2, 3, 4, 5]; track $index) {
             <div class="stats-card__stat">
               <eb-skeleton
                 variant="text"
-                width="50px"
+                width="100%"
                 height="28px"
                 ariaLabel="Loading stat value"
               />
               <eb-skeleton
                 variant="text"
-                width="70px"
+                width="100%"
                 height="14px"
                 ariaLabel="Loading stat label"
               />

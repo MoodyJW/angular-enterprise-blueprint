@@ -339,9 +339,10 @@ _Goal: Refactor existing components for consistency, then add new capabilities a
   - [x] Create UserMenuComponent with account header and logout option.
   - [x] Modify HeaderComponent to replace text/button with icon.
   - [x] Ensure keyboard accessibility and mobile responsiveness.
-- [ ] **8.8 Profile Page Resume Button Layout**: Reposition buttons below profile card.
-  - [ ] Move buttons outside profile card to separate section.
-  - [ ] Add section heading and improve spacing.
+- [ ] **8.8 Profile Page Resume Button Layout**: Reposition buttons and fix bugs.
+  - [ ] Move buttons outside profile card to below stats card (no separate card needed).
+  - [ ] Fix "View Resume" button not working (PDF viewer issue).
+  - [ ] Fix skeleton loading overflow on mobile (dynamic width).
   - [ ] Ensure mobile responsiveness.
 - [ ] **8.9 Home Page Portfolio Branding**: Add hero section with personal branding.
   - [ ] Add name, title, and tagline to home page.
