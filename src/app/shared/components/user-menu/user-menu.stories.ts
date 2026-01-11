@@ -6,7 +6,7 @@ import { User } from '@core/auth';
 import { UserMenuComponent } from './user-menu.component';
 
 const meta: Meta<UserMenuComponent> = {
-  title: 'Core/Layout/UserMenu',
+  title: 'Shared/UserMenu',
   component: UserMenuComponent,
   tags: ['autodocs'],
   decorators: [

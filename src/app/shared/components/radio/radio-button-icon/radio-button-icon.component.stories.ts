@@ -7,7 +7,7 @@ import { ICON_NAMES } from '@shared/constants';
 import { RadioButtonIconComponent } from './radio-button-icon.component';
 
 const meta: Meta<RadioButtonIconComponent> = {
-  title: 'Shared/Components/Radio/RadioButtonIcon',
+  title: 'Shared/Radio/RadioButtonIcon',
   component: RadioButtonIconComponent,
   tags: ['autodocs'],
   decorators: [
