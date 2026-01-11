@@ -26,6 +26,7 @@ export const ICON_NAMES = {
   MENU: 'heroBars3',
   CLOSE: 'heroXMark',
   CHECK: 'heroCheck',
+  LOGOUT: 'heroArrowRightOnRectangle',
   CHEVRON_DOWN: 'heroChevronDown',
   CHEVRON_LEFT: 'heroChevronLeft',
   CHEVRON_RIGHT: 'heroChevronRight',

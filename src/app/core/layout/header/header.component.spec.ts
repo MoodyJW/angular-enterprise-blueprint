@@ -5,11 +5,12 @@ import { provideRouter } from '@angular/router';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 import { afterEach, beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
 
-import { AuthStore } from '@core/auth';
+import { AuthStore, User } from '@core/auth';
+import { UserMenuComponent } from '@shared/components/user-menu/user-menu.component';
 import { HeaderComponent } from './header.component';
 
 interface MockAuthStore {
-  user: WritableSignal<null>;
+  user: WritableSignal<User | null>;
   isAuthenticated: WritableSignal<boolean>;
   isLoading: WritableSignal<boolean>;
   displayName: WritableSignal<string>;
@@ -49,6 +50,7 @@ describe('HeaderComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         HeaderComponent,
+        UserMenuComponent, // Add UserMenuComponent
         TranslocoTestingModule.forRoot({
           langs: {
             en: {
@@ -183,28 +185,31 @@ describe('HeaderComponent', () => {
       expect(toggleButton).toBeTruthy();
     });
 
-    it('should show user name when authenticated', () => {
+    it('should show user menu when authenticated', () => {
+      const mockUser: User = {
+        id: '1',
+        username: 'john',
+        email: 'john@example.com',
+        roles: ['user'],
+      };
       mockAuthStore.isAuthenticated.set(true);
-      mockAuthStore.displayName.set('John Doe');
+      mockAuthStore.user.set(mockUser);
       fixture.detectChanges();
 
       const compiled = fixture.nativeElement as HTMLElement;
-      const userName = compiled.querySelector('.header__user-name');
-      expect(userName).toBeTruthy();
-      expect(userName?.textContent).toContain('John Doe');
-    });
-
-    it('should show logout button when authenticated', () => {
-      mockAuthStore.isAuthenticated.set(true);
-      mockAuthStore.displayName.set('John Doe');
-      fixture.detectChanges();
-
-      const compiled = fixture.nativeElement as HTMLElement;
-      expect(compiled.textContent).toContain('Logout');
+      const userMenu = compiled.querySelector('eb-user-menu');
+      expect(userMenu).toBeTruthy();
     });
 
     it('should not show login button when authenticated', () => {
+      const mockUser: User = {
+        id: '1',
+        username: 'john',
+        email: 'john@example.com',
+        roles: ['user'],
+      };
       mockAuthStore.isAuthenticated.set(true);
+      mockAuthStore.user.set(mockUser);
       fixture.detectChanges();
 
       const compiled = fixture.nativeElement as HTMLElement;
@@ -256,24 +261,23 @@ describe('HeaderComponent', () => {
       expect(emitSpy).toHaveBeenCalled();
     });
 
-    it('should call logout when logout button is clicked', () => {
+    it('should call logout when user menu emits logout', () => {
+      const mockUser: User = {
+        id: '1',
+        username: 'john',
+        email: 'john@example.com',
+        roles: ['user'],
+      };
       mockAuthStore.isAuthenticated.set(true);
+      mockAuthStore.user.set(mockUser);
       fixture.detectChanges();
 
       const logoutSpy = vi.spyOn(component, 'onLogout');
+      const userMenu = fixture.debugElement.query(By.css('eb-user-menu'));
 
-      // Find logout button (it's the second button when authenticated: theme picker, lang switcher, then logout?)
-      // It has aria-label="Logout" from translation or text content
-      // Let's find it by checking text content via DebugElement
-      const buttons = fixture.debugElement.queryAll(By.css('eb-button'));
-      const logoutBtn = buttons.find((btn) =>
-        (btn.nativeElement as HTMLElement).textContent.includes('Logout'),
-      );
+      expect(userMenu).toBeTruthy();
 
-      expect(logoutBtn).toBeTruthy();
-
-      // Trigger the standard 'click' event (Header uses (click) binding for logout)
-      logoutBtn?.triggerEventHandler('click', { PreventDefault: () => {} });
+      userMenu.triggerEventHandler('logout', null);
 
       expect(logoutSpy).toHaveBeenCalled();
       expect(mockAuthStore.logout).toHaveBeenCalled();
