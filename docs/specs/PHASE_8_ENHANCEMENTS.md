@@ -667,10 +667,10 @@ NOTE: made a similar change to the language switcher component
 ### Acceptance Criteria
 
 - [x] Buttons positioned below stats card
-- [ ] "View Resume" button opens PDF correctly
+- [x] "View Resume" button opens PDF correctly
 - [x] Skeleton loading does not overflow on mobile
 - [x] Mobile responsive (buttons stack or go full-width)
-- [ ] ARIA labels on all buttons
+- [x] ARIA labels on all buttons
 - [x] Proper focus management
 - [x] Consistent with design system spacing
 

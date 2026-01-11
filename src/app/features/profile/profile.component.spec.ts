@@ -400,13 +400,13 @@ describe('ProfileComponent', () => {
       expect((modalHeader.nativeElement as HTMLElement).textContent.trim()).toBe('Resume Preview');
     });
 
-    it('should render PDF embed object when modal is open', () => {
+    it('should render PDF iframe when modal is open', () => {
       component.openResumeModal();
       fixture.detectChanges();
 
-      const pdfObject = fixture.debugElement.query(By.css('.profile__resume-embed'));
-      expect(pdfObject).toBeTruthy();
-      expect((pdfObject.nativeElement as HTMLObjectElement).type).toBe('application/pdf');
+      const pdfIframe = fixture.debugElement.query(By.css('iframe.profile__resume-embed'));
+      expect(pdfIframe).toBeTruthy();
+      expect(pdfIframe.nativeElement instanceof HTMLIFrameElement).toBe(true);
     });
 
     it('should have fallback download link in modal', () => {

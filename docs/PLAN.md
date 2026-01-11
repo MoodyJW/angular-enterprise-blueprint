@@ -341,7 +341,7 @@ _Goal: Refactor existing components for consistency, then add new capabilities a
   - [x] Ensure keyboard accessibility and mobile responsiveness.
 - [x] **8.8 Profile Page Resume Button Layout**: Reposition buttons and fix bugs.
   - [x] Move buttons outside profile card to below stats card (no separate card needed).
-  - [ ] Fix "View Resume" button not working (PDF viewer issue).
+  - [x] Fix "View Resume" button not working (PDF viewer issue).
   - [x] Fix skeleton loading overflow on mobile (dynamic width).
   - [x] Ensure mobile responsiveness.
 - [ ] **8.9 Home Page Portfolio Branding**: Add hero section with personal branding.

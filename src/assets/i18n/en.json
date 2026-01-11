@@ -361,6 +361,7 @@
       "pullRequests": "Pull Requests",
       "linesAdded": "Lines Added",
       "linesRemoved": "Lines Removed",
+      "location": "Location",
       "loading": "Loading GitHub stats...",
       "error": "Failed to load stats",
       "retry": "Retry",
@@ -378,6 +379,8 @@
       "view": "View Resume",
       "viewShort": "View",
       "modalTitle": "Resume Preview",
+      "previewAria": "Resume PDF preview",
+      "previewError": "Your browser does not support PDF preview.",
       "downloadHint": "Download PDF resume",
       "close": "Close preview"
     },
