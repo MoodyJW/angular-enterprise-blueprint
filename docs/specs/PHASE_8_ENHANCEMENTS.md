@@ -643,12 +643,12 @@ NOTE: made a similar change to the language switcher component
 
 ### Acceptance Criteria
 
-- [ ] Icon displays when authenticated
-- [ ] Menu opens/closes on click, Escape, outside-click
-- [ ] Keyboard accessible (Tab, Enter, Arrow keys)
-- [ ] Mobile responsive
-- [ ] ARIA attributes for accessibility
-- [ ] Smooth animations (respects `prefers-reduced-motion`)
+- [x] Icon displays when authenticated
+- [x] Menu opens/closes on click, Escape, outside-click
+- [x] Keyboard accessible (Tab, Enter, Arrow keys)
+- [x] Mobile responsive
+- [x] ARIA attributes for accessibility
+- [x] Smooth animations (respects `prefers-reduced-motion`)
 
 ---
 
