@@ -69,4 +69,50 @@ describe('UserMenuComponent', () => {
 
     expect(component.isOpen()).toBe(false);
   });
+
+  describe('toggleMenu', () => {
+    it('should open menu when trigger button is clicked', () => {
+      expect(component.isOpen()).toBe(false);
+
+      component.toggleMenu();
+      fixture.detectChanges();
+
+      expect(component.isOpen()).toBe(true);
+    });
+
+    it('should close menu when trigger button is clicked again (toggle)', () => {
+      component.toggleMenu();
+      expect(component.isOpen()).toBe(true);
+
+      component.toggleMenu();
+
+      expect(component.isOpen()).toBe(false);
+    });
+  });
+
+  describe('backdrop click', () => {
+    it('should close menu when backdrop is clicked', () => {
+      component.toggleMenu();
+      fixture.detectChanges();
+      expect(component.isOpen()).toBe(true);
+
+      // Find and click the backdrop
+      const backdrop = document.querySelector('.cdk-overlay-backdrop') as HTMLElement;
+      backdrop.click();
+      fixture.detectChanges();
+
+      expect(component.isOpen()).toBe(false);
+    });
+  });
+
+  describe('closeMenu', () => {
+    it('should set isOpen to false', () => {
+      component.toggleMenu();
+      expect(component.isOpen()).toBe(true);
+
+      component.closeMenu();
+
+      expect(component.isOpen()).toBe(false);
+    });
+  });
 });
