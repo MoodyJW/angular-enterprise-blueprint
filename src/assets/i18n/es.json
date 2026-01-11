@@ -365,6 +365,9 @@
       "repos": "Repositorios",
       "commits": "Commits",
       "pullRequests": "Pull Requests",
+      "linesAdded": "Líneas Agregadas",
+      "linesRemoved": "Líneas Eliminadas",
+      "location": "Ubicación",
       "loading": "Cargando estadísticas de GitHub...",
       "error": "Error al cargar estadísticas",
       "retry": "Reintentar",
@@ -376,11 +379,20 @@
       "secondary": "También Experimentado Con"
     },
     "resume": {
+      "title": "Currículum",
       "download": "Descargar Currículum",
+      "downloadShort": "Descargar",
       "view": "Ver Currículum",
+      "viewShort": "Ver",
       "modalTitle": "Vista Previa del Currículum",
+      "previewAria": "Vista previa del PDF del currículum",
+      "previewError": "Tu navegador no soporta la vista previa de PDF.",
       "downloadHint": "Descargar currículum en PDF",
       "close": "Cerrar vista previa"
+    },
+    "contact": {
+      "title": "Contacto",
+      "button": "Contáctame"
     }
   },
   "pageNotFound": {

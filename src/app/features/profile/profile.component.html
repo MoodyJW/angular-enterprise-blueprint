@@ -25,18 +25,26 @@
                 <h2 class="profile__actions-title">{{ t('profile.resume.title') }}</h2>
                 <div class="profile__actions-buttons">
                   <a [href]="resumePath()" download="resume.pdf" class="profile__download-link">
-                    <eb-button variant="primary" size="md" ariaLabel="Download resume as PDF">
-                      <eb-icon name="heroArrowDownTray" size="sm" ariaLabel="" />
+                    <eb-button
+                      variant="primary"
+                      size="md"
+                      [ariaLabel]="t('profile.resume.download')"
+                    >
+                      <eb-icon
+                        name="heroArrowDownTray"
+                        size="sm"
+                        [ariaLabel]="t('profile.resume.download')"
+                      />
                       {{ t('profile.resume.downloadShort') }}
                     </eb-button>
                   </a>
                   <eb-button
                     variant="secondary"
                     size="md"
-                    ariaLabel="Open resume preview"
+                    [ariaLabel]="t('profile.resume.view')"
                     (clicked)="openResumeModal()"
                   >
-                    <eb-icon name="heroDocument" size="sm" ariaLabel="" />
+                    <eb-icon name="heroDocument" size="sm" [ariaLabel]="t('profile.resume.view')" />
                     {{ t('profile.resume.viewShort') }}
                   </eb-button>
                 </div>
@@ -49,10 +57,14 @@
                   <eb-button
                     variant="tertiary"
                     size="md"
-                    ariaLabel="Contact me"
+                    [ariaLabel]="t('profile.contact.button')"
                     routerLink="/contact"
                   >
-                    <eb-icon name="heroEnvelope" size="sm" ariaLabel="" />
+                    <eb-icon
+                      name="heroEnvelope"
+                      size="sm"
+                      [ariaLabel]="t('profile.contact.button')"
+                    />
                     {{ t('profile.contact.button') }}
                   </eb-button>
                 </div>
@@ -124,17 +136,19 @@
       <h2>{{ t('profile.resume.modalTitle') }}</h2>
     </div>
     <div modal-body class="profile__resume-modal-body">
-      <object
-        [data]="safeResumeUrl()"
-        type="application/pdf"
+      <iframe
+        [src]="safeResumeUrl()"
         class="profile__resume-embed"
-        aria-label="Resume PDF preview"
+        [title]="t('profile.resume.previewAria')"
       >
+      </iframe>
+      <div class="profile__resume-fallback">
         <p>
-          Your browser does not support PDF preview.
-          <a [href]="resumePath()" download="resume.pdf">Download the resume</a> instead.
+          <a [href]="resumePath()" download="resume.pdf">
+            {{ t('profile.resume.downloadHint') }}
+          </a>
         </p>
-      </object>
+      </div>
     </div>
   </eb-modal>
 </ng-container>
