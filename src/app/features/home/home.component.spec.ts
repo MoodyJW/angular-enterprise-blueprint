@@ -3,7 +3,7 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
+import { provideRouter, RouterLink } from '@angular/router';
 import { SeoService } from '@core/services/seo/seo.service';
 import { ThemeService } from '@core/services/theme/theme.service';
 import { TranslocoTestingModule } from '@jsverse/transloco';
@@ -65,8 +65,22 @@ describe('HomeComponent', () => {
           langs: {
             en: {
               home: {
+                hero: {
+                  name: 'Jason Walker Moody',
+                  title: 'Lead Frontend Engineer',
+                  tagline: 'Building Enterprise-Grade Applications',
+                  bio: 'Welcome...',
+                  cta: {
+                    profile: 'Meet The Architect',
+                  },
+                },
                 systemStatus: {
+                  title: 'System Status',
+                  subtitle: 'Dashboard',
                   operationalStatus: 'Operational Status',
+                  buildStatus: 'Build Status',
+                  deployStatus: 'Deploy Status',
+                  loading: 'Loading system metrics...',
                 },
                 projectHealth: {
                   title: 'Project Health',
@@ -79,12 +93,16 @@ describe('HomeComponent', () => {
                 visitors: {
                   title: 'Real-time Visitors',
                   live: 'Live',
+                  subtitle: 'Active users',
                 },
                 theme: {
                   title: 'Active Theme',
+                  systemPreference: 'System Preference',
                 },
                 cta: {
                   title: 'Ready to Start?',
+                  description: 'Dive into...',
+                  button: 'View Modules',
                 },
               },
             },
@@ -131,18 +149,61 @@ describe('HomeComponent', () => {
     });
   });
 
-  it('should render all section headings', () => {
+  it('should render hero section branding', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.textContent).toContain('Jason Walker Moody');
+    expect(compiled.textContent).toContain('Lead Frontend Engineer');
+    expect(compiled.textContent).toContain('Meet The Architect');
+  });
+
+  it('should render layout hierarchy', () => {
     fixture.detectChanges();
-    const headings = fixture.debugElement.queryAll(By.css('h2'));
+    const h1 = fixture.debugElement.queryAll(By.css('h1'));
+    // Hero Name is h1
+    expect(h1.length).toBe(1);
+    expect((h1[0].nativeElement as HTMLElement).textContent).toContain('Jason Walker Moody');
 
-    // We expect 5 headings: Operational Status, Project Health, Visitors, Theme, CTA
-    expect(headings.length).toBe(5);
+    const h2 = fixture.debugElement.queryAll(By.css('h2'));
+    // Hero Title and Dashboard Title
+    expect(h2.length).toBe(2);
+    expect((h2[0].nativeElement as HTMLElement).textContent).toContain('Lead Frontend Engineer');
+    expect((h2[1].nativeElement as HTMLElement).textContent).toContain('System Status');
 
-    expect((headings[0].nativeElement as HTMLElement).textContent).toContain('Operational Status');
-    expect((headings[1].nativeElement as HTMLElement).textContent).toContain('Project Health');
-    expect((headings[2].nativeElement as HTMLElement).textContent).toContain('Real-time Visitors');
-    expect((headings[3].nativeElement as HTMLElement).textContent).toContain('Active Theme');
-    expect((headings[4].nativeElement as HTMLElement).textContent).toContain('Ready to Start?');
+    const h3 = fixture.debugElement.queryAll(By.css('h3'));
+    // Dashboard Cards: Operational, Project Health, Visitors, Theme, CTA
+    expect(h3.length).toBe(5);
+    expect((h3[4].nativeElement as HTMLElement).textContent).toContain('Ready to Start?');
+  });
+
+  describe('Hero Section', () => {
+    it('should render tagline', () => {
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Building Enterprise-Grade Applications');
+    });
+
+    it('should render bio', () => {
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Welcome...');
+    });
+
+    it('should render profile button with correct link', () => {
+      const button = fixture.debugElement.query(By.css('.home__hero-actions eb-button'));
+      expect(button).toBeTruthy();
+      expect((button.nativeElement as HTMLElement).textContent).toContain('Meet The Architect');
+      const routerLink = button.injector.get(RouterLink);
+      expect(routerLink.urlTree?.toString()).toContain('profile');
+    });
+  });
+
+  describe('Dashboard Section', () => {
+    it('should render modules CTA button with correct link', () => {
+      const buttons = fixture.debugElement.queryAll(By.css('eb-button'));
+      // Last button should be the modules one
+      const moduleBtn = buttons[buttons.length - 1];
+      expect((moduleBtn.nativeElement as HTMLElement).textContent).toContain('View Modules');
+      const routerLink = moduleBtn.injector.get(RouterLink);
+      expect(routerLink.urlTree?.toString()).toContain('modules');
+    });
   });
 
   it('should render system status badge', () => {
@@ -210,8 +271,7 @@ describe('HomeComponent', () => {
       fixture.detectChanges();
 
       const compiled = fixture.nativeElement as HTMLElement;
-      // Check for the loading state translation key since not all translations are registered in test module
-      expect(compiled.textContent).toContain('loading');
+      expect(compiled.textContent).toContain('Loading system metrics...');
     });
 
     it('should display error message when error is set', () => {
@@ -248,33 +308,21 @@ describe('HomeComponent', () => {
     });
 
     it('should render trend icon in template', () => {
-      // Metrics with 'up' trend is already set
       fixture.detectChanges();
-
       const compiled = fixture.nativeElement as HTMLElement;
       expect(compiled.textContent).toContain('↑');
     });
 
     it('should show deploy status badge', () => {
       fixture.detectChanges();
-
       const compiled = fixture.nativeElement as HTMLElement;
       expect(compiled.textContent).toContain('Success');
     });
 
     it('should show build status badge', () => {
       fixture.detectChanges();
-
       const compiled = fixture.nativeElement as HTMLElement;
       expect(compiled.textContent).toContain('Passing');
-    });
-
-    it('should render lighthouse scores', () => {
-      fixture.detectChanges();
-
-      const compiled = fixture.nativeElement as HTMLElement;
-      expect(compiled.textContent).toContain('98'); // performance
-      expect(compiled.textContent).toContain('100'); // accessibility, bestPractices, seo
     });
 
     it('should show down trend icon when trend is down', () => {

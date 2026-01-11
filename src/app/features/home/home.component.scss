@@ -1,26 +1,88 @@
 @use '../../shared/styles/feature-page' as page;
 
 .home {
-  &__header {
-    @include page.feature-header;
+  // Main layout wrapper
+  &__layout {
+    align-items: center; // Vertically center content on desktop
+    min-height: calc(100vh - 200px); // Approximate min-height for centered feel
   }
 
-  &__title {
-    @include page.feature-title;
+  // Left Column: Hero
+  &__hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-4) 0;
+
+    @media (min-width: 1024px) {
+      padding-right: var(--space-8);
+    }
   }
 
-  &__subtitle {
-    @include page.feature-subtitle;
+  &__hero-name {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin: 0 0 var(--space-2);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+
+    @media (min-width: 768px) {
+      font-size: var(--font-size-5xl);
+    }
+  }
+
+  &__hero-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--space-6);
+  }
+
+  &__hero-tagline {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+    line-height: 1.3;
+  }
+
+  &__hero-bio {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+    max-width: 60ch; // Optimal reading measure
+    line-height: 1.6;
+  }
+
+  &__hero-actions {
+    display: flex;
+    gap: var(--space-4);
   }
 }
 
 .dashboard {
-  &__grid {
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr !important;
-    }
+  &__header {
+    margin-bottom: var(--space-2);
+    text-align: left;
+  }
+
+  &__title {
+    // Reusing mixin but overriding size for sidebar context
+    @include page.feature-title;
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-2);
+  }
+
+  &__subtitle {
+    @include page.feature-subtitle;
+    font-size: var(--font-size-md);
+    margin: 0;
+    max-width: 100%;
   }
 }
+
+// Widget Styles (Preserved)
 
 .card-header {
   &--flex {

@@ -52,6 +52,15 @@
   "home": {
     "welcome": "Welcome to Angular Enterprise Blueprint",
     "description": "A production-grade Angular reference architecture",
+    "hero": {
+      "name": "Jason Walker Moody",
+      "title": "Lead Frontend Engineer",
+      "tagline": "Building Enterprise-Grade Applications with Modern Angular",
+      "bio": "Welcome to my Angular Enterprise Blueprint - a production-ready reference architecture demonstrating modern Angular best practices, enterprise patterns, and scalable design.",
+      "cta": {
+        "profile": "Meet The Architect"
+      }
+    },
     "systemStatus": {
       "title": "System Status",
       "subtitle": "Enterprise Dashboard & Application Health",

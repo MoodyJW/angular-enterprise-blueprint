@@ -58,6 +58,15 @@
   "home": {
     "welcome": "Bienvenido a Angular Enterprise Blueprint",
     "description": "Una arquitectura de referencia Angular de nivel empresarial",
+    "hero": {
+      "name": "Jason Walker Moody",
+      "title": "Ingeniero Frontend Principal",
+      "tagline": "Construyendo Aplicaciones Empresariales con Angular Moderno",
+      "bio": "Bienvenido a mi Arquitectura de Referencia Enterprise en Angular - demostrando las mejores prácticas, patrones empresariales y diseño escalable.",
+      "cta": {
+        "profile": "Conoce al Arquitecto"
+      }
+    },
     "systemStatus": {
       "title": "Estado del Sistema",
       "subtitle": "Panel Empresarial y Estado de la Aplicación",
