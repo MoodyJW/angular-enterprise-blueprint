@@ -1,6 +1,11 @@
 // Skeleton component styles using BEM methodology
 // Uses theme CSS variables for proper theming support
 
+:host {
+  display: block;
+  width: 100%;
+}
+
 .skeleton-container {
   // Base container styles
   display: block;
