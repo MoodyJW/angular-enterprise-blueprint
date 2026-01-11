@@ -35,18 +35,9 @@
 
         <!-- Auth Actions -->
         @if (isAuthenticated()) {
-          <div class="header__user">
-            <span class="header__user-name">{{ displayName() }}</span>
-            <eb-button
-              variant="ghost"
-              size="sm"
-              [ariaLabel]="t('header.ariaLabels.logout')"
-              (click)="onLogout()"
-              [disabled]="isLoading()"
-            >
-              {{ t('header.logout') }}
-            </eb-button>
-          </div>
+          @if (user(); as currentUser) {
+            <eb-user-menu [user]="currentUser" (logout)="onLogout()" />
+          }
         } @else {
           <eb-button
             variant="primary"

@@ -1,0 +1,58 @@
+:host {
+  display: inline-block;
+}
+
+.user-menu {
+  &__dropdown {
+    min-width: 200px;
+    padding: var(--space-2) 0;
+    margin-top: var(--space-2);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+    z-index: var(--z-dropdown, 10);
+  }
+
+  &__header {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  &__name {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-sm);
+  }
+
+  &__email {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+    margin-top: var(--space-1);
+
+    // Truncate email if too long
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: var(--color-border);
+    margin: var(--space-2) 0;
+  }
+
+  &__actions {
+    padding: 0 var(--space-2);
+  }
+
+  &__logout {
+    justify-content: flex-start;
+
+    &-content {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      width: 100%;
+    }
+  }
+}

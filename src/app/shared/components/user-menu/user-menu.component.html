@@ -1,0 +1,49 @@
+<eb-button
+  variant="tertiary"
+  size="md"
+  [iconOnly]="true"
+  [ariaLabel]="'User menu'"
+  [ariaExpanded]="isOpen()"
+  ariaHasPopup="menu"
+  (clicked)="toggleMenu()"
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+  class="user-menu__trigger"
+>
+  <eb-icon [name]="icons.USER_CIRCLE" size="lg" aria-hidden="true" />
+</eb-button>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen()"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
+  (backdropClick)="closeMenu()"
+  (detach)="closeMenu()"
+>
+  <div class="user-menu__dropdown" role="menu" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+    <div class="user-menu__header">
+      <div class="user-menu__name">{{ user().username }}</div>
+      <div class="user-menu__email">{{ user().email }}</div>
+    </div>
+
+    <div class="user-menu__divider"></div>
+
+    <div class="user-menu__actions">
+      <eb-button
+        variant="ghost"
+        size="sm"
+        [fullWidth]="true"
+        (clicked)="onLogout()"
+        class="user-menu__logout"
+        ariaLabel="Log out"
+      >
+        <span class="user-menu__logout-content">
+          <eb-icon [name]="icons.LOGOUT" size="sm" aria-hidden="true" />
+          Log out
+        </span>
+      </eb-button>
+    </div>
+  </div>
+</ng-template>

@@ -9,6 +9,7 @@ import { ButtonComponent } from '@shared/components/button';
 import { IconComponent } from '@shared/components/icon';
 import { LanguageSwitcherComponent } from '@shared/components/language-switcher';
 import { ThemePickerComponent } from '@shared/components/theme-picker';
+import { UserMenuComponent } from '@shared/components/user-menu/user-menu.component';
 import { ICON_NAMES } from '@shared/constants/icon-names.constants';
 import { NAV_ITEMS } from '../navigation.data';
 
@@ -36,6 +37,7 @@ import { NAV_ITEMS } from '../navigation.data';
     TranslocoModule,
     LanguageSwitcherComponent,
     ThemePickerComponent,
+    UserMenuComponent,
     ButtonComponent,
     IconComponent,
   ],
