@@ -13,24 +13,25 @@
     <ng-content select="[card-header]" />
   </div>
 
-  <!-- Media Slot -->
-  <div class="card__media">
-    <ng-content select="[card-media]" />
-  </div>
+  <!-- Content (Visible when not disabled) -->
+  @if (!disabled()) {
+    <!-- Media Slot -->
+    <div class="card__media">
+      <ng-content select="[card-media]" />
+    </div>
 
-  <!-- Body Slot -->
-  <div class="card__body">
-    <ng-content select="[card-body]" />
-  </div>
+    <!-- Body Slot -->
+    <div class="card__body">
+      <ng-content select="[card-body]" />
+    </div>
 
-  <!-- Footer Slot -->
-  <div class="card__footer">
-    <ng-content select="[card-footer]" />
-  </div>
-
-  <!-- Disabled Overlay -->
-  @if (disabled()) {
-    <div class="card__disabled-overlay" [attr.aria-hidden]="true">
+    <!-- Footer Slot -->
+    <div class="card__footer">
+      <ng-content select="[card-footer]" />
+    </div>
+  } @else {
+    <!-- Disabled State (Replaces body content) -->
+    <div class="card__body card__body--disabled">
       @if (disabledLabel() !== '') {
         <span class="card__disabled-label">{{ disabledLabel() }}</span>
       }

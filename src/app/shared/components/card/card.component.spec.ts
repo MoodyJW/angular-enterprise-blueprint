@@ -374,20 +374,20 @@ describe('CardComponent', () => {
       expect(cardElement?.classList.contains('card--disabled')).toBe(true);
     });
 
-    it('should show disabled overlay when disabled', () => {
+    it('should show disabled state body when disabled', () => {
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();
 
-      const overlay = nativeElement.querySelector('.card__disabled-overlay');
-      expect(overlay).toBeTruthy();
+      const disabledBody = nativeElement.querySelector('.card__body--disabled');
+      expect(disabledBody).toBeTruthy();
     });
 
-    it('should NOT show disabled overlay when not disabled', () => {
+    it('should NOT show disabled state body when not disabled', () => {
       fixture.componentRef.setInput('disabled', false);
       fixture.detectChanges();
 
-      const overlay = nativeElement.querySelector('.card__disabled-overlay');
-      expect(overlay).toBeNull();
+      const disabledBody = nativeElement.querySelector('.card__body--disabled');
+      expect(disabledBody).toBeNull();
     });
 
     it('should show disabled label when disabled with label', () => {
@@ -411,28 +411,31 @@ describe('CardComponent', () => {
   });
 
   describe('Content Projection', () => {
-    it('should render header slot content', () => {
+    it('should render content slots when not disabled', () => {
+      fixture.componentRef.setInput('disabled', false);
+      fixture.detectChanges();
+
       const compiled = fixture.nativeElement as HTMLElement;
-      const headerSlot = compiled.querySelector('.card__header');
-      expect(headerSlot).toBeTruthy();
+      expect(compiled.querySelector('.card__header')).toBeTruthy();
+      expect(compiled.querySelector('.card__media')).toBeTruthy();
+      expect(compiled.querySelector('.card__body')).toBeTruthy();
+      expect(compiled.querySelector('.card__footer')).toBeTruthy();
     });
 
-    it('should render media slot content', () => {
-      const compiled = fixture.nativeElement as HTMLElement;
-      const mediaSlot = compiled.querySelector('.card__media');
-      expect(mediaSlot).toBeTruthy();
-    });
+    it('should NOT render content slots when disabled (except header)', () => {
+      fixture.componentRef.setInput('disabled', true);
+      fixture.detectChanges();
 
-    it('should render body slot content', () => {
       const compiled = fixture.nativeElement as HTMLElement;
-      const bodySlot = compiled.querySelector('.card__body');
-      expect(bodySlot).toBeTruthy();
-    });
+      // Header should still be present
+      expect(compiled.querySelector('.card__header')).toBeTruthy();
 
-    it('should render footer slot content', () => {
-      const compiled = fixture.nativeElement as HTMLElement;
-      const footerSlot = compiled.querySelector('.card__footer');
-      expect(footerSlot).toBeTruthy();
+      // Others should be absent
+      expect(compiled.querySelector('.card__media')).toBeNull();
+      // Regular body should be replaced by disabled body, checking for class difference
+      const body = compiled.querySelector('.card__body');
+      expect(body?.classList.contains('card__body--disabled')).toBe(true);
+      expect(compiled.querySelector('.card__footer')).toBeNull();
     });
   });
 

@@ -169,36 +169,33 @@
   &--disabled {
     pointer-events: none;
 
-    .card__header,
-    .card__media,
-    .card__body,
-    .card__footer {
-      opacity: 0.5;
-      filter: grayscale(30%);
+    .card__header {
+      filter: grayscale(100%);
+      opacity: 0.8; // Slight dim for header
     }
   }
 
-  // Disabled overlay
-  &__disabled-overlay {
-    position: absolute;
-    inset: 0;
+  // Disabled body placeholder
+  &__body--disabled {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(var(--color-primary-rgb), 0.08);
-    border-radius: inherit;
-    z-index: var(--z-above);
+    background-color: var(--color-surface-hover); // Visually distinct background
+    color: var(--color-text-secondary);
+    min-height: 120px; // Ensure some height
+    border-top: var(--border-width-thin) solid var(--color-border); // Always border from header
   }
 
   &__disabled-label {
     padding: var(--space-2) var(--space-4);
-    background-color: var(--color-primary);
-    color: var(--color-on-primary);
+    background-color: var(--color-surface-active); // Neutral background
+    color: var(--color-text);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
     border-radius: var(--border-radius-full);
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-wide);
+    border: 1px solid var(--color-border);
   }
 
   &__body:not(:empty) + .card__footer {
