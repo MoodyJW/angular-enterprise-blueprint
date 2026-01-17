@@ -115,6 +115,18 @@ describe('BlogStore', () => {
       expect(store.filter()).toEqual({ query: '', category: null, tag: null });
       expect(store.filteredArticles()).toHaveLength(2);
     });
+
+    it('should combine filters (Query + Tag)', () => {
+      // "Article 1" has "tag1", "Article 2" does not.
+      store.setFilter({ query: 'Article', tag: 'tag1' });
+      expect(store.filteredArticles()).toHaveLength(1);
+      expect(store.filteredArticles()[0].id).toBe('1');
+    });
+
+    it('should return empty list when filters match nothing', () => {
+      store.setFilter({ query: 'Article 1', category: 'angular' }); // Article 1 is 'architecture'
+      expect(store.filteredArticles()).toHaveLength(0);
+    });
   });
 
   describe('computed signals', () => {
@@ -129,7 +141,19 @@ describe('BlogStore', () => {
     });
 
     it('should compute allTags', () => {
+      // Tags: ['tag1', 'tag2'] + ['tag2', 'tag3'] -> unique: ['tag1', 'tag2', 'tag3']
       expect(store.allTags()).toEqual(['tag1', 'tag2', 'tag3']);
+    });
+  });
+
+  describe('getArticleContent', () => {
+    it('should fetch content via HTTP', () => {
+      const path = 'assets/blogs/test.md';
+      store.getArticleContent(path).subscribe();
+
+      const req = httpMock.expectOne(path);
+      expect(req.request.method).toBe('GET');
+      req.flush('# Markdown');
     });
   });
 });

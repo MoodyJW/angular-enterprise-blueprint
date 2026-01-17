@@ -1,9 +1,12 @@
 import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 import { provideIcons } from '@ng-icons/core';
 import { heroArrowPath } from '@ng-icons/heroicons/outline';
+import { CardComponent } from '../../../shared/components/card/card.component';
+import { PUBLISHED_SLUGS } from '../blog.constants';
 import { BlogStore } from '../blog.store';
 import { BlogArticle } from '../blog.types';
 import { BlogListComponent } from './blog-list.component';
@@ -122,5 +125,41 @@ describe('BlogListComponent', () => {
     const loadingDiv = nativeEl.querySelector('.blog-list__loading');
     expect(loadingDiv).toBeTruthy();
     expect(loadingDiv?.textContent).toContain('Loading');
+  });
+
+  it('should display empty state when no articles found', () => {
+    mockStore.filteredArticles.set([]);
+    fixture.detectChanges();
+
+    const nativeEl = fixture.nativeElement as HTMLElement;
+    const emptyState = nativeEl.querySelector('.blog-list__empty');
+    expect(emptyState).toBeTruthy();
+    expect(emptyState?.textContent).toContain('No articles found');
+  });
+
+  it('should correctly identify in-progress articles', () => {
+    // Current published slugs are known from constants
+    const publishedSlug = PUBLISHED_SLUGS[0] !== '' ? PUBLISHED_SLUGS[0] : 'part-1-introduction';
+    const draftSlug = 'future-article-slug';
+
+    expect(component.isArticleInProgress(publishedSlug)).toBe(false);
+    expect(component.isArticleInProgress(draftSlug)).toBe(true);
+  });
+
+  it('should bind disabled state to card for in-progress articles', () => {
+    const draftArticle: BlogArticle = {
+      ...mockArticles[0],
+      id: '99',
+      slug: 'future-article',
+      title: 'Future Article',
+    };
+    mockStore.filteredArticles.set([draftArticle]);
+    fixture.detectChanges();
+
+    // Check component instance to verify binding
+    const cardDe = fixture.debugElement.query(By.css('eb-card'));
+    const cardInstance = cardDe.componentInstance as CardComponent;
+
+    expect(cardInstance.disabled()).toBe(true);
   });
 });
