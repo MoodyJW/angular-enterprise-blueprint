@@ -17,6 +17,7 @@ import { Observable } from 'rxjs';
 import { shareReplay, take } from 'rxjs/operators';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 import { CardComponent } from '../../../shared/components/card/card.component';
+import { SkeletonComponent } from '../../../shared/components/skeleton/skeleton.component';
 import { BlogStore } from '../blog.store';
 
 import { provideIcons } from '@ng-icons/core';
@@ -35,6 +36,7 @@ import { PUBLISHED_SLUGS } from '../blog.constants';
     MarkdownModule,
     ButtonComponent,
     CardComponent,
+    SkeletonComponent,
     IconComponent,
   ],
   viewProviders: [provideIcons({ heroArrowLeft, heroArrowRight })],

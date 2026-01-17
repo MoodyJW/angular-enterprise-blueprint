@@ -102,8 +102,55 @@
   }
 
   @if (store.loading()) {
-    <div class="blog-detail__loading">
-      {{ t('blog.detail.loading') }}
-    </div>
+    <article class="blog-detail__loading-skeleton">
+      <eb-card [hoverable]="false">
+        <header card-header>
+          <div class="blog-detail__header-actions">
+            <!-- Nav placeholder -->
+            <eb-skeleton
+              variant="rectangular"
+              width="100px"
+              height="32px"
+              [rounded]="true"
+              ariaLabel="Loading navigation"
+            ></eb-skeleton>
+          </div>
+          <!-- Title placeholder -->
+          <div style="display: flex; justify-content: center; margin-bottom: var(--space-6)">
+            <eb-skeleton
+              variant="text"
+              width="70%"
+              height="48px"
+              ariaLabel="Loading title"
+            ></eb-skeleton>
+          </div>
+          <!-- Meta placeholder -->
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              gap: var(--space-4);
+              margin-bottom: var(--space-4);
+            "
+          >
+            <eb-skeleton
+              variant="text"
+              width="200px"
+              height="20px"
+              ariaLabel="Loading metadata"
+            ></eb-skeleton>
+          </div>
+        </header>
+
+        <div card-body>
+          <eb-skeleton
+            variant="text"
+            [count]="4"
+            [spacing]="16"
+            ariaLabel="Loading content"
+          ></eb-skeleton>
+        </div>
+      </eb-card>
+    </article>
   }
 </div>

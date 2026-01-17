@@ -150,7 +150,7 @@ describe('BlogDetailComponent', () => {
     fixture.detectChanges();
 
     const nativeEl = fixture.nativeElement as HTMLElement;
-    const loading = nativeEl.querySelector('.blog-detail__loading');
+    const loading = nativeEl.querySelector('.blog-detail__loading-skeleton');
     expect(loading).toBeTruthy();
   });
 
