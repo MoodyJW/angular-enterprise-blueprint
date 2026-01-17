@@ -32,6 +32,8 @@ const withAnalyticsRouterTrackingFn = withAnalyticsRouterTracking as unknown as 
   | Provider
   | EnvironmentProviders;
 
+import { provideMarkdown } from 'ngx-markdown';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -52,7 +54,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideHttpClient(withInterceptors([csrfInterceptor, httpErrorInterceptor])),
     provideTranslocoConfig(),
-    // Markdown provided in feature routes only
+    provideMarkdown(),
     provideAnalyticsFn(),
     withAnalyticsRouterTrackingFn(),
     provideAuth(),

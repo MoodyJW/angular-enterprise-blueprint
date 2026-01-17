@@ -29,6 +29,11 @@ export const routes: Routes = [
     ],
   },
   {
+    path: 'blog',
+    loadChildren: () => import('./features/blog/blog.routes').then((m) => m.routes),
+    title: 'Engineering Blog | Enterprise Blueprint',
+  },
+  {
     path: 'architecture',
     loadChildren: () =>
       import('./features/architecture/architecture.routes').then((m) => m.ARCHITECTURE_ROUTES),

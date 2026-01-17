@@ -1,0 +1,152 @@
+.blog-detail {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-4);
+
+  &__nav {
+    margin-bottom: var(--space-8);
+  }
+
+  &__header {
+    margin-bottom: var(--space-8);
+    text-align: center;
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  &__category {
+    color: var(--color-primary);
+  }
+
+  &__title {
+    font-size: var(--font-size-4xl);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+
+  &__author-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  &__author-name {
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  &__author-title {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+  }
+
+  &__body {
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+    color: var(--color-text-primary);
+
+    // Markdown styles would normally be global or applied here via ::ng-deep
+    ::ng-deep {
+      h2 {
+        margin-top: 2em;
+        margin-bottom: 0.5em;
+        font-size: var(--font-size-2xl);
+      }
+
+      h3 {
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+        font-size: var(--font-size-xl);
+      }
+
+      p {
+        margin-bottom: 1.5em;
+      }
+
+      ul,
+      ol {
+        margin-bottom: 1.5em;
+        padding-left: 1.5em;
+      }
+
+      li {
+        margin-bottom: 0.5em;
+      }
+
+      pre {
+        background: var(--color-surface-elevated);
+        padding: var(--space-4);
+        border-radius: var(--radius-md);
+        overflow-x: auto;
+        margin-bottom: 1.5em;
+        border: 1px solid var(--color-border);
+      }
+
+      code {
+        font-family: monospace;
+        background: var(--color-surface-elevated);
+        padding: 0.2em 0.4em;
+        border-radius: 4px;
+        font-size: 0.9em;
+      }
+    }
+  }
+
+  &__footer {
+    margin-top: var(--space-12);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--color-border);
+  }
+
+  &__tags {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  &__tag {
+    background-color: var(--color-surface-active);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  &__not-found,
+  &__loading {
+    text-align: center;
+    padding: var(--space-12);
+  }
+}

@@ -118,9 +118,32 @@
   "nav": {
     "home": "Home",
     "modules": "Reference Modules",
+    "blog": "Blog",
     "architecture": "Architecture Decisions",
     "profile": "The Architect",
     "contact": "Hire Me"
+  },
+  "blog": {
+    "title": "Engineering Blog",
+    "subtitle": "Insights into the architecture and development of this blueprint.",
+    "searchPlaceholder": "Search articles...",
+    "searchLabel": "Search blog articles",
+    "loading": "Loading articles...",
+    "noResults": "No articles found matching your criteria.",
+    "clearSearch": "Clear Search",
+    "minRead": "{{ minutes }} min read",
+    "comingSoon": "Coming Soon",
+    "ariaLabels": {
+      "clearSearch": "Clear search"
+    },
+    "detail": {
+      "backToList": "Back to Blog",
+      "backAriaLabel": "Back to all articles",
+      "notFound": "Article not found",
+      "notFoundButton": "Return to Blog",
+      "notFoundAriaLabel": "Return to blog list",
+      "loading": "Loading article..."
+    }
   },
   "modules": {
     "title": "Reference Modules",

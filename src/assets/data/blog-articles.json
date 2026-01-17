@@ -1,0 +1,130 @@
+[
+  {
+    "id": "1",
+    "slug": "part-1-introduction",
+    "title": "Creating an Enterprise Blueprint",
+    "excerpt": "Why I'm building a 'mini enterprise' application as my portfolio to demonstrate production-grade skills, architecture, and best practices.",
+    "contentPath": "assets/blogs/part-1-introduction.md",
+    "author": {
+      "name": "Jason Moody",
+      "title": "Lead Frontend Engineer"
+    },
+    "publishedAt": "2025-12-17T09:00:00Z",
+    "readingTimeMinutes": 10,
+    "tags": ["Angular", "Architecture", "Portfolio"],
+    "category": "architecture",
+    "status": "published"
+  },
+  {
+    "id": "2",
+    "slug": "part-2-phase-1",
+    "title": "Phase 1: Building the Enterprise Rig",
+    "excerpt": "Tooling, governance, and the foundation that makes everything else possible. ESLint, Vitest, Playwright, and CI/CD automation.",
+    "contentPath": "assets/blogs/part-2-phase-1.md",
+    "author": {
+      "name": "Jason Moody",
+      "title": "Lead Frontend Engineer"
+    },
+    "publishedAt": "2025-12-18T10:00:00Z",
+    "readingTimeMinutes": 13,
+    "tags": ["Angular", "ESLint", "Testing", "CI/CD"],
+    "category": "architecture",
+    "status": "published"
+  },
+  {
+    "id": "3",
+    "slug": "part-3-phase-2",
+    "title": "Phase 2: The Invisible Architecture",
+    "excerpt": "Core services, error handling, and authentication that power everything. The Strategy Pattern, SignalStore, and route guards.",
+    "contentPath": "assets/blogs/part-3-phase-2.md",
+    "author": {
+      "name": "Jason Moody",
+      "title": "Lead Frontend Engineer"
+    },
+    "publishedAt": "2025-12-20T14:30:00Z",
+    "readingTimeMinutes": 15,
+    "tags": ["Angular", "Services", "Authentication", "Error Handling"],
+    "category": "architecture",
+    "status": "published"
+  },
+  {
+    "id": "4",
+    "slug": "part-4-phase-3",
+    "title": "Phase 3: The Design System",
+    "excerpt": "Building a comprehensive, accessible, and themeable design system from scratch without third-party UI libraries.",
+    "contentPath": "assets/blogs/part-4-phase-3.md",
+    "author": {
+      "name": "Jason Moody",
+      "title": "Lead Frontend Engineer"
+    },
+    "publishedAt": "2025-12-25T11:00:00Z",
+    "readingTimeMinutes": 12,
+    "tags": ["CSS", "Design System", "Accessibility", "Theming"],
+    "category": "design-system",
+    "status": "published"
+  },
+  {
+    "id": "5",
+    "slug": "part-5-phase-4",
+    "title": "Phase 4: The Application Shell",
+    "excerpt": "Building the frame that holds everything together. Layout components, responsive navigation, and lazy-loaded routing.",
+    "contentPath": "assets/blogs/part-5-phase-4.md",
+    "author": {
+      "name": "Jason Moody",
+      "title": "Lead Frontend Engineer"
+    },
+    "publishedAt": "2025-12-28T09:00:00Z",
+    "readingTimeMinutes": 10,
+    "tags": ["Angular", "Routing", "Layout", "Navigation"],
+    "category": "architecture",
+    "status": "published"
+  },
+  {
+    "id": "6",
+    "slug": "part-6-phase-5",
+    "title": "Phase 5: Feature Implementation",
+    "excerpt": "Creating the actual content pages: dashboard, modules catalog, architecture decisions, profile, and contact form.",
+    "contentPath": "assets/blogs/part-6-phase-5.md",
+    "author": {
+      "name": "Jason Moody",
+      "title": "Lead Frontend Engineer"
+    },
+    "publishedAt": "2025-12-30T10:00:00Z",
+    "readingTimeMinutes": 10,
+    "tags": ["Angular", "Features", "SignalStore"],
+    "category": "architecture",
+    "status": "published"
+  },
+  {
+    "id": "7",
+    "slug": "part-7-phase-6",
+    "title": "Phase 6: DevOps and Deployment",
+    "excerpt": "GitHub Pages deployment, performance tuning, Lighthouse CI, and release management with automated changelogs.",
+    "contentPath": "assets/blogs/part-7-phase-6.md",
+    "author": {
+      "name": "Jason Moody",
+      "title": "Lead Frontend Engineer"
+    },
+    "publishedAt": "2026-01-01T14:00:00Z",
+    "readingTimeMinutes": 10,
+    "tags": ["DevOps", "CI/CD", "Performance", "Deployment"],
+    "category": "deployment",
+    "status": "published"
+  },
+  {
+    "id": "8",
+    "slug": "part-8-phase-7",
+    "title": "Phase 7: Polish and Optimization",
+    "excerpt": "The final phase: fixing edge cases, improving accessibility, optimizing bundles, and preparing for production.",
+    "contentPath": "assets/blogs/part-8-phase-7.md",
+    "author": {
+      "name": "Jason Moody",
+      "title": "Lead Frontend Engineer"
+    },
+    "publishedAt": "2026-01-05T09:00:00Z",
+    "readingTimeMinutes": 8,
+    "tags": ["Angular", "Optimization", "Accessibility", "Polish"],
+    "category": "performance",
+    "status": "published"
+  }
+]

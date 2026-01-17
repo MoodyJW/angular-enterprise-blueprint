@@ -21,6 +21,7 @@ export interface NavItem {
 export const NAV_ITEMS: readonly NavItem[] = [
   { labelKey: 'nav.home', route: '/' },
   { labelKey: 'nav.modules', route: '/modules' },
+  { labelKey: 'nav.blog', route: '/blog' },
   { labelKey: 'nav.architecture', route: '/architecture' },
   { labelKey: 'nav.profile', route: '/profile' },
   { labelKey: 'nav.contact', route: '/contact' },

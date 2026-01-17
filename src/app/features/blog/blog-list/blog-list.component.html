@@ -1,0 +1,85 @@
+<eb-container>
+  <ng-container *transloco="let t">
+    <eb-stack spacing="lg">
+      <header class="blog-list__header">
+        <h1 class="blog-list__title">{{ t('blog.title') }}</h1>
+        <p class="blog-list__subtitle">{{ t('blog.subtitle') }}</p>
+      </header>
+
+      <div class="blog-list__search">
+        <eb-input
+          [placeholder]="t('blog.searchPlaceholder')"
+          [ngModel]="store.filter().query"
+          (ngModelChange)="onSearch($event)"
+          class="blog-list__search-input"
+          [ariaLabel]="t('blog.searchLabel')"
+        >
+        </eb-input>
+      </div>
+
+      @if (store.loading()) {
+        <div class="blog-list__loading">
+          <eb-icon name="heroArrowPath" [spin]="true" size="lg"></eb-icon>
+          <p>{{ t('blog.loading') }}</p>
+        </div>
+      } @else {
+        @if (store.filteredArticles().length > 0) {
+          <eb-grid [cols]="1" [colsMd]="2" [colsLg]="3" gap="lg">
+            @for (article of store.filteredArticles(); track article.id) {
+              <a
+                [routerLink]="isArticleInProgress(article.slug) ? null : ['/blog', article.slug]"
+                class="blog-card-link"
+                [class.blog-card-link--disabled]="isArticleInProgress(article.slug)"
+              >
+                <eb-card
+                  [hoverable]="!isArticleInProgress(article.slug)"
+                  class="blog-card"
+                  [disabled]="isArticleInProgress(article.slug)"
+                  [disabledLabel]="isArticleInProgress(article.slug) ? t('blog.comingSoon') : ''"
+                >
+                  <div class="blog-card__header-content" card-header>
+                    <h2 class="blog-card__title">{{ article.title }}</h2>
+                    <div class="blog-card__meta">
+                      <span>{{ article.publishedAt | date: 'mediumDate' }}</span>
+                      <span class="blog-card__separator">•</span>
+                      <span>{{ t('blog.minRead', { minutes: article.readingTimeMinutes }) }}</span>
+                    </div>
+                  </div>
+
+                  <div card-body>
+                    <p class="blog-card__excerpt">{{ article.excerpt }}</p>
+                  </div>
+
+                  <div class="blog-card__footer-content" card-footer>
+                    <div class="blog-card__tags">
+                      @for (tag of article.tags; track tag) {
+                        <eb-badge
+                          [content]="tag"
+                          size="sm"
+                          variant="secondary"
+                          position="inline"
+                          [ariaLabel]="tag"
+                        ></eb-badge>
+                      }
+                    </div>
+                  </div>
+                </eb-card>
+              </a>
+            }
+          </eb-grid>
+        } @else {
+          <div class="blog-list__empty">
+            <p>{{ t('blog.noResults') }}</p>
+            <eb-button
+              variant="secondary"
+              (click)="clearFilters()"
+              [ariaLabel]="t('blog.ariaLabels.clearSearch')"
+            >
+              {{ t('blog.clearSearch') }}
+            </eb-button>
+          </div>
+        }
+      }
+    </eb-stack>
+  </ng-container>
+</eb-container>

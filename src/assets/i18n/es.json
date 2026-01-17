@@ -124,9 +124,32 @@
   "nav": {
     "home": "Inicio",
     "modules": "Módulos de Referencia",
+    "blog": "Blog",
     "architecture": "Decisiones de Arquitectura",
     "profile": "El Arquitecto",
     "contact": "Contrátame"
+  },
+  "blog": {
+    "title": "Blog de Ingeniería",
+    "subtitle": "Perspectivas sobre la arquitectura y el desarrollo de este blueprint.",
+    "searchPlaceholder": "Buscar artículos...",
+    "searchLabel": "Buscar artículos del blog",
+    "loading": "Cargando artículos...",
+    "noResults": "No se encontraron artículos que coincidan con tus criterios.",
+    "clearSearch": "Limpiar Búsqueda",
+    "minRead": "{{ minutes }} min de lectura",
+    "comingSoon": "Próximamente",
+    "ariaLabels": {
+      "clearSearch": "Limpiar búsqueda"
+    },
+    "detail": {
+      "backToList": "Volver al Blog",
+      "backAriaLabel": "Volver a todos los artículos",
+      "notFound": "Artículo no encontrado",
+      "notFoundButton": "Volver al Blog",
+      "notFoundAriaLabel": "Volver a la lista del blog",
+      "loading": "Cargando artículo..."
+    }
   },
   "modules": {
     "title": "Módulos de Referencia",
