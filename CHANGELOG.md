@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.3.0](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v1.2.0...v1.3.0) (2026-01-17)
+
+
+### Features
+
+* **blog:** add skeleton to blog details ([c237e64](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/c237e645eac10f7cb6d5faa3aa391e9264f04936))
+* **blog:** blog list and details ([15d525d](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/15d525d619cb9ca16a72f244ef7db803cb137d9f))
+* **blog:** next and prev article buttons ([ded2944](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/ded2944e37374c8ab8d9c44f99c9c835d18f7c84))
+* **card:** add disabled state ([f012b54](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/f012b543b6583c86d66f35f23573700b080ca58c))
+* **home:** add personal branding ([2357a84](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/2357a844b5bc6285b8fc8b865b3cb7fcce047f6d))
+* **login:** change logout to user icon with menu ([d13ba79](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/d13ba79f4ef75811c5b63ad94ba0e016b53d5edc))
+* **profile:** move resume btns to card, add contact btn ([75ff953](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/75ff953f16c87a0874659c2a5ebdcad932e7df76))
+
+
+### Bug Fixes
+
+* **card:** accessibility issues ([24fb60c](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/24fb60c67757721eb22adce492ec79d6eadb4264))
+* **profile-stats:** skeleton loading no longer overflows ([dc604aa](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/dc604aa109ae664556433ec6b9d2083e953d6298))
+* **profile:** view resume opens properly ([927f42e](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/927f42e6518808e1e9f7555f4cc94b69107b9626))
+* **user-manu:** storybook display ([c1011cc](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/c1011cc47a932b4cc2a30811626677c1206d5e1e))
+
+
+### Performance Improvements
+
+* **lighthouse:** improve score ([811cdd4](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/811cdd4830871fb3837bf353aa71774274f22f4b))
+
 ## [1.2.0](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v1.1.0...v1.2.0) (2026-01-10)
 
 
