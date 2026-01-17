@@ -27,4 +27,13 @@
   <div class="card__footer">
     <ng-content select="[card-footer]" />
   </div>
+
+  <!-- Disabled Overlay -->
+  @if (disabled()) {
+    <div class="card__disabled-overlay" [attr.aria-hidden]="true">
+      @if (disabledLabel() !== '') {
+        <span class="card__disabled-label">{{ disabledLabel() }}</span>
+      }
+    </div>
+  }
 </div>

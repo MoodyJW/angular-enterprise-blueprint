@@ -164,6 +164,42 @@
     min-height: 0;
   }
 
+  // Disabled state
+  &--disabled {
+    pointer-events: none;
+
+    .card__header,
+    .card__media,
+    .card__body,
+    .card__footer {
+      opacity: 0.5;
+      filter: grayscale(30%);
+    }
+  }
+
+  // Disabled overlay
+  &__disabled-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(var(--color-primary-rgb), 0.08);
+    border-radius: inherit;
+    z-index: var(--z-above);
+  }
+
+  &__disabled-label {
+    padding: var(--space-2) var(--space-4);
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--border-radius-full);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
   &__body:not(:empty) + .card__footer {
     border-top: var(--border-width-thin) solid var(--color-border);
   }

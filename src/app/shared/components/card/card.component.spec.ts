@@ -93,6 +93,28 @@ describe('CardComponent', () => {
       fixture.detectChanges();
       expect(component.fullWidth()).toBe(true);
     });
+
+    it('should handle disabled state', () => {
+      fixture.componentRef.setInput('disabled', true);
+      fixture.detectChanges();
+      expect(component.disabled()).toBe(true);
+    });
+
+    it('should have disabled false by default', () => {
+      fixture.detectChanges();
+      expect(component.disabled()).toBe(false);
+    });
+
+    it('should handle disabledLabel', () => {
+      fixture.componentRef.setInput('disabledLabel', 'Coming Soon');
+      fixture.detectChanges();
+      expect(component.disabledLabel()).toBe('Coming Soon');
+    });
+
+    it('should have empty disabledLabel by default', () => {
+      fixture.detectChanges();
+      expect(component.disabledLabel()).toBe('');
+    });
   });
 
   describe('Click Events', () => {
@@ -342,6 +364,49 @@ describe('CardComponent', () => {
 
       const cardElement = nativeElement.querySelector('.card');
       expect(cardElement?.classList.contains('card--full-width')).toBe(true);
+    });
+
+    it('should apply disabled class when disabled', () => {
+      fixture.componentRef.setInput('disabled', true);
+      fixture.detectChanges();
+
+      const cardElement = nativeElement.querySelector('.card');
+      expect(cardElement?.classList.contains('card--disabled')).toBe(true);
+    });
+
+    it('should show disabled overlay when disabled', () => {
+      fixture.componentRef.setInput('disabled', true);
+      fixture.detectChanges();
+
+      const overlay = nativeElement.querySelector('.card__disabled-overlay');
+      expect(overlay).toBeTruthy();
+    });
+
+    it('should NOT show disabled overlay when not disabled', () => {
+      fixture.componentRef.setInput('disabled', false);
+      fixture.detectChanges();
+
+      const overlay = nativeElement.querySelector('.card__disabled-overlay');
+      expect(overlay).toBeNull();
+    });
+
+    it('should show disabled label when disabled with label', () => {
+      fixture.componentRef.setInput('disabled', true);
+      fixture.componentRef.setInput('disabledLabel', 'Coming Soon');
+      fixture.detectChanges();
+
+      const label = nativeElement.querySelector('.card__disabled-label');
+      expect(label).toBeTruthy();
+      expect(label?.textContent).toContain('Coming Soon');
+    });
+
+    it('should NOT show disabled label when disabled without label', () => {
+      fixture.componentRef.setInput('disabled', true);
+      fixture.componentRef.setInput('disabledLabel', '');
+      fixture.detectChanges();
+
+      const label = nativeElement.querySelector('.card__disabled-label');
+      expect(label).toBeNull();
     });
   });
 

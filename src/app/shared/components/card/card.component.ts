@@ -89,6 +89,18 @@ export class CardComponent {
   readonly role = input<string | undefined>(undefined);
 
   /**
+   * Whether the card is in a disabled state
+   * Applies disabled styling with reduced opacity and an overlay
+   */
+  readonly disabled = input<boolean>(false);
+
+  /**
+   * Label to show on the disabled overlay
+   * Only visible when disabled is true
+   */
+  readonly disabledLabel = input<string>('');
+
+  /**
    * Emitted when a clickable card is clicked
    */
   readonly clicked = output<MouseEvent>();
@@ -155,6 +167,9 @@ export class CardComponent {
     }
     if (this.fullWidth()) {
       classes.push('card--full-width');
+    }
+    if (this.disabled()) {
+      classes.push('card--disabled');
     }
 
     return classes.join(' ');

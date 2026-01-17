@@ -74,6 +74,22 @@ const meta: Meta<CardComponent> = {
       control: 'text',
       description: 'ARIA role override',
     },
+    disabled: {
+      control: 'boolean',
+      description: 'Whether the card is disabled',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    disabledLabel: {
+      control: 'text',
+      description: 'Label text shown on disabled overlay',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: "''" },
+      },
+    },
   },
   parameters: {
     docs: {
@@ -490,6 +506,53 @@ export const StatCardExample: Story = {
     docs: {
       description: {
         story: 'Real-world example: Dashboard stat cards displaying metrics.',
+      },
+    },
+  },
+};
+
+// Disabled Card
+export const DisabledCard: Story = {
+  render: () => ({
+    template: `
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        <eb-card variant="default" [disabled]="true" disabledLabel="Coming Soon">
+          <div card-header>
+            <h4 class="card__header-title">Disabled with Label</h4>
+            <p class="card__header-subtitle">This card shows a label overlay</p>
+          </div>
+          <div card-body>
+            <p>Content is dimmed with a "Coming Soon" pill overlay in the center of the card.</p>
+          </div>
+        </eb-card>
+
+        <eb-card variant="elevated" [disabled]="true">
+          <div card-header>
+            <h4 class="card__header-title">Disabled without Label</h4>
+            <p class="card__header-subtitle">Just dimmed content</p>
+          </div>
+          <div card-body>
+            <p>Content is dimmed but no overlay label is shown. The card is non-interactive.</p>
+          </div>
+        </eb-card>
+
+        <eb-card variant="outlined" [disabled]="true" disabledLabel="In Progress">
+          <div card-header>
+            <h4 class="card__header-title">Custom Label</h4>
+            <p class="card__header-subtitle">With "In Progress" label</p>
+          </div>
+          <div card-body>
+            <p>The label text is customizable via the disabledLabel input.</p>
+          </div>
+        </eb-card>
+      </div>
+    `,
+  }),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Disabled cards with optional overlay label. Used for "coming soon" or "in progress" states.',
       },
     },
   },
