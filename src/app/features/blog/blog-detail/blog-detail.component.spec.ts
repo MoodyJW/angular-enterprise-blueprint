@@ -8,6 +8,7 @@ import { provideIcons } from '@ng-icons/core';
 import { heroArrowLeft } from '@ng-icons/heroicons/outline';
 import { MarkdownModule } from 'ngx-markdown';
 import { of } from 'rxjs';
+import { SeoService } from '../../../core/services/seo/seo.service';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 import { BlogStore } from '../blog.store';
 import { BlogArticle } from '../blog.types';
@@ -63,17 +64,24 @@ describe('BlogDetailComponent', () => {
     loading: signal(false),
     articles: signal([prevArticle, mockArticle, nextArticle]),
     loadArticles: vi.fn(),
-    getArticleContent: vi.fn().mockReturnValue({
-      subscribe: vi.fn((callbacks: { next?: (v: string) => void }) =>
-        callbacks.next?.('# Test Content'),
-      ),
-    }),
+    getArticleContent: vi.fn(),
+  };
+
+  const mockSeoService = {
+    updatePageSeo: vi.fn(),
   };
 
   beforeEach(async () => {
     mockStore.loading.set(false);
     mockStore.articles.set([prevArticle, mockArticle, nextArticle]);
     vi.clearAllMocks();
+
+    // Default success behavior
+    mockStore.getArticleContent.mockReturnValue({
+      subscribe: vi.fn((callbacks: { next?: (v: string) => void }) =>
+        callbacks.next?.('# Test Content'),
+      ),
+    });
 
     await TestBed.configureTestingModule({
       imports: [
@@ -91,6 +99,7 @@ describe('BlogDetailComponent', () => {
         provideRouter([]),
         { provide: HttpClient, useValue: { get: vi.fn().mockReturnValue(of('markdown')) } },
         { provide: BlogStore, useValue: mockStore },
+        { provide: SeoService, useValue: mockSeoService },
         provideIcons({ heroArrowLeft, heroArrowRight: heroArrowLeft }), // Mocking Right as Left for simplicity
       ],
     }).compileComponents();
@@ -186,5 +195,35 @@ describe('BlogDetailComponent', () => {
 
     // Check signal input on component instance
     expect((nextBtnDe.componentInstance as ButtonComponent).disabled()).toBe(true);
+  });
+
+  it('should handle content loading error', () => {
+    // Mock error response
+    mockStore.getArticleContent.mockReturnValue({
+      subscribe: vi.fn((callbacks: { error?: (e: Error) => void }) =>
+        callbacks.error?.(new Error('Fetch failed')),
+      ),
+    });
+
+    // Re-init component to trigger effect
+    fixture = TestBed.createComponent(BlogDetailComponent);
+    component = fixture.componentInstance;
+    fixture.componentRef.setInput('slug', 'part-2-phase-1');
+    fixture.detectChanges();
+
+    expect(component.content()).toContain('Failed to load article content');
+    expect(component.contentLoading()).toBe(false);
+  });
+
+  it('should update SEO meta tags', () => {
+    // Component already created in beforeEach
+    expect(mockSeoService.updatePageSeo).toHaveBeenCalledWith({
+      title: 'Test Article',
+      meta: {
+        description: 'Test Excerpt',
+        keywords: ['tag1'],
+        author: 'Test Author',
+      },
+    });
   });
 });

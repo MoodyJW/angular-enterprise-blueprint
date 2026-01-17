@@ -11,6 +11,7 @@ import {
   signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { MarkdownModule } from 'ngx-markdown';
 import { Observable } from 'rxjs';
@@ -47,6 +48,7 @@ import { PUBLISHED_SLUGS } from '../blog.constants';
 export class BlogDetailComponent implements OnInit {
   readonly slug = input.required<string>(); // From route param
   readonly store = inject(BlogStore);
+  private readonly seoService = inject(SeoService);
   readonly ICONS = ICON_NAMES;
   readonly PUBLISHED_SLUGS = PUBLISHED_SLUGS;
 
@@ -77,6 +79,16 @@ export class BlogDetailComponent implements OnInit {
       const art = this.article();
       if (art !== undefined && art.contentPath !== '') {
         this.loadContent(art.contentPath);
+
+        // Update SEO
+        this.seoService.updatePageSeo({
+          title: art.title,
+          meta: {
+            description: art.excerpt,
+            keywords: art.tags,
+            author: art.author.name,
+          },
+        });
       }
     });
   }
