@@ -58,25 +58,19 @@ The following existing components should be reused instead of creating new ones:
 
 Only create these genuinely new components with unique functionality:
 
-1. **FilterChipsComponent** (Section 8.10)
-   - **Why new:** Interactive multi-select filter UI is distinct from passive BadgeComponent
-   - **Justification:** Reused across ModulesListComponent and AdrListComponent
-   - **Key difference:** Active filtering vs. passive status display
-   - Multi-select toggle behavior, chip removal, "Clear all" functionality
-
-2. **UserMenuComponent** (Section 8.7)
+1. **UserMenuComponent** (Section 8.7)
    - **Why new:** Dropdown menu with account header and logout specific behavior
    - **Justification:** Unique authentication-related UI pattern
 
-3. **DashboardMetricsComponent** (Section 8.12)
+2. **DashboardMetricsComponent** (Section 8.11)
    - **Why new:** Smart component for fetching and orchestrating metrics data
    - **Note:** Uses existing CardComponent for individual metric displays
 
-4. **BlogListComponent** (Section 8.11)
+3. **BlogListComponent** (Section 8.10)
    - **Why new:** Smart component with blog-specific state and filtering logic
    - **Note:** Uses existing CardComponent for article previews
 
-5. **BlogDetailComponent** (Section 8.11)
+4. **BlogDetailComponent** (Section 8.10)
    - **Why new:** Smart component with markdown rendering and article-specific features
 
 ### Component Audit Summary
@@ -99,7 +93,7 @@ By reusing existing components instead of creating duplicates:
 5. **Design System Integrity:** Reinforces the shared component library as single source of truth
 6. **Accessibility:** Reuses battle-tested, WCAG-compliant implementations
 
-**Result:** Phase 8 creates only 3 new shared components (FilterChips, UserMenu, DashboardMetrics) instead of the originally planned 6+, reducing development time while improving quality.
+**Result:** Phase 8 creates only 2 new shared components (UserMenu, DashboardMetrics) instead of the originally planned 6+, reducing development time while improving quality.
 
 ---
 
@@ -730,78 +724,9 @@ interface PortfolioHero {
 
 ---
 
-## 8.10 Modules & ADR List Filtering
-
-**Current:** Search only, no category/tag filtering
-**Target:** Filter chips for technologies, categories, status
-
-### Components
-
-**FilterChipsComponent** (New Shared Component)
-
-- **Why new:** Interactive multi-select filter UI distinct from passive BadgeComponent
-- **Key difference from Badge:** Active filtering with toggle behavior vs. passive status display
-- **Reuse justification:** Used in both ModulesListComponent and AdrListComponent
-- Multi-select chip filter with toggle on click
-- Individual chip removal with × button
-- "Clear all" functionality when filters active
-- Keyboard navigation (Tab, Enter/Space to toggle)
-- Props: `chips: FilterChip[]`, `multiSelect: boolean`, `ariaLabel: string`
-- Outputs: `chipToggled: FilterChip`, `cleared: void`
-- Located at: `src/app/shared/components/filter-chips/`
-
-**Data Model:**
-
-```typescript
-export interface FilterChip {
-  readonly id: string;
-  readonly label: string;
-  readonly selected: boolean;
-  readonly category?: string; // Optional grouping
-}
-```
-
-### Changes
-
-**Modify:** `ModulesListComponent`
-
-- Add technology filter (Angular, React, TypeScript, Node.js, etc.)
-- Add category filter (Frontend, Backend, Full-stack, etc.)
-- Combine with existing search
-
-**Modify:** `AdrListComponent`
-
-- Add category filter (Architecture, Security, Performance, etc.)
-- Add status filter (Accepted, Proposed, Deprecated, Superseded)
-- Combine with existing search
-
-### Filter Examples
-
-```typescript
-// Modules
-{ id: 'angular', label: 'Angular', category: 'technology' }
-{ id: 'typescript', label: 'TypeScript', category: 'technology' }
-{ id: 'frontend', label: 'Frontend', category: 'category' }
-
-// ADRs
-{ id: 'architecture', label: 'Architecture', category: 'category' }
-{ id: 'accepted', label: 'Accepted', category: 'status' }
-```
-
-### Acceptance Criteria
-
-- [ ] FilterChipsComponent created and reusable
-- [ ] Filters work in combination with search
-- [ ] "Clear all" button when filters active
-- [ ] Filter state persists during session
-- [ ] Keyboard accessible
-- [ ] Mobile responsive (chips wrap)
-- [ ] Visual feedback for selected chips
-- [ ] Smooth animations
-
 ---
 
-## 8.11 Blog Feature Module
+## 8.10 Blog Feature Module
 
 **Reference:** New feature for displaying technical articles
 
@@ -929,7 +854,7 @@ Migrate existing blog articles from phase completion:
 
 ---
 
-## 8.12 Enhanced Dashboard Metrics
+## 8.11 Enhanced Dashboard Metrics
 
 **Current:** Basic dashboard with build status, test coverage, last deployment
 **Target:** Comprehensive metrics dashboard showcasing code quality and project health
@@ -1161,21 +1086,20 @@ interface BundleSize {
 
 ## Timeline Estimate
 
-| Task                       | Estimated Time   |
-| -------------------------- | ---------------- |
-| 8.1 Checkbox Icon Refactor | 4-6 hours        |
-| 8.2 Radio Icon Refactor    | 4-6 hours        |
-| 8.3 Card Visibility        | 3-5 hours        |
-| 8.4 Toast Improvements     | 1-2 hours        |
-| 8.5 Profile Stats Caching  | 1-2 hours        |
-| 8.6 Theme Menu             | 4-6 hours        |
-| 8.7 User Menu              | 6-8 hours        |
-| 8.8 Profile Layout         | 2 hours          |
-| 8.9 Home Branding          | 6-10 hours       |
-| 8.10 Filter Chips          | 6-8 hours        |
-| 8.11 Blog Feature Module   | 24-32 hours      |
-| 8.12 Enhanced Dashboard    | 12-16 hours      |
-| **Total**                  | **73-103 hours** |
+| Task                       | Estimated Time  |
+| -------------------------- | --------------- |
+| 8.1 Checkbox Icon Refactor | 4-6 hours       |
+| 8.2 Radio Icon Refactor    | 4-6 hours       |
+| 8.3 Card Visibility        | 3-5 hours       |
+| 8.4 Toast Improvements     | 1-2 hours       |
+| 8.5 Profile Stats Caching  | 1-2 hours       |
+| 8.6 Theme Menu             | 4-6 hours       |
+| 8.7 User Menu              | 6-8 hours       |
+| 8.8 Profile Layout         | 2 hours         |
+| 8.9 Home Branding          | 6-10 hours      |
+| 8.10 Blog Feature Module   | 24-32 hours     |
+| 8.11 Enhanced Dashboard    | 12-16 hours     |
+| **Total**                  | **67-95 hours** |
 
 **8.1 Breakdown:**
 
@@ -1220,12 +1144,6 @@ interface BundleSize {
 
 **8.10 Breakdown:**
 
-- FilterChipsComponent creation: 4-5 hours
-- Integration in ModulesListComponent: 1-2 hours
-- Integration in AdrListComponent: 1-2 hours
-
-**8.11 Breakdown:**
-
 - BlogStore + data model: 4-6 hours
 - BlogListComponent (uses CardComponent): 6-8 hours
 - BlogDetailComponent: 8-10 hours
@@ -1233,7 +1151,7 @@ interface BundleSize {
 - Content migration: 2-3 hours
 - Routing & navigation: 2-3 hours
 
-**8.12 Breakdown:**
+**8.11 Breakdown:**
 
 - Metric parsing scripts: 4-5 hours
 - DashboardMetricsComponent (uses CardComponent + GridComponent): 4-5 hours

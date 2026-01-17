@@ -349,12 +349,7 @@ _Goal: Refactor existing components for consistency, then add new capabilities a
   - [ ] Implement recommended split layout (bio left, dashboard right).
   - [ ] Add CTA buttons to key sections.
   - [ ] Ensure i18n support and mobile responsiveness.
-- [ ] **8.10 Modules & ADR List Filtering**: Filter chips for technologies, categories, status.
-  - [ ] Create reusable FilterChipsComponent.
-  - [ ] Add technology and category filters to ModulesListComponent.
-  - [ ] Add category and status filters to AdrListComponent.
-  - [ ] Implement "Clear all" functionality.
-- [ ] **8.11 Blog Feature Module**: Complete blog implementation for showcasing technical articles.
+- [ ] **8.10 Blog Feature Module**: Complete blog implementation for showcasing technical articles.
   - [ ] Create BlogStore (NgRx SignalStore) with articles state management.
   - [ ] Build BlogListComponent with search, filter, and pagination.
   - [ ] Build BlogDetailComponent with markdown rendering and syntax highlighting.
@@ -363,7 +358,7 @@ _Goal: Refactor existing components for consistency, then add new capabilities a
   - [ ] Configure routes and lazy loading.
   - [ ] Implement SEO meta tags per article.
   - [ ] Add to main navigation.
-- [ ] **8.12 Enhanced Dashboard Metrics**: Expand dashboard with comprehensive code quality metrics.
+- [ ] **8.11 Enhanced Dashboard Metrics**: Expand dashboard with comprehensive code quality metrics.
   - [ ] Add Compodoc documentation coverage percentage and breakdown.
   - [ ] Display detailed test coverage (statements, branches, functions, lines).
   - [ ] Show bundle size with budget status.
