@@ -31,31 +31,33 @@
           </eb-button>
         </nav>
 
-        <!-- ADR Header -->
-        <header class="adr-viewer__header">
-          <div class="adr-viewer__meta">
-            <span class="adr-viewer__number">{{ currentAdr.number }}</span>
-            <eb-badge
-              [variant]="getStatusVariant(currentAdr.status)"
-              [content]="t('architecture.statuses.' + currentAdr.status)"
-              [ariaLabel]="
-                t('architecture.statusLabel', {
-                  status: t('architecture.statuses.' + currentAdr.status),
-                })
-              "
-              position="inline"
-            ></eb-badge>
-            <span class="adr-viewer__date">{{ currentAdr.date }}</span>
-          </div>
-          <h1 class="adr-viewer__title">
-            {{ t('architecture.data.' + currentAdr.id + '.title') }}
-          </h1>
-        </header>
+        <!-- ADR Content -->
+        <eb-card>
+          <header class="adr-viewer__header" card-header>
+            <div class="adr-viewer__meta">
+              <span class="adr-viewer__number">{{ currentAdr.number }}</span>
+              <eb-badge
+                [variant]="getStatusVariant(currentAdr.status)"
+                [content]="t('architecture.statuses.' + currentAdr.status)"
+                [ariaLabel]="
+                  t('architecture.statusLabel', {
+                    status: t('architecture.statuses.' + currentAdr.status),
+                  })
+                "
+                position="inline"
+              ></eb-badge>
+              <span class="adr-viewer__date">{{ currentAdr.date }}</span>
+            </div>
+            <h1 class="adr-viewer__title">
+              {{ t('architecture.data.' + currentAdr.id + '.title') }}
+            </h1>
+          </header>
 
-        <!-- Markdown Content -->
-        <article class="adr-viewer__content">
-          <markdown [data]="store.content()"></markdown>
-        </article>
+          <!-- Markdown Content -->
+          <article class="adr-viewer__content eb-markdown-content" card-body>
+            <markdown [data]="store.content()"></markdown>
+          </article>
+        </eb-card>
       } @else {
         <div class="adr-viewer__not-found">
           <eb-icon [name]="ICONS.SEARCH" size="xl" [decorative]="true"></eb-icon>

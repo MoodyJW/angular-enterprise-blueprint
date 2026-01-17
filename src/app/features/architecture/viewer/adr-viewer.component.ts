@@ -20,6 +20,7 @@ import { MarkdownComponent } from 'ngx-markdown';
 import { SeoService } from '@core/services/seo/seo.service';
 import { BadgeComponent } from '@shared/components/badge';
 import { ButtonComponent } from '@shared/components/button';
+import { CardComponent } from '@shared/components/card';
 import { ContainerComponent } from '@shared/components/container';
 import { IconComponent } from '@shared/components/icon';
 import { ICON_NAMES } from '@shared/constants/icon-names.constants';
@@ -43,11 +44,12 @@ import { ArchitectureStore } from '@features/architecture/state/architecture.sto
     ButtonComponent,
     BadgeComponent,
     IconComponent,
+    CardComponent,
   ],
   providers: [ArchitectureStore],
   viewProviders: [provideIcons({ heroArrowLeft, heroExclamationTriangle, heroMagnifyingGlass })],
   templateUrl: './adr-viewer.component.html',
-  styleUrls: ['./adr-viewer.component.scss', '../../../../styles/_markdown.scss'],
+  styleUrls: ['./adr-viewer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdrViewerComponent implements OnInit {

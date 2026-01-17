@@ -145,8 +145,9 @@
   }
 
   &__header:not(:empty) + .card__media:not(:empty),
-  &__header:not(:empty) + .card__body:not(:empty) {
+  &__header:not(:empty) + .card__media:empty + .card__body:not(:empty) {
     border-top: var(--border-width-thin) solid var(--color-border);
+    padding-top: var(--space-5);
   }
 
   &__media {

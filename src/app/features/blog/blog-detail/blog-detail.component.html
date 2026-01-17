@@ -2,20 +2,7 @@
   <div class="blog-detail__nav">
     <eb-button variant="ghost" routerLink="/blog" [ariaLabel]="t('blog.detail.backAriaLabel')">
       <ng-container icon>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-5 h-5"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
-          />
-        </svg>
+        <eb-icon [name]="ICONS.ARROW_LEFT" size="sm" />
       </ng-container>
       {{ t('blog.detail.backToList') }}
     </eb-button>
@@ -23,38 +10,40 @@
 
   @if (article(); as article) {
     <article class="blog-detail__content">
-      <header class="blog-detail__header">
-        <div class="blog-detail__meta">
-          <span class="blog-detail__category">{{ article.category | titlecase }}</span>
-          <span class="blog-detail__date">{{ article.publishedAt | date: 'mediumDate' }}</span>
-        </div>
-        <h1 class="blog-detail__title">{{ article.title }}</h1>
-        <div class="blog-detail__author">
-          <div class="blog-detail__avatar">
-            {{ article.author.name.charAt(0) }}
+      <eb-card>
+        <header class="blog-detail__header" card-header>
+          <div class="blog-detail__meta">
+            <span class="blog-detail__category">{{ article.category | titlecase }}</span>
+            <span class="blog-detail__date">{{ article.publishedAt | date: 'mediumDate' }}</span>
           </div>
-          <div class="blog-detail__author-info">
-            <span class="blog-detail__author-name">{{ article.author.name }}</span>
-            <span class="blog-detail__author-title">{{ article.author.title }}</span>
+          <h1 class="blog-detail__title">{{ article.title }}</h1>
+          <div class="blog-detail__author">
+            <div class="blog-detail__avatar">
+              {{ article.author.name.charAt(0) }}
+            </div>
+            <div class="blog-detail__author-info">
+              <span class="blog-detail__author-name">{{ article.author.name }}</span>
+              <span class="blog-detail__author-title">{{ article.author.title }}</span>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
 
-      <div class="blog-detail__body">
-        @if (contentLoading()) {
-          <p>{{ t('blog.detail.loading') }}</p>
-        } @else {
-          <markdown [data]="content()"></markdown>
-        }
-      </div>
-
-      <footer class="blog-detail__footer">
-        <div class="blog-detail__tags">
-          @for (tag of article.tags; track tag) {
-            <span class="blog-detail__tag">#{{ tag }}</span>
+        <div class="blog-detail__body eb-markdown-content" card-body>
+          @if (contentLoading()) {
+            <p>{{ t('blog.detail.loading') }}</p>
+          } @else {
+            <markdown [data]="content()"></markdown>
           }
         </div>
-      </footer>
+
+        <footer class="blog-detail__footer" card-footer>
+          <div class="blog-detail__tags">
+            @for (tag of article.tags; track tag) {
+              <span class="blog-detail__tag">#{{ tag }}</span>
+            }
+          </div>
+        </footer>
+      </eb-card>
     </article>
   }
 

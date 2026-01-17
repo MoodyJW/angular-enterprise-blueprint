@@ -9,7 +9,7 @@
 // 3. Global Utilities (to be implemented)
 // Global helper partials
 @use 'styles/card-helpers';
-// @use 'styles/markdown'; // Component-scoped in AdrViewerComponent
+@use 'styles/markdown'; // Global markdown styles
 
 // 4. Resets & Normalization
 *,

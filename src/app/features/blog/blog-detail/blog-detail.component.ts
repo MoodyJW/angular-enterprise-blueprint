@@ -13,12 +13,27 @@ import { RouterLink } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { MarkdownModule } from 'ngx-markdown';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
+import { CardComponent } from '../../../shared/components/card/card.component';
 import { BlogStore } from '../blog.store';
+
+import { provideIcons } from '@ng-icons/core';
+import { heroArrowLeft } from '@ng-icons/heroicons/outline';
+import { IconComponent } from '../../../shared/components/icon/icon.component';
+import { ICON_NAMES } from '../../../shared/constants/icon-names.constants';
 
 @Component({
   selector: 'eb-blog-detail',
   standalone: true,
-  imports: [CommonModule, RouterLink, TranslocoDirective, MarkdownModule, ButtonComponent],
+  imports: [
+    CommonModule,
+    RouterLink,
+    TranslocoDirective,
+    MarkdownModule,
+    ButtonComponent,
+    CardComponent,
+    IconComponent,
+  ],
+  viewProviders: [provideIcons({ heroArrowLeft })],
   templateUrl: './blog-detail.component.html',
   styleUrl: './blog-detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,6 +41,7 @@ import { BlogStore } from '../blog.store';
 export class BlogDetailComponent implements OnInit {
   readonly slug = input.required<string>(); // From route param
   readonly store = inject(BlogStore);
+  readonly ICONS = ICON_NAMES;
 
   readonly article = computed(() => this.store.articles().find((a) => a.slug === this.slug()));
 
