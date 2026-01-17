@@ -83,7 +83,6 @@
     "@ngrx/signals": "^21.0.0",
     "marked": "^17.0.1",
     "ngx-markdown": "^21.0.1",
-    "prismjs": "^1.30.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
