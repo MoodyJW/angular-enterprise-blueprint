@@ -142,7 +142,9 @@
       "notFound": "Article not found",
       "notFoundButton": "Return to Blog",
       "notFoundAriaLabel": "Return to blog list",
-      "loading": "Loading article..."
+      "loading": "Loading article...",
+      "previousArticle": "Previous Article",
+      "nextArticle": "Next Article"
     }
   },
   "modules": {

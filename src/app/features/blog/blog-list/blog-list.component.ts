@@ -11,6 +11,7 @@ import { GridComponent } from '../../../shared/components/grid/grid.component';
 import { IconComponent } from '../../../shared/components/icon/icon.component';
 import { InputComponent } from '../../../shared/components/input/input.component';
 import { StackComponent } from '../../../shared/components/stack/stack.component';
+import { PUBLISHED_SLUGS } from '../blog.constants';
 import { BlogStore } from '../blog.store';
 import { BlogCategory } from '../blog.types';
 
@@ -59,7 +60,6 @@ export class BlogListComponent implements OnInit {
    * Parts 1-3 are published, Parts 4-8 are in progress
    */
   isArticleInProgress(slug: string): boolean {
-    const publishedSlugs = ['part-1-introduction', 'part-2-phase-1', 'part-3-phase-2'];
-    return !publishedSlugs.includes(slug);
+    return !PUBLISHED_SLUGS.includes(slug);
   }
 }
