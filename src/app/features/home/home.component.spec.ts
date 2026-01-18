@@ -195,9 +195,8 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should load metrics and extended metrics on init', () => {
+  it('should load critical metrics on init', () => {
     expect(mockStore.loadMetrics).toHaveBeenCalled();
-    expect(mockStore.loadExtendedMetrics).toHaveBeenCalled();
     expect(mockSeoService.updatePageSeo).toHaveBeenCalledWith({
       title: 'Dashboard',
       meta: {
@@ -205,6 +204,14 @@ describe('HomeComponent', () => {
           'Angular Enterprise Blueprint Dashboard - Monitor system status, project health, and real-time visitor metrics.',
       },
     });
+  });
+
+  it('should defer non-critical data loading until after render', async () => {
+    // Wait for afterNextRender and requestIdleCallback
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    expect(mockStore.loadExtendedMetrics).toHaveBeenCalled();
+    expect(mockArchitectureStore.loadAdrs).toHaveBeenCalled();
   });
 
   it('should render hero section branding', () => {
