@@ -360,7 +360,7 @@ _Goal: Refactor existing components for consistency, then add new capabilities a
   - [x] Add to main navigation.
 - [ ] **8.11 Enhanced Dashboard Metrics**: Expand dashboard with comprehensive code quality metrics.
   - [x] Add Compodoc documentation coverage percentage and breakdown.
-  - [ ] Display detailed test coverage (statements, branches, functions, lines).
+  - [x] Display detailed test coverage (statements, branches, functions, lines).
   - [ ] Show bundle size with budget status.
   - [x] Display linting status (errors/warnings count).
   - [x] Add dependency health metrics (total, outdated, vulnerabilities).

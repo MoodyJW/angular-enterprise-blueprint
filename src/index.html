@@ -11,6 +11,13 @@
     />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
+    <!-- Preload critical assets for faster LCP -->
+    <link rel="preload" href="assets/i18n/en.json" as="fetch" crossorigin="anonymous" />
+
+    <!-- Preconnect to external APIs -->
+    <link rel="preconnect" href="https://api.github.com" />
+    <link rel="dns-prefetch" href="https://api.github.com" />
+
     <!-- Content Security Policy -->
     <meta
       http-equiv="Content-Security-Policy"
@@ -61,6 +68,7 @@
             sans-serif;
           color: #64748b;
         }
+
         @media (prefers-color-scheme: dark) {
           .app-loading {
             color: #94a3b8;

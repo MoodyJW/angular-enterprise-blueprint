@@ -44,7 +44,32 @@ export class HomeComponent implements OnInit {
   private readonly translocoService = inject(TranslocoService);
   private readonly seoService = inject(SeoService);
 
-  // Optimistic UI: Initialize with default English text for immediate LCP
+  // Optimistic UI: Initialize hero content with default English text for immediate LCP
+  // These signals render immediately while Transloco loads, preventing blank content
+  readonly heroName = toSignal(this.translocoService.selectTranslate('home.hero.name'), {
+    initialValue: 'Jason Walker Moody',
+  });
+  readonly heroTitle = toSignal(this.translocoService.selectTranslate('home.hero.title'), {
+    initialValue: 'Lead Frontend Engineer',
+  });
+  readonly heroTagline = toSignal(this.translocoService.selectTranslate('home.hero.tagline'), {
+    initialValue: 'Building Enterprise-Grade Applications with Modern Angular',
+  });
+  readonly heroBio = toSignal(this.translocoService.selectTranslate('home.hero.bio'), {
+    initialValue:
+      'Welcome to my Angular Enterprise Blueprint - a production-ready reference architecture demonstrating modern Angular best practices, enterprise patterns, and scalable design.',
+  });
+  readonly heroCtaProfile = toSignal(
+    this.translocoService.selectTranslate('home.hero.cta.profile'),
+    {
+      initialValue: 'Meet The Architect',
+    },
+  );
+  readonly ctaButton = toSignal(this.translocoService.selectTranslate('home.cta.button'), {
+    initialValue: 'Explore Modules',
+  });
+
+  // System status header signals
   readonly title = toSignal(this.translocoService.selectTranslate('home.systemStatus.title'), {
     initialValue: 'System Status',
   });

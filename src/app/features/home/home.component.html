@@ -1,46 +1,33 @@
 <eb-container padding="lg">
-  <ng-container *transloco="let t">
-    <!-- Unified Grid Layout: 1 col mobile, 2 cols tablet, 4 cols desktop XL -->
-    <!-- gap="lg" to separate rows clearly -->
-    <eb-grid
-      [cols]="1"
-      [colsLg]="2"
-      [colsXl]="4"
-      gap="lg"
-      class="home__layout"
-      alignItems="stretch"
-    >
-      <!-- Row 1: Hero (Span 2) & System Status (Span 2) -->
+  <!-- Unified Grid Layout: 1 col mobile, 2 cols tablet, 4 cols desktop XL -->
+  <eb-grid [cols]="1" [colsLg]="2" [colsXl]="4" gap="lg" class="home__layout" alignItems="stretch">
+    <!-- Row 1: Hero (Span 2) & System Status (Span 2) -->
 
-      <!-- Hero Section -->
-      <div class="home__col-span-2">
-        <div class="home__hero">
-          <h1 class="home__hero-name">{{ t('home.hero.name') }}</h1>
-          <h2 class="home__hero-title">{{ t('home.hero.title') }}</h2>
-          <p class="home__hero-tagline">{{ t('home.hero.tagline') }}</p>
-          <p class="home__hero-bio">{{ t('home.hero.bio') }}</p>
-          <div class="home__hero-actions">
-            <eb-button
-              routerLink="/profile"
-              variant="primary"
-              size="lg"
-              [ariaLabel]="t('home.hero.cta.profile')"
-            >
-              {{ t('home.hero.cta.profile') }}
-            </eb-button>
-            <eb-button
-              routerLink="/modules"
-              variant="secondary"
-              size="lg"
-              [ariaLabel]="t('home.cta.button')"
-            >
-              {{ t('home.cta.button') }}
-            </eb-button>
-          </div>
+    <!-- Hero Section - Renders immediately with fallback values for optimal LCP -->
+    <div class="home__col-span-2">
+      <div class="home__hero">
+        <h1 class="home__hero-name">{{ heroName() }}</h1>
+        <h2 class="home__hero-title">{{ heroTitle() }}</h2>
+        <p class="home__hero-tagline">{{ heroTagline() }}</p>
+        <p class="home__hero-bio">{{ heroBio() }}</p>
+        <div class="home__hero-actions">
+          <eb-button
+            routerLink="/profile"
+            variant="primary"
+            size="lg"
+            [ariaLabel]="heroCtaProfile()"
+          >
+            {{ heroCtaProfile() }}
+          </eb-button>
+          <eb-button routerLink="/modules" variant="secondary" size="lg" [ariaLabel]="ctaButton()">
+            {{ ctaButton() }}
+          </eb-button>
         </div>
       </div>
+    </div>
 
-      <!-- System Status -->
+    <!-- System Status -->
+    <ng-container *transloco="let t">
       <div class="home__col-span-2">
         <eb-stack spacing="md" class="h-full">
           <header class="dashboard__header">
@@ -345,6 +332,6 @@
         }
       }
       <!-- End Metrics check (metrics) -->
-    </eb-grid>
-  </ng-container>
+    </ng-container>
+  </eb-grid>
 </eb-container>
