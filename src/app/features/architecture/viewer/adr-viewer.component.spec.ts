@@ -1,6 +1,7 @@
 import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { ArchitectureStore } from '@core/services/architecture/architecture.store';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 import { provideIcons } from '@ng-icons/core';
 import {
@@ -10,7 +11,6 @@ import {
 } from '@ng-icons/heroicons/outline';
 import { MarkdownModule } from 'ngx-markdown';
 import { vi } from 'vitest';
-import { ArchitectureStore } from '../state/architecture.store';
 import { AdrViewerComponent } from './adr-viewer.component';
 
 describe('AdrViewerComponent', () => {

@@ -25,8 +25,8 @@ import { ContainerComponent } from '@shared/components/container';
 import { IconComponent } from '@shared/components/icon';
 import { ICON_NAMES } from '@shared/constants/icon-names.constants';
 
-import { Adr } from '@features/architecture/services/architecture.service';
-import { ArchitectureStore } from '@features/architecture/state/architecture.store';
+import { Adr } from '@core/services/architecture/architecture.service';
+import { ArchitectureStore } from '@core/services/architecture/architecture.store';
 
 /**
  * ADR Viewer component.

@@ -25,7 +25,7 @@ import { ICON_NAMES } from '@shared/constants/icon-names.constants';
 
 import { SeoService } from '@core/services/seo/seo.service';
 
-import { ArchitectureStore } from './state/architecture.store';
+import { ArchitectureStore } from '@core/services/architecture/architecture.store';
 
 /**
  * Architecture Decisions page component.
