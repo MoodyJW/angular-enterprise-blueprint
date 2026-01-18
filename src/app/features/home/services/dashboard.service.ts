@@ -1,9 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, timer } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+/**
+ * Core dashboard metrics displayed at a glance.
+ */
 export interface DashboardMetrics {
+  generatedAt: string;
   testCoverage: {
     value: number;
     trend: 'up' | 'down' | 'stable';
@@ -16,9 +20,76 @@ export interface DashboardMetrics {
     seo: number;
   };
   buildStatus: 'passing' | 'failing' | 'building';
-  deployStatus: 'success' | 'failed' | 'deploying';
+  deployStatus: 'success' | 'failed' | 'deploying' | 'pending';
   systemStatus: 'operational' | 'degraded' | 'outage';
   activeModules: number;
+  extended: ExtendedMetrics;
+}
+
+/**
+ * Extended metrics for detailed dashboard display.
+ */
+export interface ExtendedMetrics {
+  testCoverage: {
+    available: boolean;
+    message?: string;
+    value?: number;
+    trend?: string;
+    lastUpdated?: string;
+  };
+  documentation: {
+    available: boolean;
+    message?: string;
+    percentage?: number;
+    components?: { documented: number; total: number };
+    services?: { documented: number; total: number };
+    directives?: { documented: number; total: number };
+    pipes?: { documented: number; total: number };
+  };
+  git: {
+    available: boolean;
+    message?: string;
+    commits?: number;
+    lastCommit?: string;
+    branches?: number;
+    contributors?: number;
+  };
+  linting: {
+    available: boolean;
+    message?: string;
+    errors?: number;
+    warnings?: number;
+  };
+  dependencies: {
+    available: boolean;
+    message?: string;
+    production?: number;
+    development?: number;
+    total?: number;
+    outdated?: number;
+    vulnerabilities?: {
+      info?: number;
+      low?: number;
+      moderate?: number;
+      high?: number;
+      critical?: number;
+      total?: number;
+    };
+  };
+  bundleSize: {
+    available: boolean;
+    message?: string;
+    main?: { raw: number; formatted: string };
+    total?: { raw: number; formatted: string };
+  };
+  lighthouse?: {
+    available: boolean;
+    message?: string;
+    performance?: number;
+    accessibility?: number;
+    bestPractices?: number;
+    seo?: number;
+  };
 }
 
 @Injectable({
@@ -27,16 +98,19 @@ export interface DashboardMetrics {
 export class DashboardService {
   private readonly _http = inject(HttpClient);
 
+  /**
+   * Fetches unified metrics from the single metrics.json file.
+   */
   getMetrics(): Observable<DashboardMetrics> {
     return this._http.get<DashboardMetrics>('assets/data/metrics.json');
   }
 
   /**
-   * Simulates real-time visitor counts.
-   * In a real app, this would use WebSockets or server-sent events.
+   * Fetches just the extended metrics portion.
    */
-  getRealTimeVisitors(): Observable<number> {
-    // Start with 42, update every 5 seconds
-    return timer(0, 5000).pipe(map(() => Math.floor(Math.random() * (100 - 20 + 1)) + 20));
+  getExtendedMetrics(): Observable<ExtendedMetrics> {
+    return this._http
+      .get<DashboardMetrics>('assets/data/metrics.json')
+      .pipe(map((metrics) => metrics.extended));
   }
 }

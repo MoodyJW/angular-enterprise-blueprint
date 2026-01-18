@@ -77,10 +77,27 @@
       "best": "Best",
       "seo": "SEO"
     },
-    "visitors": {
-      "title": "Real-time Visitors",
-      "live": "Live",
-      "subtitle": "Active users on site right now (simulated)"
+    "documentation": {
+      "title": "Documentation",
+      "components": "Components",
+      "services": "Services"
+    },
+    "linting": {
+      "title": "Code Quality",
+      "errors": "Errors",
+      "warnings": "Warnings"
+    },
+    "dependencies": {
+      "title": "Dependencies",
+      "total": "Total Packages",
+      "outdated": "Outdated",
+      "vulnerabilities": "Vulnerabilities"
+    },
+    "git": {
+      "title": "Repository",
+      "commits": "Total Commits",
+      "contributors": "Contributors",
+      "branches": "Branches"
     },
     "theme": {
       "title": "Active Theme",

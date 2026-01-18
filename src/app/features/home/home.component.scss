@@ -57,6 +57,7 @@
 
   &__hero-actions {
     display: flex;
+    flex-wrap: wrap; // Allow buttons to wrap on small screens
     gap: var(--space-4);
   }
 }

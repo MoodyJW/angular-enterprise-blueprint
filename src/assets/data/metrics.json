@@ -1,8 +1,9 @@
 {
+  "generatedAt": "2026-01-18T16:10:34.986Z",
   "testCoverage": {
-    "value": 92,
+    "value": 91,
     "trend": "up",
-    "lastUpdated": "2026-01-17T18:53:23.875Z"
+    "lastUpdated": "2026-01-18T16:10:11.064Z"
   },
   "lighthouse": {
     "performance": 90,
@@ -11,8 +12,74 @@
     "seo": 100
   },
   "buildStatus": "passing",
-  "deployStatus": "success",
+  "deployStatus": "pending",
   "systemStatus": "operational",
   "activeModules": 4,
-  "lastUpdated": "2026-01-17T18:53:23.883Z"
+  "extended": {
+    "testCoverage": {
+      "available": true,
+      "value": 91,
+      "trend": "up",
+      "lastUpdated": "2026-01-18T16:10:11.064Z"
+    },
+    "lighthouse": {
+      "available": true,
+      "performance": 90,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "message": "Cached from previous run (local report not found)"
+    },
+    "documentation": {
+      "available": true,
+      "percentage": 81,
+      "components": {
+        "documented": 43,
+        "total": 51
+      },
+      "services": {
+        "documented": 15,
+        "total": 21
+      },
+      "directives": {
+        "documented": 1,
+        "total": 1
+      },
+      "pipes": {
+        "documented": 0,
+        "total": 0
+      }
+    },
+    "git": {
+      "available": true,
+      "commits": 176,
+      "lastCommit": "2026-01-17 10:59:10 -0800",
+      "branches": 80,
+      "contributors": 4
+    },
+    "linting": {
+      "available": true,
+      "errors": 0,
+      "warnings": 0
+    },
+    "dependencies": {
+      "available": true,
+      "production": 18,
+      "development": 41,
+      "total": 59,
+      "outdated": 32,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 3,
+        "moderate": 0,
+        "high": 2,
+        "critical": 0,
+        "total": 5
+      }
+    },
+    "bundleSize": {
+      "available": false,
+      "message": "Run ng build --stats-json first"
+    }
+  }
 }

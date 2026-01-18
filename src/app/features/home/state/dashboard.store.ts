@@ -1,5 +1,9 @@
 import { inject } from '@angular/core';
-import { DashboardMetrics, DashboardService } from '@features/home/services/dashboard.service';
+import {
+  DashboardMetrics,
+  DashboardService,
+  ExtendedMetrics,
+} from '@features/home/services/dashboard.service';
 import { tapResponse } from '@ngrx/operators';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
@@ -7,14 +11,14 @@ import { pipe, switchMap, tap } from 'rxjs';
 
 type DashboardState = {
   metrics: DashboardMetrics | null;
-  activeVisitors: number;
+  extendedMetrics: ExtendedMetrics | null;
   isLoading: boolean;
   error: string | null;
 };
 
 const initialState: DashboardState = {
   metrics: null,
-  activeVisitors: 0,
+  extendedMetrics: null,
   isLoading: false,
   error: null,
 };
@@ -46,12 +50,17 @@ export const DashboardStore = signalStore(
       ),
     ),
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    loadVisitors: rxMethod<void>(
+    loadExtendedMetrics: rxMethod<void>(
       pipe(
         switchMap(() =>
-          dashboardService.getRealTimeVisitors().pipe(
-            tap((visitors) => {
-              patchState(store, { activeVisitors: visitors });
+          dashboardService.getExtendedMetrics().pipe(
+            tapResponse({
+              next: (extendedMetrics: ExtendedMetrics) => {
+                patchState(store, { extendedMetrics });
+              },
+              error: () => {
+                // Silently fail for extended metrics - not critical
+              },
             }),
           ),
         ),

@@ -344,31 +344,31 @@ _Goal: Refactor existing components for consistency, then add new capabilities a
   - [x] Fix "View Resume" button not working (PDF viewer issue).
   - [x] Fix skeleton loading overflow on mobile (dynamic width).
   - [x] Ensure mobile responsiveness.
-- [ ] **8.9 Home Page Portfolio Branding**: Add hero section with personal branding.
-  - [ ] Add name, title, and tagline to home page.
-  - [ ] Implement recommended split layout (bio left, dashboard right).
-  - [ ] Add CTA buttons to key sections.
-  - [ ] Ensure i18n support and mobile responsiveness.
-- [ ] **8.10 Blog Feature Module**: Complete blog implementation for showcasing technical articles.
-  - [ ] Create BlogStore (NgRx SignalStore) with articles state management.
-  - [ ] Build BlogListComponent with search, filter, and pagination.
-  - [ ] Build BlogDetailComponent with markdown rendering and syntax highlighting.
-  - [ ] Use existing CardComponent for article previews.
-  - [ ] Migrate existing phase articles to JSON format.
-  - [ ] Configure routes and lazy loading.
-  - [ ] Implement SEO meta tags per article.
-  - [ ] Add to main navigation.
+- [x] **8.9 Home Page Portfolio Branding**: Add hero section with personal branding.
+  - [x] Add name, title, and tagline to home page.
+  - [x] Implement recommended split layout (bio left, dashboard right).
+  - [x] Add CTA buttons to key sections.
+  - [x] Ensure i18n support and mobile responsiveness.
+- [x] **8.10 Blog Feature Module**: Complete blog implementation for showcasing technical articles.
+  - [x] Create BlogStore (NgRx SignalStore) with articles state management.
+  - [x] Build BlogListComponent with search, filter, and pagination.
+  - [x] Build BlogDetailComponent with markdown rendering and syntax highlighting.
+  - [x] Use existing CardComponent for article previews.
+  - [x] Migrate existing phase articles to JSON format.
+  - [x] Configure routes and lazy loading.
+  - [x] Implement SEO meta tags per article.
+  - [x] Add to main navigation.
 - [ ] **8.11 Enhanced Dashboard Metrics**: Expand dashboard with comprehensive code quality metrics.
-  - [ ] Add Compodoc documentation coverage percentage and breakdown.
+  - [x] Add Compodoc documentation coverage percentage and breakdown.
   - [ ] Display detailed test coverage (statements, branches, functions, lines).
   - [ ] Show bundle size with budget status.
-  - [ ] Display linting status (errors/warnings count).
-  - [ ] Add dependency health metrics (total, outdated, vulnerabilities).
-  - [ ] Show Storybook coverage percentage.
-  - [ ] Display Git statistics (commits, last commit time).
-  - [ ] Add Lighthouse scores display.
-  - [ ] Create metric parsing scripts for build-time data.
-  - [ ] Use existing CardComponent and GridComponent for metric displays.
+  - [x] Display linting status (errors/warnings count).
+  - [x] Add dependency health metrics (total, outdated, vulnerabilities).
+  - [x] Show Storybook coverage percentage.
+  - [x] Display Git statistics (commits, last commit time).
+  - [x] Add Lighthouse scores display.
+  - [x] Create metric parsing scripts for build-time data.
+  - [x] Use existing CardComponent and GridComponent for metric displays.
 
 ---
 

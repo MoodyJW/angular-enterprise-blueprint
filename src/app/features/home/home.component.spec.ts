@@ -5,10 +5,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideRouter, RouterLink } from '@angular/router';
 import { SeoService } from '@core/services/seo/seo.service';
-import { ThemeService } from '@core/services/theme/theme.service';
 import { TranslocoTestingModule } from '@jsverse/transloco';
+import { ContainerComponent } from '@shared/components/container';
 import { HomeComponent } from './home.component';
-import { DashboardMetrics } from './services/dashboard.service';
+import { DashboardMetrics, ExtendedMetrics } from './services/dashboard.service';
 import { DashboardStore } from './state/dashboard.store';
 
 describe('HomeComponent', () => {
@@ -16,42 +16,42 @@ describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
   let mockStore: {
     metrics: ReturnType<typeof signal<DashboardMetrics | null>>;
-    activeVisitors: ReturnType<typeof signal<number>>;
+    extendedMetrics: ReturnType<typeof signal<ExtendedMetrics | null>>;
     isLoading: ReturnType<typeof signal<boolean>>;
     error: ReturnType<typeof signal<string | null>>;
     loadMetrics: ReturnType<typeof vi.fn>;
-    loadVisitors: ReturnType<typeof vi.fn>;
-  };
-  let mockThemeService: {
-    currentTheme: ReturnType<typeof signal<{ name: string }>>;
-    systemPrefersDark: ReturnType<typeof signal<boolean>>;
+    loadExtendedMetrics: ReturnType<typeof vi.fn>;
   };
   let mockSeoService: {
     updatePageSeo: ReturnType<typeof vi.fn>;
   };
 
   const mockMetrics: DashboardMetrics = {
+    generatedAt: '2024-01-01T00:00:00.000Z',
     testCoverage: { value: 96, trend: 'up', lastUpdated: '2024-01-01' },
     lighthouse: { performance: 98, accessibility: 100, bestPractices: 100, seo: 100 },
     buildStatus: 'passing',
     deployStatus: 'success',
     systemStatus: 'operational',
     activeModules: 4,
+    extended: {
+      testCoverage: { available: true, value: 96, trend: 'up' },
+      documentation: { available: true, percentage: 80 },
+      git: { available: true, commits: 100 },
+      linting: { available: true, errors: 0, warnings: 0 },
+      dependencies: { available: true, total: 50 },
+      bundleSize: { available: false },
+    },
   };
 
   beforeEach(async () => {
     mockStore = {
       metrics: signal(mockMetrics),
-      activeVisitors: signal(42),
+      extendedMetrics: signal(null),
       isLoading: signal(false),
       error: signal(null),
       loadMetrics: vi.fn(),
-      loadVisitors: vi.fn(),
-    };
-
-    mockThemeService = {
-      currentTheme: signal({ name: 'Daylight' }),
-      systemPrefersDark: signal(false),
+      loadExtendedMetrics: vi.fn(),
     };
 
     mockSeoService = {
@@ -117,7 +117,6 @@ describe('HomeComponent', () => {
         provideHttpClient(),
         provideHttpClientTesting(),
         provideRouter([]),
-        { provide: ThemeService, useValue: mockThemeService },
         { provide: SeoService, useValue: mockSeoService },
       ],
     })
@@ -137,9 +136,9 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should load metrics and visitors on init', () => {
+  it('should load metrics and extended metrics on init', () => {
     expect(mockStore.loadMetrics).toHaveBeenCalled();
-    expect(mockStore.loadVisitors).toHaveBeenCalled();
+    expect(mockStore.loadExtendedMetrics).toHaveBeenCalled();
     expect(mockSeoService.updatePageSeo).toHaveBeenCalledWith({
       title: 'Dashboard',
       meta: {
@@ -170,9 +169,8 @@ describe('HomeComponent', () => {
     expect((h2[1].nativeElement as HTMLElement).textContent).toContain('System Status');
 
     const h3 = fixture.debugElement.queryAll(By.css('h3'));
-    // Dashboard Cards: Operational, Project Health, Visitors, Theme, CTA
-    expect(h3.length).toBe(5);
-    expect((h3[4].nativeElement as HTMLElement).textContent).toContain('Ready to Start?');
+    // Dashboard Cards: Operational, Project Health (Theme and CTA removed)
+    expect(h3.length).toBe(2);
   });
 
   describe('Hero Section', () => {
@@ -214,26 +212,6 @@ describe('HomeComponent', () => {
   it('should render test coverage', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.textContent).toContain('96%');
-  });
-
-  it('should render active visitors from store', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.textContent).toContain('42');
-
-    // Update store signal
-    mockStore.activeVisitors.set(99);
-    fixture.detectChanges();
-    expect(compiled.textContent).toContain('99');
-  });
-
-  it('should display active theme from service', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.textContent).toContain('Daylight');
-
-    // Update theme signal
-    mockThemeService.currentTheme.set({ name: 'Midnight' });
-    fixture.detectChanges();
-    expect(compiled.textContent).toContain('Midnight');
   });
 
   describe('getTrendIcon', () => {
@@ -289,22 +267,6 @@ describe('HomeComponent', () => {
 
       const compiled = fixture.nativeElement as HTMLElement;
       expect(compiled.textContent).not.toContain('96%');
-    });
-
-    it('should display system preference as Dark Mode when systemPrefersDark is true', () => {
-      mockThemeService.systemPrefersDark.set(true);
-      fixture.detectChanges();
-
-      const compiled = fixture.nativeElement as HTMLElement;
-      expect(compiled.textContent).toContain('Dark Mode');
-    });
-
-    it('should display system preference as Light Mode when systemPrefersDark is false', () => {
-      mockThemeService.systemPrefersDark.set(false);
-      fixture.detectChanges();
-
-      const compiled = fixture.nativeElement as HTMLElement;
-      expect(compiled.textContent).toContain('Light Mode');
     });
 
     it('should render trend icon in template', () => {
@@ -379,6 +341,21 @@ describe('HomeComponent', () => {
 
       const compiled = fixture.nativeElement as HTMLElement;
       expect(compiled.textContent).toContain('Failed');
+    });
+  });
+
+  describe('Layout', () => {
+    it('should use large padding on container for proper mobile spacing', () => {
+      const container = fixture.debugElement.query(By.css('eb-container'));
+      expect(container).toBeTruthy();
+      // Check signal input value
+      const containerInstance = container.componentInstance as ContainerComponent;
+      expect(containerInstance.padding()).toBe('lg');
+    });
+
+    it('should have hero actions container for button layout', () => {
+      const actions = fixture.debugElement.query(By.css('.home__hero-actions'));
+      expect(actions).toBeTruthy();
     });
   });
 });

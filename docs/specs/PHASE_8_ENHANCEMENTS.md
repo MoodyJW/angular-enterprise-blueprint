@@ -840,17 +840,17 @@ Migrate existing blog articles from phase completion:
 
 ### Acceptance Criteria
 
-- [ ] BlogStore created with full CRUD operations
-- [ ] BlogListComponent with search, filter, and sort
-- [ ] BlogDetailComponent with markdown rendering and syntax highlighting
-- [ ] All existing phase articles migrated to JSON format
-- [ ] Routes configured and lazy-loaded
-- [ ] SEO meta tags dynamic per article
-- [ ] Storybook stories for BlogCardComponent
-- [ ] Unit tests for store and components (85%+ coverage)
-- [ ] E2E tests for navigation and filtering
-- [ ] Mobile responsive design
-- [ ] WCAG 2.1 AA compliant
+- [x] BlogStore created with full CRUD operations
+- [x] BlogListComponent with search, filter, and sort
+- [x] BlogDetailComponent with markdown rendering and syntax highlighting
+- [x] All existing phase articles migrated to JSON format
+- [x] Routes configured and lazy-loaded
+- [x] SEO meta tags dynamic per article
+- [x] Storybook stories for BlogCardComponent
+- [x] Unit tests for store and components (85%+ coverage)
+- [x] E2E tests for navigation and filtering
+- [x] Mobile responsive design
+- [x] WCAG 2.1 AA compliant
 
 ---
 
@@ -875,7 +875,7 @@ Expand the home dashboard to display real, actionable metrics that demonstrate c
 
 2. **Test Coverage Details**
    - Expand beyond single percentage
-   - Show breakdown: Statements, Branches, Functions, Lines
+   - Show breakdown: Statements, Functions, Lines (skip branches)
    - Visual indicators for each metric
    - Trend indicator (if coverage increased/decreased)
 
@@ -903,7 +903,7 @@ Expand the home dashboard to display real, actionable metrics that demonstrate c
 
 **Project Activity Metrics:**
 
-7. **Git Statistics**
+7. **Git Statistics for this Repo**
    - Total commits
    - Active branches count
    - Last commit timestamp
@@ -1068,7 +1068,7 @@ interface BundleSize {
 ### Acceptance Criteria
 
 - [ ] Compodoc documentation coverage displayed with percentage and breakdown
-- [ ] Test coverage shows all 4 metrics (statements, branches, functions, lines)
+- [ ] Test coverage shows all 3 metrics (statements, functions, lines)
 - [ ] Bundle size displayed with budget status
 - [ ] Linting status shows error/warning counts
 - [ ] Dependency health metrics displayed

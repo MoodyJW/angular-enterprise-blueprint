@@ -1,28 +1,44 @@
 import { TestBed } from '@angular/core/testing';
-import { DashboardMetrics, DashboardService } from '@features/home/services/dashboard.service';
+import {
+  DashboardMetrics,
+  DashboardService,
+  ExtendedMetrics,
+} from '@features/home/services/dashboard.service';
 import { of, throwError } from 'rxjs';
 import { DashboardStore } from './dashboard.store';
 
 describe('DashboardStore', () => {
   let store: InstanceType<typeof DashboardStore>;
 
+  const mockExtendedMetrics: ExtendedMetrics = {
+    testCoverage: { available: true, value: 95 },
+    documentation: { available: true, percentage: 80 },
+    git: { available: true, commits: 100 },
+    linting: { available: true, errors: 0, warnings: 0 },
+    dependencies: { available: true, total: 50, outdated: 5 },
+    bundleSize: { available: false, message: 'Not built' },
+    lighthouse: { available: true, performance: 90 },
+  };
+
   const mockMetrics: DashboardMetrics = {
+    generatedAt: '2024-01-01T00:00:00.000Z',
     testCoverage: { value: 95, trend: 'up', lastUpdated: '2024-01-01' },
     lighthouse: { performance: 100, accessibility: 100, bestPractices: 100, seo: 100 },
     buildStatus: 'passing',
     deployStatus: 'success',
     systemStatus: 'operational',
     activeModules: 5,
+    extended: mockExtendedMetrics,
   };
 
   const mockService = {
     getMetrics: vi.fn(),
-    getRealTimeVisitors: vi.fn(),
+    getExtendedMetrics: vi.fn(),
   };
 
   beforeEach(() => {
     mockService.getMetrics.mockReturnValue(of(mockMetrics));
-    mockService.getRealTimeVisitors.mockReturnValue(of(42));
+    mockService.getExtendedMetrics.mockReturnValue(of(mockExtendedMetrics));
 
     TestBed.configureTestingModule({
       providers: [DashboardStore, { provide: DashboardService, useValue: mockService }],
@@ -33,16 +49,13 @@ describe('DashboardStore', () => {
 
   it('should initialize with default state', () => {
     expect(store.metrics()).toBeNull();
+    expect(store.extendedMetrics()).toBeNull();
     expect(store.isLoading()).toBe(false);
     expect(store.error()).toBeNull();
-    expect(store.activeVisitors()).toBe(0);
   });
 
   describe('loadMetrics', () => {
     it('should set isLoading to true then load metrics on success', () => {
-      // Create a subject or slightly delayed observable if we want to test intermediate state
-      // But for rxMethod with immediate observable, it updates synchronously in tests often
-
       store.loadMetrics();
 
       expect(mockService.getMetrics).toHaveBeenCalled();
@@ -72,12 +85,21 @@ describe('DashboardStore', () => {
     });
   });
 
-  describe('loadVisitors', () => {
-    it('should update activeVisitors', () => {
-      store.loadVisitors();
+  describe('loadExtendedMetrics', () => {
+    it('should load extended metrics on success', () => {
+      store.loadExtendedMetrics();
 
-      expect(mockService.getRealTimeVisitors).toHaveBeenCalled();
-      expect(store.activeVisitors()).toBe(42);
+      expect(mockService.getExtendedMetrics).toHaveBeenCalled();
+      expect(store.extendedMetrics()).toEqual(mockExtendedMetrics);
+    });
+
+    it('should silently fail without setting error state', () => {
+      mockService.getExtendedMetrics.mockReturnValue(throwError(() => new Error('Failed')));
+
+      store.loadExtendedMetrics();
+
+      expect(store.extendedMetrics()).toBeNull();
+      expect(store.error()).toBeNull(); // Should not set error
     });
   });
 });
