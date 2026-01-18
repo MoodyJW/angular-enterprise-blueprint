@@ -11,7 +11,6 @@
     />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="preload" href="assets/i18n/en.json" as="fetch" crossorigin="anonymous" />
-    <link rel="preload" href="assets/data/metrics.json" as="fetch" crossorigin="anonymous" />
 
     <!-- Resource hints for external origins -->
     <link rel="preconnect" href="https://api.github.com" crossorigin />
@@ -40,33 +39,17 @@
   </head>
 
   <body>
-    <!-- Theme FOUC prevention: Set theme before Angular loads -->
+    <!-- Theme FOUC prevention -->
     <script>
-      (function () {
-        var storageKey = 'theme-id';
-        var defaultLight = 'light-default';
-        var defaultDark = 'dark-default';
-
-        // Check URL param first (for testing)
-        var urlParams = new URLSearchParams(window.location.search);
-        var themeParam = urlParams.get('theme');
-        if (themeParam) {
-          document.documentElement.setAttribute('data-theme', themeParam);
-          return;
-        }
-
-        // Check localStorage
-        var stored = localStorage.getItem(storageKey);
-        if (stored) {
-          document.documentElement.setAttribute('data-theme', stored);
-          return;
-        }
-
-        // Fall back to system preference
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      !(function () {
+        var e = new URLSearchParams(location.search).get('theme');
+        if (e) return void document.documentElement.setAttribute('data-theme', e);
+        var t = localStorage.getItem('theme-id');
         document.documentElement.setAttribute(
           'data-theme',
-          prefersDark ? defaultDark : defaultLight,
+          t || matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark-default'
+            : 'light-default',
         );
       })();
     </script>
