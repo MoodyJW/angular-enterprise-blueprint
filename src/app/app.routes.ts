@@ -6,10 +6,11 @@ import { Routes } from '@angular/router';
  * Uses lazy loading for all feature modules to optimize bundle size.
  * Routes are ordered by specificity, with wildcard fallback at the end.
  *
- * Smart Preloading:
- * - Routes marked with `data: { preload: true }` are downloaded during idle time
- * - `preloadDelay` determines when to start downloading (milliseconds after page load)
- * - High-traffic routes have shorter delays, low-traffic routes aren't preloaded
+ * Smart Idle-Based Preloading:
+ * - Routes marked with `data: { preload: true }` are downloaded during browser idle time
+ * - `preloadPriority` determines loading order (lower number = higher priority)
+ * - Uses requestIdleCallback to avoid interfering with Lighthouse measurements
+ * - High-traffic routes have lower priority numbers, low-traffic routes aren't preloaded
  */
 export const routes: Routes = [
   {
@@ -26,8 +27,8 @@ export const routes: Routes = [
         path: '',
         loadComponent: () => import('./features/modules').then((m) => m.ModulesComponent),
         title: 'Reference Modules | Enterprise Blueprint',
-        // HIGH PRIORITY: Most likely next navigation from home
-        data: { preload: true, preloadDelay: 1000 },
+        // PRIORITY 1 (Highest): Most likely next navigation from home
+        data: { preload: true, preloadPriority: 1 },
       },
       {
         path: ':id',
@@ -43,29 +44,29 @@ export const routes: Routes = [
     path: 'blog',
     loadChildren: () => import('./features/blog/blog.routes').then((m) => m.routes),
     title: 'Engineering Blog | Enterprise Blueprint',
-    // HIGH PRIORITY: High traffic route
-    data: { preload: true, preloadDelay: 2000 },
+    // PRIORITY 2: High traffic route
+    data: { preload: true, preloadPriority: 2 },
   },
   {
     path: 'architecture',
     loadChildren: () =>
       import('./features/architecture/architecture.routes').then((m) => m.ARCHITECTURE_ROUTES),
-    // LOW PRIORITY: Less frequently visited, don't preload
+    // Don't preload - less frequently visited
     data: { preload: false },
   },
   {
     path: 'profile',
     loadComponent: () => import('./features/profile').then((m) => m.ProfileComponent),
     title: 'The Architect | Enterprise Blueprint',
-    // MEDIUM PRIORITY: Preload after other critical routes
-    data: { preload: true, preloadDelay: 4000 },
+    // PRIORITY 3: Medium priority
+    data: { preload: true, preloadPriority: 3 },
   },
   {
     path: 'contact',
     loadComponent: () => import('./features/contact').then((m) => m.ContactComponent),
     title: 'Contact | Enterprise Blueprint',
-    // MEDIUM PRIORITY: Preload after other critical routes
-    data: { preload: true, preloadDelay: 5000 },
+    // PRIORITY 4: Lower priority
+    data: { preload: true, preloadPriority: 4 },
   },
   {
     path: 'auth',

@@ -40,7 +40,8 @@ export const appConfig: ApplicationConfig = {
     provideEnvironment(),
     provideRouter(
       routes,
-      // Smart selective preloading: downloads high-traffic routes during idle time
+      // Use idle-based preloading to load chunks during browser idle time
+      // This avoids interference with Lighthouse measurements while still preloading high-traffic routes
       withPreloading(SmartPreloadStrategy),
       // Restore scroll position on navigation
       withInMemoryScrolling({

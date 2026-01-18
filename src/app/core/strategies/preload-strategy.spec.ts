@@ -8,6 +8,8 @@ describe('SmartPreloadStrategy', () => {
   let strategy: SmartPreloadStrategy;
   let mockLoad: () => Observable<unknown>;
   let consoleLogSpy: ReturnType<typeof vi.spyOn>;
+  let consoleErrorSpy: ReturnType<typeof vi.spyOn>;
+  let originalRequestIdleCallback: typeof window.requestIdleCallback | undefined;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -17,11 +19,19 @@ describe('SmartPreloadStrategy', () => {
     strategy = TestBed.inject(SmartPreloadStrategy);
     mockLoad = vi.fn().mockReturnValue(of('loaded'));
     consoleLogSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+    consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    // Save original requestIdleCallback for restoration
+    originalRequestIdleCallback = window.requestIdleCallback;
   });
 
   afterEach(() => {
     vi.restoreAllMocks();
     vi.useRealTimers();
+    // Restore original requestIdleCallback
+    if (originalRequestIdleCallback) {
+      window.requestIdleCallback = originalRequestIdleCallback;
+    }
     TestBed.resetTestingModule();
   });
 
@@ -71,343 +81,362 @@ describe('SmartPreloadStrategy', () => {
     });
   });
 
-  describe('preload with default delay', () => {
-    it('should preload routes without explicit preload flag after default delay', () => {
-      vi.useFakeTimers();
+  describe('idle-based preloading with requestIdleCallback', () => {
+    it('should use requestIdleCallback when available', async () => {
+      const mockRequestIdleCallback = vi.fn((callback: IdleRequestCallback) => {
+        // Execute callback immediately for testing
+        callback({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+        return 1;
+      });
+
+      window.requestIdleCallback =
+        mockRequestIdleCallback as unknown as typeof window.requestIdleCallback;
 
       const route: Route = {
         path: 'modules',
+        data: { preload: true, preloadPriority: 1 },
       };
 
-      const result$ = strategy.preload(route, mockLoad);
+      strategy.preload(route, mockLoad).subscribe();
 
-      const subscription = result$.subscribe({
-        next: () => {
-          expect(mockLoad).toHaveBeenCalledOnce();
-          expect(consoleLogSpy).toHaveBeenCalledWith('[Preload] Loading route: modules');
-        },
-      });
+      // Wait for async processing
+      await new Promise((resolve) => setTimeout(resolve, 10));
 
-      // Fast-forward time by 2000ms (default delay)
-      vi.advanceTimersByTime(2000);
-
-      subscription.unsubscribe();
+      expect(mockRequestIdleCallback).toHaveBeenCalled();
+      expect(mockLoad).toHaveBeenCalledOnce();
     });
 
-    it('should use 2000ms as default delay when preloadDelay is not specified', () => {
+    it('should fall back to setTimeout when requestIdleCallback is not available', () => {
       vi.useFakeTimers();
 
+      // Remove requestIdleCallback to test fallback
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+      delete (window as any).requestIdleCallback;
+
       const route: Route = {
-        path: 'blog',
-        data: { preload: true },
+        path: 'modules',
+        data: { preload: true, preloadPriority: 1 },
+      };
+
+      strategy.preload(route, mockLoad).subscribe();
+
+      // Fast-forward time for setTimeout fallback (50ms)
+      vi.advanceTimersByTime(50);
+
+      expect(mockLoad).toHaveBeenCalledOnce();
+    });
+
+    it('should return null immediately without blocking', () => {
+      const route: Route = {
+        path: 'modules',
+        data: { preload: true, preloadPriority: 1 },
       };
 
       const result$ = strategy.preload(route, mockLoad);
 
-      result$.subscribe();
-
-      // Should not load before 2000ms
-      vi.advanceTimersByTime(1999);
-      expect(mockLoad).not.toHaveBeenCalled();
-
-      // Should load at 2000ms
-      vi.advanceTimersByTime(1);
-      expect(mockLoad).toHaveBeenCalledOnce();
+      result$.subscribe({
+        next: (value) => {
+          expect(value).toBeNull();
+        },
+      });
     });
   });
 
-  describe('preload with custom delay', () => {
-    it('should respect custom preloadDelay from route data', () => {
-      vi.useFakeTimers();
+  describe('priority-based queue processing', () => {
+    it('should process routes in priority order (lower number = higher priority)', async () => {
+      const mockRequestIdleCallback = vi.fn();
+      const callbacks: IdleRequestCallback[] = [];
 
-      const route: Route = {
-        path: 'modules',
-        data: { preload: true, preloadDelay: 1000 },
+      // Capture callbacks instead of executing them immediately
+      mockRequestIdleCallback.mockImplementation((callback: IdleRequestCallback) => {
+        callbacks.push(callback);
+        return callbacks.length;
+      });
+
+      window.requestIdleCallback =
+        mockRequestIdleCallback as unknown as typeof window.requestIdleCallback;
+
+      const mockLoad1 = vi.fn().mockReturnValue(of('loaded1'));
+      const mockLoad2 = vi.fn().mockReturnValue(of('loaded2'));
+      const mockLoad3 = vi.fn().mockReturnValue(of('loaded3'));
+
+      const route1: Route = { path: 'low-priority', data: { preload: true, preloadPriority: 3 } };
+      const route2: Route = { path: 'high-priority', data: { preload: true, preloadPriority: 1 } };
+      const route3: Route = {
+        path: 'medium-priority',
+        data: { preload: true, preloadPriority: 2 },
       };
 
-      const result$ = strategy.preload(route, mockLoad);
+      // Add routes in non-priority order
+      strategy.preload(route1, mockLoad1).subscribe();
+      strategy.preload(route2, mockLoad2).subscribe();
+      strategy.preload(route3, mockLoad3).subscribe();
 
-      result$.subscribe();
+      // Execute first callback (should be high-priority)
+      callbacks[0]({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+      await new Promise((resolve) => setTimeout(resolve, 10));
+      expect(mockLoad2).toHaveBeenCalled(); // high-priority first
 
-      // Should not load before custom delay
-      vi.advanceTimersByTime(999);
-      expect(mockLoad).not.toHaveBeenCalled();
+      // Execute second callback (should be medium-priority)
+      callbacks[1]({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+      await new Promise((resolve) => setTimeout(resolve, 10));
+      expect(mockLoad3).toHaveBeenCalled(); // medium-priority second
 
-      // Should load at custom delay
-      vi.advanceTimersByTime(1);
-      expect(mockLoad).toHaveBeenCalledOnce();
+      // Execute third callback (should be low-priority)
+      callbacks[2]({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+      await new Promise((resolve) => setTimeout(resolve, 10));
+      expect(mockLoad1).toHaveBeenCalled(); // low-priority last
     });
 
-    it('should support different delays for different routes', () => {
-      vi.useFakeTimers();
+    it('should use default priority of 99 when not specified', async () => {
+      const mockRequestIdleCallback = vi.fn((callback: IdleRequestCallback) => {
+        callback({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+        return 1;
+      });
 
-      const route1: Route = {
-        path: 'high-priority',
-        data: { preload: true, preloadDelay: 500 },
+      window.requestIdleCallback =
+        mockRequestIdleCallback as unknown as typeof window.requestIdleCallback;
+
+      const route: Route = {
+        path: 'no-priority',
+        data: { preload: true },
       };
 
-      const route2: Route = {
-        path: 'low-priority',
-        data: { preload: true, preloadDelay: 5000 },
-      };
+      strategy.preload(route, mockLoad).subscribe();
+
+      await new Promise((resolve) => setTimeout(resolve, 10));
+
+      expect(consoleLogSpy).toHaveBeenCalledWith(
+        '[Preload] Loading route: no-priority (priority: 99)',
+      );
+    });
+
+    it('should process queue one item at a time', async () => {
+      const callbacks: IdleRequestCallback[] = [];
+      const mockRequestIdleCallback = vi.fn((callback: IdleRequestCallback) => {
+        callbacks.push(callback);
+        return callbacks.length;
+      });
+
+      window.requestIdleCallback =
+        mockRequestIdleCallback as unknown as typeof window.requestIdleCallback;
 
       const mockLoad1 = vi.fn().mockReturnValue(of('loaded1'));
       const mockLoad2 = vi.fn().mockReturnValue(of('loaded2'));
 
-      strategy.preload(route1, mockLoad1).subscribe();
-      strategy.preload(route2, mockLoad2).subscribe();
+      strategy
+        .preload({ path: 'route1', data: { preload: true, preloadPriority: 1 } }, mockLoad1)
+        .subscribe();
+      strategy
+        .preload({ path: 'route2', data: { preload: true, preloadPriority: 2 } }, mockLoad2)
+        .subscribe();
 
-      // After 500ms, only high-priority should load
-      vi.advanceTimersByTime(500);
+      // First callback should only process first route
+      callbacks[0]({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+      await new Promise((resolve) => setTimeout(resolve, 10));
+
       expect(mockLoad1).toHaveBeenCalledOnce();
       expect(mockLoad2).not.toHaveBeenCalled();
 
-      // After 5000ms total, low-priority should also load
-      vi.advanceTimersByTime(4500);
+      // Second callback should process second route
+      callbacks[1]({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+      await new Promise((resolve) => setTimeout(resolve, 10));
+
       expect(mockLoad2).toHaveBeenCalledOnce();
-    });
-
-    it('should allow zero delay for immediate preloading', () => {
-      vi.useFakeTimers();
-
-      const route: Route = {
-        path: 'immediate',
-        data: { preload: true, preloadDelay: 0 },
-      };
-
-      const result$ = strategy.preload(route, mockLoad);
-
-      result$.subscribe({
-        next: () => {
-          expect(mockLoad).toHaveBeenCalledOnce();
-        },
-      });
-
-      // Advance by 0ms (timer with 0 delay fires on next tick)
-      vi.advanceTimersByTime(0);
     });
   });
 
   describe('console logging', () => {
-    it('should log preload action with route path', () => {
-      vi.useFakeTimers();
+    it('should log preload action with route path and priority', async () => {
+      const mockRequestIdleCallback = vi.fn((callback: IdleRequestCallback) => {
+        callback({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+        return 1;
+      });
+
+      window.requestIdleCallback =
+        mockRequestIdleCallback as unknown as typeof window.requestIdleCallback;
 
       const route: Route = {
         path: 'test-route',
-        data: { preload: true, preloadDelay: 0 },
+        data: { preload: true, preloadPriority: 2 },
       };
 
-      const result$ = strategy.preload(route, mockLoad);
+      strategy.preload(route, mockLoad).subscribe();
 
-      result$.subscribe({
-        next: () => {
-          expect(consoleLogSpy).toHaveBeenCalledWith('[Preload] Loading route: test-route');
-        },
-      });
+      await new Promise((resolve) => setTimeout(resolve, 10));
 
-      vi.advanceTimersByTime(0);
+      expect(consoleLogSpy).toHaveBeenCalledWith(
+        '[Preload] Loading route: test-route (priority: 2)',
+      );
     });
 
-    it('should log "root" for routes without path', () => {
-      vi.useFakeTimers();
+    it('should log "root" for routes without path', async () => {
+      const mockRequestIdleCallback = vi.fn((callback: IdleRequestCallback) => {
+        callback({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+        return 1;
+      });
+
+      window.requestIdleCallback =
+        mockRequestIdleCallback as unknown as typeof window.requestIdleCallback;
 
       const route: Route = {
         path: '',
-        data: { preload: true, preloadDelay: 0 },
+        data: { preload: true, preloadPriority: 1 },
       };
 
-      const result$ = strategy.preload(route, mockLoad);
+      strategy.preload(route, mockLoad).subscribe();
 
-      result$.subscribe({
-        next: () => {
-          expect(consoleLogSpy).toHaveBeenCalledWith('[Preload] Loading route: root');
-        },
-      });
+      await new Promise((resolve) => setTimeout(resolve, 10));
 
-      vi.advanceTimersByTime(0);
+      expect(consoleLogSpy).toHaveBeenCalledWith('[Preload] Loading route: root (priority: 1)');
     });
 
-    it('should log "root" for undefined path', () => {
-      vi.useFakeTimers();
-
-      const route: Route = {
-        data: { preload: true, preloadDelay: 0 },
-      };
-
-      const result$ = strategy.preload(route, mockLoad);
-
-      result$.subscribe({
-        next: () => {
-          expect(consoleLogSpy).toHaveBeenCalledWith('[Preload] Loading route: root');
-        },
+    it('should log "root" for undefined path', async () => {
+      const mockRequestIdleCallback = vi.fn((callback: IdleRequestCallback) => {
+        callback({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+        return 1;
       });
 
-      vi.advanceTimersByTime(0);
+      window.requestIdleCallback =
+        mockRequestIdleCallback as unknown as typeof window.requestIdleCallback;
+
+      const route: Route = {
+        data: { preload: true, preloadPriority: 1 },
+      };
+
+      strategy.preload(route, mockLoad).subscribe();
+
+      await new Promise((resolve) => setTimeout(resolve, 10));
+
+      expect(consoleLogSpy).toHaveBeenCalledWith('[Preload] Loading route: root (priority: 1)');
     });
   });
 
-  describe('load function invocation', () => {
-    it('should call the load function once after delay', () => {
-      vi.useFakeTimers();
-
-      const route: Route = {
-        path: 'test',
-        data: { preload: true, preloadDelay: 100 },
-      };
-
-      const result$ = strategy.preload(route, mockLoad);
-
-      result$.subscribe({
-        next: () => {
-          expect(mockLoad).toHaveBeenCalledOnce();
-          expect(mockLoad).toHaveBeenCalledWith();
-        },
+  describe('error handling', () => {
+    it('should log errors and continue processing queue', async () => {
+      const callbacks: IdleRequestCallback[] = [];
+      const mockRequestIdleCallback = vi.fn((callback: IdleRequestCallback) => {
+        callbacks.push(callback);
+        return callbacks.length;
       });
 
-      vi.advanceTimersByTime(100);
-    });
-
-    it('should return the result from the load function', () => {
-      vi.useFakeTimers();
-
-      const route: Route = {
-        path: 'test',
-        data: { preload: true, preloadDelay: 0 },
-      };
-
-      const expectedResult = { module: 'TestModule' };
-      const customLoad = vi.fn().mockReturnValue(of(expectedResult));
-
-      const result$ = strategy.preload(route, customLoad);
-
-      result$.subscribe({
-        next: (value) => {
-          expect(value).toEqual(expectedResult);
-        },
-      });
-
-      vi.advanceTimersByTime(0);
-    });
-
-    it('should propagate errors from load function', () => {
-      vi.useFakeTimers();
-
-      const route: Route = {
-        path: 'test',
-        data: { preload: true, preloadDelay: 0 },
-      };
+      window.requestIdleCallback =
+        mockRequestIdleCallback as unknown as typeof window.requestIdleCallback;
 
       const error = new Error('Load failed');
       const failingLoad = vi.fn().mockReturnValue(throwError(() => error));
+      const successLoad = vi.fn().mockReturnValue(of('loaded'));
 
-      const result$ = strategy.preload(route, failingLoad);
+      strategy
+        .preload({ path: 'failing', data: { preload: true, preloadPriority: 1 } }, failingLoad)
+        .subscribe();
+      strategy
+        .preload({ path: 'success', data: { preload: true, preloadPriority: 2 } }, successLoad)
+        .subscribe();
 
-      result$.subscribe({
-        error: (err) => {
-          expect(err).toBe(error);
-        },
-      });
+      // Process first route (fails)
+      callbacks[0]({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+      await new Promise((resolve) => setTimeout(resolve, 10));
 
-      vi.advanceTimersByTime(0);
+      expect(consoleErrorSpy).toHaveBeenCalledWith(
+        '[Preload] Failed to load route: failing',
+        error,
+      );
+
+      // Process second route (succeeds despite first failing)
+      callbacks[1]({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+      await new Promise((resolve) => setTimeout(resolve, 10));
+
+      expect(successLoad).toHaveBeenCalledOnce();
     });
   });
 
   describe('edge cases', () => {
-    it('should handle route without data property', () => {
-      vi.useFakeTimers();
+    it('should handle route without data property', async () => {
+      const mockRequestIdleCallback = vi.fn((callback: IdleRequestCallback) => {
+        callback({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+        return 1;
+      });
+
+      window.requestIdleCallback =
+        mockRequestIdleCallback as unknown as typeof window.requestIdleCallback;
 
       const route: Route = {
         path: 'no-data',
       };
 
-      const result$ = strategy.preload(route, mockLoad);
+      strategy.preload(route, mockLoad).subscribe();
 
-      result$.subscribe({
-        next: () => {
-          expect(mockLoad).toHaveBeenCalledOnce();
-        },
-      });
+      await new Promise((resolve) => setTimeout(resolve, 10));
 
-      vi.advanceTimersByTime(2000);
+      expect(mockLoad).toHaveBeenCalledOnce();
+      expect(consoleLogSpy).toHaveBeenCalledWith('[Preload] Loading route: no-data (priority: 99)');
     });
 
-    it('should handle route with empty data object', () => {
-      vi.useFakeTimers();
+    it('should handle route with empty data object', async () => {
+      const mockRequestIdleCallback = vi.fn((callback: IdleRequestCallback) => {
+        callback({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+        return 1;
+      });
+
+      window.requestIdleCallback =
+        mockRequestIdleCallback as unknown as typeof window.requestIdleCallback;
 
       const route: Route = {
         path: 'empty-data',
         data: {},
       };
 
-      const result$ = strategy.preload(route, mockLoad);
+      strategy.preload(route, mockLoad).subscribe();
 
-      result$.subscribe({
-        next: () => {
-          expect(mockLoad).toHaveBeenCalledOnce();
-        },
-      });
+      await new Promise((resolve) => setTimeout(resolve, 10));
 
-      vi.advanceTimersByTime(2000);
+      expect(mockLoad).toHaveBeenCalledOnce();
     });
 
-    it('should handle route with preload: true but no delay specified', () => {
-      vi.useFakeTimers();
+    it('should handle route with preload: true but no priority specified', async () => {
+      const mockRequestIdleCallback = vi.fn((callback: IdleRequestCallback) => {
+        callback({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+        return 1;
+      });
+
+      window.requestIdleCallback =
+        mockRequestIdleCallback as unknown as typeof window.requestIdleCallback;
 
       const route: Route = {
         path: 'explicit-preload',
         data: { preload: true },
       };
 
-      const result$ = strategy.preload(route, mockLoad);
+      strategy.preload(route, mockLoad).subscribe();
 
-      result$.subscribe({
-        next: () => {
-          expect(mockLoad).toHaveBeenCalledOnce();
-        },
-      });
+      await new Promise((resolve) => setTimeout(resolve, 10));
 
-      vi.advanceTimersByTime(2000);
-    });
-
-    it('should handle very long delays', () => {
-      vi.useFakeTimers();
-
-      const route: Route = {
-        path: 'long-delay',
-        data: { preload: true, preloadDelay: 10000 },
-      };
-
-      const result$ = strategy.preload(route, mockLoad);
-
-      result$.subscribe();
-
-      vi.advanceTimersByTime(9999);
-      expect(mockLoad).not.toHaveBeenCalled();
-
-      vi.advanceTimersByTime(1);
       expect(mockLoad).toHaveBeenCalledOnce();
     });
   });
 
   describe('real-world route configurations', () => {
-    it('should handle modules route with 1s delay', () => {
-      vi.useFakeTimers();
+    it('should handle modules route with priority 1', async () => {
+      const mockRequestIdleCallback = vi.fn((callback: IdleRequestCallback) => {
+        callback({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+        return 1;
+      });
+
+      window.requestIdleCallback =
+        mockRequestIdleCallback as unknown as typeof window.requestIdleCallback;
 
       const route: Route = {
         path: 'modules',
-        data: { preload: true, preloadDelay: 1000 },
+        data: { preload: true, preloadPriority: 1 },
       };
 
-      const result$ = strategy.preload(route, mockLoad);
+      strategy.preload(route, mockLoad).subscribe();
 
-      result$.subscribe({
-        next: () => {
-          expect(mockLoad).toHaveBeenCalledOnce();
-          expect(consoleLogSpy).toHaveBeenCalledWith('[Preload] Loading route: modules');
-        },
-      });
+      await new Promise((resolve) => setTimeout(resolve, 10));
 
-      vi.advanceTimersByTime(1000);
+      expect(mockLoad).toHaveBeenCalledOnce();
+      expect(consoleLogSpy).toHaveBeenCalledWith('[Preload] Loading route: modules (priority: 1)');
     });
 
     it('should not preload architecture route', () => {
@@ -426,78 +455,48 @@ describe('SmartPreloadStrategy', () => {
       });
     });
 
-    it('should handle blog route with 2s delay', () => {
-      vi.useFakeTimers();
+    it('should handle blog route with priority 2', async () => {
+      const mockRequestIdleCallback = vi.fn((callback: IdleRequestCallback) => {
+        callback({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+        return 1;
+      });
+
+      window.requestIdleCallback =
+        mockRequestIdleCallback as unknown as typeof window.requestIdleCallback;
 
       const route: Route = {
         path: 'blog',
-        data: { preload: true, preloadDelay: 2000 },
+        data: { preload: true, preloadPriority: 2 },
       };
 
-      const result$ = strategy.preload(route, mockLoad);
+      strategy.preload(route, mockLoad).subscribe();
 
-      result$.subscribe({
-        next: () => {
-          expect(mockLoad).toHaveBeenCalledOnce();
-        },
-      });
+      await new Promise((resolve) => setTimeout(resolve, 10));
 
-      vi.advanceTimersByTime(2000);
+      expect(mockLoad).toHaveBeenCalledOnce();
+      expect(consoleLogSpy).toHaveBeenCalledWith('[Preload] Loading route: blog (priority: 2)');
     });
 
-    it('should handle contact route with 5s delay', () => {
-      vi.useFakeTimers();
+    it('should handle contact route with priority 4', async () => {
+      const mockRequestIdleCallback = vi.fn((callback: IdleRequestCallback) => {
+        callback({ didTimeout: false, timeRemaining: () => 50 } as IdleDeadline);
+        return 1;
+      });
+
+      window.requestIdleCallback =
+        mockRequestIdleCallback as unknown as typeof window.requestIdleCallback;
 
       const route: Route = {
         path: 'contact',
-        data: { preload: true, preloadDelay: 5000 },
+        data: { preload: true, preloadPriority: 4 },
       };
 
-      const result$ = strategy.preload(route, mockLoad);
+      strategy.preload(route, mockLoad).subscribe();
 
-      result$.subscribe({
-        next: () => {
-          expect(mockLoad).toHaveBeenCalledOnce();
-        },
-      });
+      await new Promise((resolve) => setTimeout(resolve, 10));
 
-      vi.advanceTimersByTime(5000);
-    });
-  });
-
-  describe('concurrent preloading', () => {
-    it('should handle multiple routes preloading concurrently', () => {
-      vi.useFakeTimers();
-
-      const routes: Route[] = [
-        { path: 'route1', data: { preload: true, preloadDelay: 100 } },
-        { path: 'route2', data: { preload: true, preloadDelay: 200 } },
-        { path: 'route3', data: { preload: true, preloadDelay: 300 } },
-      ];
-
-      const loadFunctions = routes.map(() => vi.fn().mockReturnValue(of('loaded')));
-
-      routes.forEach((route, index) => {
-        strategy.preload(route, loadFunctions[index]).subscribe();
-      });
-
-      // After 100ms, only first route should load
-      vi.advanceTimersByTime(100);
-      expect(loadFunctions[0]).toHaveBeenCalledOnce();
-      expect(loadFunctions[1]).not.toHaveBeenCalled();
-      expect(loadFunctions[2]).not.toHaveBeenCalled();
-
-      // After 200ms total, first two routes should load
-      vi.advanceTimersByTime(100);
-      expect(loadFunctions[0]).toHaveBeenCalledOnce();
-      expect(loadFunctions[1]).toHaveBeenCalledOnce();
-      expect(loadFunctions[2]).not.toHaveBeenCalled();
-
-      // After 300ms total, all routes should load
-      vi.advanceTimersByTime(100);
-      expect(loadFunctions[0]).toHaveBeenCalledOnce();
-      expect(loadFunctions[1]).toHaveBeenCalledOnce();
-      expect(loadFunctions[2]).toHaveBeenCalledOnce();
+      expect(mockLoad).toHaveBeenCalledOnce();
+      expect(consoleLogSpy).toHaveBeenCalledWith('[Preload] Loading route: contact (priority: 4)');
     });
   });
 });

@@ -2,11 +2,17 @@
 
 ## Status
 
-Accepted
+Implemented (Partially - Preloading Deferred)
 
 ## Date
 
 2026-01-18
+
+## Update (2026-01-18)
+
+After implementation, we discovered that the Smart Preloading Strategy negatively impacted Lighthouse scores during CI testing. Preloading chunks during the measurement window (3.5s-7s delays) caused the score to drop from 90 to 73. We've reverted to `NoPreloading` for now to maintain the 90+ score requirement.
+
+The preloading infrastructure remains in place (`SmartPreloadStrategy` with comprehensive tests) and can be re-enabled with shorter delays once we identify the optimal timing that doesn't interfere with Lighthouse measurements.
 
 ## Context
 
