@@ -1,5 +1,5 @@
 import { DecimalPipe, SlicePipe, TitleCasePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { afterNextRender, ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { ArchitectureStore } from '@core/services/architecture/architecture.store';
@@ -57,10 +57,27 @@ export class HomeComponent implements OnInit {
 
   metrics = this.store.metrics;
 
+  constructor() {
+    // Defer non-critical data loading until after initial render
+    // This improves FCP and LCP by reducing main thread work during initial paint
+    afterNextRender(() => {
+      // Use requestIdleCallback to load extended metrics during browser idle time
+      // Fallback to setTimeout for browsers without requestIdleCallback support
+      const scheduleLoad =
+        typeof requestIdleCallback !== 'undefined'
+          ? requestIdleCallback
+          : (cb: () => void) => setTimeout(cb, 1);
+
+      scheduleLoad(() => {
+        this.store.loadExtendedMetrics();
+        this.architectureStore.loadAdrs();
+      });
+    });
+  }
+
   ngOnInit(): void {
+    // Load only critical metrics needed for above-the-fold content
     this.store.loadMetrics();
-    this.store.loadExtendedMetrics();
-    this.architectureStore.loadAdrs();
 
     this.seoService.updatePageSeo({
       title: 'Dashboard',
