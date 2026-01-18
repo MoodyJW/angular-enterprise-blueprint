@@ -1,7 +1,8 @@
-import { DecimalPipe, TitleCasePipe } from '@angular/common';
+import { DecimalPipe, SlicePipe, TitleCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
+import { ArchitectureStore } from '@core/services/architecture/architecture.store';
 import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { BadgeComponent } from '@shared/components/badge';
@@ -29,15 +30,17 @@ import { DashboardStore } from './state/dashboard.store';
     RouterLink,
     TitleCasePipe,
     DecimalPipe,
+    SlicePipe,
     TranslocoDirective,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [DashboardStore],
+  providers: [DashboardStore, ArchitectureStore],
 })
 export class HomeComponent implements OnInit {
   readonly store = inject(DashboardStore);
+  readonly architectureStore = inject(ArchitectureStore);
   private readonly translocoService = inject(TranslocoService);
   private readonly seoService = inject(SeoService);
 
@@ -57,6 +60,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.store.loadMetrics();
     this.store.loadExtendedMetrics();
+    this.architectureStore.loadAdrs();
 
     this.seoService.updatePageSeo({
       title: 'Dashboard',

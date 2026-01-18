@@ -1,9 +1,11 @@
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
-import { signal } from '@angular/core';
+import { signal, WritableSignal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideRouter, RouterLink } from '@angular/router';
+import { Adr } from '@core/services/architecture/architecture.service';
+import { ArchitectureStore } from '@core/services/architecture/architecture.store';
 import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 import { BadgeComponent } from '@shared/components/badge';
@@ -16,12 +18,17 @@ describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let mockStore: {
-    metrics: ReturnType<typeof signal<DashboardMetrics | null>>;
-    extendedMetrics: ReturnType<typeof signal<ExtendedMetrics | null>>;
-    isLoading: ReturnType<typeof signal<boolean>>;
-    error: ReturnType<typeof signal<string | null>>;
+    metrics: WritableSignal<DashboardMetrics | null>;
+    extendedMetrics: WritableSignal<ExtendedMetrics | null>;
+    isLoading: WritableSignal<boolean>;
+    error: WritableSignal<string | null>;
     loadMetrics: ReturnType<typeof vi.fn>;
     loadExtendedMetrics: ReturnType<typeof vi.fn>;
+  };
+  let mockArchitectureStore: {
+    entities: WritableSignal<Adr[]>;
+    isLoading: WritableSignal<boolean>;
+    loadAdrs: ReturnType<typeof vi.fn>;
   };
   let mockSeoService: {
     updatePageSeo: ReturnType<typeof vi.fn>;
@@ -55,6 +62,12 @@ describe('HomeComponent', () => {
       loadExtendedMetrics: vi.fn(),
     };
 
+    mockArchitectureStore = {
+      entities: signal<Adr[]>([]),
+      isLoading: signal(false),
+      loadAdrs: vi.fn(),
+    };
+
     mockSeoService = {
       updatePageSeo: vi.fn(),
     };
@@ -86,7 +99,7 @@ describe('HomeComponent', () => {
                 projectHealth: {
                   title: 'Project Health',
                   testCoverage: 'Test Coverage',
-                  perf: 'Performance',
+                  perf: 'Perf',
                   a11y: 'Accessibility',
                   best: 'Best Practices',
                   seo: 'SEO',
@@ -127,6 +140,12 @@ describe('HomeComponent', () => {
                   contributors: 'Contributors',
                   branches: 'Branches',
                 },
+                architecture: {
+                  title: 'Latest Decisions',
+                  viewAll: 'View All',
+                  viewAllAria: 'View all architecture decisions',
+                  loading: 'Loading updates...',
+                },
               },
             },
           },
@@ -145,7 +164,10 @@ describe('HomeComponent', () => {
     })
       .overrideComponent(HomeComponent, {
         set: {
-          providers: [{ provide: DashboardStore, useValue: mockStore }],
+          providers: [
+            { provide: DashboardStore, useValue: mockStore },
+            { provide: ArchitectureStore, useValue: mockArchitectureStore },
+          ],
         },
       })
       .compileComponents();
@@ -180,8 +202,13 @@ describe('HomeComponent', () => {
 
   it('should render layout hierarchy', () => {
     fixture.detectChanges();
-    const h1 = fixture.debugElement.queryAll(By.css('h1'));
+
+    // Check for Unified Grid
+    const grid = fixture.debugElement.query(By.css('eb-grid.home__layout'));
+    expect(grid).toBeTruthy();
+
     // Hero Name is h1
+    const h1 = fixture.debugElement.queryAll(By.css('h1'));
     expect(h1.length).toBe(1);
     expect((h1[0].nativeElement as HTMLElement).textContent).toContain('Jason Walker Moody');
 
@@ -192,8 +219,8 @@ describe('HomeComponent', () => {
     expect((h2[1].nativeElement as HTMLElement).textContent).toContain('System Status');
 
     const h3 = fixture.debugElement.queryAll(By.css('h3'));
-    // Dashboard Cards: Operational, Project Health (Theme and CTA removed)
-    expect(h3.length).toBe(2);
+    // Dashboard Cards: Operational, Test Coverage, Performance, Architecture (4 visible by default)
+    expect(h3.length).toBeGreaterThanOrEqual(4);
   });
 
   describe('Hero Section', () => {
@@ -208,7 +235,9 @@ describe('HomeComponent', () => {
     });
 
     it('should render profile button with correct link', () => {
-      const button = fixture.debugElement.query(By.css('.home__hero-actions eb-button'));
+      const button = fixture.debugElement.query(
+        By.css('.home__hero-actions eb-button[variant="primary"]'),
+      );
       expect(button).toBeTruthy();
       expect((button.nativeElement as HTMLElement).textContent).toContain('Meet The Architect');
       const routerLink = button.injector.get(RouterLink);
@@ -219,11 +248,26 @@ describe('HomeComponent', () => {
   describe('Dashboard Section', () => {
     it('should render modules CTA button with correct link', () => {
       const buttons = fixture.debugElement.queryAll(By.css('eb-button'));
-      // Last button should be the modules one
-      const moduleBtn = buttons[buttons.length - 1];
-      expect((moduleBtn.nativeElement as HTMLElement).textContent).toContain('View Modules');
+      const moduleBtn = buttons.find((b) => {
+        const text = (b.nativeElement as HTMLElement).textContent;
+        return text.includes('View Modules');
+      });
+      expect(moduleBtn).toBeTruthy();
+      if (!moduleBtn) return;
       const routerLink = moduleBtn.injector.get(RouterLink);
       expect(routerLink.urlTree?.toString()).toContain('modules');
+    });
+
+    it('should render architecture CTA button', () => {
+      const buttons = fixture.debugElement.queryAll(By.css('eb-button'));
+      const archBtn = buttons.find((b) => {
+        const text = (b.nativeElement as HTMLElement).textContent;
+        return text.includes('View All');
+      });
+      expect(archBtn).toBeTruthy();
+      if (!archBtn) return;
+      const routerLink = archBtn.injector.get(RouterLink);
+      expect(routerLink.urlTree?.toString()).toContain('architecture');
     });
   });
 

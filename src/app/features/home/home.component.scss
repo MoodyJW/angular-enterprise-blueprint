@@ -3,7 +3,6 @@
 .home {
   // Main layout wrapper
   &__layout {
-    align-items: center; // Vertically center content on desktop
     min-height: calc(100vh - 200px); // Approximate min-height for centered feel
   }
 
@@ -11,11 +10,20 @@
   &__hero {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: var(--space-4) 0;
+
+    // Remove right padding on large screens as we are now in grid
+    @media (min-width: 1024px) {
+      padding-right: 0;
+    }
+  }
+
+  // Grid utility to span 2 columns
+  &__col-span-2 {
+    grid-column: span 1; // Default
+    height: 100%; // Ensure it fills the row height
 
     @media (min-width: 1024px) {
-      padding-right: var(--space-8);
+      grid-column: span 2;
     }
   }
 
@@ -259,5 +267,41 @@
 @media (prefers-reduced-motion: reduce) {
   .live-indicator__dot {
     animation: none;
+  }
+}
+
+.adr-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.adr-item {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-1);
+  }
+
+  &__title {
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+  }
+
+  &__meta {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
   }
 }

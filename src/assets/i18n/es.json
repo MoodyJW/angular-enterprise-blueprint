@@ -92,6 +92,12 @@
       "title": "Tema Activo",
       "systemPreference": "Preferencia del Sistema"
     },
+    "architecture": {
+      "title": "Últimas Decisiones",
+      "viewAll": "Ver Todo",
+      "viewAllAria": "Ver todas las decisiones de arquitectura",
+      "loading": "Cargando actualizaciones..."
+    },
     "cta": {
       "title": "Explorar el Blueprint",
       "description": "Descubre los módulos de referencia para ver cómo escala esta arquitectura.",

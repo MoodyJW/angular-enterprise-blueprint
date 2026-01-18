@@ -103,6 +103,12 @@
       "title": "Active Theme",
       "systemPreference": "System Preference"
     },
+    "architecture": {
+      "title": "Latest Decisions",
+      "viewAll": "View All",
+      "viewAllAria": "View all architecture decisions",
+      "loading": "Loading updates..."
+    },
     "cta": {
       "title": "Explore the Blueprint",
       "description": "Dive into the reference modules to see how this architecture scales.",

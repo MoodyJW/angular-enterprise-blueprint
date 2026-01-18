@@ -1,9 +1,20 @@
 <eb-container padding="lg">
   <ng-container *transloco="let t">
-    <eb-grid [cols]="1" [colsLg]="2" gap="xl" class="home__layout">
-      <!-- Left Column: Hero Section -->
-      <section class="home__hero">
-        <div class="home__hero-content">
+    <!-- Unified Grid Layout: 1 col mobile, 2 cols tablet, 4 cols desktop XL -->
+    <!-- gap="lg" to separate rows clearly -->
+    <eb-grid
+      [cols]="1"
+      [colsLg]="2"
+      [colsXl]="4"
+      gap="lg"
+      class="home__layout"
+      alignItems="stretch"
+    >
+      <!-- Row 1: Hero (Span 2) & System Status (Span 2) -->
+
+      <!-- Hero Section -->
+      <div class="home__col-span-2">
+        <div class="home__hero">
           <h1 class="home__hero-name">{{ t('home.hero.name') }}</h1>
           <h2 class="home__hero-title">{{ t('home.hero.title') }}</h2>
           <p class="home__hero-tagline">{{ t('home.hero.tagline') }}</p>
@@ -27,274 +38,287 @@
             </eb-button>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- Right Column: System Dashboard -->
-      <section class="home__dashboard">
-        <eb-stack spacing="md">
+      <!-- System Status -->
+      <div class="home__col-span-2">
+        <eb-stack spacing="md" class="h-full">
           <header class="dashboard__header">
             <h2 class="dashboard__title">{{ title() }}</h2>
             <p class="dashboard__subtitle">{{ subtitle() }}</p>
           </header>
 
           @if (store.error()) {
-            <div class="error-alert">
-              {{ store.error() }}
-            </div>
+            <div class="error-alert">{{ store.error() }}</div>
           }
 
           @if (store.isLoading()) {
-            <div class="loading-state">
-              {{ t('home.systemStatus.loading') }}
-            </div>
+            <div class="loading-state">{{ t('home.systemStatus.loading') }}</div>
           } @else {
             @if (store.metrics(); as metrics) {
-              <eb-stack spacing="md">
-                <!-- Operational Status -->
-                <eb-card [hoverable]="false">
-                  <eb-stack card-body spacing="md">
-                    <div class="card-header card-header--flex">
-                      <h3 class="card-header__title">
-                        {{ t('home.systemStatus.operationalStatus') }}
-                      </h3>
-                      <eb-badge
-                        [variant]="metrics.systemStatus === 'operational' ? 'success' : 'error'"
-                        [ariaLabel]="
-                          t('home.systemStatus.operationalStatus') + ' ' + metrics.systemStatus
-                        "
-                        position="inline"
-                        [content]="metrics.systemStatus | titlecase"
-                      >
-                      </eb-badge>
-                    </div>
-                    <div class="status__detail">
-                      <span class="status__label">{{ t('home.systemStatus.buildStatus') }}</span>
-                      <eb-badge
-                        variant="secondary"
-                        [ariaLabel]="t('home.systemStatus.buildStatus')"
-                        position="inline"
-                        [content]="metrics.buildStatus | titlecase"
-                      ></eb-badge>
-                    </div>
-                    <div class="status__detail">
-                      <span class="status__label">{{ t('home.systemStatus.deployStatus') }}</span>
-                      <eb-badge
-                        [variant]="metrics.deployStatus === 'success' ? 'success' : 'error'"
-                        [ariaLabel]="t('home.systemStatus.deployStatus')"
-                        position="inline"
-                        [content]="metrics.deployStatus | titlecase"
-                      >
-                      </eb-badge>
-                    </div>
-                  </eb-stack>
-                </eb-card>
-
-                <!-- Metrics Grid -->
-                <eb-grid [cols]="1" [colsXl]="2" gap="md" class="dashboard__grid">
-                  <!-- Project Health -->
-                  <eb-card [hoverable]="false">
-                    <eb-stack card-body spacing="md">
-                      <h3>{{ t('home.projectHealth.title') }}</h3>
-
-                      <div class="metric__row">
-                        <span class="metric__label">{{
-                          t('home.projectHealth.testCoverage')
-                        }}</span>
-                        <div class="metric__value">
-                          <strong>{{ metrics.testCoverage.value }}%</strong>
-                          <span
-                            class="metric__trend"
-                            [class]="'metric__trend--' + getTrendColor(metrics.testCoverage.trend)"
-                          >
-                            {{ getTrendIcon(metrics.testCoverage.trend) }}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div class="lighthouse__grid">
-                        <div class="lighthouse__score">
-                          <span class="lighthouse__score-value">{{
-                            metrics.lighthouse.performance
-                          }}</span>
-                          <span class="lighthouse__score-label">{{
-                            t('home.projectHealth.perf')
-                          }}</span>
-                        </div>
-                        <div class="lighthouse__score">
-                          <span class="lighthouse__score-value">{{
-                            metrics.lighthouse.accessibility
-                          }}</span>
-                          <span class="lighthouse__score-label">{{
-                            t('home.projectHealth.a11y')
-                          }}</span>
-                        </div>
-                        <div class="lighthouse__score">
-                          <span class="lighthouse__score-value">{{
-                            metrics.lighthouse.bestPractices
-                          }}</span>
-                          <span class="lighthouse__score-label">{{
-                            t('home.projectHealth.best')
-                          }}</span>
-                        </div>
-                        <div class="lighthouse__score">
-                          <span class="lighthouse__score-value">{{ metrics.lighthouse.seo }}</span>
-                          <span class="lighthouse__score-label">{{
-                            t('home.projectHealth.seo')
-                          }}</span>
-                        </div>
-                      </div>
-                    </eb-stack>
-                  </eb-card>
-
-                  <!-- Documentation Coverage -->
-                  @if (store.extendedMetrics(); as ext) {
-                    @if (ext.documentation.available) {
-                      <eb-card [hoverable]="false">
-                        <eb-stack card-body spacing="md">
-                          <div class="card-header card-header--flex">
-                            <h3 class="card-header__title">{{ t('home.documentation.title') }}</h3>
-                            <eb-badge
-                              [variant]="
-                                (ext.documentation.components?.documented ?? 0) /
-                                  (ext.documentation.components?.total ?? 1) >
-                                0.8
-                                  ? 'success'
-                                  : 'warning'
-                              "
-                              position="inline"
-                              [content]="
-                                (((ext.documentation.components?.documented ?? 0) /
-                                  (ext.documentation.components?.total ?? 1)) *
-                                  100 | number: '1.0-0') + '%'
-                              "
-                              [ariaLabel]="t('home.documentation.title')"
-                            ></eb-badge>
-                          </div>
-                          <div class="metric__row">
-                            <span class="metric__label">{{
-                              t('home.documentation.components')
-                            }}</span>
-                            <span class="metric__value"
-                              >{{ ext.documentation.components?.documented }}/{{
-                                ext.documentation.components?.total
-                              }}</span
-                            >
-                          </div>
-                          <div class="metric__row">
-                            <span class="metric__label">{{
-                              t('home.documentation.services')
-                            }}</span>
-                            <span class="metric__value"
-                              >{{ ext.documentation.services?.documented }}/{{
-                                ext.documentation.services?.total
-                              }}</span
-                            >
-                          </div>
-                        </eb-stack>
-                      </eb-card>
-                    }
-
-                    <!-- Linting Status -->
-                    @if (ext.linting.available) {
-                      <eb-card [hoverable]="false">
-                        <eb-stack card-body spacing="md">
-                          <div class="card-header card-header--flex">
-                            <h3 class="card-header__title">{{ t('home.linting.title') }}</h3>
-                            <eb-badge
-                              [variant]="
-                                ext.linting.errors === 0 && ext.linting.warnings === 0
-                                  ? 'success'
-                                  : 'error'
-                              "
-                              position="inline"
-                              [content]="
-                                ext.linting.errors === 0
-                                  ? '✓ Clean'
-                                  : ext.linting.errors + ' errors'
-                              "
-                              [ariaLabel]="t('home.linting.title')"
-                            ></eb-badge>
-                          </div>
-                          <div class="metric__row">
-                            <span class="metric__label">{{ t('home.linting.errors') }}</span>
-                            <span class="metric__value">{{ ext.linting.errors }}</span>
-                          </div>
-                          <div class="metric__row">
-                            <span class="metric__label">{{ t('home.linting.warnings') }}</span>
-                            <span class="metric__value">{{ ext.linting.warnings }}</span>
-                          </div>
-                        </eb-stack>
-                      </eb-card>
-                    }
-
-                    <!-- Dependencies -->
-                    @if (ext.dependencies.available) {
-                      <eb-card [hoverable]="false">
-                        <eb-stack card-body spacing="md">
-                          <div class="card-header card-header--flex">
-                            <h3 class="card-header__title">{{ t('home.dependencies.title') }}</h3>
-                            <eb-badge
-                              [variant]="
-                                (ext.dependencies.vulnerabilities?.high ?? 0) > 0
-                                  ? 'error'
-                                  : 'success'
-                              "
-                              position="inline"
-                              [content]="
-                                (ext.dependencies.vulnerabilities?.total ?? 0) === 0
-                                  ? '✓ Secure'
-                                  : (ext.dependencies.vulnerabilities?.total ?? 0) + ' issues'
-                              "
-                              [ariaLabel]="t('home.dependencies.title')"
-                            ></eb-badge>
-                          </div>
-                          <div class="metric__row">
-                            <span class="metric__label">{{ t('home.dependencies.total') }}</span>
-                            <span class="metric__value">{{ ext.dependencies.total }}</span>
-                          </div>
-                          <div class="metric__row">
-                            <span class="metric__label">{{ t('home.dependencies.outdated') }}</span>
-                            <span class="metric__value">{{ ext.dependencies.outdated }}</span>
-                          </div>
-                          <div class="metric__row">
-                            <span class="metric__label">{{
-                              t('home.dependencies.vulnerabilities')
-                            }}</span>
-                            <span class="metric__value">{{
-                              ext.dependencies.vulnerabilities?.total ?? 0
-                            }}</span>
-                          </div>
-                        </eb-stack>
-                      </eb-card>
-                    }
-
-                    <!-- Git Statistics -->
-                    @if (ext.git.available) {
-                      <eb-card [hoverable]="false">
-                        <eb-stack card-body spacing="md">
-                          <h3>{{ t('home.git.title') }}</h3>
-                          <div class="metric__row">
-                            <span class="metric__label">{{ t('home.git.commits') }}</span>
-                            <span class="metric__value">{{ ext.git.commits }}</span>
-                          </div>
-                          <div class="metric__row">
-                            <span class="metric__label">{{ t('home.git.contributors') }}</span>
-                            <span class="metric__value">{{ ext.git.contributors }}</span>
-                          </div>
-                          <div class="metric__row">
-                            <span class="metric__label">{{ t('home.git.branches') }}</span>
-                            <span class="metric__value">{{ ext.git.branches }}</span>
-                          </div>
-                        </eb-stack>
-                      </eb-card>
-                    }
-                  }
-                </eb-grid>
-              </eb-stack>
+              <eb-card [hoverable]="false" class="h-full">
+                <eb-stack card-body spacing="md">
+                  <div class="card-header card-header--flex">
+                    <h3 class="card-header__title">
+                      {{ t('home.systemStatus.operationalStatus') }}
+                    </h3>
+                    <eb-badge
+                      [variant]="metrics.systemStatus === 'operational' ? 'success' : 'error'"
+                      [ariaLabel]="
+                        t('home.systemStatus.operationalStatus') + ' ' + metrics.systemStatus
+                      "
+                      position="inline"
+                      [content]="metrics.systemStatus | titlecase"
+                    >
+                    </eb-badge>
+                  </div>
+                  <div class="status__detail">
+                    <span class="status__label">{{ t('home.systemStatus.buildStatus') }}</span>
+                    <eb-badge
+                      variant="secondary"
+                      [ariaLabel]="t('home.systemStatus.buildStatus')"
+                      position="inline"
+                      [content]="metrics.buildStatus | titlecase"
+                    ></eb-badge>
+                  </div>
+                  <div class="status__detail">
+                    <span class="status__label">{{ t('home.systemStatus.deployStatus') }}</span>
+                    <eb-badge
+                      [variant]="metrics.deployStatus === 'success' ? 'success' : 'error'"
+                      [ariaLabel]="t('home.systemStatus.deployStatus')"
+                      position="inline"
+                      [content]="metrics.deployStatus | titlecase"
+                    >
+                    </eb-badge>
+                  </div>
+                </eb-stack>
+              </eb-card>
             }
           }
         </eb-stack>
-      </section>
+      </div>
+
+      <!-- Row 2: Test Coverage, Perf, Linting, Dependencies -->
+
+      @if (store.metrics(); as metrics) {
+        <!-- Test Coverage -->
+        <eb-card [hoverable]="false" class="h-full">
+          <eb-stack card-body spacing="md">
+            <h3>{{ t('home.projectHealth.testCoverage') }}</h3>
+            <div class="metric__value metric__value--large">
+              <strong>{{ metrics.testCoverage.value }}%</strong>
+              <span
+                class="metric__trend"
+                [class]="'metric__trend--' + getTrendColor(metrics.testCoverage.trend)"
+              >
+                {{ getTrendIcon(metrics.testCoverage.trend) }}
+              </span>
+            </div>
+          </eb-stack>
+        </eb-card>
+
+        <!-- Performance -->
+        <eb-card [hoverable]="false" class="h-full">
+          <eb-stack card-body spacing="md">
+            <h3>{{ t('home.projectHealth.perf') }} & {{ t('home.projectHealth.seo') }}</h3>
+            <div class="lighthouse__grid">
+              <div class="lighthouse__score">
+                <span class="lighthouse__score-value">{{ metrics.lighthouse.performance }}</span>
+                <span class="lighthouse__score-label">{{ t('home.projectHealth.perf') }}</span>
+              </div>
+              <div class="lighthouse__score">
+                <span class="lighthouse__score-value">{{ metrics.lighthouse.accessibility }}</span>
+                <span class="lighthouse__score-label">{{ t('home.projectHealth.a11y') }}</span>
+              </div>
+              <div class="lighthouse__score">
+                <span class="lighthouse__score-value">{{ metrics.lighthouse.bestPractices }}</span>
+                <span class="lighthouse__score-label">{{ t('home.projectHealth.best') }}</span>
+              </div>
+              <div class="lighthouse__score">
+                <span class="lighthouse__score-value">{{ metrics.lighthouse.seo }}</span>
+                <span class="lighthouse__score-label">{{ t('home.projectHealth.seo') }}</span>
+              </div>
+            </div>
+          </eb-stack>
+        </eb-card>
+
+        <!-- Extended Metrics Row 2 continue -->
+        @if (store.extendedMetrics(); as ext) {
+          <!-- Linting -->
+          @if (ext.linting.available) {
+            <eb-card [hoverable]="false" class="h-full">
+              <eb-stack card-body spacing="md">
+                <div class="card-header card-header--flex">
+                  <h3 class="card-header__title">{{ t('home.linting.title') }}</h3>
+                  <eb-badge
+                    [variant]="
+                      ext.linting.errors === 0 && ext.linting.warnings === 0 ? 'success' : 'error'
+                    "
+                    position="inline"
+                    [content]="
+                      ext.linting.errors === 0 ? '✓ Clean' : ext.linting.errors + ' errors'
+                    "
+                    [ariaLabel]="t('home.linting.title')"
+                  ></eb-badge>
+                </div>
+                <div class="metric__row">
+                  <span class="metric__label">{{ t('home.linting.errors') }}</span>
+                  <span class="metric__value">{{ ext.linting.errors }}</span>
+                </div>
+                <div class="metric__row">
+                  <span class="metric__label">{{ t('home.linting.warnings') }}</span>
+                  <span class="metric__value">{{ ext.linting.warnings }}</span>
+                </div>
+              </eb-stack>
+            </eb-card>
+          }
+
+          <!-- Dependencies -->
+          @if (ext.dependencies.available) {
+            <eb-card [hoverable]="false" class="h-full">
+              <eb-stack card-body spacing="md">
+                <div class="card-header card-header--flex">
+                  <h3 class="card-header__title">{{ t('home.dependencies.title') }}</h3>
+                  <eb-badge
+                    [variant]="
+                      (ext.dependencies.vulnerabilities?.high ?? 0) > 0 ? 'error' : 'success'
+                    "
+                    position="inline"
+                    [content]="
+                      (ext.dependencies.vulnerabilities?.total ?? 0) === 0
+                        ? '✓ Secure'
+                        : (ext.dependencies.vulnerabilities?.total ?? 0) + ' issues'
+                    "
+                    [ariaLabel]="t('home.dependencies.title')"
+                  ></eb-badge>
+                </div>
+                <div class="metric__row">
+                  <span class="metric__label">{{ t('home.dependencies.total') }}</span>
+                  <span class="metric__value">{{ ext.dependencies.total }}</span>
+                </div>
+                <div class="metric__row">
+                  <span class="metric__label">{{ t('home.dependencies.outdated') }}</span>
+                  <span class="metric__value">{{ ext.dependencies.outdated }}</span>
+                </div>
+                <div class="metric__row">
+                  <span class="metric__label">{{ t('home.dependencies.vulnerabilities') }}</span>
+                  <span class="metric__value">{{
+                    ext.dependencies.vulnerabilities?.total ?? 0
+                  }}</span>
+                </div>
+              </eb-stack>
+            </eb-card>
+          }
+
+          <!-- Row 3: Documentation, Decisions, Git -->
+
+          <!-- Documentation -->
+          @if (ext.documentation.available) {
+            <eb-card [hoverable]="false" class="h-full">
+              <eb-stack card-body spacing="md">
+                <div class="card-header card-header--flex">
+                  <h3 class="card-header__title">{{ t('home.documentation.title') }}</h3>
+                  <eb-badge
+                    [variant]="
+                      (ext.documentation.components?.documented ?? 0) /
+                        (ext.documentation.components?.total ?? 1) >
+                      0.8
+                        ? 'success'
+                        : 'warning'
+                    "
+                    position="inline"
+                    [content]="
+                      (((ext.documentation.components?.documented ?? 0) /
+                        (ext.documentation.components?.total ?? 1)) *
+                        100 | number: '1.0-0') + '%'
+                    "
+                    [ariaLabel]="t('home.documentation.title')"
+                  ></eb-badge>
+                </div>
+                <div class="metric__row">
+                  <span class="metric__label">{{ t('home.documentation.components') }}</span>
+                  <span class="metric__value"
+                    >{{ ext.documentation.components?.documented }}/{{
+                      ext.documentation.components?.total
+                    }}</span
+                  >
+                </div>
+                <div class="metric__row">
+                  <span class="metric__label">{{ t('home.documentation.services') }}</span>
+                  <span class="metric__value"
+                    >{{ ext.documentation.services?.documented }}/{{
+                      ext.documentation.services?.total
+                    }}</span
+                  >
+                </div>
+              </eb-stack>
+            </eb-card>
+          }
+        }
+        <!-- End Extended Metrics check -->
+
+        <!-- Latest Architecture Decisions -->
+        <eb-card [hoverable]="false" class="h-full">
+          <eb-stack card-body spacing="md">
+            <div class="card-header card-header--flex">
+              <h3 class="card-header__title">{{ t('home.architecture.title') }}</h3>
+              <eb-button
+                routerLink="/architecture"
+                variant="secondary"
+                size="sm"
+                [ariaLabel]="t('home.architecture.viewAllAria')"
+              >
+                {{ t('home.architecture.viewAll') }}
+              </eb-button>
+            </div>
+
+            @if (architectureStore.isLoading()) {
+              <div class="loading-state">{{ t('home.architecture.loading') }}</div>
+            } @else {
+              <div class="adr-list">
+                @for (adr of architectureStore.entities() | slice: 0 : 3; track adr.id) {
+                  <div class="adr-item">
+                    <div class="adr-item__header">
+                      <span class="adr-item__title">{{ adr.title }}</span>
+                      <eb-badge
+                        [variant]="adr.status === 'accepted' ? 'success' : 'secondary'"
+                        size="sm"
+                        [content]="adr.status | titlecase"
+                        position="inline"
+                        [ariaLabel]="t('architecture.statusLabel', { status: adr.status })"
+                      ></eb-badge>
+                    </div>
+                  </div>
+                }
+              </div>
+            }
+          </eb-stack>
+        </eb-card>
+
+        <!-- Git Statistics -->
+        @if (store.extendedMetrics(); as ext) {
+          @if (ext.git.available) {
+            <eb-card [hoverable]="false" class="h-full">
+              <eb-stack card-body spacing="md">
+                <h3>{{ t('home.git.title') }}</h3>
+                <div class="metric__row">
+                  <span class="metric__label">{{ t('home.git.commits') }}</span>
+                  <span class="metric__value">{{ ext.git.commits }}</span>
+                </div>
+                <div class="metric__row">
+                  <span class="metric__label">{{ t('home.git.contributors') }}</span>
+                  <span class="metric__value">{{ ext.git.contributors }}</span>
+                </div>
+                <div class="metric__row">
+                  <span class="metric__label">{{ t('home.git.branches') }}</span>
+                  <span class="metric__value">{{ ext.git.branches }}</span>
+                </div>
+              </eb-stack>
+            </eb-card>
+          }
+        }
+      }
+      <!-- End Metrics check (metrics) -->
     </eb-grid>
   </ng-container>
 </eb-container>

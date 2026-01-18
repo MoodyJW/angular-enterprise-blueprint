@@ -4,7 +4,7 @@ import { patchState, signalStore, withComputed, withMethods, withState } from '@
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap, tap } from 'rxjs';
 
-import { Adr, ArchitectureService } from '@features/architecture/services/architecture.service';
+import { Adr, ArchitectureService } from './architecture.service';
 
 /**
  * State shape for the architecture store.
@@ -82,10 +82,11 @@ export const ArchitectureStore = signalStore(
               next: (entities: Adr[]) => {
                 patchState(store, { entities, isLoading: false });
               },
-              error: (err: Error) => {
+              error: (err: unknown) => {
+                const errorMsg = err instanceof Error ? err.message : 'Failed to load ADRs';
                 patchState(store, {
                   isLoading: false,
-                  error: Boolean(err.message) ? err.message : 'Failed to load ADRs',
+                  error: errorMsg !== '' ? errorMsg : 'Failed to load ADRs',
                 });
               },
             }),
@@ -107,10 +108,11 @@ export const ArchitectureStore = signalStore(
               next: (content: string) => {
                 patchState(store, { content, isLoadingContent: false });
               },
-              error: (err: Error) => {
+              error: (err: unknown) => {
+                const errorMsg = err instanceof Error ? err.message : 'Failed to load ADR content';
                 patchState(store, {
                   isLoadingContent: false,
-                  error: Boolean(err.message) ? err.message : 'Failed to load ADR content',
+                  error: errorMsg !== '' ? errorMsg : 'Failed to load ADR content',
                 });
               },
             }),
