@@ -6,6 +6,7 @@ import { By } from '@angular/platform-browser';
 import { provideRouter, RouterLink } from '@angular/router';
 import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoTestingModule } from '@jsverse/transloco';
+import { BadgeComponent } from '@shared/components/badge';
 import { ContainerComponent } from '@shared/components/container';
 import { HomeComponent } from './home.component';
 import { DashboardMetrics, ExtendedMetrics } from './services/dashboard.service';
@@ -103,6 +104,28 @@ describe('HomeComponent', () => {
                   title: 'Ready to Start?',
                   description: 'Dive into...',
                   button: 'View Modules',
+                },
+                documentation: {
+                  title: 'Documentation Coverage',
+                  components: 'Components',
+                  services: 'Services',
+                },
+                linting: {
+                  title: 'Linting Status',
+                  errors: 'Errors',
+                  warnings: 'Warnings',
+                },
+                dependencies: {
+                  title: 'Dependencies',
+                  total: 'Total',
+                  outdated: 'Outdated',
+                  vulnerabilities: 'Vulnerabilities',
+                },
+                git: {
+                  title: 'Git Statistics',
+                  commits: 'Commits',
+                  contributors: 'Contributors',
+                  branches: 'Branches',
                 },
               },
             },
@@ -341,6 +364,172 @@ describe('HomeComponent', () => {
 
       const compiled = fixture.nativeElement as HTMLElement;
       expect(compiled.textContent).toContain('Failed');
+    });
+  });
+
+  describe('Extended Metrics', () => {
+    const mockFullMetrics: ExtendedMetrics = {
+      testCoverage: { available: true, value: 96, trend: 'up' },
+      documentation: {
+        available: true,
+        percentage: 100,
+        components: { documented: 10, total: 10 },
+        services: { documented: 5, total: 5 },
+      },
+      git: { available: true, commits: 100 },
+      linting: { available: true, errors: 0, warnings: 0 },
+      dependencies: { available: true, total: 50 },
+      bundleSize: { available: false },
+      lighthouse: {
+        available: true,
+        performance: 100,
+        accessibility: 100,
+        bestPractices: 100,
+        seo: 100,
+      },
+    };
+
+    it('should show success badge for good documentation coverage', () => {
+      mockStore.extendedMetrics.set(mockFullMetrics);
+      fixture.detectChanges();
+      const badges = fixture.debugElement.queryAll(By.directive(BadgeComponent));
+      const docBadge = badges.find((b) => {
+        const inst = b.componentInstance as BadgeComponent;
+        const content = inst.content();
+        return typeof content === 'string' && content.includes('%');
+      });
+      const inst = docBadge?.componentInstance as BadgeComponent;
+      expect(inst.variant()).toBe('success');
+    });
+
+    it('should show warning badge for low documentation coverage', () => {
+      mockStore.extendedMetrics.set({
+        ...mockFullMetrics,
+        documentation: {
+          available: true,
+          percentage: 50,
+          components: { documented: 5, total: 10 },
+          services: { documented: 0, total: 5 },
+        },
+      });
+      fixture.detectChanges();
+      const badges = fixture.debugElement.queryAll(By.directive(BadgeComponent));
+      const docBadge = badges.find((b) => {
+        const inst = b.componentInstance as BadgeComponent;
+        const content = inst.content();
+        return typeof content === 'string' && content.includes('%');
+      });
+      const inst = docBadge?.componentInstance as BadgeComponent;
+      expect(inst.variant()).toBe('warning');
+    });
+
+    it('should hide documentation card if not available', () => {
+      mockStore.extendedMetrics.set({
+        ...mockFullMetrics,
+        documentation: { available: false, percentage: 0 },
+      });
+      fixture.detectChanges();
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).not.toContain('Documentation Coverage');
+    });
+
+    it('should show clean linting badge', () => {
+      mockStore.extendedMetrics.set(mockFullMetrics);
+      fixture.detectChanges();
+      const badges = fixture.debugElement.queryAll(By.directive(BadgeComponent));
+      const lintBadge = badges.find((b) => {
+        const inst = b.componentInstance as BadgeComponent;
+        const content = inst.content();
+        return typeof content === 'string' && content.includes('Clean');
+      });
+      const inst = lintBadge?.componentInstance as BadgeComponent;
+      expect(inst.variant()).toBe('success');
+    });
+
+    it('should show error linting badge when errors exist', () => {
+      mockStore.extendedMetrics.set({
+        ...mockFullMetrics,
+        linting: { available: true, errors: 5, warnings: 2 },
+      });
+      fixture.detectChanges();
+      const badges = fixture.debugElement.queryAll(By.directive(BadgeComponent));
+      const lintBadge = badges.find((b) => {
+        const inst = b.componentInstance as BadgeComponent;
+        const content = inst.content();
+        return typeof content === 'string' && content.includes('errors');
+      });
+      const inst = lintBadge?.componentInstance as BadgeComponent;
+      expect(inst.variant()).toBe('error');
+    });
+
+    it('should hide linting card if not available', () => {
+      mockStore.extendedMetrics.set({
+        ...mockFullMetrics,
+        linting: { available: false },
+      });
+      fixture.detectChanges();
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).not.toContain('Linting Status');
+    });
+
+    it('should show secure dependencies badge', () => {
+      mockStore.extendedMetrics.set(mockFullMetrics);
+      fixture.detectChanges();
+      const badges = fixture.debugElement.queryAll(By.directive(BadgeComponent));
+      const depBadge = badges.find((b) => {
+        const inst = b.componentInstance as BadgeComponent;
+        const content = inst.content();
+        return typeof content === 'string' && content.includes('Secure');
+      });
+      const inst = depBadge?.componentInstance as BadgeComponent;
+      expect(inst.variant()).toBe('success');
+    });
+
+    it('should show error dependencies badge when high vulnerabilities exist', () => {
+      mockStore.extendedMetrics.set({
+        ...mockFullMetrics,
+        dependencies: { available: true, total: 10, vulnerabilities: { total: 2, high: 1 } },
+      });
+      fixture.detectChanges();
+      const badges = fixture.debugElement.queryAll(By.directive(BadgeComponent));
+      const depBadge = badges.find((b) => {
+        const inst = b.componentInstance as BadgeComponent;
+        const content = inst.content();
+        return typeof content === 'string' && content.includes('issues');
+      });
+      const inst = depBadge?.componentInstance as BadgeComponent;
+      expect(inst.variant()).toBe('error');
+    });
+
+    it('should hide dependencies card if not available', () => {
+      mockStore.extendedMetrics.set({
+        ...mockFullMetrics,
+        dependencies: { available: false },
+      });
+      fixture.detectChanges();
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).not.toContain('Dependencies');
+    });
+
+    it('should render git stats when available', () => {
+      mockStore.extendedMetrics.set({
+        ...mockFullMetrics,
+        git: { available: true, commits: 123, contributors: 5, branches: 2 },
+      });
+      fixture.detectChanges();
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('123');
+      expect(compiled.textContent).toContain('Git Statistics');
+    });
+
+    it('should hide git card if not available', () => {
+      mockStore.extendedMetrics.set({
+        ...mockFullMetrics,
+        git: { available: false },
+      });
+      fixture.detectChanges();
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).not.toContain('Git Statistics');
     });
   });
 
