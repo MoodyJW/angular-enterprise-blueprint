@@ -1065,8 +1065,6 @@ interface BundleSize {
 }
 ```
 
-### Acceptance Criteria
-
 - [ ] Compodoc documentation coverage displayed with percentage and breakdown
 - [ ] Test coverage shows all 3 metrics (statements, functions, lines)
 - [ ] Bundle size displayed with budget status
@@ -1084,22 +1082,462 @@ interface BundleSize {
 
 ---
 
+## 8.12 Footer Layout and Positioning
+
+**Current:** Footer elements are not centered properly; footer uses sticky positioning at bottom
+**Target:** Center footer content and make footer flow naturally at page bottom (not sticky)
+
+### Problem Analysis
+
+**Current Issues:**
+
+1. Footer content (links, copyright, social icons) are misaligned or not properly centered
+2. Footer uses `position: sticky` or `position: fixed` at bottom, causing it to always be visible
+3. On short pages, footer floats mid-screen instead of staying at natural page bottom
+4. Footer may overlap content on mobile or cause awkward scroll behavior
+
+### Proposed Solution
+
+**Layout Changes:**
+
+1. Remove sticky/fixed positioning from footer
+2. Use flexbox on main layout to push footer to bottom naturally (min-height: 100vh pattern)
+3. Center all footer elements using flexbox or grid
+4. Ensure consistent spacing between footer sections
+
+**Flexbox Footer-to-Bottom Pattern:**
+
+```scss
+// In main-layout.component.scss
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__content {
+    flex: 1 0 auto; // Grow to fill available space
+  }
+
+  &__footer {
+    flex-shrink: 0; // Don't shrink footer
+  }
+}
+```
+
+**Footer Content Centering:**
+
+```scss
+// In footer.component.scss
+.footer {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: var(--space-4);
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4);
+  }
+
+  &__social {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  &__copyright {
+    text-align: center;
+  }
+}
+```
+
+### Implementation Steps
+
+1. **Audit current footer** - Review `footer.component.scss` and `main-layout.component.scss`
+2. **Update MainLayoutComponent** - Apply min-height: 100vh flexbox pattern
+3. **Update FooterComponent** - Center all content sections with flexbox
+4. **Remove sticky/fixed positioning** - Ensure footer flows naturally
+5. **Test on various page lengths** - Short pages, long pages, scrollable content
+6. **Verify mobile responsiveness** - Footer should stack gracefully on mobile
+7. **Update Storybook** - Add footer stories if missing
+
+### Acceptance Criteria
+
+- [ ] Footer content (links, copyright, social) is horizontally centered
+- [ ] Footer sits at bottom of viewport on short pages (using flexbox, not sticky)
+- [ ] Footer scrolls with content naturally on long pages
+- [ ] No overlap with content on any screen size
+- [ ] Mobile responsive (stacks vertically on small screens)
+- [ ] Smooth transitions when content changes
+- [ ] WCAG 2.1 AA compliant
+- [ ] Works in all 6 themes
+
+### Files to Update
+
+1. `src/app/core/layout/main-layout/main-layout.component.scss`
+2. `src/app/core/layout/footer/footer.component.scss`
+3. `src/app/core/layout/footer/footer.component.html` (if structure changes needed)
+
+---
+
+## 8.13 Donut Chart Component
+
+**Current:** Dashboard metrics display as plain numbers/percentages
+**Target:** Create a reusable donut chart component using pure SCSS (no external packages) to visualize percentage-based metrics
+
+### Overview
+
+Create a shared `DonutChartComponent` for the design system that renders a circular progress indicator (donut chart) with a value displayed in the center and a label below. This will enhance the visual appeal of the dashboard metrics without adding external dependencies.
+
+### Component Design
+
+**DonutChartComponent** (New Shared Component)
+
+- **Location:** `src/app/shared/components/donut-chart/`
+- **Inputs:**
+  - `value: number` - The percentage value (0-100)
+  - `label: string` - Text label displayed below the donut
+  - `size: 'sm' | 'md' | 'lg'` - Size variant (default: 'md')
+  - `color: 'primary' | 'success' | 'warning' | 'error'` - Color theme (default: 'primary')
+  - `showValue: boolean` - Whether to show value in center (default: true)
+  - `thickness: 'thin' | 'normal' | 'thick'` - Stroke thickness (default: 'normal')
+
+**Visual Structure:**
+
+```
+    ╭──────╮
+   ╱   87%  ╲    ← Value in center
+  │    ●●●   │   ← Filled arc representing percentage
+   ╲        ╱
+    ╰──────╯
+   Coverage      ← Label below
+```
+
+### SCSS-Only Implementation
+
+**Technique:** Use `conic-gradient` for the donut arc with CSS custom properties for dynamic values.
+
+```scss
+// donut-chart.component.scss
+.donut-chart {
+  --donut-value: 0;
+  --donut-color: var(--color-primary);
+  --donut-bg-color: var(--color-border);
+  --donut-size: 100px;
+  --donut-thickness: 12px;
+
+  position: relative;
+  width: var(--donut-size);
+  height: var(--donut-size);
+
+  &__ring {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+      var(--donut-color) calc(var(--donut-value) * 1%),
+      var(--donut-bg-color) calc(var(--donut-value) * 1%)
+    );
+
+    // Inner circle to create donut hole
+    &::before {
+      content: '';
+      position: absolute;
+      inset: var(--donut-thickness);
+      border-radius: 50%;
+      background: var(--color-surface);
+    }
+  }
+
+  &__value {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+  }
+
+  &__label {
+    text-align: center;
+    margin-top: var(--space-2);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+
+  // Size variants
+  &--sm {
+    --donut-size: 64px;
+    --donut-thickness: 8px;
+  }
+
+  &--md {
+    --donut-size: 100px;
+    --donut-thickness: 12px;
+  }
+
+  &--lg {
+    --donut-size: 140px;
+    --donut-thickness: 16px;
+  }
+
+  // Color variants
+  &--success {
+    --donut-color: var(--color-success);
+  }
+  &--warning {
+    --donut-color: var(--color-warning);
+  }
+  &--error {
+    --donut-color: var(--color-error);
+  }
+}
+```
+
+**Component Template:**
+
+```html
+<div class="donut-chart" [class]="sizeClass()" [style.--donut-value]="value()">
+  <div class="donut-chart__ring"></div>
+  @if (showValue()) {
+  <span class="donut-chart__value">{{ value() }}%</span>
+  }
+</div>
+@if (label()) {
+<span class="donut-chart__label">{{ label() }}</span>
+}
+```
+
+### Integration with Dashboard
+
+Update dashboard metric cards to use DonutChartComponent for:
+
+- Test Coverage (overall and detailed breakdown)
+- Documentation Coverage
+- Lighthouse scores (Performance, Accessibility, etc.)
+- Any other percentage-based metrics
+
+**Example Usage:**
+
+```html
+<eb-card>
+  <eb-donut-chart [value]="87" label="Test Coverage" color="success" size="md" />
+</eb-card>
+```
+
+### Accessibility
+
+- Use `role="img"` with `aria-label` describing the metric
+- Ensure color is not the only indicator (value always shown)
+- Support `prefers-reduced-motion` (disable any animations)
+- High contrast mode support
+
+### Implementation Steps
+
+1. Create `DonutChartComponent` with conic-gradient approach
+2. Implement all size, color, and thickness variants
+3. Add smooth animation for value changes (respecting reduced-motion)
+4. Create comprehensive Storybook stories
+5. Write unit tests for all variants
+6. Integrate into dashboard metrics cards
+7. Verify WCAG 2.1 AA compliance
+
+### Acceptance Criteria
+
+- [ ] Donut chart renders correctly with conic-gradient
+- [ ] Value displayed in center of donut
+- [ ] Label displayed below donut
+- [ ] All size variants (sm, md, lg) work correctly
+- [ ] All color variants (primary, success, warning, error) work correctly
+- [ ] All thickness variants work correctly
+- [ ] Animates smoothly when value changes (optional, respects reduced-motion)
+- [ ] Works in all 6 themes
+- [ ] WCAG 2.1 AA compliant
+- [ ] No external dependencies (pure SCSS/CSS)
+- [ ] Storybook stories for all variants
+- [ ] Unit tests with 85%+ coverage
+
+### Files to Create
+
+1. `src/app/shared/components/donut-chart/donut-chart.component.ts`
+2. `src/app/shared/components/donut-chart/donut-chart.component.html`
+3. `src/app/shared/components/donut-chart/donut-chart.component.scss`
+4. `src/app/shared/components/donut-chart/donut-chart.component.spec.ts`
+5. `src/app/shared/components/donut-chart/donut-chart.stories.ts`
+6. `src/app/shared/components/donut-chart/index.ts`
+
+### Files to Update
+
+1. `src/app/shared/components/index.ts` (export DonutChartComponent)
+2. `src/app/features/home/home.component.html` (integrate donut charts)
+3. `src/app/features/home/home.component.scss` (layout adjustments)
+
+---
+
+## 8.14 ADR and Modules Design Alignment with Blog
+
+**Current:** Architecture Decisions (ADR) and Modules sections have different visual design than the Blog section
+**Target:** Align the design of ADR and Modules features to match the polished Blog design for visual consistency
+
+### Problem Analysis
+
+The Blog feature was designed with attention to modern design patterns:
+
+- Clean card-based layouts with hover effects
+- Consistent typography hierarchy
+- Tag/category badges with proper styling
+- Featured images and visual interest
+- Smooth transitions and animations
+- Proper spacing and rhythm
+
+The ADR Viewer and Modules sections may lack:
+
+- Consistent card styling with Blog
+- Visual elements like icons or status indicators
+- Hover effects and interactive feedback
+- Consistent badge/tag styling
+- Proper content hierarchy
+
+### Proposed Changes
+
+**Architecture Decisions (ADR Viewer):**
+
+1. Update ADR list cards to match BlogListComponent card styling
+2. Add status badges (Accepted, Proposed, Deprecated, Superseded) with consistent styling
+3. Add date and category display similar to Blog articles
+4. Improve ADR detail page layout to match BlogDetailComponent
+5. Add icon indicators for ADR status
+6. Consistent typography and spacing with Blog
+
+**Modules Catalog:**
+
+1. Update module cards to match BlogListComponent card styling
+2. Add tech stack badges with consistent styling
+3. Improve hover effects and transitions
+4. Add visual elements (icons, feature indicators)
+5. Update module detail page to match BlogDetailComponent layout
+6. Consistent typography, spacing, and content hierarchy
+
+### Shared Styling Patterns
+
+Extract common patterns from Blog and apply to ADR/Modules:
+
+```scss
+// Shared card content styling
+.feature-card {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-3);
+  }
+
+  &__title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    margin-top: var(--space-3);
+  }
+
+  &__description {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+}
+```
+
+### Implementation Steps
+
+1. **Audit Blog design** - Document the key design patterns and styling
+2. **Create shared card styles** - Extract common patterns to shared SCSS or create utility classes
+3. **Update AdrListComponent** - Apply Blog-like card styling
+4. **Update AdrViewerComponent** - Align detail page with BlogDetailComponent
+5. **Update ModulesComponent** - Apply Blog-like card styling
+6. **Update ModuleDetailComponent** - Align detail page with BlogDetailComponent
+7. **Ensure badge consistency** - Use same BadgeComponent styling across all features
+8. **Verify responsive layouts** - All three features should behave consistently on mobile
+9. **Test across themes** - Ensure visual consistency in all 6 themes
+
+### Acceptance Criteria
+
+- [ ] ADR list cards visually match Blog article cards
+- [ ] ADR status badges use consistent styling with Blog tags
+- [ ] ADR detail page layout matches Blog detail page
+- [ ] Module cards visually match Blog article cards
+- [ ] Module tech stack badges use consistent styling
+- [ ] Module detail page layout matches Blog detail page
+- [ ] Hover effects and transitions consistent across all three features
+- [ ] Typography hierarchy consistent across all three features
+- [ ] Spacing and rhythm consistent across all three features
+- [ ] Mobile responsiveness consistent across all three features
+- [ ] Works in all 6 themes
+- [ ] WCAG 2.1 AA compliant
+
+### Files to Update
+
+**Architecture Feature:**
+
+1. `src/app/features/architecture/architecture.component.html`
+2. `src/app/features/architecture/architecture.component.scss`
+3. `src/app/features/architecture/viewer/adr-viewer.component.html`
+4. `src/app/features/architecture/viewer/adr-viewer.component.scss`
+
+**Modules Feature:**
+
+1. `src/app/features/modules/modules.component.html`
+2. `src/app/features/modules/modules.component.scss`
+3. `src/app/features/modules/detail/module-detail.component.html`
+4. `src/app/features/modules/detail/module-detail.component.scss`
+
+**Shared (if extracting common styles):**
+
+1. `src/styles/_feature-cards.scss` (new shared partial, optional)
+2. `src/app/shared/components/badge/badge.component.scss` (if badge updates needed)
+
+---
+
 ## Timeline Estimate
 
-| Task                       | Estimated Time  |
-| -------------------------- | --------------- |
-| 8.1 Checkbox Icon Refactor | 4-6 hours       |
-| 8.2 Radio Icon Refactor    | 4-6 hours       |
-| 8.3 Card Visibility        | 3-5 hours       |
-| 8.4 Toast Improvements     | 1-2 hours       |
-| 8.5 Profile Stats Caching  | 1-2 hours       |
-| 8.6 Theme Menu             | 4-6 hours       |
-| 8.7 User Menu              | 6-8 hours       |
-| 8.8 Profile Layout         | 2 hours         |
-| 8.9 Home Branding          | 6-10 hours      |
-| 8.10 Blog Feature Module   | 24-32 hours     |
-| 8.11 Enhanced Dashboard    | 12-16 hours     |
-| **Total**                  | **67-95 hours** |
+| Task                       | Estimated Time   |
+| -------------------------- | ---------------- |
+| 8.1 Checkbox Icon Refactor | 4-6 hours        |
+| 8.2 Radio Icon Refactor    | 4-6 hours        |
+| 8.3 Card Visibility        | 3-5 hours        |
+| 8.4 Toast Improvements     | 1-2 hours        |
+| 8.5 Profile Stats Caching  | 1-2 hours        |
+| 8.6 Theme Menu             | 4-6 hours        |
+| 8.7 User Menu              | 6-8 hours        |
+| 8.8 Profile Layout         | 2 hours          |
+| 8.9 Home Branding          | 6-10 hours       |
+| 8.10 Blog Feature Module   | 24-32 hours      |
+| 8.11 Enhanced Dashboard    | 12-16 hours      |
+| 8.12 Footer Layout         | 2-3 hours        |
+| 8.13 Donut Chart Component | 6-8 hours        |
+| 8.14 ADR/Modules Design    | 8-12 hours       |
+| **Total**                  | **83-118 hours** |
 
 **8.1 Breakdown:**
 

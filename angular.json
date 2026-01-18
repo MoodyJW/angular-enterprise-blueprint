@@ -35,7 +35,11 @@
                 "output": "assets"
               }
             ],
-            "styles": ["src/styles.scss"]
+            "styles": ["src/styles.scss"],
+            "define": {
+              "ngDevMode": "false",
+              "ngI18nClosureMode": "false"
+            }
           },
           "configurations": {
             "production": {
@@ -68,10 +72,13 @@
                   "minify": true,
                   "inlineCritical": true
                 },
-                "fonts": true
+                "fonts": {
+                  "inline": true
+                }
               },
               "sourceMap": false,
-              "namedChunks": false
+              "namedChunks": false,
+              "extractLicenses": true
             },
             "development": {
               "optimization": false,

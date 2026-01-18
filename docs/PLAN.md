@@ -369,6 +369,26 @@ _Goal: Refactor existing components for consistency, then add new capabilities a
   - [x] Add Lighthouse scores display.
   - [x] Create metric parsing scripts for build-time data.
   - [x] Use existing CardComponent and GridComponent for metric displays.
+- [ ] **8.12 Footer Layout and Positioning**: Center footer content and fix positioning.
+  - [ ] Center footer elements (links, copyright, social icons) using flexbox.
+  - [ ] Change from sticky/fixed positioning to natural page flow.
+  - [ ] Apply min-height: 100vh flexbox pattern to main layout.
+  - [ ] Ensure mobile responsiveness.
+  - [ ] update README and appropriate TSDoc as needed.
+- [ ] **8.13 Donut Chart Component**: Create reusable donut chart for metrics visualization.
+  - [ ] Create DonutChartComponent using pure SCSS (conic-gradient, no packages).
+  - [ ] Implement size, color, and thickness variants.
+  - [ ] Display value in center and label below donut.
+  - [ ] Integrate into dashboard metric cards.
+  - [ ] Add Storybook stories and unit tests.
+  - [ ] Add README and appropriate TSDoc.
+- [ ] **8.14 ADR and Modules Design Alignment**: Align with Blog design patterns.
+  - [ ] Update ADR list cards to match Blog article cards.
+  - [ ] Update Modules cards to match Blog article cards.
+  - [ ] Align detail page layouts with BlogDetailComponent.
+  - [ ] Ensure consistent badge/tag styling across features.
+  - [ ] Verify responsive layouts and theme consistency.
+  - [ ] update README and appropriate TSDoc as needed.
 
 ---
 
