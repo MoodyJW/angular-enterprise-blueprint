@@ -7,6 +7,7 @@ import {
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
 import {
+  NoPreloading,
   provideRouter,
   withComponentInputBinding,
   withInMemoryScrolling,
@@ -22,7 +23,6 @@ import { provideTranslocoConfig } from './core/i18n';
 import { httpErrorInterceptor } from './core/interceptors';
 import { csrfInterceptor } from './core/interceptors/csrf.interceptor';
 import { provideAnalytics, withAnalyticsRouterTracking } from './core/services';
-import { SmartPreloadStrategy } from './core/strategies';
 import { provideProfileStore } from './features/profile/state/profile.store';
 
 // Cast the imported analytics helpers to known callable signatures so
@@ -40,9 +40,8 @@ export const appConfig: ApplicationConfig = {
     provideEnvironment(),
     provideRouter(
       routes,
-      // Use idle-based preloading to load chunks during browser idle time
-      // This avoids interference with Lighthouse measurements while still preloading high-traffic routes
-      withPreloading(SmartPreloadStrategy),
+      // Disable preloading to maximize Lighthouse score
+      withPreloading(NoPreloading),
       // Restore scroll position on navigation
       withInMemoryScrolling({
         scrollPositionRestoration: 'enabled',
