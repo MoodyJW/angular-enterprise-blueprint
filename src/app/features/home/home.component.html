@@ -105,6 +105,7 @@
         <eb-card [hoverable]="false" class="h-full">
           <eb-stack card-body spacing="md">
             <h3>{{ t('home.projectHealth.testCoverage') }}</h3>
+
             <div class="metric__value metric__value--large">
               <strong>{{ metrics.testCoverage.value }}%</strong>
               <span
@@ -114,6 +115,31 @@
                 {{ getTrendIcon(metrics.testCoverage.trend) }}
               </span>
             </div>
+
+            @if (metrics.testCoverage.details; as details) {
+              <div class="metric__grid mt-4 grid grid-cols-2 gap-4">
+                <div class="metric__item">
+                  <span class="text-xs text-secondary">{{
+                    t('home.projectHealth.statements')
+                  }}</span>
+                  <div class="font-bold">{{ details.statements.pct }}%</div>
+                </div>
+                <div class="metric__item">
+                  <span class="text-xs text-secondary">{{ t('home.projectHealth.branches') }}</span>
+                  <div class="font-bold">{{ details.branches.pct }}%</div>
+                </div>
+                <div class="metric__item">
+                  <span class="text-xs text-secondary">{{
+                    t('home.projectHealth.functions')
+                  }}</span>
+                  <div class="font-bold">{{ details.functions.pct }}%</div>
+                </div>
+                <div class="metric__item">
+                  <span class="text-xs text-secondary">{{ t('home.projectHealth.lines') }}</span>
+                  <div class="font-bold">{{ details.lines.pct }}%</div>
+                </div>
+              </div>
+            }
           </eb-stack>
         </eb-card>
 

@@ -12,6 +12,12 @@ export interface DashboardMetrics {
     value: number;
     trend: 'up' | 'down' | 'stable';
     lastUpdated: string;
+    details?: {
+      statements: { pct: number; covered: number; total: number };
+      branches: { pct: number; covered: number; total: number };
+      functions: { pct: number; covered: number; total: number };
+      lines: { pct: number; covered: number; total: number };
+    };
   };
   lighthouse: {
     performance: number;
@@ -36,6 +42,12 @@ export interface ExtendedMetrics {
     value?: number;
     trend?: string;
     lastUpdated?: string;
+    details?: {
+      statements: { pct: number; covered: number; total: number };
+      branches: { pct: number; covered: number; total: number };
+      functions: { pct: number; covered: number; total: number };
+      lines: { pct: number; covered: number; total: number };
+    };
   };
   documentation: {
     available: boolean;

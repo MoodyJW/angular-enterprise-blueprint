@@ -78,6 +78,10 @@
     "projectHealth": {
       "title": "Salud del Proyecto",
       "testCoverage": "Cobertura de Pruebas",
+      "statements": "Declaraciones",
+      "branches": "Ramas",
+      "functions": "Funciones",
+      "lines": "Líneas",
       "perf": "Rendimiento",
       "a11y": "Accesibilidad",
       "best": "Mejores Prácticas",

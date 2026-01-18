@@ -2,7 +2,10 @@
   "ci": {
     "collect": {
       "staticDistDir": "./dist/angular-enterprise-blueprint/browser",
-      "numberOfRuns": 3
+      "numberOfRuns": 3,
+      "settings": {
+        "chromeFlags": "--incognito --disable-extensions --disable-component-extensions-with-background-pages"
+      }
     },
     "assert": {
       "assertions": {

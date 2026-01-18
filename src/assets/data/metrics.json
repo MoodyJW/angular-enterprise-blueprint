@@ -1,9 +1,31 @@
 {
-  "generatedAt": "2026-01-18T17:08:17.160Z",
+  "generatedAt": "2026-01-18T19:00:21.850Z",
   "testCoverage": {
     "value": 91,
     "trend": "up",
-    "lastUpdated": "2026-01-18T17:07:54.443Z"
+    "lastUpdated": "2026-01-18T17:07:54.443Z",
+    "details": {
+      "statements": {
+        "pct": 92,
+        "covered": 450,
+        "total": 489
+      },
+      "branches": {
+        "pct": 88,
+        "covered": 120,
+        "total": 136
+      },
+      "functions": {
+        "pct": 95,
+        "covered": 85,
+        "total": 89
+      },
+      "lines": {
+        "pct": 81,
+        "covered": 440,
+        "total": 483
+      }
+    }
   },
   "lighthouse": {
     "performance": 90,
@@ -20,7 +42,29 @@
       "available": true,
       "value": 91,
       "trend": "up",
-      "lastUpdated": "2026-01-18T17:07:54.443Z"
+      "lastUpdated": "2026-01-18T17:07:54.443Z",
+      "details": {
+        "statements": {
+          "pct": 92,
+          "covered": 450,
+          "total": 489
+        },
+        "branches": {
+          "pct": 88,
+          "covered": 120,
+          "total": 136
+        },
+        "functions": {
+          "pct": 95,
+          "covered": 85,
+          "total": 89
+        },
+        "lines": {
+          "pct": 81,
+          "covered": 440,
+          "total": 483
+        }
+      }
     },
     "lighthouse": {
       "available": true,
@@ -52,10 +96,10 @@
     },
     "git": {
       "available": true,
-      "commits": 177,
-      "lastCommit": "2026-01-18 09:01:00 -0800",
+      "commits": 180,
+      "lastCommit": "2026-01-18 10:43:02 -0800",
       "branches": 81,
-      "contributors": 4
+      "contributors": 1
     },
     "linting": {
       "available": true,

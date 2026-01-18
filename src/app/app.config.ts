@@ -7,7 +7,6 @@ import {
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
 import {
-  NoPreloading,
   provideRouter,
   withComponentInputBinding,
   withInMemoryScrolling,
@@ -23,6 +22,7 @@ import { provideTranslocoConfig } from './core/i18n';
 import { httpErrorInterceptor } from './core/interceptors';
 import { csrfInterceptor } from './core/interceptors/csrf.interceptor';
 import { provideAnalytics, withAnalyticsRouterTracking } from './core/services';
+import { SmartPreloadStrategy } from './core/strategies';
 import { provideProfileStore } from './features/profile/state/profile.store';
 
 // Cast the imported analytics helpers to known callable signatures so
@@ -40,8 +40,8 @@ export const appConfig: ApplicationConfig = {
     provideEnvironment(),
     provideRouter(
       routes,
-      // Disable preloading to reduce initial bundle size
-      withPreloading(NoPreloading),
+      // Smart selective preloading: downloads high-traffic routes during idle time
+      withPreloading(SmartPreloadStrategy),
       // Restore scroll position on navigation
       withInMemoryScrolling({
         scrollPositionRestoration: 'enabled',
