@@ -55,46 +55,27 @@
       })();
     </script>
     <eb-root>
-      <!-- Critical content for LCP - removed after hydration -->
+      <!-- Loading indicator for LCP - removed after hydration -->
       <style>
-        .app-shell {
-          max-width: 1400px;
-          margin: 0 auto;
-          padding: 2rem;
+        .app-loading {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
           font-family:
             system-ui,
             -apple-system,
             sans-serif;
-        }
-        .app-shell__hero {
-          margin: 2rem 0;
-        }
-        .app-shell__title {
-          font-size: 2.25rem;
-          font-weight: 700;
-          margin: 0 0 0.5rem;
-          color: var(--color-text, #0f172a);
-        }
-        .app-shell__subtitle {
-          font-size: 1.5rem;
-          margin: 0 0 1rem;
-          color: var(--color-text-secondary, #334155);
+          font-size: 1.125rem;
+          color: var(--color-text-secondary, #64748b);
         }
         @media (prefers-color-scheme: dark) {
-          .app-shell__title {
-            color: #f8fafc;
-          }
-          .app-shell__subtitle {
-            color: #cbd5e1;
+          .app-loading {
+            color: #94a3b8;
           }
         }
       </style>
-      <div class="app-shell">
-        <div class="app-shell__hero">
-          <h1 class="app-shell__title">Jason Walker Moody</h1>
-          <h2 class="app-shell__subtitle">Lead Frontend Engineer</h2>
-        </div>
-      </div>
+      <div class="app-loading">Loading...</div>
     </eb-root>
   </body>
 </html>
