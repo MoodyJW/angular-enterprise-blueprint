@@ -35,14 +35,14 @@
                 "output": "assets"
               }
             ],
-            "styles": ["src/styles.scss"],
-            "define": {
-              "ngDevMode": "false",
-              "ngI18nClosureMode": "false"
-            }
+            "styles": ["src/styles.scss"]
           },
           "configurations": {
             "production": {
+              "define": {
+                "ngDevMode": "false",
+                "ngI18nClosureMode": "false"
+              },
               "budgets": [
                 {
                   "type": "initial",
