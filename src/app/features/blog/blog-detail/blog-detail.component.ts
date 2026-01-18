@@ -27,6 +27,10 @@ import { IconComponent } from '../../../shared/components/icon/icon.component';
 import { ICON_NAMES } from '../../../shared/constants/icon-names.constants';
 import { PUBLISHED_SLUGS } from '../blog.constants';
 
+/**
+ * Component for displaying details of a specific blog article.
+ * Fetches content based on the route slug and renders markdown.
+ */
 @Component({
   selector: 'eb-blog-detail',
   standalone: true,

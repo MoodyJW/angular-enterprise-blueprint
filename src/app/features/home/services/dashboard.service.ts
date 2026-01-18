@@ -92,6 +92,10 @@ export interface ExtendedMetrics {
   };
 }
 
+/**
+ * Service to manage dashboard state and metrics.
+ * Fetches data for project health, including test coverage and build status.
+ */
 @Injectable({
   providedIn: 'root',
 })

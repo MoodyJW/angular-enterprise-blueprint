@@ -27,6 +27,10 @@ export type ThemePickerSize = 'sm' | 'md' | 'lg';
 /** Theme categories for grouping */
 type GroupedThemeKey = 'light' | 'dark' | 'highContrast';
 
+/**
+ * Component to select and switch application themes.
+ * Supports multiple distinct visual variants (dropdown, grid, inline, icon).
+ */
 @Component({
   selector: 'eb-theme-picker',
   imports: [IconComponent, TooltipDirective, ButtonComponent],

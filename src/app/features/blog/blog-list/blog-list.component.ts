@@ -15,6 +15,11 @@ import { PUBLISHED_SLUGS } from '../blog.constants';
 import { BlogStore } from '../blog.store';
 import { BlogCategory } from '../blog.types';
 
+/**
+ * Component to display a list of blog articles.
+ * Includes features for filtering by category (via URL) and searching.
+ * Utilizes BlogStore for state management.
+ */
 @Component({
   selector: 'eb-blog-list',
   standalone: true,

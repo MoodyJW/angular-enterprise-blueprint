@@ -12,6 +12,10 @@ import { GridComponent } from '@shared/components/grid';
 import { StackComponent } from '@shared/components/stack';
 import { DashboardStore } from './state/dashboard.store';
 
+/**
+ * Landing page component displaying the dashboard.
+ * Shows system status, project metrics, and introductory content.
+ */
 @Component({
   selector: 'eb-home',
   standalone: true,

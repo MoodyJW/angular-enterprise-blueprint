@@ -4,13 +4,6 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { type IconName } from '@shared/constants';
 import { IconComponent } from '../../icon/icon.component';
 
-@Component({
-  selector: 'eb-button-content',
-  imports: [CommonModule, IconComponent],
-  templateUrl: './button-content.component.html',
-  styleUrls: ['./button-content.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
 /**
  * Provides the internal content wrapper for `eb-button`.
  *
@@ -19,6 +12,13 @@ import { IconComponent } from '../../icon/icon.component';
  * presentational component used by `ButtonComponent` to keep templating
  * concerns separated.
  */
+@Component({
+  selector: 'eb-button-content',
+  imports: [CommonModule, IconComponent],
+  templateUrl: './button-content.component.html',
+  styleUrls: ['./button-content.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
 export class ButtonContentComponent {
   /**
    * Whether the button is currently showing a loading indicator.

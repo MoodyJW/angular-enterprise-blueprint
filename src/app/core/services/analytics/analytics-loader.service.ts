@@ -2,6 +2,10 @@ import { DOCUMENT } from '@angular/common';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+/**
+ * Service responsible for dynamically loading external scripts.
+ * Used primarily for lazy-loading analytics SDKs.
+ */
 @Injectable({ providedIn: 'root' })
 export class AnalyticsLoaderService {
   private readonly document = inject(DOCUMENT);

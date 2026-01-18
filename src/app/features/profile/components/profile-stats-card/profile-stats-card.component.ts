@@ -15,6 +15,10 @@ import { CardComponent } from '@shared/components/card';
 import { IconComponent } from '@shared/components/icon';
 import { SkeletonComponent } from '@shared/components/skeleton';
 
+/**
+ * Displays GitHub profile statistics in a card format.
+ * SShows date range, loading states, and stats from GitHub API.
+ */
 @Component({
   selector: 'eb-profile-stats-card',
   standalone: true,

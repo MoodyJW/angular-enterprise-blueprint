@@ -6,6 +6,10 @@ import { ENVIRONMENT } from '@core/config';
 import { LoggerService } from '@core/services/logger';
 import type { ContactFormData } from '@features/contact/models';
 
+/**
+ * Service for handling contact form submissions.
+ * Manages Formspree integration and rate limiting logic.
+ */
 @Injectable({
   providedIn: 'root',
 })

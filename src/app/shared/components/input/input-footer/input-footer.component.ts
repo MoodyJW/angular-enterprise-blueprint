@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
+/**
+ * Footer component for form inputs.
+ * Displays helper text and character count.
+ */
 @Component({
   selector: 'eb-input-footer',
   imports: [CommonModule],

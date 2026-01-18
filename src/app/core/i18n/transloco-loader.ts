@@ -3,6 +3,10 @@ import { inject, Injectable } from '@angular/core';
 import type { Translation, TranslocoLoader } from '@jsverse/transloco';
 import type { Observable } from 'rxjs';
 
+/**
+ * Loader for fetching translation files over HTTP.
+ * Configured to resolve assets relative to the base href.
+ */
 @Injectable({ providedIn: 'root' })
 export class TranslocoHttpLoader implements TranslocoLoader {
   private readonly http = inject(HttpClient);

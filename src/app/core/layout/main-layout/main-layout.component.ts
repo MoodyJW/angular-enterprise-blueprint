@@ -13,6 +13,7 @@ import { filter } from 'rxjs/operators';
 
 import { FooterComponent } from '@core/layout/footer';
 import { HeaderComponent } from '@core/layout/header';
+import { ToastContainerComponent } from '@shared/components/toast';
 import { NAV_ITEMS } from '../navigation.data';
 
 /**
@@ -30,8 +31,6 @@ import { NAV_ITEMS } from '../navigation.data';
  * <eb-main-layout />
  * ```
  */
-import { ToastContainerComponent } from '@shared/components/toast';
-
 @Component({
   selector: 'eb-main-layout',
   standalone: true,

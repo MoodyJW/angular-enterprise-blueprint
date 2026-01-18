@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 
+/**
+ * Service for managing CSRF/XSRF tokens.
+ * Retrieves tokens from cookies or generates mock tokens for development.
+ */
 @Injectable({ providedIn: 'root' })
 export class CsrfTokenService {
   private _token: string | null = null;

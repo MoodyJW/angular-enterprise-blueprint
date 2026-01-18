@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-01-18T16:10:34.986Z",
+  "generatedAt": "2026-01-18T17:08:17.160Z",
   "testCoverage": {
     "value": 91,
     "trend": "up",
-    "lastUpdated": "2026-01-18T16:10:11.064Z"
+    "lastUpdated": "2026-01-18T17:07:54.443Z"
   },
   "lighthouse": {
     "performance": 90,
@@ -20,7 +20,7 @@
       "available": true,
       "value": 91,
       "trend": "up",
-      "lastUpdated": "2026-01-18T16:10:11.064Z"
+      "lastUpdated": "2026-01-18T17:07:54.443Z"
     },
     "lighthouse": {
       "available": true,
@@ -32,13 +32,13 @@
     },
     "documentation": {
       "available": true,
-      "percentage": 81,
+      "percentage": 100,
       "components": {
-        "documented": 43,
+        "documented": 51,
         "total": 51
       },
       "services": {
-        "documented": 15,
+        "documented": 21,
         "total": 21
       },
       "directives": {
@@ -52,9 +52,9 @@
     },
     "git": {
       "available": true,
-      "commits": 176,
-      "lastCommit": "2026-01-17 10:59:10 -0800",
-      "branches": 80,
+      "commits": 177,
+      "lastCommit": "2026-01-18 09:01:00 -0800",
+      "branches": 81,
       "contributors": 4
     },
     "linting": {

@@ -12,6 +12,10 @@ import type {
 import { LoggerService } from '@core/services/logger';
 import { AnalyticsLoaderService } from '../analytics-loader.service';
 
+/**
+ * Analytics provider implementation for Google Analytics (GTags).
+ * Handles initialization, event tracking, and page views.
+ */
 @Injectable()
 export class GoogleAnalyticsProvider implements AnalyticsProvider {
   readonly name = 'google';
