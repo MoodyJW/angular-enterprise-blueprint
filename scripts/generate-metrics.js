@@ -76,8 +76,14 @@ function getTestCoverage() {
   if (existsSync(istanbulPath)) {
     try {
       const report = JSON.parse(readFileSync(istanbulPath, 'utf-8'));
-      let totalStatements = 0;
-      let coveredStatements = 0;
+      let totalStatements = 0,
+        coveredStatements = 0;
+      let totalBranches = 0,
+        coveredBranches = 0;
+      let totalFunctions = 0,
+        coveredFunctions = 0;
+      let totalLines = 0,
+        coveredLines = 0;
 
       const excludePatterns = [
         /\.spec\.ts$/,
@@ -89,26 +95,61 @@ function getTestCoverage() {
       ];
 
       Object.keys(report).forEach((filePath) => {
-        // Skip excluded files
-        if (excludePatterns.some((pattern) => pattern.test(filePath))) {
-          return;
-        }
+        if (excludePatterns.some((pattern) => pattern.test(filePath))) return;
 
         const file = report[filePath];
-        const statements = file.s || {};
-        Object.values(statements).forEach((count) => {
+
+        // Statements
+        Object.values(file.s || {}).forEach((count) => {
           totalStatements++;
           if (count > 0) coveredStatements++;
         });
+
+        // Functions
+        Object.values(file.f || {}).forEach((count) => {
+          totalFunctions++;
+          if (count > 0) coveredFunctions++;
+        });
+
+        // Branches
+        Object.values(file.b || {}).forEach((branchCounts) => {
+          branchCounts.forEach((count) => {
+            totalBranches++;
+            if (count > 0) coveredBranches++;
+          });
+        });
+
+        // Lines (approximate if 'l' not present, use statements)
+        // Istanbul usually provides 'statementMap' and 's'.
+        // We'll use statements as proxy for lines if 'l' is missing,
+        // but often file.s counts lines effectively for statements.
+        // Let's count keys in 's' map as roughly lines for simplicity if needed,
+        // but ideally we iterate statementMap.
+        // For this fallback, using statement counts for lines is a reasonable approximation
+        // if exact line data is complex to decode without a library.
+        // Let's reuse statement stats for lines to be safe but separate variables.
+        totalLines += Object.keys(file.s || {}).length;
+        coveredLines += Object.values(file.s || {}).filter((c) => c > 0).length;
       });
 
+      const calcPct = (covered, total) => (total > 0 ? Math.round((covered / total) * 100) : 0);
+      const stPct = calcPct(coveredStatements, totalStatements);
+      const brPct = calcPct(coveredBranches, totalBranches);
+      const fnPct = calcPct(coveredFunctions, totalFunctions);
+      const lnPct = calcPct(coveredLines, totalLines);
+
       if (totalStatements > 0) {
-        const pct = Math.round((coveredStatements / totalStatements) * 100);
         return {
           available: true,
-          value: pct,
-          trend: pct >= 80 ? 'up' : 'down',
+          value: stPct, // Use statement coverage as primary metric
+          trend: stPct >= 80 ? 'up' : 'down',
           lastUpdated: new Date().toISOString(),
+          details: {
+            statements: { pct: stPct, covered: coveredStatements, total: totalStatements },
+            branches: { pct: brPct, covered: coveredBranches, total: totalBranches },
+            functions: { pct: fnPct, covered: coveredFunctions, total: totalFunctions },
+            lines: { pct: lnPct, covered: coveredLines, total: totalLines },
+          },
         };
       }
     } catch {
@@ -223,7 +264,7 @@ function getGitStats() {
       encoding: 'utf-8',
     }).trim();
     const branchCount = execSync('git branch -r | wc -l', { cwd: ROOT, encoding: 'utf-8' }).trim();
-    const contributorCount = execSync('git shortlog -sn --all | wc -l', {
+    const contributorCount = execSync('git shortlog -sn --all | grep -v "\\[bot\\]" | wc -l', {
       cwd: ROOT,
       encoding: 'utf-8',
     }).trim();
@@ -413,6 +454,7 @@ function generateMetrics() {
           value: testCoverage.value,
           trend: testCoverage.trend,
           lastUpdated: testCoverage.lastUpdated,
+          details: testCoverage.details,
         }
       : { value: 0, trend: 'stable', lastUpdated: new Date().toISOString() },
 

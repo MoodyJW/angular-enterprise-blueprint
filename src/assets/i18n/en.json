@@ -72,7 +72,11 @@
     "projectHealth": {
       "title": "Project Health",
       "testCoverage": "Test Coverage",
-      "perf": "Perf",
+      "statements": "Statements",
+      "branches": "Branches",
+      "functions": "Functions",
+      "lines": "Lines",
+      "perf": "Performance",
       "a11y": "A11y",
       "best": "Best",
       "seo": "SEO"

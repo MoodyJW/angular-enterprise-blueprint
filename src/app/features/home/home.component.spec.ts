@@ -36,7 +36,17 @@ describe('HomeComponent', () => {
 
   const mockMetrics: DashboardMetrics = {
     generatedAt: '2024-01-01T00:00:00.000Z',
-    testCoverage: { value: 96, trend: 'up', lastUpdated: '2024-01-01' },
+    testCoverage: {
+      value: 96,
+      trend: 'up',
+      lastUpdated: '2024-01-01',
+      details: {
+        statements: { pct: 95, covered: 100, total: 105 },
+        branches: { pct: 90, covered: 50, total: 55 },
+        functions: { pct: 100, covered: 20, total: 20 },
+        lines: { pct: 96, covered: 100, total: 104 },
+      },
+    },
     lighthouse: { performance: 98, accessibility: 100, bestPractices: 100, seo: 100 },
     buildStatus: 'passing',
     deployStatus: 'success',
@@ -99,6 +109,10 @@ describe('HomeComponent', () => {
                 projectHealth: {
                   title: 'Project Health',
                   testCoverage: 'Test Coverage',
+                  statements: 'Statements',
+                  branches: 'Branches',
+                  functions: 'Functions',
+                  lines: 'Lines',
                   perf: 'Perf',
                   a11y: 'Accessibility',
                   best: 'Best Practices',
@@ -277,8 +291,13 @@ describe('HomeComponent', () => {
   });
 
   it('should render test coverage', () => {
+    fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.textContent).toContain('96%');
+    expect(compiled.textContent).toContain('Statements');
+    expect(compiled.textContent).toContain('Branches');
+    expect(compiled.textContent).toContain('Functions');
+    expect(compiled.textContent).toContain('Lines');
   });
 
   describe('getTrendIcon', () => {
