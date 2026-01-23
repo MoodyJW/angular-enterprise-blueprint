@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-23T18:04:04.128Z",
+  "generatedAt": "2026-01-23T18:26:28.092Z",
   "buildStatus": "passing",
   "deployStatus": "pending",
   "systemStatus": "operational",
@@ -9,7 +9,7 @@
       "available": true,
       "value": 90,
       "trend": "up",
-      "lastUpdated": "2026-01-23T18:03:42.599Z",
+      "lastUpdated": "2026-01-23T18:26:07.621Z",
       "details": {
         "statements": {
           "pct": 90,
@@ -39,17 +39,33 @@
       "accessibility": 100,
       "bestPractices": 100,
       "seo": 100,
-      "source": "lhr-1769191421135.json"
+      "message": "Cached from previous run (local report not found)"
     },
     "documentation": {
-      "available": false,
-      "message": "Run npm run docs:json first"
+      "available": true,
+      "percentage": 100,
+      "components": {
+        "documented": 51,
+        "total": 51
+      },
+      "services": {
+        "documented": 22,
+        "total": 22
+      },
+      "directives": {
+        "documented": 1,
+        "total": 1
+      },
+      "pipes": {
+        "documented": 0,
+        "total": 0
+      }
     },
     "git": {
       "available": true,
-      "commits": 1,
-      "lastCommit": "2026-01-23 10:00:29 -0800",
-      "branches": 1,
+      "commits": 195,
+      "lastCommit": "2026-01-23 10:19:09 -0800",
+      "branches": 82,
       "contributors": 1
     },
     "linting": {

@@ -28,7 +28,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     reporters: ['verbose', ['junit', { outputFile: 'test-results/junit.xml' }]],
-    include: ['src/**/*.spec.ts'],
+    include: ['src/**/*.spec.ts', 'scripts/**/*.spec.js'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html', 'lcov', 'json-summary'],

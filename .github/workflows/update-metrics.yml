@@ -41,6 +41,9 @@ jobs:
           temporaryPublicStorage: false
         continue-on-error: true
 
+      - name: Generate Documentation JSON
+        run: npm run docs:json
+
       - name: Update Metrics File
         run: npm run metrics:generate
 

@@ -192,15 +192,16 @@ function getLighthouseScores(existing) {
     }
   }
 
-  // Fallback: Preserve existing values if available
-  if (existing && existing.lighthouse && existing.lighthouse.performance > 0) {
+  // Fallback: Preserve existing values if available (check extended.lighthouse after consolidation)
+  const cachedLH = existing?.extended?.lighthouse || existing?.lighthouse;
+  if (cachedLH && cachedLH.performance > 0) {
     console.log('Using cached Lighthouse scores from previous run.');
     return {
       available: true,
-      performance: existing.lighthouse.performance,
-      accessibility: existing.lighthouse.accessibility,
-      bestPractices: existing.lighthouse.bestPractices,
-      seo: existing.lighthouse.seo,
+      performance: cachedLH.performance,
+      accessibility: cachedLH.accessibility,
+      bestPractices: cachedLH.bestPractices,
+      seo: cachedLH.seo,
       message: 'Cached from previous run (local report not found)',
     };
   }
@@ -589,5 +590,24 @@ function generateMetrics() {
   return metrics;
 }
 
-// Run
-generateMetrics();
+// Export for testing
+export {
+  OUTPUT_PATH,
+  ROOT,
+  formatBytes,
+  generateMetrics,
+  getBundleSize,
+  getDependencyInfo,
+  getDocumentationCoverage,
+  getGitStats,
+  getLighthouseScores,
+  getLintingStatus,
+  getTestCoverage,
+  parseSize,
+};
+
+// Run only when executed directly (not when imported for testing)
+const isMainModule = import.meta.url === `file://${process.argv[1]}`;
+if (isMainModule) {
+  generateMetrics();
+}
