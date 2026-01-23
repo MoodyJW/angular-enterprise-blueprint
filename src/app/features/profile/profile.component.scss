@@ -10,6 +10,7 @@
 
   &__header {
     @include page.feature-header;
+    margin-block-end: var(--space-5);
   }
 
   &__title {
@@ -22,8 +23,6 @@
 
   // Two-column grid
   &__grid {
-    margin-block-start: var(--space-8);
-
     @media (max-width: 768px) {
       display: flex;
       flex-direction: column;
