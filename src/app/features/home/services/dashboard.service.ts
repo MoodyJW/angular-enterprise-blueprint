@@ -5,26 +5,10 @@ import { map } from 'rxjs/operators';
 
 /**
  * Core dashboard metrics displayed at a glance.
+ * Detailed metrics (testCoverage, lighthouse, etc.) are in the extended property.
  */
 export interface DashboardMetrics {
   generatedAt: string;
-  testCoverage: {
-    value: number;
-    trend: 'up' | 'down' | 'stable';
-    lastUpdated: string;
-    details?: {
-      statements: { pct: number; covered: number; total: number };
-      branches: { pct: number; covered: number; total: number };
-      functions: { pct: number; covered: number; total: number };
-      lines: { pct: number; covered: number; total: number };
-    };
-  };
-  lighthouse: {
-    performance: number;
-    accessibility: number;
-    bestPractices: number;
-    seo: number;
-  };
   buildStatus: 'passing' | 'failing' | 'building';
   deployStatus: 'success' | 'failed' | 'deploying' | 'pending';
   systemStatus: 'operational' | 'degraded' | 'outage';
@@ -40,7 +24,7 @@ export interface ExtendedMetrics {
     available: boolean;
     message?: string;
     value?: number;
-    trend?: string;
+    trend?: 'up' | 'down' | 'stable';
     lastUpdated?: string;
     details?: {
       statements: { pct: number; covered: number; total: number };
@@ -91,8 +75,12 @@ export interface ExtendedMetrics {
   bundleSize: {
     available: boolean;
     message?: string;
-    main?: { raw: number; formatted: string };
-    total?: { raw: number; formatted: string };
+    initial?: {
+      raw: number;
+      formatted: string;
+      budget: string;
+      status: 'pass' | 'warn' | 'error';
+    };
   };
   lighthouse?: {
     available: boolean;

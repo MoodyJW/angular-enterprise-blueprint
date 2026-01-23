@@ -20,7 +20,7 @@
  */
 
 import { execSync } from 'child_process';
-import { existsSync, readFileSync, readdirSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -357,34 +357,130 @@ function getDependencyInfo() {
  * Get bundle size information.
  */
 function getBundleSize() {
-  const statsPath = join(ROOT, 'dist/angular-enterprise-blueprint/stats.json');
-  if (!existsSync(statsPath)) {
-    return { available: false, message: 'Run ng build --stats-json first' };
+  const distDir = join(ROOT, 'dist/angular-enterprise-blueprint/browser');
+  const indexHtmlPath = join(distDir, 'index.html');
+  const angularJsonPath = join(ROOT, 'angular.json');
+
+  if (!existsSync(indexHtmlPath)) {
+    return { available: false, message: 'Run ng build first' };
   }
 
   try {
-    const stats = JSON.parse(readFileSync(statsPath, 'utf-8'));
+    // 1. Get Budget from angular.json
+    let budget = { warning: 750 * 1024, error: 1024 * 1024, warningStr: '750kB', errorStr: '1MB' };
 
-    let totalSize = 0;
-    let mainSize = 0;
+    if (existsSync(angularJsonPath)) {
+      try {
+        const angularConfig = JSON.parse(readFileSync(angularJsonPath, 'utf-8'));
+        const budgets =
+          angularConfig.projects?.['angular-enterprise-blueprint']?.architect?.build?.configurations
+            ?.production?.budgets || [];
+        const initialBudget = budgets.find((b) => b.type === 'initial');
 
-    if (stats.assets) {
-      stats.assets.forEach((asset) => {
-        totalSize += asset.size || 0;
-        if (asset.name && asset.name.includes('main')) {
-          mainSize = asset.size || 0;
+        if (initialBudget) {
+          if (initialBudget.maximumWarning) {
+            budget.warningStr = initialBudget.maximumWarning;
+            budget.warning = parseSize(initialBudget.maximumWarning);
+          }
+          if (initialBudget.maximumError) {
+            budget.errorStr = initialBudget.maximumError;
+            budget.error = parseSize(initialBudget.maximumError);
+          }
         }
-      });
+      } catch {
+        // use defaults
+      }
     }
+
+    // 2. Calculate Initial Bundle Size (scripts + styles in index.html)
+    const indexHtml = readFileSync(indexHtmlPath, 'utf-8');
+    const assetFiles = new Set();
+
+    // Extract src from <script src="...">
+    const scriptRegex = /<script[^>]+src="([^"]+)"/g;
+    let match;
+    while ((match = scriptRegex.exec(indexHtml)) !== null) {
+      if (!match[1].startsWith('http')) {
+        assetFiles.add(match[1]);
+      }
+    }
+
+    // Extract href from <link rel="stylesheet" href="...">
+    const styleRegex = /<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/g;
+    while ((match = styleRegex.exec(indexHtml)) !== null) {
+      if (!match[1].startsWith('http')) {
+        assetFiles.add(match[1]);
+      }
+    }
+
+    // Extract href from <link rel="modulepreload" href="...">
+    const preloadRegex = /<link[^>]+rel="modulepreload"[^>]+href="([^"]+)"/g;
+    while ((match = preloadRegex.exec(indexHtml)) !== null) {
+      if (!match[1].startsWith('http')) {
+        assetFiles.add(match[1]);
+      }
+    }
+
+    let initialSize = 0;
+    console.log(`  🔍 Analyzing bundle in: ${distDir}`);
+    assetFiles.forEach((file) => {
+      try {
+        const filePath = join(distDir, file);
+        if (existsSync(filePath)) {
+          const size = statSync(filePath).size;
+          initialSize += size;
+        } else {
+          console.log(`    ⚠️ File not found: ${file}`);
+        }
+      } catch (e) {
+        console.log(`    ⚠️ Error reading ${file}: ${e.message}`);
+      }
+    });
+
+    // Determine status
+    let status = 'pass';
+    if (initialSize > budget.error) status = 'error';
+    else if (initialSize > budget.warning) status = 'warn';
 
     return {
       available: true,
-      main: { raw: mainSize, formatted: formatBytes(mainSize) },
-      total: { raw: totalSize, formatted: formatBytes(totalSize) },
+      initial: {
+        raw: initialSize,
+        formatted: formatBytes(initialSize),
+        budget: budget.errorStr,
+        status,
+      },
     };
-  } catch {
-    return { available: false, message: 'Failed to parse bundle stats' };
+  } catch (e) {
+    console.error(`  ❌ Error calculating bundle size:`, e);
+    return { available: false, message: 'Failed to calculate bundle size' };
   }
+}
+
+/**
+ * Parse size string (e.g. "1MB", "750kB") to bytes
+ */
+function parseSize(sizeStr) {
+  const units = {
+    k: 1024,
+    kqv: 1024, // common typo protection or weird formats? No, standard is k/K/m/M
+    kib: 1024,
+    kb: 1024,
+    m: 1024 * 1024,
+    mib: 1024 * 1024,
+    mb: 1024 * 1024,
+    g: 1024 * 1024 * 1024,
+    gb: 1024 * 1024 * 1024,
+  };
+
+  const regex = /^([0-9.]+)\s*([a-z]+)$/i;
+  const match = sizeStr.toString().match(regex);
+  if (!match) return 0;
+
+  const value = parseFloat(match[1]);
+  const unit = match[2].toLowerCase();
+
+  return Math.round(value * (units[unit] || 1));
 }
 
 /**
@@ -419,7 +515,7 @@ function formatBytes(bytes) {
   const k = 1024;
   const sizes = ['B', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  return Math.round(bytes / Math.pow(k, i)) + ' ' + sizes[i];
 }
 
 /**
@@ -444,35 +540,15 @@ function generateMetrics() {
   const bundleSize = getBundleSize();
   const { buildStatus, deployStatus, systemStatus } = getBuildDeployStatus();
 
-  // Build unified metrics object
+  // Build unified metrics object (all detailed metrics in extended section)
   const metrics = {
     generatedAt: new Date().toISOString(),
-
-    // Core dashboard metrics (for backward compatibility)
-    testCoverage: testCoverage.available
-      ? {
-          value: testCoverage.value,
-          trend: testCoverage.trend,
-          lastUpdated: testCoverage.lastUpdated,
-          details: testCoverage.details,
-        }
-      : { value: 0, trend: 'stable', lastUpdated: new Date().toISOString() },
-
-    lighthouse: lighthouse.available
-      ? {
-          performance: lighthouse.performance,
-          accessibility: lighthouse.accessibility,
-          bestPractices: lighthouse.bestPractices,
-          seo: lighthouse.seo,
-        }
-      : { performance: 0, accessibility: 0, bestPractices: 0, seo: 0 },
-
     buildStatus,
-    deployStatus: existingMetrics?.deployStatus || deployStatus, // Preserve pending/success/failed manual state if relevant
+    deployStatus: existingMetrics?.deployStatus || deployStatus,
     systemStatus,
-    activeModules: 4, // Count of feature modules
+    activeModules: 4,
 
-    // Extended metrics
+    // All metrics consolidated in extended section
     extended: {
       testCoverage,
       lighthouse,
@@ -503,7 +579,7 @@ function generateMetrics() {
     `  ├─ Dependencies: ${dependencies.available ? `${dependencies.total} total` : '❌ Not available'}`,
   );
   console.log(
-    `  └─ Bundle Size: ${bundleSize.available ? bundleSize.total.formatted : '❌ Not available'}`,
+    `  └─ Bundle Size: ${bundleSize.available ? bundleSize.initial.formatted : '❌ Not available'}`,
   );
 
   // Write output

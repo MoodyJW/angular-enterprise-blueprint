@@ -93,17 +93,25 @@
           <eb-stack card-body spacing="md">
             <h3>{{ t('home.projectHealth.testCoverage') }}</h3>
 
-            <div class="metric__value metric__value--large">
-              <strong>{{ metrics.testCoverage.value }}%</strong>
-              <span
-                class="metric__trend"
-                [class]="'metric__trend--' + getTrendColor(metrics.testCoverage.trend)"
-              >
-                {{ getTrendIcon(metrics.testCoverage.trend) }}
-              </span>
-            </div>
+            @if (
+              metrics.extended.testCoverage.available &&
+              metrics.extended.testCoverage.value !== undefined
+            ) {
+              <div class="metric__value metric__value--large">
+                <strong>{{ metrics.extended.testCoverage.value }}%</strong>
+                <span
+                  class="metric__trend"
+                  [class]="
+                    'metric__trend--' +
+                    getTrendColor(metrics.extended.testCoverage.trend || 'stable')
+                  "
+                >
+                  {{ getTrendIcon(metrics.extended.testCoverage.trend || 'stable') }}
+                </span>
+              </div>
+            }
 
-            @if (metrics.testCoverage.details; as details) {
+            @if (metrics.extended.testCoverage.details; as details) {
               <div class="metric__grid mt-4 grid grid-cols-2 gap-4">
                 <div class="metric__item">
                   <span class="text-xs text-secondary">{{
@@ -134,24 +142,28 @@
         <eb-card [hoverable]="false" class="h-full">
           <eb-stack card-body spacing="md">
             <h3>{{ t('home.projectHealth.perf') }} & {{ t('home.projectHealth.seo') }}</h3>
-            <div class="lighthouse__grid">
-              <div class="lighthouse__score">
-                <span class="lighthouse__score-value">{{ metrics.lighthouse.performance }}</span>
-                <span class="lighthouse__score-label">{{ t('home.projectHealth.perf') }}</span>
-              </div>
-              <div class="lighthouse__score">
-                <span class="lighthouse__score-value">{{ metrics.lighthouse.accessibility }}</span>
-                <span class="lighthouse__score-label">{{ t('home.projectHealth.a11y') }}</span>
-              </div>
-              <div class="lighthouse__score">
-                <span class="lighthouse__score-value">{{ metrics.lighthouse.bestPractices }}</span>
-                <span class="lighthouse__score-label">{{ t('home.projectHealth.best') }}</span>
-              </div>
-              <div class="lighthouse__score">
-                <span class="lighthouse__score-value">{{ metrics.lighthouse.seo }}</span>
-                <span class="lighthouse__score-label">{{ t('home.projectHealth.seo') }}</span>
-              </div>
-            </div>
+            @if (metrics.extended.lighthouse; as lh) {
+              @if (lh.available) {
+                <div class="lighthouse__grid">
+                  <div class="lighthouse__score">
+                    <span class="lighthouse__score-value">{{ lh.performance }}</span>
+                    <span class="lighthouse__score-label">{{ t('home.projectHealth.perf') }}</span>
+                  </div>
+                  <div class="lighthouse__score">
+                    <span class="lighthouse__score-value">{{ lh.accessibility }}</span>
+                    <span class="lighthouse__score-label">{{ t('home.projectHealth.a11y') }}</span>
+                  </div>
+                  <div class="lighthouse__score">
+                    <span class="lighthouse__score-value">{{ lh.bestPractices }}</span>
+                    <span class="lighthouse__score-label">{{ t('home.projectHealth.best') }}</span>
+                  </div>
+                  <div class="lighthouse__score">
+                    <span class="lighthouse__score-value">{{ lh.seo }}</span>
+                    <span class="lighthouse__score-label">{{ t('home.projectHealth.seo') }}</span>
+                  </div>
+                </div>
+              }
+            }
           </eb-stack>
         </eb-card>
 
@@ -218,6 +230,37 @@
                   <span class="metric__value">{{
                     ext.dependencies.vulnerabilities?.total ?? 0
                   }}</span>
+                </div>
+              </eb-stack>
+            </eb-card>
+          }
+
+          <!-- Bundle Size -->
+          @if (ext.bundleSize.available && ext.bundleSize.initial; as bundle) {
+            <eb-card [hoverable]="false" class="h-full">
+              <eb-stack card-body spacing="md">
+                <div class="card-header card-header--flex">
+                  <h3 class="card-header__title">{{ t('home.bundleSize.title') }}</h3>
+                  <eb-badge
+                    [variant]="
+                      bundle.status === 'pass'
+                        ? 'success'
+                        : bundle.status === 'warn'
+                          ? 'warning'
+                          : 'error'
+                    "
+                    position="inline"
+                    [content]="t('home.bundleSize.status.' + bundle.status)"
+                    [ariaLabel]="t('home.bundleSize.title')"
+                  ></eb-badge>
+                </div>
+                <div class="metric__row">
+                  <span class="metric__label">{{ t('home.bundleSize.initial') }}</span>
+                  <span class="metric__value">{{ bundle.formatted }}</span>
+                </div>
+                <div class="metric__row">
+                  <span class="metric__label">{{ t('home.bundleSize.budget') }}</span>
+                  <span class="metric__value text-secondary">{{ bundle.budget }}</span>
                 </div>
               </eb-stack>
             </eb-card>

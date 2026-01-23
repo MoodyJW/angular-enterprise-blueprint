@@ -36,24 +36,30 @@ describe('HomeComponent', () => {
 
   const mockMetrics: DashboardMetrics = {
     generatedAt: '2024-01-01T00:00:00.000Z',
-    testCoverage: {
-      value: 96,
-      trend: 'up',
-      lastUpdated: '2024-01-01',
-      details: {
-        statements: { pct: 95, covered: 100, total: 105 },
-        branches: { pct: 90, covered: 50, total: 55 },
-        functions: { pct: 100, covered: 20, total: 20 },
-        lines: { pct: 96, covered: 100, total: 104 },
-      },
-    },
-    lighthouse: { performance: 98, accessibility: 100, bestPractices: 100, seo: 100 },
     buildStatus: 'passing',
     deployStatus: 'success',
     systemStatus: 'operational',
     activeModules: 4,
     extended: {
-      testCoverage: { available: true, value: 96, trend: 'up' },
+      testCoverage: {
+        available: true,
+        value: 96,
+        trend: 'up',
+        lastUpdated: '2024-01-01',
+        details: {
+          statements: { pct: 95, covered: 100, total: 105 },
+          branches: { pct: 90, covered: 50, total: 55 },
+          functions: { pct: 100, covered: 20, total: 20 },
+          lines: { pct: 96, covered: 100, total: 104 },
+        },
+      },
+      lighthouse: {
+        available: true,
+        performance: 98,
+        accessibility: 100,
+        bestPractices: 100,
+        seo: 100,
+      },
       documentation: { available: true, percentage: 80 },
       git: { available: true, commits: 100 },
       linting: { available: true, errors: 0, warnings: 0 },
@@ -385,7 +391,10 @@ describe('HomeComponent', () => {
       if (currentMetrics) {
         mockStore.metrics.set({
           ...currentMetrics,
-          testCoverage: { value: 80, trend: 'down', lastUpdated: '2024-01-01' },
+          extended: {
+            ...currentMetrics.extended,
+            testCoverage: { available: true, value: 80, trend: 'down', lastUpdated: '2024-01-01' },
+          },
         });
       }
       fixture.detectChanges();
@@ -399,7 +408,15 @@ describe('HomeComponent', () => {
       if (currentMetrics) {
         mockStore.metrics.set({
           ...currentMetrics,
-          testCoverage: { value: 90, trend: 'stable', lastUpdated: '2024-01-01' },
+          extended: {
+            ...currentMetrics.extended,
+            testCoverage: {
+              available: true,
+              value: 90,
+              trend: 'stable',
+              lastUpdated: '2024-01-01',
+            },
+          },
         });
       }
       fixture.detectChanges();

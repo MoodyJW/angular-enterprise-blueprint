@@ -19,8 +19,6 @@ describe('DashboardService', () => {
 
   const mockMetrics: DashboardMetrics = {
     generatedAt: '2024-01-01T00:00:00.000Z',
-    testCoverage: { value: 95, trend: 'up', lastUpdated: '2024-01-01' },
-    lighthouse: { performance: 100, accessibility: 100, bestPractices: 100, seo: 100 },
     buildStatus: 'passing',
     deployStatus: 'success',
     systemStatus: 'operational',
