@@ -1,5 +1,37 @@
 # Changelog
 
+## [2.0.0](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v1.3.0...v2.0.0) (2026-01-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **home:** Optimize initial render performance
+
+### Features
+
+* **dashboard:** add bundle size card, remove dupe props from metrics ([dcbd566](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/dcbd5668fe5bd197ca7222a249160277907429a5))
+* **dashboard:** change layout to proper grid, add new cards ([b1f0542](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/b1f05427cfef4fe5e54c2282f1bed9a77b867c11))
+* **dashboard:** expand test stats, fix contributor count ([e573bbb](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/e573bbb5c8838119ab0b1020f3b14907b7666448))
+* **dashboard:** new cards with improved metrics ([469d167](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/469d167e04c5009cda2f7ea5491d8d8f9d3c2a6c))
+
+
+### Bug Fixes
+
+* **metrics:** update metrics use new script ([ad465bd](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/ad465bdbb3a1d51eebd0f999ebb669d30342d943))
+
+
+### Performance Improvements
+
+* **angular:** optimize angular config ([9faca7a](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/9faca7a0f494c9c06c37e831b19c32d5c3f335f8))
+* enable critical CSS inlining for improved FCP/LCP ([b3e9cc4](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/b3e9cc4a852106a75c454c4051877261c6495015))
+* **home:** defer non-critical data loading for faster LCP ([714730d](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/714730d11c26bf08bc82163f235151dad2867be7))
+* **lighthouse:** add app shell for immediate LCP ([6948753](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/69487536e482468f612aab246f1e5a7e754b4c21))
+* **lighthouse:** remove inline loader ([fded2af](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/fded2af4007be3e92e295ac3fa002112a936ea36))
+* **lighthouse:** replace app shell with loading indicator ([ef79cff](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/ef79cff34f54461163f39fa2d2885afd6d298050))
+* optimize index.html for faster FCP/LCP ([1d66004](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/1d660043bd30fd34a65913432a44e5508e91d1d5))
+* **preload:** increase preload delay ([8c4f9f4](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/8c4f9f4f350920a37395a707d42d3d962d0ee1f9))
+* **transloco:** inline loader ([edd6386](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/edd6386f100e6aa4ef2ae5488f42b46e09f1273b))
+
 ## [1.3.0](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v1.2.0...v1.3.0) (2026-01-17)
 
 
