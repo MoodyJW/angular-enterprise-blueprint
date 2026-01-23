@@ -172,6 +172,10 @@
   justify-items: center;
 }
 
+.test-coverage__grid {
+  @extend .lighthouse__grid;
+}
+
 .live-indicator {
   display: flex;
   align-items: center;

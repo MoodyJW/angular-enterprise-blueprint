@@ -78,6 +78,7 @@
     "projectHealth": {
       "title": "Salud del Proyecto",
       "testCoverage": "Cobertura de Pruebas",
+      "average": "Promedio",
       "statements": "Declaraciones",
       "branches": "Ramas",
       "functions": "Funciones",

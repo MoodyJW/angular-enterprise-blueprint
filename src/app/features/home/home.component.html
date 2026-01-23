@@ -94,45 +94,42 @@
             <h3>{{ t('home.projectHealth.testCoverage') }}</h3>
 
             @if (
-              metrics.extended.testCoverage.available &&
-              metrics.extended.testCoverage.value !== undefined
+              metrics.extended.testCoverage.available && metrics.extended.testCoverage.details;
+              as details
             ) {
-              <div class="metric__value metric__value--large">
-                <strong>{{ metrics.extended.testCoverage.value }}%</strong>
-                <span
-                  class="metric__trend"
-                  [class]="
-                    'metric__trend--' +
-                    getTrendColor(metrics.extended.testCoverage.trend || 'stable')
-                  "
-                >
-                  {{ getTrendIcon(metrics.extended.testCoverage.trend || 'stable') }}
-                </span>
-              </div>
-            }
-
-            @if (metrics.extended.testCoverage.details; as details) {
-              <div class="metric__grid mt-4 grid grid-cols-2 gap-4">
-                <div class="metric__item">
-                  <span class="text-xs text-secondary">{{
-                    t('home.projectHealth.statements')
-                  }}</span>
-                  <div class="font-bold">{{ details.statements.pct }}%</div>
-                </div>
-                <div class="metric__item">
-                  <span class="text-xs text-secondary">{{ t('home.projectHealth.branches') }}</span>
-                  <div class="font-bold">{{ details.branches.pct }}%</div>
-                </div>
-                <div class="metric__item">
-                  <span class="text-xs text-secondary">{{
-                    t('home.projectHealth.functions')
-                  }}</span>
-                  <div class="font-bold">{{ details.functions.pct }}%</div>
-                </div>
-                <div class="metric__item">
-                  <span class="text-xs text-secondary">{{ t('home.projectHealth.lines') }}</span>
-                  <div class="font-bold">{{ details.lines.pct }}%</div>
-                </div>
+              <div class="test-coverage__grid">
+                <!-- Total -->
+                <eb-donut-chart
+                  [value]="metrics.extended.testCoverage.value ?? 0"
+                  [total]="100"
+                  [label]="t('home.projectHealth.average')"
+                  [variant]="getScoreVariant(metrics.extended.testCoverage.value ?? 0)"
+                  size="sm"
+                />
+                <!-- Statements -->
+                <eb-donut-chart
+                  [value]="details.statements.pct"
+                  [total]="100"
+                  [label]="t('home.projectHealth.statements')"
+                  [variant]="getScoreVariant(details.statements.pct)"
+                  size="sm"
+                />
+                <!-- Functions -->
+                <eb-donut-chart
+                  [value]="details.functions.pct"
+                  [total]="100"
+                  [label]="t('home.projectHealth.functions')"
+                  [variant]="getScoreVariant(details.functions.pct)"
+                  size="sm"
+                />
+                <!-- Lines -->
+                <eb-donut-chart
+                  [value]="details.lines.pct"
+                  [total]="100"
+                  [label]="t('home.projectHealth.lines')"
+                  [variant]="getScoreVariant(details.lines.pct)"
+                  size="sm"
+                />
               </div>
             }
           </eb-stack>

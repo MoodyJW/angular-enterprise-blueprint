@@ -42,10 +42,12 @@ function getTestCoverage() {
     try {
       const data = JSON.parse(readFileSync(vitestPath, 'utf-8'));
       const total = data.total;
+      // Calculate average from available props
+      const avg = Math.round((total.statements.pct + total.functions.pct + total.lines.pct) / 3);
       return {
         available: true,
-        value: Math.round(total.lines.pct),
-        trend: total.lines.pct >= 80 ? 'up' : 'down',
+        value: avg,
+        trend: avg >= 80 ? 'up' : 'down',
         lastUpdated: new Date().toISOString(),
         details: {
           statements: {
@@ -138,11 +140,14 @@ function getTestCoverage() {
       const fnPct = calcPct(coveredFunctions, totalFunctions);
       const lnPct = calcPct(coveredLines, totalLines);
 
+      // Average of Statements, Functions, and Lines (Excluding Branches per user request)
+      const totalAvg = Math.round((stPct + fnPct + lnPct) / 3);
+
       if (totalStatements > 0) {
         return {
           available: true,
-          value: stPct, // Use statement coverage as primary metric
-          trend: stPct >= 80 ? 'up' : 'down',
+          value: totalAvg,
+          trend: totalAvg >= 80 ? 'up' : 'down',
           lastUpdated: new Date().toISOString(),
           details: {
             statements: { pct: stPct, covered: coveredStatements, total: totalStatements },

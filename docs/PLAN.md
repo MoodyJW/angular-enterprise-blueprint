@@ -375,12 +375,12 @@ _Goal: Refactor existing components for consistency, then add new capabilities a
   - [x] Apply min-height: 100vh flexbox pattern to main layout.
   - [x] Ensure mobile responsiveness.
   - [x] update README and appropriate TSDoc as needed.
-- [ ] **8.13 Donut Chart Component**: Create reusable donut chart for metrics visualization.
-  - [ ] Create DonutChartComponent using pure SCSS (conic-gradient, no packages).
-  - [ ] Implement size, color, and thickness variants.
-  - [ ] Display value in center and label below donut.
-  - [ ] Integrate into dashboard metric cards.
-  - [ ] Add Storybook stories and unit tests.
+- [x] **8.13 Donut Chart Component**: Create reusable donut chart for metrics visualization.
+  - [x] Create DonutChartComponent using pure SCSS (conic-gradient, no packages).
+  - [x] Implement size, color, and thickness variants.
+  - [x] Display value in center and label below donut.
+  - [x] Integrate into dashboard metric cards.
+  - [x] Add Storybook stories and unit tests.
   - [ ] Add README and appropriate TSDoc.
 - [ ] **8.14 ADR and Modules Design Alignment**: Align with Blog design patterns.
   - [ ] Update ADR list cards to match Blog article cards.
