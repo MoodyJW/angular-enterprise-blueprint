@@ -42,7 +42,7 @@ jobs:
         continue-on-error: true
 
       - name: Update Metrics File
-        run: node tools/update-metrics.js
+        run: npm run metrics:generate
 
       - name: Disable Git Hooks
         run: git config core.hooksPath /dev/null
