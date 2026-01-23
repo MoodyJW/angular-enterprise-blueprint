@@ -221,6 +221,29 @@ describe('HomeComponent', () => {
     expect(mockArchitectureStore.loadAdrs).toHaveBeenCalled();
   });
 
+  it('should fallback to setTimeout if requestIdleCallback is unavailable', async () => {
+    // Preserve original
+    const win = window as unknown as {
+      requestIdleCallback: unknown;
+    };
+    const originalRIC = win.requestIdleCallback;
+    win.requestIdleCallback = undefined;
+
+    // Create new component instance to trigger constructor
+    const fixtureHelper = TestBed.createComponent(HomeComponent);
+    // Trigger render
+    fixtureHelper.detectChanges();
+
+    // Wait for setTimeout(..., 1)
+    await new Promise((resolve) => setTimeout(resolve, 10));
+
+    expect(mockStore.loadExtendedMetrics).toHaveBeenCalled();
+    expect(mockArchitectureStore.loadAdrs).toHaveBeenCalled();
+
+    // Restore
+    win.requestIdleCallback = originalRIC;
+  });
+
   it('should render hero section branding', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.textContent).toContain('Jason Walker Moody');
@@ -315,31 +338,20 @@ describe('HomeComponent', () => {
     expect(compiled.textContent).toContain('Lines');
   });
 
-  describe('getTrendIcon', () => {
-    it('should return up arrow for up trend', () => {
-      expect(component.getTrendIcon('up')).toBe('↑');
+  describe('getScoreVariant', () => {
+    it('should return success for scores >= 90', () => {
+      expect(component.getScoreVariant(90)).toBe('success');
+      expect(component.getScoreVariant(100)).toBe('success');
     });
 
-    it('should return down arrow for down trend', () => {
-      expect(component.getTrendIcon('down')).toBe('↓');
+    it('should return warning for scores >= 50 and < 90', () => {
+      expect(component.getScoreVariant(50)).toBe('warning');
+      expect(component.getScoreVariant(89)).toBe('warning');
     });
 
-    it('should return stable icon for stable trend', () => {
-      expect(component.getTrendIcon('stable')).toBe('−');
-    });
-  });
-
-  describe('getTrendColor', () => {
-    it('should return success for up trend', () => {
-      expect(component.getTrendColor('up')).toBe('success');
-    });
-
-    it('should return error for down trend', () => {
-      expect(component.getTrendColor('down')).toBe('error');
-    });
-
-    it('should return neutral for stable trend', () => {
-      expect(component.getTrendColor('stable')).toBe('neutral');
+    it('should return error for scores < 50', () => {
+      expect(component.getScoreVariant(49)).toBe('error');
+      expect(component.getScoreVariant(0)).toBe('error');
     });
   });
 

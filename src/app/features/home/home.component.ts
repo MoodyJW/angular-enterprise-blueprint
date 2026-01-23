@@ -115,28 +115,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getTrendIcon(trend: 'up' | 'down' | 'stable'): string {
-    switch (trend) {
-      case 'up':
-        return '↑';
-      case 'down':
-        return '↓';
-      default:
-        return '−';
-    }
-  }
-
-  getTrendColor(trend: 'up' | 'down' | 'stable'): 'success' | 'error' | 'neutral' {
-    switch (trend) {
-      case 'up':
-        return 'success';
-      case 'down':
-        return 'error';
-      default:
-        return 'neutral';
-    }
-  }
-
   getScoreVariant(score: number): 'success' | 'warning' | 'error' {
     if (score >= 90) return 'success';
     if (score >= 50) return 'warning';
