@@ -1,38 +1,5 @@
 {
-  "generatedAt": "2026-01-18T19:00:21.850Z",
-  "testCoverage": {
-    "value": 91,
-    "trend": "up",
-    "lastUpdated": "2026-01-18T17:07:54.443Z",
-    "details": {
-      "statements": {
-        "pct": 92,
-        "covered": 450,
-        "total": 489
-      },
-      "branches": {
-        "pct": 88,
-        "covered": 120,
-        "total": 136
-      },
-      "functions": {
-        "pct": 95,
-        "covered": 85,
-        "total": 89
-      },
-      "lines": {
-        "pct": 81,
-        "covered": 440,
-        "total": 483
-      }
-    }
-  },
-  "lighthouse": {
-    "performance": 90,
-    "accessibility": 100,
-    "bestPractices": 100,
-    "seo": 100
-  },
+  "generatedAt": "2026-01-23T17:24:06.425Z",
   "buildStatus": "passing",
   "deployStatus": "pending",
   "systemStatus": "operational",
@@ -40,29 +7,29 @@
   "extended": {
     "testCoverage": {
       "available": true,
-      "value": 91,
+      "value": 90,
       "trend": "up",
-      "lastUpdated": "2026-01-18T17:07:54.443Z",
+      "lastUpdated": "2026-01-23T17:23:43.005Z",
       "details": {
         "statements": {
-          "pct": 92,
-          "covered": 450,
-          "total": 489
+          "pct": 90,
+          "covered": 4788,
+          "total": 5324
         },
         "branches": {
-          "pct": 88,
-          "covered": 120,
-          "total": 136
+          "pct": 78,
+          "covered": 2490,
+          "total": 3196
         },
         "functions": {
-          "pct": 95,
-          "covered": 85,
-          "total": 89
+          "pct": 93,
+          "covered": 843,
+          "total": 907
         },
         "lines": {
-          "pct": 81,
-          "covered": 440,
-          "total": 483
+          "pct": 90,
+          "covered": 4788,
+          "total": 5324
         }
       }
     },
@@ -96,8 +63,8 @@
     },
     "git": {
       "available": true,
-      "commits": 180,
-      "lastCommit": "2026-01-18 10:43:02 -0800",
+      "commits": 191,
+      "lastCommit": "2026-01-18 14:37:20 -0800",
       "branches": 81,
       "contributors": 1
     },
@@ -111,19 +78,24 @@
       "production": 18,
       "development": 41,
       "total": 59,
-      "outdated": 32,
+      "outdated": 34,
       "vulnerabilities": {
         "info": 0,
-        "low": 3,
-        "moderate": 0,
+        "low": 0,
+        "moderate": 12,
         "high": 2,
         "critical": 0,
-        "total": 5
+        "total": 14
       }
     },
     "bundleSize": {
-      "available": false,
-      "message": "Run ng build --stats-json first"
+      "available": true,
+      "initial": {
+        "raw": 180348,
+        "formatted": "176 KB",
+        "budget": "1MB",
+        "status": "pass"
+      }
     }
   }
 }

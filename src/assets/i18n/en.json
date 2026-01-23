@@ -97,6 +97,16 @@
       "outdated": "Outdated",
       "vulnerabilities": "Vulnerabilities"
     },
+    "bundleSize": {
+      "title": "Bundle Size",
+      "budget": "Budget",
+      "initial": "Initial JS/CSS",
+      "status": {
+        "pass": "✓ In Budget",
+        "warn": "Warning",
+        "error": "Over Budget"
+      }
+    },
     "git": {
       "title": "Repository",
       "commits": "Total Commits",

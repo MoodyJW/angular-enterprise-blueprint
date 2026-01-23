@@ -87,6 +87,16 @@
       "best": "Mejores Prácticas",
       "seo": "SEO"
     },
+    "bundleSize": {
+      "title": "Tamaño del Bundle",
+      "budget": "Presupuesto",
+      "initial": "JS/CSS Inicial",
+      "status": {
+        "pass": "✓ En Presupuesto",
+        "warn": "Advertencia",
+        "error": "Sobre Presupuesto"
+      }
+    },
     "visitors": {
       "title": "Visitantes en Tiempo Real",
       "live": "En Vivo",
