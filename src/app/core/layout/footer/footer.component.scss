@@ -11,15 +11,35 @@
   }
 
   &__content {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
     gap: var(--space-2);
 
+    // Left column (Copyright)
+    > :first-child {
+      justify-self: start;
+    }
+
+    // Center column (Links)
+    > :nth-child(2) {
+      justify-self: center;
+    }
+
+    // Right column (Badge)
+    > :last-child {
+      justify-self: end;
+    }
+
     @media (max-width: 768px) {
+      display: flex;
       flex-direction: column;
       text-align: center;
+
+      // Reset grid alignments for flex
+      > * {
+        justify-self: auto;
+      }
     }
   }
 

@@ -19,6 +19,11 @@
   width: 100%;
   overflow-y: auto; // Content scrolls independently
   overflow-x: hidden;
+
+  // Ensure footer stays at the bottom when content is short
+  eb-footer {
+    margin-top: auto;
+  }
 }
 
 // Mobile navigation overlay

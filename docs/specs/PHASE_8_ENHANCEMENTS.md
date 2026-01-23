@@ -1065,20 +1065,20 @@ interface BundleSize {
 }
 ```
 
-- [ ] Compodoc documentation coverage displayed with percentage and breakdown
-- [ ] Test coverage shows all 3 metrics (statements, functions, lines)
-- [ ] Bundle size displayed with budget status
-- [ ] Linting status shows error/warning counts
-- [ ] Dependency health metrics displayed
-- [ ] Storybook coverage percentage calculated and shown
-- [ ] Git statistics displayed (commits, last commit time)
-- [ ] Lighthouse scores displayed (real or mocked)
-- [ ] All metrics update when running `npm run metrics:generate`
-- [ ] Metric cards have consistent design with icons and status colors
-- [ ] Mobile responsive layout (cards stack on small screens)
-- [ ] Links to detailed reports work correctly
-- [ ] WCAG 2.1 AA compliant
-- [ ] All metrics accurate and verified
+- [x] Compodoc documentation coverage displayed with percentage and breakdown
+- [x] Test coverage shows all 3 metrics (statements, functions, lines)
+- [x] Bundle size displayed with budget status
+- [x] Linting status shows error/warning counts
+- [x] Dependency health metrics displayed
+- [x] Storybook coverage percentage calculated and shown
+- [x] Git statistics displayed (commits, last commit time)
+- [x] Lighthouse scores displayed (real or mocked)
+- [x] All metrics update when running `npm run metrics:generate`
+- [x] Metric cards have consistent design with icons and status colors
+- [x] Mobile responsive layout (cards stack on small screens)
+- [x] Links to detailed reports work correctly
+- [x] WCAG 2.1 AA compliant
+- [x] All metrics accurate and verified
 
 ---
 
@@ -1169,14 +1169,14 @@ interface BundleSize {
 
 ### Acceptance Criteria
 
-- [ ] Footer content (links, copyright, social) is horizontally centered
-- [ ] Footer sits at bottom of viewport on short pages (using flexbox, not sticky)
-- [ ] Footer scrolls with content naturally on long pages
-- [ ] No overlap with content on any screen size
-- [ ] Mobile responsive (stacks vertically on small screens)
-- [ ] Smooth transitions when content changes
-- [ ] WCAG 2.1 AA compliant
-- [ ] Works in all 6 themes
+- [x] Footer content (links, copyright, social) is horizontally centered
+- [x] Footer sits at bottom of viewport on short pages (using flexbox, not sticky)
+- [x] Footer scrolls with content naturally on long pages
+- [x] No overlap with content on any screen size
+- [x] Mobile responsive (stacks vertically on small screens)
+- [x] Smooth transitions when content changes
+- [x] WCAG 2.1 AA compliant
+- [x] Works in all 6 themes
 
 ### Files to Update
 

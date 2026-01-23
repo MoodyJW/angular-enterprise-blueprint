@@ -358,10 +358,10 @@ _Goal: Refactor existing components for consistency, then add new capabilities a
   - [x] Configure routes and lazy loading.
   - [x] Implement SEO meta tags per article.
   - [x] Add to main navigation.
-- [ ] **8.11 Enhanced Dashboard Metrics**: Expand dashboard with comprehensive code quality metrics.
+- [x] **8.11 Enhanced Dashboard Metrics**: Expand dashboard with comprehensive code quality metrics.
   - [x] Add Compodoc documentation coverage percentage and breakdown.
   - [x] Display detailed test coverage (statements, branches, functions, lines).
-  - [ ] Show bundle size with budget status.
+  - [x] Show bundle size with budget status.
   - [x] Display linting status (errors/warnings count).
   - [x] Add dependency health metrics (total, outdated, vulnerabilities).
   - [x] Show Storybook coverage percentage.
@@ -369,12 +369,12 @@ _Goal: Refactor existing components for consistency, then add new capabilities a
   - [x] Add Lighthouse scores display.
   - [x] Create metric parsing scripts for build-time data.
   - [x] Use existing CardComponent and GridComponent for metric displays.
-- [ ] **8.12 Footer Layout and Positioning**: Center footer content and fix positioning.
-  - [ ] Center footer elements (links, copyright, social icons) using flexbox.
-  - [ ] Change from sticky/fixed positioning to natural page flow.
-  - [ ] Apply min-height: 100vh flexbox pattern to main layout.
-  - [ ] Ensure mobile responsiveness.
-  - [ ] update README and appropriate TSDoc as needed.
+- [x] **8.12 Footer Layout and Positioning**: Center footer content and fix positioning.
+  - [x] Center footer elements (links, copyright, social icons) using flexbox.
+  - [x] Change from sticky/fixed positioning to natural page flow.
+  - [x] Apply min-height: 100vh flexbox pattern to main layout.
+  - [x] Ensure mobile responsiveness.
+  - [x] update README and appropriate TSDoc as needed.
 - [ ] **8.13 Donut Chart Component**: Create reusable donut chart for metrics visualization.
   - [ ] Create DonutChartComponent using pure SCSS (conic-gradient, no packages).
   - [ ] Implement size, color, and thickness variants.
