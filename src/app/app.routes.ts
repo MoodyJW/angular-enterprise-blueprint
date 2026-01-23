@@ -12,12 +12,14 @@ import { Routes } from '@angular/router';
  * - Uses requestIdleCallback to avoid interfering with Lighthouse measurements
  * - High-traffic routes have lower priority numbers, low-traffic routes aren't preloaded
  */
+import { HomeComponent } from './features/home';
+
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./features/home').then((m) => m.HomeComponent),
+    component: HomeComponent,
     title: 'Dashboard | Enterprise Blueprint',
-    // Don't preload - already loaded as initial route
+    // Don't preload - already loaded as initial route (Eager loaded for LCP)
     data: { preload: false },
   },
   {
