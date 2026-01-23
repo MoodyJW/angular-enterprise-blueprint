@@ -1,47 +1,145 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="17" failures="0" errors="0" time="0.010502573">
-    <testsuite name="scripts/generate-metrics.spec.js" timestamp="2026-01-23T21:14:08.377Z" hostname="jay-MS-7971" tests="17" failures="0" errors="0" skipped="0" time="0.010502573">
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; formatBytes &gt; should format 0 bytes correctly" time="0.001356331">
+<testsuites name="vitest tests" tests="7" failures="7" errors="0" time="0.009916783">
+    <testsuite name="src/app/shared/components/donut-chart/donut-chart.component.spec.ts" timestamp="2026-01-23T22:17:33.033Z" hostname="jay-MS-7971" tests="7" failures="7" errors="0" skipped="0" time="0.009916783">
+        <testcase classname="src/app/shared/components/donut-chart/donut-chart.component.spec.ts" name="DonutChartComponent &gt; should create" time="0.005685628">
+            <failure message="Component &apos;DonutChartComponent&apos; is not resolved:
+ - templateUrl: ./donut-chart.component.html
+ - styleUrl: ./donut-chart.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;DonutChartComponent&apos; is not resolved:
+ - templateUrl: ./donut-chart.component.html
+ - styleUrl: ./donut-chart.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/donut-chart/donut-chart.component.spec.ts:15:23
+            </failure>
         </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; formatBytes &gt; should format bytes to KB" time="0.000275839">
+        <testcase classname="src/app/shared/components/donut-chart/donut-chart.component.spec.ts" name="DonutChartComponent &gt; should compute percentage correctly" time="0.000759601">
+            <failure message="Component &apos;DonutChartComponent&apos; is not resolved:
+ - templateUrl: ./donut-chart.component.html
+ - styleUrl: ./donut-chart.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;DonutChartComponent&apos; is not resolved:
+ - templateUrl: ./donut-chart.component.html
+ - styleUrl: ./donut-chart.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/donut-chart/donut-chart.component.spec.ts:15:23
+            </failure>
         </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; formatBytes &gt; should format bytes to MB" time="0.000277547">
+        <testcase classname="src/app/shared/components/donut-chart/donut-chart.component.spec.ts" name="DonutChartComponent &gt; should cap percentage at 100" time="0.000418382">
+            <failure message="Component &apos;DonutChartComponent&apos; is not resolved:
+ - templateUrl: ./donut-chart.component.html
+ - styleUrl: ./donut-chart.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;DonutChartComponent&apos; is not resolved:
+ - templateUrl: ./donut-chart.component.html
+ - styleUrl: ./donut-chart.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/donut-chart/donut-chart.component.spec.ts:15:23
+            </failure>
         </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; formatBytes &gt; should round to nearest whole number" time="0.000277795">
+        <testcase classname="src/app/shared/components/donut-chart/donut-chart.component.spec.ts" name="DonutChartComponent &gt; should cap percentage at 0" time="0.000476489">
+            <failure message="Component &apos;DonutChartComponent&apos; is not resolved:
+ - templateUrl: ./donut-chart.component.html
+ - styleUrl: ./donut-chart.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;DonutChartComponent&apos; is not resolved:
+ - templateUrl: ./donut-chart.component.html
+ - styleUrl: ./donut-chart.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/donut-chart/donut-chart.component.spec.ts:15:23
+            </failure>
         </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; parseSize &gt; should parse KB values" time="0.000508591">
+        <testcase classname="src/app/shared/components/donut-chart/donut-chart.component.spec.ts" name="DonutChartComponent &gt; should generate correct chart style" time="0.00037474">
+            <failure message="Component &apos;DonutChartComponent&apos; is not resolved:
+ - templateUrl: ./donut-chart.component.html
+ - styleUrl: ./donut-chart.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;DonutChartComponent&apos; is not resolved:
+ - templateUrl: ./donut-chart.component.html
+ - styleUrl: ./donut-chart.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/donut-chart/donut-chart.component.spec.ts:15:23
+            </failure>
         </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; parseSize &gt; should parse MB values" time="0.000184239">
+        <testcase classname="src/app/shared/components/donut-chart/donut-chart.component.spec.ts" name="DonutChartComponent &gt; should apply variant class" time="0.000319109">
+            <failure message="Component &apos;DonutChartComponent&apos; is not resolved:
+ - templateUrl: ./donut-chart.component.html
+ - styleUrl: ./donut-chart.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;DonutChartComponent&apos; is not resolved:
+ - templateUrl: ./donut-chart.component.html
+ - styleUrl: ./donut-chart.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/donut-chart/donut-chart.component.spec.ts:15:23
+            </failure>
         </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; parseSize &gt; should parse GB values" time="0.000145504">
-        </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; parseSize &gt; should parse plain byte values" time="0.000186531">
-        </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; parseSize &gt; should return 0 for invalid input" time="0.00026021">
-        </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; getLighthouseScores &gt; should return unavailable when no .lighthouseci directory exists and no cache" time="0.000674318">
-        </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; getLighthouseScores &gt; should read from .lighthouseci directory when available" time="0.000328386">
-        </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; getLighthouseScores &gt; should fallback to existing.extended.lighthouse when no report exists" time="0.002136308">
-            <system-out>
-Using cached Lighthouse scores from previous run.
-
-            </system-out>
-        </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; getLighthouseScores &gt; should fallback to existing.lighthouse for backward compatibility" time="0.000468258">
-            <system-out>
-Using cached Lighthouse scores from previous run.
-
-            </system-out>
-        </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; getLighthouseScores &gt; should return unavailable when cached performance is 0" time="0.000404133">
-        </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; getDocumentationCoverage &gt; should return unavailable when documentation.json does not exist" time="0.000311414">
-        </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; getDocumentationCoverage &gt; should parse documentation.json correctly" time="0.000834799">
-        </testcase>
-        <testcase classname="scripts/generate-metrics.spec.js" name="generate-metrics.js &gt; getDocumentationCoverage &gt; should handle empty arrays gracefully" time="0.000211708">
+        <testcase classname="src/app/shared/components/donut-chart/donut-chart.component.spec.ts" name="DonutChartComponent &gt; should apply size class" time="0.000334676">
+            <failure message="Component &apos;DonutChartComponent&apos; is not resolved:
+ - templateUrl: ./donut-chart.component.html
+ - styleUrl: ./donut-chart.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;DonutChartComponent&apos; is not resolved:
+ - templateUrl: ./donut-chart.component.html
+ - styleUrl: ./donut-chart.component.scss
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/shared/components/donut-chart/donut-chart.component.spec.ts:15:23
+            </failure>
         </testcase>
     </testsuite>
 </testsuites>

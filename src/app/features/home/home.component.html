@@ -145,22 +145,34 @@
             @if (metrics.extended.lighthouse; as lh) {
               @if (lh.available) {
                 <div class="lighthouse__grid">
-                  <div class="lighthouse__score">
-                    <span class="lighthouse__score-value">{{ lh.performance }}</span>
-                    <span class="lighthouse__score-label">{{ t('home.projectHealth.perf') }}</span>
-                  </div>
-                  <div class="lighthouse__score">
-                    <span class="lighthouse__score-value">{{ lh.accessibility }}</span>
-                    <span class="lighthouse__score-label">{{ t('home.projectHealth.a11y') }}</span>
-                  </div>
-                  <div class="lighthouse__score">
-                    <span class="lighthouse__score-value">{{ lh.bestPractices }}</span>
-                    <span class="lighthouse__score-label">{{ t('home.projectHealth.best') }}</span>
-                  </div>
-                  <div class="lighthouse__score">
-                    <span class="lighthouse__score-value">{{ lh.seo }}</span>
-                    <span class="lighthouse__score-label">{{ t('home.projectHealth.seo') }}</span>
-                  </div>
+                  <eb-donut-chart
+                    [value]="lh.performance ?? 0"
+                    [total]="100"
+                    [label]="t('home.projectHealth.perf')"
+                    [variant]="getScoreVariant(lh.performance ?? 0)"
+                    size="sm"
+                  />
+                  <eb-donut-chart
+                    [value]="lh.accessibility ?? 0"
+                    [total]="100"
+                    [label]="t('home.projectHealth.a11y')"
+                    [variant]="getScoreVariant(lh.accessibility ?? 0)"
+                    size="sm"
+                  />
+                  <eb-donut-chart
+                    [value]="lh.bestPractices ?? 0"
+                    [total]="100"
+                    [label]="t('home.projectHealth.best')"
+                    [variant]="getScoreVariant(lh.bestPractices ?? 0)"
+                    size="sm"
+                  />
+                  <eb-donut-chart
+                    [value]="lh.seo ?? 0"
+                    [total]="100"
+                    [label]="t('home.projectHealth.seo')"
+                    [variant]="getScoreVariant(lh.seo ?? 0)"
+                    size="sm"
+                  />
                 </div>
               }
             }

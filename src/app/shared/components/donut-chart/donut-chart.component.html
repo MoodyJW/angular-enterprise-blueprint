@@ -1,0 +1,9 @@
+<div [class]="componentClasses()" [style]="chartStyle()">
+  <div class="donut-chart__ring"></div>
+  <div class="donut-chart__content">
+    <span class="donut-chart__value">{{ displayValue() }}</span>
+  </div>
+  @if (label()) {
+    <div class="donut-chart__label">{{ label() }}</div>
+  }
+</div>

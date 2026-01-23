@@ -9,6 +9,7 @@ import { BadgeComponent } from '@shared/components/badge';
 import { ButtonComponent } from '@shared/components/button';
 import { CardComponent } from '@shared/components/card';
 import { ContainerComponent } from '@shared/components/container';
+import { DonutChartComponent } from '@shared/components/donut-chart/donut-chart.component';
 import { GridComponent } from '@shared/components/grid';
 import { StackComponent } from '@shared/components/stack';
 import { DashboardStore } from './state/dashboard.store';
@@ -27,6 +28,7 @@ import { DashboardStore } from './state/dashboard.store';
     BadgeComponent,
     ButtonComponent,
     ContainerComponent,
+    DonutChartComponent,
     RouterLink,
     TitleCasePipe,
     DecimalPipe,
@@ -133,5 +135,11 @@ export class HomeComponent implements OnInit {
       default:
         return 'neutral';
     }
+  }
+
+  getScoreVariant(score: number): 'success' | 'warning' | 'error' {
+    if (score >= 90) return 'success';
+    if (score >= 50) return 'warning';
+    return 'error';
   }
 }
