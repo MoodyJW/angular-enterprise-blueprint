@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-23T17:24:06.425Z",
+  "generatedAt": "2026-01-23T18:04:04.128Z",
   "buildStatus": "passing",
   "deployStatus": "pending",
   "systemStatus": "operational",
@@ -9,17 +9,17 @@
       "available": true,
       "value": 90,
       "trend": "up",
-      "lastUpdated": "2026-01-23T17:23:43.005Z",
+      "lastUpdated": "2026-01-23T18:03:42.599Z",
       "details": {
         "statements": {
           "pct": 90,
           "covered": 4788,
-          "total": 5324
+          "total": 5328
         },
         "branches": {
           "pct": 78,
           "covered": 2490,
-          "total": 3196
+          "total": 3204
         },
         "functions": {
           "pct": 93,
@@ -29,43 +29,27 @@
         "lines": {
           "pct": 90,
           "covered": 4788,
-          "total": 5324
+          "total": 5328
         }
       }
     },
     "lighthouse": {
       "available": true,
-      "performance": 90,
+      "performance": 91,
       "accessibility": 100,
       "bestPractices": 100,
       "seo": 100,
-      "message": "Cached from previous run (local report not found)"
+      "source": "lhr-1769191421135.json"
     },
     "documentation": {
-      "available": true,
-      "percentage": 100,
-      "components": {
-        "documented": 51,
-        "total": 51
-      },
-      "services": {
-        "documented": 21,
-        "total": 21
-      },
-      "directives": {
-        "documented": 1,
-        "total": 1
-      },
-      "pipes": {
-        "documented": 0,
-        "total": 0
-      }
+      "available": false,
+      "message": "Run npm run docs:json first"
     },
     "git": {
       "available": true,
-      "commits": 191,
-      "lastCommit": "2026-01-18 14:37:20 -0800",
-      "branches": 81,
+      "commits": 1,
+      "lastCommit": "2026-01-23 10:00:29 -0800",
+      "branches": 1,
       "contributors": 1
     },
     "linting": {
