@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="5" failures="5" errors="0" time="0.011541388">
-    <testsuite name="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" timestamp="2026-01-24T16:23:58.244Z" hostname="jay-MS-7971" tests="4" failures="4" errors="0" skipped="0" time="0.011541388">
-        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; should create" time="0.005338962">
+<testsuites name="vitest tests" tests="29" failures="29" errors="0" time="0.023176678">
+    <testsuite name="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" timestamp="2026-01-24T17:09:06.675Z" hostname="jay-MS-7971" tests="29" failures="29" errors="0" skipped="0" time="0.023176678">
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Component Creation &gt; should create" time="0.006487141">
             <failure message="Need to call TestBed.initTestEnvironment() first" type="Error">
 Error: Need to call TestBed.initTestEnvironment() first
  ❯ TestBedImpl.get compiler [as compiler] node_modules/@angular/core/fesm2022/testing.mjs:1486:13
  ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:10
  ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
- ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:40:19
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
             </failure>
         </testcase>
-        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; should render ADR title and content" time="0.003306379">
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Component Creation &gt; should have ICONS constant defined" time="0.002516188">
             <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
  - templateUrl: ./adr-viewer.component.html
  - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
@@ -27,10 +27,10 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
  ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
  ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
- ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:40:19
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
             </failure>
         </testcase>
-        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; should call loadAdrs if store is empty" time="0.000730974">
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Template Rendering &gt; should render ADR title" time="0.00064173">
             <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
  - templateUrl: ./adr-viewer.component.html
  - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
@@ -47,10 +47,10 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
  ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
  ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
- ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:40:19
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
             </failure>
         </testcase>
-        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; should call loadContent with correct ID" time="0.000757092">
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Template Rendering &gt; should render markdown content" time="0.000590078">
             <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
  - templateUrl: ./adr-viewer.component.html
  - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
@@ -67,37 +67,507 @@ Did you run and wait for &apos;resolveComponentResources()&apos;?
  ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
  ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
  ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
- ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:40:19
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
             </failure>
         </testcase>
-    </testsuite>
-    <testsuite name="src/app/features/blog/blog-detail/blog-detail.component.spec.ts" timestamp="2026-01-24T16:23:58.250Z" hostname="jay-MS-7971" tests="1" failures="1" errors="0" skipped="0" time="0">
-        <testcase classname="src/app/features/blog/blog-detail/blog-detail.component.spec.ts" name="src/app/features/blog/blog-detail/blog-detail.component.spec.ts" time="0">
-            <system-err>
-JIT compilation failed for injectable [36m[class PlatformLocation][39m
-
-            </system-err>
-            <failure message="The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
-
-The injectable is part of a library that has been partially compiled.
-However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
-
-Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
-Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
-or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping." type="Error">
-Error: The injectable &apos;PlatformLocation&apos; needs to be compiled using the JIT compiler, but &apos;@angular/compiler&apos; is not available.
-
-The injectable is part of a library that has been partially compiled.
-However, the Angular Linker has not processed the library such that JIT compilation is used as fallback.
-
-Ideally, the library is processed using the Angular Linker to become fully AOT compiled.
-Alternatively, the JIT compiler should be loaded by bootstrapping using &apos;@angular/platform-browser-dynamic&apos; or &apos;@angular/platform-server&apos;,
-or manually provide the compiler with &apos;import &quot;@angular/compiler&quot;;&apos; before bootstrapping.
- ❯ getCompilerFacade node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:143:11
- ❯ Module.ɵɵngDeclareFactory node_modules/@angular/core/fesm2022/core.mjs:2597:20
- ❯ Function.&lt;static_initializer&gt; node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:23:20
- ❯ node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs:17:1
- ❯ src/app/features/blog/blog-detail/blog-detail.component.spec.ts:1:1
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Template Rendering &gt; should render meta section with date and number" time="0.000455851">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Template Rendering &gt; should render badge with status" time="0.000404043">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Template Rendering &gt; should render dividers in meta section" time="0.000522852">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Store Integration &gt; should call loadAdrs if store is empty" time="0.000477638">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Store Integration &gt; should not call loadAdrs if store has entities" time="0.000811672">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Store Integration &gt; should call loadContent with correct ID" time="0.000617149">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; getStatusVariant &gt; should return success for accepted status" time="0.000539188">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; getStatusVariant &gt; should return warning for deprecated status" time="0.000495538">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; getStatusVariant &gt; should return secondary for superseded status" time="0.000320103">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; getStatusVariant &gt; should return secondary for unknown status" time="0.000451457">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; getStatusVariant &gt; should return secondary for empty string" time="0.000369087">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; adjacentAdrs Computed &gt; should compute previous and next ADRs correctly for middle item" time="0.000284621">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; adjacentAdrs Computed &gt; should have no prev for first item" time="0.000345997">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; adjacentAdrs Computed &gt; should have no next for last item" time="0.000283774">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; adjacentAdrs Computed &gt; should return null for both when ID not found" time="0.000510734">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Loading State &gt; should display loading state when isLoading is true" time="0.000560266">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Loading State &gt; should display loading state when isLoadingContent is true" time="0.00051758">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Error State &gt; should display error message when error is set" time="0.000410714">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Not Found State &gt; should display not found state when ADR does not exist" time="0.000379571">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Navigation Template &gt; should render prev button when prev ADR exists" time="0.000299475">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Navigation Template &gt; should render next button when next ADR exists" time="0.000264511">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Navigation Template &gt; should not render prev button for first ADR" time="0.000331314">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; Navigation Template &gt; should not render next button for last ADR" time="0.000286714">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; adr Computed &gt; should return the correct ADR based on ID" time="0.00032018">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
+            </failure>
+        </testcase>
+        <testcase classname="src/app/features/architecture/viewer/adr-viewer.component.spec.ts" name="AdrViewerComponent &gt; adr Computed &gt; should return undefined for non-existent ID" time="0.000318449">
+            <failure message="Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?" type="Error">
+Error: Component &apos;AdrViewerComponent&apos; is not resolved:
+ - templateUrl: ./adr-viewer.component.html
+ - styleUrls: [&quot;./adr-viewer.component.scss&quot;]
+Did you run and wait for &apos;resolveComponentResources()&apos;?
+ ❯ Function.get node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:17807:17
+ ❯ getComponentDef node_modules/@angular/core/fesm2022/testing.mjs:1154:16
+ ❯ isStandaloneComponent node_modules/@angular/core/fesm2022/testing.mjs:1150:15
+ ❯ queueTypesFromModulesArrayRecur node_modules/@angular/core/fesm2022/testing.mjs:925:20
+ ❯ TestBedCompiler.queueTypesFromModulesArray node_modules/@angular/core/fesm2022/testing.mjs:943:5
+ ❯ TestBedCompiler.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:567:12
+ ❯ TestBedImpl.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1402:19
+ ❯ Function.configureTestingModule node_modules/@angular/core/fesm2022/testing.mjs:1273:33
+ ❯ src/app/features/architecture/viewer/adr-viewer.component.spec.ts:84:19
             </failure>
         </testcase>
     </testsuite>

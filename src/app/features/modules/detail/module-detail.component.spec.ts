@@ -35,7 +35,16 @@ describe('ModuleDetailComponent', () => {
   };
 
   const mockModules: Module[] = [
-    mockModule,
+    {
+      ...mockModule,
+      id: 'first-module',
+      title: 'First Module',
+    },
+    {
+      ...mockModule,
+      id: 'test-module',
+      title: 'Test Module',
+    },
     {
       id: 'another-module',
       title: 'Another Module',
@@ -60,34 +69,38 @@ describe('ModuleDetailComponent', () => {
         features: 'Key Features',
         techStack: 'Technology Stack',
         tags: 'Tags',
-        launchDemo: 'Launch Demo',
         viewSource: 'View Source',
-        noDemo: 'Demo not available',
         noSource: 'Source not available',
         statusLabel: 'Status: {{ status }}',
         categoryLabel: 'Category: {{ category }}',
         technologyLabel: 'Technology: {{ technology }}',
+        previousModule: 'Previous',
+        nextModule: 'Next',
       },
       data: {
+        'first-module': {
+          title: 'First Module',
+          description: 'First module description',
+        },
         'test-module': {
           title: 'Test Module',
           description: 'A test module description',
-          features: ['Feature 1', 'Feature 2'],
         },
         'another-module': {
           title: 'Another Module',
           description: 'Another description',
-          features: ['Feature A'],
         },
       },
       categories: {
         ui: 'UI Components',
         'state-management': 'State Management',
         infrastructure: 'Infrastructure',
+        security: 'Security',
       },
       statuses: {
         production: 'Production',
         beta: 'Beta',
+        experimental: 'Experimental',
       },
     },
   };
@@ -123,7 +136,6 @@ describe('ModuleDetailComponent', () => {
 
   describe('Component Creation', () => {
     it('should create with required id input', () => {
-      // Set the required input
       fixture.componentRef.setInput('id', 'test-module');
       fixture.detectChanges();
       expect(component).toBeTruthy();
@@ -181,6 +193,56 @@ describe('ModuleDetailComponent', () => {
           description: 'A test module description',
         },
       });
+    });
+  });
+
+  describe('Adjacent Modules Computed', () => {
+    beforeEach(() => {
+      vi.spyOn(modulesService, 'getModules').mockReturnValue(of(mockModules));
+    });
+
+    it('should compute previous and next modules correctly for middle item', () => {
+      fixture.componentRef.setInput('id', 'test-module');
+      fixture.detectChanges();
+      component.ngOnInit();
+
+      const adjacent = component['adjacentModules']();
+      expect(adjacent.prev).toBeTruthy();
+      expect(adjacent.prev?.id).toBe('first-module');
+      expect(adjacent.next).toBeTruthy();
+      expect(adjacent.next?.id).toBe('another-module');
+    });
+
+    it('should have no prev for first item', () => {
+      fixture.componentRef.setInput('id', 'first-module');
+      fixture.detectChanges();
+      component.ngOnInit();
+
+      const adjacent = component['adjacentModules']();
+      expect(adjacent.prev).toBeNull();
+      expect(adjacent.next).toBeTruthy();
+      expect(adjacent.next?.id).toBe('test-module');
+    });
+
+    it('should have no next for last item', () => {
+      fixture.componentRef.setInput('id', 'another-module');
+      fixture.detectChanges();
+      component.ngOnInit();
+
+      const adjacent = component['adjacentModules']();
+      expect(adjacent.prev).toBeTruthy();
+      expect(adjacent.prev?.id).toBe('test-module');
+      expect(adjacent.next).toBeNull();
+    });
+
+    it('should return null for both when ID not found', () => {
+      fixture.componentRef.setInput('id', 'non-existent');
+      fixture.detectChanges();
+      component.ngOnInit();
+
+      const adjacent = component['adjacentModules']();
+      expect(adjacent.prev).toBeNull();
+      expect(adjacent.next).toBeNull();
     });
   });
 
@@ -267,6 +329,154 @@ describe('ModuleDetailComponent', () => {
 
       const html = (fixture.nativeElement as HTMLElement).innerHTML;
       expect(html).toContain('Back to Modules');
+    });
+
+    it('should show view source button when repoUrl exists', () => {
+      fixture.componentRef.setInput('id', 'test-module');
+      fixture.detectChanges();
+      component.ngOnInit();
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('View Source');
+    });
+
+    it('should render badges for status and category', () => {
+      fixture.componentRef.setInput('id', 'test-module');
+      fixture.detectChanges();
+      component.ngOnInit();
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      const badges = compiled.querySelectorAll('eb-badge');
+      expect(badges.length).toBeGreaterThanOrEqual(2);
+    });
+
+    it('should render features list', () => {
+      fixture.componentRef.setInput('id', 'test-module');
+      fixture.detectChanges();
+      component.ngOnInit();
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Feature 1');
+      expect(compiled.textContent).toContain('Feature 2');
+    });
+
+    it('should render tech stack badges', () => {
+      fixture.componentRef.setInput('id', 'test-module');
+      fixture.detectChanges();
+      component.ngOnInit();
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.textContent).toContain('Angular');
+      expect(compiled.textContent).toContain('TypeScript');
+    });
+  });
+
+  describe('Navigation Template', () => {
+    beforeEach(() => {
+      vi.spyOn(modulesService, 'getModules').mockReturnValue(of(mockModules));
+    });
+
+    it('should render prev button when prev module exists', () => {
+      fixture.componentRef.setInput('id', 'test-module');
+      fixture.detectChanges();
+      component.ngOnInit();
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      const prevButton = compiled.querySelector('.module-detail__nav-prev');
+      expect(prevButton).toBeTruthy();
+    });
+
+    it('should render next button when next module exists', () => {
+      fixture.componentRef.setInput('id', 'test-module');
+      fixture.detectChanges();
+      component.ngOnInit();
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      const nextButton = compiled.querySelector('.module-detail__nav-next');
+      expect(nextButton).toBeTruthy();
+    });
+
+    it('should not render prev button for first module', () => {
+      fixture.componentRef.setInput('id', 'first-module');
+      fixture.detectChanges();
+      component.ngOnInit();
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      const prevButton = compiled.querySelector('.module-detail__nav-prev');
+      expect(prevButton).toBeFalsy();
+    });
+
+    it('should not render next button for last module', () => {
+      fixture.componentRef.setInput('id', 'another-module');
+      fixture.detectChanges();
+      component.ngOnInit();
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      const nextButton = compiled.querySelector('.module-detail__nav-next');
+      expect(nextButton).toBeFalsy();
+    });
+  });
+
+  describe('Loading State', () => {
+    it('should show loading state when store is loading', () => {
+      fixture.componentRef.setInput('id', 'test-module');
+      fixture.detectChanges();
+
+      // Store starts in loading state before modules are loaded
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.querySelector('.module-detail__loading')).toBeTruthy();
+    });
+  });
+
+  describe('Not Found State', () => {
+    beforeEach(() => {
+      vi.spyOn(modulesService, 'getModules').mockReturnValue(of(mockModules));
+    });
+
+    it('should show not found state when module does not exist', () => {
+      fixture.componentRef.setInput('id', 'non-existent');
+      fixture.detectChanges();
+      component.ngOnInit();
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      expect(compiled.querySelector('.module-detail__not-found')).toBeTruthy();
+    });
+
+    it('should show back button in not found state', () => {
+      fixture.componentRef.setInput('id', 'non-existent');
+      fixture.detectChanges();
+      component.ngOnInit();
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      const notFound = compiled.querySelector('.module-detail__not-found');
+      expect(notFound?.textContent).toContain('Back to Modules');
+    });
+  });
+
+  describe('Module Without Repo URL', () => {
+    beforeEach(() => {
+      vi.spyOn(modulesService, 'getModules').mockReturnValue(of(mockModules));
+    });
+
+    it('should not render view source button when repoUrl is null', () => {
+      fixture.componentRef.setInput('id', 'another-module');
+      fixture.detectChanges();
+      component.ngOnInit();
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      const sourceLink = compiled.querySelector('.module-detail__source-link');
+      expect(sourceLink).toBeFalsy();
     });
   });
 });
