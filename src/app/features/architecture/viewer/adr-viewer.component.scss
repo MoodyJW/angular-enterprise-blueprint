@@ -1,61 +1,11 @@
+@use '../../../shared/styles/feature-detail-card' as card;
+
 .adr-viewer {
-  &__loading {
-    text-align: center;
-    padding: var(--space-8);
-    font-size: var(--font-size-lg);
-    color: var(--color-text-secondary);
-  }
+  @include card.feature-detail-card;
 
-  &__error,
-  &__not-found {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-12);
-    text-align: center;
-
-    p {
-      margin: 0;
-      color: var(--color-text-secondary);
-    }
-  }
-
-  &__error {
-    color: var(--color-error);
-  }
-
-  &__nav {
-    margin-bottom: var(--space-4);
-  }
-
-  &__header {
-    margin-bottom: var(--space-6);
-  }
-
-  &__meta {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    margin-bottom: var(--space-2);
-  }
-
+  // Custom overrides or specific styles can go here
   &__number {
     font-family: var(--font-family-mono);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-semibold);
     color: var(--color-primary);
-  }
-
-  &__date {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-  }
-
-  &__title {
-    margin: 0;
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text);
   }
 }

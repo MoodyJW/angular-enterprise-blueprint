@@ -51,7 +51,7 @@
                     </h2>
                     <div class="adr-card__meta">
                       <span class="adr-card__date">{{ adr.date | date: 'mediumDate' }}</span>
-                      <span class="adr-card__separator">•</span>
+                      <eb-divider [orientation]="'vertical'"></eb-divider>
                       <span class="adr-card__number">{{ adr.number }}</span>
                     </div>
                   </div>

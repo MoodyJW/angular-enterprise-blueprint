@@ -1,0 +1,72 @@
+@use 'sass:map';
+
+@mixin feature-detail-card {
+  max-width: 800px;
+  margin: 0 auto;
+
+  &__loading,
+  &__error,
+  &__not-found {
+    text-align: center;
+    padding: var(--space-12);
+  }
+
+  // Header Layout
+  &__header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  // Back Button - ensure it doesn't shrink
+  &__back {
+    flex-shrink: 0;
+  }
+
+  // Title and Meta
+  &__title {
+    font-size: var(--font-size-4xl);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+    text-align: center;
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    flex-wrap: wrap;
+
+    eb-divider {
+      height: var(--space-5);
+    }
+  }
+
+  // Navigation (Prev/Next)
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+
+    &--footer {
+      width: 100%;
+      margin-top: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--color-border);
+    }
+  }
+}

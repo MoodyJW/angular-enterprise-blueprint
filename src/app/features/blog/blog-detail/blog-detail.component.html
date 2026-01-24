@@ -1,156 +1,160 @@
-<div class="blog-detail" *transloco="let t">
-  @if (article(); as article) {
-    <article class="blog-detail__content">
-      <eb-card [hoverable]="false">
-        <header card-header>
-          <div class="blog-detail__header-actions">
-            <eb-button
-              routerLink="/blog"
-              [ariaLabel]="t('blog.detail.backAriaLabel')"
-              class="blog-detail__back"
+<eb-container>
+  <ng-container *transloco="let t">
+    <div class="blog-detail">
+      @if (article(); as article) {
+        <article class="blog-detail__content">
+          <eb-card [hoverable]="false">
+            <header card-header>
+              <div class="blog-detail__header-actions">
+                <eb-button
+                  routerLink="/blog"
+                  [ariaLabel]="t('blog.detail.backAriaLabel')"
+                  class="blog-detail__back"
+                >
+                  <ng-container icon>
+                    <eb-icon [name]="ICONS.ARROW_LEFT" size="sm" />
+                  </ng-container>
+                  {{ t('blog.detail.backToList') }}
+                </eb-button>
+
+                <!-- Top Navigation -->
+                <ng-container *ngTemplateOutlet="navControls; context: { $implicit: 'header' }" />
+              </div>
+
+              <h1 class="blog-detail__title">{{ article.title }}</h1>
+
+              <div class="blog-detail__meta">
+                <span class="blog-detail__date">
+                  {{ article.publishedAt | date: 'mediumDate' }}
+                </span>
+                <eb-divider [orientation]="'vertical'"></eb-divider>
+                <span class="blog-detail__read-time">
+                  {{ t('blog.minRead', { minutes: article.readingTimeMinutes }) }}
+                </span>
+              </div>
+            </header>
+
+            <div class="blog-detail__body" card-body>
+              @if (contentLoading()) {
+                <div class="blog-detail__loading">{{ t('blog.detail.loading') }}</div>
+              } @else {
+                <markdown [data]="content()" class="eb-markdown-content" />
+              }
+            </div>
+
+            <footer class="blog-detail__footer" card-footer>
+              <div class="blog-detail__tags">
+                @for (tag of article.tags; track tag) {
+                  <span class="blog-detail__tag">#{{ tag }}</span>
+                }
+              </div>
+
+              <!-- Bottom Navigation -->
+              <ng-container *ngTemplateOutlet="navControls; context: { $implicit: 'footer' }" />
+            </footer>
+          </eb-card>
+
+          <!-- Reusable Navigation Template -->
+          <ng-template #navControls let-placement>
+            <div
+              class="blog-detail__nav"
+              [class.blog-detail__nav--header]="placement === 'header'"
+              [class.blog-detail__nav--footer]="placement === 'footer'"
             >
-              <ng-container icon>
-                <eb-icon [name]="ICONS.ARROW_LEFT" size="sm" />
-              </ng-container>
-              {{ t('blog.detail.backToList') }}
-            </eb-button>
+              @if (adjacentArticles().prev; as prev) {
+                <eb-button
+                  variant="secondary"
+                  [routerLink]="PUBLISHED_SLUGS.includes(prev.slug) ? ['/blog', prev.slug] : null"
+                  class="blog-detail__nav-prev"
+                  [ariaLabel]="t('blog.detail.previousArticle')"
+                  [disabled]="!PUBLISHED_SLUGS.includes(prev.slug)"
+                >
+                  <ng-container icon>
+                    <eb-icon [name]="ICONS.ARROW_LEFT" size="sm" />
+                  </ng-container>
+                  {{ t('blog.detail.previousArticle') }}
+                </eb-button>
+              }
+              @if (adjacentArticles().next; as next) {
+                <eb-button
+                  variant="secondary"
+                  [routerLink]="PUBLISHED_SLUGS.includes(next.slug) ? ['/blog', next.slug] : null"
+                  class="blog-detail__nav-next"
+                  [ariaLabel]="t('blog.detail.nextArticle')"
+                  [disabled]="!PUBLISHED_SLUGS.includes(next.slug)"
+                >
+                  {{ t('blog.detail.nextArticle') }}
+                  <ng-container icon>
+                    <eb-icon [name]="ICONS.ARROW_RIGHT" size="sm" />
+                  </ng-container>
+                </eb-button>
+              }
+            </div>
+          </ng-template>
+        </article>
+      }
 
-            <!-- Top Navigation -->
-            <ng-container *ngTemplateOutlet="navControls; context: { $implicit: 'header' }" />
-          </div>
-
-          <h1 class="blog-detail__title">{{ article.title }}</h1>
-
-          <div class="blog-detail__meta">
-            <span class="blog-detail__date">
-              {{ article.publishedAt | date: 'mediumDate' }}
-            </span>
-            <span class="blog-detail__separator">•</span>
-            <span class="blog-detail__read-time">
-              {{ t('blog.minRead', { minutes: article.readingTimeMinutes }) }}
-            </span>
-          </div>
-        </header>
-
-        <div class="blog-detail__body" card-body>
-          @if (contentLoading()) {
-            <div class="blog-detail__loading">{{ t('blog.detail.loading') }}</div>
-          } @else {
-            <markdown [data]="content()" class="eb-markdown-content" />
-          }
+      @if (!article() && !store.loading()) {
+        <div class="blog-detail__not-found">
+          <h2>{{ t('blog.detail.notFound') }}</h2>
+          <eb-button routerLink="/blog" [ariaLabel]="t('blog.detail.notFoundAriaLabel')">{{
+            t('blog.detail.notFoundButton')
+          }}</eb-button>
         </div>
+      }
 
-        <footer class="blog-detail__footer" card-footer>
-          <div class="blog-detail__tags">
-            @for (tag of article.tags; track tag) {
-              <span class="blog-detail__tag">#{{ tag }}</span>
-            }
-          </div>
+      @if (store.loading()) {
+        <article class="blog-detail__loading-skeleton">
+          <eb-card [hoverable]="false">
+            <header card-header>
+              <div class="blog-detail__header-actions">
+                <!-- Nav placeholder -->
+                <eb-skeleton
+                  variant="rectangular"
+                  width="100px"
+                  height="32px"
+                  [rounded]="true"
+                  ariaLabel="Loading navigation"
+                ></eb-skeleton>
+              </div>
+              <!-- Title placeholder -->
+              <div style="display: flex; justify-content: center; margin-bottom: var(--space-6)">
+                <eb-skeleton
+                  variant="text"
+                  width="70%"
+                  height="48px"
+                  ariaLabel="Loading title"
+                ></eb-skeleton>
+              </div>
+              <!-- Meta placeholder -->
+              <div
+                style="
+                  display: flex;
+                  justify-content: center;
+                  gap: var(--space-4);
+                  margin-bottom: var(--space-4);
+                "
+              >
+                <eb-skeleton
+                  variant="text"
+                  width="200px"
+                  height="20px"
+                  ariaLabel="Loading metadata"
+                ></eb-skeleton>
+              </div>
+            </header>
 
-          <!-- Bottom Navigation -->
-          <ng-container *ngTemplateOutlet="navControls; context: { $implicit: 'footer' }" />
-        </footer>
-      </eb-card>
-
-      <!-- Reusable Navigation Template -->
-      <ng-template #navControls let-placement>
-        <div
-          class="blog-detail__nav"
-          [class.blog-detail__nav--header]="placement === 'header'"
-          [class.blog-detail__nav--footer]="placement === 'footer'"
-        >
-          @if (adjacentArticles().prev; as prev) {
-            <eb-button
-              variant="secondary"
-              [routerLink]="PUBLISHED_SLUGS.includes(prev.slug) ? ['/blog', prev.slug] : null"
-              class="blog-detail__nav-prev"
-              [ariaLabel]="t('blog.detail.previousArticle')"
-              [disabled]="!PUBLISHED_SLUGS.includes(prev.slug)"
-            >
-              <ng-container icon>
-                <eb-icon [name]="ICONS.ARROW_LEFT" size="sm" />
-              </ng-container>
-              {{ t('blog.detail.previousArticle') }}
-            </eb-button>
-          }
-          @if (adjacentArticles().next; as next) {
-            <eb-button
-              variant="secondary"
-              [routerLink]="PUBLISHED_SLUGS.includes(next.slug) ? ['/blog', next.slug] : null"
-              class="blog-detail__nav-next"
-              [ariaLabel]="t('blog.detail.nextArticle')"
-              [disabled]="!PUBLISHED_SLUGS.includes(next.slug)"
-            >
-              {{ t('blog.detail.nextArticle') }}
-              <ng-container icon>
-                <eb-icon [name]="ICONS.ARROW_RIGHT" size="sm" />
-              </ng-container>
-            </eb-button>
-          }
-        </div>
-      </ng-template>
-    </article>
-  }
-
-  @if (!article() && !store.loading()) {
-    <div class="blog-detail__not-found">
-      <h2>{{ t('blog.detail.notFound') }}</h2>
-      <eb-button routerLink="/blog" [ariaLabel]="t('blog.detail.notFoundAriaLabel')">{{
-        t('blog.detail.notFoundButton')
-      }}</eb-button>
+            <div card-body>
+              <eb-skeleton
+                variant="text"
+                [count]="4"
+                [spacing]="16"
+                ariaLabel="Loading content"
+              ></eb-skeleton>
+            </div>
+          </eb-card>
+        </article>
+      }
     </div>
-  }
-
-  @if (store.loading()) {
-    <article class="blog-detail__loading-skeleton">
-      <eb-card [hoverable]="false">
-        <header card-header>
-          <div class="blog-detail__header-actions">
-            <!-- Nav placeholder -->
-            <eb-skeleton
-              variant="rectangular"
-              width="100px"
-              height="32px"
-              [rounded]="true"
-              ariaLabel="Loading navigation"
-            ></eb-skeleton>
-          </div>
-          <!-- Title placeholder -->
-          <div style="display: flex; justify-content: center; margin-bottom: var(--space-6)">
-            <eb-skeleton
-              variant="text"
-              width="70%"
-              height="48px"
-              ariaLabel="Loading title"
-            ></eb-skeleton>
-          </div>
-          <!-- Meta placeholder -->
-          <div
-            style="
-              display: flex;
-              justify-content: center;
-              gap: var(--space-4);
-              margin-bottom: var(--space-4);
-            "
-          >
-            <eb-skeleton
-              variant="text"
-              width="200px"
-              height="20px"
-              ariaLabel="Loading metadata"
-            ></eb-skeleton>
-          </div>
-        </header>
-
-        <div card-body>
-          <eb-skeleton
-            variant="text"
-            [count]="4"
-            [spacing]="16"
-            ariaLabel="Loading content"
-          ></eb-skeleton>
-        </div>
-      </eb-card>
-    </article>
-  }
-</div>
+  </ng-container>
+</eb-container>

@@ -312,7 +312,7 @@ describe('ArchitectureComponent', () => {
       fixture.detectChanges();
 
       const compiled = fixture.nativeElement as HTMLElement;
-      expect(compiled.textContent).toContain('2024-02-20');
+      expect(compiled.textContent).toContain('Feb 20, 2024');
       expect(compiled.textContent).toContain('deprecated');
     });
 

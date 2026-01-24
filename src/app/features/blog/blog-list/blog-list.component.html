@@ -41,7 +41,8 @@
                     <h2 class="blog-card__title">{{ article.title }}</h2>
                     <div class="blog-card__meta">
                       <span>{{ article.publishedAt | date: 'mediumDate' }}</span>
-                      <span class="blog-card__separator">•</span>
+                      <!-- <span class="blog-card__separator">•</span> -->
+                      <eb-divider [orientation]="'vertical'"></eb-divider>
                       <span class="blog-card__reading-time">{{
                         t('blog.minRead', { minutes: article.readingTimeMinutes })
                       }}</span>
