@@ -22,6 +22,9 @@ import { BlogCategory } from '../blog.types';
  */
 import { ICON_NAMES } from '../../../shared/constants/icons.constants';
 
+import { provideIcons } from '@ng-icons/core';
+import { heroChevronRight } from '@ng-icons/heroicons/outline';
+
 @Component({
   selector: 'eb-blog-list',
   standalone: true,
@@ -42,6 +45,7 @@ import { ICON_NAMES } from '../../../shared/constants/icons.constants';
   templateUrl: './blog-list.component.html',
   styleUrl: './blog-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [provideIcons({ heroChevronRight })],
 })
 export class BlogListComponent implements OnInit {
   protected readonly ICONS = ICON_NAMES;
