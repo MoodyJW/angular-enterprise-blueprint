@@ -13,18 +13,22 @@ import {
 import { RouterLink } from '@angular/router';
 import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoDirective } from '@jsverse/transloco';
+import {
+  ButtonComponent,
+  CardComponent,
+  ContainerComponent,
+  DividerComponent,
+  IconComponent,
+  SkeletonComponent,
+} from '@shared/components';
 import { MarkdownModule } from 'ngx-markdown';
 import { Observable } from 'rxjs';
 import { shareReplay, take } from 'rxjs/operators';
-import { ButtonComponent } from '../../../shared/components/button/button.component';
-import { CardComponent } from '../../../shared/components/card/card.component';
-import { SkeletonComponent } from '../../../shared/components/skeleton/skeleton.component';
 import { BlogStore } from '../blog.store';
 
 import { provideIcons } from '@ng-icons/core';
 import { heroArrowLeft, heroArrowRight } from '@ng-icons/heroicons/outline';
-import { IconComponent } from '../../../shared/components/icon/icon.component';
-import { ICON_NAMES } from '../../../shared/constants/icon-names.constants';
+import { ICON_NAMES } from '@shared/constants';
 import { PUBLISHED_SLUGS } from '../blog.constants';
 
 /**
@@ -41,8 +45,10 @@ import { PUBLISHED_SLUGS } from '../blog.constants';
     MarkdownModule,
     ButtonComponent,
     CardComponent,
+    ContainerComponent,
     SkeletonComponent,
     IconComponent,
+    DividerComponent,
   ],
   viewProviders: [provideIcons({ heroArrowLeft, heroArrowRight })],
   templateUrl: './blog-detail.component.html',

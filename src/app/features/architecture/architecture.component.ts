@@ -13,14 +13,17 @@ import { provideIcons } from '@ng-icons/core';
 import { heroChevronRight, heroMagnifyingGlass } from '@ng-icons/heroicons/outline';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 
-import { BadgeComponent } from '@shared/components/badge';
-import { ButtonComponent } from '@shared/components/button';
-import { CardComponent } from '@shared/components/card';
-import { ContainerComponent } from '@shared/components/container';
-import { GridComponent } from '@shared/components/grid';
-import { IconComponent } from '@shared/components/icon';
-import { InputComponent } from '@shared/components/input';
-import { StackComponent } from '@shared/components/stack';
+import {
+  BadgeComponent,
+  ButtonComponent,
+  CardComponent,
+  ContainerComponent,
+  DividerComponent,
+  GridComponent,
+  IconComponent,
+  InputComponent,
+  StackComponent,
+} from '@shared/components';
 import { ICON_NAMES } from '@shared/constants/icon-names.constants';
 
 import { SeoService } from '@core/services/seo/seo.service';
@@ -43,7 +46,9 @@ import { ArchitectureStore } from '@core/services/architecture/architecture.stor
     ContainerComponent,
     GridComponent,
     StackComponent,
+    StackComponent,
     CardComponent,
+    DividerComponent,
     InputComponent,
     ButtonComponent,
     BadgeComponent,

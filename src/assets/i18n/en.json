@@ -293,6 +293,8 @@
     "selectAdrHint": "Choose an Architecture Decision Record from the list to view its details.",
     "statusLabel": "Status: {{ status }}",
     "backToList": "Back to ADRs",
+    "previousAdr": "Previous ADR",
+    "nextAdr": "Next ADR",
     "notFound": "ADR Not Found",
     "notFoundMessage": "The requested Architecture Decision Record could not be found.",
     "data": {

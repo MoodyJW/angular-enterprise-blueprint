@@ -169,7 +169,9 @@
       "notFound": "Artículo no encontrado",
       "notFoundButton": "Volver al Blog",
       "notFoundAriaLabel": "Volver a la lista del blog",
-      "loading": "Cargando artículo..."
+      "loading": "Cargando artículo...",
+      "previousArticle": "Artículo Anterior",
+      "nextArticle": "Siguiente Artículo"
     }
   },
   "modules": {
@@ -280,6 +282,8 @@
     "selectAdrHint": "Elige un Registro de Decisión de Arquitectura de la lista para ver sus detalles.",
     "statusLabel": "Estado: {{ status }}",
     "backToList": "Volver a ADRs",
+    "previousAdr": "ADR Anterior",
+    "nextAdr": "Siguiente ADR",
     "notFound": "ADR No Encontrado",
     "notFoundMessage": "El Registro de Decisión de Arquitectura solicitado no pudo ser encontrado.",
     "data": {

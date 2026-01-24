@@ -18,46 +18,94 @@
           </eb-button>
         </div>
       } @else if (adr(); as currentAdr) {
-        <!-- Back Navigation -->
-        <nav class="adr-viewer__nav">
-          <eb-button
-            routerLink="/architecture"
-            variant="secondary"
-            size="sm"
-            [ariaLabel]="t('architecture.backToList')"
-          >
-            <eb-icon [name]="ICONS.ARROW_LEFT" size="sm" [decorative]="true"></eb-icon>
-            {{ t('architecture.backToList') }}
-          </eb-button>
-        </nav>
+        <article class="adr-viewer__content">
+          <eb-card [hoverable]="false">
+            <header card-header>
+              <div class="adr-viewer__header-actions">
+                <eb-button
+                  routerLink="/architecture"
+                  [ariaLabel]="t('architecture.backToList')"
+                  class="adr-viewer__back"
+                >
+                  <ng-container icon>
+                    <eb-icon [name]="ICONS.ARROW_LEFT" size="sm" />
+                  </ng-container>
+                  {{ t('architecture.backToList') }}
+                </eb-button>
 
-        <!-- ADR Content -->
-        <eb-card [hoverable]="false">
-          <header class="adr-viewer__header" card-header>
-            <div class="adr-viewer__meta">
-              <span class="adr-viewer__number">{{ currentAdr.number }}</span>
-              <eb-badge
-                [variant]="getStatusVariant(currentAdr.status)"
-                [content]="t('architecture.statuses.' + currentAdr.status)"
-                [ariaLabel]="
-                  t('architecture.statusLabel', {
-                    status: t('architecture.statuses.' + currentAdr.status),
-                  })
-                "
-                position="inline"
-              ></eb-badge>
-              <span class="adr-viewer__date">{{ currentAdr.date }}</span>
+                <!-- Top Navigation -->
+                <ng-container *ngTemplateOutlet="navControls; context: { $implicit: 'header' }" />
+              </div>
+
+              <h1 class="adr-viewer__title">
+                {{ t('architecture.data.' + currentAdr.id + '.title') }}
+              </h1>
+
+              <div class="adr-viewer__meta">
+                <span class="adr-viewer__date">{{ currentAdr.date | date: 'mediumDate' }}</span>
+                <eb-divider [orientation]="'vertical'"></eb-divider>
+                <span class="adr-viewer__number">{{ currentAdr.number }}</span>
+                <eb-divider [orientation]="'vertical'"></eb-divider>
+                <eb-badge
+                  [variant]="getStatusVariant(currentAdr.status)"
+                  [content]="t('architecture.statuses.' + currentAdr.status)"
+                  [ariaLabel]="
+                    t('architecture.statusLabel', {
+                      status: t('architecture.statuses.' + currentAdr.status),
+                    })
+                  "
+                  position="inline"
+                ></eb-badge>
+              </div>
+            </header>
+
+            <!-- Markdown Content -->
+            <div class="adr-viewer__body eb-markdown-content" card-body>
+              <markdown [data]="store.content()"></markdown>
             </div>
-            <h1 class="adr-viewer__title">
-              {{ t('architecture.data.' + currentAdr.id + '.title') }}
-            </h1>
-          </header>
 
-          <!-- Markdown Content -->
-          <article class="adr-viewer__content eb-markdown-content" card-body>
-            <markdown [data]="store.content()"></markdown>
-          </article>
-        </eb-card>
+            <footer class="adr-viewer__footer" card-footer>
+              <!-- Bottom Navigation -->
+              <ng-container *ngTemplateOutlet="navControls; context: { $implicit: 'footer' }" />
+            </footer>
+          </eb-card>
+
+          <!-- Reusable Navigation Template -->
+          <ng-template #navControls let-placement>
+            <div
+              class="adr-viewer__nav"
+              [class.adr-viewer__nav--header]="placement === 'header'"
+              [class.adr-viewer__nav--footer]="placement === 'footer'"
+            >
+              @if (adjacentAdrs().prev; as prev) {
+                <eb-button
+                  variant="secondary"
+                  [routerLink]="['/architecture', prev.id]"
+                  class="adr-viewer__nav-prev"
+                  [ariaLabel]="t('architecture.previousAdr')"
+                >
+                  <ng-container icon>
+                    <eb-icon [name]="ICONS.ARROW_LEFT" size="sm" />
+                  </ng-container>
+                  {{ t('architecture.previousAdr') }}
+                </eb-button>
+              }
+              @if (adjacentAdrs().next; as next) {
+                <eb-button
+                  variant="secondary"
+                  [routerLink]="['/architecture', next.id]"
+                  class="adr-viewer__nav-next"
+                  [ariaLabel]="t('architecture.nextAdr')"
+                >
+                  {{ t('architecture.nextAdr') }}
+                  <ng-container icon>
+                    <eb-icon [name]="ICONS.ARROW_RIGHT" size="sm" />
+                  </ng-container>
+                </eb-button>
+              }
+            </div>
+          </ng-template>
+        </article>
       } @else {
         <div class="adr-viewer__not-found">
           <eb-icon [name]="ICONS.SEARCH" size="xl" [decorative]="true"></eb-icon>
