@@ -191,13 +191,13 @@
       "features": "Características Principales",
       "techStack": "Stack Tecnológico",
       "tags": "Etiquetas",
-      "launchDemo": "Iniciar Demo",
       "viewSource": "Ver Código",
-      "noDemo": "Demo no disponible",
       "noSource": "Código no disponible",
       "statusLabel": "Estado: {{ status }}",
       "categoryLabel": "Categoría: {{ category }}",
-      "technologyLabel": "Tecnología: {{ technology }}"
+      "technologyLabel": "Tecnología: {{ technology }}",
+      "previousModule": "Anterior",
+      "nextModule": "Siguiente"
     },
     "data": {
       "design-system": {
