@@ -1,0 +1,67 @@
+<div class="nav-dropdown">
+  <button
+    type="button"
+    class="nav-dropdown__trigger"
+    [class.nav-dropdown__trigger--open]="isOpen()"
+    [attr.aria-expanded]="isOpen()"
+    aria-haspopup="menu"
+    (click)="toggleMenu()"
+    cdkOverlayOrigin
+    #trigger="cdkOverlayOrigin"
+  >
+    <span class="nav-dropdown__label">{{ label() }}</span>
+    <eb-icon
+      [name]="icons.CHEVRON_DOWN"
+      size="sm"
+      class="nav-dropdown__chevron"
+      [class.nav-dropdown__chevron--open]="isOpen()"
+      aria-hidden="true"
+    />
+  </button>
+
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="isOpen()"
+    [cdkConnectedOverlayHasBackdrop]="true"
+    [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
+    [cdkConnectedOverlayPositions]="[
+      { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top', offsetY: 8 },
+    ]"
+    (backdropClick)="closeMenu()"
+    (detach)="closeMenu()"
+  >
+    <div class="nav-dropdown__menu" role="menu" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+      @for (item of items(); track item.route || item.labelKey) {
+        @if (item.external) {
+          <a
+            [href]="item.route"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-dropdown__item nav-dropdown__item--external"
+            role="menuitem"
+            (click)="closeMenu()"
+          >
+            <span class="nav-dropdown__item-label">{{ item.labelKey }}</span>
+            <eb-icon
+              [name]="icons.EXTERNAL_LINK"
+              size="sm"
+              class="nav-dropdown__external-icon"
+              aria-hidden="true"
+            />
+          </a>
+        } @else {
+          <a
+            [routerLink]="item.route"
+            routerLinkActive="nav-dropdown__item--active"
+            class="nav-dropdown__item"
+            role="menuitem"
+            (click)="closeMenu()"
+          >
+            {{ item.labelKey }}
+          </a>
+        }
+      }
+    </div>
+  </ng-template>
+</div>

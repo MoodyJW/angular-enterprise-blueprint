@@ -5,13 +5,16 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { AuthStore } from '@core/auth';
 import { provideIcons } from '@ng-icons/core';
 import { heroBars3 } from '@ng-icons/heroicons/outline';
-import { ButtonComponent } from '@shared/components/button';
-import { IconComponent } from '@shared/components/icon';
-import { LanguageSwitcherComponent } from '@shared/components/language-switcher';
-import { ThemePickerComponent } from '@shared/components/theme-picker';
-import { UserMenuComponent } from '@shared/components/user-menu/user-menu.component';
-import { ICON_NAMES } from '@shared/constants/icon-names.constants';
-import { NAV_ITEMS } from '../navigation.data';
+import {
+  ButtonComponent,
+  IconComponent,
+  LanguageSwitcherComponent,
+  NavDropdownComponent,
+  ThemePickerComponent,
+  UserMenuComponent,
+} from '@shared/components';
+import { ICON_NAMES } from '@shared/constants';
+import { NAV_ITEMS, NavItem } from '../navigation.data';
 
 /**
  * Application header component.
@@ -40,6 +43,7 @@ import { NAV_ITEMS } from '../navigation.data';
     UserMenuComponent,
     ButtonComponent,
     IconComponent,
+    NavDropdownComponent,
   ],
   viewProviders: [provideIcons({ heroBars3 })],
   templateUrl: './header.component.html',
@@ -92,5 +96,18 @@ export class HeaderComponent {
    */
   onLogout(): void {
     this._authStore.logout(undefined);
+  }
+
+  /**
+   * Translate child navigation items for dropdown menus.
+   * @param children - Array of child navigation items
+   * @param t - Transloco translation function
+   * @returns Translated child items with labelKey replaced by translated label
+   */
+  getTranslatedChildren(children: NavItem[], t: (key: string) => string): NavItem[] {
+    return children.map((child) => ({
+      ...child,
+      labelKey: t(child.labelKey),
+    }));
   }
 }
