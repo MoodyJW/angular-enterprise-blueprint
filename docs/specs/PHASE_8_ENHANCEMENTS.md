@@ -1352,18 +1352,18 @@ Update dashboard metric cards to use DonutChartComponent for:
 
 ### Acceptance Criteria
 
-- [ ] Donut chart renders correctly with conic-gradient
-- [ ] Value displayed in center of donut
-- [ ] Label displayed below donut
-- [ ] All size variants (sm, md, lg) work correctly
-- [ ] All color variants (primary, success, warning, error) work correctly
-- [ ] All thickness variants work correctly
-- [ ] Animates smoothly when value changes (optional, respects reduced-motion)
-- [ ] Works in all 6 themes
-- [ ] WCAG 2.1 AA compliant
-- [ ] No external dependencies (pure SCSS/CSS)
-- [ ] Storybook stories for all variants
-- [ ] Unit tests with 85%+ coverage
+- [x] Donut chart renders correctly with conic-gradient
+- [x] Value displayed in center of donut
+- [x] Label displayed below donut
+- [x] All size variants (sm, md, lg) work correctly
+- [x] All color variants (primary, success, warning, error) work correctly
+- [x] All thickness variants work correctly
+- [x] Animates smoothly when value changes (optional, respects reduced-motion)
+- [x] Works in all 6 themes
+- [x] WCAG 2.1 AA compliant
+- [x] No external dependencies (pure SCSS/CSS)
+- [x] Storybook stories for all variants
+- [x] Unit tests with 85%+ coverage
 
 ### Files to Create
 

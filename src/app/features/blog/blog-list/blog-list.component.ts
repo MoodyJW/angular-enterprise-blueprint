@@ -20,6 +20,8 @@ import { BlogCategory } from '../blog.types';
  * Includes features for filtering by category (via URL) and searching.
  * Utilizes BlogStore for state management.
  */
+import { ICON_NAMES } from '../../../shared/constants/icons.constants';
+
 @Component({
   selector: 'eb-blog-list',
   standalone: true,
@@ -42,6 +44,7 @@ import { BlogCategory } from '../blog.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlogListComponent implements OnInit {
+  protected readonly ICONS = ICON_NAMES;
   readonly store = inject(BlogStore);
 
   ngOnInit(): void {

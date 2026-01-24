@@ -1,0 +1,73 @@
+@mixin feature-card-layout {
+  height: 100%;
+  --card-padding: var(--space-4);
+
+  // HEADER
+  &__header-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    align-items: flex-start;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    line-height: 1.3;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+  }
+
+  &__separator {
+    color: var(--color-text-tertiary);
+  }
+
+  // BODY
+  &__description,
+  &__summary,
+  &__excerpt {
+    margin: 0;
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+
+    // Line clamp (3 lines)
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  // FOOTER
+  &__footer-content {
+    display: flex;
+    align-items: center; // Center vertically (fixes the "tighter" look)
+    justify-content: space-between;
+    width: 100%;
+    margin-top: auto;
+    gap: var(--space-3);
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    flex: 1;
+  }
+
+  // Icon animation
+  eb-icon {
+    flex-shrink: 0;
+    color: var(--color-text-tertiary);
+    transition: transform 0.2s ease;
+  }
+}

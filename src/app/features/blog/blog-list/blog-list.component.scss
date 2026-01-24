@@ -1,13 +1,5 @@
 @use '../../../shared/styles/feature-page' as page;
-
-// blog-car-link styles removed as they are handled by shared components or default browser behavior if unnecessary
-// .blog-card styles removed as eb-card handles internal layout
-
-// Empty/Loading states
-// Typically these might need basic centering if not handled by eb-stack/container,
-// but based on the template structure using standard components, we can simplify significantly.
-// However, the template still uses class="blog-list__loading" and "blog-list__empty".
-// Let's keep minimal structural styles for those if they aren't fully replaced by shared components yet.
+@use '../../../shared/styles/feature-card' as card;
 
 .blog-list {
   @include page.feature-page;
@@ -60,55 +52,15 @@
 }
 
 .blog-card {
-  height: 100%;
+  @include card.feature-card-layout;
 
-  // Header layout
-  &__header-content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
+  &__reading-time {
+    color: var(--color-primary);
+    font-family: var(--font-family-mono);
+    font-weight: var(--font-weight-semibold);
   }
+}
 
-  &__title {
-    font-size: var(--font-size-xl);
-    font-weight: 600;
-    margin: 0;
-    color: var(--color-text-primary);
-    line-height: 1.3;
-  }
-
-  &__meta {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
-  }
-
-  &__separator {
-    color: var(--color-text-tertiary);
-  }
-
-  // Footer layout
-  &__footer-content {
-    margin-top: auto;
-  }
-
-  &__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
-
-  // Excerpt
-  &__excerpt {
-    color: var(--color-text-secondary);
-    line-height: 1.6;
-    margin: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+.blog-card-link:hover .blog-card eb-icon {
+  transform: translateX(4px);
 }

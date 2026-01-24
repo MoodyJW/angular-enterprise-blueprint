@@ -25,6 +25,7 @@ import { ICON_NAMES } from '@shared/constants/icon-names.constants';
 
 import { SeoService } from '@core/services/seo/seo.service';
 
+import { DatePipe } from '@angular/common';
 import { ArchitectureStore } from '@core/services/architecture/architecture.store';
 
 /**
@@ -47,6 +48,7 @@ import { ArchitectureStore } from '@core/services/architecture/architecture.stor
     ButtonComponent,
     BadgeComponent,
     IconComponent,
+    DatePipe,
   ],
   providers: [ArchitectureStore],
   viewProviders: [provideIcons({ heroChevronRight, heroMagnifyingGlass })],
