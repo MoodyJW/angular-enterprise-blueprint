@@ -202,13 +202,13 @@
       "features": "Key Features",
       "techStack": "Technology Stack",
       "tags": "Tags",
-      "launchDemo": "Launch Demo",
       "viewSource": "View Source",
-      "noDemo": "Demo not available",
       "noSource": "Source not available",
       "statusLabel": "Status: {{ status }}",
       "categoryLabel": "Category: {{ category }}",
-      "technologyLabel": "Technology: {{ technology }}"
+      "technologyLabel": "Technology: {{ technology }}",
+      "previousModule": "Previous",
+      "nextModule": "Next"
     },
     "data": {
       "design-system": {

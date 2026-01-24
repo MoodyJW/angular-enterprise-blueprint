@@ -1,149 +1,169 @@
 <eb-container>
   <ng-container *transloco="let t">
-    <eb-stack spacing="lg">
-      <!-- Back Button -->
-      <div class="detail-nav">
-        <eb-button
-          routerLink="/modules"
-          variant="ghost"
-          size="sm"
-          [ariaLabel]="t('modules.detail.backToList')"
-        >
-          <eb-icon [name]="ICONS.ARROW_LEFT" size="sm"></eb-icon>
-          {{ t('modules.detail.backToList') }}
-        </eb-button>
-      </div>
-
+    <div class="module-detail">
       @if (store.isLoading()) {
-        <div class="detail-loading">
+        <div class="module-detail__loading">
           {{ t('common.loading') }}
         </div>
       } @else if (module(); as mod) {
-        <!-- Module Header -->
-        <header class="detail-header">
-          <div class="detail-header__content">
-            <h1 class="detail-header__title">{{ t('modules.data.' + mod.id + '.title') }}</h1>
-            <div class="detail-header__badges">
-              <eb-badge
-                [variant]="getStatusVariant(mod.status)"
-                [content]="t('modules.statuses.' + mod.status)"
-                [ariaLabel]="
-                  t('modules.detail.statusLabel', { status: t('modules.statuses.' + mod.status) })
-                "
-                position="inline"
-              >
-              </eb-badge>
-              <eb-badge
-                [variant]="getCategoryVariant(mod.category)"
-                [content]="t('modules.categories.' + mod.category)"
-                [ariaLabel]="
-                  t('modules.detail.categoryLabel', {
-                    category: t('modules.categories.' + mod.category),
-                  })
-                "
-                position="inline"
-              >
-              </eb-badge>
-            </div>
-          </div>
-          <p class="detail-header__description">
-            {{ t('modules.data.' + mod.id + '.description') }}
-          </p>
-        </header>
-
-        <!-- Action Buttons -->
-        <div class="detail-actions">
-          @if (mod.demoUrl) {
-            <a
-              [href]="mod.demoUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="detail-actions__link"
-            >
-              <eb-button variant="primary" [ariaLabel]="t('modules.detail.launchDemo')">
-                <eb-icon [name]="ICONS.ROCKET" size="sm"></eb-icon>
-                {{ t('modules.detail.launchDemo') }}
-              </eb-button>
-            </a>
-          } @else {
-            <eb-button variant="primary" [disabled]="true" [ariaLabel]="t('modules.detail.noDemo')">
-              <eb-icon [name]="ICONS.ROCKET" size="sm"></eb-icon>
-              {{ t('modules.detail.noDemo') }}
-            </eb-button>
-          }
-          @if (mod.repoUrl) {
-            <a
-              [href]="mod.repoUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="detail-actions__link"
-            >
-              <eb-button variant="secondary" [ariaLabel]="t('modules.detail.viewSource')">
-                <eb-icon [name]="ICONS.CODE" size="sm"></eb-icon>
-                {{ t('modules.detail.viewSource') }}
-              </eb-button>
-            </a>
-          } @else {
-            <eb-button
-              variant="secondary"
-              [disabled]="true"
-              [ariaLabel]="t('modules.detail.noSource')"
-            >
-              <eb-icon [name]="ICONS.CODE" size="sm"></eb-icon>
-              {{ t('modules.detail.noSource') }}
-            </eb-button>
-          }
-        </div>
-
-        <!-- Module Details Card -->
-        <eb-card [hoverable]="false">
-          <eb-stack card-body spacing="lg">
-            <!-- Features -->
-            <div class="detail-section">
-              <h2 class="detail-section__title">{{ t('modules.detail.features') }}</h2>
-              <ul class="detail-features">
-                @for (feature of mod.features; track $index) {
-                  <li class="detail-features__item">
-                    <eb-icon [name]="ICONS.CHECK" size="sm" class="detail-features__icon"></eb-icon>
-                    {{ feature }}
-                  </li>
-                }
-              </ul>
-            </div>
-
-            <!-- Tech Stack -->
-            <div class="detail-section">
-              <h2 class="detail-section__title">{{ t('modules.detail.techStack') }}</h2>
-              <div class="detail-tech-stack">
-                @for (tech of mod.techStack; track tech) {
-                  <eb-badge
-                    variant="secondary"
-                    [content]="tech"
-                    [ariaLabel]="t('modules.detail.technologyLabel', { technology: tech })"
-                    position="inline"
+        <article class="module-detail__content">
+          <eb-card [hoverable]="false">
+            <header card-header>
+              <div class="module-detail__header-actions">
+                <div class="module-detail__header-left">
+                  <eb-button
+                    routerLink="/modules"
+                    [ariaLabel]="t('modules.detail.backToList')"
+                    class="module-detail__back"
                   >
-                  </eb-badge>
-                }
+                    <ng-container icon>
+                      <eb-icon [name]="ICONS.ARROW_LEFT" size="sm" />
+                    </ng-container>
+                    {{ t('modules.detail.backToList') }}
+                  </eb-button>
+
+                  @if (mod.repoUrl) {
+                    <a
+                      [href]="mod.repoUrl"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="module-detail__source-link"
+                    >
+                      <eb-button variant="secondary" [ariaLabel]="t('modules.detail.viewSource')">
+                        <ng-container icon>
+                          <eb-icon [name]="ICONS.CODE" size="sm" />
+                        </ng-container>
+                        {{ t('modules.detail.viewSource') }}
+                      </eb-button>
+                    </a>
+                  }
+                </div>
+
+                <!-- Top Navigation -->
+                <ng-container *ngTemplateOutlet="navControls; context: { $implicit: 'header' }" />
               </div>
+
+              <h1 class="module-detail__title">{{ t('modules.data.' + mod.id + '.title') }}</h1>
+
+              <p class="module-detail__subtitle">
+                {{ t('modules.data.' + mod.id + '.description') }}
+              </p>
+
+              <div class="module-detail__badges">
+                <eb-badge
+                  [variant]="getStatusVariant(mod.status)"
+                  [content]="t('modules.statuses.' + mod.status)"
+                  [ariaLabel]="
+                    t('modules.detail.statusLabel', { status: t('modules.statuses.' + mod.status) })
+                  "
+                  position="inline"
+                />
+                <eb-badge
+                  [variant]="getCategoryVariant(mod.category)"
+                  [content]="t('modules.categories.' + mod.category)"
+                  [ariaLabel]="
+                    t('modules.detail.categoryLabel', {
+                      category: t('modules.categories.' + mod.category),
+                    })
+                  "
+                  position="inline"
+                />
+              </div>
+            </header>
+
+            <div class="module-detail__body" card-body>
+              <eb-stack spacing="lg">
+                <!-- Features -->
+                <div class="module-detail__section">
+                  <h2 class="module-detail__section-title">{{ t('modules.detail.features') }}</h2>
+                  <ul class="module-detail__features">
+                    @for (feature of mod.features; track $index) {
+                      <li class="module-detail__features-item">
+                        <eb-icon
+                          [name]="ICONS.CHECK"
+                          size="sm"
+                          class="module-detail__features-icon"
+                        />
+                        {{ feature }}
+                      </li>
+                    }
+                  </ul>
+                </div>
+
+                <!-- Tech Stack -->
+                <div class="module-detail__section">
+                  <h2 class="module-detail__section-title">{{ t('modules.detail.techStack') }}</h2>
+                  <div class="module-detail__tech-stack">
+                    @for (tech of mod.techStack; track tech) {
+                      <eb-badge
+                        variant="secondary"
+                        [content]="tech"
+                        [ariaLabel]="t('modules.detail.technologyLabel', { technology: tech })"
+                        position="inline"
+                      />
+                    }
+                  </div>
+                </div>
+
+                <!-- Tags -->
+                <div class="module-detail__section">
+                  <h2 class="module-detail__section-title">{{ t('modules.detail.tags') }}</h2>
+                  <div class="module-detail__tags">
+                    @for (tag of mod.tags; track tag) {
+                      <span class="module-detail__tags-tag">{{ tag }}</span>
+                    }
+                  </div>
+                </div>
+              </eb-stack>
             </div>
 
-            <!-- Tags -->
-            <div class="detail-section">
-              <h2 class="detail-section__title">{{ t('modules.detail.tags') }}</h2>
-              <div class="detail-tags">
-                @for (tag of mod.tags; track tag) {
-                  <span class="detail-tags__tag">{{ tag }}</span>
-                }
-              </div>
+            <footer class="module-detail__footer" card-footer>
+              <!-- Bottom Navigation -->
+              <ng-container *ngTemplateOutlet="navControls; context: { $implicit: 'footer' }" />
+            </footer>
+          </eb-card>
+
+          <!-- Reusable Navigation Template -->
+          <ng-template #navControls let-placement>
+            <div
+              class="module-detail__nav"
+              [class.module-detail__nav--header]="placement === 'header'"
+              [class.module-detail__nav--footer]="placement === 'footer'"
+            >
+              @if (adjacentModules().prev; as prev) {
+                <eb-button
+                  variant="secondary"
+                  [routerLink]="['/modules', prev.id]"
+                  class="module-detail__nav-prev"
+                  [ariaLabel]="t('modules.detail.previousModule')"
+                >
+                  <ng-container icon>
+                    <eb-icon [name]="ICONS.ARROW_LEFT" size="sm" />
+                  </ng-container>
+                  {{ t('modules.detail.previousModule') }}
+                </eb-button>
+              }
+              @if (adjacentModules().next; as next) {
+                <eb-button
+                  variant="secondary"
+                  [routerLink]="['/modules', next.id]"
+                  class="module-detail__nav-next"
+                  [ariaLabel]="t('modules.detail.nextModule')"
+                >
+                  {{ t('modules.detail.nextModule') }}
+                  <ng-container icon>
+                    <eb-icon [name]="ICONS.ARROW_RIGHT" size="sm" />
+                  </ng-container>
+                </eb-button>
+              }
             </div>
-          </eb-stack>
-        </eb-card>
+          </ng-template>
+        </article>
       } @else {
-        <!-- Not Found -->
-        <div class="detail-not-found">
-          <eb-icon [name]="ICONS.SEARCH" size="xl" class="detail-not-found__icon"></eb-icon>
-          <h2 class="detail-not-found__title">{{ t('modules.detail.notFound') }}</h2>
-          <p class="detail-not-found__text">{{ t('modules.detail.notFoundMessage') }}</p>
+        <div class="module-detail__not-found">
+          <eb-icon [name]="ICONS.SEARCH" size="xl" [decorative]="true" />
+          <h2>{{ t('modules.detail.notFound') }}</h2>
+          <p>{{ t('modules.detail.notFoundMessage') }}</p>
           <eb-button
             routerLink="/modules"
             variant="primary"
@@ -153,6 +173,6 @@
           </eb-button>
         </div>
       }
-    </eb-stack>
+    </div>
   </ng-container>
 </eb-container>

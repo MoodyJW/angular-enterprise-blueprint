@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -12,20 +13,22 @@ import { TranslocoDirective } from '@jsverse/transloco';
 import { provideIcons } from '@ng-icons/core';
 import {
   heroArrowLeft,
+  heroArrowRight,
   heroCheck,
   heroCodeBracket,
   heroMagnifyingGlass,
-  heroRocketLaunch,
 } from '@ng-icons/heroicons/outline';
 
 import { SeoService } from '@core/services/seo/seo.service';
-import { BadgeComponent } from '@shared/components/badge';
-import { ButtonComponent } from '@shared/components/button';
-import { CardComponent } from '@shared/components/card';
-import { ContainerComponent } from '@shared/components/container';
-import { IconComponent } from '@shared/components/icon';
-import { StackComponent } from '@shared/components/stack';
-import { ICON_NAMES } from '@shared/constants/icon-names.constants';
+import {
+  BadgeComponent,
+  ButtonComponent,
+  CardComponent,
+  ContainerComponent,
+  IconComponent,
+  StackComponent,
+} from '@shared/components';
+import { ICON_NAMES } from '@shared/constants';
 
 import { Module } from '@features/modules/services/modules.service';
 import { ModulesStore } from '@features/modules/state/modules.store';
@@ -40,6 +43,7 @@ import { ModulesStore } from '@features/modules/state/modules.store';
   selector: 'eb-module-detail',
   standalone: true,
   imports: [
+    CommonModule,
     RouterLink,
     TranslocoDirective,
     ContainerComponent,
@@ -53,7 +57,7 @@ import { ModulesStore } from '@features/modules/state/modules.store';
   viewProviders: [
     provideIcons({
       heroArrowLeft,
-      heroRocketLaunch,
+      heroArrowRight,
       heroCodeBracket,
       heroCheck,
       heroMagnifyingGlass,
@@ -77,6 +81,22 @@ export class ModuleDetailComponent implements OnInit {
   protected readonly module = computed<Module | undefined>(() => {
     const getter = this.store.getModuleById();
     return getter(this.id());
+  });
+
+  /** Adjacent modules for navigation */
+  protected readonly adjacentModules = computed(() => {
+    const allModules = this.store.entities();
+    const currentId = this.id();
+    const currentIndex = allModules.findIndex((m) => m.id === currentId);
+
+    if (currentIndex === -1) {
+      return { prev: null, next: null };
+    }
+
+    return {
+      prev: currentIndex > 0 ? allModules[currentIndex - 1] : null,
+      next: currentIndex < allModules.length - 1 ? allModules[currentIndex + 1] : null,
+    };
   });
 
   constructor() {
