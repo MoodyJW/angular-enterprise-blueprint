@@ -714,13 +714,13 @@ interface PortfolioHero {
 
 ### Acceptance Criteria
 
-- [ ] Name prominently displayed
-- [ ] Professional title/tagline clear
-- [ ] CTA buttons to key sections
-- [ ] Maintains dashboard functionality
-- [ ] i18n support for all text
-- [ ] Mobile responsive (hero stacks on mobile)
-- [ ] Professional appearance in all 6 themes
+- [x] Name prominently displayed
+- [x] Professional title/tagline clear
+- [x] CTA buttons to key sections
+- [x] Maintains dashboard functionality
+- [x] i18n support for all text
+- [x] Mobile responsive (hero stacks on mobile)
+- [x] Professional appearance in all 6 themes
 
 ---
 
@@ -1483,18 +1483,18 @@ Extract common patterns from Blog and apply to ADR/Modules:
 
 ### Acceptance Criteria
 
-- [ ] ADR list cards visually match Blog article cards
-- [ ] ADR status badges use consistent styling with Blog tags
-- [ ] ADR detail page layout matches Blog detail page
-- [ ] Module cards visually match Blog article cards
-- [ ] Module tech stack badges use consistent styling
-- [ ] Module detail page layout matches Blog detail page
-- [ ] Hover effects and transitions consistent across all three features
-- [ ] Typography hierarchy consistent across all three features
-- [ ] Spacing and rhythm consistent across all three features
-- [ ] Mobile responsiveness consistent across all three features
-- [ ] Works in all 6 themes
-- [ ] WCAG 2.1 AA compliant
+- [x] ADR list cards visually match Blog article cards
+- [x] ADR status badges use consistent styling with Blog tags
+- [x] ADR detail page layout matches Blog detail page
+- [x] Module cards visually match Blog article cards
+- [x] Module tech stack badges use consistent styling
+- [x] Module detail page layout matches Blog detail page
+- [x] Hover effects and transitions consistent across all three features
+- [x] Typography hierarchy consistent across all three features
+- [x] Spacing and rhythm consistent across all three features
+- [x] Mobile responsiveness consistent across all three features
+- [x] Works in all 6 themes
+- [x] WCAG 2.1 AA compliant
 
 ### Files to Update
 
@@ -1602,24 +1602,24 @@ Extract common patterns from Blog and apply to ADR/Modules:
 
 ### Quantitative
 
-- [ ] All component icon refactors complete with Material Icons
-- [ ] Card visibility improved in all light themes
-- [ ] Blog feature fully functional with all existing articles
-- [ ] All new components have 85%+ test coverage
-- [ ] All new features WCAG 2.1 AA compliant
-- [ ] Zero new accessibility violations
-- [ ] Mobile responsive on all screen sizes
-- [ ] All Storybook stories created
+- [x] All component icon refactors complete with Material Icons
+- [x] Card visibility improved in all light themes
+- [x] Blog feature fully functional with all existing articles
+- [x] All new components have 85%+ test coverage
+- [x] All new features WCAG 2.1 AA compliant
+- [x] Zero new accessibility violations
+- [x] Mobile responsive on all screen sizes
+- [x] All Storybook stories created
 
 ### Qualitative
 
-- [ ] Enhanced portfolio presentation
-- [ ] Improved user experience
-- [ ] Professional appearance
-- [ ] Consistent with existing design
-- [ ] Easy content management for blog
-- [ ] Form controls have consistent visual treatment
-- [ ] Cards clearly distinguishable in all themes
+- [x] Enhanced portfolio presentation
+- [x] Improved user experience
+- [x] Professional appearance
+- [x] Consistent with existing design
+- [x] Easy content management for blog
+- [x] Form controls have consistent visual treatment
+- [x] Cards clearly distinguishable in all themes
 
 ---
 

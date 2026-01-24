@@ -381,14 +381,14 @@ _Goal: Refactor existing components for consistency, then add new capabilities a
   - [x] Display value in center and label below donut.
   - [x] Integrate into dashboard metric cards.
   - [x] Add Storybook stories and unit tests.
-  - [ ] Add README and appropriate TSDoc.
-- [ ] **8.14 ADR and Modules Design Alignment**: Align with Blog design patterns.
-  - [ ] Update ADR list cards to match Blog article cards.
-  - [ ] Update Modules cards to match Blog article cards.
-  - [ ] Align detail page layouts with BlogDetailComponent.
-  - [ ] Ensure consistent badge/tag styling across features.
-  - [ ] Verify responsive layouts and theme consistency.
-  - [ ] update README and appropriate TSDoc as needed.
+  - [x] Add README and appropriate TSDoc.
+- [x] **8.14 ADR and Modules Design Alignment**: Align with Blog design patterns.
+  - [x] Update ADR list cards to match Blog article cards.
+  - [x] Update Modules cards to match Blog article cards.
+  - [x] Align detail page layouts with BlogDetailComponent.
+  - [x] Ensure consistent badge/tag styling across features.
+  - [x] Verify responsive layouts and theme consistency.
+  - [x] update README and appropriate TSDoc as needed.
 
 ---
 
