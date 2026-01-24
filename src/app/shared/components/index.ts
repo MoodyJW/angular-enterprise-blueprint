@@ -13,6 +13,7 @@ export * from './input';
 export * from './language-switcher';
 export * from './loading-spinner';
 export * from './modal';
+export * from './nav-dropdown';
 export * from './page-not-found';
 export * from './radio';
 export * from './select';

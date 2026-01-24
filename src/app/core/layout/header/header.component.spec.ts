@@ -59,6 +59,11 @@ describe('HeaderComponent', () => {
                 modules: 'Modules',
                 architecture: 'Architecture',
                 profile: 'Profile',
+                blog: 'Blog',
+                contact: 'Contact',
+                resources: 'Resources',
+                storybook: 'Component Library',
+                docs: 'Documentation',
               },
               header: {
                 brand: 'Enterprise Blueprint',
@@ -152,8 +157,15 @@ describe('HeaderComponent', () => {
 
     it('should display navigation items', () => {
       const compiled = fixture.nativeElement as HTMLElement;
-      const navLinks = compiled.querySelectorAll('.header__nav-link');
-      expect(navLinks.length).toBe(component.navItems.length);
+      const navItems = compiled.querySelectorAll('.header__nav-item');
+      // Count should match total nav items (including dropdowns)
+      expect(navItems.length).toBe(component.navItems.length);
+    });
+
+    it('should render dropdown for Resources nav item', () => {
+      const compiled = fixture.nativeElement as HTMLElement;
+      const dropdown = compiled.querySelector('eb-nav-dropdown');
+      expect(dropdown).toBeTruthy();
     });
 
     it('should have correct routerLinkActive configuration', () => {

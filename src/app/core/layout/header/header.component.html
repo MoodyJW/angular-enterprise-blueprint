@@ -10,16 +10,23 @@
       <!-- Desktop Navigation -->
       <nav class="header__nav" [attr.aria-label]="t('header.ariaLabels.mainNav')">
         <ul class="header__nav-list">
-          @for (item of navItems; track item.route) {
+          @for (item of navItems; track item.labelKey) {
             <li class="header__nav-item">
-              <a
-                [routerLink]="item.route"
-                routerLinkActive="header__nav-link--active"
-                [routerLinkActiveOptions]="{ exact: item.route === '/' }"
-                class="header__nav-link"
-              >
-                {{ t(item.labelKey) }}
-              </a>
+              @if (item.children) {
+                <eb-nav-dropdown
+                  [label]="t(item.labelKey)"
+                  [items]="getTranslatedChildren(item.children, t)"
+                />
+              } @else {
+                <a
+                  [routerLink]="item.route"
+                  routerLinkActive="header__nav-link--active"
+                  [routerLinkActiveOptions]="{ exact: item.route === '/' }"
+                  class="header__nav-link"
+                >
+                  {{ t(item.labelKey) }}
+                </a>
+              }
             </li>
           }
         </ul>

@@ -1,0 +1,107 @@
+.nav-dropdown {
+  position: relative;
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    background: transparent;
+    border: none;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition:
+      color var(--transition-fast),
+      background-color var(--transition-fast);
+
+    &:hover,
+    &:focus-visible {
+      color: var(--color-text);
+      background-color: var(--color-surface-secondary);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    &--open {
+      color: var(--color-text);
+      background-color: var(--color-surface-secondary);
+    }
+  }
+
+  &__label {
+    white-space: nowrap;
+  }
+
+  &__chevron {
+    transition: transform var(--transition-fast);
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__menu {
+    min-width: 200px;
+    padding: var(--space-2);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    text-decoration: none;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast);
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--color-surface-secondary);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: -2px;
+    }
+
+    &--active {
+      color: var(--color-primary);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    &--external {
+      color: var(--color-text-secondary);
+
+      &:hover,
+      &:focus-visible {
+        color: var(--color-text);
+      }
+    }
+  }
+
+  &__item-label {
+    flex: 1;
+  }
+
+  &__external-icon {
+    flex-shrink: 0;
+    margin-left: var(--space-2);
+    opacity: 0.6;
+  }
+}

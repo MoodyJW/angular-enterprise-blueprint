@@ -159,7 +159,10 @@
     "blog": "Blog",
     "architecture": "Architecture Decisions",
     "profile": "The Architect",
-    "contact": "Hire Me"
+    "contact": "Hire Me",
+    "resources": "Resources",
+    "storybook": "Component Library",
+    "docs": "Documentation"
   },
   "blog": {
     "title": "Engineering Blog",

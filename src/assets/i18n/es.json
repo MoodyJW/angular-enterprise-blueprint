@@ -148,7 +148,10 @@
     "blog": "Blog",
     "architecture": "Decisiones de Arquitectura",
     "profile": "El Arquitecto",
-    "contact": "Contrátame"
+    "contact": "Contrátame",
+    "resources": "Recursos",
+    "storybook": "Librería de Componentes",
+    "docs": "Documentación"
   },
   "blog": {
     "title": "Blog de Ingeniería",

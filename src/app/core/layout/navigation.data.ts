@@ -4,12 +4,16 @@
 export interface NavItem {
   /** Translation key for the navigation link label */
   labelKey: string;
-  /** Router path */
-  route: string;
+  /** Router path (optional for dropdown parents) */
+  route?: string;
   /** Optional icon name (for icon components) */
   icon?: string;
   /** Whether this route requires authentication */
   requiresAuth?: boolean;
+  /** Whether this is an external link (opens in new tab) */
+  external?: boolean;
+  /** Child navigation items for dropdown menus */
+  children?: NavItem[];
 }
 
 /**
@@ -20,11 +24,18 @@ export interface NavItem {
  */
 export const NAV_ITEMS: readonly NavItem[] = [
   { labelKey: 'nav.home', route: '/' },
-  { labelKey: 'nav.modules', route: '/modules' },
   { labelKey: 'nav.blog', route: '/blog' },
-  { labelKey: 'nav.architecture', route: '/architecture' },
   { labelKey: 'nav.profile', route: '/profile' },
   { labelKey: 'nav.contact', route: '/contact' },
+  {
+    labelKey: 'nav.resources',
+    children: [
+      { labelKey: 'nav.modules', route: '/modules' },
+      { labelKey: 'nav.architecture', route: '/architecture' },
+      { labelKey: 'nav.storybook', route: '/storybook', external: true },
+      { labelKey: 'nav.docs', route: '/docs', external: true },
+    ],
+  },
 ] as const;
 
 /**
