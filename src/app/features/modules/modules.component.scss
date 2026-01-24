@@ -1,5 +1,7 @@
 @use '../../shared/styles/feature-page' as page;
 
+@use '../../shared/styles/feature-card' as card;
+
 .modules {
   &__header {
     @include page.feature-header;
@@ -82,50 +84,7 @@
 }
 
 .module-card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__title {
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-semibold);
-    margin: 0;
-    color: var(--color-text);
-  }
-
-  &__description {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    margin: 0;
-    flex-grow: 1;
-  }
-
-  &__footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: var(--space-3);
-    margin-top: auto;
-  }
-
-  &__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-1);
-    flex: 1;
-  }
-
-  eb-icon {
-    flex-shrink: 0;
-    color: var(--color-text-tertiary);
-    transition: transform 0.2s ease;
-  }
+  @include card.feature-card-layout;
 }
 
 .module-card-link:hover .module-card eb-icon {

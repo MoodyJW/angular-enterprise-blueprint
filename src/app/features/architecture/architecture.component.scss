@@ -1,5 +1,7 @@
 @use '../../shared/styles/feature-page' as page;
 
+@use '../../shared/styles/feature-card' as card;
+
 .architecture {
   &__header {
     @include page.feature-header;
@@ -83,56 +85,16 @@
 }
 
 .adr-card {
-  height: 100%;
+  @include card.feature-card-layout;
 
-  // Target the card-body (eb-stack) to fill the card and use flexbox
-  eb-stack[card-body] {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-2);
-  }
-
+  // Specific override for number color if needed, or rely on shared styles if sufficient
   &__number {
     font-family: var(--font-family-mono);
-    font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
     color: var(--color-primary);
   }
+}
 
-  &__title {
-    margin: 0;
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text);
-    line-height: 1.3;
-  }
-
-  &__summary {
-    margin: 0;
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-    flex: 1; // Takes up remaining space, pushing footer down
-  }
-
-  &__footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: auto; // Push to bottom
-    padding-top: var(--space-3);
-    border-top: 1px solid var(--color-border-subtle);
-  }
-
-  &__date {
-    font-size: var(--font-size-xs);
-    color: var(--color-text-secondary);
-  }
+.adr-card-link:hover .adr-card eb-icon {
+  transform: translateX(4px);
 }

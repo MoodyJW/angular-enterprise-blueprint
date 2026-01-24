@@ -45,40 +45,42 @@
             @for (module of store.filteredModules(); track module.id) {
               <a [routerLink]="['/modules', module.id]" class="module-card-link">
                 <eb-card class="module-card" [hoverable]="true">
-                  <eb-stack card-body spacing="sm">
-                    <div class="module-card__header">
-                      <eb-badge
-                        [variant]="getStatusVariant(module.status)"
-                        [content]="t('modules.statuses.' + module.status)"
-                        [ariaLabel]="
-                          t('modules.detail.statusLabel', {
-                            status: t('modules.statuses.' + module.status),
-                          })
-                        "
-                        position="inline"
-                      ></eb-badge>
-                    </div>
+                  <div class="module-card__header-content" card-header>
                     <h2 class="module-card__title">
                       {{ t('modules.data.' + module.id + '.title') }}
                     </h2>
+                    <eb-badge
+                      [variant]="getStatusVariant(module.status)"
+                      [content]="t('modules.statuses.' + module.status)"
+                      [ariaLabel]="
+                        t('modules.detail.statusLabel', {
+                          status: t('modules.statuses.' + module.status),
+                        })
+                      "
+                      position="inline"
+                    ></eb-badge>
+                  </div>
+
+                  <div card-body>
                     <p class="module-card__description">
                       {{ t('modules.data.' + module.id + '.description') }}
                     </p>
-                    <div class="module-card__footer">
-                      <div class="module-card__tags">
-                        @for (tag of module.tags; track tag) {
-                          <eb-badge
-                            [content]="tag"
-                            size="sm"
-                            variant="secondary"
-                            [ariaLabel]="tag"
-                            position="inline"
-                          ></eb-badge>
-                        }
-                      </div>
-                      <eb-icon [name]="ICONS.CHEVRON_RIGHT" size="sm" [decorative]="true"></eb-icon>
+                  </div>
+
+                  <div class="module-card__footer-content" card-footer>
+                    <div class="module-card__tags">
+                      @for (tag of module.tags; track tag) {
+                        <eb-badge
+                          [content]="tag"
+                          size="sm"
+                          variant="secondary"
+                          [ariaLabel]="tag"
+                          position="inline"
+                        ></eb-badge>
+                      }
                     </div>
-                  </eb-stack>
+                    <eb-icon [name]="ICONS.CHEVRON_RIGHT" size="sm" [decorative]="true"></eb-icon>
+                  </div>
                 </eb-card>
               </a>
             }

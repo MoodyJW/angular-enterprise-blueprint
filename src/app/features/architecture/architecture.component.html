@@ -45,31 +45,37 @@
             @for (adr of store.filteredAdrs(); track adr.id) {
               <a [routerLink]="['/architecture', adr.id]" class="adr-card-link">
                 <eb-card class="adr-card" [hoverable]="true">
-                  <eb-stack card-body spacing="sm">
-                    <div class="adr-card__header">
-                      <span class="adr-card__number">{{ adr.number }}</span>
-                      <eb-badge
-                        [variant]="getStatusVariant(adr.status)"
-                        [content]="t('architecture.statuses.' + adr.status)"
-                        [ariaLabel]="
-                          t('architecture.statusLabel', {
-                            status: t('architecture.statuses.' + adr.status),
-                          })
-                        "
-                        position="inline"
-                      ></eb-badge>
-                    </div>
+                  <div class="adr-card__header-content" card-header>
                     <h2 class="adr-card__title">
                       {{ t('architecture.data.' + adr.id + '.title') }}
                     </h2>
+                    <div class="adr-card__meta">
+                      <span class="adr-card__date">{{ adr.date | date: 'mediumDate' }}</span>
+                      <span class="adr-card__separator">•</span>
+                      <span class="adr-card__number">{{ adr.number }}</span>
+                    </div>
+                  </div>
+
+                  <div card-body>
                     <p class="adr-card__summary">
                       {{ t('architecture.data.' + adr.id + '.summary') }}
                     </p>
-                    <div class="adr-card__footer">
-                      <span class="adr-card__date">{{ adr.date }}</span>
-                      <eb-icon [name]="ICONS.CHEVRON_RIGHT" size="sm" [decorative]="true"></eb-icon>
-                    </div>
-                  </eb-stack>
+                  </div>
+
+                  <div class="adr-card__footer-content" card-footer>
+                    <eb-badge
+                      [variant]="getStatusVariant(adr.status)"
+                      [content]="t('architecture.statuses.' + adr.status)"
+                      [ariaLabel]="
+                        t('architecture.statusLabel', {
+                          status: t('architecture.statuses.' + adr.status),
+                        })
+                      "
+                      position="inline"
+                      size="sm"
+                    ></eb-badge>
+                    <eb-icon [name]="ICONS.CHEVRON_RIGHT" size="sm" [decorative]="true"></eb-icon>
+                  </div>
                 </eb-card>
               </a>
             }

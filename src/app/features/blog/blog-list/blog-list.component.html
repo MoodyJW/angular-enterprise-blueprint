@@ -42,7 +42,9 @@
                     <div class="blog-card__meta">
                       <span>{{ article.publishedAt | date: 'mediumDate' }}</span>
                       <span class="blog-card__separator">•</span>
-                      <span>{{ t('blog.minRead', { minutes: article.readingTimeMinutes }) }}</span>
+                      <span class="blog-card__reading-time">{{
+                        t('blog.minRead', { minutes: article.readingTimeMinutes })
+                      }}</span>
                     </div>
                   </div>
 
@@ -62,6 +64,7 @@
                         ></eb-badge>
                       }
                     </div>
+                    <eb-icon [name]="ICONS.CHEVRON_RIGHT" size="sm" [decorative]="true"></eb-icon>
                   </div>
                 </eb-card>
               </a>
