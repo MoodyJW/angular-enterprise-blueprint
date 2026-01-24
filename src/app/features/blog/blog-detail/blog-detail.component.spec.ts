@@ -2,12 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
+import { provideRouter, RouterLink } from '@angular/router';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 import { provideIcons } from '@ng-icons/core';
 import { heroArrowLeft } from '@ng-icons/heroicons/outline';
 import { MarkdownModule } from 'ngx-markdown';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { SeoService } from '../../../core/services/seo/seo.service';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 import { BlogStore } from '../blog.store';
@@ -224,6 +224,249 @@ describe('BlogDetailComponent', () => {
         keywords: ['tag1'],
         author: 'Test Author',
       },
+    });
+  });
+
+  describe('prefetch behavior', () => {
+    it('should use prefetch result when path matches slug', async () => {
+      const mockHttp = TestBed.inject(HttpClient);
+      const prefetchContent = '# Prefetched Content';
+      (mockHttp.get as ReturnType<typeof vi.fn>).mockReturnValue(of(prefetchContent));
+
+      // Use article with contentPath that matches the slug
+      const matchingArticle: BlogArticle = {
+        ...mockArticle,
+        contentPath: 'assets/blogs/part-2-phase-1.md',
+      };
+
+      mockStore.articles.set([]);
+      vi.clearAllMocks();
+
+      fixture = TestBed.createComponent(BlogDetailComponent);
+      component = fixture.componentInstance;
+      fixture.componentRef.setInput('slug', 'part-2-phase-1');
+      fixture.detectChanges();
+
+      // Simulate articles loading after prefetch started - path now includes slug
+      mockStore.articles.set([prevArticle, matchingArticle, nextArticle]);
+      fixture.detectChanges();
+
+      // Wait for effect to process
+      await fixture.whenStable();
+
+      expect(component.content()).toBe(prefetchContent);
+      expect(component.contentLoading()).toBe(false);
+    });
+
+    it('should fallback to store when prefetch fails', async () => {
+      const mockHttp = TestBed.inject(HttpClient);
+      (mockHttp.get as ReturnType<typeof vi.fn>).mockReturnValue(
+        new Observable<string>((subscriber) => {
+          subscriber.error(new Error('Prefetch failed'));
+        }),
+      );
+
+      const storeContent = '# Store Content';
+      mockStore.getArticleContent.mockReturnValue(of(storeContent));
+      mockStore.articles.set([]);
+      vi.clearAllMocks();
+
+      fixture = TestBed.createComponent(BlogDetailComponent);
+      component = fixture.componentInstance;
+      fixture.componentRef.setInput('slug', 'part-2-phase-1');
+      fixture.detectChanges();
+
+      // Simulate articles loading after prefetch started
+      mockStore.articles.set([prevArticle, mockArticle, nextArticle]);
+      fixture.detectChanges();
+
+      await fixture.whenStable();
+
+      expect(mockStore.getArticleContent).toHaveBeenCalledWith('assets/blogs/test-article.md');
+      expect(component.content()).toBe(storeContent);
+    });
+
+    it('should show error when both prefetch and store fallback fail', async () => {
+      const mockHttp = TestBed.inject(HttpClient);
+      (mockHttp.get as ReturnType<typeof vi.fn>).mockReturnValue(
+        new Observable<string>((subscriber) => {
+          subscriber.error(new Error('Prefetch failed'));
+        }),
+      );
+
+      mockStore.getArticleContent.mockReturnValue(
+        new Observable<string>((subscriber) => {
+          subscriber.error(new Error('Store failed'));
+        }),
+      );
+      mockStore.articles.set([]);
+      vi.clearAllMocks();
+
+      fixture = TestBed.createComponent(BlogDetailComponent);
+      component = fixture.componentInstance;
+      fixture.componentRef.setInput('slug', 'part-2-phase-1');
+      fixture.detectChanges();
+
+      // Simulate articles loading after prefetch started
+      mockStore.articles.set([prevArticle, mockArticle, nextArticle]);
+      fixture.detectChanges();
+
+      await fixture.whenStable();
+
+      expect(component.content()).toBe('Failed to load article content.');
+      expect(component.contentLoading()).toBe(false);
+    });
+  });
+
+  describe('adjacentArticles computed', () => {
+    it('should return null for prev when current is first article', () => {
+      fixture.componentRef.setInput('slug', 'part-1-introduction');
+      fixture.detectChanges();
+
+      const adjacent = component.adjacentArticles();
+      expect(adjacent.prev).toBeNull();
+      expect(adjacent.next).toEqual(mockArticle);
+    });
+
+    it('should return null for next when current is last article', () => {
+      fixture.componentRef.setInput('slug', 'part-3-phase-2');
+      fixture.detectChanges();
+
+      const adjacent = component.adjacentArticles();
+      expect(adjacent.prev).toEqual(mockArticle);
+      expect(adjacent.next).toBeNull();
+    });
+
+    it('should return both null when article not found in list', () => {
+      fixture.componentRef.setInput('slug', 'non-existent-slug');
+      fixture.detectChanges();
+
+      const adjacent = component.adjacentArticles();
+      expect(adjacent.prev).toBeNull();
+      expect(adjacent.next).toBeNull();
+    });
+  });
+
+  describe('template rendering', () => {
+    it('should render article tags', () => {
+      const nativeEl = fixture.nativeElement as HTMLElement;
+      const tags = nativeEl.querySelectorAll('.blog-detail__tag');
+
+      expect(tags.length).toBe(1);
+      expect(tags[0].textContent).toContain('#tag1');
+    });
+
+    it('should render multiple tags when article has multiple', () => {
+      const multiTagArticle: BlogArticle = {
+        ...mockArticle,
+        tags: ['angular', 'typescript', 'testing'],
+      };
+      mockStore.articles.set([prevArticle, multiTagArticle, nextArticle]);
+      fixture.detectChanges();
+
+      const nativeEl = fixture.nativeElement as HTMLElement;
+      const tags = nativeEl.querySelectorAll('.blog-detail__tag');
+
+      expect(tags.length).toBe(3);
+      expect(tags[0].textContent).toContain('#angular');
+      expect(tags[1].textContent).toContain('#typescript');
+      expect(tags[2].textContent).toContain('#testing');
+    });
+
+    it('should render reading time', () => {
+      const nativeEl = fixture.nativeElement as HTMLElement;
+      const readTime = nativeEl.querySelector('.blog-detail__read-time');
+
+      expect(readTime).toBeTruthy();
+      expect(readTime?.textContent).toBeTruthy();
+    });
+
+    it('should render published date', () => {
+      const nativeEl = fixture.nativeElement as HTMLElement;
+      const date = nativeEl.querySelector('.blog-detail__date');
+
+      expect(date).toBeTruthy();
+      expect(date?.textContent).toContain('2024');
+    });
+
+    it('should render back button with routerLink', () => {
+      const backButton = fixture.debugElement.query(By.css('.blog-detail__back'));
+
+      expect(backButton).toBeTruthy();
+      // Check that the RouterLink directive is applied
+      const routerLinkDir = backButton.injector.get(RouterLink, null);
+      expect(routerLinkDir).toBeTruthy();
+    });
+
+    it('should pass content to markdown component', () => {
+      const markdownEl = fixture.debugElement.query(By.css('markdown'));
+
+      expect(markdownEl).toBeTruthy();
+      // Verify content signal has the expected value
+      expect(component.content()).toBe('# Test Content');
+    });
+  });
+
+  describe('content loading state', () => {
+    it('should show content loading text while content is loading', () => {
+      component.contentLoading.set(true);
+      fixture.detectChanges();
+
+      const nativeEl = fixture.nativeElement as HTMLElement;
+      const loadingText = nativeEl.querySelector('.blog-detail__loading');
+
+      expect(loadingText).toBeTruthy();
+      expect(loadingText?.textContent).toContain('Loading');
+    });
+
+    it('should hide loading text and show markdown when content is loaded', () => {
+      component.contentLoading.set(false);
+      component.content.set('# Loaded Content');
+      fixture.detectChanges();
+
+      const nativeEl = fixture.nativeElement as HTMLElement;
+      const loadingText = nativeEl.querySelector('.blog-detail__loading');
+      const markdown = nativeEl.querySelector('markdown');
+
+      expect(loadingText).toBeNull();
+      expect(markdown).toBeTruthy();
+    });
+  });
+
+  describe('navigation button routing', () => {
+    it('should set routerLink for published prev article', () => {
+      const prevBtn = fixture.debugElement.query(By.css('.blog-detail__nav-prev'));
+
+      expect(prevBtn).toBeTruthy();
+      // Check that the RouterLink directive is applied with correct route
+      const routerLinkDir = prevBtn.injector.get(RouterLink, null);
+      expect(routerLinkDir).toBeTruthy();
+      expect(routerLinkDir?.urlTree?.toString()).toBe('/blog/part-1-introduction');
+    });
+
+    it('should set routerLink for published next article', () => {
+      const nextBtn = fixture.debugElement.query(By.css('.blog-detail__nav-next'));
+
+      expect(nextBtn).toBeTruthy();
+      const routerLinkDir = nextBtn.injector.get(RouterLink, null);
+      expect(routerLinkDir).toBeTruthy();
+      expect(routerLinkDir?.urlTree?.toString()).toBe('/blog/part-3-phase-2');
+    });
+
+    it('should set routerLink to null for unpublished article', () => {
+      const unpublishedPrev: BlogArticle = {
+        ...prevArticle,
+        slug: 'unpublished-article',
+      };
+      mockStore.articles.set([unpublishedPrev, mockArticle, nextArticle]);
+      fixture.detectChanges();
+
+      const prevBtn = fixture.debugElement.query(By.css('.blog-detail__nav-prev'));
+
+      expect(prevBtn).toBeTruthy();
+      // When routerLink is null, the urlTree should be null
+      const routerLinkDir = prevBtn.injector.get(RouterLink, null);
+      expect(routerLinkDir?.urlTree).toBeNull();
     });
   });
 });
