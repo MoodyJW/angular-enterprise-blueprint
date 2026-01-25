@@ -87,7 +87,8 @@
       "perf": "Rendimiento",
       "a11y": "Accesibilidad",
       "best": "Mejores Prácticas",
-      "seo": "SEO"
+      "seo": "SEO",
+      "viewCoverage": "Ver Informe"
     },
     "bundleSize": {
       "title": "Tamaño del Bundle",

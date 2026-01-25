@@ -121,4 +121,8 @@ export class HomeComponent implements OnInit {
     if (score >= 50) return 'warning';
     return 'error';
   }
+
+  openCoverageReport(): void {
+    window.open('/coverage/index.html', '_blank');
+  }
 }
