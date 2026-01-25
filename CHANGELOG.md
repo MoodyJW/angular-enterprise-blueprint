@@ -1,5 +1,28 @@
 # Changelog
 
+## [2.1.0](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v2.0.0...v2.1.0) (2026-01-25)
+
+
+### Features
+
+* **nav:** consolidate resources into single dropdown menu ([62a3acf](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/62a3acf9603a9c411cf94ddec04388c02e19f50a))
+* **shared:** create donut chart, implement on dashboard lighthosue ([896aa00](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/896aa009c4b3ef677b7ab3219036a9558bbe1399))
+
+
+### Bug Fixes
+
+* **blog-list:** chevron icon not displaying ([19aedf1](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/19aedf170a44bd338efbefb58cb68497957a33ee))
+* **dashboard:** doc card not appearing ([3a2f887](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/3a2f887a572505ea0465e395cce008e47d1fe202))
+* **profile/contact:** header spacing ([a32fefb](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/a32fefbd7f04ef5cdf01b966318e31ba32f24ec1))
+* regenerate package-lock.json with missing nested dependencies ([b15d611](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/b15d611607354071f42de60317be7680229a6d35))
+* **storybook:** use valid toolbar icons for theme switcher ([2de550a](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/2de550a151d6dd6e4d9a68e1083d5cbd7a321f32))
+* update dependencies to resolve vulnerabilities ([cfeef1b](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/cfeef1b3898bb33811d8917c0dd8531f3b60ee96))
+
+
+### Performance Improvements
+
+* **dashboard:** reduce LCP by eager loading home component ([285ad65](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/285ad65e548fc9ac6a9b17af91de9bcbd77452fa))
+
 ## [2.0.0](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v1.3.0...v2.0.0) (2026-01-23)
 
 
