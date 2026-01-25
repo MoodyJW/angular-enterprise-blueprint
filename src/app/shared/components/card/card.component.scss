@@ -146,7 +146,6 @@
 
   &__header:not(:empty) + .card__media:not(:empty),
   &__header:not(:empty) + .card__media:empty + .card__body:not(:empty) {
-    border-top: var(--border-width-thin) solid var(--color-border);
     padding-top: var(--space-5);
   }
 
@@ -183,7 +182,6 @@
     background-color: var(--color-surface-hover); // Visually distinct background
     color: var(--color-text-secondary);
     min-height: 120px; // Ensure some height
-    border-top: var(--border-width-thin) solid var(--color-border); // Always border from header
   }
 
   &__disabled-label {
@@ -196,10 +194,6 @@
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-wide);
     border: 1px solid var(--color-border);
-  }
-
-  &__body:not(:empty) + .card__footer {
-    border-top: var(--border-width-thin) solid var(--color-border);
   }
 }
 
