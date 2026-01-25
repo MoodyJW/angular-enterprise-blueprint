@@ -159,6 +159,7 @@ describe('HomeComponent', () => {
                   total: 'Total',
                   outdated: 'Outdated',
                   vulnerabilities: 'Vulnerabilities',
+                  viewDependabot: 'View Dependabot',
                 },
                 git: {
                   title: 'Git Statistics',
@@ -718,6 +719,16 @@ describe('HomeComponent', () => {
         const calls = windowOpenSpy.mock.calls;
         const calledUrl = calls[0]?.[0] ?? '';
         expect(calledUrl).toMatch(/^https?:\/\//);
+      });
+    });
+
+    describe('openDependabot', () => {
+      it('should open Dependabot in new tab', () => {
+        component.openDependabot();
+        expect(windowOpenSpy).toHaveBeenCalledWith(
+          'https://github.com/MoodyJW/angular-enterprise-blueprint/security/dependabot',
+          '_blank',
+        );
       });
     });
   });

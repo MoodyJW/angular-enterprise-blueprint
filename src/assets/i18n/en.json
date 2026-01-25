@@ -101,7 +101,8 @@
       "title": "Dependencies",
       "total": "Total Packages",
       "outdated": "Outdated",
-      "vulnerabilities": "Vulnerabilities"
+      "vulnerabilities": "Vulnerabilities",
+      "viewDependabot": "View Dependabot"
     },
     "bundleSize": {
       "title": "Bundle Size",

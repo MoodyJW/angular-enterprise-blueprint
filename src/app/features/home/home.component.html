@@ -455,6 +455,17 @@
                   </div>
                 </eb-stack>
               </div>
+              <footer card-footer>
+                <eb-button
+                  variant="secondary"
+                  size="sm"
+                  [fullWidth]="true"
+                  (click)="openDependabot()"
+                  [ariaLabel]="t('home.dependencies.viewDependabot')"
+                >
+                  {{ t('home.dependencies.viewDependabot') }}
+                </eb-button>
+              </footer>
             </eb-card>
           }
         }
