@@ -70,7 +70,11 @@ jobs:
       - name: Run Tests
         run: npm run test:coverage
 
-      # 5. Merge Artifacts into the browser output folder
+      # 6. Generate Fresh Metrics
+      - name: Generate Dashboard Metrics
+        run: npm run metrics:generate
+
+      # 7. Merge Artifacts into the browser output folder
       - name: Merge Artifacts
         run: |
           echo "Verifying build artifacts..."
