@@ -67,6 +67,7 @@
       "operationalStatus": "Operational Status",
       "buildStatus": "Build Status",
       "deployStatus": "Deploy Status",
+      "lastDeployed": "Last Deployed",
       "loading": "Loading system metrics..."
     },
     "projectHealth": {

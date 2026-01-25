@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-01-25T14:22:10.675Z",
+  "generatedAt": "2026-01-25T15:00:17.992Z",
   "buildStatus": "passing",
-  "deployStatus": "pending",
+  "deployStatus": "success",
   "systemStatus": "operational",
   "activeModules": 4,
   "extended": {
@@ -9,7 +9,7 @@
       "available": true,
       "value": 92,
       "trend": "up",
-      "lastUpdated": "2026-01-25T14:21:49.513Z",
+      "lastUpdated": "2026-01-25T14:59:57.345Z",
       "details": {
         "statements": {
           "pct": 92,
@@ -39,7 +39,7 @@
       "accessibility": 100,
       "bestPractices": 100,
       "seo": 100,
-      "source": "lhr-1769306063923.json"
+      "message": "Cached from previous run (local report not found)"
     },
     "documentation": {
       "available": true,
@@ -63,9 +63,9 @@
     },
     "git": {
       "available": true,
-      "commits": 217,
-      "lastCommit": "2026-01-25 06:14:23 -0800",
-      "branches": 89,
+      "commits": 220,
+      "lastCommit": "2026-01-25 06:40:01 -0800",
+      "branches": 90,
       "contributors": 1
     },
     "linting": {
@@ -82,17 +82,17 @@
       "vulnerabilities": {
         "info": 0,
         "low": 0,
-        "moderate": 7,
+        "moderate": 0,
         "high": 0,
         "critical": 0,
-        "total": 7
+        "total": 0
       }
     },
     "bundleSize": {
       "available": true,
       "initial": {
-        "raw": 282642,
-        "formatted": "276 KB",
+        "raw": 284362,
+        "formatted": "278 KB",
         "budget": "1MB",
         "status": "pass"
       }

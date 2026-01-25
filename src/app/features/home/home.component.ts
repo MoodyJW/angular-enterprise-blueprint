@@ -1,4 +1,4 @@
-import { DecimalPipe, SlicePipe, TitleCasePipe } from '@angular/common';
+import { DatePipe, DecimalPipe, SlicePipe, TitleCasePipe } from '@angular/common';
 import { afterNextRender, ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
@@ -33,6 +33,7 @@ import { DashboardStore } from './state/dashboard.store';
     TitleCasePipe,
     DecimalPipe,
     SlicePipe,
+    DatePipe,
     TranslocoDirective,
   ],
   templateUrl: './home.component.html',
