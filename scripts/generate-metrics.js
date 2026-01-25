@@ -237,11 +237,12 @@ function getDocumentationCoverage() {
     const services = countDocumented(data.injectables);
     const directives = countDocumented(data.directives);
     const pipes = countDocumented(data.pipes);
+    const interfaces = countDocumented(data.interfaces);
 
-    // Combine directives and pipes into "utils"
+    // Combine directives, pipes, and interfaces into "utils"
     const utils = {
-      documented: directives.documented + pipes.documented,
-      total: directives.total + pipes.total,
+      documented: directives.documented + pipes.documented + interfaces.documented,
+      total: directives.total + pipes.total + interfaces.total,
     };
 
     const totalDocs = components.documented + services.documented + utils.documented;

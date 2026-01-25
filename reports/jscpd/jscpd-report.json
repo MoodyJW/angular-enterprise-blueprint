@@ -1,6 +1,6 @@
 {
   "statistics": {
-    "detectionDate": "2026-01-25T16:17:28.954Z",
+    "detectionDate": "2026-01-25T16:44:57.391Z",
     "formats": {
       "typescript": {
         "sources": {
@@ -689,8 +689,8 @@
             "newClones": 0
           },
           "src/app/features/home/services/dashboard.service.ts": {
-            "lines": 126,
-            "tokens": 967,
+            "lines": 125,
+            "tokens": 946,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1530,8 +1530,8 @@
           }
         },
         "total": {
-          "lines": 16831,
-          "tokens": 96386,
+          "lines": 16830,
+          "tokens": 96365,
           "sources": 127,
           "clones": 22,
           "duplicatedLines": 447,
@@ -2677,8 +2677,8 @@
             "newClones": 0
           },
           "src/app/features/home/home.component.html": {
-            "lines": 520,
-            "tokens": 3807,
+            "lines": 528,
+            "tokens": 3869,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -2714,22 +2714,22 @@
           }
         },
         "total": {
-          "lines": 3149,
-          "tokens": 22565,
+          "lines": 3157,
+          "tokens": 22627,
           "sources": 45,
           "clones": 4,
           "duplicatedLines": 45,
           "duplicatedTokens": 306,
           "percentage": 1.43,
-          "percentageTokens": 1.36,
+          "percentageTokens": 1.35,
           "newDuplicatedLines": 0,
           "newClones": 0
         }
       }
     },
     "total": {
-      "lines": 26899,
-      "tokens": 157419,
+      "lines": 26906,
+      "tokens": 157460,
       "sources": 223,
       "clones": 31,
       "duplicatedLines": 623,

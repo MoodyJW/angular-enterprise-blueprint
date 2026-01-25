@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-25T16:17:33.673Z",
+  "generatedAt": "2026-01-25T16:45:01.993Z",
   "buildStatus": "passing",
   "deployStatus": "success",
   "systemStatus": "operational",
@@ -9,7 +9,7 @@
       "available": true,
       "value": 92,
       "trend": "up",
-      "lastUpdated": "2026-01-25T16:17:09.911Z",
+      "lastUpdated": "2026-01-25T16:44:39.251Z",
       "details": {
         "statements": {
           "pct": 91,
@@ -43,7 +43,7 @@
     },
     "documentation": {
       "available": true,
-      "percentage": 100,
+      "percentage": 91,
       "components": {
         "documented": 53,
         "total": 53
@@ -52,19 +52,15 @@
         "documented": 22,
         "total": 22
       },
-      "directives": {
-        "documented": 1,
-        "total": 1
-      },
-      "pipes": {
-        "documented": 0,
-        "total": 0
+      "utils": {
+        "documented": 46,
+        "total": 58
       }
     },
     "git": {
       "available": true,
-      "commits": 232,
-      "lastCommit": "2026-01-25 08:07:10 -0800",
+      "commits": 236,
+      "lastCommit": "2026-01-25 08:38:13 -0800",
       "branches": 91,
       "contributors": 1
     },
@@ -76,7 +72,7 @@
     "duplication": {
       "available": true,
       "percentage": 2.32,
-      "totalLines": 26899,
+      "totalLines": 26906,
       "duplicatedLines": 623
     },
     "dependencies": {
