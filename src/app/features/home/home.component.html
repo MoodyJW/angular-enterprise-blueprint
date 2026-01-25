@@ -97,7 +97,17 @@
         <!-- Test Coverage -->
         <eb-card [hoverable]="false" class="h-full">
           <eb-stack card-body spacing="md">
-            <h3>{{ t('home.projectHealth.testCoverage') }}</h3>
+            <div class="card-header card-header--flex">
+              <h3 class="card-header__title">{{ t('home.projectHealth.testCoverage') }}</h3>
+              <eb-button
+                variant="secondary"
+                size="sm"
+                (click)="openCoverageReport()"
+                [ariaLabel]="t('home.projectHealth.viewCoverage')"
+              >
+                {{ t('home.projectHealth.viewCoverage') }}
+              </eb-button>
+            </div>
 
             @if (
               metrics.extended.testCoverage.available && metrics.extended.testCoverage.details;
@@ -212,45 +222,47 @@
               </eb-stack>
             </eb-card>
           }
+        }
 
-          <!-- Latest Architecture Decisions -->
-          <eb-card [hoverable]="false" class="h-full">
-            <eb-stack card-body spacing="md">
-              <div class="card-header card-header--flex">
-                <h3 class="card-header__title">{{ t('home.architecture.title') }}</h3>
-                <eb-button
-                  routerLink="/architecture"
-                  variant="secondary"
-                  size="sm"
-                  [ariaLabel]="t('home.architecture.viewAllAria')"
-                >
-                  {{ t('home.architecture.viewAll') }}
-                </eb-button>
-              </div>
+        <!-- Latest Architecture Decisions -->
+        <eb-card [hoverable]="false" class="h-full">
+          <eb-stack card-body spacing="md">
+            <div class="card-header card-header--flex">
+              <h3 class="card-header__title">{{ t('home.architecture.title') }}</h3>
+              <eb-button
+                routerLink="/architecture"
+                variant="secondary"
+                size="sm"
+                [ariaLabel]="t('home.architecture.viewAllAria')"
+              >
+                {{ t('home.architecture.viewAll') }}
+              </eb-button>
+            </div>
 
-              @if (architectureStore.isLoading()) {
-                <div class="loading-state">{{ t('home.architecture.loading') }}</div>
-              } @else {
-                <div class="adr-list">
-                  @for (adr of architectureStore.entities() | slice: 0 : 3; track adr.id) {
-                    <div class="adr-item" [routerLink]="['/architecture', adr.id]">
-                      <div class="adr-item__header">
-                        <span class="adr-item__title">{{ adr.title }}</span>
-                        <eb-badge
-                          [variant]="adr.status === 'accepted' ? 'success' : 'secondary'"
-                          size="sm"
-                          [content]="adr.status | titlecase"
-                          position="inline"
-                          [ariaLabel]="t('architecture.statusLabel', { status: adr.status })"
-                        ></eb-badge>
-                      </div>
+            @if (architectureStore.isLoading()) {
+              <div class="loading-state">{{ t('home.architecture.loading') }}</div>
+            } @else {
+              <div class="adr-list">
+                @for (adr of architectureStore.entities() | slice: 0 : 3; track adr.id) {
+                  <div class="adr-item" [routerLink]="['/architecture', adr.id]">
+                    <div class="adr-item__header">
+                      <span class="adr-item__title">{{ adr.title }}</span>
+                      <eb-badge
+                        [variant]="adr.status === 'accepted' ? 'success' : 'secondary'"
+                        size="sm"
+                        [content]="adr.status | titlecase"
+                        position="inline"
+                        [ariaLabel]="t('architecture.statusLabel', { status: adr.status })"
+                      ></eb-badge>
                     </div>
-                  }
-                </div>
-              }
-            </eb-stack>
-          </eb-card>
+                  </div>
+                }
+              </div>
+            }
+          </eb-stack>
+        </eb-card>
 
+        @if (store.extendedMetrics(); as ext) {
           <!-- Bundle Size -->
           @if (ext.bundleSize.available && ext.bundleSize.initial; as bundle) {
             <eb-card [hoverable]="false" class="h-full">

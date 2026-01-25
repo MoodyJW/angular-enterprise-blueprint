@@ -17,6 +17,7 @@
     "test:coverage": "ng test --coverage",
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
+    "serve:coverage": "http-server coverage/angular-enterprise-blueprint -o",
     "lint": "eslint \"src/**/*.{ts,html}\"",
     "prepare": "husky",
     "storybook": "npm run docs:json && ng run angular-enterprise-blueprint:storybook",

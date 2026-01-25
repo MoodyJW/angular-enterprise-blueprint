@@ -81,7 +81,8 @@
       "perf": "Performance",
       "a11y": "A11y",
       "best": "Best",
-      "seo": "SEO"
+      "seo": "SEO",
+      "viewCoverage": "View Report"
     },
     "documentation": {
       "title": "Documentation",

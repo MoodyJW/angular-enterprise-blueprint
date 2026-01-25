@@ -52,10 +52,14 @@ jobs:
 
       # 3. Build Compodoc
       - name: Build Compodoc
-        run: npm run docs:build # Ensure this script exists in package.json
+        run: npm run docs:build
 
-      # 4. Merge Artifacts into the browser output folder
-      - name: Merge Documentation
+      # 4. Run Tests & Coverage
+      - name: Run Tests
+        run: npm run test:coverage
+
+      # 5. Merge Artifacts into the browser output folder
+      - name: Merge Artifacts
         run: |
           echo "Verifying build artifacts..."
           ls -la dist/
@@ -63,8 +67,12 @@ jobs:
           test -d dist/angular-enterprise-blueprint/browser || { echo "ERROR: dist/angular-enterprise-blueprint/browser not found"; exit 1; }
           test -d dist/storybook || { echo "ERROR: dist/storybook not found"; exit 1; }
           test -d dist/documentation || { echo "ERROR: dist/documentation not found"; exit 1; }
+          # Move Storybook and Docs
           mv dist/storybook dist/angular-enterprise-blueprint/browser/storybook
           mv dist/documentation dist/angular-enterprise-blueprint/browser/docs
+          # Move Coverage (handled differently as it may not be in dist)
+          mkdir -p dist/angular-enterprise-blueprint/browser/coverage
+          cp -r coverage/angular-enterprise-blueprint/* dist/angular-enterprise-blueprint/browser/coverage/ || echo "WARNING: Coverage files not found"
           # Create 404.html for SPA routing (copy of index.html)
           cp dist/angular-enterprise-blueprint/browser/index.html dist/angular-enterprise-blueprint/browser/404.html
           # Ensure .nojekyll exists (should be copied from public/ but add as backup)
