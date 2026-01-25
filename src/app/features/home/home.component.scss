@@ -258,12 +258,26 @@
 .adr-item {
   display: flex;
   flex-direction: column;
-  padding-bottom: var(--space-3);
+  padding: var(
+    --space-3
+  ); // Changed from padding-bottom to padding all around for better click target
   border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin: 0 calc(var(--space-3) * -1); // Negative margin to align with card edges while keeping padding
+
+  &:hover {
+    background-color: var(--color-surface-variant);
+  }
+
+  &:first-child {
+    margin-top: calc(var(--space-3) * -1);
+    padding-top: var(--space-3);
+  }
 
   &:last-child {
     border-bottom: none;
-    padding-bottom: 0;
+    padding-bottom: var(--space-3); // Restore padding
   }
 
   &__header {

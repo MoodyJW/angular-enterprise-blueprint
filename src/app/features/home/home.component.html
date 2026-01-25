@@ -207,42 +207,43 @@
             </eb-card>
           }
 
-          <!-- Dependencies -->
-          @if (ext.dependencies.available) {
-            <eb-card [hoverable]="false" class="h-full">
-              <eb-stack card-body spacing="md">
-                <div class="card-header card-header--flex">
-                  <h3 class="card-header__title">{{ t('home.dependencies.title') }}</h3>
-                  <eb-badge
-                    [variant]="
-                      (ext.dependencies.vulnerabilities?.high ?? 0) > 0 ? 'error' : 'success'
-                    "
-                    position="inline"
-                    [content]="
-                      (ext.dependencies.vulnerabilities?.total ?? 0) === 0
-                        ? '✓ Secure'
-                        : (ext.dependencies.vulnerabilities?.total ?? 0) + ' issues'
-                    "
-                    [ariaLabel]="t('home.dependencies.title')"
-                  ></eb-badge>
+          <!-- Latest Architecture Decisions -->
+          <eb-card [hoverable]="false" class="h-full">
+            <eb-stack card-body spacing="md">
+              <div class="card-header card-header--flex">
+                <h3 class="card-header__title">{{ t('home.architecture.title') }}</h3>
+                <eb-button
+                  routerLink="/architecture"
+                  variant="secondary"
+                  size="sm"
+                  [ariaLabel]="t('home.architecture.viewAllAria')"
+                >
+                  {{ t('home.architecture.viewAll') }}
+                </eb-button>
+              </div>
+
+              @if (architectureStore.isLoading()) {
+                <div class="loading-state">{{ t('home.architecture.loading') }}</div>
+              } @else {
+                <div class="adr-list">
+                  @for (adr of architectureStore.entities() | slice: 0 : 3; track adr.id) {
+                    <div class="adr-item" [routerLink]="['/architecture', adr.id]">
+                      <div class="adr-item__header">
+                        <span class="adr-item__title">{{ adr.title }}</span>
+                        <eb-badge
+                          [variant]="adr.status === 'accepted' ? 'success' : 'secondary'"
+                          size="sm"
+                          [content]="adr.status | titlecase"
+                          position="inline"
+                          [ariaLabel]="t('architecture.statusLabel', { status: adr.status })"
+                        ></eb-badge>
+                      </div>
+                    </div>
+                  }
                 </div>
-                <div class="metric__row">
-                  <span class="metric__label">{{ t('home.dependencies.total') }}</span>
-                  <span class="metric__value">{{ ext.dependencies.total }}</span>
-                </div>
-                <div class="metric__row">
-                  <span class="metric__label">{{ t('home.dependencies.outdated') }}</span>
-                  <span class="metric__value">{{ ext.dependencies.outdated }}</span>
-                </div>
-                <div class="metric__row">
-                  <span class="metric__label">{{ t('home.dependencies.vulnerabilities') }}</span>
-                  <span class="metric__value">{{
-                    ext.dependencies.vulnerabilities?.total ?? 0
-                  }}</span>
-                </div>
-              </eb-stack>
-            </eb-card>
-          }
+              }
+            </eb-stack>
+          </eb-card>
 
           <!-- Bundle Size -->
           @if (ext.bundleSize.available && ext.bundleSize.initial; as bundle) {
@@ -319,46 +320,45 @@
               </eb-stack>
             </eb-card>
           }
+
+          <!-- Dependencies -->
+          @if (ext.dependencies.available) {
+            <eb-card [hoverable]="false" class="h-full">
+              <eb-stack card-body spacing="md">
+                <div class="card-header card-header--flex">
+                  <h3 class="card-header__title">{{ t('home.dependencies.title') }}</h3>
+                  <eb-badge
+                    [variant]="
+                      (ext.dependencies.vulnerabilities?.high ?? 0) > 0 ? 'error' : 'success'
+                    "
+                    position="inline"
+                    [content]="
+                      (ext.dependencies.vulnerabilities?.total ?? 0) === 0
+                        ? '✓ Secure'
+                        : (ext.dependencies.vulnerabilities?.total ?? 0) + ' issues'
+                    "
+                    [ariaLabel]="t('home.dependencies.title')"
+                  ></eb-badge>
+                </div>
+                <div class="metric__row">
+                  <span class="metric__label">{{ t('home.dependencies.total') }}</span>
+                  <span class="metric__value">{{ ext.dependencies.total }}</span>
+                </div>
+                <div class="metric__row">
+                  <span class="metric__label">{{ t('home.dependencies.outdated') }}</span>
+                  <span class="metric__value">{{ ext.dependencies.outdated }}</span>
+                </div>
+                <div class="metric__row">
+                  <span class="metric__label">{{ t('home.dependencies.vulnerabilities') }}</span>
+                  <span class="metric__value">{{
+                    ext.dependencies.vulnerabilities?.total ?? 0
+                  }}</span>
+                </div>
+              </eb-stack>
+            </eb-card>
+          }
         }
         <!-- End Extended Metrics check -->
-
-        <!-- Latest Architecture Decisions -->
-        <eb-card [hoverable]="false" class="h-full">
-          <eb-stack card-body spacing="md">
-            <div class="card-header card-header--flex">
-              <h3 class="card-header__title">{{ t('home.architecture.title') }}</h3>
-              <eb-button
-                routerLink="/architecture"
-                variant="secondary"
-                size="sm"
-                [ariaLabel]="t('home.architecture.viewAllAria')"
-              >
-                {{ t('home.architecture.viewAll') }}
-              </eb-button>
-            </div>
-
-            @if (architectureStore.isLoading()) {
-              <div class="loading-state">{{ t('home.architecture.loading') }}</div>
-            } @else {
-              <div class="adr-list">
-                @for (adr of architectureStore.entities() | slice: 0 : 3; track adr.id) {
-                  <div class="adr-item">
-                    <div class="adr-item__header">
-                      <span class="adr-item__title">{{ adr.title }}</span>
-                      <eb-badge
-                        [variant]="adr.status === 'accepted' ? 'success' : 'secondary'"
-                        size="sm"
-                        [content]="adr.status | titlecase"
-                        position="inline"
-                        [ariaLabel]="t('architecture.statusLabel', { status: adr.status })"
-                      ></eb-badge>
-                    </div>
-                  </div>
-                }
-              </div>
-            }
-          </eb-stack>
-        </eb-card>
 
         <!-- Git Statistics -->
         @if (store.extendedMetrics(); as ext) {

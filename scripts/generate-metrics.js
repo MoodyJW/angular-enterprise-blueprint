@@ -495,8 +495,36 @@ function parseSize(sizeStr) {
 function getBuildDeployStatus() {
   // Check if we're on main/master and if last commit passed CI
   try {
-    const currentBranch =
-      execSync('git branch --show-current', { cwd: ROOT, encoding: 'utf-8' }).trim() || 'unknown';
+    // 1. Check explicit override
+    if (process.env.DEPLOY_STATUS) {
+      return {
+        buildStatus: 'passing',
+        deployStatus: process.env.DEPLOY_STATUS,
+        systemStatus: 'operational',
+      };
+    }
+
+    // 2. Resolve branch name (local git or CI env)
+    let currentBranch = 'unknown';
+
+    try {
+      currentBranch = execSync('git branch --show-current', {
+        cwd: ROOT,
+        encoding: 'utf-8',
+      }).trim();
+    } catch {
+      // access access git failed or detached head
+    }
+
+    // Fallback for CI (GitHub Actions)
+    if (!currentBranch || currentBranch === '') {
+      if (process.env.GITHUB_REF_NAME) {
+        currentBranch = process.env.GITHUB_REF_NAME;
+      } else if (process.env.GITHUB_HEAD_REF) {
+        currentBranch = process.env.GITHUB_HEAD_REF;
+      }
+    }
+
     const isMainBranch = ['main', 'master'].includes(currentBranch);
 
     return {
@@ -550,7 +578,9 @@ function generateMetrics() {
   const metrics = {
     generatedAt: new Date().toISOString(),
     buildStatus,
-    deployStatus: existingMetrics?.deployStatus || deployStatus,
+    deployStatus: process.env.DEPLOY_STATUS
+      ? deployStatus
+      : existingMetrics?.deployStatus || deployStatus,
     systemStatus,
     activeModules: 4,
 

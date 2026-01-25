@@ -48,6 +48,8 @@ jobs:
 
       - name: Update Metrics File
         run: npm run metrics:generate
+        env:
+          DEPLOY_STATUS: success
 
       - name: Disable Git Hooks
         run: git config core.hooksPath /dev/null
