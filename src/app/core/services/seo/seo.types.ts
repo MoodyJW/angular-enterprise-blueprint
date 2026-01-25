@@ -128,12 +128,21 @@ export interface WebSiteSchema extends JsonLdConfig {
   readonly potentialAction?: SearchActionSchema;
 }
 
+/**
+ * Schema.org SearchAction for website search functionality.
+ * Used within WebSiteSchema to define search capabilities.
+ * @see https://schema.org/SearchAction
+ */
 export interface SearchActionSchema {
   readonly '@type': 'SearchAction';
   readonly target: string;
   readonly 'query-input': string;
 }
 
+/**
+ * Schema.org Organization for representing companies and organizations.
+ * @see https://schema.org/Organization
+ */
 export interface OrganizationSchema extends JsonLdConfig {
   readonly '@type': 'Organization';
   readonly name: string;
@@ -143,6 +152,10 @@ export interface OrganizationSchema extends JsonLdConfig {
   readonly contactPoint?: ContactPointSchema;
 }
 
+/**
+ * Schema.org ContactPoint for organization contact information.
+ * @see https://schema.org/ContactPoint
+ */
 export interface ContactPointSchema {
   readonly '@type': 'ContactPoint';
   readonly contactType: string;
@@ -150,6 +163,11 @@ export interface ContactPointSchema {
   readonly telephone?: string;
 }
 
+/**
+ * Schema.org Article for blog posts and articles.
+ * Supports Article, BlogPosting, and NewsArticle types.
+ * @see https://schema.org/Article
+ */
 export interface ArticleSchema extends JsonLdConfig {
   readonly '@type': 'Article' | 'BlogPosting' | 'NewsArticle';
   readonly headline: string;
@@ -161,6 +179,10 @@ export interface ArticleSchema extends JsonLdConfig {
   readonly dateModified?: string;
 }
 
+/**
+ * Schema.org Person for representing individuals.
+ * @see https://schema.org/Person
+ */
 export interface PersonSchema extends JsonLdConfig {
   readonly '@type': 'Person';
   readonly name: string;
@@ -168,11 +190,19 @@ export interface PersonSchema extends JsonLdConfig {
   readonly image?: string;
 }
 
+/**
+ * Schema.org BreadcrumbList for breadcrumb navigation.
+ * @see https://schema.org/BreadcrumbList
+ */
 export interface BreadcrumbSchema extends JsonLdConfig {
   readonly '@type': 'BreadcrumbList';
   readonly itemListElement: readonly BreadcrumbItemSchema[];
 }
 
+/**
+ * Individual item in a breadcrumb list.
+ * @see https://schema.org/ListItem
+ */
 export interface BreadcrumbItemSchema {
   readonly '@type': 'ListItem';
   readonly position: number;

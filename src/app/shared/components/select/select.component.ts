@@ -28,6 +28,10 @@ export type SelectVariant = 'default' | 'filled' | 'outlined';
 export type SelectSize = 'sm' | 'md' | 'lg';
 export type SelectValidationState = 'default' | 'success' | 'warning' | 'error';
 
+/**
+ * Option item for the Select component.
+ * @template T - The type of the option value
+ */
 export interface SelectOption<T = unknown> {
   /**
    * Display label for the option

@@ -1,6 +1,6 @@
 {
   "statistics": {
-    "detectionDate": "2026-01-25T16:44:57.391Z",
+    "detectionDate": "2026-01-25T16:52:16.179Z",
     "formats": {
       "typescript": {
         "sources": {
@@ -221,8 +221,8 @@
             "newClones": 0
           },
           "src/app/shared/components/tooltip/tooltip.component.ts": {
-            "lines": 297,
-            "tokens": 2014,
+            "lines": 301,
+            "tokens": 2017,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -341,13 +341,13 @@
             "newClones": 0
           },
           "src/app/shared/components/select/select.component.ts": {
-            "lines": 864,
-            "tokens": 5290,
+            "lines": 869,
+            "tokens": 5293,
             "sources": 1,
             "clones": 1,
             "duplicatedLines": 28,
             "duplicatedTokens": 229,
-            "percentage": 3.24,
+            "percentage": 3.22,
             "percentageTokens": 4.33,
             "newDuplicatedLines": 0,
             "newClones": 0
@@ -617,8 +617,8 @@
             "newClones": 0
           },
           "src/app/features/profile/services/profile.service.ts": {
-            "lines": 351,
-            "tokens": 2299,
+            "lines": 355,
+            "tokens": 2302,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -845,8 +845,8 @@
             "newClones": 0
           },
           "src/app/core/services/seo/seo.types.ts": {
-            "lines": 216,
-            "tokens": 1203,
+            "lines": 246,
+            "tokens": 1217,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -941,8 +941,8 @@
             "newClones": 0
           },
           "src/app/core/services/analytics/gtag.types.ts": {
-            "lines": 53,
-            "tokens": 292,
+            "lines": 56,
+            "tokens": 295,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1193,8 +1193,8 @@
             "newClones": 0
           },
           "src/app/features/blog/blog.types.ts": {
-            "lines": 26,
-            "tokens": 173,
+            "lines": 30,
+            "tokens": 176,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1530,13 +1530,13 @@
           }
         },
         "total": {
-          "lines": 16830,
-          "tokens": 96365,
+          "lines": 16880,
+          "tokens": 96394,
           "sources": 127,
           "clones": 22,
           "duplicatedLines": 447,
           "duplicatedTokens": 3270,
-          "percentage": 2.66,
+          "percentage": 2.65,
           "percentageTokens": 3.39,
           "newDuplicatedLines": 0,
           "newClones": 0
@@ -2728,13 +2728,13 @@
       }
     },
     "total": {
-      "lines": 26906,
-      "tokens": 157460,
+      "lines": 26956,
+      "tokens": 157489,
       "sources": 223,
       "clones": 31,
       "duplicatedLines": 623,
       "duplicatedTokens": 4331,
-      "percentage": 2.32,
+      "percentage": 2.31,
       "percentageTokens": 2.75,
       "newDuplicatedLines": 0,
       "newClones": 0
@@ -2928,17 +2928,17 @@
       "tokens": 0,
       "firstFile": {
         "name": "src/app/shared/components/select/select.component.ts",
-        "start": 455,
-        "end": 483,
+        "start": 460,
+        "end": 488,
         "startLoc": {
-          "line": 455,
+          "line": 460,
           "column": 2,
-          "position": 2395
+          "position": 2398
         },
         "endLoc": {
-          "line": 483,
+          "line": 488,
           "column": 69,
-          "position": 2624
+          "position": 2627
         }
       },
       "secondFile": {

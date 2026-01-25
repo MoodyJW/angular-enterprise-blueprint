@@ -44,9 +44,12 @@ export type GtagFunction = {
 };
 
 /**
- * Extends the Window interface to include gtag and dataLayer.
+ * Extended Window interface with Google Analytics properties.
  */
 declare global {
+  /**
+   * Extended Window interface with Google Analytics properties.
+   */
   interface Window {
     gtag?: GtagFunction;
     dataLayer?: unknown[];

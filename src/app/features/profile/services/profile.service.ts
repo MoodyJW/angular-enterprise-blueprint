@@ -122,6 +122,9 @@ interface SearchGraphQLResponse {
   errors?: Array<{ message: string }>;
 }
 
+/**
+ * Aggregated statistics for pull request code changes.
+ */
 interface PrStats {
   additions: number;
   deletions: number;

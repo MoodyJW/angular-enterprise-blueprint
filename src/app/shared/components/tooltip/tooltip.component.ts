@@ -13,6 +13,9 @@ import {
 
 export type TooltipPosition = 'top' | 'right' | 'bottom' | 'left' | 'auto';
 
+/**
+ * Calculated position coordinates for tooltip placement.
+ */
 interface TooltipCoordinates {
   top: number;
   left: number;

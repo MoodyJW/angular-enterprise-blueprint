@@ -7,6 +7,9 @@ export type BlogCategory =
   | 'security'
   | 'angular';
 
+/**
+ * Represents a blog article with metadata and content information.
+ */
 export interface BlogArticle {
   id: string;
   slug: string;
