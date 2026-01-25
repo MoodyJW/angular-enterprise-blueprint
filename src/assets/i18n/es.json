@@ -118,7 +118,8 @@
       "title": "Dependencias",
       "total": "Paquetes Totales",
       "outdated": "Desactualizados",
-      "vulnerabilities": "Vulnerabilidades"
+      "vulnerabilities": "Vulnerabilidades",
+      "viewDependabot": "Ver Dependabot"
     },
     "git": {
       "title": "Repositorio",

@@ -152,4 +152,11 @@ export class HomeComponent implements OnInit {
     const url = new URL('bundle-report.html', document.baseURI).href;
     window.open(url, '_blank');
   }
+
+  openDependabot(): void {
+    window.open(
+      'https://github.com/MoodyJW/angular-enterprise-blueprint/security/dependabot',
+      '_blank',
+    );
+  }
 }
