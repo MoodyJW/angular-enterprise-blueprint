@@ -5,14 +5,15 @@ setCompodocJson(docJson);
 
 /**
  * Theme definitions matching the application's theme system
+ * Uses valid Storybook icon names compatible with v10.2.0+
  */
 const THEMES = [
-  { value: 'light-default', title: 'Light Default (Daylight)', icon: 'sun' },
-  { value: 'light-warm', title: 'Light Warm (Sunrise)', icon: 'sun' },
-  { value: 'dark-default', title: 'Dark Default (Midnight)', icon: 'moon' },
-  { value: 'dark-cool', title: 'Dark Cool (Twilight)', icon: 'moon' },
-  { value: 'high-contrast-light', title: 'High Contrast Light', icon: 'accessibility' },
-  { value: 'high-contrast-dark', title: 'High Contrast Dark', icon: 'accessibility' },
+  { value: 'light-default', title: 'Light Default (Daylight)', icon: 'circlehollow' as const },
+  { value: 'light-warm', title: 'Light Warm (Sunrise)', icon: 'circlehollow' as const },
+  { value: 'dark-default', title: 'Dark Default (Midnight)', icon: 'circle' as const },
+  { value: 'dark-cool', title: 'Dark Cool (Twilight)', icon: 'circle' as const },
+  { value: 'high-contrast-light', title: 'High Contrast Light', icon: 'eye' as const },
+  { value: 'high-contrast-dark', title: 'High Contrast Dark', icon: 'eye' as const },
 ];
 
 /**
@@ -32,7 +33,7 @@ const preview: Preview = {
       toolbar: {
         title: 'Theme',
         icon: 'paintbrush',
-        items: THEMES.map((t) => ({ value: t.value, title: t.title, icon: t.icon })),
+        items: THEMES,
         dynamicTitle: true,
       },
     },
