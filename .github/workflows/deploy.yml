@@ -62,7 +62,7 @@ jobs:
       - name: Run Lighthouse CI
         run: |
           npm install -g @lhci/cli@0.14.x
-          lhci autorun --collect.staticDistDir=dist/angular-enterprise-blueprint/browser --upload.target=filesystem --config=lighthouserc.json || echo "Lighthouse CI completed with warnings"
+          lhci autorun --collect.staticDistDir=dist/angular-enterprise-blueprint/browser --config=lighthouserc.json || echo "Lighthouse CI completed with warnings"
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
