@@ -34,10 +34,10 @@ export const NAV_ITEMS: readonly NavItem[] = [
       { labelKey: 'nav.architecture', route: '/architecture' },
       {
         labelKey: 'nav.storybook',
-        route: 'angular-enterprise-blueprint/storybook',
+        route: '/storybook',
         external: true,
       },
-      { labelKey: 'nav.docs', route: 'angular-enterprise-blueprint/docs', external: true },
+      { labelKey: 'nav.docs', route: '/docs', external: true },
     ],
   },
 ] as const;
