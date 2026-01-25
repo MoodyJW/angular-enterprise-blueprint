@@ -29,6 +29,7 @@
     "docs:serve": "compodoc -p tsconfig.doc.json -d docs/api --theme material -s",
     "docs:json": "compodoc -p .storybook/tsconfig.doc.json -e json -d .",
     "analyze": "ng build --source-map=true --named-chunks=true --stats-json && source-map-explorer dist/angular-enterprise-blueprint/browser/**/*.js",
+    "analyze:report": "ng build --output-path=dist/analyze --source-map=true --named-chunks=true --stats-json && source-map-explorer dist/analyze/browser/**/*.js --html dist/analyze/bundle-report.html",
     "release": "commit-and-tag-version",
     "release:first": "commit-and-tag-version --first-release",
     "prettier": "prettier --write .",

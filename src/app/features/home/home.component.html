@@ -343,6 +343,17 @@
                   </div>
                 </eb-stack>
               </div>
+              <footer card-footer>
+                <eb-button
+                  variant="secondary"
+                  size="sm"
+                  [fullWidth]="true"
+                  (click)="openBundleReport()"
+                  [ariaLabel]="t('home.bundleSize.viewMap')"
+                >
+                  {{ t('home.bundleSize.viewMap') }}
+                </eb-button>
+              </footer>
             </eb-card>
           }
 

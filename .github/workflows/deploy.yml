@@ -46,6 +46,10 @@ jobs:
       - name: Build Application
         run: npm run build -- --base-href /angular-enterprise-blueprint/
 
+      # 1b. Generate Bundle Report (Separate build with stats)
+      - name: Generate Bundle Report
+        run: npm run analyze:report
+
       # 2. Build Storybook (output dir configured in angular.json)
       - name: Build Storybook
         run: npm run build-storybook
@@ -85,6 +89,13 @@ jobs:
              fi
           else
              echo "WARNING: .lighthouseci directory not found"
+          fi
+          # Move Bundle Report
+          if [ -f "dist/analyze/bundle-report.html" ]; then
+            cp dist/analyze/bundle-report.html dist/angular-enterprise-blueprint/browser/bundle-report.html
+            echo "Bundle report copied"
+          else
+            echo "WARNING: Bundle report not found"
           fi
           # Create 404.html for SPA routing (copy of index.html)
           cp dist/angular-enterprise-blueprint/browser/index.html dist/angular-enterprise-blueprint/browser/404.html

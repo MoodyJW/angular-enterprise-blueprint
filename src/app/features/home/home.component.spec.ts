@@ -702,5 +702,23 @@ describe('HomeComponent', () => {
         );
       });
     });
+
+    describe('openBundleReport', () => {
+      it('should open bundle report in new tab', () => {
+        component.openBundleReport();
+        expect(windowOpenSpy).toHaveBeenCalledWith(
+          expect.stringContaining('bundle-report.html'),
+          '_blank',
+        );
+      });
+
+      it('should use document.baseURI for URL resolution', () => {
+        component.openBundleReport();
+        expect(windowOpenSpy).toHaveBeenCalled();
+        const calls = windowOpenSpy.mock.calls;
+        const calledUrl = calls[0]?.[0] ?? '';
+        expect(calledUrl).toMatch(/^https?:\/\//);
+      });
+    });
   });
 });

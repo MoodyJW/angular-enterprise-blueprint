@@ -147,4 +147,9 @@ export class HomeComponent implements OnInit {
   openRepository(): void {
     window.open('https://github.com/MoodyJW/angular-enterprise-blueprint', '_blank');
   }
+
+  openBundleReport(): void {
+    const url = new URL('bundle-report.html', document.baseURI).href;
+    window.open(url, '_blank');
+  }
 }

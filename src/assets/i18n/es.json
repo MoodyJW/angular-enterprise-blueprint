@@ -99,7 +99,8 @@
         "pass": "✓ En Presupuesto",
         "warn": "Advertencia",
         "error": "Sobre Presupuesto"
-      }
+      },
+      "viewMap": "Ver Mapa de Análisis"
     },
     "documentation": {
       "title": "Documentación",

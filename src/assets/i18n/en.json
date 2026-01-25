@@ -111,7 +111,8 @@
         "pass": "✓ In Budget",
         "warn": "Warning",
         "error": "Over Budget"
-      }
+      },
+      "viewMap": "View Analyzer Map"
     },
     "git": {
       "title": "Repository",
