@@ -149,6 +149,7 @@ describe('HomeComponent', () => {
                   title: 'Linting Status',
                   errors: 'Errors',
                   warnings: 'Warnings',
+                  viewConfig: 'View Config',
                 },
                 dependencies: {
                   title: 'Dependencies',

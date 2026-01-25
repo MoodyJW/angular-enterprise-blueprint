@@ -109,7 +109,8 @@
     "linting": {
       "title": "Calidad de Código",
       "errors": "Errores",
-      "warnings": "Advertencias"
+      "warnings": "Advertencias",
+      "viewConfig": "Ver Config"
     },
     "dependencies": {
       "title": "Dependencias",
