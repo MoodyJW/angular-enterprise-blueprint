@@ -87,6 +87,11 @@ export interface ExtendedMetrics {
       budget: string;
       status: 'pass' | 'warn' | 'error';
     };
+    lazy?: {
+      raw: number;
+      formatted: string;
+      count: number;
+    };
   };
   lighthouse?: {
     available: boolean;

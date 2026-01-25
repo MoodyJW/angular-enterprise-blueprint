@@ -108,8 +108,9 @@
     },
     "bundleSize": {
       "title": "Bundle Size",
-      "budget": "Budget",
       "initial": "Initial JS/CSS",
+      "lazyChunks": "Lazy Chunks",
+      "budget": "Budget",
       "status": {
         "pass": "✓ In Budget",
         "warn": "Warning",
