@@ -65,7 +65,8 @@
   "private": true,
   "packageManager": "npm@11.7.0",
   "overrides": {
-    "qs": "^6.14.1"
+    "qs": "^6.14.1",
+    "lodash-es": "^4.17.23"
   },
   "dependencies": {
     "@angular/cdk": "^21.0.6",
