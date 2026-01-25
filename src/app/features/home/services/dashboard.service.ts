@@ -56,6 +56,13 @@ export interface ExtendedMetrics {
     errors?: number;
     warnings?: number;
   };
+  duplication?: {
+    available: boolean;
+    message?: string;
+    percentage?: number;
+    totalLines?: number;
+    duplicatedLines?: number;
+  };
   dependencies: {
     available: boolean;
     message?: string;

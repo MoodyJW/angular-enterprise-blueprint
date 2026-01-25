@@ -288,6 +288,34 @@ function getGitStats() {
 }
 
 /**
+ * Get duplication statistics using jscpd.
+ */
+function getDuplicationStats() {
+  try {
+    // Run jscpd
+    execSync('npm run duplication', { cwd: ROOT, stdio: 'ignore' });
+
+    const reportPath = join(ROOT, 'reports/jscpd/jscpd-report.json');
+    if (existsSync(reportPath)) {
+      const report = JSON.parse(readFileSync(reportPath, 'utf-8'));
+      const total = report.statistics?.total;
+
+      if (total) {
+        return {
+          available: true,
+          percentage: parseFloat(total.percentage),
+          totalLines: total.lines,
+          duplicatedLines: total.duplicatedLines,
+        };
+      }
+    }
+  } catch (error) {
+    // Fall through
+  }
+  return { available: false, message: 'Duplication check failed' };
+}
+
+/**
  * Get linting status.
  */
 function getLintingStatus() {
@@ -570,6 +598,7 @@ function generateMetrics() {
   const documentation = getDocumentationCoverage();
   const git = getGitStats();
   const linting = getLintingStatus();
+  const duplication = getDuplicationStats();
   const dependencies = getDependencyInfo();
   const bundleSize = getBundleSize();
   const { buildStatus, deployStatus, systemStatus } = getBuildDeployStatus();
@@ -591,6 +620,7 @@ function generateMetrics() {
       documentation,
       git,
       linting,
+      duplication,
       dependencies,
       bundleSize,
     },

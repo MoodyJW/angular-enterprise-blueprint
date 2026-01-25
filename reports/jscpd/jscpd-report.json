@@ -1,0 +1,3861 @@
+{
+  "statistics": {
+    "detectionDate": "2026-01-25T16:17:28.954Z",
+    "formats": {
+      "typescript": {
+        "sources": {
+          "src/app/shared/components/tabs/tab-button/tab-button.component.ts": {
+            "lines": 36,
+            "tokens": 327,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/select/select-option/select-option.component.ts": {
+            "lines": 85,
+            "tokens": 397,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/select/select-dropdown/select-dropdown.component.ts": {
+            "lines": 110,
+            "tokens": 518,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/select/select-button/select-button.component.ts": {
+            "lines": 96,
+            "tokens": 518,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/radio/radio-button-icon/radio-button-icon.component.ts": {
+            "lines": 61,
+            "tokens": 274,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/input/input-label/input-label.component.ts": {
+            "lines": 80,
+            "tokens": 208,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/input/input-footer/input-footer.component.ts": {
+            "lines": 56,
+            "tokens": 266,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/checkbox/checkbox-checkmark/checkbox-checkmark.component.ts": {
+            "lines": 101,
+            "tokens": 339,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/button/button-content/button-content.component.ts": {
+            "lines": 49,
+            "tokens": 211,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/profile/components/profile-stats-card/profile-stats-card.component.ts": {
+            "lines": 63,
+            "tokens": 469,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/analytics/providers/google-analytics.provider.ts": {
+            "lines": 117,
+            "tokens": 1024,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/analytics/providers/console-analytics.provider.ts": {
+            "lines": 55,
+            "tokens": 329,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/utilities/validation/validation.utils.ts": {
+            "lines": 785,
+            "tokens": 4310,
+            "sources": 1,
+            "clones": 4,
+            "duplicatedLines": 36,
+            "duplicatedTokens": 354,
+            "percentage": 4.59,
+            "percentageTokens": 8.21,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/utilities/debounce-throttle/debounce-throttle.utils.ts": {
+            "lines": 238,
+            "tokens": 1503,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/services/unique-id/unique-id.service.ts": {
+            "lines": 46,
+            "tokens": 272,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/services/toast/toast.service.ts": {
+            "lines": 292,
+            "tokens": 1251,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/user-menu/user-menu.component.ts": {
+            "lines": 68,
+            "tokens": 409,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/tooltip/tooltip.directive.ts": {
+            "lines": 259,
+            "tokens": 1400,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/tooltip/tooltip.component.ts": {
+            "lines": 297,
+            "tokens": 2014,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/toast/toast.component.ts": {
+            "lines": 207,
+            "tokens": 984,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/toast/toast-container.component.ts": {
+            "lines": 53,
+            "tokens": 256,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/theme-picker/theme-picker.component.ts": {
+            "lines": 240,
+            "tokens": 1584,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/theme-picker/index.ts": {
+            "lines": 4,
+            "tokens": 25,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/textarea/textarea.component.ts": {
+            "lines": 605,
+            "tokens": 3668,
+            "sources": 1,
+            "clones": 11,
+            "duplicatedLines": 272,
+            "duplicatedTokens": 2100,
+            "percentage": 44.96,
+            "percentageTokens": 57.25,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/tabs/tabs.component.ts": {
+            "lines": 303,
+            "tokens": 1782,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/tabs/tab.component.ts": {
+            "lines": 86,
+            "tokens": 286,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/stack/stack.component.ts": {
+            "lines": 172,
+            "tokens": 740,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/skeleton/skeleton.component.ts": {
+            "lines": 232,
+            "tokens": 1258,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/select/select.component.ts": {
+            "lines": 864,
+            "tokens": 5290,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 28,
+            "duplicatedTokens": 229,
+            "percentage": 3.24,
+            "percentageTokens": 4.33,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/radio/radio.component.ts": {
+            "lines": 397,
+            "tokens": 1943,
+            "sources": 1,
+            "clones": 3,
+            "duplicatedLines": 61,
+            "duplicatedTokens": 406,
+            "percentage": 15.37,
+            "percentageTokens": 20.9,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/page-not-found/page-not-found.component.ts": {
+            "lines": 19,
+            "tokens": 126,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/nav-dropdown/nav-dropdown.component.ts": {
+            "lines": 106,
+            "tokens": 639,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/modal/modal.component.ts": {
+            "lines": 300,
+            "tokens": 1516,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/loading-spinner/loading-spinner.component.ts": {
+            "lines": 114,
+            "tokens": 496,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/language-switcher/language-switcher.component.ts": {
+            "lines": 218,
+            "tokens": 1357,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/language-switcher/index.ts": {
+            "lines": 5,
+            "tokens": 36,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/input/input.component.ts": {
+            "lines": 485,
+            "tokens": 2681,
+            "sources": 1,
+            "clones": 6,
+            "duplicatedLines": 155,
+            "duplicatedTokens": 1012,
+            "percentage": 31.96,
+            "percentageTokens": 37.75,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/input/index.ts": {
+            "lines": 3,
+            "tokens": 53,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/icon/icon.component.ts": {
+            "lines": 146,
+            "tokens": 640,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/grid/grid.component.ts": {
+            "lines": 203,
+            "tokens": 1015,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/form-field/form-field.component.ts": {
+            "lines": 381,
+            "tokens": 2414,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/donut-chart/donut-chart.component.ts": {
+            "lines": 101,
+            "tokens": 531,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/divider/index.ts": {
+            "lines": 6,
+            "tokens": 40,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/divider/divider.component.ts": {
+            "lines": 193,
+            "tokens": 721,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/container/container.component.ts": {
+            "lines": 101,
+            "tokens": 389,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/checkbox/checkbox.component.ts": {
+            "lines": 368,
+            "tokens": 1930,
+            "sources": 1,
+            "clones": 3,
+            "duplicatedLines": 64,
+            "duplicatedTokens": 407,
+            "percentage": 17.39,
+            "percentageTokens": 21.09,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/card/card.component.ts": {
+            "lines": 186,
+            "tokens": 909,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/button/button.component.ts": {
+            "lines": 188,
+            "tokens": 881,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/breadcrumb/breadcrumb.component.ts": {
+            "lines": 228,
+            "tokens": 1151,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/badge/badge.component.ts": {
+            "lines": 193,
+            "tokens": 862,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/profile/state/profile.store.ts": {
+            "lines": 165,
+            "tokens": 1014,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 32,
+            "duplicatedTokens": 282,
+            "percentage": 19.39,
+            "percentageTokens": 27.81,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/profile/services/profile.service.ts": {
+            "lines": 351,
+            "tokens": 2299,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/profile/models/github-stats.interface.ts": {
+            "lines": 71,
+            "tokens": 168,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/modules/state/modules.store.ts": {
+            "lines": 96,
+            "tokens": 757,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/modules/services/modules.service.ts": {
+            "lines": 44,
+            "tokens": 326,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/modules/detail/module-detail.component.ts": {
+            "lines": 151,
+            "tokens": 988,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 51,
+            "duplicatedTokens": 296,
+            "percentage": 33.77,
+            "percentageTokens": 29.96,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/home/state/dashboard.store.ts": {
+            "lines": 69,
+            "tokens": 557,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/home/services/dashboard.service.ts": {
+            "lines": 126,
+            "tokens": 967,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/contact/state/contact.store.ts": {
+            "lines": 155,
+            "tokens": 1007,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 12,
+            "duplicatedTokens": 186,
+            "percentage": 7.74,
+            "percentageTokens": 18.47,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/contact/services/contact.service.ts": {
+            "lines": 99,
+            "tokens": 747,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/contact/models/contact.types.ts": {
+            "lines": 26,
+            "tokens": 110,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/blog/blog-list/blog-list.component.ts": {
+            "lines": 82,
+            "tokens": 513,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/blog/blog-detail/blog-detail.component.ts": {
+            "lines": 161,
+            "tokens": 1363,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/auth/login/login.component.ts": {
+            "lines": 172,
+            "tokens": 1210,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/architecture/viewer/adr-viewer.component.ts": {
+            "lines": 136,
+            "tokens": 967,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 16,
+            "duplicatedTokens": 104,
+            "percentage": 11.76,
+            "percentageTokens": 10.75,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/theme/theme.types.ts": {
+            "lines": 110,
+            "tokens": 504,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/theme/theme.service.ts": {
+            "lines": 261,
+            "tokens": 1469,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/theme/index.ts": {
+            "lines": 11,
+            "tokens": 66,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/storage/secure-storage.service.ts": {
+            "lines": 58,
+            "tokens": 254,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/storage/crypto.service.ts": {
+            "lines": 77,
+            "tokens": 370,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/seo/seo.types.ts": {
+            "lines": 216,
+            "tokens": 1203,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/seo/seo.service.ts": {
+            "lines": 411,
+            "tokens": 2668,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/seo/index.ts": {
+            "lines": 19,
+            "tokens": 92,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/security/csrf-token.service.ts": {
+            "lines": 28,
+            "tokens": 194,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/logger/logger.service.ts": {
+            "lines": 100,
+            "tokens": 303,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/architecture/architecture.store.ts": {
+            "lines": 147,
+            "tokens": 1200,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 6,
+            "duplicatedTokens": 89,
+            "percentage": 4.08,
+            "percentageTokens": 7.42,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/architecture/architecture.service.ts": {
+            "lines": 42,
+            "tokens": 271,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/analytics/index.ts": {
+            "lines": 19,
+            "tokens": 121,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/analytics/gtag.types.ts": {
+            "lines": 53,
+            "tokens": 292,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/analytics/analytics.service.ts": {
+            "lines": 216,
+            "tokens": 741,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/analytics/analytics.provider.ts": {
+            "lines": 71,
+            "tokens": 223,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/analytics/analytics-router.provider.ts": {
+            "lines": 78,
+            "tokens": 343,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/analytics/analytics-provider.interface.ts": {
+            "lines": 116,
+            "tokens": 228,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/analytics/analytics-loader.service.ts": {
+            "lines": 46,
+            "tokens": 317,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/layout/main-layout/main-layout.component.ts": {
+            "lines": 94,
+            "tokens": 484,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/layout/header/header.component.ts": {
+            "lines": 112,
+            "tokens": 536,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/layout/footer/footer.component.ts": {
+            "lines": 50,
+            "tokens": 235,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/auth/strategies/mock-auth.strategy.ts": {
+            "lines": 242,
+            "tokens": 1478,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/auth/guards/guest.guard.ts": {
+            "lines": 32,
+            "tokens": 138,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/auth/guards/auth.guard.ts": {
+            "lines": 59,
+            "tokens": 231,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/constants/toast.constants.ts": {
+            "lines": 14,
+            "tokens": 67,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/constants/select.constants.ts": {
+            "lines": 24,
+            "tokens": 107,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/constants/icons.constants.ts": {
+            "lines": 8,
+            "tokens": 19,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/constants/icon-names.constants.ts": {
+            "lines": 157,
+            "tokens": 899,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/index.ts": {
+            "lines": 26,
+            "tokens": 241,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/profile/profile.component.ts": {
+            "lines": 141,
+            "tokens": 915,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/modules/modules.component.ts": {
+            "lines": 138,
+            "tokens": 906,
+            "sources": 1,
+            "clones": 4,
+            "duplicatedLines": 95,
+            "duplicatedTokens": 585,
+            "percentage": 68.84,
+            "percentageTokens": 64.57,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/home/home.component.ts": {
+            "lines": 161,
+            "tokens": 1244,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/contact/contact.component.ts": {
+            "lines": 209,
+            "tokens": 1674,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/blog/blog.types.ts": {
+            "lines": 26,
+            "tokens": 173,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/blog/blog.store.ts": {
+            "lines": 95,
+            "tokens": 1005,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 6,
+            "duplicatedTokens": 97,
+            "percentage": 6.32,
+            "percentageTokens": 9.65,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/blog/blog.routes.ts": {
+            "lines": 15,
+            "tokens": 118,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/auth/auth.routes.ts": {
+            "lines": 22,
+            "tokens": 130,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/architecture/architecture.routes.ts": {
+            "lines": 20,
+            "tokens": 175,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/architecture/architecture.component.ts": {
+            "lines": 127,
+            "tokens": 777,
+            "sources": 1,
+            "clones": 3,
+            "duplicatedLines": 60,
+            "duplicatedTokens": 393,
+            "percentage": 47.24,
+            "percentageTokens": 50.58,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/strategies/preload-strategy.ts": {
+            "lines": 117,
+            "tokens": 708,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/services/index.ts": {
+            "lines": 45,
+            "tokens": 257,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/layout/navigation.data.ts": {
+            "lines": 49,
+            "tokens": 325,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/layout/index.ts": {
+            "lines": 6,
+            "tokens": 63,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/interceptors/http-error.interceptor.ts": {
+            "lines": 181,
+            "tokens": 1339,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/interceptors/csrf.interceptor.ts": {
+            "lines": 45,
+            "tokens": 330,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/i18n/transloco.config.ts": {
+            "lines": 23,
+            "tokens": 208,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/i18n/transloco-loader.ts": {
+            "lines": 22,
+            "tokens": 155,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/error-handling/index.ts": {
+            "lines": 7,
+            "tokens": 57,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/error-handling/global-error-handler.ts": {
+            "lines": 166,
+            "tokens": 952,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/error-handling/error.types.ts": {
+            "lines": 61,
+            "tokens": 302,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/error-handling/error-notification.service.ts": {
+            "lines": 73,
+            "tokens": 361,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/config/index.ts": {
+            "lines": 7,
+            "tokens": 47,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/config/environment.token.ts": {
+            "lines": 62,
+            "tokens": 130,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/auth/index.ts": {
+            "lines": 14,
+            "tokens": 134,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/auth/auth.types.ts": {
+            "lines": 78,
+            "tokens": 345,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/auth/auth.store.ts": {
+            "lines": 241,
+            "tokens": 1522,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/auth/auth.provider.ts": {
+            "lines": 42,
+            "tokens": 161,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/auth/auth-strategy.interface.ts": {
+            "lines": 66,
+            "tokens": 146,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/app.ts": {
+            "lines": 21,
+            "tokens": 94,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/app.routes.ts": {
+            "lines": 86,
+            "tokens": 654,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/app.config.ts": {
+            "lines": 63,
+            "tokens": 450,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 16831,
+          "tokens": 96386,
+          "sources": 127,
+          "clones": 22,
+          "duplicatedLines": 447,
+          "duplicatedTokens": 3270,
+          "percentage": 2.66,
+          "percentageTokens": 3.39,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "scss": {
+        "sources": {
+          "src/app/shared/components/tabs/tab-button/tab-button.component.scss": {
+            "lines": 114,
+            "tokens": 713,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/select/select-option/select-option.component.scss": {
+            "lines": 114,
+            "tokens": 691,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/select/select-dropdown/select-dropdown.component.scss": {
+            "lines": 103,
+            "tokens": 652,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/select/select-button/select-button.component.scss": {
+            "lines": 234,
+            "tokens": 1413,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/input/input-footer/input-footer.component.scss": {
+            "lines": 26,
+            "tokens": 139,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/button/button-content/button-content.component.scss": {
+            "lines": 80,
+            "tokens": 378,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/profile/components/profile-stats-card/profile-stats-card.component.scss": {
+            "lines": 169,
+            "tokens": 1031,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/user-menu/user-menu.component.scss": {
+            "lines": 57,
+            "tokens": 351,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/tooltip/tooltip.component.scss": {
+            "lines": 120,
+            "tokens": 716,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/toast/toast.component.scss": {
+            "lines": 217,
+            "tokens": 1165,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/toast/toast-container.component.scss": {
+            "lines": 85,
+            "tokens": 461,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/theme-picker/theme-picker.component.scss": {
+            "lines": 197,
+            "tokens": 1189,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 38,
+            "duplicatedTokens": 214,
+            "percentage": 19.29,
+            "percentageTokens": 18,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/textarea/textarea.component.scss": {
+            "lines": 223,
+            "tokens": 1256,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/tabs/tabs.component.scss": {
+            "lines": 119,
+            "tokens": 630,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/stack/stack.component.scss": {
+            "lines": 191,
+            "tokens": 1172,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/skeleton/skeleton.component.scss": {
+            "lines": 159,
+            "tokens": 734,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/select/select.component.scss": {
+            "lines": 57,
+            "tokens": 270,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/radio/radio.component.scss": {
+            "lines": 151,
+            "tokens": 806,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/page-not-found/page-not-found.component.scss": {
+            "lines": 36,
+            "tokens": 260,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/nav-dropdown/nav-dropdown.component.scss": {
+            "lines": 106,
+            "tokens": 644,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/modal/modal.component.scss": {
+            "lines": 301,
+            "tokens": 1616,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/loading-spinner/loading-spinner.component.scss": {
+            "lines": 194,
+            "tokens": 927,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/language-switcher/language-switcher.component.scss": {
+            "lines": 117,
+            "tokens": 671,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/input/input.component.scss": {
+            "lines": 236,
+            "tokens": 1313,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/icon/icon.component.scss": {
+            "lines": 150,
+            "tokens": 607,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/grid/grid.component.scss": {
+            "lines": 142,
+            "tokens": 660,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/form-field/form-field.component.scss": {
+            "lines": 99,
+            "tokens": 471,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/donut-chart/donut-chart.component.scss": {
+            "lines": 120,
+            "tokens": 666,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/divider/divider.component.scss": {
+            "lines": 215,
+            "tokens": 1160,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/container/container.component.scss": {
+            "lines": 62,
+            "tokens": 294,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/checkbox/checkbox.component.scss": {
+            "lines": 195,
+            "tokens": 1017,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 46,
+            "duplicatedTokens": 332,
+            "percentage": 23.59,
+            "percentageTokens": 32.65,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/card/card.component.scss": {
+            "lines": 265,
+            "tokens": 1483,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/button/button.component.scss": {
+            "lines": 225,
+            "tokens": 1293,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/breadcrumb/breadcrumb.component.scss": {
+            "lines": 225,
+            "tokens": 1040,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/badge/badge.component.scss": {
+            "lines": 176,
+            "tokens": 957,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/modules/detail/module-detail.component.scss": {
+            "lines": 84,
+            "tokens": 508,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/blog/blog-list/blog-list.component.scss": {
+            "lines": 65,
+            "tokens": 338,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 20,
+            "duplicatedTokens": 95,
+            "percentage": 30.77,
+            "percentageTokens": 28.11,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/blog/blog-detail/blog-detail.component.scss": {
+            "lines": 21,
+            "tokens": 126,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/auth/login/login.component.scss": {
+            "lines": 78,
+            "tokens": 527,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/architecture/viewer/adr-viewer.component.scss": {
+            "lines": 10,
+            "tokens": 47,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/layout/main-layout/main-layout.component.scss": {
+            "lines": 129,
+            "tokens": 725,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/layout/header/header.component.scss": {
+            "lines": 131,
+            "tokens": 844,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/layout/footer/footer.component.scss": {
+            "lines": 101,
+            "tokens": 612,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/styles/_feature-page.scss": {
+            "lines": 67,
+            "tokens": 428,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/styles/_feature-detail-card.scss": {
+            "lines": 70,
+            "tokens": 401,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/styles/_feature-card.scss": {
+            "lines": 72,
+            "tokens": 416,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/profile/profile.component.scss": {
+            "lines": 171,
+            "tokens": 952,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/modules/modules.component.scss": {
+            "lines": 91,
+            "tokens": 493,
+            "sources": 1,
+            "clones": 3,
+            "duplicatedLines": 89,
+            "duplicatedTokens": 482,
+            "percentage": 97.8,
+            "percentageTokens": 97.77,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/home/home.component.scss": {
+            "lines": 299,
+            "tokens": 1732,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/contact/contact.component.scss": {
+            "lines": 151,
+            "tokens": 931,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/architecture/architecture.component.scss": {
+            "lines": 99,
+            "tokens": 542,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 69,
+            "duplicatedTokens": 387,
+            "percentage": 69.7,
+            "percentageTokens": 71.4,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 6919,
+          "tokens": 38468,
+          "sources": 51,
+          "clones": 5,
+          "duplicatedLines": 131,
+          "duplicatedTokens": 755,
+          "percentage": 1.89,
+          "percentageTokens": 1.96,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "markup": {
+        "sources": {
+          "src/app/shared/components/tabs/tab-button/tab-button.component.html": {
+            "lines": 19,
+            "tokens": 139,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/input/input-footer/input-footer.component.html": {
+            "lines": 12,
+            "tokens": 97,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/button/button-content/button-content.component.html": {
+            "lines": 22,
+            "tokens": 201,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/profile/components/profile-stats-card/profile-stats-card.component.html": {
+            "lines": 167,
+            "tokens": 1467,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/user-menu/user-menu.component.html": {
+            "lines": 48,
+            "tokens": 347,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/tooltip/tooltip.component.html": {
+            "lines": 3,
+            "tokens": 47,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/toast/toast.component.html": {
+            "lines": 35,
+            "tokens": 207,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/toast/toast-container.component.html": {
+            "lines": 22,
+            "tokens": 134,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/theme-picker/theme-picker.component.html": {
+            "lines": 222,
+            "tokens": 1487,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 24,
+            "duplicatedTokens": 206,
+            "percentage": 10.81,
+            "percentageTokens": 13.85,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/textarea/textarea.component.html": {
+            "lines": 53,
+            "tokens": 310,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 9,
+            "duplicatedTokens": 53,
+            "percentage": 16.98,
+            "percentageTokens": 17.1,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/tabs/tabs.component.html": {
+            "lines": 28,
+            "tokens": 170,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/stack/stack.component.html": {
+            "lines": 7,
+            "tokens": 37,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/skeleton/skeleton.component.html": {
+            "lines": 15,
+            "tokens": 117,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/select/select.component.html": {
+            "lines": 57,
+            "tokens": 313,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/radio/radio.component.html": {
+            "lines": 36,
+            "tokens": 200,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 13,
+            "duplicatedTokens": 72,
+            "percentage": 36.11,
+            "percentageTokens": 36,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/page-not-found/page-not-found.component.html": {
+            "lines": 17,
+            "tokens": 145,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/nav-dropdown/nav-dropdown.component.html": {
+            "lines": 66,
+            "tokens": 409,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/modal/modal.component.html": {
+            "lines": 55,
+            "tokens": 330,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/loading-spinner/loading-spinner.component.html": {
+            "lines": 21,
+            "tokens": 194,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/language-switcher/language-switcher.component.html": {
+            "lines": 92,
+            "tokens": 645,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/input/input.component.html": {
+            "lines": 66,
+            "tokens": 402,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 9,
+            "duplicatedTokens": 53,
+            "percentage": 13.64,
+            "percentageTokens": 13.18,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/icon/icon.component.html": {
+            "lines": 7,
+            "tokens": 49,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/grid/grid.component.html": {
+            "lines": 8,
+            "tokens": 43,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/form-field/form-field.component.html": {
+            "lines": 23,
+            "tokens": 128,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/donut-chart/donut-chart.component.html": {
+            "lines": 8,
+            "tokens": 96,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/divider/divider.component.html": {
+            "lines": 16,
+            "tokens": 120,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/container/container.component.html": {
+            "lines": 7,
+            "tokens": 37,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/checkbox/checkbox.component.html": {
+            "lines": 37,
+            "tokens": 212,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 13,
+            "duplicatedTokens": 72,
+            "percentage": 35.14,
+            "percentageTokens": 33.96,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/card/card.component.html": {
+            "lines": 39,
+            "tokens": 254,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/button/button.component.html": {
+            "lines": 22,
+            "tokens": 124,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/breadcrumb/breadcrumb.component.html": {
+            "lines": 60,
+            "tokens": 480,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/shared/components/badge/badge.component.html": {
+            "lines": 14,
+            "tokens": 80,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/modules/detail/module-detail.component.html": {
+            "lines": 177,
+            "tokens": 1267,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/blog/blog-list/blog-list.component.html": {
+            "lines": 88,
+            "tokens": 717,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 11,
+            "duplicatedTokens": 78,
+            "percentage": 12.5,
+            "percentageTokens": 10.88,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/blog/blog-detail/blog-detail.component.html": {
+            "lines": 159,
+            "tokens": 1072,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/auth/login/login.component.html": {
+            "lines": 74,
+            "tokens": 578,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/architecture/viewer/adr-viewer.component.html": {
+            "lines": 124,
+            "tokens": 946,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/layout/main-layout/main-layout.component.html": {
+            "lines": 30,
+            "tokens": 244,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/layout/header/header.component.html": {
+            "lines": 73,
+            "tokens": 515,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/core/layout/footer/footer.component.html": {
+            "lines": 32,
+            "tokens": 245,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/profile/profile.component.html": {
+            "lines": 153,
+            "tokens": 1139,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/modules/modules.component.html": {
+            "lines": 111,
+            "tokens": 814,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 11,
+            "duplicatedTokens": 78,
+            "percentage": 9.91,
+            "percentageTokens": 9.58,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/home/home.component.html": {
+            "lines": 520,
+            "tokens": 3807,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/contact/contact.component.html": {
+            "lines": 198,
+            "tokens": 1377,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app/features/architecture/architecture.component.html": {
+            "lines": 106,
+            "tokens": 823,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 3149,
+          "tokens": 22565,
+          "sources": 45,
+          "clones": 4,
+          "duplicatedLines": 45,
+          "duplicatedTokens": 306,
+          "percentage": 1.43,
+          "percentageTokens": 1.36,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      }
+    },
+    "total": {
+      "lines": 26899,
+      "tokens": 157419,
+      "sources": 223,
+      "clones": 31,
+      "duplicatedLines": 623,
+      "duplicatedTokens": 4331,
+      "percentage": 2.32,
+      "percentageTokens": 2.75,
+      "newDuplicatedLines": 0,
+      "newClones": 0
+    }
+  },
+  "duplicates": [
+    {
+      "format": "typescript",
+      "lines": 10,
+      "fragment": ": number): ValidatorFn {\n  return (control: AbstractControl): ValidationErrors | null => {\n    if (isEmptyValue(control.value)) {\n      return null;\n    }\n\n    const value = Number(control.value);\n\n    if (isNaN(value)) {\n      return { maxValue",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/utilities/validation/validation.utils.ts",
+        "start": 738,
+        "end": 747,
+        "startLoc": {
+          "line": 738,
+          "column": 4,
+          "position": 3969
+        },
+        "endLoc": {
+          "line": 747,
+          "column": 9,
+          "position": 4057
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/utilities/validation/validation.utils.ts",
+        "start": 709,
+        "end": 718,
+        "startLoc": {
+          "line": 709,
+          "column": 4,
+          "position": 3808
+        },
+        "endLoc": {
+          "line": 718,
+          "column": 9,
+          "position": 3896
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 10,
+      "fragment": "max: number): ValidatorFn {\n  return (control: AbstractControl): ValidationErrors | null => {\n    if (isEmptyValue(control.value)) {\n      return null;\n    }\n\n    const value = Number(control.value);\n\n    if (isNaN(value)) {\n      return { range",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/utilities/validation/validation.utils.ts",
+        "start": 768,
+        "end": 777,
+        "startLoc": {
+          "line": 768,
+          "column": 2,
+          "position": 4135
+        },
+        "endLoc": {
+          "line": 777,
+          "column": 6,
+          "position": 4224
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/utilities/validation/validation.utils.ts",
+        "start": 738,
+        "end": 718,
+        "startLoc": {
+          "line": 738,
+          "column": 2,
+          "position": 3968
+        },
+        "endLoc": {
+          "line": 718,
+          "column": 9,
+          "position": 3896
+        }
+      }
+    },
+    {
+      "format": "scss",
+      "lines": 20,
+      "fragment": ");\n    color: inherit;\n    cursor: pointer;\n    transition: border-color var(--duration-fast) var(--ease-out);\n\n    &:hover {\n      border-color: var(--color-border);\n    }\n\n    &:focus-visible {\n      outline: 2px solid var(--color-focus-ring);\n      outline-offset: 2px;\n    }\n\n    &--active {\n      border-color: var(--color-primary);\n    }\n  }\n\n  // Icon variant",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/theme-picker/theme-picker.component.scss",
+        "start": 130,
+        "end": 149,
+        "startLoc": {
+          "line": 130,
+          "column": 21,
+          "position": 855
+        },
+        "endLoc": {
+          "line": 149,
+          "column": 16,
+          "position": 962
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/theme-picker/theme-picker.component.scss",
+        "start": 101,
+        "end": 120,
+        "startLoc": {
+          "line": 101,
+          "column": 19,
+          "position": 680
+        },
+        "endLoc": {
+          "line": 120,
+          "column": 18,
+          "position": 787
+        }
+      }
+    },
+    {
+      "format": "markup",
+      "lines": 13,
+      "fragment": "></span>\n                      <span class=\"theme-picker__option-label\">{{ theme.name }}</span>\n                      @if (theme.id === currentTheme().id) {\n                        <eb-icon name=\"heroCheck\" size=\"sm\" [decorative]=\"true\" />\n                      }\n                    </button>\n                  }\n                </div>\n              }\n            } @else {\n              @for (theme of themes(); track theme.id) {\n                <button\n                  ",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/theme-picker/theme-picker.component.html",
+        "start": 184,
+        "end": 196,
+        "startLoc": {
+          "line": 184,
+          "column": 23,
+          "position": 1213
+        },
+        "endLoc": {
+          "line": 196,
+          "column": 19,
+          "position": 1316
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/theme-picker/theme-picker.component.html",
+        "start": 55,
+        "end": 67,
+        "startLoc": {
+          "line": 55,
+          "column": 21,
+          "position": 362
+        },
+        "endLoc": {
+          "line": 67,
+          "column": 17,
+          "position": 465
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 21,
+      "fragment": ";\n\n    const element = this.textareaElement()?.nativeElement;\n    if (!element) return undefined;\n\n    const computedStyle = this._safeGetComputedStyle(element);\n    if (!computedStyle) return undefined;\n\n    const lineHeight = parseFloat(computedStyle.lineHeight !== '' ? computedStyle.lineHeight : '0');\n    const paddingTop = parseFloat(computedStyle.paddingTop !== '' ? computedStyle.paddingTop : '0');\n    const paddingBottom = parseFloat(\n      computedStyle.paddingBottom !== '' ? computedStyle.paddingBottom : '0',\n    );\n    const borderTop = parseFloat(\n      computedStyle.borderTopWidth !== '' ? computedStyle.borderTopWidth : '0',\n    );\n    const borderBottom = parseFloat(\n      computedStyle.borderBottomWidth !== '' ? computedStyle.borderBottomWidth : '0',\n    );\n\n    return maxRowsValue",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/textarea/textarea.component.ts",
+        "start": 565,
+        "end": 585,
+        "startLoc": {
+          "line": 565,
+          "column": 10,
+          "position": 3275
+        },
+        "endLoc": {
+          "line": 585,
+          "column": 13,
+          "position": 3502
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/textarea/textarea.component.ts",
+        "start": 537,
+        "end": 557,
+        "startLoc": {
+          "line": 537,
+          "column": 2,
+          "position": 2974
+        },
+        "endLoc": {
+          "line": 557,
+          "column": 13,
+          "position": 3201
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 29,
+      "fragment": ");\n\n  /**\n   * Computed aria-describedby value\n   */\n  readonly computedAriaDescribedBy = computed(() => {\n    const parts: string[] = [];\n    const helperTextId = this.helperTextId();\n    const userDescribedBy = this.ariaDescribedBy();\n\n    if (helperTextId != null) parts.push(helperTextId);\n    if (userDescribedBy != null) parts.push(userDescribedBy);\n\n    return parts.length > 0 ? parts.join(' ') : undefined;\n  });\n\n  /**\n   * Computed aria-invalid value\n   */\n  readonly computedAriaInvalid = computed(() => {\n    return this.ariaInvalid() || this.validationState() === 'error' ? 'true' : undefined;\n  });\n\n  /**\n   * Effect to sync value input with internal state\n   */\n  private readonly _syncValue = effect(() => {\n    const value = this.value();\n    // Only update if no interactive writing is happening - or initially",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/select/select.component.ts",
+        "start": 455,
+        "end": 483,
+        "startLoc": {
+          "line": 455,
+          "column": 2,
+          "position": 2395
+        },
+        "endLoc": {
+          "line": 483,
+          "column": 69,
+          "position": 2624
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/textarea/textarea.component.ts",
+        "start": 329,
+        "end": 357,
+        "startLoc": {
+          "line": 329,
+          "column": 2,
+          "position": 1571
+        },
+        "endLoc": {
+          "line": 357,
+          "column": 5,
+          "position": 1800
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 27,
+      "fragment": ") : undefined;\n  });\n\n  /**\n   * Computed aria-describedby value\n   */\n  readonly computedAriaDescribedBy = computed(() => {\n    const parts: string[] = [];\n    const helperTextId = this.helperTextId();\n    const userDescribedBy = this.ariaDescribedBy();\n\n    if (helperTextId != null) parts.push(helperTextId);\n    if (userDescribedBy != null) parts.push(userDescribedBy);\n\n    return parts.length > 0 ? parts.join(' ') : undefined;\n  });\n\n  /**\n   * Computed aria-invalid value\n   */\n  readonly computedAriaInvalid = computed(() => {\n    return this.ariaInvalid() || this.validationState() === 'error' ? 'true' : undefined;\n  });\n\n  /**\n   * Computed CSS classes for the radio wrapper\n   */",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/radio/radio.component.ts",
+        "start": 219,
+        "end": 245,
+        "startLoc": {
+          "line": 219,
+          "column": 15,
+          "position": 771
+        },
+        "endLoc": {
+          "line": 245,
+          "column": 6,
+          "position": 974
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/textarea/textarea.component.ts",
+        "start": 328,
+        "end": 354,
+        "startLoc": {
+          "line": 328,
+          "column": 17,
+          "position": 1562
+        },
+        "endLoc": {
+          "line": 354,
+          "column": 6,
+          "position": 1765
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 19,
+      "fragment": ");\n    }\n  }\n\n  /**\n   * Handle focus events\n   */\n  handleFocus(event: FocusEvent): void {\n    this.isFocused.set(true);\n    this.focused.emit(event);\n  }\n\n  /**\n   * Handle blur events\n   */\n  handleBlur(event: FocusEvent): void {\n    this.isFocused.set(false);\n    this.blurred.emit(event);\n  }",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/radio/radio.component.ts",
+        "start": 289,
+        "end": 307,
+        "startLoc": {
+          "line": 289,
+          "column": 2,
+          "position": 1314
+        },
+        "endLoc": {
+          "line": 307,
+          "column": 2,
+          "position": 1407
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/textarea/textarea.component.ts",
+        "start": 383,
+        "end": 401,
+        "startLoc": {
+          "line": 383,
+          "column": 2,
+          "position": 1986
+        },
+        "endLoc": {
+          "line": 401,
+          "column": 5,
+          "position": 2079
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 43,
+      "fragment": ");\n\n  /**\n   * Internal focused state\n   */\n  readonly isFocused = signal<boolean>(false);\n\n  /**\n   * Internal value for two-way binding\n   */\n  readonly internalValue = signal<string>('');\n\n  /**\n   * Internal disabled state from ControlValueAccessor\n   */\n  private readonly _cvaDisabled = signal<boolean>(false);\n\n  /**\n   * Combined disabled state (input or CVA)\n   */\n  readonly isDisabled = computed(() => this.disabled() || this._cvaDisabled());\n\n  private readonly uniqueIdService = inject(UniqueIdService);\n\n  // CVA callbacks\n  private _onChange: (value: string) => void = () => {};\n  private _onTouched: () => void = () => {};\n\n  /**\n   * Computed character count text\n   */\n  readonly charCountText = computed(() => {\n    const max = this.maxLength();\n    if (max == null || !this.showCharCount()) return '';\n    const current = this.internalValue().length;\n    return `${String(current)}/${String(max)}`;\n  });\n\n  /**\n   * Computed helper text CSS classes\n   */\n  readonly helperTextClasses = computed(() => {\n    const classes = ['input__helper-text'",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/input/input.component.ts",
+        "start": 234,
+        "end": 276,
+        "startLoc": {
+          "line": 234,
+          "column": 15,
+          "position": 912
+        },
+        "endLoc": {
+          "line": 276,
+          "column": 21,
+          "position": 1211
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/textarea/textarea.component.ts",
+        "start": 237,
+        "end": 279,
+        "startLoc": {
+          "line": 237,
+          "column": 18,
+          "position": 873
+        },
+        "endLoc": {
+          "line": 279,
+          "column": 24,
+          "position": 1172
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 24,
+      "fragment": ");\n\n    return classes.join(' ');\n  });\n\n  /**\n   * Whether to show the footer section\n   */\n  readonly showFooter = computed(() => {\n    return (\n      !(this.helperText().length === 0) || (this.showCharCount() && !(this.maxLength() == null))\n    );\n  });\n\n  /**\n   * Whether to show character count\n   */\n  readonly shouldShowCharCount = computed(() => {\n    return this.showCharCount() && !(this.maxLength() == null);\n  });\n\n  /**\n   * Computed CSS classes for the input wrapper\n   */",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/input/input.component.ts",
+        "start": 281,
+        "end": 304,
+        "startLoc": {
+          "line": 281,
+          "column": 28,
+          "position": 1284
+        },
+        "endLoc": {
+          "line": 304,
+          "column": 6,
+          "position": 1431
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/textarea/textarea.component.ts",
+        "start": 284,
+        "end": 307,
+        "startLoc": {
+          "line": 284,
+          "column": 31,
+          "position": 1245
+        },
+        "endLoc": {
+          "line": 307,
+          "column": 6,
+          "position": 1392
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 31,
+      "fragment": ") : undefined;\n  });\n\n  /**\n   * Computed aria-describedby value\n   */\n  readonly computedAriaDescribedBy = computed(() => {\n    const parts: string[] = [];\n    const helperTextId = this.helperTextId();\n    const userDescribedBy = this.ariaDescribedBy();\n\n    if (helperTextId != null) parts.push(helperTextId);\n    if (userDescribedBy != null) parts.push(userDescribedBy);\n\n    return parts.length > 0 ? parts.join(' ') : undefined;\n  });\n\n  /**\n   * Computed aria-invalid value\n   */\n  readonly computedAriaInvalid = computed(() => {\n    return this.ariaInvalid() || this.validationState() === 'error' ? 'true' : undefined;\n  });\n\n  /**\n   * Effect to sync value input with internal state\n   */\n  private readonly _syncValue = effect(() => {\n    const value = this.value();\n    this.internalValue.set(value);\n  }",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/input/input.component.ts",
+        "start": 325,
+        "end": 355,
+        "startLoc": {
+          "line": 325,
+          "column": 14,
+          "position": 1601
+        },
+        "endLoc": {
+          "line": 355,
+          "column": 2,
+          "position": 1850
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/textarea/textarea.component.ts",
+        "start": 328,
+        "end": 358,
+        "startLoc": {
+          "line": 328,
+          "column": 17,
+          "position": 1562
+        },
+        "endLoc": {
+          "line": 358,
+          "column": 3,
+          "position": 1811
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 22,
+      "fragment": "}\n\n  /**\n   * Handle focus events\n   */\n  handleFocus(event: FocusEvent): void {\n    this.isFocused.set(true);\n    this.focused.emit(event);\n  }\n\n  /**\n   * Handle blur events\n   */\n  handleBlur(event: FocusEvent): void {\n    this.isFocused.set(false);\n    this.blurred.emit(event);\n    this._onTouched();\n  }\n\n  /**\n   * Handle keydown events\n   */",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/input/input.component.ts",
+        "start": 366,
+        "end": 387,
+        "startLoc": {
+          "line": 366,
+          "column": 3,
+          "position": 1932
+        },
+        "endLoc": {
+          "line": 387,
+          "column": 6,
+          "position": 2030
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/textarea/textarea.component.ts",
+        "start": 385,
+        "end": 406,
+        "startLoc": {
+          "line": 385,
+          "column": 3,
+          "position": 1993
+        },
+        "endLoc": {
+          "line": 406,
+          "column": 6,
+          "position": 2091
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 19,
+      "fragment": "}\n\n  registerOnChange(fn: (value: string) => void): void {\n    this._onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this._onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this._cvaDisabled.set(isDisabled);\n  }\n\n  /**\n   * Generate BEM CSS classes for the wrapper\n   */\n  private _getWrapperClasses(): string {\n    const classes = ['input'",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/input/input.component.ts",
+        "start": 418,
+        "end": 436,
+        "startLoc": {
+          "line": 418,
+          "column": 3,
+          "position": 2218
+        },
+        "endLoc": {
+          "line": 436,
+          "column": 8,
+          "position": 2343
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/textarea/textarea.component.ts",
+        "start": 434,
+        "end": 452,
+        "startLoc": {
+          "line": 434,
+          "column": 3,
+          "position": 2274
+        },
+        "endLoc": {
+          "line": 452,
+          "column": 11,
+          "position": 2399
+        }
+      }
+    },
+    {
+      "format": "markup",
+      "lines": 10,
+      "fragment": "\"\n      [attr.aria-label]=\"ariaLabel()\"\n      [attr.aria-labelledby]=\"labelId()\"\n      [attr.aria-describedby]=\"computedAriaDescribedBy()\"\n      [attr.aria-invalid]=\"computedAriaInvalid()\"\n      [attr.aria-required]=\"required() ? 'true' : undefined\"\n      (input)=\"handleInput($event)\"\n      (focus)=\"handleFocus($event)\"\n      (blur)=\"handleBlur($event)\"\n      ",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/input/input.component.html",
+        "start": 38,
+        "end": 47,
+        "startLoc": {
+          "line": 38,
+          "column": 15,
+          "position": 240
+        },
+        "endLoc": {
+          "line": 47,
+          "column": 7,
+          "position": 293
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/textarea/textarea.component.html",
+        "start": 31,
+        "end": 40,
+        "startLoc": {
+          "line": 31,
+          "column": 12,
+          "position": 188
+        },
+        "endLoc": {
+          "line": 40,
+          "column": 5,
+          "position": 241
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 18,
+      "fragment": "import { CommonModule } from '@angular/common';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  computed,\n  type ElementRef,\n  inject,\n  input,\n  output,\n  signal,\n  viewChild,\n} from '@angular/core';\nimport { FormsModule } from '@angular/forms';\n\nimport { UniqueIdService } from '@shared/services/unique-id';\n\nimport { InputFooterComponent, InputLabelComponent } from '@shared/components/input';\nimport { CheckboxCheckmarkComponent",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/checkbox/checkbox.component.ts",
+        "start": 1,
+        "end": 18,
+        "startLoc": {
+          "line": 1,
+          "column": 1,
+          "position": 0
+        },
+        "endLoc": {
+          "line": 18,
+          "column": 27,
+          "position": 110
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/radio/radio.component.ts",
+        "start": 1,
+        "end": 19,
+        "startLoc": {
+          "line": 1,
+          "column": 1,
+          "position": 0
+        },
+        "endLoc": {
+          "line": 19,
+          "column": 25,
+          "position": 111
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 27,
+      "fragment": ") : undefined;\n  });\n\n  /**\n   * Computed aria-describedby value\n   */\n  readonly computedAriaDescribedBy = computed(() => {\n    const parts: string[] = [];\n    const helperTextId = this.helperTextId();\n    const userDescribedBy = this.ariaDescribedBy();\n\n    if (helperTextId != null) parts.push(helperTextId);\n    if (userDescribedBy != null) parts.push(userDescribedBy);\n\n    return parts.length > 0 ? parts.join(' ') : undefined;\n  });\n\n  /**\n   * Computed aria-invalid value\n   */\n  readonly computedAriaInvalid = computed(() => {\n    return this.ariaInvalid() || this.validationState() === 'error' ? 'true' : undefined;\n  });\n\n  /**\n   * Computed CSS classes for the checkbox wrapper\n   */",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/checkbox/checkbox.component.ts",
+        "start": 190,
+        "end": 216,
+        "startLoc": {
+          "line": 190,
+          "column": 18,
+          "position": 769
+        },
+        "endLoc": {
+          "line": 216,
+          "column": 6,
+          "position": 972
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/textarea/textarea.component.ts",
+        "start": 328,
+        "end": 354,
+        "startLoc": {
+          "line": 328,
+          "column": 17,
+          "position": 1562
+        },
+        "endLoc": {
+          "line": 354,
+          "column": 6,
+          "position": 1765
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 22,
+      "fragment": ");\n  }\n\n  /**\n   * Handle focus events\n   */\n  handleFocus(event: FocusEvent): void {\n    this.isFocused.set(true);\n    this.focused.emit(event);\n  }\n\n  /**\n   * Handle blur events\n   */\n  handleBlur(event: FocusEvent): void {\n    this.isFocused.set(false);\n    this.blurred.emit(event);\n  }\n\n  /**\n   * Focus the checkbox programmatically\n   */",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/checkbox/checkbox.component.ts",
+        "start": 258,
+        "end": 279,
+        "startLoc": {
+          "line": 258,
+          "column": 11,
+          "position": 1288
+        },
+        "endLoc": {
+          "line": 279,
+          "column": 6,
+          "position": 1382
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/input/input.component.ts",
+        "start": 365,
+        "end": 311,
+        "startLoc": {
+          "line": 365,
+          "column": 9,
+          "position": 1928
+        },
+        "endLoc": {
+          "line": 311,
+          "column": 6,
+          "position": 1411
+        }
+      }
+    },
+    {
+      "format": "scss",
+      "lines": 24,
+      "fragment": "{\n  padding-left: calc(var(--checkbox-size, 20px) + var(--space-2));\n\n  .checkbox--sm & {\n    padding-left: calc(16px + var(--space-2));\n  }\n\n  .checkbox--lg & {\n    padding-left: calc(24px + var(--space-2));\n  }\n\n  @media (pointer: coarse) {\n    padding-left: calc(44px + var(--space-2));\n\n    .checkbox--sm & {\n      padding-left: calc(40px + var(--space-2));\n    }\n\n    .checkbox--lg & {\n      padding-left: calc(48px + var(--space-2));\n    }\n  }\n\n  &",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/checkbox/checkbox.component.scss",
+        "start": 162,
+        "end": 185,
+        "startLoc": {
+          "line": 162,
+          "column": 20,
+          "position": 796
+        },
+        "endLoc": {
+          "line": 185,
+          "column": 2,
+          "position": 962
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/checkbox/checkbox.component.scss",
+        "start": 136,
+        "end": 158,
+        "startLoc": {
+          "line": 136,
+          "column": 18,
+          "position": 626
+        },
+        "endLoc": {
+          "line": 158,
+          "column": 2,
+          "position": 790
+        }
+      }
+    },
+    {
+      "format": "markup",
+      "lines": 14,
+      "fragment": "\"\n      [disabled]=\"disabled()\"\n      [required]=\"required()\"\n      [value]=\"value()\"\n      [name]=\"name()\"\n      [attr.aria-label]=\"ariaLabel()\"\n      [attr.aria-describedby]=\"computedAriaDescribedBy()\"\n      [attr.aria-invalid]=\"computedAriaInvalid()\"\n      [attr.aria-labelledby]=\"labelId()\"\n      (change)=\"handleChange($event)\"\n      (focus)=\"handleFocus($event)\"\n      (blur)=\"handleBlur($event)\"\n    />\n    <eb-checkbox-checkmark",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/shared/components/checkbox/checkbox.component.html",
+        "start": 9,
+        "end": 22,
+        "startLoc": {
+          "line": 9,
+          "column": 16,
+          "position": 55
+        },
+        "endLoc": {
+          "line": 22,
+          "column": 22,
+          "position": 127
+        }
+      },
+      "secondFile": {
+        "name": "src/app/shared/components/radio/radio.component.html",
+        "start": 8,
+        "end": 21,
+        "startLoc": {
+          "line": 8,
+          "column": 10,
+          "position": 49
+        },
+        "endLoc": {
+          "line": 21,
+          "column": 21,
+          "position": 121
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 17,
+      "fragment": "profileService.getGitHubStats().pipe(\n            tapResponse({\n              next: (stats: GitHubStats | null) => {\n                patchState(store, {\n                  stats,\n                  isLoading: false,\n                  lastFetched: Date.now(),\n                });\n              },\n              error: (err: Error) => {\n                patchState(store, {\n                  isLoading: false,\n                  error: err.message !== '' ? err.message : 'Failed to load GitHub stats',\n                });\n              },\n            }),\n          ),",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/features/profile/state/profile.store.ts",
+        "start": 129,
+        "end": 145,
+        "startLoc": {
+          "line": 129,
+          "column": 11,
+          "position": 800
+        },
+        "endLoc": {
+          "line": 145,
+          "column": 2,
+          "position": 941
+        }
+      },
+      "secondFile": {
+        "name": "src/app/features/profile/state/profile.store.ts",
+        "start": 98,
+        "end": 114,
+        "startLoc": {
+          "line": 98,
+          "column": 2,
+          "position": 576
+        },
+        "endLoc": {
+          "line": 114,
+          "column": 2,
+          "position": 717
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 17,
+      "fragment": "import { CommonModule } from '@angular/common';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  computed,\n  effect,\n  inject,\n  input,\n  OnInit,\n} from '@angular/core';\nimport { RouterLink } from '@angular/router';\nimport { TranslocoDirective } from '@jsverse/transloco';\nimport { provideIcons } from '@ng-icons/core';\nimport {\n  heroArrowLeft,\n  heroArrowRight,\n  heroExclamationTriangle",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/features/architecture/viewer/adr-viewer.component.ts",
+        "start": 1,
+        "end": 17,
+        "startLoc": {
+          "line": 1,
+          "column": 1,
+          "position": 0
+        },
+        "endLoc": {
+          "line": 17,
+          "column": 24,
+          "position": 104
+        }
+      },
+      "secondFile": {
+        "name": "src/app/features/modules/detail/module-detail.component.ts",
+        "start": 1,
+        "end": 17,
+        "startLoc": {
+          "line": 1,
+          "column": 1,
+          "position": 0
+        },
+        "endLoc": {
+          "line": 17,
+          "column": 10,
+          "position": 104
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 7,
+      "fragment": "import { computed, inject } from '@angular/core';\nimport { tapResponse } from '@ngrx/operators';\nimport { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';\nimport { rxMethod } from '@ngrx/signals/rxjs-interop';\nimport { pipe, switchMap, tap } from 'rxjs';\n\nimport {",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/core/services/architecture/architecture.store.ts",
+        "start": 1,
+        "end": 7,
+        "startLoc": {
+          "line": 1,
+          "column": 1,
+          "position": 0
+        },
+        "endLoc": {
+          "line": 7,
+          "column": 2,
+          "position": 89
+        }
+      },
+      "secondFile": {
+        "name": "src/app/features/contact/state/contact.store.ts",
+        "start": 2,
+        "end": 8,
+        "startLoc": {
+          "line": 2,
+          "column": 1,
+          "position": 13
+        },
+        "endLoc": {
+          "line": 8,
+          "column": 5,
+          "position": 102
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 36,
+      "fragment": "();\n  }\n\n  /**\n   * Get the badge variant based on module status.\n   */\n  protected getStatusVariant(status: string): 'success' | 'warning' | 'secondary' {\n    switch (status) {\n      case 'production':\n        return 'success';\n      case 'beta':\n        return 'warning';\n      default:\n        return 'secondary';\n    }\n  }\n\n  /**\n   * Get the badge variant based on module category.\n   */\n  protected getCategoryVariant(\n    category: string,\n  ): 'primary' | 'secondary' | 'success' | 'warning' | 'error' {\n    switch (category) {\n      case 'ui':\n        return 'primary';\n      case 'security':\n        return 'warning';\n      case 'state-management':\n        return 'success';\n      case 'infrastructure':\n      default:\n        return 'secondary';\n    }\n  }\n}",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/features/modules/modules.component.ts",
+        "start": 104,
+        "end": 139,
+        "startLoc": {
+          "line": 104,
+          "column": 12,
+          "position": 714
+        },
+        "endLoc": {
+          "line": 139,
+          "column": 2,
+          "position": 906
+        }
+      },
+      "secondFile": {
+        "name": "src/app/features/modules/detail/module-detail.component.ts",
+        "start": 117,
+        "end": 152,
+        "startLoc": {
+          "line": 117,
+          "column": 12,
+          "position": 796
+        },
+        "endLoc": {
+          "line": 152,
+          "column": 2,
+          "position": 988
+        }
+      }
+    },
+    {
+      "format": "scss",
+      "lines": 21,
+      "fragment": "&__header {\n    @include page.feature-header;\n  }\n\n  &__title {\n    @include page.feature-title;\n  }\n\n  &__subtitle {\n    @include page.feature-subtitle;\n  }\n\n  &__search {\n    display: flex;\n    flex-direction: column;\n    gap: var(--space-2);\n    max-width: 600px;\n    margin: 0 auto;\n  }\n\n  &__search-count ",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/features/modules/modules.component.scss",
+        "start": 6,
+        "end": 26,
+        "startLoc": {
+          "line": 6,
+          "column": 3,
+          "position": 16
+        },
+        "endLoc": {
+          "line": 26,
+          "column": 16,
+          "position": 111
+        }
+      },
+      "secondFile": {
+        "name": "src/app/features/blog/blog-list/blog-list.component.scss",
+        "start": 8,
+        "end": 29,
+        "startLoc": {
+          "line": 8,
+          "column": 3,
+          "position": 29
+        },
+        "endLoc": {
+          "line": 29,
+          "column": 3,
+          "position": 124
+        }
+      }
+    },
+    {
+      "format": "markup",
+      "lines": 12,
+      "fragment": "\"\n                        ></eb-badge>\n                      }\n                    </div>\n                    <eb-icon [name]=\"ICONS.CHEVRON_RIGHT\" size=\"sm\" [decorative]=\"true\"></eb-icon>\n                  </div>\n                </eb-card>\n              </a>\n            }\n          </eb-grid>\n        } @else {\n          <div class=\"modules__empty",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/features/modules/modules.component.html",
+        "start": 78,
+        "end": 89,
+        "startLoc": {
+          "line": 78,
+          "column": 7,
+          "position": 588
+        },
+        "endLoc": {
+          "line": 89,
+          "column": 15,
+          "position": 666
+        }
+      },
+      "secondFile": {
+        "name": "src/app/features/blog/blog-list/blog-list.component.html",
+        "start": 64,
+        "end": 75,
+        "startLoc": {
+          "line": 64,
+          "column": 4,
+          "position": 559
+        },
+        "endLoc": {
+          "line": 75,
+          "column": 17,
+          "position": 637
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 7,
+      "fragment": "} from '@angular/common/http';\nimport { computed, inject } from '@angular/core';\nimport { tapResponse } from '@ngrx/operators';\nimport { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';\nimport { rxMethod } from '@ngrx/signals/rxjs-interop';\nimport { pipe, switchMap, tap } from 'rxjs';\nimport { BlogArticle",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/features/blog/blog.store.ts",
+        "start": 1,
+        "end": 7,
+        "startLoc": {
+          "line": 1,
+          "column": 2,
+          "position": 6
+        },
+        "endLoc": {
+          "line": 7,
+          "column": 12,
+          "position": 103
+        }
+      },
+      "secondFile": {
+        "name": "src/app/features/contact/state/contact.store.ts",
+        "start": 1,
+        "end": 7,
+        "startLoc": {
+          "line": 1,
+          "column": 2,
+          "position": 6
+        },
+        "endLoc": {
+          "line": 7,
+          "column": 4,
+          "position": 91
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 17,
+      "fragment": "import {\n  ChangeDetectionStrategy,\n  Component,\n  DestroyRef,\n  OnInit,\n  inject,\n  signal,\n} from '@angular/core';\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\nimport { RouterLink } from '@angular/router';\nimport { TranslocoDirective } from '@jsverse/transloco';\nimport { provideIcons } from '@ng-icons/core';\nimport { heroChevronRight, heroMagnifyingGlass } from '@ng-icons/heroicons/outline';\nimport { Subject, debounceTime, distinctUntilChanged } from 'rxjs';\n\nimport {\n  BadgeComponent,",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/features/architecture/architecture.component.ts",
+        "start": 1,
+        "end": 17,
+        "startLoc": {
+          "line": 1,
+          "column": 1,
+          "position": 0
+        },
+        "endLoc": {
+          "line": 17,
+          "column": 2,
+          "position": 129
+        }
+      },
+      "secondFile": {
+        "name": "src/app/features/modules/modules.component.ts",
+        "start": 1,
+        "end": 16,
+        "startLoc": {
+          "line": 1,
+          "column": 1,
+          "position": 0
+        },
+        "endLoc": {
+          "line": 16,
+          "column": 2,
+          "position": 129
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 15,
+      "fragment": ");\n  private readonly _seoService = inject(SeoService);\n  private readonly _destroyRef = inject(DestroyRef);\n\n  /** Icon name constants */\n  protected readonly ICONS = ICON_NAMES;\n\n  /** Search input value signal */\n  protected readonly searchValue = signal('');\n\n  /** Subject for debouncing search input */\n  private readonly _searchSubject = new Subject<string>();\n\n  ngOnInit(): void {\n    // Load ADRs on init",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/features/architecture/architecture.component.ts",
+        "start": 65,
+        "end": 79,
+        "startLoc": {
+          "line": 65,
+          "column": 18,
+          "position": 386
+        },
+        "endLoc": {
+          "line": 79,
+          "column": 21,
+          "position": 489
+        }
+      },
+      "secondFile": {
+        "name": "src/app/features/modules/modules.component.ts",
+        "start": 58,
+        "end": 72,
+        "startLoc": {
+          "line": 58,
+          "column": 13,
+          "position": 418
+        },
+        "endLoc": {
+          "line": 72,
+          "column": 24,
+          "position": 521
+        }
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 31,
+      "fragment": ",\n      },\n    });\n\n    // Set up debounced search filter\n    this._searchSubject\n      .pipe(debounceTime(300), distinctUntilChanged(), takeUntilDestroyed(this._destroyRef))\n      .subscribe((value) => {\n        this.store.setFilter(value);\n      });\n  }\n\n  /**\n   * Handle search input changes.\n   */\n  protected onSearchChange(value: string): void {\n    this.searchValue.set(value);\n    this._searchSubject.next(value);\n  }\n\n  /**\n   * Clear the search.\n   */\n  protected clearSearch(): void {\n    this.searchValue.set('');\n    this.store.clearFilter();\n  }\n\n  /**\n   * Get the badge variant based on ADR status.\n   */",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/features/architecture/architecture.component.ts",
+        "start": 85,
+        "end": 115,
+        "startLoc": {
+          "line": 85,
+          "column": 68,
+          "position": 529
+        },
+        "endLoc": {
+          "line": 115,
+          "column": 6,
+          "position": 690
+        }
+      },
+      "secondFile": {
+        "name": "src/app/features/modules/modules.component.ts",
+        "start": 79,
+        "end": 109,
+        "startLoc": {
+          "line": 79,
+          "column": 80,
+          "position": 562
+        },
+        "endLoc": {
+          "line": 109,
+          "column": 6,
+          "position": 723
+        }
+      }
+    },
+    {
+      "format": "scss",
+      "lines": 39,
+      "fragment": "{\n  &__header {\n    @include page.feature-header;\n  }\n\n  &__title {\n    @include page.feature-title;\n  }\n\n  &__subtitle {\n    @include page.feature-subtitle;\n  }\n\n  &__search {\n    display: flex;\n    flex-direction: column;\n    gap: var(--space-2);\n    max-width: 600px;\n    margin: 0 auto;\n  }\n\n  &__search-count {\n    text-align: center;\n    font-size: var(--font-size-sm);\n    color: var(--color-text-secondary);\n  }\n\n  &__loading {\n    text-align: center;\n    padding: var(--space-8);\n    font-size: var(--font-size-lg);\n  }\n\n  &__error {\n    text-align: center;\n    padding: var(--space-8);\n    font-size: var(--font-size-lg);\n    color: var(--color-error);\n    background: var(--color-error-subtle",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/features/architecture/architecture.component.scss",
+        "start": 5,
+        "end": 43,
+        "startLoc": {
+          "line": 5,
+          "column": 2,
+          "position": 13
+        },
+        "endLoc": {
+          "line": 43,
+          "column": 21,
+          "position": 229
+        }
+      },
+      "secondFile": {
+        "name": "src/app/features/modules/modules.component.scss",
+        "start": 5,
+        "end": 43,
+        "startLoc": {
+          "line": 5,
+          "column": 2,
+          "position": 13
+        },
+        "endLoc": {
+          "line": 43,
+          "column": 17,
+          "position": 229
+        }
+      }
+    },
+    {
+      "format": "scss",
+      "lines": 32,
+      "fragment": ");\n    border-radius: var(--border-radius-md);\n  }\n\n  &__empty {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    gap: var(--space-3);\n    padding: var(--space-12);\n    text-align: center;\n  }\n\n  &__empty-icon {\n    opacity: 0.5;\n    color: var(--color-text-secondary);\n  }\n\n  &__empty-title {\n    margin: 0;\n    font-size: var(--font-size-xl);\n    color: var(--color-text);\n  }\n\n  &__empty-text {\n    margin: 0;\n    color: var(--color-text-secondary);\n    max-width: 400px;\n  }\n}\n\n.adr-card-link ",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/features/architecture/architecture.component.scss",
+        "start": 43,
+        "end": 74,
+        "startLoc": {
+          "line": 43,
+          "column": 21,
+          "position": 230
+        },
+        "endLoc": {
+          "line": 74,
+          "column": 16,
+          "position": 401
+        }
+      },
+      "secondFile": {
+        "name": "src/app/features/modules/modules.component.scss",
+        "start": 43,
+        "end": 74,
+        "startLoc": {
+          "line": 43,
+          "column": 17,
+          "position": 230
+        },
+        "endLoc": {
+          "line": 74,
+          "column": 19,
+          "position": 401
+        }
+      }
+    }
+  ]
+}
