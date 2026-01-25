@@ -58,3 +58,6 @@ src/environments/environment.development.ts
 # Lighthouse CI
 .lighthouseci/
 
+# Reports
+/reports
+
