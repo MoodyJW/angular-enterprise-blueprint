@@ -124,6 +124,7 @@ describe('HomeComponent', () => {
                   a11y: 'Accessibility',
                   best: 'Best Practices',
                   seo: 'SEO',
+                  viewLighthouse: 'View Report',
                 },
                 visitors: {
                   title: 'Real-time Visitors',

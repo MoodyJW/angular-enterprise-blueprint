@@ -125,4 +125,8 @@ export class HomeComponent implements OnInit {
   openCoverageReport(): void {
     window.open('/coverage/index.html', '_blank');
   }
+
+  openLighthouseReport(): void {
+    window.open('/lighthouse/index.html', '_blank');
+  }
 }

@@ -206,6 +206,17 @@
               }
             </eb-stack>
           </div>
+          <footer card-footer>
+            <eb-button
+              variant="secondary"
+              size="sm"
+              [fullWidth]="true"
+              (click)="openLighthouseReport()"
+              [ariaLabel]="t('home.projectHealth.viewLighthouse')"
+            >
+              {{ t('home.projectHealth.viewLighthouse') }}
+            </eb-button>
+          </footer>
         </eb-card>
 
         <!-- Extended Metrics Row 2 continue -->

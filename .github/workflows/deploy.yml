@@ -73,6 +73,19 @@ jobs:
           # Move Coverage (handled differently as it may not be in dist)
           mkdir -p dist/angular-enterprise-blueprint/browser/coverage
           cp -r coverage/angular-enterprise-blueprint/* dist/angular-enterprise-blueprint/browser/coverage/ || echo "WARNING: Coverage files not found"
+          # Move Lighthouse Report (Optional)
+          mkdir -p dist/angular-enterprise-blueprint/browser/lighthouse
+          if [ -d ".lighthouseci" ]; then
+             LATEST_HTML=$(ls -t .lighthouseci/*.html 2>/dev/null | head -n 1)
+             if [ -n "$LATEST_HTML" ]; then
+               cp "$LATEST_HTML" dist/angular-enterprise-blueprint/browser/lighthouse/index.html
+               echo "Lighthouse report copied: $LATEST_HTML"
+             else
+               echo "WARNING: No Lighthouse HTML report found"
+             fi
+          else
+             echo "WARNING: .lighthouseci directory not found"
+          fi
           # Create 404.html for SPA routing (copy of index.html)
           cp dist/angular-enterprise-blueprint/browser/index.html dist/angular-enterprise-blueprint/browser/404.html
           # Ensure .nojekyll exists (should be copied from public/ but add as backup)

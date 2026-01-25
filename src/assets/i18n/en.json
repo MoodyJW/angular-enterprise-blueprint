@@ -82,7 +82,8 @@
       "a11y": "A11y",
       "best": "Best",
       "seo": "SEO",
-      "viewCoverage": "View Report"
+      "viewCoverage": "View Report",
+      "viewLighthouse": "View Report"
     },
     "documentation": {
       "title": "Documentation",
