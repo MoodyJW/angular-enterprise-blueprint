@@ -106,6 +106,7 @@
       "title": "Documentación",
       "components": "Componentes",
       "services": "Servicios",
+      "directives": "Directivas",
       "viewStorybook": "Ver Storybook"
     },
     "linting": {
