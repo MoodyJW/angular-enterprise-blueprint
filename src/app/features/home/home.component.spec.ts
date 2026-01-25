@@ -64,6 +64,12 @@ describe('HomeComponent', () => {
       documentation: { available: true, percentage: 80 },
       git: { available: true, commits: 100 },
       linting: { available: true, errors: 0, warnings: 0 },
+      duplication: {
+        available: true,
+        percentage: 2.5,
+        totalLines: 1000,
+        duplicatedLines: 25,
+      },
       dependencies: { available: true, total: 50 },
       bundleSize: { available: false },
     },
@@ -152,6 +158,7 @@ describe('HomeComponent', () => {
                   title: 'Linting Status',
                   errors: 'Errors',
                   warnings: 'Warnings',
+                  duplication: 'Duplication',
                   viewConfig: 'View Config',
                 },
                 dependencies: {

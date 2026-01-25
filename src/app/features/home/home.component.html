@@ -247,8 +247,14 @@
                   </div>
                   <div class="metric__row">
                     <span class="metric__label">{{ t('home.linting.warnings') }}</span>
-                    <span class="metric__value">{{ ext.linting.warnings }}</span>
+                    <span class="metric__value text-warning">{{ ext.linting.warnings }}</span>
                   </div>
+                  @if (ext.duplication?.available) {
+                    <div class="metric__row">
+                      <span class="metric__label">{{ t('home.linting.duplication') }}</span>
+                      <span class="metric__value">{{ ext.duplication?.percentage }}%</span>
+                    </div>
+                  }
                 </eb-stack>
               </div>
               <footer card-footer>

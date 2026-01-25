@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-25T15:00:17.992Z",
+  "generatedAt": "2026-01-25T16:17:33.673Z",
   "buildStatus": "passing",
   "deployStatus": "success",
   "systemStatus": "operational",
@@ -9,27 +9,27 @@
       "available": true,
       "value": 92,
       "trend": "up",
-      "lastUpdated": "2026-01-25T14:59:57.345Z",
+      "lastUpdated": "2026-01-25T16:17:09.911Z",
       "details": {
         "statements": {
-          "pct": 92,
-          "covered": 5275,
-          "total": 5751
+          "pct": 91,
+          "covered": 5292,
+          "total": 5832
         },
         "branches": {
-          "pct": 80,
-          "covered": 2878,
-          "total": 3619
+          "pct": 79,
+          "covered": 2883,
+          "total": 3629
         },
         "functions": {
           "pct": 93,
-          "covered": 902,
-          "total": 965
+          "covered": 910,
+          "total": 980
         },
         "lines": {
-          "pct": 92,
-          "covered": 5275,
-          "total": 5751
+          "pct": 91,
+          "covered": 5292,
+          "total": 5832
         }
       }
     },
@@ -63,9 +63,9 @@
     },
     "git": {
       "available": true,
-      "commits": 220,
-      "lastCommit": "2026-01-25 06:40:01 -0800",
-      "branches": 90,
+      "commits": 232,
+      "lastCommit": "2026-01-25 08:07:10 -0800",
+      "branches": 91,
       "contributors": 1
     },
     "linting": {
@@ -73,12 +73,18 @@
       "errors": 0,
       "warnings": 0
     },
+    "duplication": {
+      "available": true,
+      "percentage": 2.32,
+      "totalLines": 26899,
+      "duplicatedLines": 623
+    },
     "dependencies": {
       "available": true,
       "production": 18,
-      "development": 41,
-      "total": 59,
-      "outdated": 1,
+      "development": 42,
+      "total": 60,
+      "outdated": 0,
       "vulnerabilities": {
         "info": 0,
         "low": 0,
@@ -91,7 +97,7 @@
     "bundleSize": {
       "available": true,
       "initial": {
-        "raw": 284362,
+        "raw": 284573,
         "formatted": "278 KB",
         "budget": "1MB",
         "status": "pass"

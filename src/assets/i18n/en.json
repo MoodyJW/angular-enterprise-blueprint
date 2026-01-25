@@ -95,6 +95,7 @@
       "title": "Code Quality",
       "errors": "Errors",
       "warnings": "Warnings",
+      "duplication": "Duplication",
       "viewConfig": "View Config"
     },
     "dependencies": {
