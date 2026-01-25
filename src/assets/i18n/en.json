@@ -89,7 +89,7 @@
       "title": "Documentation",
       "components": "Components",
       "services": "Services",
-      "directives": "Directives",
+      "utils": "Utils",
       "viewStorybook": "View Storybook"
     },
     "linting": {

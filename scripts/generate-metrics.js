@@ -238,9 +238,14 @@ function getDocumentationCoverage() {
     const directives = countDocumented(data.directives);
     const pipes = countDocumented(data.pipes);
 
-    const totalDocs =
-      components.documented + services.documented + directives.documented + pipes.documented;
-    const totalItems = components.total + services.total + directives.total + pipes.total;
+    // Combine directives and pipes into "utils"
+    const utils = {
+      documented: directives.documented + pipes.documented,
+      total: directives.total + pipes.total,
+    };
+
+    const totalDocs = components.documented + services.documented + utils.documented;
+    const totalItems = components.total + services.total + utils.total;
     const percentage = totalItems > 0 ? Math.round((totalDocs / totalItems) * 100) : 0;
 
     return {
@@ -248,8 +253,7 @@ function getDocumentationCoverage() {
       percentage,
       components,
       services,
-      directives,
-      pipes,
+      utils,
     };
   } catch {
     return { available: false, message: 'Failed to parse documentation data' };

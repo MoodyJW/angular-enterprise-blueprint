@@ -39,8 +39,7 @@ export interface ExtendedMetrics {
     percentage?: number;
     components?: { documented: number; total: number };
     services?: { documented: number; total: number };
-    directives?: { documented: number; total: number };
-    pipes?: { documented: number; total: number };
+    utils?: { documented: number; total: number };
   };
   git: {
     available: boolean;

@@ -152,7 +152,7 @@ describe('HomeComponent', () => {
                   title: 'Documentation Coverage',
                   components: 'Components',
                   services: 'Services',
-                  directives: 'Directives',
+                  utils: 'Utils',
                   viewStorybook: 'View Storybook',
                 },
                 linting: {
