@@ -129,4 +129,11 @@ export class HomeComponent implements OnInit {
   openLighthouseReport(): void {
     window.open('/lighthouse/index.html', '_blank');
   }
+
+  openEslintConfig(): void {
+    window.open(
+      'https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/eslint.config.mjs',
+      '_blank',
+    );
+  }
 }
