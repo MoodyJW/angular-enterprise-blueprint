@@ -10,6 +10,7 @@ import { SeoService } from '@core/services/seo/seo.service';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 import { BadgeComponent } from '@shared/components/badge';
 import { ContainerComponent } from '@shared/components/container';
+import { MockInstance } from 'vitest';
 import { HomeComponent } from './home.component';
 import { DashboardMetrics, ExtendedMetrics } from './services/dashboard.service';
 import { DashboardStore } from './state/dashboard.store';
@@ -618,6 +619,88 @@ describe('HomeComponent', () => {
     it('should have hero actions container for button layout', () => {
       const actions = fixture.debugElement.query(By.css('.home__hero-actions'));
       expect(actions).toBeTruthy();
+    });
+  });
+
+  describe('External Links', () => {
+    let windowOpenSpy: MockInstance<typeof window.open>;
+
+    beforeEach(() => {
+      windowOpenSpy = vi.spyOn(window, 'open').mockImplementation(() => null);
+    });
+
+    afterEach(() => {
+      windowOpenSpy.mockRestore();
+    });
+
+    describe('openCoverageReport', () => {
+      it('should open coverage report in new tab', () => {
+        component.openCoverageReport();
+        expect(windowOpenSpy).toHaveBeenCalledWith(
+          expect.stringContaining('coverage/index.html'),
+          '_blank',
+        );
+      });
+
+      it('should use document.baseURI for URL resolution', () => {
+        component.openCoverageReport();
+        expect(windowOpenSpy).toHaveBeenCalled();
+        const calls = windowOpenSpy.mock.calls;
+        const calledUrl = calls[0]?.[0] ?? '';
+        expect(calledUrl).toMatch(/^https?:\/\//);
+      });
+    });
+
+    describe('openLighthouseReport', () => {
+      it('should open lighthouse report in new tab', () => {
+        component.openLighthouseReport();
+        expect(windowOpenSpy).toHaveBeenCalledWith(
+          expect.stringContaining('lighthouse/index.html'),
+          '_blank',
+        );
+      });
+
+      it('should use document.baseURI for URL resolution', () => {
+        component.openLighthouseReport();
+        const calledUrl = windowOpenSpy.mock.calls[0][0] as string;
+        expect(calledUrl).toMatch(/^https?:\/\//);
+      });
+    });
+
+    describe('openEslintConfig', () => {
+      it('should open ESLint config on GitHub in new tab', () => {
+        component.openEslintConfig();
+        expect(windowOpenSpy).toHaveBeenCalledWith(
+          'https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/eslint.config.mjs',
+          '_blank',
+        );
+      });
+    });
+
+    describe('openStorybook', () => {
+      it('should open storybook in new tab', () => {
+        component.openStorybook();
+        expect(windowOpenSpy).toHaveBeenCalledWith(
+          expect.stringContaining('storybook/index.html'),
+          '_blank',
+        );
+      });
+
+      it('should use document.baseURI for URL resolution', () => {
+        component.openStorybook();
+        const calledUrl = windowOpenSpy.mock.calls[0][0] as string;
+        expect(calledUrl).toMatch(/^https?:\/\//);
+      });
+    });
+
+    describe('openRepository', () => {
+      it('should open GitHub repository in new tab', () => {
+        component.openRepository();
+        expect(windowOpenSpy).toHaveBeenCalledWith(
+          'https://github.com/MoodyJW/angular-enterprise-blueprint',
+          '_blank',
+        );
+      });
     });
   });
 });
