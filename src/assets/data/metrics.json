@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-25T16:56:57.340Z",
+  "generatedAt": "2026-01-25T18:26:58.920Z",
   "buildStatus": "passing",
   "deployStatus": "success",
   "systemStatus": "operational",
@@ -7,29 +7,29 @@
   "extended": {
     "testCoverage": {
       "available": true,
-      "value": 92,
+      "value": 91,
       "trend": "up",
-      "lastUpdated": "2026-01-25T16:56:32.499Z",
+      "lastUpdated": "2026-01-25T18:26:35.980Z",
       "details": {
         "statements": {
-          "pct": 91,
-          "covered": 5292,
-          "total": 5832
+          "pct": 90,
+          "covered": 5294,
+          "total": 5854
         },
         "branches": {
-          "pct": 79,
-          "covered": 2883,
-          "total": 3629
+          "pct": 93,
+          "covered": 3365,
+          "total": 3637
         },
         "functions": {
           "pct": 93,
-          "covered": 910,
+          "covered": 911,
           "total": 980
         },
         "lines": {
-          "pct": 91,
-          "covered": 5292,
-          "total": 5832
+          "pct": 90,
+          "covered": 5294,
+          "total": 5854
         }
       }
     },
@@ -39,7 +39,7 @@
       "accessibility": 100,
       "bestPractices": 100,
       "seo": 100,
-      "message": "Cached from previous run (local report not found)"
+      "source": "lhr-1769365592657.json"
     },
     "documentation": {
       "available": true,
@@ -59,9 +59,9 @@
     },
     "git": {
       "available": true,
-      "commits": 238,
-      "lastCommit": "2026-01-25 08:52:41 -0800",
-      "branches": 91,
+      "commits": 242,
+      "lastCommit": "2026-01-25 10:24:11 -0800",
+      "branches": 9,
       "contributors": 1
     },
     "linting": {
@@ -93,13 +93,13 @@
     "bundleSize": {
       "available": true,
       "initial": {
-        "raw": 284573,
-        "formatted": "278 KB",
+        "raw": 288636,
+        "formatted": "282 KB",
         "budget": "1MB",
         "status": "pass"
       },
       "lazy": {
-        "raw": 592793,
+        "raw": 592565,
         "formatted": "579 KB",
         "count": 23
       }
