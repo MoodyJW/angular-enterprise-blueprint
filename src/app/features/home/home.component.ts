@@ -123,11 +123,13 @@ export class HomeComponent implements OnInit {
   }
 
   openCoverageReport(): void {
-    window.open('/coverage/index.html', '_blank');
+    const url = new URL('coverage/index.html', document.baseURI).href;
+    window.open(url, '_blank');
   }
 
   openLighthouseReport(): void {
-    window.open('/lighthouse/index.html', '_blank');
+    const url = new URL('lighthouse/index.html', document.baseURI).href;
+    window.open(url, '_blank');
   }
 
   openEslintConfig(): void {
@@ -135,5 +137,10 @@ export class HomeComponent implements OnInit {
       'https://github.com/MoodyJW/angular-enterprise-blueprint/blob/main/eslint.config.mjs',
       '_blank',
     );
+  }
+
+  openStorybook(): void {
+    const url = new URL('storybook/index.html', document.baseURI).href;
+    window.open(url, '_blank');
   }
 }

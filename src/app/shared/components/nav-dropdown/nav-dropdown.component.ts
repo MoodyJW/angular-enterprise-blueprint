@@ -1,7 +1,14 @@
 import { A11yModule } from '@angular/cdk/a11y';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, HostListener, input, signal } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { provideIcons } from '@ng-icons/core';
 import { heroArrowTopRightOnSquare, heroChevronDown } from '@ng-icons/heroicons/outline';
@@ -48,6 +55,14 @@ export class NavDropdownComponent {
   /**
    * Toggles the menu open/closed state.
    */
+  /**
+   * Inject DOCUMENT for base URI resolution.
+   */
+  private readonly _document = inject(DOCUMENT);
+
+  /**
+   * Toggles the menu open/closed state.
+   */
   toggleMenu(): void {
     this.isOpen.update((v) => !v);
   }
@@ -67,6 +82,26 @@ export class NavDropdownComponent {
     if (event.key === 'Escape' && this.isOpen()) {
       this.closeMenu();
       event.preventDefault();
+    }
+  }
+
+  /**
+   * Resolves the full URL for external links ensuring correct base path.
+   * Handles deployment subpaths (e.g. GitHub Pages).
+   *
+   * @param path - The relative path (e.g., '/storybook')
+   * @returns The fully qualified URL
+   */
+  getExternalUrl(path: string | undefined): string {
+    if (path === undefined || path === '') return '';
+    if (path.startsWith('http')) return path;
+
+    try {
+      // Remove leading slash to resolve relative to baseURI
+      const cleanPath = path.startsWith('/') ? path.substring(1) : path;
+      return new URL(cleanPath, this._document.baseURI).href;
+    } catch {
+      return path;
     }
   }
 }

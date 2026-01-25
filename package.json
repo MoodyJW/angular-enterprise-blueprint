@@ -91,7 +91,7 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "^0.2100.5",
+    "@angular-devkit/architect": "^0.2101.1",
     "@angular-devkit/build-angular": "^21.0.5",
     "@angular-devkit/core": "^21.0.5",
     "@angular/build": "^21.0.5",

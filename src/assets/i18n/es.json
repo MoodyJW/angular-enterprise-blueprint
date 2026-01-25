@@ -104,7 +104,8 @@
     "documentation": {
       "title": "Documentación",
       "components": "Componentes",
-      "services": "Servicios"
+      "services": "Servicios",
+      "viewStorybook": "Ver Storybook"
     },
     "linting": {
       "title": "Calidad de Código",

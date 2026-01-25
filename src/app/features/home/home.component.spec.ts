@@ -144,6 +144,7 @@ describe('HomeComponent', () => {
                   title: 'Documentation Coverage',
                   components: 'Components',
                   services: 'Services',
+                  viewStorybook: 'View Storybook',
                 },
                 linting: {
                   title: 'Linting Status',

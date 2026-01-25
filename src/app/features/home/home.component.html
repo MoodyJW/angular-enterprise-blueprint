@@ -392,6 +392,17 @@
                   </div>
                 </eb-stack>
               </div>
+              <footer card-footer>
+                <eb-button
+                  variant="secondary"
+                  size="sm"
+                  [fullWidth]="true"
+                  (click)="openStorybook()"
+                  [ariaLabel]="t('home.documentation.viewStorybook')"
+                >
+                  {{ t('home.documentation.viewStorybook') }}
+                </eb-button>
+              </footer>
             </eb-card>
           }
 

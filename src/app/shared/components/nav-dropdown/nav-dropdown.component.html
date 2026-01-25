@@ -35,7 +35,7 @@
       @for (item of items(); track item.route || item.labelKey) {
         @if (item.external) {
           <a
-            [href]="item.route"
+            [href]="getExternalUrl(item.route)"
             target="_blank"
             rel="noopener noreferrer"
             class="nav-dropdown__item nav-dropdown__item--external"
