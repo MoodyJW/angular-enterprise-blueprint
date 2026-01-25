@@ -1,0 +1,38 @@
+[
+  {
+    "url": "http://localhost:37211/index.html",
+    "isRepresentativeRun": false,
+    "htmlPath": "/home/jay/Repos/angular-enterprise-blueprint/localhost-_index_html-2026_01_25_19_06_51.report.html",
+    "jsonPath": "/home/jay/Repos/angular-enterprise-blueprint/localhost-_index_html-2026_01_25_19_06_51.report.json",
+    "summary": {
+      "performance": 0.81,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:37211/index.html",
+    "isRepresentativeRun": false,
+    "htmlPath": "/home/jay/Repos/angular-enterprise-blueprint/localhost-_index_html-2026_01_25_19_07_03.report.html",
+    "jsonPath": "/home/jay/Repos/angular-enterprise-blueprint/localhost-_index_html-2026_01_25_19_07_03.report.json",
+    "summary": {
+      "performance": 0.83,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:37211/index.html",
+    "isRepresentativeRun": true,
+    "htmlPath": "/home/jay/Repos/angular-enterprise-blueprint/localhost-_index_html-2026_01_25_19_07_15.report.html",
+    "jsonPath": "/home/jay/Repos/angular-enterprise-blueprint/localhost-_index_html-2026_01_25_19_07_15.report.json",
+    "summary": {
+      "performance": 0.8,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  }
+]

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-25T16:56:57.340Z",
+  "generatedAt": "2026-01-25T19:09:42.112Z",
   "buildStatus": "passing",
   "deployStatus": "success",
   "systemStatus": "operational",
@@ -9,7 +9,7 @@
       "available": true,
       "value": 92,
       "trend": "up",
-      "lastUpdated": "2026-01-25T16:56:32.499Z",
+      "lastUpdated": "2026-01-25T19:09:19.351Z",
       "details": {
         "statements": {
           "pct": 91,
@@ -35,11 +35,11 @@
     },
     "lighthouse": {
       "available": true,
-      "performance": 91,
+      "performance": 82,
       "accessibility": 100,
       "bestPractices": 100,
       "seo": 100,
-      "message": "Cached from previous run (local report not found)"
+      "source": "lhr-1769368157730.json"
     },
     "documentation": {
       "available": true,
@@ -59,9 +59,9 @@
     },
     "git": {
       "available": true,
-      "commits": 238,
-      "lastCommit": "2026-01-25 08:52:41 -0800",
-      "branches": 91,
+      "commits": 242,
+      "lastCommit": "2026-01-25 10:24:11 -0800",
+      "branches": 94,
       "contributors": 1
     },
     "linting": {
