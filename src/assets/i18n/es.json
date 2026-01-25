@@ -123,7 +123,8 @@
       "title": "Repositorio",
       "commits": "Commits Totales",
       "contributors": "Colaboradores",
-      "branches": "Ramas"
+      "branches": "Ramas",
+      "viewRepository": "Ver Repositorio"
     },
     "visitors": {
       "title": "Visitantes en Tiempo Real",

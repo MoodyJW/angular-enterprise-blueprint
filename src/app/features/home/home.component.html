@@ -472,6 +472,17 @@
                   </div>
                 </eb-stack>
               </div>
+              <footer card-footer>
+                <eb-button
+                  variant="secondary"
+                  size="sm"
+                  [fullWidth]="true"
+                  (click)="openRepository()"
+                  [ariaLabel]="t('home.git.viewRepository')"
+                >
+                  {{ t('home.git.viewRepository') }}
+                </eb-button>
+              </footer>
             </eb-card>
           }
         }
