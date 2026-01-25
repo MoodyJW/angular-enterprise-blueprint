@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-23T22:59:39.191Z",
+  "generatedAt": "2026-01-25T01:54:49.609Z",
   "buildStatus": "passing",
   "deployStatus": "pending",
   "systemStatus": "operational",
@@ -7,29 +7,29 @@
   "extended": {
     "testCoverage": {
       "available": true,
-      "value": 91,
+      "value": 92,
       "trend": "up",
-      "lastUpdated": "2026-01-23T22:59:16.736Z",
+      "lastUpdated": "2026-01-25T01:54:27.639Z",
       "details": {
         "statements": {
-          "pct": 90,
-          "covered": 4822,
-          "total": 5332
+          "pct": 92,
+          "covered": 5252,
+          "total": 5727
         },
         "branches": {
-          "pct": 77,
-          "covered": 2508,
-          "total": 3249
+          "pct": 80,
+          "covered": 2872,
+          "total": 3611
         },
         "functions": {
           "pct": 93,
-          "covered": 849,
-          "total": 913
+          "covered": 891,
+          "total": 954
         },
         "lines": {
-          "pct": 90,
-          "covered": 4822,
-          "total": 5332
+          "pct": 92,
+          "covered": 5252,
+          "total": 5727
         }
       }
     },
@@ -39,14 +39,14 @@
       "accessibility": 100,
       "bestPractices": 100,
       "seo": 100,
-      "message": "Cached from previous run (local report not found)"
+      "source": "lhr-1769306063923.json"
     },
     "documentation": {
       "available": true,
       "percentage": 100,
       "components": {
-        "documented": 52,
-        "total": 52
+        "documented": 53,
+        "total": 53
       },
       "services": {
         "documented": 22,
@@ -63,9 +63,9 @@
     },
     "git": {
       "available": true,
-      "commits": 199,
-      "lastCommit": "2026-01-23 14:51:11 -0800",
-      "branches": 85,
+      "commits": 1,
+      "lastCommit": "2026-01-24 17:52:01 -0800",
+      "branches": 1,
       "contributors": 1
     },
     "linting": {
@@ -78,21 +78,21 @@
       "production": 18,
       "development": 41,
       "total": 59,
-      "outdated": 34,
+      "outdated": 1,
       "vulnerabilities": {
         "info": 0,
         "low": 0,
-        "moderate": 12,
-        "high": 2,
+        "moderate": 7,
+        "high": 0,
         "critical": 0,
-        "total": 14
+        "total": 7
       }
     },
     "bundleSize": {
       "available": true,
       "initial": {
-        "raw": 180774,
-        "formatted": "177 KB",
+        "raw": 282698,
+        "formatted": "276 KB",
         "budget": "1MB",
         "status": "pass"
       }
