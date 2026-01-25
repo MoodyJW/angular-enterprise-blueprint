@@ -99,6 +99,28 @@
         "error": "Sobre Presupuesto"
       }
     },
+    "documentation": {
+      "title": "Documentación",
+      "components": "Componentes",
+      "services": "Servicios"
+    },
+    "linting": {
+      "title": "Calidad de Código",
+      "errors": "Errores",
+      "warnings": "Advertencias"
+    },
+    "dependencies": {
+      "title": "Dependencias",
+      "total": "Paquetes Totales",
+      "outdated": "Desactualizados",
+      "vulnerabilities": "Vulnerabilidades"
+    },
+    "git": {
+      "title": "Repositorio",
+      "commits": "Commits Totales",
+      "contributors": "Colaboradores",
+      "branches": "Ramas"
+    },
     "visitors": {
       "title": "Visitantes en Tiempo Real",
       "live": "En Vivo",
