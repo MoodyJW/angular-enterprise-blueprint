@@ -143,4 +143,8 @@ export class HomeComponent implements OnInit {
     const url = new URL('storybook/index.html', document.baseURI).href;
     window.open(url, '_blank');
   }
+
+  openRepository(): void {
+    window.open('https://github.com/MoodyJW/angular-enterprise-blueprint', '_blank');
+  }
 }

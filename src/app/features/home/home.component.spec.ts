@@ -118,6 +118,7 @@ describe('HomeComponent', () => {
                   average: 'Average',
                   statements: 'Statements',
                   branches: 'Branches',
+                  viewRepository: 'View Repository',
                   functions: 'Functions',
                   lines: 'Lines',
                   perf: 'Perf',
@@ -163,6 +164,7 @@ describe('HomeComponent', () => {
                   commits: 'Commits',
                   contributors: 'Contributors',
                   branches: 'Branches',
+                  viewRepository: 'View Repository',
                 },
                 architecture: {
                   title: 'Latest Decisions',

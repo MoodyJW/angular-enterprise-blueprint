@@ -117,7 +117,8 @@
       "title": "Repository",
       "commits": "Total Commits",
       "contributors": "Contributors",
-      "branches": "Branches"
+      "branches": "Branches",
+      "viewRepository": "View Repository"
     },
     "theme": {
       "title": "Active Theme",
