@@ -343,6 +343,12 @@
                     <span class="metric__label">{{ t('home.bundleSize.initial') }}</span>
                     <span class="metric__value">{{ bundle.formatted }}</span>
                   </div>
+                  @if (ext.bundleSize.lazy; as lazy) {
+                    <div class="metric__row">
+                      <span class="metric__label">{{ t('home.bundleSize.lazyChunks') }}</span>
+                      <span class="metric__value">{{ lazy.formatted }}</span>
+                    </div>
+                  }
                   <div class="metric__row">
                     <span class="metric__label">{{ t('home.bundleSize.budget') }}</span>
                     <span class="metric__value text-secondary">{{ bundle.budget }}</span>

@@ -481,6 +481,33 @@ function getBundleSize() {
     if (initialSize > budget.error) status = 'error';
     else if (initialSize > budget.warning) status = 'warn';
 
+    // 3. Calculate Lazy Chunks (JS files not in index.html)
+    let lazySize = 0;
+    let lazyCount = 0;
+
+    try {
+      const allFiles = readdirSync(distDir);
+      const jsFiles = allFiles.filter((f) => f.endsWith('.js'));
+
+      // Lazy chunks are JS files NOT referenced in index.html
+      jsFiles.forEach((file) => {
+        if (!assetFiles.has(file)) {
+          try {
+            const filePath = join(distDir, file);
+            const size = statSync(filePath).size;
+            lazySize += size;
+            lazyCount++;
+          } catch (e) {
+            console.log(`    ⚠️ Error reading lazy chunk ${file}: ${e.message}`);
+          }
+        }
+      });
+
+      console.log(`  📦 Found ${lazyCount} lazy chunks (${formatBytes(lazySize)})`);
+    } catch (e) {
+      console.log(`    ⚠️ Error scanning for lazy chunks: ${e.message}`);
+    }
+
     return {
       available: true,
       initial: {
@@ -488,6 +515,11 @@ function getBundleSize() {
         formatted: formatBytes(initialSize),
         budget: budget.errorStr,
         status,
+      },
+      lazy: {
+        raw: lazySize,
+        formatted: formatBytes(lazySize),
+        count: lazyCount,
       },
     };
   } catch (e) {

@@ -1,6 +1,6 @@
 {
   "statistics": {
-    "detectionDate": "2026-01-25T16:52:16.179Z",
+    "detectionDate": "2026-01-25T16:56:52.374Z",
     "formats": {
       "typescript": {
         "sources": {
@@ -221,8 +221,8 @@
             "newClones": 0
           },
           "src/app/shared/components/tooltip/tooltip.component.ts": {
-            "lines": 301,
-            "tokens": 2017,
+            "lines": 300,
+            "tokens": 2016,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -341,13 +341,13 @@
             "newClones": 0
           },
           "src/app/shared/components/select/select.component.ts": {
-            "lines": 869,
-            "tokens": 5293,
+            "lines": 868,
+            "tokens": 5292,
             "sources": 1,
             "clones": 1,
             "duplicatedLines": 28,
             "duplicatedTokens": 229,
-            "percentage": 3.22,
+            "percentage": 3.23,
             "percentageTokens": 4.33,
             "newDuplicatedLines": 0,
             "newClones": 0
@@ -617,8 +617,8 @@
             "newClones": 0
           },
           "src/app/features/profile/services/profile.service.ts": {
-            "lines": 355,
-            "tokens": 2302,
+            "lines": 354,
+            "tokens": 2301,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -689,8 +689,8 @@
             "newClones": 0
           },
           "src/app/features/home/services/dashboard.service.ts": {
-            "lines": 125,
-            "tokens": 946,
+            "lines": 130,
+            "tokens": 978,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1193,8 +1193,8 @@
             "newClones": 0
           },
           "src/app/features/blog/blog.types.ts": {
-            "lines": 30,
-            "tokens": 176,
+            "lines": 29,
+            "tokens": 175,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1530,8 +1530,8 @@
           }
         },
         "total": {
-          "lines": 16880,
-          "tokens": 96394,
+          "lines": 16881,
+          "tokens": 96422,
           "sources": 127,
           "clones": 22,
           "duplicatedLines": 447,
@@ -2594,7 +2594,7 @@
           },
           "src/app/features/auth/login/login.component.html": {
             "lines": 74,
-            "tokens": 578,
+            "tokens": 584,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -2677,8 +2677,8 @@
             "newClones": 0
           },
           "src/app/features/home/home.component.html": {
-            "lines": 528,
-            "tokens": 3869,
+            "lines": 534,
+            "tokens": 3937,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -2714,13 +2714,13 @@
           }
         },
         "total": {
-          "lines": 3157,
-          "tokens": 22627,
+          "lines": 3163,
+          "tokens": 22701,
           "sources": 45,
           "clones": 4,
           "duplicatedLines": 45,
           "duplicatedTokens": 306,
-          "percentage": 1.43,
+          "percentage": 1.42,
           "percentageTokens": 1.35,
           "newDuplicatedLines": 0,
           "newClones": 0
@@ -2728,8 +2728,8 @@
       }
     },
     "total": {
-      "lines": 26956,
-      "tokens": 157489,
+      "lines": 26963,
+      "tokens": 157591,
       "sources": 223,
       "clones": 31,
       "duplicatedLines": 623,
@@ -2928,17 +2928,17 @@
       "tokens": 0,
       "firstFile": {
         "name": "src/app/shared/components/select/select.component.ts",
-        "start": 460,
-        "end": 488,
+        "start": 459,
+        "end": 487,
         "startLoc": {
-          "line": 460,
+          "line": 459,
           "column": 2,
-          "position": 2398
+          "position": 2397
         },
         "endLoc": {
-          "line": 488,
+          "line": 487,
           "column": 69,
-          "position": 2627
+          "position": 2626
         }
       },
       "secondFile": {

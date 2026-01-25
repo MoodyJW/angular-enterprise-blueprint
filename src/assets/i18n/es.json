@@ -95,6 +95,7 @@
       "title": "Tamaño del Bundle",
       "budget": "Presupuesto",
       "initial": "JS/CSS Inicial",
+      "lazyChunks": "Fragmentos Diferidos",
       "status": {
         "pass": "✓ En Presupuesto",
         "warn": "Advertencia",
