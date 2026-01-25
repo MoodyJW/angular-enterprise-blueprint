@@ -88,7 +88,8 @@
       "a11y": "Accesibilidad",
       "best": "Mejores Prácticas",
       "seo": "SEO",
-      "viewCoverage": "Ver Informe"
+      "viewCoverage": "Ver Informe",
+      "viewLighthouse": "Ver Informe"
     },
     "bundleSize": {
       "title": "Tamaño del Bundle",
