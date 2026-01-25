@@ -78,6 +78,12 @@
                     >
                     </eb-badge>
                   </div>
+                  <div class="status__detail">
+                    <span class="status__label">{{ t('home.systemStatus.lastDeployed') }}</span>
+                    <span class="status__value text-sm">{{
+                      metrics.generatedAt | date: 'mediumDate'
+                    }}</span>
+                  </div>
                 </eb-stack>
               </eb-card>
             }

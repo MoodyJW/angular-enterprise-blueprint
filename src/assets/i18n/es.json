@@ -73,6 +73,7 @@
       "operationalStatus": "Estado Operacional",
       "buildStatus": "Estado de Compilación",
       "deployStatus": "Estado de Despliegue",
+      "lastDeployed": "Último Despliegue",
       "loading": "Cargando métricas del sistema..."
     },
     "projectHealth": {
