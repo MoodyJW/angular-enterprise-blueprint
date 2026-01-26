@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -22,6 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -73,6 +75,26 @@ jobs:
       # 6. Generate Fresh Metrics
       - name: Generate Dashboard Metrics
         run: npm run metrics:generate
+
+      # 6b. Inject and Commit Metrics
+      - name: Update Metrics in Dist and Repo
+        run: |
+          # Inject into dist (Fixes Lighthouse score discrepancy)
+          cp src/assets/data/metrics.json dist/angular-enterprise-blueprint/browser/assets/data/metrics.json
+
+          # Commit to repo (Fixes workflow redundancy)
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add src/assets/data/metrics.json
+
+          # Only commit/push if there are changes
+          if ! git diff --quiet --staged; then
+            echo "Metrics changed, committing..."
+            git commit -m "chore: update dashboard metrics [skip ci]"
+            git push
+          else
+            echo "No changes in metrics."
+          fi
 
       # 7. Merge Artifacts into the browser output folder
       - name: Merge Artifacts

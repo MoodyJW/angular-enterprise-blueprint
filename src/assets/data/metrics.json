@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-25T18:26:58.920Z",
+  "generatedAt": "2026-01-26T13:13:19.782Z",
   "buildStatus": "passing",
   "deployStatus": "success",
   "systemStatus": "operational",
@@ -9,7 +9,7 @@
       "available": true,
       "value": 91,
       "trend": "up",
-      "lastUpdated": "2026-01-25T18:26:35.980Z",
+      "lastUpdated": "2026-01-26T13:12:55.847Z",
       "details": {
         "statements": {
           "pct": 90,
@@ -35,11 +35,11 @@
     },
     "lighthouse": {
       "available": true,
-      "performance": 91,
+      "performance": 82,
       "accessibility": 100,
       "bestPractices": 100,
       "seo": 100,
-      "source": "lhr-1769365592657.json"
+      "source": "lhr-1769368157730.json"
     },
     "documentation": {
       "available": true,
@@ -61,7 +61,7 @@
       "available": true,
       "commits": 242,
       "lastCommit": "2026-01-25 10:24:11 -0800",
-      "branches": 9,
+      "branches": 95,
       "contributors": 1
     },
     "linting": {
