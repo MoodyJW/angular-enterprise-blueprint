@@ -597,7 +597,7 @@ describe('HomeComponent', () => {
     it('should render git stats when available', () => {
       mockStore.extendedMetrics.set({
         ...mockFullMetrics,
-        git: { available: true, commits: 123, contributors: 5, branches: 2 },
+        git: { available: true, commits: 123, contributors: 5, prs: 2 },
       });
       fixture.detectChanges();
       const compiled = fixture.nativeElement as HTMLElement;

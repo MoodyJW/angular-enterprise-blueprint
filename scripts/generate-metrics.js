@@ -274,17 +274,30 @@ function getGitStats() {
       cwd: ROOT,
       encoding: 'utf-8',
     }).trim();
-    const branchCount = execSync('git branch -r | wc -l', { cwd: ROOT, encoding: 'utf-8' }).trim();
     const contributorCount = execSync('git shortlog -sn --all | grep -v "\\[bot\\]" | wc -l', {
       cwd: ROOT,
       encoding: 'utf-8',
     }).trim();
 
+    // Fetch Merged PRs count (requires gh CLI)
+    let prCount = 0;
+    try {
+      // Limit to 1000 latest merged PRs for performance, or remove limit for total
+      const prJson = execSync('gh pr list --state merged --limit 1000 --json number', {
+        cwd: ROOT,
+        encoding: 'utf-8',
+        stdio: ['ignore', 'pipe', 'ignore'], // Suppress stderr (warnings)
+      });
+      prCount = JSON.parse(prJson).length;
+    } catch {
+      // gh not installed or not authenticated
+    }
+
     return {
       available: true,
       commits: parseInt(commitCount, 10) || 0,
       lastCommit: lastCommitDate || 'Unknown',
-      branches: parseInt(branchCount, 10) || 0,
+      prs: prCount,
       contributors: parseInt(contributorCount, 10) || 0,
     };
   } catch {

@@ -46,7 +46,7 @@ export interface ExtendedMetrics {
     message?: string;
     commits?: number;
     lastCommit?: string;
-    branches?: number;
+    prs?: number;
     contributors?: number;
   };
   linting: {

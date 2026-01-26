@@ -128,7 +128,7 @@
       "title": "Repositorio",
       "commits": "Commits Totales",
       "contributors": "Colaboradores",
-      "branches": "Ramas",
+      "prs": "PRs Fusionados",
       "viewRepository": "Ver Repositorio"
     },
     "visitors": {
