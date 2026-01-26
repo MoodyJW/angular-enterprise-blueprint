@@ -122,7 +122,7 @@
       "title": "Repository",
       "commits": "Total Commits",
       "contributors": "Contributors",
-      "branches": "Branches",
+      "prs": "Merged PRs",
       "viewRepository": "View Repository"
     },
     "theme": {

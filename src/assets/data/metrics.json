@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-26T14:17:25.833Z",
+  "generatedAt": "2026-01-26T14:38:46.947Z",
   "buildStatus": "passing",
   "deployStatus": "success",
   "systemStatus": "operational",
@@ -7,39 +7,39 @@
   "extended": {
     "testCoverage": {
       "available": true,
-      "value": 91,
+      "value": 92,
       "trend": "up",
-      "lastUpdated": "2026-01-26T14:17:02.159Z",
+      "lastUpdated": "2026-01-26T14:38:23.232Z",
       "details": {
         "statements": {
-          "pct": 90,
-          "covered": 5294,
-          "total": 5854
+          "pct": 91,
+          "covered": 5292,
+          "total": 5832
         },
         "branches": {
-          "pct": 93,
-          "covered": 3365,
-          "total": 3637
+          "pct": 79,
+          "covered": 2883,
+          "total": 3629
         },
         "functions": {
           "pct": 93,
-          "covered": 911,
+          "covered": 910,
           "total": 980
         },
         "lines": {
-          "pct": 90,
-          "covered": 5294,
-          "total": 5854
+          "pct": 91,
+          "covered": 5292,
+          "total": 5832
         }
       }
     },
     "lighthouse": {
       "available": true,
-      "performance": 100,
+      "performance": 82,
       "accessibility": 100,
-      "bestPractices": 96,
+      "bestPractices": 100,
       "seo": 100,
-      "source": "lhr-1769436969040.json"
+      "source": "lhr-1769368157730.json"
     },
     "documentation": {
       "available": true,
@@ -59,9 +59,9 @@
     },
     "git": {
       "available": true,
-      "commits": 248,
-      "lastCommit": "2026-01-26 06:12:05 -0800",
-      "branches": 9,
+      "commits": 249,
+      "lastCommit": "2026-01-26 14:17:25 +0000",
+      "prs": 113,
       "contributors": 1
     },
     "linting": {
@@ -93,13 +93,13 @@
     "bundleSize": {
       "available": true,
       "initial": {
-        "raw": 288636,
-        "formatted": "282 KB",
+        "raw": 284573,
+        "formatted": "278 KB",
         "budget": "1MB",
         "status": "pass"
       },
       "lazy": {
-        "raw": 592626,
+        "raw": 592793,
         "formatted": "579 KB",
         "count": 23
       }

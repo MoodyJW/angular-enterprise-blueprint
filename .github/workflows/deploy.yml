@@ -76,6 +76,8 @@ jobs:
       # 6. Generate Fresh Metrics
       - name: Generate Dashboard Metrics
         run: npm run metrics:generate
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # 6b. Inject and Commit Metrics
       - name: Update Metrics in Dist and Repo
