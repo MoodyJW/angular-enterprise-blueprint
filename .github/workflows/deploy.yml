@@ -92,6 +92,7 @@ jobs:
           if ! git diff --quiet --staged; then
             echo "Metrics changed, committing..."
             git commit -m "chore: update dashboard metrics [skip ci]"
+            git pull --rebase origin main
             git push
           else
             echo "No changes in metrics."
