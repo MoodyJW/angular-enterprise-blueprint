@@ -1,5 +1,46 @@
 # Changelog
 
+## [2.2.0](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v2.1.0...v2.2.0) (2026-01-31)
+
+
+### Features
+
+* **dashboard:** add coverage report link and deployment config ([2b84cc3](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/2b84cc3b9940e7d6001a9ad25708bf4f15f5b2c8))
+* **dashboard:** add directives to documentation card ([ca4c859](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/ca4c859117812a667516f27a067138728d524e4d))
+* **dashboard:** add last deployed date ([9b39215](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/9b39215c5b36f2d47dd31147ee74937e22624d38))
+* **dashboard:** add lazy chunks tracking to bundle size card ([c4c160b](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/c4c160ba7d2d16c492b8368b3d5a39ab1b89e6bf))
+* **dashboard:** add view repository button to git card ([ded5308](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/ded530881cfb8e97ab00fd5942475505970a4e38))
+* **dashboard:** generalize directives to utils metric ([4e1b2f9](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/4e1b2f9e9ca76363e353511c7c0c804dedc46dd7))
+* **dashboard:** improve layout, interactivity and metrics status ([ad6c5fd](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/ad6c5fdc531f650d0b20b8f6209c8c34fce1a55a))
+* **dashboard:** include interfaces in utils metric ([a2e9e76](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/a2e9e769f0aee186d6940a9d0ec7a9aa849550dd))
+* **dashboard:** integrate bundle analyzer report ([6a73f8c](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/6a73f8c3984eeecb57a5a82a5d39651995384cb4))
+* **dashboard:** integrate code duplication tracking ([fdf93e9](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/fdf93e9e85f9cb3d9d10f810210c0bd80350f148))
+* **dashboard:** link code quality card to eslint config ([ef8ad96](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/ef8ad96257289b56a9e9a2195ad6006b79cb08db))
+* **dashboard:** link dependencies card to dependabot ([3926794](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/39267947762b43ecda05dbe058f5396078664406))
+* **dashboard:** link documentation card to storybook and fix path resolution ([2542af1](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/2542af18d2e6712a98fcbd01b43508e226a7a803))
+* **dashboard:** link performance card to lighthouse report ([8f8ced0](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/8f8ced07074332922992fa4f40d37e8826e1a243))
+
+
+### Bug Fixes
+
+* add Lighthouse CI step to deployment workflow ([b8e05fb](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/b8e05fbf55f62d91ff3a69493544ec71c6c8a7da))
+* **dashboard:** change branches to merged prs ([b04ccb8](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/b04ccb88303e61dd1f50cc5d70bea409f30a147a))
+* **dashboard:** repo metrics display correct commit and branch count ([d925d12](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/d925d124bd110ab2f1c5de7646b0bd2139225f91))
+* **deploy:** add rebase before push ([1d68042](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/1d680420e99f2286ee413285d9d4f99b6e556a20))
+* **deploy:** remove rebase, add no-verify ([91894ef](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/91894efa68c64d1c1cfb44950c7d4aa411a7a4cd))
+* **i18n:** add missing spanish translations for dashboard metrics ([6ed0ead](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/6ed0ead200e5f9c59a2d7645de4a6da6d249d84e))
+* **lighthouse:** remove update-metrics, consolidate into deploy ([7e0c42b](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/7e0c42b5a730aca43025a8410439d7cefc91a8f3))
+* **lighthouse:** use PAT for workflow to push to main ([4c77001](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/4c770011ae3618f0e27202ea9fae3d9c13682e5d))
+* **profile:** resume viewer broken in prod ([24713d9](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/24713d91120bd3f8fe61ce3935391f366d75ae34))
+* regenerate metrics after Lighthouse CI in deployment ([7259b52](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/7259b5213583fbefa354bde6beab731582bd432f))
+* remove upload.target override to sync Lighthouse scores ([9313a75](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/9313a755ed0594cead2a22b0452a8229f0d20814))
+* resolve lodash-es vulnerabilities via overrides ([d2d5b86](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/d2d5b8618cbc708bcee48f97b360ccdfc409d2be))
+
+
+### Performance Improvements
+
+* **profile:** code lines corrected, speed improved ([56dac3b](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/56dac3b8a7f61b2b4af7893ebe550941cf6454dc))
+
 ## [2.1.0](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v2.0.0...v2.1.0) (2026-01-25)
 
 
