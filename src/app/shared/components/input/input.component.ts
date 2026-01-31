@@ -430,6 +430,12 @@ export class InputComponent implements ControlValueAccessor {
   }
 
   /**
+   * Whether to reserve space for the footer to prevent layout shift
+   * when helper text appears.
+   */
+  readonly reserveFooterSpace = input<boolean>(false);
+
+  /**
    * Generate BEM CSS classes for the wrapper
    */
   private _getWrapperClasses(): string {
@@ -441,6 +447,11 @@ export class InputComponent implements ControlValueAccessor {
     // Full width modifier
     if (this.fullWidth()) {
       classes.push('input--full-width');
+    }
+
+    // Reserve footer space modifier
+    if (this.reserveFooterSpace()) {
+      classes.push('input--reserve-footer');
     }
 
     return classes.join(' ');

@@ -15,7 +15,11 @@
 
   &__header {
     text-align: center;
-    margin-bottom: var(--space-6);
+  }
+
+  &__body {
+    position: relative;
+    padding-top: var(--space-16);
   }
 
   &__title {
@@ -31,11 +35,14 @@
   }
 
   &__error {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: var(--color-error-subtle);
     color: var(--color-error);
     padding: var(--space-3);
     border-radius: var(--border-radius-md);
-    margin-bottom: var(--space-4);
     font-size: var(--font-size-sm);
     text-align: center;
     border: 1px solid var(--color-error);
@@ -44,12 +51,11 @@
   &__footer {
     border-top: 1px solid var(--color-border);
     padding-top: var(--space-4);
-    margin-top: var(--space-6);
   }
 
   &__hint {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: var(--space-3);
     padding: var(--space-3);
     background-color: var(--color-surface-hover);

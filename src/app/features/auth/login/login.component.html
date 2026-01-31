@@ -7,7 +7,7 @@
     </div>
 
     <!-- Form -->
-    <div card-body>
+    <div card-body class="login__body">
       @if (error() && !isLoading()) {
         <div class="login__error" role="alert">
           {{ error() }}
@@ -27,6 +27,7 @@
             [helperText]="usernameError()"
             [placeholder]="t('auth.login.usernamePlaceholder')"
             [ariaLabel]="t('auth.login.usernamePlaceholder')"
+            [reserveFooterSpace]="true"
             autocomplete="username"
           />
 
@@ -41,6 +42,7 @@
             [helperText]="passwordError()"
             [placeholder]="t('auth.login.passwordPlaceholder')"
             [ariaLabel]="t('auth.login.passwordPlaceholder')"
+            [reserveFooterSpace]="true"
             autocomplete="current-password"
           />
 
