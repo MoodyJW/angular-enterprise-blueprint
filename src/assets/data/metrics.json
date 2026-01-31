@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-31T16:02:30.347Z",
+  "generatedAt": "2026-01-31T16:16:58.999Z",
   "buildStatus": "passing",
   "deployStatus": "success",
   "systemStatus": "operational",
@@ -9,17 +9,17 @@
       "available": true,
       "value": 91,
       "trend": "up",
-      "lastUpdated": "2026-01-31T16:02:03.910Z",
+      "lastUpdated": "2026-01-31T16:16:34.231Z",
       "details": {
         "statements": {
           "pct": 90,
-          "covered": 5294,
-          "total": 5854
+          "covered": 5297,
+          "total": 5857
         },
         "branches": {
           "pct": 93,
-          "covered": 3365,
-          "total": 3637
+          "covered": 3369,
+          "total": 3641
         },
         "functions": {
           "pct": 93,
@@ -28,8 +28,8 @@
         },
         "lines": {
           "pct": 90,
-          "covered": 5294,
-          "total": 5854
+          "covered": 5297,
+          "total": 5857
         }
       }
     },
@@ -39,7 +39,7 @@
       "accessibility": 100,
       "bestPractices": 96,
       "seo": 100,
-      "source": "lhr-1769875269157.json"
+      "source": "lhr-1769876136219.json"
     },
     "documentation": {
       "available": true,
@@ -59,9 +59,9 @@
     },
     "git": {
       "available": true,
-      "commits": 260,
-      "lastCommit": "2026-01-31 07:57:33 -0800",
-      "prs": 118,
+      "commits": 262,
+      "lastCommit": "2026-01-31 08:12:41 -0800",
+      "prs": 119,
       "contributors": 1
     },
     "linting": {
@@ -71,9 +71,9 @@
     },
     "duplication": {
       "available": true,
-      "percentage": 2.35,
-      "totalLines": 26964,
-      "duplicatedLines": 634
+      "percentage": 2.34,
+      "totalLines": 26996,
+      "duplicatedLines": 633
     },
     "dependencies": {
       "available": true,
@@ -99,7 +99,7 @@
         "status": "pass"
       },
       "lazy": {
-        "raw": 592605,
+        "raw": 593087,
         "formatted": "579 KB",
         "count": 23
       }
