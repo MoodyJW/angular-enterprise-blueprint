@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-31T14:56:36.928Z",
+  "generatedAt": "2026-01-31T15:54:12.660Z",
   "buildStatus": "passing",
   "deployStatus": "success",
   "systemStatus": "operational",
@@ -9,7 +9,7 @@
       "available": true,
       "value": 91,
       "trend": "up",
-      "lastUpdated": "2026-01-31T14:56:10.104Z",
+      "lastUpdated": "2026-01-31T15:53:48.043Z",
       "details": {
         "statements": {
           "pct": 90,
@@ -39,7 +39,7 @@
       "accessibility": 100,
       "bestPractices": 96,
       "seo": 100,
-      "source": "lhr-1769871313533.json"
+      "source": "lhr-1769874774185.json"
     },
     "documentation": {
       "available": true,
@@ -59,9 +59,9 @@
     },
     "git": {
       "available": true,
-      "commits": 254,
-      "lastCommit": "2026-01-31 06:51:42 -0800",
-      "prs": 116,
+      "commits": 258,
+      "lastCommit": "2026-01-31 07:48:39 -0800",
+      "prs": 117,
       "contributors": 1
     },
     "linting": {
@@ -71,9 +71,9 @@
     },
     "duplication": {
       "available": true,
-      "percentage": 2.31,
-      "totalLines": 26963,
-      "duplicatedLines": 623
+      "percentage": 2.35,
+      "totalLines": 26964,
+      "duplicatedLines": 634
     },
     "dependencies": {
       "available": true,
@@ -93,13 +93,13 @@
     "bundleSize": {
       "available": true,
       "initial": {
-        "raw": 288626,
-        "formatted": "282 KB",
+        "raw": 289296,
+        "formatted": "283 KB",
         "budget": "1MB",
         "status": "pass"
       },
       "lazy": {
-        "raw": 592625,
+        "raw": 592780,
         "formatted": "579 KB",
         "count": 23
       }
