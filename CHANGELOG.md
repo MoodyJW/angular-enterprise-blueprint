@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v2.2.0...v2.2.1) (2026-01-31)
+
+
+### Bug Fixes
+
+* **forms:** errors display smaller text in red ([e297e4d](https://github.com/MoodyJW/angular-enterprise-blueprint/commit/e297e4d6d1270cf75a820f3dcbc892968a06c8cb))
+
 ## [2.2.0](https://github.com/MoodyJW/angular-enterprise-blueprint/compare/v2.1.0...v2.2.0) (2026-01-31)
 
 
