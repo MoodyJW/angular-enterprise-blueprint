@@ -247,7 +247,7 @@ describe('ProfileComponent', () => {
       const downloadLink = fixture.debugElement.query(By.css('.profile__download-link'));
       expect(downloadLink).toBeTruthy();
       expect((downloadLink.nativeElement as HTMLAnchorElement).getAttribute('href')).toBe(
-        '/assets/resume/resume.pdf',
+        'assets/resume/resume.pdf',
       );
     });
 
@@ -297,7 +297,7 @@ describe('ProfileComponent', () => {
 
   describe('Component Properties', () => {
     it('should have correct resumePath value', () => {
-      expect(component.resumePath()).toBe('/assets/resume/resume.pdf');
+      expect(component.resumePath()).toBe('assets/resume/resume.pdf');
     });
 
     it('should block invalid resume URLs', () => {
@@ -416,7 +416,7 @@ describe('ProfileComponent', () => {
       const fallbackLink = fixture.debugElement.query(By.css('.profile__resume-modal-body a'));
       expect(fallbackLink).toBeTruthy();
       expect((fallbackLink.nativeElement as HTMLAnchorElement).getAttribute('href')).toBe(
-        '/assets/resume/resume.pdf',
+        'assets/resume/resume.pdf',
       );
     });
 

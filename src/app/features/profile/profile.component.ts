@@ -84,7 +84,7 @@ export class ProfileComponent implements OnInit {
   readonly secondaryTech = ['Vitest', 'Playwright', 'Storybook', 'SCSS', 'GitHub Actions'];
 
   /** Resume file path */
-  readonly resumePath = signal('/assets/resume/resume.pdf');
+  readonly resumePath = signal('assets/resume/resume.pdf');
 
   /** Sanitized resume URL for embedding in object/iframe */
   /**
