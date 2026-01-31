@@ -23,6 +23,19 @@
   &--lg {
     font-size: var(--font-size-lg);
   }
+
+  &--reserve-footer {
+    position: relative;
+    padding-bottom: var(--space-8); // Space for error message (approx 2 lines)
+
+    // When reserving space, we need to position the footer absolutely within that space
+    eb-input-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
 }
 
 .input__label {
