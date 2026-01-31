@@ -31,6 +31,8 @@
   --color-warning: #fbbf24;
   --color-warning-hover: #f59e0b;
   --color-warning-subtle: rgba(245, 158, 11, 0.15);
+  --color-warning-text: var(--color-warning); // Same as warning on dark backgrounds
+  --color-on-warning-text: var(--color-on-warning); // Same as on-warning for dark themes
   --color-on-warning: #0f172a;
 
   // Semantic colors - Error

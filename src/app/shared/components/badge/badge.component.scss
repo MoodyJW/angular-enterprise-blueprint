@@ -49,10 +49,11 @@
     color: var(--color-on-success);
   }
 
-  // Warning variant
+  // Warning variant - uses darker warning color for accessible text contrast
   &--warning {
-    background-color: var(--color-warning);
-    color: var(--color-on-warning);
+    // Use the text-compatible warning color as background for proper contrast
+    background-color: var(--color-warning-text, var(--color-warning));
+    color: var(--color-on-warning-text, var(--color-on-warning));
   }
 
   // Error variant

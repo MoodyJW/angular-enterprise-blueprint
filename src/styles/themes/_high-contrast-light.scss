@@ -31,6 +31,8 @@
   --color-warning: #994d00;
   --color-warning-hover: #663300;
   --color-warning-subtle: #fff3e6;
+  --color-warning-text: var(--color-warning); // Already accessible for high contrast
+  --color-on-warning-text: var(--color-on-warning); // Same as on-warning for high contrast
   --color-on-warning: #ffffff;
 
   // Semantic colors - Error (darker red)

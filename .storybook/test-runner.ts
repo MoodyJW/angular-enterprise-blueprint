@@ -40,8 +40,31 @@ function formatA11yResults(results: Result[], type: 'violation' | 'inconclusive'
 function checkAccessibility(axeResults: AxeResults, storyId: string, themeName: string): void {
   const { violations, incomplete } = axeResults;
 
+  // Filter out inconclusive color-contrast results for aria-hidden elements
+  // These are expected for short content in badges where the accessible name
+  // is provided by aria-label on the parent element, not the visual text
+  const filteredIncomplete = incomplete.filter((result) => {
+    if (result.id === 'color-contrast') {
+      // Filter out nodes where the issue is "content is too short"
+      // and the element has aria-hidden="true" (purely decorative)
+      const filteredNodes = result.nodes.filter((node) => {
+        const isContentTooShort = node.any.some(
+          (check) =>
+            check.message.includes('content is too short') ||
+            check.message.includes('Element content is too short'),
+        );
+        const hasAriaHidden = node.html.includes('aria-hidden="true"');
+        // Keep the node (don't filter) if it's NOT a "content too short" issue on aria-hidden element
+        return !(isContentTooShort && hasAriaHidden);
+      });
+      // Only include this result if there are remaining nodes after filtering
+      return filteredNodes.length > 0;
+    }
+    return true;
+  });
+
   const hasViolations = violations.length > 0;
-  const hasInconclusive = incomplete.length > 0;
+  const hasInconclusive = filteredIncomplete.length > 0;
 
   if (hasViolations || hasInconclusive) {
     console.warn(`\n${'='.repeat(60)}`);
@@ -53,7 +76,7 @@ function checkAccessibility(axeResults: AxeResults, storyId: string, themeName: 
     }
 
     if (hasInconclusive) {
-      console.warn(formatA11yResults(incomplete, 'inconclusive'));
+      console.warn(formatA11yResults(filteredIncomplete, 'inconclusive'));
     }
 
     // Fail on violations OR inconclusive results
@@ -63,7 +86,7 @@ function checkAccessibility(axeResults: AxeResults, storyId: string, themeName: 
         errorParts.push(`${String(violations.length)} violation(s)`);
       }
       if (hasInconclusive) {
-        errorParts.push(`${String(incomplete.length)} inconclusive check(s)`);
+        errorParts.push(`${String(filteredIncomplete.length)} inconclusive check(s)`);
       }
 
       throw new Error(

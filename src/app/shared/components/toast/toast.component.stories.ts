@@ -295,7 +295,7 @@ export const Interactive: Story = {
         </button>
         <button
           (click)="showWarning()"
-          style="padding: 8px 16px; background: var(--color-warning); color: var(--color-on-warning); border: none; border-radius: 6px; cursor: pointer;"
+          style="padding: 8px 16px; background: var(--color-warning-text, var(--color-warning)); color: var(--color-on-warning-text, var(--color-on-warning)); border: none; border-radius: 6px; cursor: pointer;"
         >
           Show Warning
         </button>

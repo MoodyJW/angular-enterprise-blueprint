@@ -187,7 +187,7 @@
   }
 
   &--warning {
-    color: var(--color-warning);
+    color: var(--color-warning-text, var(--color-warning));
   }
 
   &--error {

@@ -24,7 +24,7 @@
 
   &--warning {
     .form-field__label {
-      color: var(--color-warning, #f59e0b);
+      color: var(--color-warning-text, var(--color-warning, #f59e0b));
     }
   }
 
@@ -91,7 +91,7 @@
   }
 
   &--warning {
-    color: var(--color-warning, #f59e0b);
+    color: var(--color-warning-text, var(--color-warning, #f59e0b));
   }
 
   &--success {

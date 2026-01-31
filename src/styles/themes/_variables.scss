@@ -47,6 +47,8 @@
   --color-warning-rgb: 245, 158, 11;
   --color-warning-hover: #d97706;
   --color-warning-subtle: #fffbeb;
+  --color-warning-text: #92400e; // Darker for text contrast on light backgrounds
+  --color-on-warning-text: #ffffff; // White text on dark warning-text background
   --color-on-warning: #000000;
 
   // Semantic colors - Error

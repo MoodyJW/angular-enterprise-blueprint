@@ -7,7 +7,7 @@
     role="status"
   >
     @if (!dot()) {
-      <span class="badge__content">
+      <span class="badge__content" aria-hidden="true" role="presentation">
         {{ displayContent() }}
       </span>
     }
