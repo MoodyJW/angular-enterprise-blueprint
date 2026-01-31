@@ -272,12 +272,12 @@ export class FormFieldComponent {
    * Computed CSS classes for the footer text
    */
   readonly footerClasses = computed((): string => {
-    const classes = ['input-helper-text'];
+    const classes = ['input-footer__helper-text'];
     const state = this.computedValidationState();
 
-    if (state === 'success') classes.push('input-helper-text--success');
-    if (state === 'warning') classes.push('input-helper-text--warning');
-    if (state === 'error') classes.push('input-helper-text--error');
+    if (state === 'success') classes.push('input-footer__helper-text--success');
+    if (state === 'warning') classes.push('input-footer__helper-text--warning');
+    if (state === 'error') classes.push('input-footer__helper-text--error');
 
     return classes.join(' ');
   });

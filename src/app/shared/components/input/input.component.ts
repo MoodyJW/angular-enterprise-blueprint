@@ -273,12 +273,12 @@ export class InputComponent implements ControlValueAccessor {
    * Computed helper text CSS classes
    */
   readonly helperTextClasses = computed(() => {
-    const classes = ['input__helper-text'];
+    const classes = ['input-footer__helper-text'];
     const state = this.validationState();
 
-    if (state === 'success') classes.push('input__helper-text--success');
-    if (state === 'warning') classes.push('input__helper-text--warning');
-    if (state === 'error') classes.push('input__helper-text--error');
+    if (state === 'success') classes.push('input-footer__helper-text--success');
+    if (state === 'warning') classes.push('input-footer__helper-text--warning');
+    if (state === 'error') classes.push('input-footer__helper-text--error');
 
     return classes.join(' ');
   });
