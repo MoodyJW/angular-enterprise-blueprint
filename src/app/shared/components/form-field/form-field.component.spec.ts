@@ -369,7 +369,7 @@ describe('FormFieldComponent', () => {
       fixture.componentRef.setInput('errors', 'Error');
       fixture.detectChanges();
 
-      expect(component.footerClasses()).toContain('input-helper-text--error');
+      expect(component.footerClasses()).toContain('input-footer__helper-text--error');
     });
   });
 
@@ -432,14 +432,14 @@ describe('FormFieldComponent', () => {
       fixture.componentRef.setInput('helperText', 'Helper');
       fixture.detectChanges();
 
-      expect(component.footerClasses()).toContain('input-helper-text');
+      expect(component.footerClasses()).toContain('input-footer__helper-text');
     });
 
     it('should include validation state class in footer', () => {
       fixture.componentRef.setInput('errors', 'Error');
       fixture.detectChanges();
 
-      expect(component.footerClasses()).toContain('input-helper-text--error');
+      expect(component.footerClasses()).toContain('input-footer__helper-text--error');
     });
   });
 

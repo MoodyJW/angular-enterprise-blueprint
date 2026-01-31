@@ -204,14 +204,14 @@ describe('InputComponent', () => {
   describe('Input Handling - Helper Text', () => {
     it('should not render helper text when not provided', () => {
       fixture.detectChanges();
-      const helperText = compiled.querySelector('.input__helper-text');
+      const helperText = compiled.querySelector('.input-footer__helper-text');
       expect(helperText).toBeNull();
     });
 
     it('should render helper text when provided', () => {
       fixture.componentRef.setInput('helperText', 'This is a hint');
       fixture.detectChanges();
-      const helperText = compiled.querySelector('.input__helper-text');
+      const helperText = compiled.querySelector('.input-footer__helper-text');
       expect(helperText?.textContent.trim()).toBe('This is a hint');
     });
   });
@@ -260,8 +260,8 @@ describe('InputComponent', () => {
       fixture.componentRef.setInput('helperText', 'Helper text');
       fixture.componentRef.setInput('validationState', 'error');
       fixture.detectChanges();
-      const helperText = compiled.querySelector('.input__helper-text');
-      expect(helperText?.className).toContain('input__helper-text--error');
+      const helperText = compiled.querySelector('.input-footer__helper-text');
+      expect(helperText?.className).toContain('input-footer__helper-text--error');
     });
   });
 
@@ -711,7 +711,7 @@ describe('InputComponent', () => {
       expect(compiled.querySelector('.input__label')).toBeTruthy();
       expect(compiled.querySelector('.input__prefix')).toBeTruthy();
       expect(compiled.querySelector('.input__suffix')).toBeTruthy();
-      expect(compiled.querySelector('.input__helper-text')).toBeTruthy();
+      expect(compiled.querySelector('.input-footer__helper-text')).toBeTruthy();
       expect(compiled.querySelector('.input-footer__char-count')).toBeTruthy();
     });
   });
